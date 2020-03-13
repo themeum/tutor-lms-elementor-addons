@@ -1,0 +1,77 @@
+<?php
+/**
+ * Course Duration Addon
+ * @since 1.0.0
+ */
+
+namespace TutorLMS\Elementor\Addons;
+
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
+
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+
+class CourseDuration extends BaseAddon
+{
+    public function get_icon()
+    {
+        return 'eicon-star';
+    }
+
+    public function get_title()
+    {
+        return __('Duration', 'tutor-elementor-addons');
+    }
+
+    protected function register_content_controls()
+    {
+    }
+    
+    protected function register_style_controls()
+    {
+        $selector = ".tutor-single-course-meta-duration";
+        $this->start_controls_section(
+            'course_duration_section',
+            [
+                'label' => __('Style', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'course_duration_color',
+            [
+                'label'     => __('Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} '.$selector => 'color: {{VALUE}}',
+				],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'course_duration_typo',
+                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'selector'  => '{{WRAPPER}} '.$selector,
+            ]
+        );
+        $this->end_controls_section();
+    }
+
+    protected function render($instance = [])
+    {
+        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+            echo '<div class="tutor-single-course-meta-duration">03h 50m</div>';
+        } else {
+            $course_duration = get_tutor_course_duration_context();
+            $disable_course_duration = get_tutor_option('disable_course_duration');
+            if( !empty($course_duration) && !$disable_course_duration) {
+                $markup = '';
+                $markup .= "<div class='tutor-single-course-meta-duration'>";
+                $markup .= $course_duration;
+                $markup .= "</div>";
+                echo $markup;
+            }
+        }
+    }
+}
