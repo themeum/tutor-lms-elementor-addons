@@ -20,7 +20,7 @@ class CourseLastUpdate extends BaseAddon
 
     public function get_title()
     {
-        return __('Last Update', 'tutor-elementor-addons');
+        return __('Course Last Update', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -29,7 +29,7 @@ class CourseLastUpdate extends BaseAddon
     
     protected function register_style_controls()
     {
-        $selector = ".tutor-single-course-meta-last-update";
+        $selector = "{{WRAPPER}} .tutor-single-course-meta-last-update";
         $this->start_controls_section(
             'course_last_update_section',
             [
@@ -43,7 +43,7 @@ class CourseLastUpdate extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$selector => 'color: {{VALUE}}',
+					$selector => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -52,7 +52,7 @@ class CourseLastUpdate extends BaseAddon
             [
                 'name'      => 'course_last_update_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector,
+                'selector'  => $selector,
             ]
         );
         $this->end_controls_section();

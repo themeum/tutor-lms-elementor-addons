@@ -20,7 +20,7 @@ class CourseRating extends BaseAddon
 
     public function get_title()
     {
-        return __('Rating', 'tutor-elementor-addons');
+        return __('Course Rating', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -29,7 +29,7 @@ class CourseRating extends BaseAddon
     
     protected function register_style_controls()
     {
-        $selector = ".tutor-single-course-rating .tutor-star-rating-group";
+        $selector = "{{WRAPPER}} .tutor-single-course-rating .tutor-star-rating-group";
 
         //Style
         $this->start_controls_section(
@@ -46,7 +46,7 @@ class CourseRating extends BaseAddon
                 'label'     => __('Star Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} '.$selector => 'color: {{VALUE}};',
+                    $selector => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -56,7 +56,7 @@ class CourseRating extends BaseAddon
             array(
                 'name'      => 'course_rating_typography',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector,
+                'selector'  => $selector,
             )
         );
 

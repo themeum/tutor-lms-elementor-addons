@@ -15,12 +15,12 @@ class CourseAuthor extends BaseAddon
 {
     public function get_icon()
     {
-        return 'eicon-user';
+        return 'eicon-star';
     }
 
     public function get_title()
     {
-        return __('Author', 'tutor-elementor-addons');
+        return __('Course Author', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -37,7 +37,7 @@ class CourseAuthor extends BaseAddon
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $img_selector = ".tutor-single-course-avatar a span";
+        $img_selector = "{{WRAPPER}} .tutor-single-course-avatar a span";
         $this->add_control(
             'image_width',
             [
@@ -51,7 +51,7 @@ class CourseAuthor extends BaseAddon
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} '.$img_selector => 'width: {{SIZE}}{{UNIT}};',
+                    $img_selector => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -68,7 +68,7 @@ class CourseAuthor extends BaseAddon
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} '.$img_selector => 'height: {{SIZE}}{{UNIT}};',
+                    $img_selector => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -76,7 +76,7 @@ class CourseAuthor extends BaseAddon
         $this->end_controls_section();
 
         //Section Label
-        $author_selector = ".tutor-single-course-author-meta .tutor-single-course-author-name";
+        $author_selector = "{{WRAPPER}} .tutor-single-course-author-meta .tutor-single-course-author-name";
         $this->end_controls_section();
         $this->start_controls_section(
             'course_author_label_section',
@@ -91,7 +91,7 @@ class CourseAuthor extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$author_selector.' span' => 'color: {{VALUE}}',
+					$author_selector.' span' => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -100,7 +100,7 @@ class CourseAuthor extends BaseAddon
             [
                 'name'      => 'course_author_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$author_selector.' span',
+                'selector'  => $author_selector.' span',
             ]
         );
         $this->end_controls_section();
@@ -119,7 +119,7 @@ class CourseAuthor extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$author_selector.' a' => 'color: {{VALUE}}',
+					$author_selector.' a' => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -128,7 +128,7 @@ class CourseAuthor extends BaseAddon
             [
                 'name'      => 'course_author_name_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$author_selector.' a',
+                'selector'  => $author_selector.' a',
             ]
         );
         $this->end_controls_section();

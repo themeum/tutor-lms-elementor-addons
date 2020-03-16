@@ -20,7 +20,7 @@ class CourseCategories extends BaseAddon
 
     public function get_title()
     {
-        return __('Categories', 'tutor-elementor-addons');
+        return __('Course Categories', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -29,8 +29,7 @@ class CourseCategories extends BaseAddon
     
     protected function register_style_controls()
     {
-        $selector = ".tutor-single-course-meta-categories a";
-        
+        $selector = "{{WRAPPER}} .tutor-single-course-meta-categories a";
         /* Seciton Original */
         $this->start_controls_section(
             'course_categories_original_section',
@@ -45,7 +44,7 @@ class CourseCategories extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$selector => 'color: {{VALUE}}',
+					$selector => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -54,7 +53,7 @@ class CourseCategories extends BaseAddon
             [
                 'name'      => 'course_categories_original_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector,
+                'selector'  => $selector,
             ]
         );
         $this->end_controls_section();
@@ -73,7 +72,7 @@ class CourseCategories extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$selector.':hover' => 'color: {{VALUE}}',
+					$selector.':hover' => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -82,7 +81,7 @@ class CourseCategories extends BaseAddon
             [
                 'name'      => 'course_categories_hovered_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector.':hover',
+                'selector'  => $selector.':hover',
             ]
         );
         $this->end_controls_section();

@@ -60,34 +60,34 @@ class AddonsManager
     {
         return [
             'CourseRating' => [
-                'title' => __('Rating', 'tutor-elementor-addons'),
+                'title' => __('Course Rating', 'tutor-elementor-addons'),
             ],
             'CourseTitle' => [
-                'title' => __('Title', 'tutor-elementor-addons'),
+                'title' => __('Course Title', 'tutor-elementor-addons'),
             ],
             'CourseAuthor' => [
-                'title' => __('Author', 'tutor-elementor-addons'),
+                'title' => __('Course Author', 'tutor-elementor-addons'),
             ],
             'CourseLevel' => [
-                'title' => __('Level', 'tutor-elementor-addons'),
+                'title' => __('Course Level', 'tutor-elementor-addons'),
             ],
             'CourseShare' => [
-                'title' => __('Social Share', 'tutor-elementor-addons'),
+                'title' => __('Course Social Share', 'tutor-elementor-addons'),
             ],
             'CourseCategories' => [
-                'title' => __('Categories', 'tutor-elementor-addons'),
+                'title' => __('Course Categories', 'tutor-elementor-addons'),
             ],
             'CourseDuration' => [
-                'title' => __('Duration', 'tutor-elementor-addons'),
+                'title' => __('Course Duration', 'tutor-elementor-addons'),
             ],
             'CourseTotalEnrolled' => [
-                'title' => __('Total Enrolled', 'tutor-elementor-addons'),
+                'title' => __('Course Total Enrolled', 'tutor-elementor-addons'),
             ],
             'CourseLastUpdate' => [
-                'title' => __('Last Update', 'tutor-elementor-addons'),
+                'title' => __('Course Last Update', 'tutor-elementor-addons'),
             ],
             'CourseThumbnail' => [
-                'title' => __('Thumbnail', 'tutor-elementor-addons'),
+                'title' => __('Course Thumbnail', 'tutor-elementor-addons'),
             ],
         ];
     }

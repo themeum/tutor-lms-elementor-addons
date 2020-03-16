@@ -20,7 +20,7 @@ class CourseTitle extends BaseAddon
 
     public function get_title()
     {
-        return __('Title', 'tutor-elementor-addons');
+        return __('Course Title', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -35,7 +35,7 @@ class CourseTitle extends BaseAddon
         $this->add_control(
             'course_title_html_tag',
             [
-                'label'   => __('Title HTML Tag', 'tutor-elementor-addons'),
+                'label'   => __('HTML Tag', 'tutor-elementor-addons'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
                     'h1' => 'h1', 
@@ -53,6 +53,7 @@ class CourseTitle extends BaseAddon
     
     protected function register_style_controls()
     {
+        $selector = '{{WRAPPER}} .course-title';
         // Style
         $this->start_controls_section(
             'course_style_section',
@@ -65,10 +66,10 @@ class CourseTitle extends BaseAddon
         $this->add_control(
             'course_title_color',
             [
-                'label'     => __('Title Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .course-title' => 'color: {{VALUE}};',
+                    $selector => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -78,7 +79,7 @@ class CourseTitle extends BaseAddon
             array(
                 'name'      => 'course_title_typography',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} .course-title',
+                'selector'  => $selector,
             )
         );
 
@@ -89,7 +90,7 @@ class CourseTitle extends BaseAddon
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .course-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'separator' => 'before',
             ]

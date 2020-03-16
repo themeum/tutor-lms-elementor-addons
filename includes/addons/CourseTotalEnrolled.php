@@ -20,7 +20,7 @@ class CourseTotalEnrolled extends BaseAddon
 
     public function get_title()
     {
-        return __('Total Enrolled', 'tutor-elementor-addons');
+        return __('Course Total Enrolled', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -29,7 +29,7 @@ class CourseTotalEnrolled extends BaseAddon
     
     protected function register_style_controls()
     {
-        $selector = ".tutor-single-course-meta-total-enroll";
+        $selector = "{{WRAPPER}} .tutor-single-course-meta-total-enroll";
         $this->start_controls_section(
             'course_total_enrolled_section',
             [
@@ -43,7 +43,7 @@ class CourseTotalEnrolled extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$selector => 'color: {{VALUE}}',
+					$selector => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -52,7 +52,7 @@ class CourseTotalEnrolled extends BaseAddon
             [
                 'name'      => 'course_total_enrolled_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector,
+                'selector'  => $selector,
             ]
         );
         $this->end_controls_section();

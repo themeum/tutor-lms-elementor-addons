@@ -20,7 +20,7 @@ class CourseLevel extends BaseAddon
 
     public function get_title()
     {
-        return __('Level', 'tutor-elementor-addons');
+        return __('Course Level', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -29,7 +29,7 @@ class CourseLevel extends BaseAddon
     
     protected function register_style_controls()
     {
-        $selector = ".tutor-single-course-meta ul li.tutor-course-level";
+        $selector = "{{WRAPPER}} .tutor-single-course-meta ul li.tutor-course-level";
 
         //Section Label
         $this->start_controls_section(
@@ -45,7 +45,7 @@ class CourseLevel extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$selector.' strong' => 'color: {{VALUE}}',
+					$selector.' strong' => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -54,7 +54,7 @@ class CourseLevel extends BaseAddon
             [
                 'name'      => 'course_level_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector.' strong',
+                'selector'  => $selector.' strong',
             ]
         );
         $this->end_controls_section();
@@ -73,7 +73,7 @@ class CourseLevel extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$selector => 'color: {{VALUE}}',
+					$selector => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -82,7 +82,7 @@ class CourseLevel extends BaseAddon
             [
                 'name'      => 'course_level_value_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector,
+                'selector'  => $selector,
             ]
         );
         $this->end_controls_section();

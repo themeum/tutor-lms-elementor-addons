@@ -7,7 +7,8 @@
 namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -20,7 +21,7 @@ class CourseThumbnail extends BaseAddon
 
     public function get_title()
     {
-        return __('Thumbnail', 'tutor-elementor-addons');
+        return __('Course Thumbnail', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -29,32 +30,102 @@ class CourseThumbnail extends BaseAddon
     
     protected function register_style_controls()
     {
-        $selector = ".tutor-single-course-meta-last-update";
+        $selector = "{{WRAPPER}} .tutor-course-thumbnail";
+
+        /* Original Thumbnails */
         $this->start_controls_section(
-            'course_last_update_section',
+            'course_original_thumbnail_section',
             [
-                'label' => __('Style', 'tutor-elementor-addons'),
+                'label' => __('Original Thumbnails', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
-            'course_last_update_color',
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-					'{{WRAPPER}} '.$selector => 'color: {{VALUE}}',
-				],
+                'name' => 'course_original_thumbnail_border',
+                'selector' => $selector
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_original_thumbnail_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selector' => $selector
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_original_thumbnail_margin',
+            [
+                'label' => __( 'Margin', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em' ],
+                'selector' => $selector
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'course_original_thumbnail_box_shadow',
+				'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+				'selector' => $selector,
+			]
+		);
+
+        $this->end_controls_section();
+
+
+        /* Hovered Thumbnails */
+        $hover_selector = $selector.':hover';
+        $this->start_controls_section(
+            'course_hovered_thumbnail_section',
+            [
+                'label' => __('Hovered Thumbnails', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_group_control(
-            Group_Control_Typography::get_type(),
+            Group_Control_Border::get_type(),
             [
-                'name'      => 'course_last_update_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector,
+                'name' => 'course_hovered_thumbnail_border',
+                'selector' => $hover_selector
             ]
         );
+
+        $this->add_responsive_control(
+            'course_hovered_thumbnail_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selector' => $hover_selector
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_hovered_thumbnail_margin',
+            [
+                'label' => __( 'Margin', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em' ],
+                'selector' => $hover_selector
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'course_hovered_thumbnail_box_shadow',
+				'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+				'selector' => $hover_selector,
+			]
+		);
+
         $this->end_controls_section();
     }
 

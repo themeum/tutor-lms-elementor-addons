@@ -20,7 +20,7 @@ class CourseShare extends BaseAddon
 
     public function get_title()
     {
-        return __('Social Share', 'tutor-elementor-addons');
+        return __('Course Social Share', 'tutor-elementor-addons');
     }
 
     protected function register_content_controls()
@@ -29,7 +29,7 @@ class CourseShare extends BaseAddon
     
     protected function register_style_controls()
     {
-        $selector = ".tutor-single-course-meta .tutor-social-share";
+        $selector = "{{WRAPPER}} .tutor-single-course-meta .tutor-social-share";
         $icon_selector = $selector.' .tutor-social-share-wrap button';
 
         /* Label */
@@ -46,7 +46,7 @@ class CourseShare extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$selector.' span' => 'color: {{VALUE}}',
+					$selector.' span' => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -55,7 +55,7 @@ class CourseShare extends BaseAddon
             [
                 'name'      => 'course_share_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$selector.' span',
+                'selector'  => $selector.' span',
             ]
         );
         $this->end_controls_section();
@@ -74,7 +74,7 @@ class CourseShare extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$icon_selector => 'color: {{VALUE}}',
+					$icon_selector => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -83,7 +83,7 @@ class CourseShare extends BaseAddon
             [
                 'name'      => 'course_share_original_icon_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$icon_selector,
+                'selector'  => $icon_selector,
             ]
         );
         $this->end_controls_section();
@@ -102,7 +102,7 @@ class CourseShare extends BaseAddon
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} '.$icon_selector.':hover' => 'color: {{VALUE}}',
+					$icon_selector.':hover' => 'color: {{VALUE}}',
 				],
             ]
         );
@@ -111,7 +111,7 @@ class CourseShare extends BaseAddon
             [
                 'name'      => 'course_share_hovered_icon_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}} '.$icon_selector.':hover',
+                'selector'  => $icon_selector.':hover',
             ]
         );
         $this->end_controls_section();
