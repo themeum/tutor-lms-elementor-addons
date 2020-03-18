@@ -92,6 +92,9 @@ class AddonsManager
             'CoursePrice' => [
                 'title' => __('Course Price', 'tutor-elementor-addons'),
             ],
+            'CourseAbout' => [
+                'title' => __('Course About', 'tutor-elementor-addons'),
+            ],
         ];
     }
 }

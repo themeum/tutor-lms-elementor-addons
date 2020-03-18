@@ -22,10 +22,6 @@ class CourseDuration extends BaseAddon
     {
         return __('Course Duration', 'tutor-elementor-addons');
     }
-
-    protected function register_content_controls()
-    {
-    }
     
     protected function register_style_controls()
     {
@@ -66,8 +62,7 @@ class CourseDuration extends BaseAddon
             $course_duration = get_tutor_course_duration_context();
             $disable_course_duration = get_tutor_option('disable_course_duration');
             if( !empty($course_duration) && !$disable_course_duration) {
-                $markup = '';
-                $markup .= "<div class='tutor-single-course-meta-duration'>";
+                $markup = "<div class='tutor-single-course-meta-duration'>";
                 $markup .= $course_duration;
                 $markup .= "</div>";
                 echo $markup;

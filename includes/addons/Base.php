@@ -83,7 +83,9 @@ abstract class BaseAddon extends Widget_Base
      *
      * @return void
      */
-    abstract protected function register_content_controls();
+    protected function register_content_controls()
+    {
+    }
 
     /**
      * Register style controls

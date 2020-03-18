@@ -22,10 +22,6 @@ class CourseTotalEnrolled extends BaseAddon
     {
         return __('Course Total Enrolled', 'tutor-elementor-addons');
     }
-
-    protected function register_content_controls()
-    {
-    }
     
     protected function register_style_controls()
     {
@@ -65,8 +61,7 @@ class CourseTotalEnrolled extends BaseAddon
         } else {
             $disable_total_enrolled = get_tutor_option('disable_course_total_enrolled');
             if(!$disable_total_enrolled) {
-                $markup = '';
-                $markup .= "<div class='tutor-single-course-meta-total-enroll'>";
+                $markup = "<div class='tutor-single-course-meta-total-enroll'>";
                 $markup .= (int) tutor_utils()->count_enrolled_users_by_course();
                 $markup .= "</div>";
                 echo $markup;

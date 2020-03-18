@@ -23,10 +23,6 @@ class CoursePrice extends BaseAddon
         return __('Course Price', 'tutor-elementor-addons');
     }
 
-    protected function register_content_controls()
-    {
-    }
-    
     protected function register_style_controls()
     {
         $selector = '{{WRAPPER}} .course-price';

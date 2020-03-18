@@ -1,6 +1,6 @@
 <?php
 /**
- * Course Categories Addon
+ * Course Total Enrolled
  * @since 1.0.0
  */
 
@@ -11,7 +11,7 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseCategories extends BaseAddon
+class CourseAbout extends BaseAddon
 {
     public function get_icon()
     {
@@ -20,64 +20,66 @@ class CourseCategories extends BaseAddon
 
     public function get_title()
     {
-        return __('Course Categories', 'tutor-elementor-addons');
+        return __('Course About', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls()
     {
-        $selector = "{{WRAPPER}} .tutor-single-course-meta-categories a";
-        /* Seciton Original */
+        $paragraph_selector = "{{WRAPPER}} .tutor-course-summery";
+        $heading_selector = $paragraph_selector.' .tutor-segment-title';
+
+        /* Heading Section */
         $this->start_controls_section(
-            'course_categories_original_section',
+            'course_about_heading_section',
             [
-                'label' => __('Original', 'tutor-elementor-addons'),
+                'label' => __('Heading', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_categories_original_color',
+            'course_about_heading_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$selector => 'color: {{VALUE}}',
+					$heading_selector => 'color: {{VALUE}}',
 				],
             ]
         );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_categories_original_typo',
+                'name'      => 'course_about_heading_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector,
+                'selector'  => $heading_selector,
             ]
         );
         $this->end_controls_section();
 
-        /* Seciton Hovered */
+        /* Paragraph  Section */
         $this->start_controls_section(
-            'course_categories_hovered_section',
+            'course_about_paragraph_section',
             [
-                'label' => __('Hovered', 'tutor-elementor-addons'),
+                'label' => __('Paragraph', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_categories_hovered_color',
+            'course_about_paragraph_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$selector.':hover' => 'color: {{VALUE}}',
+					$paragraph_selector => 'color: {{VALUE}}',
 				],
             ]
         );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_categories_hovered_typo',
+                'name'      => 'course_about_paragraph_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector.':hover',
+                'selector'  => $paragraph_selector,
             ]
         );
         $this->end_controls_section();
@@ -86,16 +88,18 @@ class CourseCategories extends BaseAddon
     protected function render($instance = [])
     {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="tutor-single-course-meta-categories"><a href="#">'. __('Course Categories', 'tutor-elementor-addons') . '</a></div>';
+            $markup = '<div class="tutor-course-summery">';
+            $markup .= '<h4  class="tutor-segment-title">'.__('About Course', 'tutor').'</h4>';
+            $markup .= '<p>This is a sample course short description for edit view</p>';
+            $markup .= "</div>";
+            echo $markup;
         } else {
-            $course_categories = get_tutor_course_categories();
-            if(is_array($course_categories) && count($course_categories)) {
-                $markup = "<div class='tutor-single-course-meta-categories'>";
-                    foreach ($course_categories as $course_category) {
-                        $category_name = $course_category->name;
-                        $category_link = get_term_link($course_category->term_id);
-                        $markup .= " <a href='$category_link'>$category_name</a>";
-                    }
+            $excerpt = tutor_get_the_excerpt();
+            $disable_about = get_tutor_option('disable_course_about');
+            if (! empty($excerpt) && ! $disable_about){
+                $markup = '<div class="tutor-course-summery">';
+                $markup .= '<h4  class="tutor-segment-title">'.__('About Course', 'tutor').'</h4>';
+                $markup .= $excerpt;
                 $markup .= "</div>";
                 echo $markup;
             }

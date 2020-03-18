@@ -22,10 +22,6 @@ class CourseLevel extends BaseAddon
     {
         return __('Course Level', 'tutor-elementor-addons');
     }
-
-    protected function register_content_controls()
-    {
-    }
     
     protected function register_style_controls()
     {

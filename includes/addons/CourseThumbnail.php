@@ -23,10 +23,6 @@ class CourseThumbnail extends BaseAddon
     {
         return __('Course Thumbnail', 'tutor-elementor-addons');
     }
-
-    protected function register_content_controls()
-    {
-    }
     
     protected function register_style_controls()
     {

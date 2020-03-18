@@ -22,10 +22,6 @@ class CourseRating extends BaseAddon
     {
         return __('Course Rating', 'tutor-elementor-addons');
     }
-
-    protected function register_content_controls()
-    {
-    }
     
     protected function register_style_controls()
     {
