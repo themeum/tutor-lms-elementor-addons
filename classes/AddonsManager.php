@@ -97,6 +97,9 @@ class AddonsManager {
             'CourseRequirements' => [
                 'title' => __('Course Requirements', 'tutor-elementor-addons'),
             ],
+            'CourseTags' => [
+                'title' => __('Course Tags', 'tutor-elementor-addons'),
+            ],
             'CourseTargetAudience' => [
                 'title' => __('Course Target Audience', 'tutor-elementor-addons'),
             ],
