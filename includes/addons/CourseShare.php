@@ -22,7 +22,7 @@ class CourseShare extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $selector = "{{WRAPPER}} .tutor-single-course-meta .tutor-social-share";
+        $selector = '{{WRAPPER}} .tutor-single-course-meta .tutor-social-share';
         $icon_selector = $selector.' .tutor-social-share-wrap button';
 
         /* Label */

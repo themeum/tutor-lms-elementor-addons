@@ -22,7 +22,7 @@ class CourseLevel extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $selector = "{{WRAPPER}} .tutor-single-course-meta ul li.tutor-course-level";
+        $selector = '{{WRAPPER}} .tutor-single-course-meta ul li.tutor-course-level';
 
         //Section Label
         $this->start_controls_section(

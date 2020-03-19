@@ -24,7 +24,7 @@ class AddonsManager {
     }
 
     /**
-     * Include addons and register
+     * Include addons
      * @since 1.0.0
      */
     public static function register() {
@@ -35,6 +35,10 @@ class AddonsManager {
         }
     }
 
+    /**
+     * Register addons
+     * @since 1.0.0
+     */
     protected static function register_addon($key, $props) {
         $elementor = \Elementor\Plugin::instance();
         $addon_file = ETLMS_DIR_PATH . 'includes/addons/' . $key . '.php';
@@ -86,6 +90,15 @@ class AddonsManager {
             ],
             'CoursePrice' => [
                 'title' => __('Course Price', 'tutor-elementor-addons'),
+            ],
+            'CourseMaterials' => [
+                'title' => __('Course Materials', 'tutor-elementor-addons'),
+            ],
+            'CourseRequirements' => [
+                'title' => __('Course Requirements', 'tutor-elementor-addons'),
+            ],
+            'CourseTargetAudience' => [
+                'title' => __('Course Target Audience', 'tutor-elementor-addons'),
             ],
             'CourseAbout' => [
                 'title' => __('Course About', 'tutor-elementor-addons'),

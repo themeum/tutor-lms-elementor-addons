@@ -22,7 +22,7 @@ class CourseDescription extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $paragraph_selector = "{{WRAPPER}} .tutor-course-content-wrap";
+        $paragraph_selector = '{{WRAPPER}} .tutor-course-content-wrap';
         $heading_selector = $paragraph_selector.' .tutor-segment-title';
 
         /* Heading Section */

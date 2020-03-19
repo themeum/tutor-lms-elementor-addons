@@ -22,7 +22,7 @@ class CourseLastUpdate extends BaseAddon {
     }
 
     protected function register_style_controls() {
-        $selector = "{{WRAPPER}} .tutor-single-course-meta-last-update";
+        $selector = '{{WRAPPER}} .tutor-single-course-meta-last-update';
         $this->start_controls_section(
             'course_last_update_section',
             [
@@ -57,9 +57,9 @@ class CourseLastUpdate extends BaseAddon {
         } else {
             $disable_update_date = get_tutor_option('disable_course_update_date');
             if(!$disable_update_date) {
-                $markup = "<div class='tutor-single-course-meta-last-update'>";
+                $markup = '<div class="tutor-single-course-meta-last-update">';
                 $markup .= esc_html(get_the_modified_date());
-                $markup .= "</div>";
+                $markup .= '</div>';
                 echo $markup;
             }
         }

@@ -23,7 +23,7 @@ class CourseThumbnail extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $selector = "{{WRAPPER}} .tutor-course-thumbnail";
+        $selector = '{{WRAPPER}} .tutor-course-thumbnail';
 
         /* Original Thumbnails */
         $this->start_controls_section(

@@ -1,6 +1,6 @@
 <?php
 /**
- * Course Benefits
+ * Course Target Audience
  * @since 1.0.0
  */
 
@@ -11,32 +11,32 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseBenefits extends BaseAddon {
+class CourseTargetAudience extends BaseAddon {
     
     public function get_icon() {
         return 'eicon-star';
     }
 
     public function get_title() {
-        return __('Course Benefits', 'tutor-elementor-addons');
+        return __('Course Target Audience', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-course-benefits-wrap';
-        $title_selector = $selector.' .course-benefits-title h4';
-        $content_selector = $selector.' .tutor-course-benefits-items';
+        $selector = '{{WRAPPER}} .tutor-course-target-audience-wrap';
+        $title_selector = $selector.' h4.tutor-segment-title';
+        $content_selector = $selector.' .tutor-course-target-audience-items';
         $icon_selector = $content_selector.' li:before';
 
         /* Title Section */
         $this->start_controls_section(
-            'course_benefits_title_section',
+            'course_target_audience_title_section',
             [
                 'label' => __('Title', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_benefits_title_color',
+            'course_target_audience_title_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -48,7 +48,7 @@ class CourseBenefits extends BaseAddon {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_benefits_title_typo',
+                'name'      => 'course_target_audience_title_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $title_selector,
             ]
@@ -57,14 +57,14 @@ class CourseBenefits extends BaseAddon {
 
         /* Icon  Section */
         $this->start_controls_section(
-            'course_benefits_icon_section',
+            'course_target_audience_icon_section',
             [
                 'label' => __('Icon', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_benefits_icon_color',
+            'course_target_audience_icon_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -76,7 +76,7 @@ class CourseBenefits extends BaseAddon {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_benefits_icon_typo',
+                'name'      => 'course_target_audience_icon_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $icon_selector,
             ]
@@ -85,14 +85,14 @@ class CourseBenefits extends BaseAddon {
 
         /* Content  Section */
         $this->start_controls_section(
-            'course_benefits_content_section',
+            'course_target_audience_content_section',
             [
                 'label' => __('Content', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_benefits_content_color',
+            'course_target_audience_content_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -104,7 +104,7 @@ class CourseBenefits extends BaseAddon {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_benefits_content_typo',
+                'name'      => 'course_target_audience_content_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $content_selector,
             ]
@@ -113,14 +113,14 @@ class CourseBenefits extends BaseAddon {
 
         /* Spacing  Section */
         $this->start_controls_section(
-            'course_benefits_spacing_section',
+            'course_target_audience_spacing_section',
             [
                 'label' => __('Spacing', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_benefits_padding',
+            'course_target_audience_padding',
             [
                 'label' => __('Padding', 'tutor-elementor-addons'),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -132,7 +132,7 @@ class CourseBenefits extends BaseAddon {
             ]
         );
         $this->add_control(
-            'course_benefits_margin',
+            'course_target_audience_margin',
             [
                 'label' => __('Margin', 'tutor-elementor-addons'),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -148,23 +148,22 @@ class CourseBenefits extends BaseAddon {
 
     protected function render($instance = []) {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $markup = '<div class="tutor-single-course-segment tutor-course-benefits-wrap">
-                <div class="course-benefits-title">
-                    <h4 class="tutor-segment-title">What Will I Learn?</h4>
-                </div>
-                <div class="tutor-course-benefits-content">
-                    <ul class="tutor-course-benefits-items tutor-custom-list-style">
-                        <li>How to use an email list to make money</li>
-                        <li>How to remarket back to profitable leads</li>
-                        <li>How to find profitable Affiliate Marketing products</li>
+            $markup = '<div class="tutor-single-course-segment tutor-course-target-audience-wrap">
+                <h4 class="tutor-segment-title">Target Audience</h4>
+                <div class="tutor-course-target-audience-content">
+                    <ul class="tutor-course-target-audience-items tutor-custom-list-style">
+                        <li>Anyone that is looking to make money with Email Marketing</li>
+                        <li>Anyone that is looking to make money with Affiliate Marketing</li>
+                        <li>Anyone that is interested in making money online</li>
+                        <li>Anyone that wants to learn how to build a profitable business</li>
                     </ul>
                 </div>
             </div>';
             echo $markup;
         } else {
-            $disable_benefits = get_tutor_option('disable_course_benefits');
-            if ( !$disable_benefits ) {
-                tutor_course_benefits_html();
+            $disable_target_audience = get_tutor_option('disable_course_target_audience');
+            if ( !$disable_target_audience ) {
+                tutor_course_target_audience_html();
             }
         }
     }

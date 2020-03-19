@@ -30,7 +30,7 @@ class CourseAuthor extends BaseAddon {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $img_selector = "{{WRAPPER}} .tutor-single-course-avatar a span";
+        $img_selector = '{{WRAPPER}} .tutor-single-course-avatar a span';
         $this->add_control(
             'image_width',
             [
@@ -69,7 +69,7 @@ class CourseAuthor extends BaseAddon {
         $this->end_controls_section();
 
         //Section Label
-        $author_selector = "{{WRAPPER}} .tutor-single-course-author-meta .tutor-single-course-author-name";
+        $author_selector = '{{WRAPPER}} .tutor-single-course-author-meta .tutor-single-course-author-name';
         $this->end_controls_section();
         $this->start_controls_section(
             'course_author_label_section',

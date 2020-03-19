@@ -22,7 +22,7 @@ class CourseRating extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $selector = "{{WRAPPER}} .tutor-single-course-rating .tutor-star-rating-group";
+        $selector = '{{WRAPPER}} .tutor-single-course-rating .tutor-star-rating-group';
 
         //Style
         $this->start_controls_section(

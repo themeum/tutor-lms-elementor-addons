@@ -22,7 +22,7 @@ class CourseCategories extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $selector = "{{WRAPPER}} .tutor-single-course-meta-categories a";
+        $selector = '{{WRAPPER}} .tutor-single-course-meta-categories a';
         /* Seciton Original */
         $this->start_controls_section(
             'course_categories_original_section',
@@ -86,7 +86,7 @@ class CourseCategories extends BaseAddon {
         } else {
             $course_categories = get_tutor_course_categories();
             if(is_array($course_categories) && count($course_categories)) {
-                $markup = "<div class='tutor-single-course-meta-categories'>";
+                $markup = '<div class="tutor-single-course-meta-categories">';
                     foreach ($course_categories as $course_category) {
                         $category_name = $course_category->name;
                         $category_link = get_term_link($course_category->term_id);

@@ -22,7 +22,7 @@ class CourseTotalEnrolled extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $selector = "{{WRAPPER}} .tutor-single-course-meta-total-enroll";
+        $selector = '{{WRAPPER}} .tutor-single-course-meta-total-enroll';
         $this->start_controls_section(
             'course_total_enrolled_section',
             [
@@ -57,9 +57,9 @@ class CourseTotalEnrolled extends BaseAddon {
         } else {
             $disable_total_enrolled = get_tutor_option('disable_course_total_enrolled');
             if(!$disable_total_enrolled) {
-                $markup = "<div class='tutor-single-course-meta-total-enroll'>";
+                $markup = '<div class="tutor-single-course-meta-total-enroll">';
                 $markup .= (int) tutor_utils()->count_enrolled_users_by_course();
-                $markup .= "</div>";
+                $markup .= '</div>';
                 echo $markup;
             }
         }
