@@ -16,17 +16,13 @@ use Elementor\Widget_Base;
 
 defined('ABSPATH') || die();
 
-abstract class BaseAddon extends Widget_Base
-{
+abstract class BaseAddon extends Widget_Base {
     /**
      * Get addon name.
      * @since 1.0.0
      */
-    public function get_name()
-    {
-        /**
-         * Automatically generate addon name from class
-         */
+    public function get_name() {
+        /* Automatically generate addon name from class */
         $name = str_replace(strtolower(__NAMESPACE__), '', strtolower($this->get_class_name()));
         $name = str_replace('_', '-', $name);
         $name = ltrim($name, '\\');
@@ -37,8 +33,7 @@ abstract class BaseAddon extends Widget_Base
      * Get addon categories.
      * @since 1.0.0
      */
-    public function get_categories()
-    {
+    public function get_categories() {
         return ['tutor_addons_category'];
     }
 
@@ -46,8 +41,7 @@ abstract class BaseAddon extends Widget_Base
      * Override from addon to add custom wrapper class.
      * @return string
      */
-    protected function get_custom_wrapper_class()
-    {
+    protected function get_custom_wrapper_class() {
         return '';
     }
 
@@ -55,8 +49,7 @@ abstract class BaseAddon extends Widget_Base
      * Overriding default function to add custom html class.
      * @return string
      */
-    public function get_html_wrapper_class()
-    {
+    public function get_html_wrapper_class() {
         $html_class = parent::get_html_wrapper_class();
         $html_class .= ' tutor-addon';
         $html_class .= ' ' . $this->get_name();
@@ -67,8 +60,7 @@ abstract class BaseAddon extends Widget_Base
     /**
      * Register addon controls
      */
-    protected function _register_controls()
-    {
+    protected function _register_controls() {
         do_action('tutor_start_register_controls', $this);
 
         $this->register_content_controls();
@@ -83,8 +75,7 @@ abstract class BaseAddon extends Widget_Base
      *
      * @return void
      */
-    protected function register_content_controls()
-    {
+    protected function register_content_controls() {
     }
 
     /**

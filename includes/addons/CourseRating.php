@@ -11,20 +11,17 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseRating extends BaseAddon
-{
-    public function get_icon()
-    {
+class CourseRating extends BaseAddon {
+
+    public function get_icon() {
         return 'eicon-star';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return __('Course Rating', 'tutor-elementor-addons');
     }
     
-    protected function register_style_controls()
-    {
+    protected function register_style_controls() {
         $selector = "{{WRAPPER}} .tutor-single-course-rating .tutor-star-rating-group";
 
         //Style
@@ -59,8 +56,7 @@ class CourseRating extends BaseAddon
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render($instance = []) {
         ob_start();
         include_once etlms_get_template('course/rating');
         echo ob_get_clean();

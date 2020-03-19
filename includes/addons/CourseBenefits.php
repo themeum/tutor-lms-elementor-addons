@@ -11,20 +11,17 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseBenefits extends BaseAddon
-{
-    public function get_icon()
-    {
+class CourseBenefits extends BaseAddon {
+    
+    public function get_icon() {
         return 'eicon-star';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return __('Course Benefits', 'tutor-elementor-addons');
     }
     
-    protected function register_style_controls()
-    {
+    protected function register_style_controls() {
         $selector = "{{WRAPPER}} .tutor-course-benefits-wrap";
         $title_selector = $selector.' .course-benefits-title h4';
         $content_selector = $selector." .tutor-course-benefits-items";
@@ -150,8 +147,7 @@ class CourseBenefits extends BaseAddon
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render($instance = []) {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
             $markup = '<div class="tutor-single-course-segment tutor-course-benefits-wrap">
                 <div class="course-benefits-title">

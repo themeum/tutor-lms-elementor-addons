@@ -14,14 +14,12 @@ namespace TutorLMS\Elementor;
 
 defined('ABSPATH') || exit;
 
-class Template
-{
+class Template {
     /**
      * Init template
      * @since 1.0.0
      */
-    public static function init()
-    {
+    public static function init() {
         add_filter( 'template_include', array( __CLASS__, 'single_course_template' ), 100 );
         add_action( 'tutor_elementor_single_course_content', array( __CLASS__, 'single_course_content' ), 5 );
     }
@@ -31,8 +29,7 @@ class Template
      * @param $template
      * @since v.1.0.0
      */
-    public static function single_course_template( $template ) 
-    {
+    public static function single_course_template( $template ) {
         global $wp_query;
         if ($wp_query->is_single && !empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === tutor()->course_post_type) {
             $student_must_login_to_view_course = tutor_utils()->get_option('student_must_login_to_view_course');
@@ -59,8 +56,7 @@ class Template
      * @param $post
      * @since v.1.0.0
      */
-    public static function single_course_content($post)
-    {
+    public static function single_course_content($post) {
         $template_id = 608;
         echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
     }

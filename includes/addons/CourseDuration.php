@@ -11,20 +11,17 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseDuration extends BaseAddon
-{
-    public function get_icon()
-    {
+class CourseDuration extends BaseAddon {
+
+    public function get_icon() {
         return 'eicon-star';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return __('Course Duration', 'tutor-elementor-addons');
     }
     
-    protected function register_style_controls()
-    {
+    protected function register_style_controls() {
         $selector = "{{WRAPPER}} .tutor-single-course-meta-duration";
         $this->start_controls_section(
             'course_duration_section',
@@ -54,8 +51,7 @@ class CourseDuration extends BaseAddon
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render($instance = []) {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
             echo '<div class="tutor-single-course-meta-duration">03h 50m</div>';
         } else {

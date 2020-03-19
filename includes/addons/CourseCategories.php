@@ -11,20 +11,17 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseCategories extends BaseAddon
-{
-    public function get_icon()
-    {
+class CourseCategories extends BaseAddon {
+
+    public function get_icon() {
         return 'eicon-star';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return __('Course Categories', 'tutor-elementor-addons');
     }
     
-    protected function register_style_controls()
-    {
+    protected function register_style_controls() {
         $selector = "{{WRAPPER}} .tutor-single-course-meta-categories a";
         /* Seciton Original */
         $this->start_controls_section(
@@ -83,8 +80,7 @@ class CourseCategories extends BaseAddon
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render($instance = []) {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
             echo '<div class="tutor-single-course-meta-categories"><a href="#">'. __('Course Categories', 'tutor-elementor-addons') . '</a></div>';
         } else {

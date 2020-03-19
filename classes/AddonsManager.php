@@ -14,14 +14,12 @@ namespace TutorLMS\Elementor;
 
 defined('ABSPATH') || exit;
 
-class AddonsManager
-{
+class AddonsManager {
     /**
      * Init manager
      * @since 1.0.0
      */
-    public static function init()
-    {
+    public static function init() {
         add_action('elementor/widgets/widgets_registered', [__CLASS__, 'register']);
     }
 
@@ -29,8 +27,7 @@ class AddonsManager
      * Include addons and register
      * @since 1.0.0
      */
-    public static function register()
-    {
+    public static function register() {
         include_once(ETLMS_DIR_PATH . 'includes/addons/Base.php');
         $all_addons = self::get_all_addons();
         foreach ($all_addons as $key => $props) {
@@ -38,8 +35,7 @@ class AddonsManager
         }
     }
 
-    protected static function register_addon($key, $props)
-    {
+    protected static function register_addon($key, $props) {
         $elementor = \Elementor\Plugin::instance();
         $addon_file = ETLMS_DIR_PATH . 'includes/addons/' . $key . '.php';
 
@@ -56,8 +52,7 @@ class AddonsManager
      * Get all addons
      * @return array
      */
-    public static function get_all_addons()
-    {
+    public static function get_all_addons() {
         return [
             'CourseRating' => [
                 'title' => __('Course Rating', 'tutor-elementor-addons'),

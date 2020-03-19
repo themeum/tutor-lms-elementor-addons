@@ -11,20 +11,17 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseTitle extends BaseAddon
-{
-    public function get_icon()
-    {
+class CourseTitle extends BaseAddon {
+    
+    public function get_icon() {
         return 'eicon-t-letter';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return __('Course Title', 'tutor-elementor-addons');
     }
 
-    protected function register_content_controls()
-    {
+    protected function register_content_controls() {
         // Slider Button stle
         $this->start_controls_section(
             'course_title_content',
@@ -51,8 +48,7 @@ class CourseTitle extends BaseAddon
         $this->end_controls_section();
     }
     
-    protected function register_style_controls()
-    {
+    protected function register_style_controls() {
         $selector = '{{WRAPPER}} .course-title';
         // Style
         $this->start_controls_section(
@@ -123,8 +119,7 @@ class CourseTitle extends BaseAddon
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render($instance = []) {
         $settings   = $this->get_settings_for_display();
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
             echo sprintf('<%1$s class="course-title">' . __('Course Title', 'tutor-elementor-addons') . '</%1$s>', $settings['course_title_html_tag']);

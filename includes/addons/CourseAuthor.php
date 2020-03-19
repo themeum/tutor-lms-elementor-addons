@@ -11,20 +11,17 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseAuthor extends BaseAddon
-{
-    public function get_icon()
-    {
+class CourseAuthor extends BaseAddon {
+
+    public function get_icon() {
         return 'eicon-star';
     }
 
-    public function get_title()
-    {
+    public function get_title() {
         return __('Course Author', 'tutor-elementor-addons');
     }
     
-    protected function register_style_controls()
-    {
+    protected function register_style_controls() {
         //Section Image
         $this->start_controls_section(
             'course_author_image_section',
@@ -130,8 +127,7 @@ class CourseAuthor extends BaseAddon
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render($instance = []) {
         ob_start();
         include_once etlms_get_template('course/author');
         echo ob_get_clean();

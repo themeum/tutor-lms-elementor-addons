@@ -16,13 +16,11 @@ use Elementor\Elements_Manager;
 
 defined('ABSPATH') || die();
 
-class Base
-{
+class Base {
 
     private static $instance = null;
 
-    public static function instance()
-    {
+    public static function instance() {
         if (is_null(self::$instance)) {
             self::$instance = new self();
             self::$instance->init();
@@ -30,18 +28,15 @@ class Base
         return self::$instance;
     }
 
-    private function __construct()
-    {
+    private function __construct() {
         add_action('init', [$this, 'i18n']);
     }
 
-    public function i18n()
-    {
+    public function i18n() {
         load_plugin_textdomain('tutor-elementor-addons');
     }
 
-    public function init()
-    {
+    public function init() {
         if (!function_exists('tutor_lms') || !did_action('elementor/loaded')) {
             $this->admin_notice();
             return;
@@ -58,15 +53,13 @@ class Base
         do_action('tutor_elementor_addons_loaded');
     }
 
-    public function load_files()
-    {
+    public function load_files() {
         include_once(ETLMS_DIR_PATH . 'includes/functions.php');
         include_once(ETLMS_DIR_PATH . 'classes/Template.php');
         include_once(ETLMS_DIR_PATH . 'classes/AddonsManager.php');
     }
 
-    public function admin_notice()
-    {
+    public function admin_notice() {
         if (defined('TUTOR_VERSION')) {
             //Version Check
             if (version_compare(TUTOR_VERSION, '1.5.2', '<')) {
@@ -86,8 +79,7 @@ class Base
     /**
      * Notice for tutor lms plugin required
      */
-    public function notice_required_tutor()
-    {
+    public function notice_required_tutor() {
         $class = 'notice notice-warning';
         $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated TutorLMS v.1.5.2', 'tutor-elementor-addons');
         printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
@@ -96,8 +88,7 @@ class Base
     /**
      * Notice for elementor plugin required
      */
-    public function notice_required_elementor()
-    {
+    public function notice_required_elementor() {
         $class = 'notice notice-warning';
         $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated Elementor Builder Plugin', 'tutor-elementor-addons');
         printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
@@ -108,8 +99,7 @@ class Base
      *
      * @param $elements_manager
      */
-    public function add_category(Elements_Manager $elements_manager)
-    {
+    public function add_category(Elements_Manager $elements_manager) {
         $elements_manager->add_category(
             'tutor_addons_category',
             [
