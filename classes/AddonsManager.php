@@ -115,6 +115,9 @@ class AddonsManager {
             'CourseCurriculum' => [
                 'title' => __('Course Curriculum', 'tutor-elementor-addons'),
             ],
+            'CourseInstructors' => [
+                'title' => __('Course Instructors', 'tutor-elementor-addons'),
+            ],
         ];
     }
 }
