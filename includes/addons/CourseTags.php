@@ -32,7 +32,7 @@ class CourseTags extends BaseAddon {
         $this->start_controls_section(
             'course_tags_title_section',
             [
-                'label' => __('Title', 'tutor-elementor-addons'),
+                'label' => __('Section Title', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );

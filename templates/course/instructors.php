@@ -1,5 +1,5 @@
 <div class="tutor-course-instructors">
-    <h4 class="tutor-segment-title">About the instructors</h4>
+    <h4 class="tutor-segment-title"><?php _e('About the instructors', 'tutor'); ?></h4>
     <div class="tutor-course-instructors-wrap tutor-single-course-segment">
         <div class="single-instructor-wrap">
             <div class="single-instructor-top">
