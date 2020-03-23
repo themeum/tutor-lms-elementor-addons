@@ -85,11 +85,17 @@ class AddonsManager {
             'CourseLastUpdate' => [
                 'title' => __('Course Last Update', 'tutor-elementor-addons'),
             ],
+            'CourseStatus' => [
+                'title' => __('Course Status', 'tutor-elementor-addons'),
+            ],
             'CourseThumbnail' => [
                 'title' => __('Course Thumbnail', 'tutor-elementor-addons'),
             ],
             'CoursePrice' => [
                 'title' => __('Course Price', 'tutor-elementor-addons'),
+            ],
+            'CourseEnrolmentBox' => [
+                'title' => __('Course Enrolment Box', 'tutor-elementor-addons'),
             ],
             'CourseMaterials' => [
                 'title' => __('Course Materials', 'tutor-elementor-addons'),

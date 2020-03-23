@@ -2,7 +2,7 @@
 global $wp_query;
 ?>
 
-<div class="tutor-price-preview-box">
+<div class="tutor-course-enrolled-box">
     <div class="tutor-lead-info-btn-group">
 	    <?php do_action('tutor_course/single/actions_btn_group/before'); ?>
 
@@ -27,7 +27,6 @@ global $wp_query;
 
         <?php do_action('tutor_course/single/actions_btn_group/after'); ?>
     </div>
-	<?php tutor_course_price(); ?>
 
     <div class="tutor-single-course-segment  tutor-course-enrolled-wrap">
         <p>
