@@ -56,7 +56,7 @@ class CourseTags extends BaseAddon {
         );
         $this->end_controls_section();
 
-         /* Tag Section */
+        /* Tag Section */
         $this->start_controls_section(
             'add_to_cart_button_style',
             [
