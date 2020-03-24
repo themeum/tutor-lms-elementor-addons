@@ -48,7 +48,7 @@ class Base {
         add_action('elementor/elements/categories_registered', [$this, 'add_category']);
 
         AddonsManager::init();
-        Template::init();
+        Template::instance();
 
         do_action('tutor_elementor_addons_loaded');
     }
