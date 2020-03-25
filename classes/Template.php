@@ -40,7 +40,7 @@ class Template {
         add_action('post_submitbox_misc_actions', array($this, 'course_template_mark_checkbox'));
     }
 
-    public function is_tutor_single_page(){
+    public function is_tutor_single_page() {
         global $wp_query;
 
         $course_post_type = tutor()->course_post_type;
@@ -60,7 +60,7 @@ class Template {
      * @param $template
      * @since v.1.0.0
      */
-    public function single_course_template( $template ) {
+    public function single_course_template($template) {
         global $wp_query;
         if ($wp_query->is_single && !empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === tutor()->course_post_type) {
 
@@ -69,7 +69,6 @@ class Template {
              * If not exists any specific template for tutor single page, then return default System Template
              * @since v.1.0.0
              */
-
             if ( ! $template_id){
                 return $template;
             }
@@ -99,7 +98,6 @@ class Template {
      */
     public function single_course_content($post) {
         $template_id = $this->template_id;
-
         if ($template_id){
             echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
         }else{
@@ -107,7 +105,7 @@ class Template {
         }
     }
 
-    public function tutor_course_template(){
+    public function tutor_course_template() {
         ?>
         <div id="elementor-new-template__form__tutor-lms-single-course__wrapper" class="elementor-form-field">
             <div class="elementor-form-field__checkbox__wrapper">
@@ -120,8 +118,8 @@ class Template {
         <?php
     }
 
-    public function elementor_template_new_post($post_ID, $post){
-        if ( ! empty($post->post_type) && $post->post_type === 'elementor_library'){
+    public function elementor_template_new_post($post_ID, $post) {
+        if ( ! empty($post->post_type) && $post->post_type === 'elementor_library') {
             $is_elementor_template = tutils()->array_get('post_data.tutor_lms_single_course', $_GET);
             if ( ! $is_elementor_template){
                 $is_elementor_template = tutils()->array_get('tutor_lms_single_course', $_POST);
@@ -129,27 +127,26 @@ class Template {
 
             $editor_post_id = (int) sanitize_text_field(tutils()->array_get('editor_post_id', $_POST));
 
-            if ($is_elementor_template){
+            if ($is_elementor_template) {
                 $this->_mark_elementor_template($post_ID);
-            }elseif( ! $editor_post_id){
+            } elseif ( ! $editor_post_id) {
                 delete_post_meta($post_ID, '_tutor_lms_elementor_template_id');
             }
         }
     }
 
-    public function _mark_elementor_template($post_ID){
+    public function _mark_elementor_template($post_ID) {
         global $wpdb;
         $wpdb->delete($wpdb->postmeta, array('meta_key' => '_tutor_lms_elementor_template_id'));
         update_post_meta($post_ID, '_tutor_lms_elementor_template_id', time());
     }
 
 
-    public function course_template_mark_checkbox($post){
-        if ($post->post_type !== 'elementor_library'){
+    public function course_template_mark_checkbox($post) {
+        if ($post->post_type !== 'elementor_library') {
             //return;
         }
-        $is_elementor_template = (bool) get_post_meta($post->ID, '_tutor_lms_elementor_template_id', true)
-        ?>
+        $is_elementor_template = (bool) get_post_meta($post->ID, '_tutor_lms_elementor_template_id', true); ?>
 
         <div class="misc-pub-section misc-pub-mark-course-single-template">
             <label>
@@ -159,9 +156,5 @@ class Template {
             </label>
         </div>
         <?php
-
-
     }
-
-
 }
