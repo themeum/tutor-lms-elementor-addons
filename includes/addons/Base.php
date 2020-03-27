@@ -26,7 +26,7 @@ abstract class BaseAddon extends Widget_Base {
         /* Automatically generate addon name from class */
         $className = str_replace(__NAMESPACE__, '', $this->get_class_name());
         $name = camel2dashed($className);
-        return 'tutor-' . $name;
+        return 'etlms-' . $name;
     }
     
     /**
