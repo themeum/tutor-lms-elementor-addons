@@ -13,10 +13,6 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CoursePrice extends BaseAddon {
 
-    public function get_icon() {
-        return 'eicon-t-letter';
-    }
-
     public function get_title() {
         return __('Course Price', 'tutor-elementor-addons');
     }

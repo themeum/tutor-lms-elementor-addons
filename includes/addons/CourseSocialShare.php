@@ -11,11 +11,7 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseShare extends BaseAddon {
-
-    public function get_icon() {
-        return 'eicon-star';
-    }
+class CourseSocialShare extends BaseAddon {
 
     public function get_title() {
         return __('Course Social Share', 'tutor-elementor-addons');

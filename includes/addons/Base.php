@@ -17,16 +17,27 @@ use Elementor\Widget_Base;
 defined('ABSPATH') || die();
 
 abstract class BaseAddon extends Widget_Base {
+    
     /**
      * Get addon name.
      * @since 1.0.0
      */
     public function get_name() {
         /* Automatically generate addon name from class */
-        $name = str_replace(strtolower(__NAMESPACE__), '', strtolower($this->get_class_name()));
-        $name = str_replace('_', '-', $name);
-        $name = ltrim($name, '\\');
+        $className = str_replace(__NAMESPACE__, '', $this->get_class_name());
+        $name = camel2dashed($className);
         return 'tutor-' . $name;
+    }
+    
+    /**
+     * Get addon icon.
+     * @since 1.0.0
+     */
+    public function get_icon() {
+        /* Automatically generate addon name from class */
+        $className = str_replace(__NAMESPACE__, '', $this->get_class_name());
+        $icon = camel2dashed($className);
+        return 'icon-' . $icon;
     }
 
     /**
