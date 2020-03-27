@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'tutor-elementor';
+  src:  url('fonts/tutor-elementor.eot?olbplm');
+  src:  url('fonts/tutor-elementor.eot?olbplm#iefix') format('embedded-opentype'),
+    url('fonts/tutor-elementor.ttf?olbplm') format('truetype'),
+    url('fonts/tutor-elementor.woff?olbplm') format('woff'),
+    url('fonts/tutor-elementor.svg?olbplm#tutor-elementor') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'tutor-elementor' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Course-About:before {
+  content: "\e900";
+}
+.icon-Course-Author:before {
+  content: "\e901";
+}
+.icon-Course-Benifits:before {
+  content: "\e902";
+}
+.icon-Course-Categories:before {
+  content: "\e903";
+}
+.icon-Course-Curriculum:before {
+  content: "\e904";
+}
+.icon-Course-Description:before {
+  content: "\e905";
+}
+.icon-Course-Duration:before {
+  content: "\e906";
+}
+.icon-Course-Enrolment-Box:before {
+  content: "\e907";
+}
+.icon-Course-Instructors:before {
+  content: "\e908";
+}
+.icon-Course-Last-Update:before {
+  content: "\e909";
+}
+.icon-Course-level:before {
+  content: "\e90a";
+}
+.icon-Course-Materials:before {
+  content: "\e90b";
+}
+.icon-Course-Price:before {
+  content: "\e90c";
+}
+.icon-Course-Rating:before {
+  content: "\e90d";
+}
+.icon-Course-Requirements:before {
+  content: "\e90e";
+}
+.icon-Course-Review:before {
+  content: "\e90f";
+}
+.icon-Course-Social-Share:before {
+  content: "\e910";
+}
+.icon-Course-Status:before {
+  content: "\e911";
+}
+.icon-Course-Tags:before {
+  content: "\e912";
+}
+.icon-Course-Target-Audience:before {
+  content: "\e913";
+}
+.icon-Course-Thumbnail:before {
+  content: "\e914";
+}
+.icon-Course-Title:before {
+  content: "\e915";
+}
+.icon-Course-Totall-Enrolled:before {
+  content: "\e916";
+}
