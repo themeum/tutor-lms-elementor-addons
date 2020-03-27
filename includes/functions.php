@@ -20,7 +20,7 @@ if ( ! function_exists('etlms_get_template')) {
 
 if ( ! function_exists('camel2dashed')) {
 	function camel2dashed($camelStr) {
-		$str =  preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $camelStr);
+		$str = preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $camelStr);
 		$str = strtolower(ltrim($str, '\\'));
 		return $str;
 	}

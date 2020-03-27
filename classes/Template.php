@@ -27,19 +27,21 @@ class Template {
     }
 
     public function __construct(){
-        add_filter( 'template_include', array( $this, 'single_course_template' ), 100 );
-        add_action( 'tutor_elementor_single_course_content', array( $this, 'single_course_content' ), 5 );
+        add_filter( 'template_include', [ $this, 'single_course_template' ], 100 );
+        add_action( 'tutor_elementor_single_course_content', [ $this, 'single_course_content' ], 5 );
 
-        add_action('elementor/template-library/create_new_dialog_fields', array($this, 'tutor_course_template'));
+        add_action('elementor/template-library/create_new_dialog_fields', [ $this, 'tutor_course_template'] );
         // Admin Actions
-        add_action( 'save_post', array($this, 'elementor_template_new_post'), 99, 2 );
+        add_action( 'save_post', [ $this, 'elementor_template_new_post' ], 99, 2 );
 
-
-        add_action('template_redirect', array($this, 'is_tutor_single_page'));
-
-        add_action('post_submitbox_misc_actions', array($this, 'course_template_mark_checkbox'));
+        add_action('template_redirect', [ $this, 'is_tutor_single_page'] );
+        add_action('post_submitbox_misc_actions', [ $this, 'course_template_mark_checkbox'] );
     }
 
+    /**
+     * Is tutor singe page
+     * @since v.1.0.0
+     */
     public function is_tutor_single_page() {
         global $wp_query;
 
@@ -53,7 +55,6 @@ class Template {
             $this->template_id = $template_id;
         }
     }
-
 
     /**
      * Load Single Course Elementor Template
@@ -105,6 +106,11 @@ class Template {
         }
     }
 
+    /**
+     * Load Single Course Elementor Template
+     * @param $template
+     * @since v.1.0.0
+     */
     public function tutor_course_template() {
         ?>
         <div id="elementor-new-template__form__tutor-lms-single-course__wrapper" class="elementor-form-field">
@@ -118,6 +124,11 @@ class Template {
         <?php
     }
 
+    /**
+     * Elementor new template create action
+     * @param $post_ID, $post
+     * @since v.1.0.0
+     */
     public function elementor_template_new_post($post_ID, $post) {
         if ( ! empty($post->post_type) && $post->post_type === 'elementor_library') {
             $is_elementor_template = tutils()->array_get('post_data.tutor_lms_single_course', $_GET);
@@ -135,13 +146,22 @@ class Template {
         }
     }
 
+    /**
+     * Update template_id for single course
+     * @param $post_ID
+     * @since v.1.0.0
+     */
     public function _mark_elementor_template($post_ID) {
         global $wpdb;
         $wpdb->delete($wpdb->postmeta, array('meta_key' => '_tutor_lms_elementor_template_id'));
         update_post_meta($post_ID, '_tutor_lms_elementor_template_id', time());
     }
 
-
+    /**
+     * Page edit callback for create sidebar option
+     * @param $post
+     * @since v.1.0.0
+     */
     public function course_template_mark_checkbox($post) {
         if ($post->post_type !== 'elementor_library') {
             //return;
