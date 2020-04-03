@@ -115,9 +115,9 @@ class CourseReviews extends BaseAddon {
             ]
         );
         $this->add_control(
-            'course_reviews_avg_rating_total_count_color',
+            'course_reviews_avg_rating_total_label_color',
             [
-                'label'     => __('Total Count Color', 'tutor-elementor-addons'),
+                'label'     => __('Total Label Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_total_count_selector => 'color: {{VALUE}}',
@@ -127,9 +127,27 @@ class CourseReviews extends BaseAddon {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
+                'name'      => 'course_reviews_avg_rating_total_label_typo',
+                'label'     => __('Total Label Typography', 'tutor-elementor-addons'),
+                'selector'  => $review_avg_total_count_selector,
+            ]
+        );
+        $this->add_control(
+            'course_reviews_avg_rating_total_count_color',
+            [
+                'label'     => __('Total Count Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+					$review_avg_total_count_selector.' span' => 'color: {{VALUE}}',
+				],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
                 'name'      => 'course_reviews_avg_rating_total_count_typo',
                 'label'     => __('Total Count Typography', 'tutor-elementor-addons'),
-                'selector'  => $review_avg_total_count_selector,
+                'selector'  => $review_avg_total_count_selector.' span',
             ]
         );
         $this->end_controls_section();

@@ -20,8 +20,9 @@ class CourseStatus extends BaseAddon {
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .tutor-course-status';
         $title_selector = $selector.' .tutor-segment-title';
+        $progress_txt_selector = $selector.' .tutor-progress-percent';
 
-        /* Title Section */
+        /* Section Title */
         $this->start_controls_section(
             'course_status_title_section',
             [
@@ -49,7 +50,7 @@ class CourseStatus extends BaseAddon {
         );
         $this->end_controls_section();
 
-        /* Title Section */
+        /* Section Bar */
         $this->start_controls_section(
             'course_status_bar_section',
             [
@@ -85,6 +86,34 @@ class CourseStatus extends BaseAddon {
                 'selectors' => [
 					$selector.' .tutor-progress-filled:after' => 'border-color: {{VALUE}}',
 				],
+            ]
+        );
+        $this->end_controls_section();
+
+        /* Section Progress Text */
+        $this->start_controls_section(
+            'course_status_progress_text_section',
+            [
+                'label' => __('Progress Text', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'course_status_progress_text_color',
+            [
+                'label'     => __('Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+					$progress_txt_selector => 'color: {{VALUE}}',
+				],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'course_status_progress_text_typo',
+                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'selector'  => $progress_txt_selector,
             ]
         );
         $this->end_controls_section();

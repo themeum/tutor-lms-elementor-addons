@@ -1,3 +1,8 @@
+<style>
+.tutor-single-course-meta.tutor-meta-top ul li {
+    width: 100%;
+}
+</style>
 <?php
 
 global $post;

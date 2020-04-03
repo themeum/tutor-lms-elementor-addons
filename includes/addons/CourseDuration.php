@@ -44,6 +44,29 @@ class CourseDuration extends BaseAddon {
                 'selector'  => $selector,
             ]
         );
+        $this->add_responsive_control(
+            'course_duration_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'prefix_class' => 'elementor-align-%s',
+                'default'      => 'left',
+            ]
+        );
         $this->end_controls_section();
     }
 

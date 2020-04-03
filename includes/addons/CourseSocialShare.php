@@ -104,6 +104,41 @@ class CourseSocialShare extends BaseAddon {
             ]
         );
         $this->end_controls_section();
+
+        //Section Alignment
+        $this->start_controls_section(
+            'course_share_alignment_section',
+            [
+                'label' => __('Alignment', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+            'course_share_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'flex-start'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'flex-end'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'default'      => 'flex-end',
+                'selectors' => [
+					$selector => 'justify-content: {{VALUE}}',
+				],
+            ]
+        );
+        $this->end_controls_section();
     }
 
     protected function render($instance = []) {
