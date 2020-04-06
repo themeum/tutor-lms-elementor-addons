@@ -159,8 +159,6 @@ class Template {
             </label>
         </div>
         <?php
-
-
     }
 
 
