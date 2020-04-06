@@ -32,8 +32,7 @@ if (!function_exists('is_plugin_active')) {
  * ekhon plugin-e agun lagiye den
  */
 add_action('plugins_loaded', 'elementor_tutor_lms_init');
-function elementor_tutor_lms_init()
-{
+function elementor_tutor_lms_init() {
     require ETLMS_DIR_PATH . 'base.php';
     \TutorLMS\Elementor\Base::instance();
 }

@@ -11,11 +11,7 @@ use Elementor\Group_Control_Typography;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseShare extends BaseAddon {
-
-    public function get_icon() {
-        return 'eicon-star';
-    }
+class CourseSocialShare extends BaseAddon {
 
     public function get_title() {
         return __('Course Social Share', 'tutor-elementor-addons');
@@ -105,6 +101,41 @@ class CourseShare extends BaseAddon {
                 'name'      => 'course_share_hovered_icon_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $icon_selector.':hover',
+            ]
+        );
+        $this->end_controls_section();
+
+        //Section Alignment
+        $this->start_controls_section(
+            'course_share_alignment_section',
+            [
+                'label' => __('Alignment', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+            'course_share_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'flex-start'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'flex-end'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'default'      => 'flex-end',
+                'selectors' => [
+					$selector => 'justify-content: {{VALUE}}',
+				],
             ]
         );
         $this->end_controls_section();

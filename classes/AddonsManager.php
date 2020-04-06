@@ -70,7 +70,7 @@ class AddonsManager {
             'CourseLevel' => [
                 'title' => __('Course Level', 'tutor-elementor-addons'),
             ],
-            'CourseShare' => [
+            'CourseSocialShare' => [
                 'title' => __('Course Social Share', 'tutor-elementor-addons'),
             ],
             'CourseCategories' => [

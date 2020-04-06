@@ -15,10 +15,6 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseEnrolmentBox extends BaseAddon {
 
-    public function get_icon() {
-        return 'eicon-star';
-    }
-
     public function get_title() {
         return __('Course Enrolment Box', 'tutor-elementor-addons');
     }
@@ -791,7 +787,9 @@ class CourseEnrolmentBox extends BaseAddon {
         $this->end_controls_section();
 
         /* Enrolled info */
-        $enrolled_selector = $selector.' .tutor-course-enrolled-wrap p';
+        $enrolled_info_selector = $selector.' .tutor-course-enrolled-wrap p';
+        $enrolled_info_icon_selector = $enrolled_info_selector.' i';
+        $enrolled_info_date_selector = $enrolled_info_selector.' span';
         $this->start_controls_section(
             'enrolled_info_section',
             [
@@ -800,21 +798,57 @@ class CourseEnrolmentBox extends BaseAddon {
             ]
         );
         $this->add_control(
-            'enrolled_info_color',
+            'enrolled_info_icon_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Icon Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$enrolled_selector => 'color: {{VALUE}}',
+					$enrolled_info_icon_selector => 'color: {{VALUE}}',
 				],
             ]
         );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'enrolled_info_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $enrolled_selector,
+                'name'      => 'enrolled_info_icon_typo',
+                'label'     => __('Icon Typography', 'tutor-elementor-addons'),
+                'selector'  => $enrolled_info_icon_selector,
+            ]
+        );
+        $this->add_control(
+            'enrolled_info_label_color',
+            [
+                'label'     => __('Label Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+					$enrolled_info_selector => 'color: {{VALUE}}',
+				],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'enrolled_info_label_typo',
+                'label'     => __('Label Typography', 'tutor-elementor-addons'),
+                'selector'  => $enrolled_info_selector,
+            ]
+        );
+        $this->add_control(
+            'enrolled_info_date_color',
+            [
+                'label'     => __('Date Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+					$enrolled_info_date_selector => 'color: {{VALUE}}',
+				],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'enrolled_info_date_typo',
+                'label'     => __('Date Typography', 'tutor-elementor-addons'),
+                'selector'  => $enrolled_info_date_selector,
             ]
         );
         $this->end_controls_section();

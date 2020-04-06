@@ -13,10 +13,6 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseRating extends BaseAddon {
 
-    public function get_icon() {
-        return 'eicon-star';
-    }
-
     public function get_title() {
         return __('Course Rating', 'tutor-elementor-addons');
     }
@@ -51,6 +47,30 @@ class CourseRating extends BaseAddon {
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             )
+        );
+
+        $this->add_responsive_control(
+            'course_rating_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'prefix_class' => 'elementor-align-%s',
+                'default'      => 'left',
+            ]
         );
 
         $this->end_controls_section();

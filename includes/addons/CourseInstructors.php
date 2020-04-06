@@ -12,10 +12,6 @@ use Elementor\Group_Control_Typography;
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseInstructors extends BaseAddon {
-    
-    public function get_icon() {
-        return 'eicon-star';
-    }
 
     public function get_title() {
         return __('Course Instructors', 'tutor-elementor-addons');

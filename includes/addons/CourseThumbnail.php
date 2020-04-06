@@ -13,10 +13,6 @@ use Elementor\Group_Control_Box_Shadow;
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseThumbnail extends BaseAddon {
-    
-    public function get_icon() {
-        return 'eicon-star';
-    }
 
     public function get_title() {
         return __('Course Thumbnail', 'tutor-elementor-addons');
