@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseLastUpdate extends BaseAddon {
 
     public function get_title() {
-        return __('Course Last Update', 'tutor-elementor-addons');
+        return __('Course Last Updated', 'tutor-elementor-addons');
     }
 
     protected function register_style_controls() {
