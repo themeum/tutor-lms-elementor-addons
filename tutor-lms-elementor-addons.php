@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Elementor Addons for Tutor LMS
+Plugin Name: Tutor LMS Elementor Addons
 Plugin URI: https://www.themeum.com/product/tutor-lms/
 Description: Elementor Addons Integration - Tutor LMS plugin let's you to design your courses, lesson page by Elementor.
 Author: Themeum

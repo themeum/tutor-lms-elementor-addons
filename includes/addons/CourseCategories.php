@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseCategories extends BaseAddon {
 
     public function get_title() {
-        return __('Course Categories', 'tutor-elementor-addons');
+        return __('Course Categories', 'tutor-lms-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -23,14 +23,14 @@ class CourseCategories extends BaseAddon {
         $this->start_controls_section(
             'course_categories_original_section',
             [
-                'label' => __('Original', 'tutor-elementor-addons'),
+                'label' => __('Original', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_categories_original_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector => 'color: {{VALUE}}',
@@ -41,7 +41,7 @@ class CourseCategories extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_categories_original_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $selector,
             ]
         );
@@ -51,14 +51,14 @@ class CourseCategories extends BaseAddon {
         $this->start_controls_section(
             'course_categories_hovered_section',
             [
-                'label' => __('Hovered', 'tutor-elementor-addons'),
+                'label' => __('Hovered', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_categories_hovered_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector.':hover' => 'color: {{VALUE}}',
@@ -69,7 +69,7 @@ class CourseCategories extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_categories_hovered_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $selector.':hover',
             ]
         );
@@ -78,7 +78,7 @@ class CourseCategories extends BaseAddon {
 
     protected function render($instance = []) {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="tutor-single-course-meta-categories"><a href="#">'. __('Course Categories', 'tutor-elementor-addons') . '</a></div>';
+            echo '<div class="tutor-single-course-meta-categories"><a href="#">'. __('Course Categories', 'tutor-lms-elementor-addons') . '</a></div>';
         } else {
             $course_categories = get_tutor_course_categories();
             if(is_array($course_categories) && count($course_categories)) {

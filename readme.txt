@@ -1,4 +1,4 @@
-﻿=== Elementor Addons for Tutor LMS ===
+﻿=== Tutor LMS Elementor Addons ===
 Contributors: themeum, kawshar, mhshohel, jakirhasan, anik4e, delowardev, rejuancse, badsha_eee, faisalahmed29, joomcoder, sksaaju
 Donate link: https://www.themeum.com
 Tags: elementor builder, page editor, elearning, lms, learning management system
@@ -52,10 +52,7 @@ There is a vast library of add-ons in the Elementor integration plugin for Tutor
 * Course Instructor
 * Course Thumbnail
 * Course Price 
-* Course Review 
-
-
-
+* Course Review
 
 == Installation ==
 
@@ -66,13 +63,13 @@ There is a vast library of add-ons in the Elementor integration plugin for Tutor
 
 = Automatic installation =
 
-The automatic installation is the easiest way to install any plugin in WordPress. You can perform an automatic installation of Elementor Addons for Tutor LMS by logging in to your WordPress dashboard, navigating to the “Plugins” menu and click on the “Add New” button.
+The automatic installation is the easiest way to install any plugin in WordPress. You can perform an automatic installation of Tutor LMS Elementor Addons by logging in to your WordPress dashboard, navigating to the “Plugins” menu and click on the “Add New” button.
 
-This will open up a page showing all the available plugins in WordPress. In the search field, type Elementor Addons for Tutor LMS. The search result will show you our Elementor Addons for Tutor LMS plugin, you can then see the detailed info by clicking on “More Details” and to install just click on the “Install Now” button.
+This will open up a page showing all the available plugins in WordPress. In the search field, type Tutor LMS Elementor Addons. The search result will show you our Tutor LMS Elementor Addons plugin, you can then see the detailed info by clicking on “More Details” and to install just click on the “Install Now” button.
 
 = Manual installation =
 
-To install Elementor Addons for Tutor LMS manually, you need to download the plugin and upload it to your webserver via any FTP application.
+To install Tutor LMS Elementor Addons manually, you need to download the plugin and upload it to your webserver via any FTP application.
 
 The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
@@ -103,7 +100,6 @@ You can post on the support section of this plugin or use the contact form at th
 = 1.0.0 - 08 April, 2020 =
 
 * Initial Release
-
 
 == Upgrade Notice ==
 

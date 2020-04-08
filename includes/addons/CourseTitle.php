@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseTitle extends BaseAddon {
 
     public function get_title() {
-        return __('Course Title', 'tutor-elementor-addons');
+        return __('Course Title', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls() {
@@ -22,13 +22,13 @@ class CourseTitle extends BaseAddon {
         $this->start_controls_section(
             'course_title_content',
             [
-                'label' => __('Course Title', 'tutor-elementor-addons'),
+                'label' => __('Course Title', 'tutor-lms-elementor-addons'),
             ]
         );
         $this->add_control(
             'course_title_html_tag',
             [
-                'label'   => __('HTML Tag', 'tutor-elementor-addons'),
+                'label'   => __('HTML Tag', 'tutor-lms-elementor-addons'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
                     'h1' => 'h1', 
@@ -50,7 +50,7 @@ class CourseTitle extends BaseAddon {
         $this->start_controls_section(
             'course_style_section',
             array(
-                'label' => __('Course Title', 'tutor-elementor-addons'),
+                'label' => __('Course Title', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             )
         );
@@ -58,7 +58,7 @@ class CourseTitle extends BaseAddon {
         $this->add_control(
             'course_title_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $selector => 'color: {{VALUE}};',
@@ -70,7 +70,7 @@ class CourseTitle extends BaseAddon {
             Group_Control_Typography::get_type(),
             array(
                 'name'      => 'course_title_typography',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $selector,
             )
         );
@@ -78,7 +78,7 @@ class CourseTitle extends BaseAddon {
         $this->add_responsive_control(
             'course_title_margin',
             [
-                'label' => __('Margin', 'tutor-elementor-addons'),
+                'label' => __('Margin', 'tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -91,19 +91,19 @@ class CourseTitle extends BaseAddon {
         $this->add_responsive_control(
             'course_title_align',
             [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
                     'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'title' => __('Left', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'title' => __('Center', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'title' => __('Right', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-right',
                     ],
                 ],
@@ -118,7 +118,7 @@ class CourseTitle extends BaseAddon {
     protected function render($instance = []) {
         $settings   = $this->get_settings_for_display();
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo sprintf('<%1$s class="course-title">' . __('Course Title', 'tutor-elementor-addons') . '</%1$s>', $settings['course_title_html_tag']);
+            echo sprintf('<%1$s class="course-title">' . __('Course Title', 'tutor-lms-elementor-addons') . '</%1$s>', $settings['course_title_html_tag']);
         } else {
             echo sprintf(the_title('<%1$s class="course-title">', '</%1s>', false), $settings['course_title_html_tag']);
         }
