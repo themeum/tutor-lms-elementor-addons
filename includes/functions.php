@@ -25,3 +25,47 @@ if ( ! function_exists('camel2dashed')) {
 		return $str;
 	}
 }
+
+if ( ! function_exists('etlms_courses')) {
+	function etlms_courses() {
+		$course_list = get_posts( array(
+			'post_type'		=> tutor()->course_post_type,
+			'post_status'	=> 'publish',
+			'posts_per_page'=> 10,
+			'orderby'       => 'date',
+			'order'         => 'DESC',
+		) );
+		$courses = array();
+		foreach ( $course_list as $course ) {
+		   $courses[$course->ID] = $course->post_title;
+		}
+		return $courses;
+	}
+}
+
+if ( ! function_exists('etlms_get_course')) {
+	function etlms_get_course($id) {
+		$course_id = ($id) ? $id : ($_GET['course']) ? $_GET['course'] : false;
+		if($course_id) {
+			$query = new \WP_Query(array(
+				'p' => $course_id, 
+				'post_type' => tutor()->course_post_type
+			));
+			return $query;
+		} else {
+			return false;
+		}
+	}
+}
+
+if ( ! function_exists('etlms_course_id')) {
+	function etlms_course_id($st) {
+		if($st['course']) {
+			return $st['course'];
+		}
+		if($st['selected_course']) {
+			return $st['selected_course'];
+		}
+		return false;
+	}
+}

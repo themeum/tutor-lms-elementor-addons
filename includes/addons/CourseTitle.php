@@ -16,19 +16,18 @@ class CourseTitle extends BaseAddon {
     public function get_title() {
         return __('Course Title', 'tutor-elementor-addons');
     }
-
-    protected function register_content_controls() {
-        // Slider Button stle
+    
+    protected function register_style_controls() {
         $this->start_controls_section(
             'course_title_content',
             [
-                'label' => __('Course Title', 'tutor-elementor-addons'),
+                'label' => __('HTML Tag', 'tutor-elementor-addons'),
             ]
         );
         $this->add_control(
             'course_title_html_tag',
             [
-                'label'   => __('HTML Tag', 'tutor-elementor-addons'),
+                'label'   => __('Select Tag', 'tutor-elementor-addons'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
                     'h1' => 'h1', 
@@ -42,15 +41,13 @@ class CourseTitle extends BaseAddon {
         );
 
         $this->end_controls_section();
-    }
-    
-    protected function register_style_controls() {
+
         $selector = '{{WRAPPER}} .course-title';
         // Style
         $this->start_controls_section(
             'course_style_section',
             array(
-                'label' => __('Course Title', 'tutor-elementor-addons'),
+                'label' => __('Color & Typography', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             )
         );
@@ -118,7 +115,9 @@ class CourseTitle extends BaseAddon {
     protected function render($instance = []) {
         $settings   = $this->get_settings_for_display();
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo sprintf('<%1$s class="course-title">' . __('Course Title', 'tutor-elementor-addons') . '</%1$s>', $settings['course_title_html_tag']);
+            $course_id = etlms_course_id($settings);
+            $title = ($course_id) ? get_the_title($course_id): 'Course Title';
+            echo sprintf('<%1$s class="course-title">' . $title . '</%1$s>', $settings['course_title_html_tag']);
         } else {
             echo sprintf(the_title('<%1$s class="course-title">', '</%1s>', false), $settings['course_title_html_tag']);
         }

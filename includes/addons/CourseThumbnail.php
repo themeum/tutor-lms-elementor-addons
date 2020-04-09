@@ -160,11 +160,27 @@ class CourseThumbnail extends BaseAddon {
 
     protected function render($instance = []) {
         echo "<div class='tutor-course-thumbnail'>";
+        $settings = $this->get_settings_for_display();
+        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+            $query = etlms_get_course($settings['course']);
+			if ($query->have_posts()){
+				while ($query->have_posts()){
+					$query->the_post();
+					if(tutils()->has_video_in_single()){
+                        tutor_course_video();
+                    } else{
+                        get_tutor_course_thumbnail();
+                    }
+				}
+				wp_reset_postdata();
+            }
+        } else {
             if(tutils()->has_video_in_single()){
                 tutor_course_video();
             } else{
                 get_tutor_course_thumbnail();
             }
+        }
         echo "</div>";
     }
 }

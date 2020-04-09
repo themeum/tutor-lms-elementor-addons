@@ -14,6 +14,8 @@ namespace TutorLMS\Elementor;
 
 defined('ABSPATH') || exit;
 
+use Elementor\Plugin;
+
 class Template {
 
     protected static $_instance = null;
@@ -36,6 +38,8 @@ class Template {
 
         add_action('template_redirect', [ $this, 'is_tutor_single_page'] );
         add_action('post_submitbox_misc_actions', [ $this, 'course_template_mark_checkbox'] );
+
+        add_action( 'add_meta_boxes', [ $this, 'etlms_setup_course_editor'], 11 );
     }
 
     /**
@@ -44,16 +48,19 @@ class Template {
      */
     public function is_tutor_single_page() {
         global $wp_query;
-
         $course_post_type = tutor()->course_post_type;
-
         if (is_single() &&  ! empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === $course_post_type){
-            global $wpdb;
-
-            $template_id = (int) $wpdb->get_var("SELECT post_id FROM {$wpdb->postmeta} where meta_key = '_tutor_lms_elementor_template_id' ORDER BY meta_id DESC ");
-
-            $this->template_id = $template_id;
+            $this->template_id = $this->get_tutor_elementor_template_id();
         }
+    }
+    
+    /**
+     * Get tutor elementor template id
+     * @since v.1.0.0
+     */
+    public function get_tutor_elementor_template_id() {
+        global $wpdb;
+        return (int) $wpdb->get_var("SELECT post_id FROM {$wpdb->postmeta} where meta_key = '_tutor_lms_elementor_template_id' ORDER BY meta_id DESC ");
     }
 
     /**
@@ -176,5 +183,67 @@ class Template {
             </label>
         </div>
         <?php
+    }
+
+    /**
+     * Edit template option in course page
+     * @param $post
+     * @since v.1.0.0
+     */
+    public function etlms_before_main_editor( $post ) {
+        $template_id = $this->get_tutor_elementor_template_id();
+        if( !$template_id ) {
+            $type = 'page';
+            $post_data = array(
+                'post_type' => 'elementor_library',
+                'post_title' => 'Tutor Single Course',
+                'post_status' => 'publish',
+            );
+            $meta = [];
+            /**
+             * Create new post meta data.
+             *
+             * Filters the meta data of any new post created.
+             *
+             * @since 2.0.0
+             *
+             * @param array $meta Post meta data.
+             */
+            $meta = apply_filters( 'elementor/admin/create_new_post/meta', $meta );
+
+            $document = Plugin::$instance->documents->create( $type, $post_data, $meta );
+
+            $template_id = $document->get_main_id();
+
+            $this->_mark_elementor_template($template_id);
+        }
+
+        $edit_url = add_query_arg([
+				'post' => $template_id,
+				'course' => $post->ID,
+				'action' => 'elementor',
+			],
+			admin_url( 'post.php' )
+		);
+		?>
+        <div id="elementor-switch-mode">
+			<a href="<?php echo $edit_url; ?>" type="button" class="button button-primary button-hero">
+				<span class="elementor-switch-mode-off">
+					<i class="eicon-elementor-square" aria-hidden="true"></i>
+					<?php _e( 'Edit with Elementor', 'elementor' ); ?>
+				</span>
+			</a>
+		</div>
+        <?php
+    }
+
+    /**
+     * Course editor setup for Elementor
+     * @since v.1.0.0
+     */
+    public function etlms_setup_course_editor() {
+        if ( get_post_type() == tutor()->course_post_type ) {
+            add_action( 'edit_form_after_title', [ $this, 'etlms_before_main_editor' ] );
+        }
     }
 }

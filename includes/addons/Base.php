@@ -13,6 +13,7 @@
 namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
 
 defined('ABSPATH') || die();
 
@@ -73,6 +74,32 @@ abstract class BaseAddon extends Widget_Base {
      */
     protected function _register_controls() {
         do_action('tutor_start_register_controls', $this);
+
+        // Slider Button stle
+        $this->start_controls_section(
+            'section_select_course',
+            [
+                'label' => __('Course', 'tutor-elementor-addons'),
+            ]
+        );
+        $this->add_control(
+			'selected_course',
+			[
+				'label' => __( 'Course', 'tutor-elementor-addons' ),
+				'type' => \Elementor\Controls_Manager::HIDDEN,
+				'default' => $_GET['course'],
+			]
+		);
+        $this->add_control(
+            'course',
+            [
+                'label'   => __('Course', 'tutor-elementor-addons'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => etlms_courses(),
+                'default' => $_GET['course'],
+            ]
+        );
+        $this->end_controls_section();
 
         $this->register_content_controls();
 
