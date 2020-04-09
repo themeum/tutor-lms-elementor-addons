@@ -162,7 +162,7 @@ class CourseThumbnail extends BaseAddon {
         echo "<div class='tutor-course-thumbnail'>";
         $settings = $this->get_settings_for_display();
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $query = etlms_get_course($settings['course']);
+            $query = etlms_get_course($settings);
 			if ($query->have_posts()){
 				while ($query->have_posts()){
 					$query->the_post();

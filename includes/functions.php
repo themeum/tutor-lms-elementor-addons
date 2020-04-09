@@ -44,8 +44,8 @@ if ( ! function_exists('etlms_courses')) {
 }
 
 if ( ! function_exists('etlms_get_course')) {
-	function etlms_get_course($id) {
-		$course_id = ($id) ? $id : ($_GET['course']) ? $_GET['course'] : false;
+	function etlms_get_course($st) {
+		$course_id = etlms_course_id($st);
 		if($course_id) {
 			$query = new \WP_Query(array(
 				'p' => $course_id, 
@@ -63,8 +63,14 @@ if ( ! function_exists('etlms_course_id')) {
 		if($st['course']) {
 			return $st['course'];
 		}
-		if($st['selected_course']) {
-			return $st['selected_course'];
+		if($_GET['course']) {
+			return $_GET['course'];
+		}
+		$_SERVER['HTTP_REFERER'];
+		$parts = parse_url($_SERVER['HTTP_REFERER']);
+		parse_str($parts['query'], $query);
+		if($query['course']) {
+			return $query['course'];
 		}
 		return false;
 	}

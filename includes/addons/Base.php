@@ -83,14 +83,6 @@ abstract class BaseAddon extends Widget_Base {
             ]
         );
         $this->add_control(
-			'selected_course',
-			[
-				'label' => __( 'Course', 'tutor-elementor-addons' ),
-				'type' => \Elementor\Controls_Manager::HIDDEN,
-				'default' => $_GET['course'],
-			]
-		);
-        $this->add_control(
             'course',
             [
                 'label'   => __('Course', 'tutor-elementor-addons'),
