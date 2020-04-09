@@ -19,60 +19,70 @@ class CourseCategories extends BaseAddon {
     
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .tutor-single-course-meta-categories a';
-        /* Seciton Original */
         $this->start_controls_section(
-            'course_categories_original_section',
+            'course_categories_style_section',
             [
-                'label' => __('Original', 'tutor-lms-elementor-addons'),
+                'label' => __('Style', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
-            'course_categories_original_color',
-            [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-					$selector => 'color: {{VALUE}}',
-				],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_categories_original_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                'selector'  => $selector,
-            ]
-        );
-        $this->end_controls_section();
+        //* Start Tabs */
+        $this->start_controls_tabs('course_thumbnail_style_tabs');
+            /* Normal Tab */
+            $this->start_controls_tab(
+                'course_categories_normal_style_tab',
+                [
+                    'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
+                ]
+            );
+                $this->add_control(
+                    'course_categories_original_color',
+                    [
+                        'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $selector => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
+                $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'name'      => 'course_categories_original_typo',
+                        'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                        'selector'  => $selector,
+                    ]
+                );
+            $this->end_controls_tab();
 
-        /* Seciton Hovered */
-        $this->start_controls_section(
-            'course_categories_hovered_section',
-            [
-                'label' => __('Hovered', 'tutor-lms-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control(
-            'course_categories_hovered_color',
-            [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-					$selector.':hover' => 'color: {{VALUE}}',
-				],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_categories_hovered_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                'selector'  => $selector.':hover',
-            ]
-        );
+            /* Hovered Icon */
+            $this->start_controls_tab(
+                'course_categories_hover_style_tab',
+                [
+                    'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
+                ]
+            );
+                $this->add_control(
+                    'course_categories_hovered_color',
+                    [
+                        'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $selector.':hover' => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
+                $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'name'      => 'course_categories_hovered_typo',
+                        'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                        'selector'  => $selector.':hover',
+                    ]
+                );
+                $this->end_controls_tab();
+            $this->end_controls_tabs();
+
         $this->end_controls_section();
     }
 

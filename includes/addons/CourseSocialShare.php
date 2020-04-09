@@ -51,58 +51,71 @@ class CourseSocialShare extends BaseAddon {
 
         /* Original icons */
         $this->start_controls_section(
-            'course_share_original_icon_section',
+            'course_social_share_icon_section',
             [
-                'label' => __('Original Icon', 'tutor-lms-elementor-addons'),
+                'label' => __('Icon', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
-            'course_share_original_icon_color',
-            [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-					$icon_selector => 'color: {{VALUE}}',
-				],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_share_original_icon_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                'selector'  => $icon_selector,
-            ]
-        );
-        $this->end_controls_section();
+        //* Start Tabs */
+        $this->start_controls_tabs('course_thumbnail_style_tabs');
+            /* Normal Tab */
+            $this->start_controls_tab(
+                'course_social_share_normal_style_tab',
+                [
+                    'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
+                ]
+            );
+               
+                $this->add_control(
+                    'course_share_original_icon_color',
+                    [
+                        'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $icon_selector => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
+                $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'name'      => 'course_share_original_icon_typo',
+                        'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                        'selector'  => $icon_selector,
+                    ]
+                );
+            $this->end_controls_tab();
 
-        /* Hovered icons */
-        $this->start_controls_section(
-            'course_share_hovered_icon_section',
-            [
-                'label' => __('Hovered Icon', 'tutor-lms-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control(
-            'course_share_hovered_icon_color',
-            [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-					$icon_selector.':hover' => 'color: {{VALUE}}',
-				],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_share_hovered_icon_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                'selector'  => $icon_selector.':hover',
-            ]
-        );
+            /* Hovered Icon */
+            $this->start_controls_tab(
+                'course_social_share_hover_style_tab',
+                [
+                    'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
+                ]
+            );
+                $this->add_control(
+                    'course_share_hovered_icon_color',
+                    [
+                        'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $icon_selector.':hover' => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
+                $this->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'name'      => 'course_share_hovered_icon_typo',
+                        'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                        'selector'  => $icon_selector.':hover',
+                    ]
+                );
+            $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+        /* End Tabs */
         $this->end_controls_section();
 
         //Section Alignment

@@ -59,12 +59,12 @@ if ( ! function_exists('etlms_get_course')) {
 }
 
 if ( ! function_exists('etlms_course_id')) {
-	function etlms_course_id($st) {
-		if($st['course']) {
-			return $st['course'];
-		}
+	function etlms_course_id($settings) {
 		if($_GET['course']) {
 			return $_GET['course'];
+		}
+		if($settings['course']) {
+			return $settings['course'];
 		}
 		$_SERVER['HTTP_REFERER'];
 		$parts = parse_url($_SERVER['HTTP_REFERER']);
