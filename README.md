@@ -1,1 +1,1 @@
-# elementor-addons-for-tutor-lms
+# tutor-lms-elementor-addons

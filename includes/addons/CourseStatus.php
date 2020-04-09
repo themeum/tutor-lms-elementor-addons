@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseStatus extends BaseAddon {
 
     public function get_title() {
-        return __('Course Status', 'tutor-elementor-addons');
+        return __('Course Status', 'tutor-lms-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -26,14 +26,14 @@ class CourseStatus extends BaseAddon {
         $this->start_controls_section(
             'course_status_title_section',
             [
-                'label' => __('Section Title', 'tutor-elementor-addons'),
+                'label' => __('Section Title', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_status_title_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$title_selector => 'color: {{VALUE}}',
@@ -44,7 +44,7 @@ class CourseStatus extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_status_title_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $title_selector,
             ]
         );
@@ -54,14 +54,14 @@ class CourseStatus extends BaseAddon {
         $this->start_controls_section(
             'course_status_bar_section',
             [
-                'label' => __('Progress Bar', 'tutor-elementor-addons'),
+                'label' => __('Progress Bar', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_status_bar_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector.' .tutor-progress-bar' => 'background-color: {{VALUE}}',
@@ -71,7 +71,7 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_bar_fill_color',
             [
-                'label'     => __('Fill Color', 'tutor-elementor-addons'),
+                'label'     => __('Fill Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector.' .tutor-progress-filled' => 'background-color: {{VALUE}}',
@@ -81,7 +81,7 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_pointer_color',
             [
-                'label'     => __('Pointer Color', 'tutor-elementor-addons'),
+                'label'     => __('Pointer Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector.' .tutor-progress-filled:after' => 'border-color: {{VALUE}}',
@@ -94,14 +94,14 @@ class CourseStatus extends BaseAddon {
         $this->start_controls_section(
             'course_status_progress_text_section',
             [
-                'label' => __('Progress Text', 'tutor-elementor-addons'),
+                'label' => __('Progress Text', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_status_progress_text_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$progress_txt_selector => 'color: {{VALUE}}',
@@ -112,7 +112,7 @@ class CourseStatus extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_status_progress_text_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $progress_txt_selector,
             ]
         );

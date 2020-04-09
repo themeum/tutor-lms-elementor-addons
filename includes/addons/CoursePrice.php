@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CoursePrice extends BaseAddon {
 
     public function get_title() {
-        return __('Course Price', 'tutor-elementor-addons');
+        return __('Course Price', 'tutor-lms-elementor-addons');
     }
 
     protected function register_style_controls() {
@@ -23,7 +23,7 @@ class CoursePrice extends BaseAddon {
         $this->start_controls_section(
             'course_style_section',
             array(
-                'label' => __('Style', 'tutor-elementor-addons'),
+                'label' => __('Style', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             )
         );
@@ -31,7 +31,7 @@ class CoursePrice extends BaseAddon {
         $this->add_control(
             'course_price_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $selector => 'color: {{VALUE}};',
@@ -43,7 +43,7 @@ class CoursePrice extends BaseAddon {
             Group_Control_Typography::get_type(),
             array(
                 'name'      => 'course_price_typography',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $selector,
             )
         );
@@ -51,7 +51,7 @@ class CoursePrice extends BaseAddon {
         $this->add_responsive_control(
             'course_price_margin',
             [
-                'label' => __('Margin', 'tutor-elementor-addons'),
+                'label' => __('Margin', 'tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -64,19 +64,19 @@ class CoursePrice extends BaseAddon {
         $this->add_responsive_control(
             'course_price_align',
             [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
                     'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'title' => __('Left', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'title' => __('Center', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'title' => __('Right', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-right',
                     ],
                 ],
@@ -90,7 +90,7 @@ class CoursePrice extends BaseAddon {
 
     protected function render($instance = []) {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="course-price">' . __('Free', 'tutor-elementor-addons') . '</div>';
+            echo '<div class="course-price">' . __('Free', 'tutor-lms-elementor-addons') . '</div>';
         } else {
             echo '<div class="course-price">';
                 tutor_course_price();

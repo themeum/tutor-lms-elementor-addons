@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: Elementor Addons for Tutor LMS\n"
+"Project-Id-Version: Tutor LMS Elementor Addons\n"
 "POT-Creation-Date: 2020-03-27 15:05+0600\n"
 "PO-Revision-Date: 2020-03-27 15:05+0600\n"
 "Last-Translator: \n"
@@ -692,7 +692,7 @@ msgid "Share:"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "Elementor Addons for Tutor LMS"
+msgid "Tutor LMS Elementor Addons"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
