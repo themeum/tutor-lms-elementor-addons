@@ -30,6 +30,11 @@ class AddonsManager {
     public static function register() {
         include_once(ETLMS_DIR_PATH . 'includes/addons/Base.php');
         $all_addons = self::get_all_addons();
+        
+        //If single course then remove description addon
+        if( get_post_type() == tutor()->course_post_type ) {
+            unset($all_addons['CourseDescription']);
+        }
         foreach ($all_addons as $key => $props) {
             self::register_addon($key, $props);
         }
@@ -42,7 +47,6 @@ class AddonsManager {
     protected static function register_addon($key, $props) {
         $elementor = \Elementor\Plugin::instance();
         $addon_file = ETLMS_DIR_PATH . 'includes/addons/' . $key . '.php';
-
         if (is_readable($addon_file)) {
             include_once($addon_file);
             $addon_instance = '\TutorLMS\Elementor\Addons\\' . $key;
