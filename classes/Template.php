@@ -67,20 +67,23 @@ class Template {
      * @since v.1.0.0
      */
     public function single_course_template($template) {
-        global $wp_query;
+        global $wp_query, $post;
 
-        if(! post_type_supports(tutor()->course_post_type, 'elementor')) {
+        if( ! post_type_supports(tutor()->course_post_type, 'elementor') ) {
             return $template;
         }
 
         if ($wp_query->is_single && !empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === tutor()->course_post_type) {
 
+            $document = Plugin::$instance->documents->get( $post->ID );
+            $built_with_elementor = $document && $document->is_built_with_elementor();
             $template_id = $this->template_id;
+
             /**
-             * If not exists any specific template for tutor single page, then return default System Template
+             * If not exists any specific template tutor single page or not elementor document, then return default System Template
              * @since v.1.0.0
              */
-            if ( ! $template_id) {
+            if ( ! $template_id && ! $built_with_elementor ) {
                 return $template;
             }
 
@@ -91,8 +94,8 @@ class Template {
                 }
             }
 
-            $template_slug = get_page_template_slug( $template_id );
             $template = etlms_get_template('single-course-fullwidth');
+            $template_slug = get_page_template_slug( $template_id );
             if ( $template_slug === 'elementor_canvas' ) {
                 $template = etlms_get_template('single-course-canvas');
             }
@@ -118,7 +121,7 @@ class Template {
         $template_id = $this->template_id;
         if ( $template_id ) {
             echo Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
-        }else{
+        } else {
             echo '<h1>Mark a page/template as Tutor Single course from Elementor Page Settings</h1>';
         }
     }
