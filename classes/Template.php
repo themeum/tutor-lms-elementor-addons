@@ -38,8 +38,6 @@ class Template {
 
         add_action('template_redirect', [ $this, 'is_tutor_single_page'] );
         add_action('post_submitbox_misc_actions', [ $this, 'course_template_mark_checkbox'] );
-
-        add_action( 'add_meta_boxes', [ $this, 'etlms_setup_course_editor'], 11 );
     }
 
     /**
@@ -70,6 +68,11 @@ class Template {
      */
     public function single_course_template($template) {
         global $wp_query;
+
+        if(! post_type_supports(tutor()->course_post_type, 'elementor')) {
+            return $template;
+        }
+
         if ($wp_query->is_single && !empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === tutor()->course_post_type) {
 
             $template_id = $this->template_id;
@@ -77,7 +80,7 @@ class Template {
              * If not exists any specific template for tutor single page, then return default System Template
              * @since v.1.0.0
              */
-            if ( ! $template_id){
+            if ( ! $template_id) {
                 return $template;
             }
 
@@ -105,9 +108,16 @@ class Template {
      * @since v.1.0.0
      */
     public function single_course_content($post) {
+        $document = Plugin::$instance->documents->get( $post->ID );
+
+        if( $document && $document->is_built_with_elementor() ) {
+            echo the_content();
+            return;
+        }
+
         $template_id = $this->template_id;
-        if ($template_id){
-            echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
+        if ( $template_id ) {
+            echo Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
         }else{
             echo '<h1>Mark a page/template as Tutor Single course from Elementor Page Settings</h1>';
         }
@@ -183,67 +193,5 @@ class Template {
             </label>
         </div>
         <?php
-    }
-
-    /**
-     * Edit template option in course page
-     * @param $post
-     * @since v.1.0.0
-     */
-    public function etlms_before_main_editor( $post ) {
-        $template_id = $this->get_tutor_elementor_template_id();
-        if( !$template_id ) {
-            $type = 'page';
-            $post_data = array(
-                'post_type' => 'elementor_library',
-                'post_title' => 'Tutor Single Course',
-                'post_status' => 'publish',
-            );
-            $meta = [];
-            /**
-             * Create new post meta data.
-             *
-             * Filters the meta data of any new post created.
-             *
-             * @since 2.0.0
-             *
-             * @param array $meta Post meta data.
-             */
-            $meta = apply_filters( 'elementor/admin/create_new_post/meta', $meta );
-
-            $document = Plugin::$instance->documents->create( $type, $post_data, $meta );
-
-            $template_id = $document->get_main_id();
-
-            $this->_mark_elementor_template($template_id);
-        }
-
-        $edit_url = add_query_arg([
-				'post' => $template_id,
-				'course' => $post->ID,
-				'action' => 'elementor',
-			],
-			admin_url( 'post.php' )
-		);
-		?>
-        <div id="elementor-switch-mode">
-			<a href="<?php echo $edit_url; ?>" type="button" class="button button-primary button-hero">
-				<span class="elementor-switch-mode-off">
-					<i class="eicon-elementor-square" aria-hidden="true"></i>
-					<?php _e( 'Edit with Elementor', 'elementor' ); ?>
-				</span>
-			</a>
-		</div>
-        <?php
-    }
-
-    /**
-     * Course editor setup for Elementor
-     * @since v.1.0.0
-     */
-    public function etlms_setup_course_editor() {
-        if ( get_post_type() == tutor()->course_post_type ) {
-            add_action( 'edit_form_after_title', [ $this, 'etlms_before_main_editor' ] );
-        }
     }
 }

@@ -113,13 +113,20 @@ class CourseTitle extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $settings   = $this->get_settings_for_display();
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $course_id = etlms_course_id($settings);
-            $title = ($course_id) ? get_the_title($course_id): 'Course Title';
-            echo sprintf('<%1$s class="course-title">' . $title . '</%1$s>', $settings['course_title_html_tag']);
+        $title = __('Course Title', 'tutor-lms-elementor-addons');
+        if(get_post_type() == tutor()->course_post_type) {
+            $title = get_the_title();
         } else {
-            echo sprintf(the_title('<%1$s class="course-title">', '</%1s>', false), $settings['course_title_html_tag']);
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()){
+					$course->the_post();
+					$title = get_the_title();
+				}
+				wp_reset_postdata();
+            }
         }
+        $settings = $this->get_settings_for_display();
+        echo sprintf('<%1$s class="course-title">' . $title . '</%1$s>', $settings['course_title_html_tag']);
     }
 }

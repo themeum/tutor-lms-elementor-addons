@@ -77,20 +77,18 @@ class CourseRating extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $settings = $this->get_settings_for_display();
-
         ob_start();
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $query = etlms_get_course($settings);
-			if ($query->have_posts()){
-				while ($query->have_posts()){
-					$query->the_post();
+        if(get_post_type() == tutor()->course_post_type) {
+            include_once etlms_get_template('course/rating');
+        } else {
+            $course = etlms_get_course();
+			if ($course->have_posts()){
+				while ($course->have_posts()){
+					$course->the_post();
 					include_once etlms_get_template('course/rating');
 				}
 				wp_reset_postdata();
             }
-        } else {
-            include_once etlms_get_template('course/rating');
         }
         echo ob_get_clean();
     }

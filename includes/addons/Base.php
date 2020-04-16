@@ -76,7 +76,7 @@ abstract class BaseAddon extends Widget_Base {
         do_action('tutor_start_register_controls', $this);
 
         // Slider Button stle
-        $this->start_controls_section(
+        /* $this->start_controls_section(
             'section_select_course',
             [
                 'label' => __('Course', 'tutor-elementor-addons'),
@@ -91,7 +91,7 @@ abstract class BaseAddon extends Widget_Base {
                 'default' => $_GET['course'],
             ]
         );
-        $this->end_controls_section();
+        $this->end_controls_section(); */
 
         $this->register_content_controls();
 

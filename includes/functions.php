@@ -26,7 +26,7 @@ if ( ! function_exists('camel2dashed')) {
 	}
 }
 
-if ( ! function_exists('etlms_courses')) {
+/* if ( ! function_exists('etlms_courses')) {
 	function etlms_courses() {
 		$course_list = get_posts( array(
 			'post_type'		=> tutor()->course_post_type,
@@ -41,37 +41,18 @@ if ( ! function_exists('etlms_courses')) {
 		}
 		return $courses;
 	}
-}
+} */
 
 if ( ! function_exists('etlms_get_course')) {
-	function etlms_get_course($st) {
-		$course_id = etlms_course_id($st);
-		if($course_id) {
-			$query = new \WP_Query(array(
-				'p' => $course_id, 
-				'post_type' => tutor()->course_post_type
-			));
-			return $query;
-		} else {
-			return false;
-		}
-	}
-}
-
-if ( ! function_exists('etlms_course_id')) {
-	function etlms_course_id($settings) {
-		if($_GET['course']) {
-			return $_GET['course'];
-		}
-		if($settings['course']) {
-			return $settings['course'];
-		}
-		$_SERVER['HTTP_REFERER'];
-		$parts = parse_url($_SERVER['HTTP_REFERER']);
-		parse_str($parts['query'], $query);
-		if($query['course']) {
-			return $query['course'];
-		}
-		return false;
+	function etlms_get_course() {
+		$args = array(
+			'post_type' => tutor()->course_post_type,
+			'post_status' => 'publish',
+			'posts_per_page' => 1,
+			'orderby' => 'ID',
+			'order' => 'DESC'
+		);
+		$the_query = new WP_Query( $args );
+		return $the_query;
 	}
 }
