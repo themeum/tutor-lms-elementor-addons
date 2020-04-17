@@ -143,24 +143,16 @@ class CourseBenefits extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $markup = '<div class="tutor-single-course-segment tutor-course-benefits-wrap">
-                <div class="course-benefits-title">
-                    <h4 class="tutor-segment-title">What Will I Learn?</h4>
-                </div>
-                <div class="tutor-course-benefits-content">
-                    <ul class="tutor-course-benefits-items tutor-custom-list-style">
-                        <li>How to use an email list to make money</li>
-                        <li>How to remarket back to profitable leads</li>
-                        <li>How to find profitable Affiliate Marketing products</li>
-                    </ul>
-                </div>
-            </div>';
-            echo $markup;
+        if (get_post_type() == tutor()->course_post_type) {
+            tutor_course_benefits_html();
         } else {
-            $disable_benefits = get_tutor_option('disable_course_benefits');
-            if ( !$disable_benefits ) {
-                tutor_course_benefits_html();
+            $course = etlms_get_course();
+            if ($course->have_posts()) {
+                while ($course->have_posts()) {
+                    $course->the_post();
+                    tutor_course_benefits_html();
+                }
+                wp_reset_postdata();
             }
         }
     }

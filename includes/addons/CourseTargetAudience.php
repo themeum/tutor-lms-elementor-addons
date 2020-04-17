@@ -143,23 +143,16 @@ class CourseTargetAudience extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $markup = '<div class="tutor-single-course-segment tutor-course-target-audience-wrap">
-                <h4 class="tutor-segment-title">Target Audience</h4>
-                <div class="tutor-course-target-audience-content">
-                    <ul class="tutor-course-target-audience-items tutor-custom-list-style">
-                        <li>Anyone that is looking to make money with Email Marketing</li>
-                        <li>Anyone that is looking to make money with Affiliate Marketing</li>
-                        <li>Anyone that is interested in making money online</li>
-                        <li>Anyone that wants to learn how to build a profitable business</li>
-                    </ul>
-                </div>
-            </div>';
-            echo $markup;
+        if (get_post_type() == tutor()->course_post_type) {
+            tutor_course_target_audience_html();
         } else {
-            $disable_target_audience = get_tutor_option('disable_course_target_audience');
-            if ( !$disable_target_audience ) {
-                tutor_course_target_audience_html();
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+					tutor_course_target_audience_html();
+				}
+				wp_reset_postdata();
             }
         }
     }

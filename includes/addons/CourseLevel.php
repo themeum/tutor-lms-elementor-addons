@@ -112,7 +112,18 @@ class CourseLevel extends BaseAddon {
 
     protected function render($instance = []) {
         ob_start();
-        include_once etlms_get_template('course/level');
+        if (get_post_type() == tutor()->course_post_type) {
+            include_once etlms_get_template('course/level');
+        } else {
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+                    include_once etlms_get_template('course/level');
+				}
+				wp_reset_postdata();
+            }
+        }
         echo ob_get_clean();
     }
 }

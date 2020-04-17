@@ -79,25 +79,19 @@ class CourseAbout extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if(get_post_type() == tutor()->course_post_type) {
-            $excerpt = tutor_get_the_excerpt();
+        ob_start();
+        if (get_post_type() == tutor()->course_post_type) {
+            include_once etlms_get_template('course/about');
         } else {
             $course = etlms_get_course();
-			if ($course->have_posts()) {
-				while ($course->have_posts()){
-					$course->the_post();
-					$excerpt = tutor_get_the_excerpt();
-				}
-				wp_reset_postdata();
+            if ($course->have_posts()) {
+                while ($course->have_posts()) {
+                    $course->the_post();
+                    include_once etlms_get_template('course/about');
+                }
+                wp_reset_postdata();
             }
         }
-        $disable_about = get_tutor_option('disable_course_about');
-        if (! empty($excerpt) && ! $disable_about) {
-            $markup = '<div class="tutor-course-summery">';
-            $markup .= '<h4  class="tutor-segment-title">'.__('About Course', 'tutor').'</h4>';
-            $markup .= $excerpt;
-            $markup .= "</div>";
-            echo $markup;
-        }
+        echo ob_get_clean();
     }
 }

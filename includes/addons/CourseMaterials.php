@@ -143,23 +143,16 @@ class CourseMaterials extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $markup = '<div class="tutor-single-course-segment  tutor-course-material-includes-wrap">
-                <h4 class="tutor-segment-title">Material Includes</h4>
-                <div class="tutor-course-target-audience-content">
-                    <ul class="tutor-course-target-audience-items tutor-custom-list-style">
-                        <li>3.5 hours on-demand video</li>
-                        <li>1 article</li>
-                        <li>Full lifetime access</li>
-                        <li>Certificate of Completion</li>
-                    </ul>
-                </div>
-            </div>';
-            echo $markup;
+        if (get_post_type() == tutor()->course_post_type) {
+            tutor_course_material_includes_html();
         } else {
-            $disable_material = get_tutor_option('disable_course_material');
-            if ( !$disable_material ) {
-                tutor_course_material_includes_html();
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+                    tutor_course_material_includes_html();
+				}
+				wp_reset_postdata();
             }
         }
     }

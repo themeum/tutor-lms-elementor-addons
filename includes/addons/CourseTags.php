@@ -258,23 +258,19 @@ class CourseTags extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $markup = '<div class="tutor-single-course-tag-wrap">
-                <div class="tutor-single-course-segment">
-                    <div class="course-benefits-title">
-                        <h4 class="tutor-segment-title">Tags</h4>
-                    </div>
-                    <div class="tutor-course-tags">
-                        <a href="#">Tag one</a>
-                        <a href="#">Tag two</a>
-                    </div>
-                </div>
-            </div>';
-            echo $markup;
+        echo '<div class="tutor-single-course-tag-wrap">';
+        if (get_post_type() == tutor()->course_post_type) {
+            tutor_course_tags_html();
         } else {
-            echo '<div class="tutor-single-course-tag-wrap">';
-                tutor_course_tags_html();
-            echo '</div>';
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+					tutor_course_tags_html();
+				}
+				wp_reset_postdata();
+            }
         }
+        echo '</div>';
     }
 }

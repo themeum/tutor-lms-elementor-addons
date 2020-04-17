@@ -13,7 +13,6 @@
 namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Widget_Base;
-use Elementor\Controls_Manager;
 
 defined('ABSPATH') || die();
 
@@ -24,10 +23,7 @@ abstract class BaseAddon extends Widget_Base {
      * @since 1.0.0
      */
     public function get_name() {
-        /* Automatically generate addon name from class */
-        $className = str_replace(__NAMESPACE__, '', $this->get_class_name());
-        $name = camel2dashed($className);
-        return 'etlms-' . $name;
+        return 'etlms-' . $this->__class_name();
     }
     
     /**
@@ -35,10 +31,18 @@ abstract class BaseAddon extends Widget_Base {
      * @since 1.0.0
      */
     public function get_icon() {
-        /* Automatically generate addon name from class */
-        $className = str_replace(__NAMESPACE__, '', $this->get_class_name());
-        $icon = camel2dashed($className);
-        return 'icon-' . $icon;
+        return 'icon-' . $this->__class_name();
+    }
+
+    /**
+     * Get class name as slug.
+     * @since 1.0.0
+     */
+    private function __class_name() {
+        /* Generate name slug from class */
+        $class_name = str_replace(__NAMESPACE__, '', $this->get_class_name());
+        $class_name = camel2dashed($class_name);
+        return $class_name;
     }
 
     /**
@@ -74,24 +78,6 @@ abstract class BaseAddon extends Widget_Base {
      */
     protected function _register_controls() {
         do_action('tutor_start_register_controls', $this);
-
-        // Slider Button stle
-        /* $this->start_controls_section(
-            'section_select_course',
-            [
-                'label' => __('Course', 'tutor-elementor-addons'),
-            ]
-        );
-        $this->add_control(
-            'course',
-            [
-                'label'   => __('Course', 'tutor-elementor-addons'),
-                'type'    => Controls_Manager::SELECT,
-                'options' => etlms_courses(),
-                'default' => $_GET['course'],
-            ]
-        );
-        $this->end_controls_section(); */
 
         $this->register_content_controls();
 

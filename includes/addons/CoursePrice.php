@@ -89,12 +89,19 @@ class CoursePrice extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="course-price">' . __('Free', 'tutor-lms-elementor-addons') . '</div>';
+        echo '<div class="course-price">';
+        if (get_post_type() == tutor()->course_post_type) {
+            tutor_course_price();
         } else {
-            echo '<div class="course-price">';
-                tutor_course_price();
-            echo '</div>';
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+                    tutor_course_price();
+				}
+				wp_reset_postdata();
+            }
         }
+        echo '</div>';
     }
 }

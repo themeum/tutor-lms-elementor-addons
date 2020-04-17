@@ -71,16 +71,24 @@ class CourseLastUpdate extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="tutor-single-course-meta-last-update">April 9, 2020</div>';
+        if (get_post_type() == tutor()->course_post_type) {
+            $last_update = esc_html(get_the_modified_date());
         } else {
-            $disable_update_date = get_tutor_option('disable_course_update_date');
-            if(!$disable_update_date) {
-                $markup = '<div class="tutor-single-course-meta-last-update">';
-                $markup .= esc_html(get_the_modified_date());
-                $markup .= '</div>';
-                echo $markup;
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+					$last_update = esc_html(get_the_modified_date());
+				}
+				wp_reset_postdata();
             }
+        }
+        $disable_update_date = get_tutor_option('disable_course_update_date');
+        if (!$disable_update_date) {
+            $markup = '<div class="tutor-single-course-meta-last-update">';
+            $markup .= $last_update;
+            $markup .= '</div>';
+            echo $markup;
         }
     }
 }

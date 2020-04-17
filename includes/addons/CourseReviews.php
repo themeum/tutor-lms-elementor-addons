@@ -436,17 +436,19 @@ class CourseReviews extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            ob_start();
-            include_once etlms_get_template('course/reviews');
-            echo ob_get_clean();
+        echo '<div class="tutor-course-reviews">';
+        if (get_post_type() == tutor()->course_post_type) {
+            tutor_course_target_reviews_html();
         } else {
-            $disable_review = get_tutor_option('disable_course_review');
-            if ( !$disable_review ) {
-                echo '<div class="tutor-course-reviews">';
-                    tutor_course_target_reviews_html();
-                echo '</div>';
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+					tutor_course_target_reviews_html();
+				}
+				wp_reset_postdata();
             }
         }
+        echo '</div>';
     }
 }

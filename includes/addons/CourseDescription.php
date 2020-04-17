@@ -82,13 +82,12 @@ class CourseDescription extends BaseAddon {
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
             $markup = '<div class="tutor-course-content-wrap">';
             $markup .= '<div class="course-content-title"><h4 class="tutor-segment-title">'.__('Description', 'tutor').'</h4></div>';
-            $markup .= '<div class="tutor-course-content-content"><p>This is a sample course description for edit view</p></div>';
+            $markup .= '<div class="tutor-course-content-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>';
             $markup .= "</div>";
             echo $markup;
         } else {
             $disable_description = get_tutor_option('disable_course_description');
-            if ( !$disable_description ) {
-                wp_reset_postdata();
+            if (!$disable_description) {
                 tutor_course_content();
             }
         }

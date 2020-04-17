@@ -71,17 +71,24 @@ class CourseDuration extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="tutor-single-course-meta-duration">03h 50m</div>';
-        } else {
+        if (get_post_type() == tutor()->course_post_type) {
             $course_duration = get_tutor_course_duration_context();
-            $disable_course_duration = get_tutor_option('disable_course_duration');
-            if( !empty($course_duration) && !$disable_course_duration) {
-                $markup = '<div class="tutor-single-course-meta-duration">';
-                $markup .= $course_duration;
-                $markup .= '</div>';
-                echo $markup;
+        } else {
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+					$course_duration = get_tutor_course_duration_context();
+				}
+				wp_reset_postdata();
             }
+        }
+        $disable_course_duration = get_tutor_option('disable_course_duration');
+        if (!empty($course_duration) && !$disable_course_duration) {
+            $markup = '<div class="tutor-single-course-meta-duration">';
+            $markup .= $course_duration;
+            $markup .= '</div>';
+            echo $markup;
         }
     }
 }

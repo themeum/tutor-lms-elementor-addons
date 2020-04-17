@@ -158,12 +158,12 @@ class CourseAuthor extends BaseAddon {
 
     protected function render($instance = []) {
         ob_start();
-        if(get_post_type() == tutor()->course_post_type) {
+        if (get_post_type() == tutor()->course_post_type) {
             include_once etlms_get_template('course/author');
         } else {
             $course = etlms_get_course();
 			if ($course->have_posts()) {
-				while ($course->have_posts()){
+				while ($course->have_posts()) {
 					$course->the_post();
                     include_once etlms_get_template('course/author');
 				}

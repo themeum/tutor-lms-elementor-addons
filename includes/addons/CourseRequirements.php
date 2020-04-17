@@ -143,24 +143,16 @@ class CourseRequirements extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $markup = '<div class="tutor-single-course-segment tutor-course-requirements-wrap">
-                <div class="course-requirements-title">
-                    <h4 class="tutor-segment-title">Requirements</h4>
-                </div>
-                <div class="tutor-course-requirements-content">
-                    <ul class="tutor-course-requirements-items tutor-custom-list-style">
-                        <li>Understand the value of building an Email List</li>
-                        <li>Be interested in Affiliate Marketing</li>
-                        <li>Have an Email Account</li>
-                    </ul>
-                </div>
-            </div>';
-            echo $markup;
+        if (get_post_type() == tutor()->course_post_type) {
+            tutor_course_requirements_html();
         } else {
-            $disable_requirements = get_tutor_option('disable_course_requirements');
-            if ( !$disable_requirements ) {
-                tutor_course_requirements_html();
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+					tutor_course_requirements_html();
+				}
+				wp_reset_postdata();
             }
         }
     }

@@ -87,20 +87,27 @@ class CourseCategories extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="tutor-single-course-meta-categories"><a href="#">'. __('Course Categories', 'tutor-lms-elementor-addons') . '</a></div>';
-        } else {
+        if (get_post_type() == tutor()->course_post_type) {
             $course_categories = get_tutor_course_categories();
-            if(is_array($course_categories) && count($course_categories)) {
-                $markup = '<div class="tutor-single-course-meta-categories">';
-                    foreach ($course_categories as $course_category) {
-                        $category_name = $course_category->name;
-                        $category_link = get_term_link($course_category->term_id);
-                        $markup .= " <a href='$category_link'>$category_name</a>";
-                    }
-                $markup .= "</div>";
-                echo $markup;
+        } else {
+            $course = etlms_get_course();
+            if ($course->have_posts()) {
+                while ($course->have_posts()) {
+                    $course->the_post();
+                    $course_categories = get_tutor_course_categories();
+                }
+                wp_reset_postdata();
             }
+        }
+        if (is_array($course_categories) && count($course_categories)) {
+            $markup = '<div class="tutor-single-course-meta-categories">';
+                foreach ($course_categories as $course_category) {
+                    $category_name = $course_category->name;
+                    $category_link = get_term_link($course_category->term_id);
+                    $markup .= " <a href='$category_link'>$category_name</a>";
+                }
+            $markup .= "</div>";
+            echo $markup;
         }
     }
 }

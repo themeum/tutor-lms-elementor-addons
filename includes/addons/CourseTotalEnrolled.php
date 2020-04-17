@@ -71,16 +71,24 @@ class CourseTotalEnrolled extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo '<div class="tutor-single-course-meta-total-enroll">751</div>';
+        if (get_post_type() == tutor()->course_post_type) {
+            $total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course();
         } else {
-            $disable_total_enrolled = get_tutor_option('disable_course_total_enrolled');
-            if(!$disable_total_enrolled) {
-                $markup = '<div class="tutor-single-course-meta-total-enroll">';
-                $markup .= (int) tutor_utils()->count_enrolled_users_by_course();
-                $markup .= '</div>';
-                echo $markup;
+            $course = etlms_get_course();
+			if ($course->have_posts()) {
+				while ($course->have_posts()) {
+					$course->the_post();
+					$total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course();
+				}
+				wp_reset_postdata();
             }
+        }
+        $disable_total_enrolled = get_tutor_option('disable_course_total_enrolled');
+        if (!$disable_total_enrolled) {
+            $markup = '<div class="tutor-single-course-meta-total-enroll">';
+            $markup .= $total_enrolled;
+            $markup .= '</div>';
+            echo $markup;
         }
     }
 }
