@@ -14,6 +14,8 @@ namespace TutorLMS\Elementor;
 
 defined('ABSPATH') || exit;
 
+use Elementor\Plugin;
+
 class AddonsManager {
     /**
      * Init manager
@@ -28,12 +30,19 @@ class AddonsManager {
      * @since 1.0.0
      */
     public static function register() {
+        global $post;
+
         include_once(ETLMS_DIR_PATH . 'includes/addons/Base.php');
         $all_addons = self::get_all_addons();
         
-        //If single course then remove description addon
-        if( get_post_type() == tutor()->course_post_type ) {
-            unset($all_addons['CourseDescription']);
+        /**
+         * If single course and built with elementor then remove description addon for avoiding the_content overlap
+         */
+        if( $post->post_type == tutor()->course_post_type ) {
+            $document = Plugin::$instance->documents->get( $post->ID );
+            if( $document && $document->is_built_with_elementor() ) {
+                unset($all_addons['CourseDescription']);
+            }
         }
         foreach ($all_addons as $key => $props) {
             self::register_addon($key, $props);
