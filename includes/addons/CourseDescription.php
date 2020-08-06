@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseDescription extends BaseAddon {
 
     public function get_title() {
-        return __('Course Description', 'tutor-lms-elementor-addons');
+        return __('Course Description', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -25,14 +25,14 @@ class CourseDescription extends BaseAddon {
         $this->start_controls_section(
             'course_description_heading_section',
             [
-                'label' => __('Heading', 'tutor-lms-elementor-addons'),
+                'label' => __('Heading', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_description_heading_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$heading_selector => 'color: {{VALUE}}',
@@ -43,7 +43,7 @@ class CourseDescription extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_description_heading_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $heading_selector,
             ]
         );
@@ -53,14 +53,14 @@ class CourseDescription extends BaseAddon {
         $this->start_controls_section(
             'course_description_paragraph_section',
             [
-                'label' => __('Paragraph', 'tutor-lms-elementor-addons'),
+                'label' => __('Paragraph', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_description_paragraph_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$paragraph_selector => 'color: {{VALUE}}',
@@ -71,7 +71,7 @@ class CourseDescription extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_description_paragraph_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $paragraph_selector,
             ]
         );

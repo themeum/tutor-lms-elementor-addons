@@ -72,73 +72,73 @@ class AddonsManager {
     public static function get_all_addons() {
         return [
             'CourseRating' => [
-                'title' => __('Course Rating', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Rating', 'tutor-elementor-addons'),
             ],
             'CourseTitle' => [
-                'title' => __('Course Title', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Title', 'tutor-elementor-addons'),
             ],
             'CourseAuthor' => [
-                'title' => __('Course Author', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Author', 'tutor-elementor-addons'),
             ],
             'CourseLevel' => [
-                'title' => __('Course Level', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Level', 'tutor-elementor-addons'),
             ],
             'CourseSocialShare' => [
-                'title' => __('Course Social Share', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Social Share', 'tutor-elementor-addons'),
             ],
             'CourseCategories' => [
-                'title' => __('Course Categories', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Categories', 'tutor-elementor-addons'),
             ],
             'CourseDuration' => [
-                'title' => __('Course Duration', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Duration', 'tutor-elementor-addons'),
             ],
             'CourseTotalEnrolled' => [
-                'title' => __('Course Total Enrolled', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Total Enrolled', 'tutor-elementor-addons'),
             ],
             'CourseLastUpdate' => [
-                'title' => __('Course Last Update', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Last Update', 'tutor-elementor-addons'),
             ],
             'CourseStatus' => [
-                'title' => __('Course Status', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Status', 'tutor-elementor-addons'),
             ],
             'CourseThumbnail' => [
-                'title' => __('Course Thumbnail', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Thumbnail', 'tutor-elementor-addons'),
             ],
             'CoursePrice' => [
-                'title' => __('Course Price', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Price', 'tutor-elementor-addons'),
             ],
             'CourseEnrolmentBox' => [
-                'title' => __('Course Enrolment Box', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Enrolment Box', 'tutor-elementor-addons'),
             ],
             'CourseMaterials' => [
-                'title' => __('Course Materials', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Materials', 'tutor-elementor-addons'),
             ],
             'CourseRequirements' => [
-                'title' => __('Course Requirements', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Requirements', 'tutor-elementor-addons'),
             ],
             'CourseTags' => [
-                'title' => __('Course Tags', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Tags', 'tutor-elementor-addons'),
             ],
             'CourseTargetAudience' => [
-                'title' => __('Course Target Audience', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Target Audience', 'tutor-elementor-addons'),
             ],
             'CourseAbout' => [
-                'title' => __('Course About', 'tutor-lms-elementor-addons'),
+                'title' => __('Course About', 'tutor-elementor-addons'),
             ],
             'CourseDescription' => [
-                'title' => __('Course Description', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Description', 'tutor-elementor-addons'),
             ],
             'CourseBenefits' => [
-                'title' => __('Course Benefits', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Benefits', 'tutor-elementor-addons'),
             ],
             'CourseCurriculum' => [
-                'title' => __('Course Curriculum', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Curriculum', 'tutor-elementor-addons'),
             ],
             'CourseInstructors' => [
-                'title' => __('Course Instructors', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Instructors', 'tutor-elementor-addons'),
             ],
             'CourseReviews' => [
-                'title' => __('Course Reviews', 'tutor-lms-elementor-addons'),
+                'title' => __('Course Reviews', 'tutor-elementor-addons'),
             ],
         ];
     }

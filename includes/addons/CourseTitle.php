@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseTitle extends BaseAddon {
 
     public function get_title() {
-        return __('Course Title', 'tutor-lms-elementor-addons');
+        return __('Course Title', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -55,7 +55,7 @@ class CourseTitle extends BaseAddon {
         $this->add_control(
             'course_title_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $selector => 'color: {{VALUE}};',
@@ -67,7 +67,7 @@ class CourseTitle extends BaseAddon {
             Group_Control_Typography::get_type(),
             array(
                 'name'      => 'course_title_typography',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             )
         );
@@ -75,7 +75,7 @@ class CourseTitle extends BaseAddon {
         $this->add_responsive_control(
             'course_title_margin',
             [
-                'label' => __('Margin', 'tutor-lms-elementor-addons'),
+                'label' => __('Margin', 'tutor-elementor-addons'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -88,19 +88,19 @@ class CourseTitle extends BaseAddon {
         $this->add_responsive_control(
             'course_title_align',
             [
-                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
                     'left'   => [
-                        'title' => __('Left', 'tutor-lms-elementor-addons'),
+                        'title' => __('Left', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-lms-elementor-addons'),
+                        'title' => __('Center', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Right', 'tutor-lms-elementor-addons'),
+                        'title' => __('Right', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-right',
                     ],
                 ],
@@ -113,7 +113,7 @@ class CourseTitle extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $title = __('Course Title', 'tutor-lms-elementor-addons');
+        $title = __('Course Title', 'tutor-elementor-addons');
         if(get_post_type() == tutor()->course_post_type) {
             $title = get_the_title();
         } else {

@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseLastUpdate extends BaseAddon {
 
     public function get_title() {
-        return __('Course Last Updated', 'tutor-lms-elementor-addons');
+        return __('Course Last Updated', 'tutor-elementor-addons');
     }
 
     protected function register_style_controls() {
@@ -22,14 +22,14 @@ class CourseLastUpdate extends BaseAddon {
         $this->start_controls_section(
             'course_last_update_section',
             [
-                'label' => __('Style', 'tutor-lms-elementor-addons'),
+                'label' => __('Style', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_last_update_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector => 'color: {{VALUE}}',
@@ -40,26 +40,26 @@ class CourseLastUpdate extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_last_update_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             ]
         );
         $this->add_responsive_control(
             'course_last_update_align',
             [
-                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
                     'left'   => [
-                        'title' => __('Left', 'tutor-lms-elementor-addons'),
+                        'title' => __('Left', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-lms-elementor-addons'),
+                        'title' => __('Center', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Right', 'tutor-lms-elementor-addons'),
+                        'title' => __('Right', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-right',
                     ],
                 ],

@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseCurriculum extends BaseAddon {
 
     public function get_title() {
-        return __('Course Curriculum', 'tutor-lms-elementor-addons');
+        return __('Course Curriculum', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -26,14 +26,14 @@ class CourseCurriculum extends BaseAddon {
         $this->start_controls_section(
             'course_topics_header_title_section',
             [
-                'label' => __('Header Title', 'tutor-lms-elementor-addons'),
+                'label' => __('Header Title', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_topics_header_title_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$topic_header.' .tutor-segment-title' => 'color: {{VALUE}}',
@@ -44,7 +44,7 @@ class CourseCurriculum extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_topics_header_title_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $topic_header.' .tutor-segment-title',
             ]
         );
@@ -54,14 +54,14 @@ class CourseCurriculum extends BaseAddon {
         $this->start_controls_section(
             'course_topics_header_info_section',
             [
-                'label' => __('Header Info', 'tutor-lms-elementor-addons'),
+                'label' => __('Header Info', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_topics_header_info_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$topic_header.' .tutor-course-topics-header-right' => 'color: {{VALUE}}',
@@ -72,7 +72,7 @@ class CourseCurriculum extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_topics_header_info_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $topic_header.' .tutor-course-topics-header-right',
             ]
         );
@@ -82,14 +82,14 @@ class CourseCurriculum extends BaseAddon {
         $this->start_controls_section(
             'course_topics_title_section',
             [
-                'label' => __('Topic Title', 'tutor-lms-elementor-addons'),
+                'label' => __('Topic Title', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_topics_title_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$course_topic.' .tutor-course-title h4' => 'color: {{VALUE}}',
@@ -100,7 +100,7 @@ class CourseCurriculum extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_topics_title_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $course_topic.' .tutor-course-title h4',
             ]
         );
@@ -111,14 +111,14 @@ class CourseCurriculum extends BaseAddon {
         $this->start_controls_section(
             'course_lesson_title_section',
             [
-                'label' => __('Lesson Title', 'tutor-lms-elementor-addons'),
+                'label' => __('Lesson Title', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_lesson_title_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$lession_title_selector => 'color: {{VALUE}}',
@@ -129,7 +129,7 @@ class CourseCurriculum extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_lesson_title_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $lession_title_selector,
             ]
         );
@@ -140,14 +140,14 @@ class CourseCurriculum extends BaseAddon {
         $this->start_controls_section(
             'course_lesson_icon_section',
             [
-                'label' => __('Lesson Icon', 'tutor-lms-elementor-addons'),
+                'label' => __('Lesson Icon', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_lesson_icon_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$icon_selector => 'color: {{VALUE}}',
@@ -158,7 +158,7 @@ class CourseCurriculum extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_lesson_icon_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $icon_selector,
             ]
         );
@@ -168,14 +168,14 @@ class CourseCurriculum extends BaseAddon {
         $this->start_controls_section(
             'topic_lesson_spacing_section',
             [
-                'label' => __('Spacing', 'tutor-lms-elementor-addons'),
+                'label' => __('Spacing', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
             'topic_title_padding',
             [
-                'label' => __( 'Topic Title Padding', 'tutor-lms-elementor-addons' ),
+                'label' => __( 'Topic Title Padding', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
@@ -186,7 +186,7 @@ class CourseCurriculum extends BaseAddon {
         $this->add_responsive_control(
             'lesson_title_padding',
             [
-                'label' => __( 'Lesson Title Padding', 'tutor-lms-elementor-addons' ),
+                'label' => __( 'Lesson Title Padding', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [

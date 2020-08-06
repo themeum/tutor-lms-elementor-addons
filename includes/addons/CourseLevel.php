@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseLevel extends BaseAddon {
 
     public function get_title() {
-        return __('Course Level', 'tutor-lms-elementor-addons');
+        return __('Course Level', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -24,14 +24,14 @@ class CourseLevel extends BaseAddon {
         $this->start_controls_section(
             'course_level_label_section',
             [
-                'label' => __('Label', 'tutor-lms-elementor-addons'),
+                'label' => __('Label', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_level_label_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector.' strong' => 'color: {{VALUE}}',
@@ -42,7 +42,7 @@ class CourseLevel extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_level_label_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector.' strong',
             ]
         );
@@ -52,14 +52,14 @@ class CourseLevel extends BaseAddon {
         $this->start_controls_section(
             'course_level_value_section',
             [
-                'label' => __('Value', 'tutor-lms-elementor-addons'),
+                'label' => __('Value', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_level_value_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector => 'color: {{VALUE}}',
@@ -70,7 +70,7 @@ class CourseLevel extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_level_value_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             ]
         );
@@ -80,26 +80,26 @@ class CourseLevel extends BaseAddon {
         $this->start_controls_section(
             'course_level_alignment_section',
             [
-                'label' => __('Alignment', 'tutor-lms-elementor-addons'),
+                'label' => __('Alignment', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
             'course_level_align',
             [
-                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
                     'left'   => [
-                        'title' => __('Left', 'tutor-lms-elementor-addons'),
+                        'title' => __('Left', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-lms-elementor-addons'),
+                        'title' => __('Center', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Right', 'tutor-lms-elementor-addons'),
+                        'title' => __('Right', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-right',
                     ],
                 ],

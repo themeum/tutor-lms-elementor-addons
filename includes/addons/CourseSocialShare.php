@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseSocialShare extends BaseAddon {
 
     public function get_title() {
-        return __('Course Social Share', 'tutor-lms-elementor-addons');
+        return __('Course Social Share', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -25,14 +25,14 @@ class CourseSocialShare extends BaseAddon {
         $this->start_controls_section(
             'course_share_label_section',
             [
-                'label' => __('Label', 'tutor-lms-elementor-addons'),
+                'label' => __('Label', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_share_label_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$selector.' span' => 'color: {{VALUE}}',
@@ -43,7 +43,7 @@ class CourseSocialShare extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_share_label_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector.' span',
             ]
         );
@@ -53,7 +53,7 @@ class CourseSocialShare extends BaseAddon {
         $this->start_controls_section(
             'course_social_share_icon_section',
             [
-                'label' => __('Icon', 'tutor-lms-elementor-addons'),
+                'label' => __('Icon', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -63,14 +63,14 @@ class CourseSocialShare extends BaseAddon {
             $this->start_controls_tab(
                 'course_social_share_normal_style_tab',
                 [
-                    'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
+                    'label' => __( 'Normal', 'tutor-elementor-addons' ),
                 ]
             );
                
                 $this->add_control(
                     'course_share_original_icon_color',
                     [
-                        'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                        'label'     => __('Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $icon_selector => 'color: {{VALUE}}',
@@ -81,7 +81,7 @@ class CourseSocialShare extends BaseAddon {
                     Group_Control_Typography::get_type(),
                     [
                         'name'      => 'course_share_original_icon_typo',
-                        'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                        'label'     => __('Typography', 'tutor-elementor-addons'),
                         'selector'  => $icon_selector,
                     ]
                 );
@@ -91,13 +91,13 @@ class CourseSocialShare extends BaseAddon {
             $this->start_controls_tab(
                 'course_social_share_hover_style_tab',
                 [
-                    'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
+                    'label' => __( 'Hover', 'tutor-elementor-addons' ),
                 ]
             );
                 $this->add_control(
                     'course_share_hovered_icon_color',
                     [
-                        'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                        'label'     => __('Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $icon_selector.':hover' => 'color: {{VALUE}}',
@@ -108,7 +108,7 @@ class CourseSocialShare extends BaseAddon {
                     Group_Control_Typography::get_type(),
                     [
                         'name'      => 'course_share_hovered_icon_typo',
-                        'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                        'label'     => __('Typography', 'tutor-elementor-addons'),
                         'selector'  => $icon_selector.':hover',
                     ]
                 );
@@ -122,26 +122,26 @@ class CourseSocialShare extends BaseAddon {
         $this->start_controls_section(
             'course_share_alignment_section',
             [
-                'label' => __('Alignment', 'tutor-lms-elementor-addons'),
+                'label' => __('Alignment', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
             'course_share_align',
             [
-                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
                     'flex-start'   => [
-                        'title' => __('Left', 'tutor-lms-elementor-addons'),
+                        'title' => __('Left', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-lms-elementor-addons'),
+                        'title' => __('Center', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'flex-end'  => [
-                        'title' => __('Right', 'tutor-lms-elementor-addons'),
+                        'title' => __('Right', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-right',
                     ],
                 ],

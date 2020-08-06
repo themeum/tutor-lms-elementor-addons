@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseThumbnail extends BaseAddon {
 
     public function get_title() {
-        return __('Course Thumbnail', 'tutor-lms-elementor-addons');
+        return __('Course Thumbnail', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -25,7 +25,7 @@ class CourseThumbnail extends BaseAddon {
         $this->start_controls_section(
             'course_thumbnail_style_section',
             [
-                'label' => __('Style', 'tutor-lms-elementor-addons'),
+                'label' => __('Style', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -36,7 +36,7 @@ class CourseThumbnail extends BaseAddon {
             $this->start_controls_tab(
                 'course_tags_normal_style_tab',
                 [
-                    'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
+                    'label' => __( 'Normal', 'tutor-elementor-addons' ),
                 ]
             );
                 $this->add_group_control(
@@ -50,7 +50,7 @@ class CourseThumbnail extends BaseAddon {
                 $this->add_responsive_control(
                     'course_normal_thumbnail_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selector' => $selector
@@ -60,7 +60,7 @@ class CourseThumbnail extends BaseAddon {
                 $this->add_responsive_control(
                     'course_normal_thumbnail_padding',
                     [
-                        'label' => __( 'Padding', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Padding', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
@@ -72,7 +72,7 @@ class CourseThumbnail extends BaseAddon {
                 $this->add_responsive_control(
                     'course_normal_thumbnail_margin',
                     [
-                        'label' => __( 'Margin', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
@@ -85,7 +85,7 @@ class CourseThumbnail extends BaseAddon {
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'course_normal_thumbnail_box_shadow',
-                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
                         'selector' => $selector,
                     ]
                 );
@@ -97,7 +97,7 @@ class CourseThumbnail extends BaseAddon {
             $this->start_controls_tab(
                 'course_hovered_thumbnail_style_tab',
                 [
-                    'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
+                    'label' => __( 'Hover', 'tutor-elementor-addons' ),
                 ]
             );
                 $this->add_group_control(
@@ -111,7 +111,7 @@ class CourseThumbnail extends BaseAddon {
                 $this->add_responsive_control(
                     'course_hovered_thumbnail_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selector' => $hover_selector
@@ -121,7 +121,7 @@ class CourseThumbnail extends BaseAddon {
                 $this->add_responsive_control(
                     'course_hovered_thumbnail_padding',
                     [
-                        'label' => __( 'Padding', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Padding', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
@@ -133,7 +133,7 @@ class CourseThumbnail extends BaseAddon {
                 $this->add_responsive_control(
                     'course_hovered_thumbnail_margin',
                     [
-                        'label' => __( 'Margin', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
@@ -146,7 +146,7 @@ class CourseThumbnail extends BaseAddon {
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'course_hovered_thumbnail_box_shadow',
-                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
+                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
                         'selector' => $hover_selector,
                     ]
                 );

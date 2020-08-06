@@ -9,7 +9,7 @@ Author URI: http://themeum.com
 Requires at least: 4.5
 Tested up to: 5.4
 License: GPLv2 or later
-Text Domain: elementor-tutor-lms
+Text Domain: tutor-elementor-addons
 */
 
 defined('ABSPATH') || die();

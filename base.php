@@ -33,7 +33,7 @@ class Base {
     }
 
     public function i18n() {
-        load_plugin_textdomain('tutor-lms-elementor-addons');
+        load_plugin_textdomain('tutor-elementor-addons');
     }
 
     public function init() {
@@ -83,7 +83,7 @@ class Base {
      */
     public function notice_required_tutor() {
         $class = 'notice notice-warning';
-        $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated TutorLMS v.1.5.2', 'tutor-lms-elementor-addons');
+        $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated TutorLMS v.1.5.2', 'tutor-elementor-addons');
         printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
     }
 
@@ -92,7 +92,7 @@ class Base {
      */
     public function notice_required_elementor() {
         $class = 'notice notice-warning';
-        $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated Elementor Builder Plugin', 'tutor-lms-elementor-addons');
+        $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated Elementor Builder Plugin', 'tutor-elementor-addons');
         printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
     }
 
@@ -105,7 +105,7 @@ class Base {
         $elements_manager->add_category(
             'tutor_addons_category',
             [
-                'title' => __('Tutor LMS', 'tutor-lms-elementor-addons'),
+                'title' => __('Tutor LMS', 'tutor-elementor-addons'),
                 'icon' => 'fa fa-smile-o',
             ]
         );

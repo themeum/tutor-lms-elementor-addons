@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseBenefits extends BaseAddon {
 
     public function get_title() {
-        return __('Course Benefits', 'tutor-lms-elementor-addons');
+        return __('Course Benefits', 'tutor-elementor-addons');
     }
     
     protected function register_style_controls() {
@@ -27,14 +27,14 @@ class CourseBenefits extends BaseAddon {
         $this->start_controls_section(
             'course_benefits_title_section',
             [
-                'label' => __('Section Title', 'tutor-lms-elementor-addons'),
+                'label' => __('Section Title', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_benefits_title_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$title_selector => 'color: {{VALUE}}',
@@ -45,7 +45,7 @@ class CourseBenefits extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_benefits_title_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $title_selector,
             ]
         );
@@ -55,14 +55,14 @@ class CourseBenefits extends BaseAddon {
         $this->start_controls_section(
             'course_benefits_icon_section',
             [
-                'label' => __('Icon', 'tutor-lms-elementor-addons'),
+                'label' => __('Icon', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_benefits_icon_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$icon_selector => 'color: {{VALUE}}',
@@ -73,7 +73,7 @@ class CourseBenefits extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_benefits_icon_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $icon_selector,
             ]
         );
@@ -83,14 +83,14 @@ class CourseBenefits extends BaseAddon {
         $this->start_controls_section(
             'course_benefits_content_section',
             [
-                'label' => __('Content', 'tutor-lms-elementor-addons'),
+                'label' => __('Content', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_benefits_content_color',
             [
-                'label'     => __('Color', 'tutor-lms-elementor-addons'),
+                'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$content_selector => 'color: {{VALUE}}',
@@ -101,7 +101,7 @@ class CourseBenefits extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_benefits_content_typo',
-                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
+                'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $content_selector,
             ]
         );
@@ -111,14 +111,14 @@ class CourseBenefits extends BaseAddon {
         $this->start_controls_section(
             'course_benefits_spacing_section',
             [
-                'label' => __('Spacing', 'tutor-lms-elementor-addons'),
+                'label' => __('Spacing', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_benefits_padding',
             [
-                'label' => __('Padding', 'tutor-lms-elementor-addons'),
+                'label' => __('Padding', 'tutor-elementor-addons'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -130,7 +130,7 @@ class CourseBenefits extends BaseAddon {
         $this->add_control(
             'course_benefits_margin',
             [
-                'label' => __('Margin', 'tutor-lms-elementor-addons'),
+                'label' => __('Margin', 'tutor-elementor-addons'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
