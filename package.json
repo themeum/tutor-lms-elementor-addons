@@ -1,0 +1,34 @@
+{
+  "name": "tutor-elementor-addons",
+  "version": "1.0.0",
+  "description": "<img src=\".github/tutor-github.png\" alt=\"TutorLMS\" width=\"100%\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themeum/tutor-elementor-addons.git"
+  },
+  "keywords": [
+    "lms",
+    "tutor",
+    "wordpress",
+    "lms"
+  ],
+  "author": "themeum",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/themeum/tutor-elementor-addons/issues"
+  },
+  "homepage": "https://github.com/themeum/tutor-elementor-addons#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-wp-pot": "^2.4.3",
+    "gulp-zip": "^5.0.2"
+  }
+}
