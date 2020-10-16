@@ -21,7 +21,7 @@ class CourseTitle extends BaseAddon {
 		$this->start_controls_section(
             'course_title_content',
             [
-                'label' => __('HTML Tag', 'tutor-elementor-addons'),
+                'label' => __('General Settings', 'tutor-elementor-addons'),
             ]
         );
         $this->add_control(
@@ -37,6 +37,30 @@ class CourseTitle extends BaseAddon {
                     'h6' => 'h6'
                 ],
                 'default' => 'h1',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_title_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'prefix_class' => 'elementor-align-%s',
+                'default'      => 'left',
             ]
         );
 
@@ -72,19 +96,6 @@ class CourseTitle extends BaseAddon {
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             )
-        );
-
-        $this->add_responsive_control(
-            'course_title_margin',
-            [
-                'label' => __('Margin', 'tutor-elementor-addons'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    $selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before',
-            ]
         );
 
         $this->end_controls_section();

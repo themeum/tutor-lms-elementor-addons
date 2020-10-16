@@ -66,7 +66,6 @@ class CourseAuthor extends BaseAddon {
 
         //Section Label
         $author_selector = '{{WRAPPER}} .tutor-single-course-author-meta .tutor-single-course-author-name';
-        $this->end_controls_section();
         $this->start_controls_section(
             'course_author_label_section',
             [
@@ -158,17 +157,9 @@ class CourseAuthor extends BaseAddon {
 
     protected function render($instance = []) {
         ob_start();
-        if (get_post_type() == tutor()->course_post_type) {
+        $course = etlms_get_course();
+        if ($course) {
             include_once etlms_get_template('course/author');
-        } else {
-            $course = etlms_get_course();
-			if ($course->have_posts()) {
-				while ($course->have_posts()) {
-					$course->the_post();
-                    include_once etlms_get_template('course/author');
-				}
-				wp_reset_postdata();
-            }
         }
         echo ob_get_clean();
     }
