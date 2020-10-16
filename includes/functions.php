@@ -28,6 +28,9 @@ if (!function_exists('camel2dashed')) {
 
 if (!function_exists('etlms_get_course')) {
 	function etlms_get_course() {
+		if (is_single() && get_post_type() == tutor()->course_post_type) {
+			return true;
+		}
 		$args = array(
 			'post_type' => tutor()->course_post_type,
 			'post_status' => 'publish',
@@ -35,7 +38,14 @@ if (!function_exists('etlms_get_course')) {
 			'orderby' => 'ID',
 			'order' => 'DESC'
 		);
-		$the_query = new WP_Query($args);
-		return $the_query;
+		$query = new WP_Query($args);
+		if ($query->have_posts()) {
+			while ($query->have_posts()) {
+				$query->the_post();
+				return true;
+			}
+		}
+
+        return false;
 	}
 }

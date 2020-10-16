@@ -16,9 +16,9 @@ class CourseTitle extends BaseAddon {
     public function get_title() {
         return __('Course Title', 'tutor-elementor-addons');
     }
-    
-    protected function register_style_controls() {
-        $this->start_controls_section(
+
+    protected function register_content_controls() {
+		$this->start_controls_section(
             'course_title_content',
             [
                 'label' => __('HTML Tag', 'tutor-elementor-addons'),
@@ -41,7 +41,9 @@ class CourseTitle extends BaseAddon {
         );
 
         $this->end_controls_section();
-
+	}
+    
+    protected function register_style_controls() {
         $selector = '{{WRAPPER}} .course-title';
         // Style
         $this->start_controls_section(
@@ -85,46 +87,14 @@ class CourseTitle extends BaseAddon {
             ]
         );
 
-        $this->add_responsive_control(
-            'course_title_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-            ]
-        );
-
         $this->end_controls_section();
     }
 
     protected function render($instance = []) {
         $title = __('Course Title', 'tutor-elementor-addons');
-        if(get_post_type() == tutor()->course_post_type) {
+        $course = etlms_get_course();
+        if ($course) {
             $title = get_the_title();
-        } else {
-            $course = etlms_get_course();
-			if ($course->have_posts()) {
-				while ($course->have_posts()){
-					$course->the_post();
-					$title = get_the_title();
-				}
-				wp_reset_postdata();
-            }
         }
         $settings = $this->get_settings_for_display();
         echo sprintf('<%1$s class="course-title">' . $title . '</%1$s>', $settings['course_title_html_tag']);
