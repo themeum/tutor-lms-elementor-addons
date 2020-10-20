@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TutorLMS Elementor Assets
  *
@@ -12,16 +13,31 @@
 
 namespace TutorLMS\Elementor;
 
-defined( 'ABSPATH' ) || die();
+defined('ABSPATH') || die();
 
 class AssetsManager {
     /**
      * Init manager
      * @since 1.0.0
      */
-    public static function init(){
+    public static function init() {
+        /* Additional css */
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue_additional_scripts']);
         /* Editor Scripts */
-        add_action( 'elementor/editor/before_enqueue_scripts', [ __CLASS__, 'enqueue_editor_scripts' ] );
+        add_action('elementor/editor/before_enqueue_scripts', [__CLASS__, 'enqueue_editor_scripts']);
+    }
+
+    /**
+     * Enqueue additional scripts
+     * @since 1.0.0
+     */
+    public static function enqueue_additional_scripts() {
+        wp_enqueue_style(
+            'tutor-elementor',
+            ETLMS_ASSETS . 'tutor-elementor.css',
+            null,
+            ETLMS_VERSION
+        );
     }
 
     /**

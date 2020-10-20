@@ -1,8 +1,8 @@
 <?php
-	$disable = get_tutor_option('disable_course_review');
-	if ( ! $disable){
-		?>
-        <div class="tutor-leadinfo-top-meta">
+$disable = get_tutor_option('disable_course_review');
+if (!$disable) {
+?>
+    <div class="tutor-leadinfo-top-meta etlms-rating">
         <span class="tutor-single-course-rating">
             <?php
             $course_rating = tutor_utils()->get_course_rating();
@@ -11,7 +11,7 @@
             <span class="tutor-single-rating-count">
                 <?php
                 echo $course_rating->rating_avg;
-                echo '<i>('.$course_rating->rating_count.')</i>';
+                echo '<i>(' . $course_rating->rating_count . ')</i>';
                 ?>
             </span>
         </span>
