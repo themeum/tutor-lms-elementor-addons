@@ -7,3 +7,12 @@
 .etlms-author li {
     width: 100%;
 }
+.etlms-author p,  .etlms-author span {
+    display: inline-block;
+}
+.etlms-author .tutor-single-course-author-name p {
+    margin-bottom: 0;
+}
+.etlms-author-layout-up .tutor-single-course-author-name {
+    display: block;
+}

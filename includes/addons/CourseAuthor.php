@@ -16,6 +16,99 @@ class CourseAuthor extends BaseAddon {
     public function get_title() {
         return __('Course Author', 'tutor-elementor-addons');
     }
+
+    protected function register_content_controls() {
+		$this->start_controls_section(
+            'course_author_content',
+            [
+                'label' => __('General Settings', 'tutor-elementor-addons'),
+            ]
+        );
+
+        $this->add_control(
+			'course_author_picture',
+			[
+				'label' => __( 'Profile Picture', 'tutor-elementor-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+				'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+        );
+        
+        $this->add_control(
+			'course_author_name',
+			[
+				'label' => __( 'Display Name', 'tutor-elementor-addons' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+				'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+        );
+
+        $this->add_control(
+            'course_author_link',
+            [
+                'label'   => __('Link', 'tutor-elementor-addons'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'none' => 'None', 
+                    'new_window' => 'New Window', 
+                    'same_window' => 'Same Window',
+                ],
+                'default' => 'new_window',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_author_layout',
+            [
+                'label'        => __('Layout', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-long-arrow-left',
+                    ],
+                    'up' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-long-arrow-up',
+                    ],
+                ],
+                'prefix_class' => 'etlms-author-layout-%s',
+                'default'      => 'left',
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'course_author_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'prefix_class' => 'elementor-align-%s',
+                'default'      => 'left',
+            ]
+        );
+
+        $this->end_controls_section();
+	}
     
     protected function register_style_controls() {
         //Section Image
@@ -120,45 +213,13 @@ class CourseAuthor extends BaseAddon {
             ]
         );
         $this->end_controls_section();
-
-        //Section Alignment
-        $this->start_controls_section(
-            'course_author_alignment_section',
-            [
-                'label' => __('Alignment', 'tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_responsive_control(
-            'course_author_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-            ]
-        );
-        $this->end_controls_section();
     }
 
     protected function render($instance = []) {
         ob_start();
         $course = etlms_get_course();
         if ($course) {
+            $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/author');
         }
         echo ob_get_clean();
