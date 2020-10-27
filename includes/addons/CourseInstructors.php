@@ -210,19 +210,11 @@ class CourseInstructors extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        echo '<div class="tutor-course-instructors">';
-        if (get_post_type() == tutor()->course_post_type) {
+        $course = etlms_get_course();
+        if ($course) {
+            echo '<div class="tutor-course-instructors">';
             tutor_course_instructors_html();
-        } else {
-            $course = etlms_get_course();
-            if ($course->have_posts()) {
-                while ($course->have_posts()) {
-                    $course->the_post();
-                    tutor_course_instructors_html();
-                }
-                wp_reset_postdata();
-            }
+            echo '</div>';
         }
-        echo '</div>';
     }
 }

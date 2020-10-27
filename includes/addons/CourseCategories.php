@@ -87,17 +87,10 @@ class CourseCategories extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (get_post_type() == tutor()->course_post_type) {
+        $course = etlms_get_course();
+        $course_categories = array();
+        if ($course) {
             $course_categories = get_tutor_course_categories();
-        } else {
-            $course = etlms_get_course();
-            if ($course->have_posts()) {
-                while ($course->have_posts()) {
-                    $course->the_post();
-                    $course_categories = get_tutor_course_categories();
-                }
-                wp_reset_postdata();
-            }
         }
         if (is_array($course_categories) && count($course_categories)) {
             $markup = '<div class="tutor-single-course-meta-categories">';

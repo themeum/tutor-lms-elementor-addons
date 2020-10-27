@@ -159,27 +159,15 @@ class CourseThumbnail extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        echo "<div class='tutor-course-thumbnail'>";
-        if(get_post_type() == tutor()->course_post_type) {
+        $course = etlms_get_course();
+        if ($course) {
+            echo "<div class='tutor-course-thumbnail'>";
             if(tutils()->has_video_in_single()){
                 tutor_course_video();
             } else{
                 get_tutor_course_thumbnail();
             }
-        } else {
-            $course = etlms_get_course();
-			if ($course->have_posts()){
-				while ($course->have_posts()){
-					$course->the_post();
-					if(tutils()->has_video_in_single()){
-                        tutor_course_video();
-                    } else{
-                        get_tutor_course_thumbnail();
-                    }
-				}
-				wp_reset_postdata();
-            }
+            echo '</div>';
         }
-        echo "</div>";
     }
 }

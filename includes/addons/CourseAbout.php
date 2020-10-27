@@ -80,17 +80,9 @@ class CourseAbout extends BaseAddon {
 
     protected function render($instance = []) {
         ob_start();
-        if (get_post_type() == tutor()->course_post_type) {
+        $course = etlms_get_course();
+        if ($course) {
             include_once etlms_get_template('course/about');
-        } else {
-            $course = etlms_get_course();
-            if ($course->have_posts()) {
-                while ($course->have_posts()) {
-                    $course->the_post();
-                    include_once etlms_get_template('course/about');
-                }
-                wp_reset_postdata();
-            }
         }
         echo ob_get_clean();
     }

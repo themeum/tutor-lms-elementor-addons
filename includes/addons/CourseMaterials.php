@@ -143,17 +143,9 @@ class CourseMaterials extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (get_post_type() == tutor()->course_post_type) {
+        $course = etlms_get_course();
+        if ($course) {
             tutor_course_material_includes_html();
-        } else {
-            $course = etlms_get_course();
-			if ($course->have_posts()) {
-				while ($course->have_posts()) {
-					$course->the_post();
-                    tutor_course_material_includes_html();
-				}
-				wp_reset_postdata();
-            }
         }
     }
 }

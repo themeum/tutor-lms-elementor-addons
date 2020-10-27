@@ -120,16 +120,12 @@ class CourseStatus extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        ob_start();
         if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            ob_start();
             include_once etlms_get_template('course/status-preview');
-            echo ob_get_clean();
-        } else {
-            if (is_user_logged_in() && tutils()->is_enrolled()) {
-                ob_start();
-                include_once etlms_get_template('course/status');
-                echo ob_get_clean();
-            }
+        } else if (is_user_logged_in() && tutils()->is_enrolled()) {
+            include_once etlms_get_template('course/status');
         }
+        echo ob_get_clean();
     }
 }
