@@ -17,6 +17,41 @@ class CoursePrice extends BaseAddon {
         return __('Course Price', 'tutor-elementor-addons');
     }
 
+    protected function register_content_controls() {
+		$this->start_controls_section(
+            'course_price_content',
+            [
+                'label' => __('General Settings', 'tutor-elementor-addons'),
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'course_price_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'prefix_class' => 'elementor-align-%s',
+                'default'      => 'left',
+            ]
+        );
+
+        $this->end_controls_section();
+	}
+
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .course-price';
         // Style
@@ -46,43 +81,6 @@ class CoursePrice extends BaseAddon {
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             )
-        );
-
-        $this->add_responsive_control(
-            'course_price_margin',
-            [
-                'label' => __('Margin', 'tutor-elementor-addons'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    $selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'course_price_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-            ]
         );
 
         $this->end_controls_section();
