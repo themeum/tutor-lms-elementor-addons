@@ -8,6 +8,8 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -120,10 +122,10 @@ class CourseAuthor extends BaseAddon {
             ]
         );
         $img_selector = '{{WRAPPER}} .tutor-single-course-avatar a span';
-        $this->add_control(
-            'image_width',
+        $this->add_responsive_control(
+            'image_size',
             [
-                'label' => __( 'Width', 'tutor-elementor-addons' ),
+                'label' => __( 'Size', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -133,25 +135,55 @@ class CourseAuthor extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $img_selector => 'width: {{SIZE}}{{UNIT}};',
+                    $img_selector => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
-        $this->add_control(
-            'image_height',
+
+        $this->add_responsive_control(
+            'image_gap',
             [
-                'label' => __( 'Height', 'tutor-elementor-addons' ),
+                'label' => __( 'Size', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 10,
-                        'max' => 200,
+                        'min' => 0,
+                        'max' => 100,
                     ],
                 ],
                 'selectors' => [
-                    $img_selector => 'height: {{SIZE}}{{UNIT}};',
+                    $img_selector => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'label' => __( 'Border', 'tutor-elementor-addons' ),
+				'selector' => $img_selector,
+			]
+        );
+
+        $this->add_control(
+            'add_to_cart_btn_normal_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'selectors' => [
+                    $img_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'add_to_cart_btn_normal_box_shadow',
+                'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                'selector' => $img_selector,
             ]
         );
 
