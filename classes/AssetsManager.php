@@ -37,6 +37,14 @@ class AssetsManager {
             ETLMS_ASSETS . 'tutor-elementor.css',
             null,
             ETLMS_VERSION
+        );        
+
+        wp_enqueue_style(
+            'tutor-shewa-elementor',
+            ETLMS_ASSETS . 'tutor-shewa-elementor.css',
+            null,
+            //ETLMS_VERSION
+            filemtime(ETLMS_DIR_PATH.'/assets/tutor-shewa-elementor.css')
         );
     }
 
