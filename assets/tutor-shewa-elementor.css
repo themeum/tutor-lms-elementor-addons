@@ -1,3 +1,75 @@
-.etlms-course-level-up .tutor-course-level >div {
+.etlms-course-level-layout-up .tutor-course-level >div {
 	display: block;
 }
+
+.etlms-social{
+	display: flex;
+	justify-content: flex-start;
+}
+.etlms-social-share-wrap .s_facebook{
+	color:#fff;
+	back:#fff;
+}
+.elementor-align-left .etlms-social{
+	justify-content: flex-start !important;
+}
+.elementor-align-center .etlms-social{
+	justify-content: center !important;
+}
+.elementor-align-right .etlms-social{
+	justify-content: flex-end;
+}
+.etlms-social-share-wrap >button{
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: var(--tutor-light-color);
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    padding: 0 4px;
+    cursor: pointer;
+} 
+
+.etlms-social-share-wrap .s_facebook i{
+	color:#fff;
+	background-color: #3b5998;
+}
+.etlms-social-share-wrap .s_twitter i{
+	color:#fff;
+	background-color: #1da1f2;
+}
+.etlms-social-share-wrap .s_linkedin i{
+	color:#fff;
+	background-color: #0077b5;
+}
+.etlms-social-share-wrap .s_tumblr i{
+	color:#fff;
+	background-color: #000;
+}
+.etlms-share-btn i{
+	color: #fff;
+} 
+
+.etlms-social-icon-none .etlms-share-btn i{
+	background-color: transparent !important;
+
+}
+.etlms-social-icon-rounded .etlms-share-btn i{
+	width: 20px !important;
+	height: 20px !important;
+	padding:10px;
+	border-radius: 15% !important;
+}
+.etlms-social-icon-square .etlms-share-btn i{
+	width: 20px !important;
+	height: 20px !important;
+	padding:10px;
+	border-radius: 0px !important;
+}
+.etlms-social-icon-circle .etlms-share-btn i{
+	width: 20px !important;
+	height: 20px !important;
+	padding:10px;
+	border-radius: 50% !important;
+}
+

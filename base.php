@@ -55,6 +55,7 @@ class Base {
     }
 
     public function load_files() {
+        include_once(ETLMS_DIR_PATH . 'includes/addons/ETLMS_Trait.php');
         include_once(ETLMS_DIR_PATH . 'includes/functions.php');
         include_once(ETLMS_DIR_PATH . 'classes/Template.php');
         include_once(ETLMS_DIR_PATH . 'classes/AssetsManager.php');

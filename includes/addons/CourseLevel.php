@@ -13,6 +13,11 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseLevel extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_layout = "etlms-course-level-layout-";
+    private static $prefix_class_alignment = "elementor-align-";    
+
     public function get_title() {
         return __('Course Level', 'tutor-elementor-addons');
     }
@@ -30,49 +35,15 @@ class CourseLevel extends BaseAddon {
 
         $this->add_responsive_control(
             'course_level_layout',
-            [
-                'label' => __( 'Layout', 'tutor-elementor-addons' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => __( 'Left', 'tutor-elementor-addons' ),
-                        'icon' => 'fa fa-long-arrow-left',
-                    ],
-                    'up' => [
-                        'title' => __( 'Center', 'tutor-elementor-addons' ),
-                        'icon' => 'fa fa-long-arrow-up',
-                    ]
-
-                ],
-                'prefix_class' => 'etlms-course-level-%s',
-                'default' => 'left',
-                'toggle' => false
-            ]
+            //layout options
+            $this->etlms_layout()
         ); 
 
         //alignment    
         $this->add_responsive_control(
             'course_level_alignment',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-            ]
+            //alignment options
+            $this->etlms_alignment()
         );
 
         $this->add_responsive_control(
@@ -94,8 +65,8 @@ class CourseLevel extends BaseAddon {
                     'size' => 5,
                 ],
                 'selectors' => [
-                    '.etlms-course-level-up .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.etlms-course-level-left .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '.etlms-course-level-layout-up .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.etlms-course-level-layout-left .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
