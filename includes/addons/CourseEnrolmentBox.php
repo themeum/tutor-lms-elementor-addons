@@ -40,6 +40,69 @@ class CourseEnrolmentBox extends BaseAddon {
             ]
         );
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'course_enroll_button_section',
+            [
+                'label' => __('Button', 'tutor-elementor-addons'),
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_enroll_buttons_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'prefix_class' => 'elementor-align-%s',
+                'default'      => 'left',
+            ]
+        );
+
+        $this->add_control(
+            'course_enroll_buttons_size',
+            [
+                'label'   => __('Size', 'tutor-elementor-addons'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'small' => __('Small', 'tutor-elementor-addons'), 
+                    'medium' => __('Medium', 'tutor-elementor-addons'), 
+                    'large' => __('Large', 'tutor-elementor-addons'),
+                ],
+                'prefix_class' => 'course-enroll-buttons-size-%s',
+                'default' => 'medium',
+            ]
+        );
+
+        $this->add_control(
+            'course_enroll_buttons_width',
+            [
+                'label'   => __('Width', 'tutor-elementor-addons'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'auto' => __('Auto', 'tutor-elementor-addons'), 
+                    'fill' => __('Fill', 'tutor-elementor-addons'), 
+                    'fixed' => __('Fixed', 'tutor-elementor-addons'),
+                ],
+                'prefix_class' => 'course-enroll-buttons-width-%s',
+                'default' => 'medium',
+            ]
+        );
+
+        $this->end_controls_section();
     }
     
     protected function register_style_controls() {
