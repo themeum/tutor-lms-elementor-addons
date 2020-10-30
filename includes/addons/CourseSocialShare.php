@@ -53,7 +53,7 @@ class CourseSocialShare extends BaseAddon {
         );
 
         $this->add_control(
-            'share_layout',
+            'course_share_alignment',
             $this->etlms_alignment()
         );
 

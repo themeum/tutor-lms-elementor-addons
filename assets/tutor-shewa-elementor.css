@@ -1,7 +1,9 @@
-.etlms-course-level-layout-up .tutor-course-level >div {
+/*course level*/
+.elementor-layout-up .tutor-course-level >div {
 	display: block;
 }
 
+/*social share*/
 .etlms-social{
 	display: flex;
 	justify-content: flex-start;
@@ -73,3 +75,138 @@
 	border-radius: 50% !important;
 }
 
+/*course category css*/
+
+.elementor-layout-up .etlms-single-course-meta-categories a{
+	display: block;
+}
+.elementor-align-left .etlms-single-course-meta-categories
+{
+	text-align: left;
+}
+.elementor-align-right .etlms-single-course-meta-categories
+{
+	text-align: right;
+}
+.elementor-align-center .etlms-single-course-meta-categories
+{
+	text-align: center;
+}
+
+/*course duration */
+
+.elementor-layout-up .etmls-single-course-meta-duration >a{
+	display: block;
+}
+.elementor-align-left .etmls-single-course-meta-duration{
+	text-align: left;
+}
+.elementor-align-right .etmls-single-course-meta-duration{
+	text-align: right;
+}
+.elementor-align-center .etmls-single-course-meta-duration{
+	text-align: center;
+}
+/*tablet*/
+@media only screen and (max-width: 768px){
+
+	/*course level*/
+	.elementor-layout--tabletup .tutor-course-level >div {
+		display: block;
+	}	
+	.elementor-align--tabletleft .tutor-course-level{
+		text-align: left;
+	}	
+	.elementor-align--tabletright .tutor-course-level{
+		text-align: right;
+	}	
+	.elementor-align--tabletcenter .tutor-course-level{
+		text-align: center;
+	}		
+	/*course category*/
+
+	.elementor-layout--tabletup .etlms-single-course-meta-categories a{
+		display: block ;
+	}
+	.elementor-align--tabletleft .etlms-single-course-meta-categories
+	{
+		text-align: left;
+	}
+	.elementor-align--tabletright .etlms-single-course-meta-categories
+	{
+		text-align: right;
+	}
+	.elementor-align--tabletcenter .etlms-single-course-meta-categories
+	{
+		text-align: center;
+	}
+
+	/*course duration*/
+	
+	.elementor-layout--tabletup .etmls-single-course-meta-duration >a{
+		display: block;
+	}
+
+	.elementor-align--tabletleft .etmls-single-course-meta-duration{
+		text-align: left;
+	}
+	.elementor-align--tabletright .etmls-single-course-meta-duration{
+		text-align: right;
+	}
+	.elementor-align--tabletcenter .etmls-single-course-meta-duration{
+		text-align: center;
+	}	
+}
+
+/*mobile*/
+@media only screen and (max-width: 576px){
+	/*course level*/
+	.elementor-layout--mobileup .tutor-course-level >div {
+		display: block;
+	}	
+
+	.elementor-align--mobileleft .tutor-course-level{
+		text-align: left;
+	}	
+	.elementor-align--mobileright .tutor-course-level{
+		text-align: right;
+	}	
+	.elementor-align--mobilecenter .tutor-course-level{
+		text-align: center;
+	}	
+	/*course category*/
+
+	.elementor-layout--mobileleft .etlms-single-course-meta-categories a{
+		float: left;
+	}
+	.elementor-layout--mobileup .etmls-single-course-meta-duration li{
+		display: block;
+	}		
+	.elementor-align--mobileleft .etlms-single-course-meta-categories
+	{
+		text-align: left;
+	}
+	.elementor-align--mobileright .etlms-single-course-meta-categories
+	{
+		text-align: right;
+	}
+	.elementor-align--mobilecenter .etlms-single-course-meta-categories
+	{
+		text-align: center;
+	}
+	/*course duration*/
+	
+	.elementor-layout--mobileup .etmls-single-course-meta-duration >a{
+		display: block;
+	}
+
+	.elementor-align--mobileleft .etmls-single-course-meta-duration{
+		text-align: left;
+	}
+	.elementor-align--mobileright .etmls-single-course-meta-duration{
+		text-align: right;
+	}
+	.elementor-align--mobilecenter .etmls-single-course-meta-duration{
+		text-align: center;
+	}		
+}

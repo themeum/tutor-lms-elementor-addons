@@ -26,8 +26,9 @@ trait ETLMS_Trait{
                 ]
 
             ],
-            'prefix_class' => self::$prefix_class_layout,
+            'prefix_class' => self::$prefix_class_layout.'%s',
             'default' => $default_layout,
+
             'toggle' => false
         ];
 	}
@@ -57,7 +58,7 @@ trait ETLMS_Trait{
 		            'icon'  => 'fa fa-align-right',
 		        ],
 		    ],
-		    'prefix_class' => self::$prefix_class_alignment,
+		    'prefix_class' => self::$prefix_class_alignment.'%s',
 		    'default'      => $default_alignment,				
 		];	
 	}	

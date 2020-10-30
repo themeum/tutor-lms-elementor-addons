@@ -13,12 +13,70 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseDuration extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_layout = "elementor-layout-";
+
+    private static $prefix_class_alignment = "elementor-align-";
+
     public function get_title() {
         return __('Course Duration', 'tutor-elementor-addons');
     }
-    
+
+    //content section
+    protected function register_content_controls(){
+        //layout 
+        $this->start_controls_section(
+           'course_duration_content_settings',
+            [
+                'label' => __( 'General Settings', 'tutor-elementor-addons' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+                
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_duration_layout',
+            //layout options
+            $this->etlms_layout()
+        ); 
+        $this->add_responsive_control(
+            'course_duration_alignment',
+        //alignment    
+            $this->etlms_alignment()
+        );
+
+        $duration_spacing = is_rtl() ? 'margin-left: {{SIZE}}{{UNIT}};' : 'margin-right: {{SIZE}}{{UNIT}};';
+
+
+        $this->add_responsive_control(
+            'course_category_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 300,
+                       
+                    ]
+
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 13,
+                ],
+                'selectors' => [
+                    '.elementor-layout-left .etmls-single-course-meta-duration a:not(:last-child)' => $duration_spacing,                    
+                    '.elementor-layout-up .etmls-single-course-meta-duration a:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );        
+        $this->end_controls_section();
+    }    
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-single-course-meta-duration';
+        $selector = '.etmls-single-course-meta-duration a';
         $this->start_controls_section(
             'course_duration_section',
             [
@@ -44,29 +102,7 @@ class CourseDuration extends BaseAddon {
                 'selector'  => $selector,
             ]
         );
-        $this->add_responsive_control(
-            'course_duration_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-            ]
-        );
+
         $this->end_controls_section();
     }
 
@@ -79,8 +115,9 @@ class CourseDuration extends BaseAddon {
                 $course_duration = get_tutor_course_duration_context();
             }
             if(!empty($course_duration)) {
-                $markup = '<div class="tutor-single-course-meta-duration">';
-                $markup .= $course_duration;
+                $markup = '<div class="etmls-single-course-meta-duration">';
+                $markup .= '<a>Duration </a>';
+                $markup .= '<a>'.$course_duration.'</a>';
                 $markup .= '</div>';
                 echo $markup;
             }

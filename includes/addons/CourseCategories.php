@@ -13,10 +13,68 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseCategories extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_layout = "elementor-layout-";
+
+    private static $prefix_class_alignment = "elementor-align-"; 
+
     public function get_title() {
         return __('Course Categories', 'tutor-elementor-addons');
     }
-    
+    //content section
+    protected function register_content_controls(){
+        //layout 
+        $this->start_controls_section(
+           'course_category_content_settings',
+            [
+                'label' => __( 'General Settings', 'tutor-elementor-addons' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+                
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_category_layout',
+            //layout options
+            $this->etlms_layout()
+        ); 
+        $this->add_responsive_control(
+            'course_category_alignment',
+        //alignment    
+            $this->etlms_alignment()
+        );
+
+        $category_spacing = is_rtl() ? 'margin-left: {{SIZE}}{{UNIT}};' : 'margin-right: {{SIZE}}{{UNIT}};';
+
+
+        $this->add_responsive_control(
+            'course_category_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 300,
+                       
+                    ]
+
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 13,
+                ],
+                'selectors' => [
+                    '.elementor-layout-left .etlms-single-course-meta-categories a:not(:last-child)' => $category_spacing,                    
+                    '.elementor-layout-up .etlms-single-course-meta-categories a:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );        
+        $this->end_controls_section();
+    }
+
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .tutor-single-course-meta-categories a';
         $this->start_controls_section(
@@ -93,7 +151,8 @@ class CourseCategories extends BaseAddon {
             $course_categories = get_tutor_course_categories();
         }
         if (is_array($course_categories) && count($course_categories)) {
-            $markup = '<div class="tutor-single-course-meta-categories">';
+            //$markup = '<div class="tutor-single-course-meta-categories">';
+            $markup = '<div class="etlms-single-course-meta-categories">';
                 foreach ($course_categories as $course_category) {
                     $category_name = $course_category->name;
                     $category_link = get_term_link($course_category->term_id);

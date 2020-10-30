@@ -15,7 +15,7 @@ class CourseLevel extends BaseAddon {
 
     use ETLMS_Trait;
 
-    private static $prefix_class_layout = "etlms-course-level-layout-";
+    private static $prefix_class_layout = "elementor-layout-";
 
     private static $prefix_class_alignment = "elementor-align-";    
 
@@ -56,7 +56,7 @@ class CourseLevel extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 50,
+                        'max' => 300,
                        
                     ]
 
@@ -66,8 +66,8 @@ class CourseLevel extends BaseAddon {
                     'size' => 5,
                 ],
                 'selectors' => [
-                    '.etlms-course-level-layout-up .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.etlms-course-level-layout-left .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '.elementor-layout-up .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout-left .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -92,8 +92,8 @@ class CourseLevel extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$selector.' strong' => 'color: {{VALUE}}',
-				],
+                    $selector.' strong' => 'color: {{VALUE}}',
+                ],
             ]
         );
         $this->add_group_control(
@@ -120,8 +120,8 @@ class CourseLevel extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$selector => 'color: {{VALUE}}',
-				],
+                    $selector => 'color: {{VALUE}}',
+                ],
             ]
         );
         $this->add_group_control(
