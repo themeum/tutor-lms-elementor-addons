@@ -16,6 +16,7 @@ class CourseLevel extends BaseAddon {
     use ETLMS_Trait;
 
     private static $prefix_class_layout = "etlms-course-level-layout-";
+
     private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
@@ -28,7 +29,7 @@ class CourseLevel extends BaseAddon {
            'course_level_layout_settings',
             [
                 'label' => __( 'General Settings', 'tutor-elementor-addons' ),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'tab' => Controls_Manager::TAB_CONTENT,
                 
             ]
         );
@@ -133,39 +134,6 @@ class CourseLevel extends BaseAddon {
         );
         $this->end_controls_section();
 
-
-        //Section Alignment
-        // $this->start_controls_section(
-        //     'course_level_alignment_section',
-        //     [
-        //         'label' => __('Alignment', 'tutor-elementor-addons'),
-        //         'tab' => Controls_Manager::TAB_STYLE,
-        //     ]
-        // );
-        // $this->add_responsive_control(
-        //     'course_level_align',
-        //     [
-        //         'label'        => __('Alignment', 'tutor-elementor-addons'),
-        //         'type'         => Controls_Manager::CHOOSE,
-        //         'options'      => [
-        //             'left'   => [
-        //                 'title' => __('Left', 'tutor-elementor-addons'),
-        //                 'icon'  => 'fa fa-align-left',
-        //             ],
-        //             'center' => [
-        //                 'title' => __('Center', 'tutor-elementor-addons'),
-        //                 'icon'  => 'fa fa-align-center',
-        //             ],
-        //             'right'  => [
-        //                 'title' => __('Right', 'tutor-elementor-addons'),
-        //                 'icon'  => 'fa fa-align-right',
-        //             ],
-        //         ],
-        //         'prefix_class' => 'elementor-align-%s',
-        //         'default'      => 'left',
-        //     ]
-        // );
-        // $this->end_controls_section();
     }
 
     protected function render($instance = []) {

@@ -21,7 +21,6 @@ class CourseSocialShare extends BaseAddon {
 
     private static $prefix_class_alignment = "elementor-align-";    
 
-
     public function get_title() {
         return __('Course Social Share', 'tutor-elementor-addons');
     }
@@ -32,7 +31,7 @@ class CourseSocialShare extends BaseAddon {
             'course_share_icon_content_section',
             [
                 'label' => __('Social Icons', 'tutor-elementor-addons'),
-                'type' => Controls_Manager::TAB_CONTENT
+                'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
 
@@ -101,7 +100,7 @@ class CourseSocialShare extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'content_typography',
-                'label' => __( 'Typography', 'plugin-domain' ),
+                'label' => __( 'Typography', 'tutor-elementor-addons' ),
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .etlms-social-label',
             ]
@@ -235,7 +234,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_share_border_radius',
             [
-                'label' => __( 'Border Radius', 'elementor' ),
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -257,7 +256,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_icon_hover_color',
             [
-                'label' => __( 'Icon Color', 'elementor' ),
+                'label' => __( 'Icon Color', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'condition' => [
@@ -272,7 +271,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_icon_shape_hover_color',
             [
-                'label' => __( 'Shape Color', 'elementor' ),
+                'label' => __( 'Shape Color', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'condition' => [
@@ -291,7 +290,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'hover_border_color',
             [
-                'label' => __( 'Border Color', 'elementor' ),
+                'label' => __( 'Border Color', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'condition' => [
