@@ -16,12 +16,35 @@ class CourseMaterials extends BaseAddon {
     public function get_title() {
         return __('Course Materials', 'tutor-elementor-addons');
     }
+
+    protected function register_content_controls() {
+		$this->start_controls_section(
+            'course_materials_content',
+            [
+                'label' => __('General Settings', 'tutor-elementor-addons'),
+            ]
+        );
+
+        $this->add_control(
+			'course_material_list_icon',
+			[
+				'label' => __('Icon', 'tutor-elementor-addons'),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-check',
+					'library' => 'solid',
+				],
+			]
+		);
+
+        $this->end_controls_section();
+	}
     
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-course-material-includes-wrap';
-        $title_selector = $selector.' h4.tutor-segment-title';
-        $content_selector = $selector.' .tutor-course-target-audience-items';
-        $icon_selector = $content_selector.' li:before';
+        $selector = '{{WRAPPER}} .etlms-course-specifications.etlms-course-materials';
+        $title_selector = $selector.' h3';
+        $content_selector = $selector.' .etlms-course-specification-items li';
+        $icon_selector = $content_selector.' i';
 
         /* Title Section */
         $this->start_controls_section(
@@ -143,9 +166,12 @@ class CourseMaterials extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        ob_start();
         $course = etlms_get_course();
         if ($course) {
-            tutor_course_material_includes_html();
+            $settings = $this->get_settings_for_display();
+            include_once etlms_get_template('course/materials');
         }
+        echo ob_get_clean();
     }
 }

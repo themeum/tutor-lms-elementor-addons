@@ -16,3 +16,30 @@
 .etlms-author-layout-up .tutor-single-course-author-name {
     display: block;
 }
+.elementor-widget-container .tutor-course-enrollment-box {
+    margin-bottom: 0;
+}
+.elementor-widget-container .tutor-course-enrolled-wrap {
+    padding: 10px 0;
+}
+.etlms-course-specifications h3 {
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 500;
+    margin-bottom: 13px;
+    color: #000;
+}
+.etlms-course-specifications ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.etlms-course-specifications ul li {
+    position: relative;
+    margin-bottom: 5px;
+    line-height: 30px;
+}
+.etlms-course-specifications ul li i {
+    color: var(--tutor-primary-color);
+    padding-right: 15px;
+}
