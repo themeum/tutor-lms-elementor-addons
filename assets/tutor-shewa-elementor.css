@@ -156,7 +156,9 @@
 	.elementor-layout--tabletup .etmls-single-course-meta-duration >a{
 		display: block;
 	}
-
+	.elementor-layout--tabletleft .etmls-single-course-meta-duration >a{
+		display: inline-block;
+	}
 	.elementor-align--tabletleft .etmls-single-course-meta-duration{
 		text-align: left;
 	}
@@ -210,6 +212,10 @@
 	
 	.elementor-layout--mobileup .etmls-single-course-meta-duration >a{
 		display: block;
+	}
+
+	.elementor-layout--mobileleft .etmls-single-course-meta-duration >a{
+		display: inline-block;
 	}
 
 	.elementor-align--mobileleft .etmls-single-course-meta-duration{

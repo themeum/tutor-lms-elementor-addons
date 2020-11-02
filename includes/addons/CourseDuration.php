@@ -69,7 +69,11 @@ class CourseDuration extends BaseAddon {
                 ],
                 'selectors' => [
                     '.elementor-layout-left .etmls-single-course-meta-duration a:not(:last-child)' => $duration_spacing,                    
-                    '.elementor-layout-up .etmls-single-course-meta-duration a:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                    '.elementor-layout-up .etmls-single-course-meta-duration a:first-child' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletleft .etmls-single-course-meta-duration a:not(:last-child)' => $duration_spacing,                    
+                    '.elementor-layout--tabletup .etmls-single-course-meta-duration a:first-child' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileleft .etmls-single-course-meta-duration a:not(:last-child)' => $duration_spacing,                    
+                    '.elementor-layout--mobileup .etmls-single-course-meta-duration a:first-child' => 'margin-bottom: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );        
