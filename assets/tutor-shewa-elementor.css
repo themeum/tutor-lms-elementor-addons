@@ -2,7 +2,7 @@
 .elementor-layout-up .tutor-course-level >div {
 	display: block;
 }
-.elementor-layout-left .tutor-course-level >div {
+.elementor-layout-left .tutor-course-level >div{
 	display: inline-block;
 }
 
@@ -110,6 +110,42 @@
 .elementor-align-center .etmls-single-course-meta-duration{
 	text-align: center;
 }
+
+/*course total enrollment and last update*/
+.elementor-layout-left .etlms-single-course-meta-total-enroll >a, 
+/*last update*/
+.elementor-layout-left .etlms-single-course-meta-last-update >a{
+	display: inline-block;
+}
+.elementor-layout-up .etlms-single-course-meta-total-enroll >a,
+/*last update*/
+.elementor-layout-up .etlms-single-course-meta-last-update >a{
+	display: block;
+}
+/*total enroll*/
+.elementor-align-left .etlms-single-course-meta-total-enroll,
+/*last update*/
+.elementor-layout-up .etlms-single-course-meta-last-update
+{
+	text-align: left;
+}
+/*total enroll*/
+.elementor-align-right .etlms-single-course-meta-total-enroll,
+.elementor-layout-up .etlms-single-course-meta-last-update
+{
+	text-align: right;
+}
+
+/*total enroll*/
+.elementor-align-center .etlms-single-course-meta-total-enroll,
+/*last update*/
+.elementor-layout-up .etlms-single-course-meta-last-update
+{
+	text-align: center;
+}
+
+/*last updated*/
+
 /*tablet*/
 @media only screen and (max-width: 768px){
 

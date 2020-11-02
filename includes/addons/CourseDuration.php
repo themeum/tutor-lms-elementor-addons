@@ -78,7 +78,8 @@ class CourseDuration extends BaseAddon {
             ]
         );        
         $this->end_controls_section();
-    }    
+    } 
+
     protected function register_style_controls() {
         $selector = '.etmls-single-course-meta-duration a';
         $this->start_controls_section(
@@ -120,7 +121,7 @@ class CourseDuration extends BaseAddon {
             }
             if(!empty($course_duration)) {
                 $markup = '<div class="etmls-single-course-meta-duration">';
-                $markup .= __('<a>Duration:</a>','tutor-elementor-addons');
+                $markup .= __('<a>Course Duration</a>','tutor-elementor-addons');
                 $markup .= '<a>'.$course_duration.'</a>';
                 $markup .= '</div>';
                 echo $markup;
