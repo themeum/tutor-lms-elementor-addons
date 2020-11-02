@@ -120,7 +120,7 @@ class CourseDuration extends BaseAddon {
             }
             if(!empty($course_duration)) {
                 $markup = '<div class="etmls-single-course-meta-duration">';
-                $markup .= '<a>Duration </a>';
+                $markup .= __('<a>Duration:</a>','tutor-elementor-addons');
                 $markup .= '<a>'.$course_duration.'</a>';
                 $markup .= '</div>';
                 echo $markup;
