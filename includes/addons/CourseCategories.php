@@ -68,7 +68,12 @@ class CourseCategories extends BaseAddon {
                 ],
                 'selectors' => [
                     '.elementor-layout-left .etlms-single-course-meta-categories a:not(:last-child)' => $category_spacing,                    
-                    '.elementor-layout-up .etlms-single-course-meta-categories a:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                    '.elementor-layout-up .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletleft .etlms-single-course-meta-categories a:not(:last-child)' => $category_spacing,
+
+                    '.elementor-layout--tabletup .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileleft .etlms-single-course-meta-categories a:not(:last-child)' => $category_spacing,                    
+                    '.elementor-layout--mobileup .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );        
