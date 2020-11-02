@@ -67,8 +67,12 @@ class CourseLevel extends BaseAddon {
                 ],
                 'selectors' => [
                     '.elementor-layout-up .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout-left .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',
-                ],
+                    '.elementor-layout-left .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletup .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletleft .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileup .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileleft .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};'
+                ]
             ]
         );
 
