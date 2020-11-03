@@ -25,6 +25,26 @@ class CourseMaterials extends BaseAddon {
             ]
         );
 
+        $this->add_responsive_control(
+            'course_material_layout',
+            [
+                'label'        => __('Layout', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'list'   => [
+                        'title' => __('List', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-list-ul',
+                    ],
+                    'inline' => [
+                        'title' => __('Inline', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-ellipsis-h',
+                    ],
+                ],
+                'prefix_class' => 'etlms-author-material-%s',
+                'default'      => 'list',
+            ]
+        );
+        
         $this->add_control(
 			'course_material_list_icon',
 			[
