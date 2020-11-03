@@ -143,7 +143,44 @@
 	border-radius: 50% !important;
 }
 
+/*progress bar*/
+.etlms-progress-bar-wrap{
+	position: relative;
+}
+.etlms-progress-bar {
+	width: 100%;
+	background-color: #eeeeee;
+	height: 25px;
+	border-radius:10px;
 
+}
+.etlms-progress-filled{
+	background-color: #66CD74;
+	height: 25px; 
+	border-radius: 10px;
+}
+.etlms-progress-outside{
+	display: flex;
+}
+
+.etlms-progress-ontop{
+	display: flex;
+	flex-direction: column-reverse;
+}
+.etlms-progress-inside .etlms-progress-percent{
+	position: absolute;
+	top: -5px;
+	left: 50%; 
+}
+.etlms-progress-outside .etlms-progress-percent{
+	margin:-5px 0 25px;
+}
+.etlms-progress-ontop 
+.etlms-progress-percent{
+	position: absolute;
+    left: 92%;
+    bottom: 25px;
+}
 /*tablet*/
 @media only screen and (max-width: 768px){
 
