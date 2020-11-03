@@ -39,7 +39,7 @@
 .etmls-single-course-meta-duration,
 .elementor-align-left 
 .etlms-single-course-meta-total-enroll,
-.elementor-layout-left 
+.elementor-align-left 
 .etlms-single-course-meta-last-update
 {
 	text-align: left;
@@ -52,7 +52,7 @@
 .etmls-single-course-meta-duration,
 .elementor-align-right 
 .etlms-single-course-meta-total-enroll,
-.elementor-layout-right 
+.elementor-align-right 
 .etlms-single-course-meta-last-update
 {
 	text-align: right;
@@ -64,7 +64,7 @@
 .etmls-single-course-meta-duration,
 .elementor-align-center 
 .etlms-single-course-meta-total-enroll,
-.elementor-layout-center 
+.elementor-align-center 
 .etlms-single-course-meta-last-update
 {
 	text-align: center;
@@ -81,10 +81,10 @@
 	back:#fff;
 }
 .elementor-align-left .etlms-social{
-	justify-content: flex-start !important;
+	justify-content: flex-start;
 }
 .elementor-align-center .etlms-social{
-	justify-content: center !important;
+	justify-content: center ;
 }
 .elementor-align-right .etlms-social{
 	justify-content: flex-end;
@@ -207,7 +207,19 @@
 	{
 		text-align: center;
 	}
-	
+
+	/*flext alignement*/
+
+	/*social share*/
+	.elementor-align--tabletleft .etlms-social{
+		justify-content: flex-start;
+	}	
+	.elementor-align--tabletright .etlms-social{
+		justify-content: flex-end;
+	}	
+	.elementor-align--tabletcenter .etlms-social{
+		justify-content: center;
+	}	
 }
 
 /*mobile*/
@@ -275,4 +287,15 @@
 		text-align: center;
 	}
 
+	/*flext alignement*/
+
+	.elementor-align--mobileleft .etlms-social{
+		justify-content: flex-start;
+	}	
+	.elementor-align--mobileright .etlms-social{
+		justify-content: flex-end;
+	}	
+	.elementor-align--mobilecenter .etlms-social{
+		justify-content: center;
+	}
 }

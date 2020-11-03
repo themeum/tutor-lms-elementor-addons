@@ -17,7 +17,7 @@ class CourseSocialShare extends BaseAddon {
 
     use ETLMS_Trait;
 
-    private static $prefix_class_layout = "etlms-course-social-share-";
+    private static $prefix_class_layout = "elementor-layout-";
 
     private static $prefix_class_alignment = "elementor-align-";    
 
@@ -52,7 +52,7 @@ class CourseSocialShare extends BaseAddon {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'course_share_alignment',
             $this->etlms_alignment()
         );
