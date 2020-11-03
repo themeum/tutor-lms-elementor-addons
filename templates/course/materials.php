@@ -18,7 +18,7 @@ if (is_array($materials) && count($materials)){
 			foreach ($materials as $material) {
 				echo "<li>";
 				Elementor\Icons_Manager::render_icon( $settings['course_material_list_icon'], [ 'aria-hidden' => 'true' ] );
-				echo "{$material}</li>";
+				echo "<span>{$material}</span></li>";
 			}
 			?>
 		</ul>
