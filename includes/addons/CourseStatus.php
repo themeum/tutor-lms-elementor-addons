@@ -118,7 +118,7 @@ class CourseStatus extends BaseAddon {
                 ],
                 'selectors' => [
 					$progress_bar_background => 'height: {{SIZE}}{{UNIT}}',
-                    $progress_bar_filled => 'height: {{SIZE}}{{UNIT}}',
+                    $progress_bar_filled => 'height: {{SIZE}}{{UNIT}}'
 				]
             ]
         );        
@@ -157,7 +157,7 @@ class CourseStatus extends BaseAddon {
             [
                 'label' => __( 'Progress Text', 'tutor-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
+                'separator' => 'after'
             ]
         );
 
@@ -168,8 +168,8 @@ class CourseStatus extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$progress_percent => 'color: {{VALUE}}',
-				],
+					$progress_percent => 'color: {{VALUE}}'
+				]
             ]
         );
 
@@ -178,7 +178,7 @@ class CourseStatus extends BaseAddon {
             [
                 'name'      => 'course_status_progress_text_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $progress_percent,
+                'selector'  => $progress_percent
             ]
         );
 
@@ -189,7 +189,7 @@ class CourseStatus extends BaseAddon {
             'course_status_title_section',
             [
                 'label' => __('Title Style', 'tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
+                'tab' => Controls_Manager::TAB_STYLE
             ]
         );
         $this->add_control(
@@ -198,8 +198,8 @@ class CourseStatus extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $title_selector => 'color: {{VALUE}}',
-                ],
+                    $title_selector => 'color: {{VALUE}}'
+                ]
             ]
         );
         $this->add_group_control(
