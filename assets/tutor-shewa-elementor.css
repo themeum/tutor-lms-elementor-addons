@@ -30,7 +30,7 @@
 	display: inline-block;
 }
 
-/*alignement css for: categories,duration,total enrollment,last update*/
+/*alignement css for: categories,duration,total enrollment,last update,course about*/
 
 /*left alignment*/
 .elementor-align-left 
@@ -40,7 +40,9 @@
 .elementor-align-left 
 .etlms-single-course-meta-total-enroll,
 .elementor-align-left 
-.etlms-single-course-meta-last-update
+.etlms-single-course-meta-last-update,
+.elementor-align-left
+.etlms-course-summery
 {
 	text-align: left;
 }
@@ -53,7 +55,9 @@
 .elementor-align-right 
 .etlms-single-course-meta-total-enroll,
 .elementor-align-right 
-.etlms-single-course-meta-last-update
+.etlms-single-course-meta-last-update,
+.elementor-align-right
+.etlms-course-summery
 {
 	text-align: right;
 }
@@ -65,11 +69,19 @@
 .elementor-align-center 
 .etlms-single-course-meta-total-enroll,
 .elementor-align-center 
-.etlms-single-course-meta-last-update
+.etlms-single-course-meta-last-update,
+.elementor-align-center,
+.etlms-course-summery
 {
 	text-align: center;
 }
 
+/*justify alignment*/
+.elementor-align-justify
+.etlms-course-summery
+{
+	text-align: justify;
+}
 
 /*social share*/
 .etlms-social{
@@ -184,7 +196,7 @@
 /*tablet*/
 @media only screen and (max-width: 768px){
 
-	/*layout css for :course level,categories,duration*/
+	/*layout css for :course level,categories,duration,course about*/
 
 	/*display block*/
 	.elementor-layout--tabletup 
@@ -209,7 +221,7 @@
 	}
 
 
-	/*alignment css for: course level,categories,duration*/
+	/*alignment css for: course level,categories,duration,course about*/
 
 	/*left alignment*/
 	.elementor-align--tabletleft 
@@ -217,7 +229,9 @@
 	.elementor-align--tabletleft 
 	.etlms-single-course-meta-categories,
 	.elementor-align--tabletleft 
-	.etmls-single-course-meta-duration
+	.etmls-single-course-meta-duration,
+	.elementor-align--tabletleft
+	.etlms-course-summery
 	{
 		text-align: left;
 	}
@@ -228,7 +242,9 @@
 	.elementor-align--tabletright 
 	.etlms-single-course-meta-categories,
 	.elementor-align--tabletright 
-	.etmls-single-course-meta-duration
+	.etmls-single-course-meta-duration,
+	.elementor-align--tabletright
+	.etlms-course-summery	
 	{
 		text-align: right;
 	}
@@ -240,11 +256,19 @@
 	.elementor-align--tabletcenter 
 	.etlms-single-course-meta-categories,
 	.elementor-align--tabletcenter
-	.etmls-single-course-meta-duration
+	.etmls-single-course-meta-duration,
+	.elementor-align--tabletcenter
+	.etlms-course-summery	
 	{
 		text-align: center;
 	}
 
+	/*justify alignment*/
+	.elementor-align--tabletjustify
+	.etlms-course-summery
+	{
+		text-align: justify;
+	}
 	/*flext alignement*/
 
 	/*social share*/
@@ -296,7 +320,9 @@
 	.elementor-align--mobileleft 
 	.etlms-single-course-meta-categories,
 	.elementor-align--mobileleft 
-	.etmls-single-course-meta-duration
+	.etmls-single-course-meta-duration,
+	.elementor-align--mobileleft
+	.etlms-course-summery	
 	{
 		text-align: left;
 	}
@@ -307,7 +333,9 @@
 	.elementor-align--mobileright 
 	.etlms-single-course-meta-categories,
 	.elementor-align--mobileright 
-	.etmls-single-course-meta-duration
+	.etmls-single-course-meta-duration,
+	.elementor-align--mobileright
+	.etlms-course-summery	
 	{
 		text-align: right;
 	}
@@ -319,11 +347,19 @@
 	.elementor-align--mobilecenter 
 	.etlms-single-course-meta-categories,
 	.elementor-align--mobilecenter
-	.etmls-single-course-meta-duration
+	.etmls-single-course-meta-duration,
+	.elementor-align--mobilecenter
+	.etlms-course-summery	
 	{
 		text-align: center;
 	}
 
+	/*justify alignment*/
+	.elementor-align--mobilejustify
+	.etlms-course-summery
+	{
+		text-align: justify;
+	}
 	/*flext alignement*/
 
 	.elementor-align--mobileleft .etlms-social{

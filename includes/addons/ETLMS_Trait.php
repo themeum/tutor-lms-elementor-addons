@@ -24,7 +24,7 @@ trait ETLMS_Trait{
                 ],
                 'up' => [
                     'title' => __( 'Center', 'tutor-elementor-addons' ),
-                    'icon' => 'fa fa-long-arrow-up',
+                    'icon' => 'fa fa-long-arrow-up'
                 ]
 
             ],
@@ -57,11 +57,40 @@ trait ETLMS_Trait{
 		        ],
 		        'right'  => [
 		            'title' => __('Right', 'tutor-elementor-addons'),
-		            'icon'  => 'fa fa-align-right',
-		        ],
+		            'icon'  => 'fa fa-align-right'
+		        ]
 		    ],
 		    'prefix_class' => self::$prefix_class_alignment.'%s',
 		    'default'      => $default_alignment,				
+		];	
+	}	
+
+	public function etlms_align_with_justify($default_alignment='left'){
+
+		return 
+		[
+		    'label'        => __('Alignment', 'tutor-elementor-addons'),
+		    'type'         => \Elementor\Controls_Manager::CHOOSE,
+		    'options'      => [
+		        'left'   => [
+		            'title' => __('Left', 'tutor-elementor-addons'),
+		            'icon'  => 'fa fa-align-left',
+		        ],
+		        'center' => [
+		            'title' => __('Center', 'tutor-elementor-addons'),
+		            'icon'  => 'fa fa-align-center',
+		        ],
+		        'right'  => [
+		            'title' => __('Right', 'tutor-elementor-addons'),
+		            'icon'  => 'fa fa-align-right'
+		        ],		        
+		        'justify'  => [
+		            'title' => __('Justified', 'tutor-elementor-addons'),
+		            'icon'  => 'fa fa-align-justify'
+		        ]
+		    ],
+		    'prefix_class' => self::$prefix_class_alignment.'%s',
+		    'default'      => $default_alignment				
 		];	
 	}
 
@@ -78,7 +107,7 @@ trait ETLMS_Trait{
                 ],
                 'up' => [
                     'title' => __( 'Center', 'tutor-elementor-addons' ),
-                    'icon' => 'fa fa-long-arrow-up',
+                    'icon' => 'fa fa-long-arrow-up'
                 ]
 
             ],
@@ -107,11 +136,11 @@ trait ETLMS_Trait{
 		        ],
 		        'right'  => [
 		            'title' => __('Right', 'tutor-elementor-addons'),
-		            'icon'  => 'fa fa-align-right',
-		        ],
+		            'icon'  => 'fa fa-align-right'
+		        ]
 		    ],
 		    'prefix_class' => self::$prefix_class_alignment,
-		    'default'      => $default_alignment,				
+		    'default'      => $default_alignment				
 		];	
 	}
 }
