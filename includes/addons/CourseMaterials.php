@@ -27,7 +27,7 @@ class CourseMaterials extends BaseAddon {
         );
 
         $this->add_responsive_control(
-            'course_material_layout',
+            'course_materials_layout',
             [
                 'label'        => __('Layout', 'tutor-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
@@ -41,13 +41,13 @@ class CourseMaterials extends BaseAddon {
                         'icon'  => 'fa fa-ellipsis-h',
                     ],
                 ],
-                'prefix_class' => 'etlms-author-material-%s',
+                'prefix_class' => 'etlms-author-specifications-%s',
                 'default'      => 'list',
             ]
         );
         
         $this->add_control(
-			'course_material_list_icon',
+			'course_materials_list_icon',
 			[
 				'label' => __('List Icon', 'tutor-elementor-addons'),
 				'type' => Controls_Manager::ICONS,
@@ -129,7 +129,7 @@ class CourseMaterials extends BaseAddon {
             ]
         );
         $this->add_responsive_control(
-            'course_material_space_between',
+            'course_materials_space_between',
             [
                 'label' => __( 'Space Between', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -189,7 +189,7 @@ class CourseMaterials extends BaseAddon {
         $this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
-				'name' => 'course_material_border',
+				'name' => 'course_materials_border',
 				'label' => __('Border', 'tutor-elementor-addons'),
 				'selector' => $list_selector,
 			]
@@ -292,12 +292,13 @@ class CourseMaterials extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        ob_start();
         $course = etlms_get_course();
         if ($course) {
+            ob_start();
             $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/materials');
+            $output = apply_filters('tutor_course/single/materials_includes', ob_get_clean());
+            echo $output;
         }
-        echo ob_get_clean();
     }
 }
