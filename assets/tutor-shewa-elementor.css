@@ -30,6 +30,7 @@
 	display: inline-block;
 }
 
+
 /*alignement css for: categories,duration,total enrollment,last update,course about*/
 
 /*left alignment*/
@@ -82,6 +83,59 @@
 {
 	text-align: justify;
 }
+
+/*course instructor*/
+/*flex layout instructors*/
+.etlms-single-instructor-wrap
+{
+	width: 100%;
+}
+.elementor-layout-left 
+.etlms-course-instructors-wrap
+{
+
+	display: flex;
+	flex-direction: row;
+	column-gap: 15px;
+}
+
+
+.elementor-layout-up 
+.etlms-course-instructors-wrap
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.etlms-single-instructor-bottom
+{
+	display: flex ;
+	column-gap: 15px;
+
+}
+
+.elemntor-align-left
+.etlms-single-instructor-bottom
+{
+	justify-content: flex-start;
+	column-gap: 15px
+}
+
+.elementor-align-right
+.etlms-single-instructor-bottom
+{
+	justify-content: flex-end ;
+	column-gap: 15px
+}
+
+.elementor-align-center
+.etlms-single-instructor-bottom
+{
+	justify-content: center !important;
+	column-gap: 15px
+}
+
+
 
 /*social share*/
 .etlms-social{
