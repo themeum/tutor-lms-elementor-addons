@@ -247,6 +247,57 @@
     left: 92%;
     bottom: 25px;
 }
+
+/*course curriculum */
+.etlms-course-title{
+	padding: 14px 20px;
+	cursor: pointer;	
+}
+#etlms-course-topic-icon{
+	margin-right: 5px;
+}
+
+/*course topics*/
+#topic-toggle{
+	background: #ccc;
+    color: #fff;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    display: inline-block;
+    line-height: 15px;
+    font-size: 15px;
+    border-radius: 50%;
+} 
+.etlms-topic-icon-align-left 
+.etlms-course-title > h4,
+.etlms-assignment-icon-align-left
+.etlms-course-assignment h5,
+.etlms-quiz-icon-align-left
+.etlms-course-quiz h5
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	column-gap: 3px;	
+}
+.etlms-topic-icon-align-right 
+.etlms-course-title > h4,
+.etlms-assignment-icon-align-right
+.etlms-course-assignment h5,
+.etlms-quiz-icon-align-right
+.etlms-course-quiz h5
+{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 8px;	
+}
+
+
+
 /*tablet*/
 @media only screen and (max-width: 768px){
 
@@ -335,6 +386,34 @@
 	.elementor-align--tabletcenter .etlms-social{
 		justify-content: center;
 	}	
+/*course topics*/
+	.etlms-topic-icon-align--tabletleft 
+	.etlms-course-title > h4,
+	.etlms-assignment-icon-align--tabletleft
+	.etlms-course-assignment h5,
+	.etlms-quiz-icon-align--tabletleft
+	.etlms-course-quiz h5
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		column-gap: 3px;	
+	}
+	.etlms-topic-icon-align--tabletright 
+	.etlms-course-title > h4,
+	.etlms-assignment-icon-align--tabletright
+	.etlms-course-assignment h5,
+	.etlms-quiz-icon-align--tabletright
+	.etlms-course-quiz h5
+	{
+	    display: flex;
+	    flex-direction: row-reverse;
+	    justify-content: flex-end;
+	    align-items: center;
+	    column-gap: 8px;	
+	}
+
 }
 
 /*mobile*/
@@ -425,4 +504,32 @@
 	.elementor-align--mobilecenter .etlms-social{
 		justify-content: center;
 	}
+	/*course topics*/
+	.etlms-topic-icon-align--mobileleft 
+	.etlms-course-title > h4,
+	.etlms-assignment-icon-align--mobileleft
+	.etlms-course-assignment h5,
+	.etlms-quiz-icon-align--mobileleft
+	.etlms-course-quiz h5
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		column-gap: 3px;	
+	}
+	.etlms-topic-icon-align--mobileright 
+	.etlms-course-title > h4,
+	.etlms-assignment-icon-align--mobileright
+	.etlms-course-assignment h5,
+	.etlms-quiz-icon-align--mobileright
+	.etlms-course-quiz h5
+	{
+	    display: flex;
+	    flex-direction: row-reverse;
+	    justify-content: flex-end;
+	    align-items: center;
+	    column-gap: 8px;	
+	}
+
 }

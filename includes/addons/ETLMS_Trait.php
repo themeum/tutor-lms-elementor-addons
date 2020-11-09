@@ -65,6 +65,32 @@ trait ETLMS_Trait{
 		];	
 	}	
 
+
+//icon left right alignment
+	public function etlms_icon_align($prefix_class,$default_layout='left'){
+
+        return    
+        [
+            'label' => __( 'Alignment', 'tutor-elementor-addons' ),
+            'type' => \Elementor\Controls_Manager::CHOOSE,
+            'options' => [
+                'left' => [
+                    'title' => __( 'Left', 'tutor-elementor-addons' ),
+                    'icon' => 'fa fa-long-arrow-left',
+                ],
+                'right' => [
+                    'title' => __( 'Right', 'tutor-elementor-addons' ),
+                    'icon' => 'fa fa-long-arrow-up'
+                ]
+
+            ],
+            'prefix_class' => $prefix_class.'%s',
+            'default' => $default_layout,
+
+            'toggle' => false
+        ];
+	}	
+	
 	public function etlms_align_with_justify($default_alignment='left'){
 
 		return 
