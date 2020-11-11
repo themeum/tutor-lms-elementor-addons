@@ -25,6 +25,16 @@ class AssetsManager {
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue_additional_scripts']);
         /* Editor Scripts */
         add_action('elementor/editor/before_enqueue_scripts', [__CLASS__, 'enqueue_editor_scripts']);
+
+
+         // Enqueue Scripts
+
+        add_action( 'elementor/frontend/after_register_scripts', [ __CLASS__, 'etlms_elementor_scripts' ] );
+
+        //Enqueue Styles
+        add_action( 'elementor/frontend/after_enqueue_styles', [ __CLASS__, 'etlms_elementor_styles' ] );
+
+
     }
 
     /**
@@ -45,7 +55,8 @@ class AssetsManager {
             null,
             //ETLMS_VERSION
             filemtime(ETLMS_DIR_PATH.'/assets/tutor-shewa-elementor.css')
-        );
+        );       
+
     }
 
     /**
@@ -58,6 +69,66 @@ class AssetsManager {
             ETLMS_ASSETS . 'tutor-elementor-icons.min.css',
             null,
             ETLMS_VERSION
+        );    
+    }
+
+    public static function etlms_elementor_styles(){
+
+        //Register FontAwesome for fallback
+        wp_register_style(
+            'font-awesome-5-all',
+            ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/all.min.css',
+            false,
+            '1.0.0'
         );
+
+        wp_register_style(
+            'font-awesome-4-shim',
+            ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/v4-shims.min.css',
+            false,
+            '1.0.0'
+        );
+
+        wp_enqueue_style(
+            'slick-css',
+            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css',
+            null,
+            ETLMS_VERSION
+        );        
+
+        wp_enqueue_style(
+            'slick-theme-css',
+            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css',
+            null,
+            ETLMS_VERSION
+        );  
+    } 
+    public static function etlms_elementor_scripts(){
+
+        wp_register_script( 'etlms-slick-library', 
+            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', 
+            array( 'jquery' ), 
+            '1.0.0', true ); 
+
+        wp_register_script (
+            'etlms-slick-slider',
+            ETLMS_ASSETS.'slick-slider.js',
+            array('etlms-slick-library'),
+            filemtime(ETLMS_DIR_PATH.'/assets/slick-slider.js'),
+            true
+        );        
+
+        wp_enqueue_script( 'etlms-slick-library');
+        wp_enqueue_script( 'etlms-slick-slider');
+
+        wp_register_script (
+            'course-topics',
+            ETLMS_ASSETS.'course-topics.js',
+            array('jquery'),
+            filemtime(ETLMS_DIR_PATH.'/assets/course-topics.js'),
+            true
+        );  
+
+        wp_enqueue_script('course-topics');
     }
 }

@@ -23,9 +23,9 @@ if(isset($settings)){
 	$settings['course_topic_active_icon'] ? $topic_active_icon = $settings['course_topic_active_icon'] : '';
 	$settings['course_topic_inactive_icon'] ? $topic_inactive_icon = $settings['course_topic_inactive_icon'] : '';
 
-	echo "<input type='hidden' id='etlms-course-topic-active' value='".$topic_active_icon[0]."'>";
-	echo "<input type='hidden' id='etlms-course-topic-inactive' value='".$topic_inactive_icon[0]."'>";
-
+	echo "<input type='hidden' id='etlms-course-topic-active' value='".$topic_active_icon."'>";
+	echo "<input type='hidden' id='etlms-course-topic-inactive' value='".$topic_inactive_icon."'>";
+	
 }
 
 ?>
@@ -68,7 +68,7 @@ $index++;
     <div class="etlms-course-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
         <h4> 
 
-			<i class="<?= $topic_active_icon[0]?>" id="etlms-course-topic-icon"></i> 
+			<i class="<?= $topic_active_icon?>" id="etlms-course-topic-icon"></i> 
 			<?php
 			the_title();
 			if($topic_summery) {
@@ -199,29 +199,5 @@ $topics->reset_postdata();
     </div>
 <?php } ?>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-	
-	$(document).ready(function(){
-		var active_icon = $("#etlms-course-topic-active").val();
-		var inactive_icon = $("#etlms-course-topic-inactive").val();
-	  	$(".etlms-course-title").click(function(){
-	  	
-	    $(".tutor-course-topic").toggleClass('etlms-topic-active');
-	    if($('.etlms-topic-active').length)
-	    {
-	    	$('#etlms-course-topic-icon').removeClass(active_icon).addClass(inactive_icon);
-	    }
-	    else
-	    {
-	    	$('#etlms-course-topic-icon').removeClass(inactive_icon).addClass(active_icon);
-	    }
-	    $(".tutor-course-lessons").animate({
-	    	height:'toggle'
-	    },'slow');
-	  });
-	});
-</script>	
 
 

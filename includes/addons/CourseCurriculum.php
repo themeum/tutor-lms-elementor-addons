@@ -24,6 +24,21 @@ class CourseCurriculum extends BaseAddon {
         return __('Course Curriculum', 'tutor-elementor-addons');
     }
 
+    public function get_style_depends()
+    {
+        return [
+            'font-awesome-5-all',
+            'font-awesome-4-shim',
+        ];
+    }
+
+    public function get_script_depends()
+    {
+        return [
+            'course-topics'
+        ];
+    }  
+      
     protected function register_content_controls(){
 
         $topic_icon_selector = ".elementor-widget-container .etlms-course-title  h4  i";
@@ -44,7 +59,7 @@ class CourseCurriculum extends BaseAddon {
             [
                 'label' => __('Topic Active Icon','tutor-elementor-addons'),
                 'type' => Controls_Manager::ICON,
-                'default' =>['fa fa-minus'],
+                'default' =>'fa fa-minus',
                 'label_block' => true,
             ]
         );         
@@ -54,7 +69,7 @@ class CourseCurriculum extends BaseAddon {
             [
                 'label' => __('Topic Inactive Icon','tutor-elementor-addons'),
                 'type' => Controls_Manager::ICON,
-                'default' =>['fa fa-plus'],
+                'default' =>'fa fa-plus',
                 'label_block' => true,
             ]
         );       
@@ -537,6 +552,7 @@ class CourseCurriculum extends BaseAddon {
                 ],
             ]
         );
+            $this->end_controls_tab();
             $this->end_controls_tabs();
 
         $this->end_controls_section();
@@ -704,6 +720,7 @@ class CourseCurriculum extends BaseAddon {
                 ],
             ]
         );
+        
         $this->add_responsive_control(
             'lesson_title_padding',
             [
