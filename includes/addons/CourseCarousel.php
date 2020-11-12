@@ -163,6 +163,7 @@ class CourseCarousel extends BaseAddon{
 				'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
+				
 			]
 		);	        
 

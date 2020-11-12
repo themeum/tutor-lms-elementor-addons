@@ -69,6 +69,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 <div class="tutor-loop-course-container">
 
 <!-- loop rating -->
+<?php if("yes" === $settings['course_carousel_rating_settings']):?>
 <div class="tutor-loop-rating-wrap">
     <?php
     $course_rating = tutor_utils()->get_course_rating();
@@ -83,7 +84,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         ?>
     </span>
 </div>
-
+<?php endif;?>
 <!-- loop title -->
 <div class="tutor-course-loop-title">
     <h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -121,13 +122,15 @@ $profile_url = tutor_utils()->profile_url($authordata->ID);
 
 
 <div class="tutor-loop-author">
+    <?php if("yes"===$settings['course_carousel_avatar_settings']):?>
     <div class="tutor-single-course-avatar">
         <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
     </div>
+    <?php endif;?>
     <div class="tutor-single-course-author-name">
         <span><?php _e('by', 'tutor'); ?></span>
         <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
-    </div>
+    </Pdiv>
 
     <div class="tutor-course-lising-category">
         <?php
