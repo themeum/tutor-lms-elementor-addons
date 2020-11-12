@@ -93,8 +93,11 @@ class CourseCarousel extends BaseAddon{
 			Group_Control_Image_Size::get_type(),
 			[
 				'name' => 'course_carousel_image_size', // Actually its `image_size`.
-				'label' => __( 'Image Size', 'elementor' ),
-				
+				'label' => __( 'Image Size', 'tutor-elementor-addons' ),
+				'default' => 'medium',
+				'condition'=>[
+					'course_carousel_image' => 'yes'
+				]
 			]
 		);
 
@@ -106,10 +109,18 @@ class CourseCarousel extends BaseAddon{
 				'size_units' => ['%'],
 				'range' => [
 					'%'=> [
-						'min' => 0,
-						'max' => 5
+						'min' => 0.00,
+						'max' => 1.00,
+
 					]
-				]
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 0.66,
+				],				
+				'condition'=>[
+					'course_carousel_image' => 'yes'
+				]				
 			]
 		);		
 

@@ -3,7 +3,9 @@ jQuery(window).on('elementor/frontend/init', function(){
 
  
     elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-carousel.default',function ($scope, $) {
- 
+      var etlms_desktop_view = 3;
+      var etlms_tablet_view = 2;
+      var etlms_mobile_view = 1;
       var carousel_arrows = $scope.find("#etlms_carousel_settings").attr('arrows');
 
       var carousel_dots = $scope.find("#etlms_carousel_settings").attr('dots');
@@ -24,8 +26,12 @@ jQuery(window).on('elementor/frontend/init', function(){
 
       var carousel_pause_on_interaction = $scope.find("#etlms_carousel_settings").attr('pause_on_interaction');
 
+      // etlms_desktop_view = $scope.find("#etlms_desktop_view").val();
 
-
+      // etlms_tablet_view =  $scope.find("#etlms_tablet_view").val();
+      // etlms_mobile_view =  $scope.find("#etlms_mobile_view").val();
+     
+      
       carousel_arrows =='yes' ? carousel_arrows = true : carousel_arrows = false;
 
       carousel_dots =='yes' ? carousel_dots = true : carousel_dots = false;
@@ -44,11 +50,7 @@ jQuery(window).on('elementor/frontend/init', function(){
 
       carousel_pause_on_interaction =='yes' ? carousel_pause_on_interaction = true : carousel_pause_on_interaction = false;
 
-      // var carousel_column = $scope.find("#etlms_carousel_settings").attr('column');
-
-      // var carousel_column_tablet =  $scope.find("#etlms_carousel_settings").attr('column_tablet');
-      // var carousel_column_mobile =  $scope.find("#etlms_carousel_settings").attr('column_mobile');
-
+ 
       $scope.find('#etlms-slick-responsive').slick({
         dots: carousel_dots,
         arrows:carousel_arrows,
@@ -62,13 +64,13 @@ jQuery(window).on('elementor/frontend/init', function(){
         //ineraction
         pauseOnFocus : carousel_pause_on_interaction,
         cssEase: smooth_scroll,
-        slidesToShow: 3,
+        slidesToShow: etlms_desktop_view,
         slidesToScroll: 3,
         responsive: [
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: etlms_tablet_view,
               slidesToScroll: 3,
               infinite: true,
               dots: true
@@ -77,8 +79,8 @@ jQuery(window).on('elementor/frontend/init', function(){
           {
             breakpoint: 576,
             settings: {
-              slidesToShow: 1,
-              slidesToScroll: 2
+              slidesToShow: etlms_mobile_view,
+              slidesToScroll: 1
             }
           }
           // {

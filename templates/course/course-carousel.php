@@ -1,5 +1,4 @@
 
-
 <div class="<?php tutor_container_classes(); ?>">
 
 <!--loading course init-->
@@ -40,8 +39,19 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 ?>
 <!-- header -->
 <div class="tutor-course-header">
+    <?php 
+        $custom_image_size = $settings['course_carousel_image_size_size'];
+    ?>
+    <a href="<?php the_permalink(); ?>"> 
+        <?php
+            if("yes" === $settings['course_carousel_image']){
+
+                get_tutor_course_thumbnail($custom_image_size);
+            }
+        ?> 
+    </a>    
     <?php
-    tutor_course_loop_thumbnail();
+    //tutor_course_loop_thumbnail();
 
     $course_id = get_the_ID();
     ?>
@@ -59,9 +69,14 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         }else{
             $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
         }
+        if("yes" === $settings['course_carousel_difficulty_settings']){
+            echo '<span class="tutor-course-loop-level">'.get_tutor_course_level().'</span>';
+        }
+        if("yes" === $settings['course_carousel_wishlist_settings']){
+            echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line '.$action_class.' '.$has_wish_list.' " data-course-id="'.$course_id.'"></a> </span>';    
+        }
 
-        echo '<span class="tutor-course-loop-level">'.get_tutor_course_level().'</span>';
-        echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line '.$action_class.' '.$has_wish_list.' " data-course-id="'.$course_id.'"></a> </span>';
+        
         ?>
     </div>
 </div>
@@ -122,27 +137,30 @@ $profile_url = tutor_utils()->profile_url($authordata->ID);
 
 
 <div class="tutor-loop-author">
-    <?php if("yes"===$settings['course_carousel_avatar_settings']):?>
     <div class="tutor-single-course-avatar">
+        <?php if("yes" === $settings['course_carousel_avatar_settings']):?>
         <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
+        <?php endif;?>
     </div>
-    <?php endif;?>
     <div class="tutor-single-course-author-name">
         <span><?php _e('by', 'tutor'); ?></span>
         <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
-    </Pdiv>
+    </div>
 
     <div class="tutor-course-lising-category">
         <?php
-        $course_categories = get_tutor_course_categories();
-        if(!empty($course_categories) && is_array($course_categories ) && count($course_categories)){
-            ?>
-            <span><?php esc_html_e('In', 'tutor') ?></span>
-            <?php
-            foreach ($course_categories as $course_category){
-                $category_name = $course_category->name;
-                $category_link = get_term_link($course_category->term_id);
-                echo "<a href='$category_link'>$category_name </a>";
+        if("yes" === $settings['course_carousel_category_settings']){
+
+            $course_categories = get_tutor_course_categories();
+            if(!empty($course_categories) && is_array($course_categories ) && count($course_categories)){
+                ?>
+                <span><?php esc_html_e('In', 'tutor') ?></span>
+                <?php
+                foreach ($course_categories as $course_category){
+                    $category_name = $course_category->name;
+                    $category_link = get_term_link($course_category->term_id);
+                    echo "<a href='$category_link'>$category_name </a>";
+                }
             }
         }
         ?>
@@ -153,9 +171,11 @@ $profile_url = tutor_utils()->profile_url($authordata->ID);
 </div>
 
 <!-- loop footer -->
+<?php if("yes" === $settings['course_carousel_footer_settings']):?>
 <div class="tutor-loop-course-footer">
     <?php  tutor_course_loop_price(); ?>
 </div>
+<?php endif;?>
 <!-- slick-slider-main-wrapper -->
 
             <?php
@@ -232,8 +252,9 @@ if(isset($settings)){
 
 }
 ?>
-<div id="etlms_carousel_settings" column_mobile="<?= $carousel_column_mobile?>" column_tablet="<?= $carousel_column_tablet?>" column="<?= $carousel_column?>" arrows="<?= $carousel_arrows?>" dots="<?= $carousel_dots?>" transition="<?= $carousel_transition?>" center="<?= $carousel_center?>" smoth_scroll="<?= $carousel_smooth_scroll?>" auto_play="<?= $carousel_autoplay?>" auto_play_speed="<?= $carousel_autoplay_speed?>" infinite_loop="<?= $carousel_infinite_loop?>" pause_on_hover="<?= $carousel_pause_on_hover?>" pause_on_interaction="<?= $carousel_pause_on_interaction?>" >
-    
+<div id="etlms_carousel_settings" arrows="<?= $carousel_arrows?>" dots="<?= $carousel_dots?>" transition="<?= $carousel_transition?>" center="<?= $carousel_center?>" smoth_scroll="<?= $carousel_smooth_scroll?>" auto_play="<?= $carousel_autoplay?>" auto_play_speed="<?= $carousel_autoplay_speed?>" infinite_loop="<?= $carousel_infinite_loop?>" pause_on_hover="<?= $carousel_pause_on_hover?>" pause_on_interaction="<?= $carousel_pause_on_interaction?>" >
+ 
+
 </div>
 </div>
 
