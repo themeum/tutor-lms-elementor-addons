@@ -28,6 +28,7 @@ if (isset($settings)) {
 }
 ?>
 
+<?php do_action('tutor_course/single/before/topics'); ?>
 
 <?php if ($topics->have_posts()) { ?>
 	<div class="tutor-single-course-segment  tutor-course-topics-wrap">
@@ -195,3 +196,5 @@ if (isset($settings)) {
 		</div>
 	</div>
 <?php } ?>
+
+<?php do_action('tutor_course/single/after/topics'); ?>
