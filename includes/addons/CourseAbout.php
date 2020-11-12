@@ -13,13 +13,37 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseAbout extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_layout = "elementor-layout-";
+
+    private static $prefix_class_alignment = "elementor-align-"; 
+
     public function get_title() {
         return __('Course About', 'tutor-elementor-addons');
     }
+
+    protected function register_content_controls(){
+
+        $this->start_controls_section(
+            'course_about_content_section',
+            [
+                'label' => 'General Settings',
+                'tab' => Controls_Manager::TAB_CONTENT
+            ]
+        );
+                  
+        $this->add_responsive_control(
+            'course_about_align',
+            $this->etlms_align_with_justify()
+        );
+
+        $this->end_controls_section();
+    }
     
     protected function register_style_controls() {
-        $paragraph_selector = '{{WRAPPER}} .tutor-course-summery';
-        $heading_selector = $paragraph_selector.' .tutor-segment-title';
+        $paragraph_selector = '{{WRAPPER}} .etlms-course-excerpt';
+        $heading_selector = '{{WRAPPER}} .etlms-course-summery >h4';
 
         /* Heading Section */
         $this->start_controls_section(

@@ -139,6 +139,9 @@ class AddonsManager {
             ],
             'CourseReviews' => [
                 'title' => __('Course Reviews', 'tutor-elementor-addons'),
+            ],            
+            'CourseCarousel' => [
+                'title' => __('Course Carousel', 'tutor-elementor-addons'),
             ],
         ];
     }

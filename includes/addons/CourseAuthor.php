@@ -31,7 +31,7 @@ class CourseAuthor extends BaseAddon {
 			'course_author_picture',
 			[
 				'label' => __( 'Profile Picture', 'tutor-elementor-addons' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Show', 'tutor-elementor-addons' ),
 				'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
 				'return_value' => 'yes',
