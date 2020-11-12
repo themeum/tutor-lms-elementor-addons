@@ -458,6 +458,9 @@ class CourseCarousel extends BaseAddon{
 
 	protected function register_style_controls(){
 
+		$wrapper = "{{WRAPPER }}";
+		$card_selector = $wrapper.".tutor-course";
+
 		$this->start_controls_section(
 			'course_carousel_style_section',
 			[
@@ -472,7 +475,7 @@ class CourseCarousel extends BaseAddon{
                 'label'     => __('Background Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}}' => 'color: ',
+                    $card_selector => 'background-color: {{VALUE}}',
                 ],
             ]
         );         
