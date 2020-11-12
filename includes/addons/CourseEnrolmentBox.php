@@ -24,7 +24,7 @@ class CourseEnrolmentBox extends BaseAddon {
         $this->start_controls_section(
             'course_edit_mode_section',
             [
-                'label' => __('Edit Mode', 'tutor-elementor-addons'),
+                'label' => __('Preview Mode', 'tutor-elementor-addons'),
             ]
         );
         $this->add_control(
@@ -40,6 +40,94 @@ class CourseEnrolmentBox extends BaseAddon {
             ]
         );
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'course_enroll_button_section',
+            [
+                'label' => __('Button', 'tutor-elementor-addons'),
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_enroll_buttons_align',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right',
+                    ],
+                ],
+                'prefix_class' => 'course-enroll-buttons-align-',
+                'default'      => 'left',
+            ]
+        );
+
+        $this->add_control(
+            'course_enroll_buttons_size',
+            [
+                'label'   => __('Size', 'tutor-elementor-addons'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'small' => __('Small', 'tutor-elementor-addons'), 
+                    'medium' => __('Medium', 'tutor-elementor-addons'), 
+                    'large' => __('Large', 'tutor-elementor-addons'),
+                ],
+                'prefix_class' => 'course-enroll-buttons-size-',
+                'default' => 'medium',
+            ]
+        );
+
+        $this->add_control(
+            'course_enroll_buttons_width',
+            [
+                'label'   => __('Width', 'tutor-elementor-addons'),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    'auto' => __('Auto', 'tutor-elementor-addons'), 
+                    'fill' => __('Fill', 'tutor-elementor-addons'), 
+                    'fixed' => __('Fixed', 'tutor-elementor-addons'),
+                ],
+                'prefix_class' => 'course-enroll-buttons-width-',
+                'default' => 'fill',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_enroll_buttons_fixed_width',
+            [
+                'label' => __( 'Fixed Width', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 50,
+                        'max' => 400,
+                    ],
+                ],
+                'default' => [
+					'unit' => 'px',
+					'size' => 160,
+				],
+                'condition' => [
+                    'course_enroll_buttons_width' => 'fixed'
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} button, {{WRAPPER}} .tutor-button' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
     
     protected function register_style_controls() {
@@ -53,6 +141,7 @@ class CourseEnrolmentBox extends BaseAddon {
             [
                 'label' => __( 'Add to Cart Button', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => ['course_enrolment_edit_mode' => 'enrolment_box'],
             ]
         );
         /* Start Tabs */
@@ -67,10 +156,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'add_to_cart_btn_normal_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $add_to_cart_btn_selector => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'add_to_cart_btn_normal_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $add_to_cart_btn_selector => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -83,16 +182,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'add_to_cart_btn_normal_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $add_to_cart_btn_selector => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'add_to_cart_btn_normal_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -100,17 +189,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $add_to_cart_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'add_to_cart_btn_normal_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $add_to_cart_btn_selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -153,10 +231,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'add_to_cart_btn_hover_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $add_to_cart_btn_selector_hover => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'add_to_cart_btn_hover_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $add_to_cart_btn_selector_hover => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -169,16 +257,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'add_to_cart_btn_hover_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $add_to_cart_btn_selector_hover => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'add_to_cart_btn_hover_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -186,17 +264,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $add_to_cart_btn_selector_hover => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'add_to_cart_btn_hover_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $add_to_cart_btn_selector_hover => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -238,6 +305,7 @@ class CourseEnrolmentBox extends BaseAddon {
             [
                 'label' => __( 'Enroll Button', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => ['course_enrolment_edit_mode' => 'enrolment_box'],
             ]
         );
         /* Start Tabs */
@@ -253,10 +321,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'enroll_btn_normal_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $enroll_btn_selector => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'enroll_btn_normal_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $enroll_btn_selector => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -269,16 +347,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'enroll_btn_normal_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $enroll_btn_selector => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'enroll_btn_normal_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -286,17 +354,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $enroll_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'enroll_btn_normal_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $enroll_btn_selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -339,10 +396,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'enroll_btn_hover_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $enroll_btn_selector_hover => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'enroll_btn_hover_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $enroll_btn_selector_hover => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -355,16 +422,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'enroll_btn_hover_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $enroll_btn_selector_hover => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'enroll_btn_hover_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -372,17 +429,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $enroll_btn_selector_hover => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'enroll_btn_hover_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $enroll_btn_selector_hover => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -423,6 +469,7 @@ class CourseEnrolmentBox extends BaseAddon {
             [
                 'label' => __( 'Start/Continue Button', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
             ]
         );
         /* Start Tabs */
@@ -438,10 +485,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'start_btn_normal_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $start_btn_selector => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'start_btn_normal_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $start_btn_selector => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -454,16 +511,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'start_btn_normal_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $start_btn_selector => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'start_btn_normal_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -471,17 +518,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $start_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'start_btn_normal_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $start_btn_selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -524,10 +560,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'start_btn_hover_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $start_btn_selector_hover => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'start_btn_hover_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $start_btn_selector_hover => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -540,16 +586,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'start_btn_hover_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $start_btn_selector_hover => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'start_btn_hover_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -557,17 +593,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $start_btn_selector_hover => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'start_btn_hover_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $start_btn_selector_hover => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -608,6 +633,7 @@ class CourseEnrolmentBox extends BaseAddon {
             [
                 'label' => __( 'Complete Button', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
             ]
         );
         /* Start Tabs */
@@ -623,10 +649,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'complete_btn_normal_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $complete_btn_selector => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'complete_btn_normal_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $complete_btn_selector => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -639,16 +675,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'complete_btn_normal_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $complete_btn_selector => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'complete_btn_normal_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -656,17 +682,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $complete_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'complete_btn_normal_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $complete_btn_selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -709,10 +724,20 @@ class CourseEnrolmentBox extends BaseAddon {
                 $this->add_control(
                     'complete_btn_hover_color',
                     [
-                        'label'     => __( 'Color', 'tutor-elementor-addons' ),
+                        'label'     => __( 'Text Color', 'tutor-elementor-addons' ),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $complete_btn_selector_hover => 'color: {{VALUE}};',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'complete_btn_hover_background_color',
+                    [
+                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $complete_btn_selector_hover => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
@@ -725,16 +750,6 @@ class CourseEnrolmentBox extends BaseAddon {
                     )
                 );
                 $this->add_control(
-                    'complete_btn_hover_background_color',
-                    [
-                        'label' => __( 'Background Color', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            $complete_btn_selector_hover => 'background-color: {{VALUE}}',
-                        ],
-                    ]
-                );
-                $this->add_control(
                     'complete_btn_hover_padding',
                     [
                         'label' => __( 'Padding', 'tutor-elementor-addons' ),
@@ -742,17 +757,6 @@ class CourseEnrolmentBox extends BaseAddon {
                         'size_units' => [ 'px', 'em' ],
                         'selectors' => [
                             $complete_btn_selector_hover => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-                $this->add_control(
-                    'complete_btn_hover_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $complete_btn_selector_hover => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
                     ]
                 );
@@ -795,6 +799,7 @@ class CourseEnrolmentBox extends BaseAddon {
             [
                 'label' => __('Enrolled Info', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
             ]
         );
         $this->add_control(

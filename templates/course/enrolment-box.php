@@ -1,8 +1,3 @@
-<style>
-.tutor-course-enrollment-box {
-    margin-bottom: 20px;
-}
-</style>
 <div class="tutor-course-enrollment-box">
     <?php do_action('tutor_course/single/enroll_box/after_thumbnail'); ?>
 

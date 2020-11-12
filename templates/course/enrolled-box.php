@@ -1,24 +1,12 @@
 <?php
 global $wp_query;
 ?>
-<style>
-.tutor-course-enrollment-box {
-    margin-bottom: 20px;
-}
-.tutor-lead-info-btn-group {
-    margin: 0 -20px;
-    border-bottom: 0px;
-}
-.tutor-course-enrolled-wrap {
-    margin: 0 !important;
-}
-</style>
 <div class="tutor-course-enrollment-box">
     <div class="tutor-lead-info-btn-group">
 	    <?php do_action('tutor_course/single/actions_btn_group/before'); ?>
 
         <?php
-        if ( $wp_query->query['post_type'] !== 'lesson') {
+        if ( isset($wp_query->query['post_type']) && $wp_query->query['post_type'] !== 'lesson') {
             $lesson_url = tutor_utils()->get_course_first_lesson();
             $completed_lessons = tutor_utils()->get_completed_lesson_count_by_course();
             if ( $editor_mode || $lesson_url ) { ?>
