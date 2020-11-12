@@ -486,7 +486,7 @@ class CourseCarousel extends BaseAddon{
                 'label'     => __('Border Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}}' => 'color: ',
+                    $card_selector => ' border-color: {{VALUE}',
                 ],
             ]
         );         
@@ -509,7 +509,7 @@ class CourseCarousel extends BaseAddon{
                 	'size' => 0
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => 'color: ',
+                    $card_selector => 'border: {{SIZE}}{{UNIT}}',
                 ],
             ]
         ); 
@@ -521,7 +521,7 @@ class CourseCarousel extends BaseAddon{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}}' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
+                    $card_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
                     '
                 ],
             ]
@@ -534,7 +534,7 @@ class CourseCarousel extends BaseAddon{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}}' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
+                    $card_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
                     '
                 ],
             ]
