@@ -459,7 +459,7 @@ class CourseCarousel extends BaseAddon{
 	protected function register_style_controls(){
 
 		$wrapper = "{{WRAPPER }}";
-		$card_selector = $wrapper.".tutor-course";
+		$card_selector = $wrapper.".tutor-course .tutor-course-loop";
 
 		$this->start_controls_section(
 			'course_carousel_style_section',
@@ -509,7 +509,7 @@ class CourseCarousel extends BaseAddon{
                 	'size' => 0
                 ],
                 'selectors' => [
-                    $card_selector => 'border: {{SIZE}}{{UNIT}}',
+                    $card_selector => 'border: {{SIZE}}{{UNIT}} solid',
                 ],
             ]
         ); 
