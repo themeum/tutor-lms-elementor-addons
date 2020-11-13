@@ -468,6 +468,12 @@ class CourseCarousel extends BaseAddon{
 		$course_title_selector = $wrapper.".tutor-course-loop-title h2 a";
 		$meta_selector = $wrapper.".tutor-course-loop-meta";
 		$category_selector = $wrapper.".tutor-course-lising-category a";
+		$star_selector = $wrapper.".tutor-star-rating-group";
+		$star_text_selector = $wrapper.".tutor-rating-count";
+		$footer_selector = $wrapper.".tutor-loop-course-footer";
+		$price_selector = $wrapper.".price";
+		$cart_text_selector = $wrapper.".tutor-loop-cart-btn-wrap";
+		$cart_selector = $wrapper.".tutor-loop-cart-btn-wrap::before";
 
 
 		$this->start_controls_section(
@@ -1054,7 +1060,7 @@ class CourseCarousel extends BaseAddon{
                 'label'     => __('Star Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .etlms-course-title h4' => 'color: ',
+                    $star_selector => 'color: {{VALUE}};',
                 ],
             ]
         );                
@@ -1071,7 +1077,7 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    $star_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         ); 
@@ -1081,7 +1087,7 @@ class CourseCarousel extends BaseAddon{
             [
                 'name'      => 'course_carouse_rating__typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '{{WRAPPER}}',
+                'selector'  => $star_text_selector,
             ]
         );
 
@@ -1091,7 +1097,7 @@ class CourseCarousel extends BaseAddon{
                 'label'     => __('Text Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .etlms-course-title h4' => 'color: ',
+                    $star_text_selector => 'color: {{VALUE}};',
                 ],
             ]
         );                
@@ -1108,7 +1114,7 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}}' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    $star_text_selector => 'padding-left: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );         
@@ -1166,7 +1172,7 @@ class CourseCarousel extends BaseAddon{
             [
                 'name'      => 'course_carouse_price_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  =>' .tutor-segment-title',
+                'selector'  =>$price_selector,
             ]
         );
 
@@ -1176,7 +1182,7 @@ class CourseCarousel extends BaseAddon{
                 'label'     => __('Text Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}}'=> 'color: ',
+					$price_selector => 'color: {{VALUE}};',
 				],
 				'seperator' => 'after'
             ]
@@ -1195,7 +1201,7 @@ class CourseCarousel extends BaseAddon{
             [
                 'name'      => 'course_carousel_cart_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => '',
+                'selector'  => $cart_text_selector,
             ]
         );
 
@@ -1204,7 +1210,7 @@ class CourseCarousel extends BaseAddon{
 			[
 				'name' => 'course_carousel_cart_text_shadow',
 				'label' => __( 'Text Shadow', 'tutor-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .wrapper',
+				'selector' => $cart_text_selector,
 			]
 		);
 
