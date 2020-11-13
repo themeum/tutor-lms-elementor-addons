@@ -1,28 +1,38 @@
 
-<div class="<?php tutor_container_classes(); ?>">
+<div class="<?php tutor_container_classes(); ?> etlms-carousel-main-wrap">
 
 <!--loading course init-->
 <?php
-	$args = [
-		'post_type' => tutor()->course_post_type,
-		'post_status' => 'publish'
-	];
-	
+    $args = [
+        'post_type' => tutor()->course_post_type,
+        'post_status' => 'publish'
+    ];
+    
 // the query
 $the_query = new WP_Query( $args );
 
-	//wp_reset_postdata();
+    //wp_reset_postdata();
     //do_action('tutor_course/archive/before_loop');
 
     if ( $the_query->have_posts() ) :?>
 
-    <!-- loop start -->	
+    <!-- loop start --> 
 <?php
 $shortcode_arg = isset($GLOBALS['tutor_shortcode_arg']) ? $GLOBALS['tutor_shortcode_arg']['column_per_row'] : null;
 $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_per_row', 4 ) : $shortcode_arg;
 ?>  
-    <!-- loop start -->  
-	<div class="tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?>" id="etlms-slick-responsive">
+    <!-- loop start --> 
+    <?php 
+        $card_normal_shadow = '';
+        $card_hover_shadow = '';
+        if("yes" === $settings['course_coursel_box_shadow']){
+            $card_normal_shadow = "eltms-loop-course-normal-shadow";
+        }        
+        if("yes" === $settings['course_coursel_box_hover_shadow']){
+            $card_hover_shadow = "eltms-loop-course-hover-shadow";
+        }
+    ?> 
+    <div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?>" id="etlms-slick-responsive">
 
         <?php while ( $the_query->have_posts() ) : $the_query->the_post();
             /**
@@ -34,9 +44,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             ?>
 
 <!-- slick-slider-main-wrapper -->
-<?php 
-	//tutor_load_template('loop.course');
-?>
+
 <!-- header -->
 <div class="tutor-course-header">
     <?php 
@@ -252,10 +260,10 @@ if(isset($settings)){
 
 }
 ?>
-<div id="etlms_carousel_settings" arrows="<?= $carousel_arrows?>" dots="<?= $carousel_dots?>" transition="<?= $carousel_transition?>" center="<?= $carousel_center?>" smoth_scroll="<?= $carousel_smooth_scroll?>" auto_play="<?= $carousel_autoplay?>" auto_play_speed="<?= $carousel_autoplay_speed?>" infinite_loop="<?= $carousel_infinite_loop?>" pause_on_hover="<?= $carousel_pause_on_hover?>" pause_on_interaction="<?= $carousel_pause_on_interaction?>" >
- 
+    <div id="etlms_carousel_settings" arrows="<?= $carousel_arrows?>" dots="<?= $carousel_dots?>" transition="<?= $carousel_transition?>" center="<?= $carousel_center?>" smoth_scroll="<?= $carousel_smooth_scroll?>" auto_play="<?= $carousel_autoplay?>" auto_play_speed="<?= $carousel_autoplay_speed?>" infinite_loop="<?= $carousel_infinite_loop?>" pause_on_hover="<?= $carousel_pause_on_hover?>" pause_on_interaction="<?= $carousel_pause_on_interaction?>" >
+     
 
-</div>
+    </div>
 </div>
 
 

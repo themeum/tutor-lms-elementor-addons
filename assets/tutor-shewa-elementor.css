@@ -296,7 +296,20 @@
     column-gap: 8px;	
 }
 
-
+/*course carousel*/
+.tutor-course-loop{
+	box-shadow: 0px;
+}
+.eltms-loop-course-normal-shadow 
+.tutor-course-loop
+{
+	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
+}
+.eltms-loop-course-hover-shadow 
+.tutor-course-loop:hover
+{
+	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
+}
 
 /*tablet*/
 @media only screen and (max-width: 768px){
