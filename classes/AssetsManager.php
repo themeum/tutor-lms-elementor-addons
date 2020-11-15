@@ -107,7 +107,7 @@ class AssetsManager {
 
         wp_register_script( 'etlms-slick-library', 
             'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', 
-            array( 'jquery' ), 
+            array(  ), 
             '1.0.0', true ); 
 
         wp_register_script (

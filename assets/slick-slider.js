@@ -1,11 +1,15 @@
+'use strict';
 (function ($) {
 jQuery(window).on('elementor/frontend/init', function(){
 
  
     elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-carousel.default',function ($scope, $) {
-      var etlms_desktop_view = 3;
-      var etlms_tablet_view = 2;
-      var etlms_mobile_view = 1;
+      var desktop = $scope.find("#etlms_carousel_settings").attr('desktop');
+
+      var medium = $scope.find("#etlms_carousel_settings").attr('medium');
+
+      var mobile = $scope.find("#etlms_carousel_settings").attr('mobile');
+      
       var carousel_arrows = $scope.find("#etlms_carousel_settings").attr('arrows');
 
       var carousel_dots = $scope.find("#etlms_carousel_settings").attr('dots');
@@ -26,11 +30,6 @@ jQuery(window).on('elementor/frontend/init', function(){
 
       var carousel_pause_on_interaction = $scope.find("#etlms_carousel_settings").attr('pause_on_interaction');
 
-      // etlms_desktop_view = $scope.find("#etlms_desktop_view").val();
-
-      // etlms_tablet_view =  $scope.find("#etlms_tablet_view").val();
-      // etlms_mobile_view =  $scope.find("#etlms_mobile_view").val();
-     
       
       carousel_arrows =='yes' ? carousel_arrows = true : carousel_arrows = false;
 
@@ -64,14 +63,15 @@ jQuery(window).on('elementor/frontend/init', function(){
         //ineraction
         pauseOnFocus : carousel_pause_on_interaction,
         cssEase: smooth_scroll,
-        slidesToShow: etlms_desktop_view,
-        slidesToScroll: 3,
+        slidesToShow: desktop,
+        slidesPerRow: desktop,
+        slidesToScroll: 1,
         responsive: [
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: etlms_tablet_view,
-              slidesToScroll: 3,
+              slidesToShow: medium,
+              slidesToScroll: 1,
               infinite: true,
               dots: true
             }
@@ -79,7 +79,7 @@ jQuery(window).on('elementor/frontend/init', function(){
           {
             breakpoint: 576,
             settings: {
-              slidesToShow: etlms_mobile_view,
+              slidesToShow: mobile,
               slidesToScroll: 1
             }
           }

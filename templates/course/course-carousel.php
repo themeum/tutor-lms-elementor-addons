@@ -26,20 +26,21 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         $card_normal_shadow = '';
         $card_hover_shadow = '';
         if("yes" === $settings['course_coursel_box_shadow']){
-            $card_normal_shadow = "eltms-loop-course-normal-shadow";
-        }        
+            $card_normal_shadow = "etlms-loop-course-normal-shadow";
+        }   
+
         if("yes" === $settings['course_coursel_box_hover_shadow']){
-            $card_hover_shadow = "eltms-loop-course-hover-shadow";
+            $card_hover_shadow = "etlms-loop-course-hover-shadow";
+        }
+        else
+        {
+            $card_hover_shadow = "etlms-loop-course-hover-shadow-no";
         }
     ?> 
-    <div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?>" id="etlms-slick-responsive">
+    <div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-coursel-<?= $settings['course_carousel_skin']?>" id="etlms-slick-responsive">
 
         <?php while ( $the_query->have_posts() ) : $the_query->the_post();
-            /**
-             * @hook tutor_course/archive/before_loop_course
-             * @type action
-             * Usage Idea, you may keep a loop within a wrap, such as bootstrap col
-             */
+
             do_action('tutor_course/archive/before_loop_course');
             ?>
 
@@ -89,109 +90,107 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
     </div>
 </div>
 <!-- start loop content wrap -->
-<div class="tutor-loop-course-container">
+<div class="etlms-carousel-course-container">
+    <div class="tutor-loop-course-container">
 
-<!-- loop rating -->
-<?php if("yes" === $settings['course_carousel_rating_settings']):?>
-<div class="tutor-loop-rating-wrap">
-    <?php
-    $course_rating = tutor_utils()->get_course_rating();
-    tutor_utils()->star_rating_generator($course_rating->rating_avg);
-    ?>
-    <span class="tutor-rating-count">
+    <!-- loop rating -->
+    <?php if("yes" === $settings['course_carousel_rating_settings']):?>
+    <div class="tutor-loop-rating-wrap">
         <?php
-        if ($course_rating->rating_avg > 0) {
-            echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
-            echo '<i>(' . apply_filters('tutor_course_rating_count', $course_rating->rating_count) . ')</i>';
-        }
+        $course_rating = tutor_utils()->get_course_rating();
+        tutor_utils()->star_rating_generator($course_rating->rating_avg);
         ?>
-    </span>
-</div>
-<?php endif;?>
-<!-- loop title -->
-<div class="tutor-course-loop-title">
-    <h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
-</div>
+        <span class="tutor-rating-count">
+            <?php
+            if ($course_rating->rating_avg > 0) {
+                echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
+                echo '<i>(' . apply_filters('tutor_course_rating_count', $course_rating->rating_count) . ')</i>';
+            }
+            ?>
+        </span>
+    </div>
+    <?php endif;?>
+    <!-- loop title -->
+    <div class="tutor-course-loop-title">
+        <h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
+    </div>
 
-<!-- loop meta -->
-<?php
-/**
- * @package TutorLMS/Templates
- * @version 1.4.3
- */
-
-global $post, $authordata;
-
-$profile_url = tutor_utils()->profile_url($authordata->ID);
-?>
-
-
-
-<div class="tutor-course-loop-meta">
+    <!-- loop meta -->
     <?php
-    $course_duration = get_tutor_course_duration_context();
-    $course_students = tutor_utils()->count_enrolled_users_by_course();
+    /**
+     * @package TutorLMS/Templates
+     * @version 1.4.3
+     */
+
+    global $post, $authordata;
+
+    $profile_url = tutor_utils()->profile_url($authordata->ID);
     ?>
-    <div class="tutor-single-loop-meta">
-        <i class='tutor-icon-user'></i><span><?php echo $course_students; ?></span>
-    </div>
-    <?php
-    if(!empty($course_duration)) { ?>
-        <div class="tutor-single-loop-meta">
-            <i class='tutor-icon-clock'></i> <span><?php echo $course_duration; ?></span>
-        </div>
-    <?php } ?>
-</div>
 
 
-<div class="tutor-loop-author">
-    <div class="tutor-single-course-avatar">
-        <?php if("yes" === $settings['course_carousel_avatar_settings']):?>
-        <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
-        <?php endif;?>
-    </div>
-    <div class="tutor-single-course-author-name">
-        <span><?php _e('by', 'tutor'); ?></span>
-        <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
-    </div>
-
-    <div class="tutor-course-lising-category">
+    <?php if("yes" === $settings['course_carousel_meta_data']):?>
+    <div class="tutor-course-loop-meta">
         <?php
-        if("yes" === $settings['course_carousel_category_settings']){
+        $course_duration = get_tutor_course_duration_context();
+        $course_students = tutor_utils()->count_enrolled_users_by_course();
+        ?>
+        <div class="tutor-single-loop-meta">
+            <i class='tutor-icon-user'></i><span><?php echo $course_students; ?></span>
+        </div>
+        <?php
+        if(!empty($course_duration)) { ?>
+            <div class="tutor-single-loop-meta">
+                <i class='tutor-icon-clock'></i> <span><?php echo $course_duration; ?></span>
+            </div>
+        <?php } ?>
+    </div>
+    <?php endif;?>
 
-            $course_categories = get_tutor_course_categories();
-            if(!empty($course_categories) && is_array($course_categories ) && count($course_categories)){
-                ?>
-                <span><?php esc_html_e('In', 'tutor') ?></span>
-                <?php
-                foreach ($course_categories as $course_category){
-                    $category_name = $course_category->name;
-                    $category_link = get_term_link($course_category->term_id);
-                    echo "<a href='$category_link'>$category_name </a>";
+    <div class="tutor-loop-author">
+        <div class="tutor-single-course-avatar">
+            <?php if("yes" === $settings['course_carousel_avatar_settings']):?>
+            <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
+            <?php endif;?>
+        </div>
+        <div class="tutor-single-course-author-name">
+            <span><?php _e('by', 'tutor'); ?></span>
+            <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
+        </div>
+
+        <div class="tutor-course-lising-category">
+            <?php
+            if("yes" === $settings['course_carousel_category_settings']){
+
+                $course_categories = get_tutor_course_categories();
+                if(!empty($course_categories) && is_array($course_categories ) && count($course_categories)){
+                    ?>
+                    <span><?php esc_html_e('In', 'tutor') ?></span>
+                    <?php
+                    foreach ($course_categories as $course_category){
+                        $category_name = $course_category->name;
+                        $category_link = get_term_link($course_category->term_id);
+                        echo "<a href='$category_link'>$category_name </a>";
+                    }
                 }
             }
-        }
-        ?>
+            ?>
+        </div>
     </div>
-</div>
 
-<!-- end content wrap -->
-</div>
+    <!-- end content wrap -->
+    </div>
 
-<!-- loop footer -->
-<?php if("yes" === $settings['course_carousel_footer_settings']):?>
-<div class="tutor-loop-course-footer">
-    <?php  tutor_course_loop_price(); ?>
-</div>
+    <!-- loop footer -->
+    <?php if("yes" === $settings['course_carousel_footer_settings']):?>
+    <div class="tutor-loop-course-footer">
+        <?php  tutor_course_loop_price(); ?>
+    </div>    
+</div>  <!-- etlms-course-container -->
 <?php endif;?>
 <!-- slick-slider-main-wrapper -->
 
             <?php
-            /**
-             * @hook tutor_course/archive/after_loop_course
-             * @type action
-             * Usage Idea, If you start any div before course loop, you can end it here, such as </div>
-             */
+
             do_action('tutor_course/archive/after_loop_course');
         endwhile;
         ?>
@@ -232,11 +231,14 @@ $carousel_pause_on_interaction = 'yes';
 
 if(isset($settings)){
 
-    isset($settings['course_carousel_column']) ? $carousel_column = $settings['course_carousel_column'] : '';
+    $settings['etlms_course_carousel_column'] != '' ? $carousel_column =  $settings['etlms_course_carousel_column'] : '';
 
-    isset($settings['course_carousel_column_tablet']) ? $carousel_column_tablet = $settings['course_carousel_column_tablet'] : '';
+    $settings['etlms_course_carousel_column_tablet'] != '' ? $carousel_column_tablet =  $settings['etlms_course_carousel_column_tablet'] : '';
 
-    isset($settings['course_carousel_tablet']) ? $carousel_column_tablet = $settings['course_carousel_tablet'] : '';
+    $settings['etlms_course_carousel_column_mobile'] != '' ? $carousel_column_mobile =  $settings['etlms_course_carousel_column_mobile'] : '';
+
+
+    isset($settings['course_carousel_column_mobile']) ? $carousel_column_mobile = $settings['course_carousel_column_mobile'] : '';
 
     $settings['course_carousel_settings_arrows'] =='yes' ? '' : $carousel_arrows = 'no';
 
@@ -260,7 +262,7 @@ if(isset($settings)){
 
 }
 ?>
-    <div id="etlms_carousel_settings" arrows="<?= $carousel_arrows?>" dots="<?= $carousel_dots?>" transition="<?= $carousel_transition?>" center="<?= $carousel_center?>" smoth_scroll="<?= $carousel_smooth_scroll?>" auto_play="<?= $carousel_autoplay?>" auto_play_speed="<?= $carousel_autoplay_speed?>" infinite_loop="<?= $carousel_infinite_loop?>" pause_on_hover="<?= $carousel_pause_on_hover?>" pause_on_interaction="<?= $carousel_pause_on_interaction?>" >
+    <div id="etlms_carousel_settings" arrows="<?= $carousel_arrows?>" dots="<?= $carousel_dots?>" transition="<?= $carousel_transition?>" center="<?= $carousel_center?>" smoth_scroll="<?= $carousel_smooth_scroll?>" auto_play="<?= $carousel_autoplay?>" auto_play_speed="<?= $carousel_autoplay_speed?>" infinite_loop="<?= $carousel_infinite_loop?>" pause_on_hover="<?= $carousel_pause_on_hover?>" pause_on_interaction="<?= $carousel_pause_on_interaction?>" desktop="<?= $carousel_column?>" medium="<?= $carousel_column_tablet?>" mobile="<?= $carousel_column_mobile?>">
      
 
     </div>

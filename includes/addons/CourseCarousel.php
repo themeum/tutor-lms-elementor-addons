@@ -39,7 +39,9 @@ class CourseCarousel extends BaseAddon{
 	}
 
 	protected function register_content_controls(){
+		$content_selector = "{{WRAPPER}} .etlms-carousel-main-wrap ";
 
+		$meta_content_selector = $content_selector.".tutor-single-loop-meta";
 		$this->start_controls_section(
 			'course_carousel_content_section',
 			[
@@ -53,29 +55,48 @@ class CourseCarousel extends BaseAddon{
 			[
 				'label' => __('Skin','tutor-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'cards',
+				'default' => 'classic',
 				'options' =>[
-					'card' => __('Cards','tutor-elementor-addons')
-				]
+					'classic' => __('Classic','tutor-elementor-addons'),
+					'card' => __('Card','tutor-elementor-addons'),
+					'stacked' => __('Stacked','tutor-elementor-addons'),
+					'overlayed' => __('Overlayed','tutor-elementor-addons')
+				],
+				
 			]
 		);
+	
+		// $this->add_responsive_control(
+		// 	'course_carousel_column',
+		// 	[
+		// 		'label' => __( 'Column', 'tutor-elementor-addons' ),
+		// 		'type' =>Controls_Manager::SELECT,
+		// 		'default' => '3',
+		// 		'options' => [
+		// 			'1'  => __( '1', 'tutor-elementor-addons' ),
+		// 			'2' => __( '2', 'tutor-elementor-addons' ),
+		// 			'3' => __( '3', 'tutor-elementor-addons' ),
+		// 			'4' => __( '4', 'tutor-elementor-addons' ),
+		// 			'5' => __( '5', 'tutor-elementor-addons' ),
+		// 		],
+		// 	]
+		// );
+		$slides_to_show = range( 1, 10 );
+
+		$slides_to_show = array_combine( $slides_to_show, $slides_to_show );
 
 		$this->add_responsive_control(
-			'course_carousel_column',
+			'etlms_course_carousel_column',
 			[
-				'label' => __('Column','tutor-elementor-addons'),
+				'label' => __( 'Slides to Show', 'tutor-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => '3',
-				'options' =>[
-					'1' => __('1','tutor-elementor-addons'),
-					'2' => __('2','tutor-elementor-addons'),
-					'3' => __('3','tutor-elementor-addons'),
-					'4' => __('4','tutor-elementor-addons'),
-				],
-				'frontend_available' => true
-			]			
+				'options' => [
+					'' => __( 'Default', 'tutor-elementor-addons' ),
+				] + $slides_to_show,
+				'devices' => [ 'desktop', 'tablet', 'mobile' ],
+				'frontend_available' => true,
+			]
 		);
-	
 
 		$this->add_control(
 			'course_carousel_image',
@@ -128,16 +149,13 @@ class CourseCarousel extends BaseAddon{
 			'course_carousel_meta_data',
 			[
 				'label' => __( 'Meta Data', 'tutor-elementor-addons' ),
-				'type' => Controls_Manager::SELECT2,
-				'multiple' => true,
-				'options' => [
-					'title'  => __( 'Title', 'tutor-elementor-addons' ),
-					'description' => __( 'Description', 'tutor-elementor-addons' ),
-					'button' => __( 'Button', 'tutor-elementor-addons' ),
-				],
-				'default' => [ 'title', 'description' ],
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+				'label_off' => __( 'Hide', 'your-plugin' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
 			]
-		);	
+		);		
 
 		$this->add_control(
 			'course_carousel_meta_space',
@@ -148,13 +166,19 @@ class CourseCarousel extends BaseAddon{
 				'range' => [
 					'px'=> [
 						'min' => 0,
-						'max' => 5
+						'max' => 100
 					]
 				],
 				'default' => [
-					'size' => 15,
+					'size' => 0,
 					'unit' => 'px'
-				]
+				],
+				'condition'=>[
+					'course_carousel_meta_data' => "yes"
+				],
+				"selectors" =>[
+					$meta_content_selector => "padding-right:{{SIZE}}{{UNIT}};"
+				] 
 			]
 		);
 
@@ -279,6 +303,7 @@ class CourseCarousel extends BaseAddon{
 		$this->add_control(
 			'course_carousel_btn_border',
 			[
+				'label' => __('Button Type','tutor-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => [

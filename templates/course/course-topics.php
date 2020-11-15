@@ -65,7 +65,7 @@ $index++;
 ?>
 
 <div class="tutor-course-topic tutor-topics-in-single-lesson <?php if($index == 1) echo "tutor-active"; ?>">
-    <div class="etlms-course-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
+    <div class="etlms-course-curriculum-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
         <h4> 
 
 			<i class="<?= $topic_active_icon?>" id="etlms-course-topic-icon"></i> 
