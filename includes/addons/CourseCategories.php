@@ -80,7 +80,7 @@ class CourseCategories extends BaseAddon {
     }
 
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-single-course-meta-categories a';
+        $selector = '{{WRAPPER}} .etlms-single-course-meta-categories a';
         $this->start_controls_section(
             'course_categories_style_section',
             [

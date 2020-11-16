@@ -1,11 +1,10 @@
 /*layout css for: course level,categories,duration,total enrollment,last update*/
 
-/*display block */
 .elementor-layout-up .etlms-course-level strong,
-.elementor-layout-up .etlms-course-categories strong,
 .elementor-layout-up .etlms-course-duration strong,
 .elementor-layout-up .etlms-course-total-enroll strong,
-.elementor-layout-up .etlms-course-last-update strong
+.elementor-layout-up .etlms-course-last-update strong,
+.elementor-layout-up  .etlms-single-course-meta-categories a
 {
 	display: block;
 }
