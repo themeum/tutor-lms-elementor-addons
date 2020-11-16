@@ -1,87 +1,13 @@
 /*layout css for: course level,categories,duration,total enrollment,last update*/
 
 /*display block */
-
-.elementor-layout-up .tutor-course-level >div,
-.elementor-layout-up 
-.etlms-single-course-meta-categories a,
-.elementor-layout-up 
-.etmls-single-course-meta-duration >a,
-.elementor-layout-up 
-.etlms-single-course-meta-total-enroll >a, 
-.elementor-layout-up 
-.etlms-single-course-meta-last-update >a
+.elementor-layout-up .etlms-course-level strong,
+.elementor-layout-up .etlms-course-categories strong,
+.elementor-layout-up .etlms-course-duration strong,
+.elementor-layout-up .etlms-course-total-enroll strong,
+.elementor-layout-up .etlms-course-last-update strong
 {
 	display: block;
-}
-
-/*display inline-block*/
-
-.elementor-layout-left .tutor-course-level >div,
-.elementor-layout-left 
-.etlms-single-course-meta-categories a,
-.elementor-layout-left 
-.etmls-single-course-meta-duration >a,
-.elementor-layout-left 
-.etlms-single-course-meta-total-enroll >a, 
-.elementor-layout-left 
-.etlms-single-course-meta-last-update >a
-{
-	display: inline-block;
-}
-
-
-/*alignement css for: categories,duration,total enrollment,last update,course about*/
-
-/*left alignment*/
-.elementor-align-left 
-.etlms-single-course-meta-categories,
-.elementor-align-left 
-.etmls-single-course-meta-duration,
-.elementor-align-left 
-.etlms-single-course-meta-total-enroll,
-.elementor-align-left 
-.etlms-single-course-meta-last-update,
-.elementor-align-left
-.etlms-course-summery
-{
-	text-align: left;
-}
-
-/*right alignment*/
-.elementor-align-right 
-.etlms-single-course-meta-categories,
-.elementor-align-right 
-.etmls-single-course-meta-duration,
-.elementor-align-right 
-.etlms-single-course-meta-total-enroll,
-.elementor-align-right 
-.etlms-single-course-meta-last-update,
-.elementor-align-right
-.etlms-course-summery
-{
-	text-align: right;
-}
-/*center alignment*/
-.elementor-align-center 
-.etlms-single-course-meta-categories,
-.elementor-align-center 
-.etmls-single-course-meta-duration,
-.elementor-align-center 
-.etlms-single-course-meta-total-enroll,
-.elementor-align-center 
-.etlms-single-course-meta-last-update,
-.elementor-align-center,
-.etlms-course-summery
-{
-	text-align: center;
-}
-
-/*justify alignment*/
-.elementor-align-justify
-.etlms-course-summery
-{
-	text-align: justify;
 }
 
 /*course instructor*/
