@@ -34,7 +34,8 @@ class CourseCarousel extends BaseAddon{
 	public function get_script_depends() {
 		return [ 
 			'etlms-slick-library',
-			'etlms-slick-slider'
+			'etlms-slick-slider',
+			'etlms-enroll-button'
 		];
 	}
 
@@ -298,7 +299,7 @@ class CourseCarousel extends BaseAddon{
 		    ],
 		    'default'=>'right',
 		    'selectors' => [
-		    	".etlms-loop-cart-btn-wrap"=> 'text-align:{{VALUE}};'
+		    	"{{WRAPPER}} .etlms-loop-cart-btn-wrap"=> 'text-align:{{VALUE}};'
 		    ]
 				
 		]			

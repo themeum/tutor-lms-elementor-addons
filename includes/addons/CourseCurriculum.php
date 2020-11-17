@@ -35,7 +35,7 @@ class CourseCurriculum extends BaseAddon {
     public function get_script_depends()
     {
         return [
-            'course-topics'
+            'etlms-course-topics'
         ];
     }  
       
