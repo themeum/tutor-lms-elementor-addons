@@ -296,12 +296,16 @@ class CourseCarousel extends BaseAddon{
 		            'icon'  => 'fa fa-align-justify'
 		        ]
 		    ],
+		    'default'=>'right',
+		    'selectors' => [
+		    	$content_selector.".etlms-loop-cart-btn-wrap"=> 'text-align:{{VALUE}};'
+		    ]
 				
 		]			
 		);
 
 		$this->add_control(
-			'course_carousel_btn_border',
+			'course_carousel_enroll_btn_type',
 			[
 				'label' => __('Button Type','tutor-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
@@ -323,6 +327,7 @@ class CourseCarousel extends BaseAddon{
                 'type' => Controls_Manager::ICON,
                 
                 'label_block' => true,
+                'default' => 'fa fa-shopping-cart'
             ]
         );          
 
@@ -348,7 +353,7 @@ class CourseCarousel extends BaseAddon{
 					'size' => 0,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .box' => 'margin: {{SIZE}}{{UNIT}};',
+					$content_selector.".etlms-loop-cart-btn-wrap a >i" => 'padding-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);		

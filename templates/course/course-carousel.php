@@ -202,10 +202,10 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
             <!-- loop footer -->
             <?php if("yes" === $settings['course_carousel_footer_settings']):?>
-            <div class="tutor-loop-course-footer">
-                <?php//  tutor_course_loop_price(); ?>
-            <!--getting templates instead of hook-->    
-          
+            <div class="tutor-loop-course-footer etlms-carousel-footer">
+            <?php
+                tutor_course_loop_price()
+            ?>    
             </div>
 
         </div>  <!-- etlms-course-container -->
@@ -298,7 +298,12 @@ if(isset($settings)){
      
 
     </div>
+<input type="hidden" id="etlms_enroll_btn_type" value="<?= $settings['course_carousel_enroll_btn_type']?>">
+<input type="hidden" id="etlms_enroll_btn_cart" value="<?= $settings['course_coursel_button_icon']?>">    
 </div>
+
+
+
 
 
 
