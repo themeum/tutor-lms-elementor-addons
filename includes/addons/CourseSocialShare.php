@@ -61,8 +61,6 @@ class CourseSocialShare extends BaseAddon {
     }
 
     protected function register_style_controls() {
-
-
         /* Label */
         $this->start_controls_section(
             'course_share_label_section',
@@ -313,19 +311,14 @@ class CourseSocialShare extends BaseAddon {
                         'square','rounded','circle'
                     ]
                 ],
-                
-                'prefix_class' =>'etlms-share-btn elementor-animation-'
+                'prefix_class' =>'etlms-animation-'
             ]
         );
 
-
         $this->end_controls_section();
-
-
     }
 
     protected function render($instance = []) {
-
         ob_start();
         $settings = $this->get_settings_for_display();
         include_once etlms_get_template('course/share');
