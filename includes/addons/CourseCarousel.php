@@ -406,7 +406,7 @@ class CourseCarousel extends BaseAddon{
 				'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
 				'label_off' => __( 'No', 'tutor-elementor-addons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => '',
 			]
 		);
 
@@ -501,6 +501,11 @@ class CourseCarousel extends BaseAddon{
 		$cart_selector = $wrapper.".tutor-loop-cart-btn-wrap a::before";
 		$cart_hover_selector = $wrapper.".tutor-loop-cart-btn-wrap a:hover:before";
 		$cart_button_selector = $wrapper.".tutor-loop-cart-btn-wrap a";
+		$arrow_icon_selector = $wrapper.".etlms-carousel-arrow i";
+		$arrow_shape_selector = $wrapper.".etlms-carousel-arrow >i";
+		$arrow_ghost_selector = $wrapper.".etlms-carousel-arrow";
+		$dots_selector = $wrapper.".slick-dots li button::before";
+		$dots_area_selector = $wrapper.".slick-dots li button";
 
 		$this->start_controls_section(
 			'course_carousel_style_section',
@@ -596,7 +601,7 @@ class CourseCarousel extends BaseAddon{
                         'label_on' => __('Yes','tutor-elementor-addons'),
                         'label_off'=> __('No','tutor-elementor-addons'),
                         'return_value' => 'yes',
-                        'default' => 'yes'
+                        'default' => ''
                     ]
                 );                
 
@@ -1414,10 +1419,13 @@ class CourseCarousel extends BaseAddon{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 0,
+					'size' => 20,
+				],
+				'condition' =>[
+					'course_carousel_arrow_style!'=>'default'
 				],
 				'selectors' => [
-					'{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+					$arrow_shape_selector => 'width: {{SIZE}}{{UNIT}};height:{{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -1438,10 +1446,10 @@ class CourseCarousel extends BaseAddon{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 0,
+					'size' => 20,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+					$arrow_icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1464,7 +1472,7 @@ class CourseCarousel extends BaseAddon{
                     'label'     => __( 'Arrow Color', 'tutor-elementor-addons' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        ''=> 'color: {{VALUE}};',
+                        $arrow_icon_selector => 'color: {{VALUE}};',
                     ],
                 ]
             );            
@@ -1475,7 +1483,7 @@ class CourseCarousel extends BaseAddon{
                     'label'     => __( 'Shape Color', 'tutor-elementor-addons' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        ''=> 'color: {{VALUE}};',
+                        $arrow_shape_selector => 'background-color: {{VALUE}};',
                     ],
                 ]
             );
@@ -1499,11 +1507,14 @@ class CourseCarousel extends BaseAddon{
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 0,
+						'size' => 1,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+						$arrow_shape_selector => 'border-width: {{SIZE}}{{UNIT}};',
 					],
+					'condition' =>[
+						'course_carousel_arrow_style' => 'ghost'
+					]
 				]
 			);
 
@@ -1513,8 +1524,11 @@ class CourseCarousel extends BaseAddon{
                     'label' => __( 'Border Color', 'tutor-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '' => 'background-color: {{VALUE}}',
+                        $arrow_shape_selector => 'border-color: {{VALUE}}',
                     ],
+					'condition' =>[
+						'course_carousel_arrow_style' => 'ghost'
+					]                    
                 ]
             );
 
@@ -1540,8 +1554,11 @@ class CourseCarousel extends BaseAddon{
 						'size' => 0,
 					],
 					'selectors' => [
-						'{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+						$arrow_shape_selector => 'border-radius: {{SIZE}}{{UNIT}};',
 					],
+					'condition' => [
+						'course_carousel_arrow_style' => 'ghost'
+					]
 				]
 			);
 
@@ -1550,7 +1567,7 @@ class CourseCarousel extends BaseAddon{
 				[
 					'name' => 'course_carousel_arrow_shape_shadow',
 					'label' => __( 'Shadow', 'tutor-elementor-addons' ),
-					'selector' => '{{WRAPPER}} .wrapper',
+					'selector' => $arrow_shape_selector,
 				]
 			);
 
@@ -1570,7 +1587,7 @@ class CourseCarousel extends BaseAddon{
                     'label'     => __( 'Arrow Color', 'tutor-elementor-addons' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        ''=> 'color: {{VALUE}};',
+                        $arrow_icon_selector.":hover" => 'color: {{VALUE}};',
                     ],
                 ]
             );            
@@ -1581,7 +1598,7 @@ class CourseCarousel extends BaseAddon{
                     'label'     => __( 'Shape Color', 'tutor-elementor-addons' ),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        ''=> 'color: {{VALUE}};',
+                        $arrow_shape_selector.":hover"=> 'background-color: {{VALUE}};',
                     ],
                 ]
             );
@@ -1607,8 +1624,11 @@ class CourseCarousel extends BaseAddon{
 						'unit' => 'px',
 						'size' => 0,
 					],
+					'condition' => [
+						'course_carousel_arrow_style' => 'ghost'
+					],
 					'selectors' => [
-						'{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+						$arrow_shape_selector.":hover" => 'border-width: {{SIZE}}{{UNIT}};',
 					],
 				]
 			);
@@ -1618,8 +1638,11 @@ class CourseCarousel extends BaseAddon{
                 [
                     'label' => __( 'Border Color', 'tutor-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
+                    'condition' => [
+                    	'course_carousel_arrow_style' => 'ghost'
+                    ],
                     'selectors' => [
-                        '' => 'background-color: {{VALUE}}',
+                        $arrow_shape_selector.":hover" => 'border-color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1645,9 +1668,13 @@ class CourseCarousel extends BaseAddon{
 						'unit' => 'px',
 						'size' => 0,
 					],
-					'selectors' => [
-						'{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+					'condition' => [
+						'course_carousel_arrow_style' => 'ghost'
 					],
+					'selectors' => [
+						$arrow_shape_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}};',
+					],
+
 				]
 			);
 
@@ -1656,7 +1683,7 @@ class CourseCarousel extends BaseAddon{
 				[
 					'name' => 'course_carousel_arrow_shape_shadow_hover',
 					'label' => __( 'Shadow', 'tutor-elementor-addons' ),
-					'selector' => '{{WRAPPER}} .wrapper',
+					'selector' => $arrow_shape_selector.":hover",
 				]
 			);
 
@@ -1693,7 +1720,7 @@ class CourseCarousel extends BaseAddon{
 			[
 				'name' => 'course_carousel_dots_border',
 				'label' => __( 'Border', 'plugin-domain' ),
-				'selector' => '{{WRAPPER}} .wrapper',
+				'selector' => $dots_selector,
 			]
 		);
 
@@ -1710,7 +1737,7 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    '.course-avg-rating-wrap .tutor-star-rating-group' => 'font-size: {{SIZE}}{{UNIT}};',
+                    $dots_selector => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );        
@@ -1728,7 +1755,7 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    '.course-avg-rating-wrap .tutor-star-rating-group' => 'font-size: {{SIZE}}{{UNIT}};',
+                    $dots_selector => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );        
@@ -1746,16 +1773,35 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    '.course-avg-rating-wrap .tutor-star-rating-group' => 'font-size: {{SIZE}}{{UNIT}};',
+                    $dots_selector => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->add_control(
         	'course_carousel_dots_alignment',
-        	[
-        		$this->etlms_alignment()
-        	]
+		[
+		    'label'        => __('Alignment', 'tutor-elementor-addons'),
+		    'type'         => Controls_Manager::CHOOSE,
+		    'options'      => [
+		        'left'   => [
+		            'title' => __('Left', 'tutor-elementor-addons'),
+		            'icon'  => 'fa fa-align-left',
+		        ],
+		        'center' => [
+		            'title' => __('Center', 'tutor-elementor-addons'),
+		            'icon'  => 'fa fa-align-center',
+		        ],
+		        'right'  => [
+		            'title' => __('Right', 'tutor-elementor-addons'),
+		            'icon'  => 'fa fa-align-right'
+		        ],
+
+		    ],
+			'selectors' => [
+				$wrapper.".slick-dots" => 'text-align: {{VALUE}};',
+			],		    				
+		]
         );
 
         $this->add_control(
@@ -1771,7 +1817,7 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    '.course-avg-rating-wrap .tutor-star-rating-group' => 'font-size: {{SIZE}}{{UNIT}};',
+                    $dots_selector=> 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1792,7 +1838,7 @@ class CourseCarousel extends BaseAddon{
 	                'label'     => __('Fill Color', 'tutor-elementor-addons'),
 	                'type'      => Controls_Manager::COLOR,
 	                'selectors' => [
-						'' => 'color: {{VALUE}}',
+						$dots_selector => 'color: {{VALUE}}',
 					],
 	            ]
 	        );	
@@ -1803,7 +1849,7 @@ class CourseCarousel extends BaseAddon{
 	                'label'     => __('Border Color', 'tutor-elementor-addons'),
 	                'type'      => Controls_Manager::COLOR,
 	                'selectors' => [
-						'' => 'color: {{VALUE}}',
+						$dots_selector => 'border-color: {{VALUE}}',
 					],
 	            ]
 	        );
@@ -1824,7 +1870,7 @@ class CourseCarousel extends BaseAddon{
 	                'label'     => __('Fill Color', 'tutor-elementor-addons'),
 	                'type'      => Controls_Manager::COLOR,
 	                'selectors' => [
-						'' => 'color: {{VALUE}}',
+						$dots_selector.":hover" => 'color: {{VALUE}}',
 					],
 	            ]
 	        );	
@@ -1835,7 +1881,7 @@ class CourseCarousel extends BaseAddon{
 	                'label'     => __('Border Color', 'tutor-elementor-addons'),
 	                'type'      => Controls_Manager::COLOR,
 	                'selectors' => [
-						'' => 'color: {{VALUE}}',
+						$dots_selector."hover" => 'border-color: {{VALUE}}',
 					],
 	            ]
 	        );

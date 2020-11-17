@@ -43,14 +43,26 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         ?>
 
 <!-- slick-slider-main-wrapper -->
+
 <div class="<?php tutor_course_loop_col_classes(); ?>">
-    <div class="<?php tutor_course_loop_wrap_classes(); ?>">
+    <div class="<?php tutor_course_loop_wrap_classes(); ?>"
+        <?php
+            $image_size = $settings['course_carousel_image_size_size'];
+            $image_url = get_tutor_course_thumbnail($image_size, $url=true);
+            if("overlayed" == $settings['course_carousel_skin'])
+            {
+                echo 'style= "background-image:url('.$image_url.')" ';
+            }
+        ?>
+    >
 
 
         <!-- header -->
         <div class="tutor-course-header">
             <?php 
                 $custom_image_size = $settings['course_carousel_image_size_size'];
+
+                if("overlayed" !=$settings['course_carousel_skin']):
             ?>
             <a href="<?php the_permalink(); ?>"> 
                 <?php
@@ -61,8 +73,8 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
                 ?> 
             </a>    
             <?php
-            //tutor_course_loop_thumbnail();
-
+           
+            endif;
             $course_id = get_the_ID();
             ?>
             <div class="tutor-course-loop-header-meta">
@@ -91,7 +103,14 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             </div>
         </div>
         <!-- start loop content wrap -->
-        <div class="etlms-carousel-course-container">
+        <div class="etlms-carousel-course-container"
+        <?php 
+            if("overlayed" == $settings['course_carousel_skin'])
+            {
+                echo 'style= "margin-top:40px"';
+            }
+        ?>
+        >
             <div class="tutor-loop-course-container">
 
             <!-- loop rating -->
@@ -184,20 +203,30 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             <!-- loop footer -->
             <?php if("yes" === $settings['course_carousel_footer_settings']):?>
             <div class="tutor-loop-course-footer">
-                <?php  tutor_course_loop_price(); ?>
-            </div>    
+                <?php//  tutor_course_loop_price(); ?>
+            <!--getting templates instead of hook-->    
+          
+            </div>
+
         </div>  <!-- etlms-course-container -->
         <?php endif;?>
         
 
     </div>    
-</div>    
+</div>   
+    
 <!-- slick-slider-main-wrapper -->
 
         <?php  
         endwhile;
         ?>
-    </div>  
+    </div> 
+    <div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?= $settings['course_carousel_arrow_style']?> etlms-carousel-arrow-position-<?= $settings['course_carousel_arrows_position'];?> ">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+    </div> 
+    <div class="etlms-carousel-arrow etlms-carousel-arrow-next arrow-<?= $settings['course_carousel_arrow_style']?> etlms-carousel-arrow-position-<?= $settings['course_carousel_arrows_position'];?>">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </div> 
     <!-- loop end -->    
     <?php    
 

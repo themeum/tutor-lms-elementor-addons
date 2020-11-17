@@ -340,17 +340,84 @@
 	border-radius: 10px;
 }
 .etlms-coursel-stacked
-.tutor-course-loop 
 .etlms-carousel-course-container
 {
 	z-index: 99;
-    margin-top: -70px;
+    margin-top: -80px;
     background: white;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
 }
+
+.etlms-coursel-overlayed
+.tutor-course-loop 
+{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top center;
+	border-radius: 20px;
+}
+
+
+.etlms-carousel-arrow-prev {
+
+	font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 45%;
+    display: block;
+    left: 0px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.etlms-carousel-arrow-next {
+	font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 45%;
+    display: block;
+	right: 0px;
+	font-size: 20px;
+	cursor: pointer;
+	
+}
+
+.etlms-carousel-arrow-prev{
+	margin-left: -10px;
+}
+.etlms-carousel-arrow-next{
+	margin-right: -10px
+}
+.etlms-carousel-arrow-prev.etlms-carousel-arrow-position-outside
+{
+	margin-left: -40px;
+}
+.etlms-carousel-arrow-next.etlms-carousel-arrow-position-outside
+{
+	margin-right: -40px;
+}
+.arrow-ghost{
+	text-align: center;
+	line-height: 100%;
+}
+.etlms-carousel-arrow.arrow-ghost >i
+{
+	width: 20px;
+	height: 20px;
+	border: 1px solid;
+}
+.etlms-carousel-arrow.arrow-fill>i
+{
+	width: 20px;
+	height: 20px;
+	background-color: #424242;
+	text-align: center;
+	line-height: 100%;
+	color: #fff;
+}
+
 /*tablet*/
 @media only screen and (max-width: 768px){
 
