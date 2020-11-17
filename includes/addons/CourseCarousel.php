@@ -298,7 +298,7 @@ class CourseCarousel extends BaseAddon{
 		    ],
 		    'default'=>'right',
 		    'selectors' => [
-		    	$content_selector.".etlms-loop-cart-btn-wrap"=> 'text-align:{{VALUE}};'
+		    	".etlms-loop-cart-btn-wrap"=> 'text-align:{{VALUE}};'
 		    ]
 				
 		]			
@@ -1720,14 +1720,7 @@ class CourseCarousel extends BaseAddon{
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'course_carousel_dots_border',
-				'label' => __( 'Border', 'plugin-domain' ),
-				'selector' => $dots_selector,
-			]
-		);
+
 
         $this->add_control(
             'course_carousel_dots_radius',
@@ -1748,9 +1741,9 @@ class CourseCarousel extends BaseAddon{
         );        
 
         $this->add_control(
-            'course_carousel_dots_width',
+            'course_carousel_dots_size',
             [
-                'label' => __( 'Width', 'tutor-elementor-addons' ),
+                'label' => __( 'Size', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1765,23 +1758,7 @@ class CourseCarousel extends BaseAddon{
             ]
         );        
 
-        $this->add_control(
-            'course_carousel_dots_height',
-            [
-                'label' => __( 'Height', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    $dots_selector => 'height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+
 
         $this->add_control(
         	'course_carousel_dots_alignment',
