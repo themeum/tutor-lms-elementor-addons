@@ -1,11 +1,21 @@
+'use strict';
 (function ($) {
 jQuery(window).on('elementor/frontend/init', function(){
 
- 
+    /*
+      *elementor js hook
+    */
     elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-carousel.default',function ($scope, $) {
-      var etlms_desktop_view = 3;
-      var etlms_tablet_view = 2;
-      var etlms_mobile_view = 1;
+
+      /*
+        *get all carousel settings
+      */
+      var desktop = $scope.find("#etlms_carousel_settings").attr('desktop');
+
+      var medium = $scope.find("#etlms_carousel_settings").attr('medium');
+
+      var mobile = $scope.find("#etlms_carousel_settings").attr('mobile');
+      
       var carousel_arrows = $scope.find("#etlms_carousel_settings").attr('arrows');
 
       var carousel_dots = $scope.find("#etlms_carousel_settings").attr('dots');
@@ -26,11 +36,6 @@ jQuery(window).on('elementor/frontend/init', function(){
 
       var carousel_pause_on_interaction = $scope.find("#etlms_carousel_settings").attr('pause_on_interaction');
 
-      // etlms_desktop_view = $scope.find("#etlms_desktop_view").val();
-
-      // etlms_tablet_view =  $scope.find("#etlms_tablet_view").val();
-      // etlms_mobile_view =  $scope.find("#etlms_mobile_view").val();
-     
       
       carousel_arrows =='yes' ? carousel_arrows = true : carousel_arrows = false;
 
@@ -50,7 +55,9 @@ jQuery(window).on('elementor/frontend/init', function(){
 
       carousel_pause_on_interaction =='yes' ? carousel_pause_on_interaction = true : carousel_pause_on_interaction = false;
 
- 
+      /*
+        *applying all settings here
+      */ 
       $scope.find('#etlms-slick-responsive').slick({
         dots: carousel_dots,
         arrows:carousel_arrows,
@@ -64,14 +71,17 @@ jQuery(window).on('elementor/frontend/init', function(){
         //ineraction
         pauseOnFocus : carousel_pause_on_interaction,
         cssEase: smooth_scroll,
-        slidesToShow: etlms_desktop_view,
-        slidesToScroll: 3,
+        slidesToShow: desktop,
+        slidesPerRow: desktop,
+        slidesToScroll: 1,
+        prevArrow: $scope.find('.etlms-carousel-arrow-prev'),
+        nextArrow: $scope.find('.etlms-carousel-arrow-next'),
         responsive: [
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: etlms_tablet_view,
-              slidesToScroll: 3,
+              slidesToShow: medium,
+              slidesToScroll: 1,
               infinite: true,
               dots: true
             }
@@ -79,21 +89,75 @@ jQuery(window).on('elementor/frontend/init', function(){
           {
             breakpoint: 576,
             settings: {
-              slidesToShow: etlms_mobile_view,
+              slidesToShow: mobile,
               slidesToScroll: 1
             }
           }
-          // {
-          //   breakpoint: 480,
-          //   settings: {
-          //     slidesToShow: 1,
-          //     slidesToScroll: 1
-          //   }
-          // }
+
 
         ]
       });
 
+//carousel js enroll button  
+        /*
+          *get button type 
+          *get cart icon 
+        */  
+        var button_type = $scope.find("#etlms_enroll_btn_type").val();
+        var cart_icon = $scope.find("#etlms_enroll_btn_cart").val();
+
+        /*
+          *find tutor-loop-cart-btn-wrap from etlms-carousel-footer
+          *remove class for setting new style
+        */
+        var carousel_footer = $scope.find(".etlms-carousel-footer").find('.tutor-loop-cart-btn-wrap');
+
+        if(carousel_footer)
+        {
+          carousel_footer.removeClass('tutor-loop-cart-btn-wrap');
+          carousel_footer.addClass('etlms-loop-cart-btn-wrap');
+
+          /*
+            *add to cart has default button class
+            *remove it
+            *makte it dynamic from elementor
+          */
+          if(carousel_footer.children("a").hasClass('button'))
+            {
+                carousel_footer.children("a").removeClass('button');
+            };
+        }
+
+        /*
+          *if default button 
+          *add button class
+        */
+        if(button_type =='default' || button_type =='default_with_cart_icon')
+        {     
+
+          carousel_footer.children("a").addClass('tutor-button');
+        }
+        
+        /*
+          *if cart icon set from elementor
+          *add cart icon to all button
+        */
+        if(button_type =='text_with_cart' || button_type =='default_with_cart_icon')
+        {
+            var length = carousel_footer.length;
+            var i = 0;
+            for(i; i<length; i++)
+            {
+              var text = carousel_footer.children("a")[i].innerHTML;
+              carousel_footer.children("a")[i].innerHTML = `<i class="${cart_icon}" aria-hidden="true"></i> ${text}`;              
+            }
+
+
+        }  
+//carousel js enroll button end      
+
     });
 });
 })(jQuery);
+
+

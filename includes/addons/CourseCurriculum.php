@@ -35,13 +35,13 @@ class CourseCurriculum extends BaseAddon {
     public function get_script_depends()
     {
         return [
-            'course-topics'
+            'etlms-course-topics'
         ];
     }  
       
     protected function register_content_controls(){
 
-        $topic_icon_selector = ".elementor-widget-container .etlms-course-title  h4  i";
+        $topic_icon_selector = ".elementor-widget-container .etlms-course-curriculum-title  h4  i";
         $lesson_icon_selector = ".elementor-widget-container .etlms-course-lesson  h5 i";
         $assignment_icon_selector = ".elementor-widget-container .etlms-course-assignment  h5 i";
         $quiz_icon_selector = ".elementor-widget-container .etlms-course-quiz  h5 i";
@@ -327,7 +327,7 @@ class CourseCurriculum extends BaseAddon {
         $selector = '{{WRAPPER}} .tutor-course-topics-wrap';
         $topic_header = $selector.' .tutor-course-topics-header';
         $course_topic = $selector.' .tutor-course-topic';
-        $course_topic_background = $selector.' .etlms-course-title';
+        $course_topic_background = $selector.' .etlms-course-curriculum-title';
         /* Header Title Section */
         $this->start_controls_section(
             'course_topics_header_title_section',
@@ -419,7 +419,7 @@ class CourseCurriculum extends BaseAddon {
             [
                 'name'      => 'course_topics_title_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $course_topic.' .etlms-course-title h4',
+                'selector'  => $course_topic.' .etlms-course-curriculum-title h4',
             ]
         );
 
@@ -437,7 +437,7 @@ class CourseCurriculum extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $course_topic.' .etlms-course-title h4' => 'text-indent: {{SIZE}}{{UNIT}};',
+                    $course_topic.' .etlms-course-curriculum-title h4' => 'text-indent: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -458,7 +458,7 @@ class CourseCurriculum extends BaseAddon {
                         'label'     => __('Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $course_topic.' .etlms-course-title h4' => 'color: {{VALUE}}',
+                            $course_topic.' .etlms-course-curriculum-title h4' => 'color: {{VALUE}}',
                         ],
                     ]
                 );                
@@ -492,12 +492,10 @@ class CourseCurriculum extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    $course_topic_background => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
-                    '
+                    $course_topic_background => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
-
             $this->end_controls_tab();
 
             /* Hovered Icon */
@@ -513,7 +511,7 @@ class CourseCurriculum extends BaseAddon {
                         'label'     => __('Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $course_topic.' .etlms-course-title h4:hover' => 'color: {{VALUE}}',
+                            $course_topic.' .etlms-course-curriculum-title h4:hover' => 'color: {{VALUE}}',
                         ],
                     ]
                 );                
@@ -547,8 +545,7 @@ class CourseCurriculum extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    $course_topic_background.':hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
-                    '
+                    $course_topic_background.":hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -716,7 +713,7 @@ class CourseCurriculum extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
-                    '.etlms-course-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '.etlms-course-curriculum-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

@@ -174,7 +174,7 @@
 }
 
 /*course curriculum */
-.etlms-course-title{
+.etlms-course-curriculum-title{
 	padding: 14px 20px;
 	cursor: pointer;	
 }
@@ -221,6 +221,132 @@
     column-gap: 8px;	
 }
 
+/*course carousel*/
+.etlms-loop-course-hover-shadow-no
+.tutor-course-loop:hover
+{
+	box-shadow: none !important;
+}
+.etlms-loop-course-normal-shadow 
+.tutor-course-loop
+{
+	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
+}
+.etlms-loop-course-hover-shadow 
+.tutor-course-loop:hover
+{
+	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
+}
+.etlms-coursel-classic
+.tutor-course-loop
+{
+	border: 1px solid #EBEBEB !important;
+}
+.etlms-coursel-card
+.tutor-course-loop
+{
+	border: 0px 2px 4px rgba(0, 0, 0, 0.08);
+}
+.etlms-coursel-stacked
+.tutor-course-loop
+{
+	background:transparent;
+}
+.etlms-coursel-stacked
+.tutor-course-loop 
+.tutor-course-header
+{
+	z-index: 1;
+}
+.etlms-coursel-stacked
+.tutor-course-loop 
+.tutor-course-header a >img
+{
+	border-radius: 10px;
+}
+.etlms-coursel-stacked
+.etlms-carousel-course-container
+{
+	z-index: 99;
+    margin-top: -80px;
+    background: white;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+.etlms-coursel-overlayed
+.tutor-course-loop 
+{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top center;
+	border-radius: 20px;
+}
+
+
+.etlms-carousel-arrow-prev {
+
+	font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 45%;
+    display: block;
+    left: 0px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.etlms-carousel-arrow-next {
+	font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 45%;
+    display: block;
+	right: 0px;
+	font-size: 20px;
+	cursor: pointer;
+	
+}
+
+.etlms-carousel-arrow-prev{
+	margin-left: -10px;
+}
+.etlms-carousel-arrow-next{
+	margin-right: -10px
+}
+.etlms-carousel-arrow-prev.etlms-carousel-arrow-position-outside
+{
+	margin-left: -40px;
+}
+.etlms-carousel-arrow-next.etlms-carousel-arrow-position-outside
+{
+	margin-right: -40px;
+}
+.arrow-ghost{
+	text-align: center;
+	line-height: 100%;
+}
+.etlms-carousel-arrow.arrow-ghost >i
+{
+	width: 20px;
+	height: 20px;
+	border: 1px solid;
+}
+.etlms-carousel-arrow.arrow-fill>i
+{
+	width: 20px;
+	height: 20px;
+	background-color: #424242;
+	text-align: center;
+	line-height: 100%;
+	color: #fff;
+}
+
+.etlms-loop-cart-btn-wrap
+{
+	width: 90%;
+}
 
 
 /*tablet*/

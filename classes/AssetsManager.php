@@ -107,7 +107,7 @@ class AssetsManager {
 
         wp_register_script( 'etlms-slick-library', 
             'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', 
-            array( 'jquery' ), 
+            array(  ), 
             '1.0.0', true ); 
 
         wp_register_script (
@@ -116,19 +116,26 @@ class AssetsManager {
             array('etlms-slick-library'),
             filemtime(ETLMS_DIR_PATH.'/assets/slick-slider.js'),
             true
-        );        
-
-        wp_enqueue_script( 'etlms-slick-library');
-        wp_enqueue_script( 'etlms-slick-slider');
+        );          
 
         wp_register_script (
-            'course-topics',
+            'etlms-enroll-button',
+            ETLMS_ASSETS.'enroll-button.js',
+            array('jquery'),
+            filemtime(ETLMS_DIR_PATH.'/assets/enroll-button.js'),
+            true
+        );        
+
+        wp_register_script (
+            'etlms-course-topics',
             ETLMS_ASSETS.'course-topics.js',
             array('jquery'),
             filemtime(ETLMS_DIR_PATH.'/assets/course-topics.js'),
             true
         );  
-
-        wp_enqueue_script('course-topics');
+        wp_enqueue_script( 'etlms-slick-library');
+        wp_enqueue_script( 'etlms-slick-slider');
+        wp_enqueue_script('etlms-course-topics');
+        wp_enqueue_script('etlms-enroll-button');
     }
 }
