@@ -296,50 +296,95 @@
     column-gap: 8px;	
 }
 
-/*course carousel*/
+/*course carousel and course list*/
+
+/*card box shadow*/
+
+.etlms-carousel-main-wrap
+.etlms-loop-course-hover-shadow-no
+.tutor-course-loop:hover,
+/*style for course list*/
+.etlms-course-list-main-wrap
 .etlms-loop-course-hover-shadow-no
 .tutor-course-loop:hover
 {
 	box-shadow: none !important;
 }
+
+.etlms-carousel-main-wrap
+.etlms-loop-course-normal-shadow 
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-main-wrap
 .etlms-loop-course-normal-shadow 
 .tutor-course-loop
 {
 	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
 }
+.etlms-carousel-main-wrap
+.etlms-loop-course-hover-shadow 
+.tutor-course-loop:hover,
+/*style for course list*/
+.etlms-course-list-main-wrap
 .etlms-loop-course-hover-shadow 
 .tutor-course-loop:hover
 {
 	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
 }
+
 .etlms-coursel-classic
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-classic
 .tutor-course-loop
 {
 	border: 1px solid #EBEBEB !important;
 }
+
 .etlms-coursel-card
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-card
 .tutor-course-loop
 {
 	border: 0px 2px 4px rgba(0, 0, 0, 0.08);
 }
+
 .etlms-coursel-stacked
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-stacked
 .tutor-course-loop
 {
 	background:transparent;
 }
+
 .etlms-coursel-stacked
+.tutor-course-loop 
+.tutor-course-header,
+/*style for course list*/
+.etlms-course-list-stacked
 .tutor-course-loop 
 .tutor-course-header
 {
 	z-index: 1;
 }
+
 .etlms-coursel-stacked
+.tutor-course-loop 
+.tutor-course-header a >img,
+/*style for course list*/
+.etlms-course-list-stacked
 .tutor-course-loop 
 .tutor-course-header a >img
 {
 	border-radius: 10px;
 }
+
 .etlms-coursel-stacked
+.etlms-carousel-course-container,
+/*style for course list*/
+.etlms-course-list-stacked
 .etlms-carousel-course-container
 {
 	z-index: 99;
@@ -352,6 +397,9 @@
 }
 
 .etlms-coursel-overlayed
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-overlayed
 .tutor-course-loop 
 {
 	background-size: cover;
@@ -422,6 +470,7 @@
 {
 	width: 90%;
 }
+
 
 
 /*tablet*/
