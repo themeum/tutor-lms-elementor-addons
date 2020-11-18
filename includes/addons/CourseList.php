@@ -613,6 +613,7 @@ class CourseList extends BaseAddon{
         $cart_button_selector = $wrapper.".tutor-loop-cart-btn-wrap a";
         $row_selector = $wrapper.".etlms-course-list-col";
         $column_selector = $wrapper.".etlms-course-list-col";
+        $pagination_typo_selector = $wrapper.".etlms-course-list-pagination-wrap,".$wrapper.".etlms-course-list-pagination-wrap a";
 
         $this->start_controls_section(
             'course_list_layout_style',
@@ -1340,6 +1341,308 @@ class CourseList extends BaseAddon{
         );         
         $this->end_controls_section();      
         //rating section end        
+
+        //pagination section start
+        $this->start_controls_section(
+            'course_list_pagination_styles',
+            [
+                'label' => __('Pagination','tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'course_list_pagination_typo',
+                'label' => __( 'Typography', 'tutor-elementor-addons' ),
+                
+                'selector' => '',
+            ]
+        );   
+
+        $this->add_control(
+            'course_list_pagination_colors_title',
+            [
+                'label' => __('Colors','tutor-elementor-addons'),
+                'type' => Controls_Manager::HEADING
+            ]
+        );
+        //tabs start 
+        $this->start_controls_tabs(
+            'course_list_pagination_style_tabs'
+        ); 
+
+            //normal tabs
+            $this->start_controls_tab(
+                'course_list_pagination_normal_tab',
+                [
+                    'label' => __('Normal','tutor-elementor-addons')
+                ]
+            ); 
+
+            $this->add_control(
+                'course_list_pagination_normal_text_color',
+                [
+                    'label' => __( 'Text Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'course_list_pagination_normal_background_color',
+                [
+                    'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'background-color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'course_list_pagination_normal_border_color',
+                [
+                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'border-color: {{VALUE}}',
+                    ],
+                ]
+            ); 
+
+            $this->add_control(
+                'course_list_pagination_normal_border_width',
+                [
+                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+
+                    ],
+
+                    'selectors' => [
+                        '{{WRAPPER}} .box' => 'border-width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );                       
+            $this->end_controls_tab();
+            //normal tabs end 
+
+            //hover tabs
+            $this->start_controls_tab(
+                'course_list_pagination_hover_tab',
+                [
+                    'label' => __('Hover','tutor-elementor-addons')
+                ]
+            ); 
+
+            $this->add_control(
+                'course_list_pagination_hover_text_color',
+                [
+                    'label' => __( 'Text Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'course_list_pagination_hover_background_color',
+                [
+                    'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'background-color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'course_list_pagination_hover_border_color',
+                [
+                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'border-color: {{VALUE}}',
+                    ],
+                ]
+            ); 
+
+            $this->add_control(
+                'course_list_pagination_hover_border_width',
+                [
+                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+
+                    ],
+
+                    'selectors' => [
+                        '{{WRAPPER}} .box' => 'border-width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );  
+
+            $this->end_controls_tab();
+            //hover tabs end
+
+            //active tabs
+            $this->start_controls_tab(
+                'course_list_pagination_active_tab',
+                [
+                    'label' => __('Active','tutor-elementor-addons')
+                ]
+            ); 
+
+
+            $this->add_control(
+                'course_list_pagination_active_text_color',
+                [
+                    'label' => __( 'Text Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'course_list_pagination_active_background_color',
+                [
+                    'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'background-color: {{VALUE}}',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'course_list_pagination_active_border_color',
+                [
+                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::COLOR,
+
+                    'selectors' => [
+                        '{{WRAPPER}} .title' => 'border-color: {{VALUE}}',
+                    ],
+                ]
+            ); 
+
+            $this->add_control(
+                'course_list_pagination_active_border_width',
+                [
+                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => [ 'px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+
+                    ],
+
+                    'selectors' => [
+                        '{{WRAPPER}} .box' => 'border-width: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+            );  
+
+            $this->end_controls_tab();
+            //active tabs end
+
+        $this->end_controls_tabs();  
+        //tabs end
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'course_list_pagination_box_shadow',
+                'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                'selector' => '{{WRAPPER}} .wrapper',
+                'separator' => 'before'
+            ]
+        );
+
+        $this->add_control(
+            'course_list_pagination_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'course_list_pagination_padding',
+            [
+                'label' => __( 'Padding', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .your-class' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'course_list_pagination_space',
+            [
+                'label' => __( 'Space Between', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 50,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+        //pagination section end
 
         //footer section start
         $this->start_controls_section(
