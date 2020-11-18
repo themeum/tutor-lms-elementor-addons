@@ -63,10 +63,9 @@ class CourseStatus extends BaseAddon {
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .etlms-course-status';
         $title_selector = $selector.' .etlms-segment-title';
-        $progress_txt_selector = $selector.' .etlms-progress-percent';
         $progress_bar_background = $selector.' .etlms-progress-bar';
         $progress_bar_filled = $selector.' .etlms-progress-filled';
-        $progress_percent = $selector.' .etlms-progress-percent';
+        $progress_percent = $selector.' .etlms-progress-percent h4';
 
 
         /* Section Bar */
@@ -147,7 +146,7 @@ class CourseStatus extends BaseAddon {
                 ],
                 'selectors' => [
                     $progress_bar_background => 'border-radius: {{SIZE}}{{UNIT}}',
-                    $progress_bar_filled => 'border-radius: {{SIZE}}{{UNIT}}'
+                    $progress_bar_filled => 'border-top-left-radius:  {{SIZE}}{{UNIT}}; border-bottom-left-radius: {{SIZE}}{{UNIT}}'
                 ]
             ]
         );
@@ -160,7 +159,6 @@ class CourseStatus extends BaseAddon {
                 'separator' => 'after'
             ]
         );
-
 
         $this->add_control(
             'course_status_progress_text_color',
@@ -188,7 +186,7 @@ class CourseStatus extends BaseAddon {
         $this->start_controls_section(
             'course_status_title_section',
             [
-                'label' => __('Title Style', 'tutor-elementor-addons'),
+                'label' => __('Section Title', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -211,21 +209,15 @@ class CourseStatus extends BaseAddon {
             ]
         );
         $this->end_controls_section();
-
-
     }
 
     protected function render($instance = []) {
-        ob_start();
-
         $settings = $this->get_settings_for_display();
-
-        // if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-        //     include_once etlms_get_template('course/status-preview');
-        // } else if (is_user_logged_in() && tutils()->is_enrolled()) {
-        //     include_once etlms_get_template('course/status');
-        // }
-        include_once etlms_get_template('course/status');
-        echo ob_get_clean();
+        if (\Elementor\Plugin::instance()->editor->is_edit_mode() || (is_user_logged_in() && tutils()->is_enrolled())) {
+            ob_start();
+            include_once etlms_get_template('course/status');
+            $output = apply_filters( 'tutor_course/single/completing-progress-bar', ob_get_clean() );
+            echo $output;
+        }
     }
 }

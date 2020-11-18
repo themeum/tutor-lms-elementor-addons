@@ -1,6 +1,9 @@
+/* Rating */
 .etlms-rating {
     margin-bottom: 0 !important;
 }
+
+/* Author */
 .etlms-author {
     padding-bottom: 0 !important;
 }
@@ -16,18 +19,62 @@
 .etlms-author-layout-up .tutor-single-course-author-name {
     display: block;
 }
+
+/* Level */
 .etlms-course-level .tutor-single-course-meta.tutor-meta-top ul {
     padding: 0;
 }
 .etlms-course-level .tutor-single-course-meta.tutor-meta-top ul li {
     width: 100%;
 }
-.elementor-widget-container .tutor-course-enrollment-box {
-    margin-bottom: 0;
+
+/* Status */
+.etlms-course-status .etlms-segment-title {
+    margin-bottom: 5px;
 }
-.elementor-widget-container .tutor-course-enrolled-wrap {
-    padding: 10px 0;
+.etlms-progress-bar-wrap {
+	position: relative;
 }
+.etlms-progress-bar {
+	width: 100%;
+	background-color: #eeeeee;
+	height: 25px;
+	border-radius:10px;
+}
+.etlms-progress-filled {
+	background-color: #66CD74;
+	height: 25px; 
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+.etlms-progress-outside {
+	display: flex;
+}
+.etlms-progress-inside .etlms-progress-percent,
+.etlms-progress-outside .etlms-progress-percent {
+    display: flex;
+    align-items: center;
+}
+.etlms-progress-inside .etlms-progress-percent {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 50%;
+}
+.etlms-progress-outside .etlms-progress-percent {
+    margin-left: 10px;
+}
+.etlms-progress-ontop {
+	display: flex;
+	flex-direction: column-reverse;
+}
+.etlms-progress-ontop .etlms-progress-percent {
+	position: absolute;
+    right: 0;
+    top: -32px;
+}
+
+/* Specification */
 .etlms-course-specifications h3 {
     font-size: 18px;
     line-height: 23px;
@@ -56,6 +103,14 @@
 }
 .etlms-author-specifications-inline .etlms-course-specifications ul li {
     display: inline;
+}
+
+/* Enrollment */
+.elementor-widget-container .tutor-course-enrollment-box {
+    margin-bottom: 0;
+}
+.elementor-widget-container .tutor-course-enrolled-wrap {
+    padding: 10px 0;
 }
 .etlms-course-enrolment-box .tutor-lead-info-btn-group {
     padding: 0;
