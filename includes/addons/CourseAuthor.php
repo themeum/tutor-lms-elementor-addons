@@ -15,6 +15,12 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseAuthor extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_layout = "etlms-author-layout-";
+
+    private static $prefix_class_alignment = "elementor-align-"; 
+
     public function get_title() {
         return __('Course Author', 'tutor-elementor-addons');
     }
@@ -67,46 +73,12 @@ class CourseAuthor extends BaseAddon {
 
         $this->add_responsive_control(
             'course_author_layout',
-            [
-                'label'        => __('Layout', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-long-arrow-left',
-                    ],
-                    'up' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-long-arrow-up',
-                    ],
-                ],
-                'prefix_class' => 'etlms-author-layout-%s',
-                'default'      => 'left',
-            ]
+            $this->etlms_layout() //alignment
         );
         
         $this->add_responsive_control(
             'course_author_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-            ]
+            $this->etlms_alignment() //alignment
         );
 
         $this->end_controls_section();

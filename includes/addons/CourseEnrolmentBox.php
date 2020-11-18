@@ -15,6 +15,12 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseEnrolmentBox extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_layout = "elementor-layout-";
+
+    private static $prefix_class_alignment = "elementor-align-"; 
+
     public function get_title() {
         return __('Course Enrolment Box', 'tutor-elementor-addons');
     }
@@ -50,26 +56,7 @@ class CourseEnrolmentBox extends BaseAddon {
 
         $this->add_responsive_control(
             'course_enroll_buttons_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'course-enroll-buttons-align-',
-                'default'      => 'left',
-            ]
+            $this->etlms_alignment() //alignment
         );
 
         $this->add_control(
