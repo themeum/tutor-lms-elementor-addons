@@ -300,7 +300,9 @@ class CourseList extends BaseAddon{
                 'default' => 'prev_next',
 
                 'options' => [
-                    'prev_next' => __('Previous/Next', 'tutor-elementor-addons')
+                    'prev_next' => __('Previous/Next', 'tutor-elementor-addons'),
+                    'number_prev_next' => __('Numbers + Previous/Next', 'tutor-elementor-addons'),
+                    'numbers' => __('Numbers', 'tutor-elementor-addons')
                 ]
             ]
         );       
@@ -322,7 +324,7 @@ class CourseList extends BaseAddon{
             [
                 'label' => __('Previous Label','tutor-elementor-addons'),
                 'type' => Controls_Manager::TEXT,
-                'default' => __('Previous','tutor-elementor-addons')
+                'default' => __('&laquo; Previous','tutor-elementor-addons')
             ]
         );
 
@@ -357,7 +359,7 @@ class CourseList extends BaseAddon{
                 
                 'default'      => 'left',
                 'selectors' => [
-                    '{{WRAPPER}}' => ''
+                    '{{WRAPPER}} .etlms-course-list-pagination-wrap' => 'text-align:{{VALUE}};'
                 ]
             ]
         );

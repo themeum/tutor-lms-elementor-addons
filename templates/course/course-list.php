@@ -14,10 +14,12 @@
     /*
         *query arguements
     */
+    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
     $args = [
         'post_type' => tutor()->course_post_type,
         'post_status' => 'publish',
-        'posts_per_page' => $course_list_perpage 
+        'posts_per_page' => $course_list_perpage,
+        'paged' => $paged 
     ];
     
     // the query
@@ -235,8 +237,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
         </div>  <!-- etlms-course-container -->
         
-        
-
+    
     </div>    
 </div>   
     
@@ -246,8 +247,89 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         endwhile;
         ?>
     </div> 
+    <!-- loop end -->  
 
-    <!-- loop end -->    
+    <!-- pagination start --> 
+
+    <?php
+        /*
+            *elementor pagination settings
+            *pagination type
+            *pagination label
+        */
+        $prev_next_pagination = true;
+        $pagination_type = $settings['course_list_pagination_type'];
+
+        //setting pagination type
+       
+        if($pagination_type == 'numbers')
+        {
+           $prev_next_pagination = false; 
+        }
+
+        $pagination_page_limit = $settings['course_list_pagination_page_limit'];
+        $pagination_prev_label = $settings['course_list_pagination_previous_label'];
+        $pagination_next_label = $settings['course_list_pagination_next_label'];
+
+        $big = 999999999; // need an unlikely integer
+         
+        $pagination_link_arg = array(
+            'base' => str_replace( $big, '%#%', esc_url( site_url( 'courses/page/'.$big ) ) ),
+            'format' => '?paged=%#%',
+            'current' => max( 1, get_query_var('paged') ),
+            'end_size' => $pagination_page_limit,
+            'prev_next' => $prev_next_pagination,
+            'prev_text' => __($pagination_prev_label, 'tutor-elementor-addons'),
+            'next_text' => __($pagination_next_label, 'tutor-elementor-addons'),
+
+            'total' => $the_query->max_num_pages        
+        ); 
+
+        $pagination_links = paginate_links($pagination_link_arg);
+
+        
+    ?>
+    <div class="etlms-course-list-pagination-wrap">     
+        <?php if($pagination_type=="prev_next"):?>
+
+            <div class="prev-next">
+                <?php 
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                    $prev_page = $paged - 1;
+                    $next_page = $paged + 1;
+                    $prev_link = esc_url(site_url( 'courses/page/'.$prev_page ));
+                    $next_link = esc_url(site_url( 'courses/page/'.$next_page ));
+                    $max_page = $the_query->max_num_pages;
+                ?>
+                <?php if($prev_page < 1):?>
+                    <span>
+                        <?= $pagination_prev_label;?>
+                    </span>
+                <?php else:?>    
+                    <a href="<?= $prev_link?>">
+                        <?= $pagination_prev_label;?>
+                            
+                    </a>
+                <?php endif;?>
+
+                <?php if($next_page > $max_page):?>
+                    <span>
+                        <?= $pagination_next_label;?>  
+                    </span>
+                <?php else:?>    
+                    <a href="<?= $next_link?>">
+                        <?= $pagination_next_label;?>
+                            
+                    </a>
+                <?php endif;?>
+            </div>
+        <?php else:?>
+            
+        <?= $pagination_links;?>
+
+        <?php endif;?>
+    </div> 
+    <!-- pagination end -->  
     <?php    
 
     else :
