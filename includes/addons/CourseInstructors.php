@@ -151,8 +151,8 @@ class CourseInstructors extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $img_selector => 'width: {{SIZE}}{{UNIT}};',                    
-                    $no_img_selector => 'width: {{SIZE}}{{UNIT}};',
+                    $img_selector => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',                    
+                    $no_img_selector => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                    
                 ],
             ]
@@ -369,14 +369,13 @@ class CourseInstructors extends BaseAddon {
     }
 
     protected function render($instance = []) {
-
-        ob_start();
         $course = etlms_get_course();
-
         if($course){
+            ob_start();
             $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/instructors');
+            $output = apply_filters( 'tutor_course/single/instructors_html', ob_get_clean() );
+            echo $output;
         }
-        echo ob_get_clean();
     }
 }
