@@ -279,7 +279,92 @@ class CourseList extends BaseAddon{
 
         $this->end_controls_section();
 
-        
+        //pagination section
+        $this->start_controls_section(
+            'course_list_pagination_content_section',
+            [
+                'label' => __('Pagination','tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'course_list_footer_settings' => 'yes',
+                   
+                ]              
+            ]
+        );
+
+        $this->add_control(
+            'course_list_pagination_type',
+            [
+                'label' => __('Pagination','tutor-elementor-addons'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'prev_next',
+
+                'options' => [
+                    'prev_next' => __('Previous/Next', 'tutor-elementor-addons')
+                ]
+            ]
+        );       
+
+        $this->add_control(
+            'course_list_pagination_page_limit',
+            [
+                'label' => __('Page Limit','tutor-elementor-addons'),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 20,
+                'step' => 1,
+                'default' => 5
+            ]
+        );
+
+        $this->add_control(
+            'course_list_pagination_previous_label',
+            [
+                'label' => __('Previous Label','tutor-elementor-addons'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('Previous','tutor-elementor-addons')
+            ]
+        );
+
+        $this->add_control(
+            'course_list_pagination_next_label',
+            [
+                'label' => __('Next Label','tutor-elementor-addons'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('Next','tutor-elementor-addons')
+            ]
+        );
+
+        $this->add_control(
+            'course_list_pagination_alignment',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => \Elementor\Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right'
+                    ]
+                ],
+                
+                'default'      => 'left',
+                'selectors' => [
+                    '{{WRAPPER}}' => ''
+                ]
+            ]
+        );
+
+
+
+        $this->end_controls_section();
 
         //enroll button
 
