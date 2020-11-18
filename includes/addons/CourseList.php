@@ -593,7 +593,7 @@ class CourseList extends BaseAddon{
 
     protected function register_style_controls(){
 
-        $wrapper = "{{WRAPPER}} .etlms-carousel-main-wrap ";
+        $wrapper = "{{WRAPPER}} .etlms-course-list-main-wrap ";
         $card_selector = $wrapper.".tutor-course-loop";
         $footer_seperator_selector =  $wrapper.".tutor-loop-course-footer";
         $image_selector = $wrapper.".tutor-course-header a >img";
@@ -611,11 +611,90 @@ class CourseList extends BaseAddon{
         $cart_selector = $wrapper.".tutor-loop-cart-btn-wrap a::before";
         $cart_hover_selector = $wrapper.".tutor-loop-cart-btn-wrap a:hover:before";
         $cart_button_selector = $wrapper.".tutor-loop-cart-btn-wrap a";
-        $arrow_icon_selector = $wrapper.".etlms-carousel-arrow i";
-        $arrow_shape_selector = $wrapper.".etlms-carousel-arrow >i";
-        $arrow_ghost_selector = $wrapper.".etlms-carousel-arrow";
-        $dots_selector = $wrapper.".slick-dots li button::before";
-        $dots_area_selector = $wrapper.".slick-dots li button";
+        $row_selector = '';
+        $column_selector = '';
+
+        $this->start_controls_section(
+            'course_list_layout_style',
+            [
+                'label' => __('Layout'),
+                'tab' => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'course_list_columns_gap',
+            [
+                'label'     => __('Columns Gap', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::SLIDER,
+                'size_unit' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1
+                    ]
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0
+                ],
+                'selectors' => [
+                    $column_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );         
+
+        $this->add_control(
+            'course_list_rows_gap',
+            [
+                'label'     => __('Rows Gap', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::SLIDER,
+                'size_unit' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1
+                    ]
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0
+                ],
+                'selectors' => [
+                    $row_selector => 'margin-right: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        ); 
+
+        $this->add_control(
+            'course_list_dots_alignment',
+            [
+                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'type'         => Controls_Manager::CHOOSE,
+                'options'      => [
+                    'left'   => [
+                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'icon'  => 'fa fa-align-right'
+                    ],
+
+                ],
+                'selectors' => [
+                    $wrapper => 'text-align: {{VALUE}};',
+                ],                          
+            ]
+        );
+
+        $this->end_controls_section();
 
         $this->start_controls_section(
             'course_carousel_style_section',
@@ -1478,506 +1557,7 @@ class CourseList extends BaseAddon{
         $this->end_controls_section();      
         //footer section end        
 
-        //arrow section start
-        $this->start_controls_section(
-            'course_carousel_arrow_styles',
-            [
-                'label' => __('Arrows','tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE
-            ]
-        );
 
-        $this->add_control(
-            'course_carousel_arrow_style',
-            [
-                'label' => __('Arrow Style','tutor-elementor-addons'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'default',
-                'options' => [
-                    'default' => __('Default','tutor-elementor-addons'),
-                    'ghost' => __('Ghost / Outlined','tutor-elementor-addons'),
-                    'fill' => __('Fill','tutor-elementor-addons')
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_arrows_position',
-            [
-                'label' => __('Position','tutor-elementor-addons'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'inside',
-                'options' => [
-                    'inside' => __('Inside','tutor-elementor-addons'),
-                    'outside' => __('Outside','tutor-elementor-addons'),
-                ]
-            ]
-        );
-        $this->add_control(
-            'course_carousel_arrow_shape_size',
-            [
-                'label' => __( 'Shape Size', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 20,
-                ],
-                'condition' =>[
-                    'course_carousel_arrow_style!'=>'default'
-                ],
-                'selectors' => [
-                    $arrow_shape_selector => 'width: {{SIZE}}{{UNIT}};height:{{SIZE}}{{UNIT}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_arrow_icon_size',
-            [
-                'label' => __( 'Icon Size', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 20,
-                ],
-                'selectors' => [
-                    $arrow_icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        // arrow tabs
-        $this->start_controls_tabs(
-            'course_carousel_arrow_tabs'
-        );
-        // normal tab
-        $this->start_controls_tab(
-            'course_carousel_arrow_normal_tab',
-            [
-                'label' => __('Normal','tutor-elementor-addons')
-            ]
-        );
-
-            $this->add_control(
-                'course_carousel_arrow_color',
-                [
-                    'label'     => __( 'Arrow Color', 'tutor-elementor-addons' ),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $arrow_icon_selector => 'color: {{VALUE}};',
-                    ],
-                ]
-            );            
-
-            $this->add_control(
-                'course_carousel_arrow_shape_color',
-                [
-                    'label'     => __( 'Shape Color', 'tutor-elementor-addons' ),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $arrow_shape_selector => 'background-color: {{VALUE}};',
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'course_carousel_arrow_shape_border_width',
-                [
-                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px', '%' ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 0,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 1,
-                    ],
-                    'selectors' => [
-                        $arrow_shape_selector => 'border-width: {{SIZE}}{{UNIT}};',
-                    ],
-                    'condition' =>[
-                        'course_carousel_arrow_style' => 'ghost'
-                    ]
-                ]
-            );
-
-            $this->add_control(
-                'course_carousel_arrow_border_color',
-                [
-                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $arrow_shape_selector => 'border-color: {{VALUE}}',
-                    ],
-                    'condition' =>[
-                        'course_carousel_arrow_style' => 'ghost'
-                    ]                    
-                ]
-            );
-
-            $this->add_control(
-                'course_carousel_arrow_shape_raius',
-                [
-                    'label' => __( 'Shape Radius', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px', '%' ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 0,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 0,
-                    ],
-                    'selectors' => [
-                        $arrow_shape_selector => 'border-radius: {{SIZE}}{{UNIT}};',
-                    ],
-                    'condition' => [
-                        'course_carousel_arrow_style' => 'ghost'
-                    ]
-                ]
-            );
-
-            $this->add_group_control(
-                Group_Control_Box_Shadow::get_type(),
-                [
-                    'name' => 'course_carousel_arrow_shape_shadow',
-                    'label' => __( 'Shadow', 'tutor-elementor-addons' ),
-                    'selector' => $arrow_shape_selector,
-                ]
-            );
-
-        $this->end_controls_tab();      
-
-        // hover tab
-        $this->start_controls_tab(
-            'course_carousel_arrow_hover_tab',
-            [
-                'label' => __('Hover','tutor-elementor-addons')
-            ]
-        );
-
-            $this->add_control(
-                'course_carousel_arrow_color_hover',
-                [
-                    'label'     => __( 'Arrow Color', 'tutor-elementor-addons' ),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $arrow_icon_selector.":hover" => 'color: {{VALUE}};',
-                    ],
-                ]
-            );            
-
-            $this->add_control(
-                'course_carousel_arrow_shape_color_hover',
-                [
-                    'label'     => __( 'Shape Color', 'tutor-elementor-addons' ),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $arrow_shape_selector.":hover"=> 'background-color: {{VALUE}};',
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'course_carousel_arrow_shape_border_width_hover',
-                [
-                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px', '%' ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 0,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 0,
-                    ],
-                    'condition' => [
-                        'course_carousel_arrow_style' => 'ghost'
-                    ],
-                    'selectors' => [
-                        $arrow_shape_selector.":hover" => 'border-width: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'course_carousel_arrow_border_color_hover',
-                [
-                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::COLOR,
-                    'condition' => [
-                        'course_carousel_arrow_style' => 'ghost'
-                    ],
-                    'selectors' => [
-                        $arrow_shape_selector.":hover" => 'border-color: {{VALUE}}',
-                    ],
-                ]
-            );
-
-            $this->add_control(
-                'course_carousel_arrow_shape_raius_hover',
-                [
-                    'label' => __( 'Shape Radius', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px', '%' ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 0,
-                        ],
-                        '%' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 0,
-                    ],
-                    'condition' => [
-                        'course_carousel_arrow_style' => 'ghost'
-                    ],
-                    'selectors' => [
-                        $arrow_shape_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}};',
-                    ],
-
-                ]
-            );
-
-            $this->add_group_control(
-                Group_Control_Box_Shadow::get_type(),
-                [
-                    'name' => 'course_carousel_arrow_shape_shadow_hover',
-                    'label' => __( 'Shadow', 'tutor-elementor-addons' ),
-                    'selector' => $arrow_shape_selector.":hover",
-                ]
-            );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-        $this->end_controls_section();      
-        //arrow section end
-
-        //dots style section start
-        $this->start_controls_section(
-            'course_carousel_dots_style',
-            [
-                'label' => __('Dots','tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_dots_position',
-            [
-                'label' => __('Position','tutor-elementor-addons'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'inside',
-                'options' => [
-                    'inside' => __('Inside','tutor-elementor-addons'),
-                    'outside' => __('Outside','tutor-elementor-addons'),
-                ]
-            ]
-        );
-
-
-
-        $this->add_control(
-            'course_carousel_dots_radius',
-            [
-                'label' => __( 'Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    $dots_selector => 'border-radius: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );        
-
-        $this->add_control(
-            'course_carousel_dots_size',
-            [
-                'label' => __( 'Size', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    $dots_selector => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );        
-
-
-
-        $this->add_control(
-            'course_carousel_dots_alignment',
-        [
-            'label'        => __('Alignment', 'tutor-elementor-addons'),
-            'type'         => Controls_Manager::CHOOSE,
-            'options'      => [
-                'left'   => [
-                    'title' => __('Left', 'tutor-elementor-addons'),
-                    'icon'  => 'fa fa-align-left',
-                ],
-                'center' => [
-                    'title' => __('Center', 'tutor-elementor-addons'),
-                    'icon'  => 'fa fa-align-center',
-                ],
-                'right'  => [
-                    'title' => __('Right', 'tutor-elementor-addons'),
-                    'icon'  => 'fa fa-align-right'
-                ],
-
-            ],
-            'selectors' => [
-                $wrapper.".slick-dots" => 'text-align: {{VALUE}};',
-            ],                          
-        ]
-        );
-
-        $this->add_control(
-            'course_carousel_dots_space',
-            [
-                'label' => __( 'Space Between', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    $dots_selector=> 'margin-right: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->start_controls_tabs('course_carousel_dots_tabs');
-
-        /*normal tab*/
-        $this->start_controls_tab(
-            'course_carousel_dots_normal_tab',
-            [
-                'label' => __('Normal','tutor-elementor-addons')
-            ]
-        );
-
-            $this->add_control(
-                'course_carousel_dots_fill_normal_color',
-                [
-                    'label'     => __('Fill Color', 'tutor-elementor-addons'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $dots_selector => 'color: {{VALUE}}',
-                    ],
-                ]
-            );  
-
-            $this->add_control(
-                'course_carousel_dots_border_normal_color',
-                [
-                    'label'     => __('Border Color', 'tutor-elementor-addons'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $dots_selector => 'border-color: {{VALUE}}',
-                    ],
-                ]
-            );
-
-        $this->end_controls_tab();
-
-        /*hover tab*/
-        $this->start_controls_tab(
-            'course_carousel_dots_hover_tab',
-            [
-                'label' => __('Hover','tutor-elementor-addons')
-            ]
-        ); 
-
-            $this->add_control(
-                'course_carousel_dots_fill_hover_color',
-                [
-                    'label'     => __('Fill Color', 'tutor-elementor-addons'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $dots_selector.":hover" => 'color: {{VALUE}}',
-                    ],
-                ]
-            );  
-
-            $this->add_control(
-                'course_carousel_dots_border_hover_color',
-                [
-                    'label'     => __('Border Color', 'tutor-elementor-addons'),
-                    'type'      => Controls_Manager::COLOR,
-                    'selectors' => [
-                        $dots_selector."hover" => 'border-color: {{VALUE}}',
-                    ],
-                ]
-            );
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->end_controls_section();
-        //dots style section end
     }
 
     protected function render(){

@@ -1,12 +1,7 @@
 'use strict';
 (function ($) {
-jQuery(window).on('elementor/frontend/init', function(){
 
-    /*
-      *elementor js hook
-    */
-    elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-carousel.default',function ($scope, $) {
-
+function enroll_button($scope){
         /*
           *get button type 
           *get cart icon 
@@ -61,10 +56,24 @@ jQuery(window).on('elementor/frontend/init', function(){
             }
 
 
-        }  
-    
+        }    
+}
 
-    });
+jQuery(window).on('elementor/frontend/init', function(){
+
+    /*
+      *elementor js hook
+    */
+    elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-carousel.default',function ($scope, $) {    
+          enroll_button($scope,$);
+      }
+    );    
+
+    elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-list.default',function ($scope, $) {    
+          enroll_button($scope,$);
+      }
+    );
+
 });
 })(jQuery);
 
