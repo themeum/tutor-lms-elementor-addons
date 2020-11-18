@@ -57,21 +57,19 @@ class CourseLevel extends BaseAddon {
                     'px' => [
                         'min' => 0,
                         'max' => 300,
-                       
                     ]
-
                 ],
                 'default' => [
                     'unit' => 'px',
                     'size' => 5,
                 ],
                 'selectors' => [
-                    '.elementor-layout-up .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout-left .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--tabletup .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--tabletleft .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--mobileup .etlms-course-level-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--mobileleft .etlms-course-level-content' => 'margin-right: {{SIZE}}{{UNIT}};'
+                    '.elementor-layout-up .etlms-course-level strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout-left .etlms-course-level strong' => 'margin-left: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletup .etlms-course-level strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletleft .etlms-course-level strong' => 'margin-lef: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileup .etlms-course-level strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileleft .etlms-course-level strong' => 'margin-left: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -80,7 +78,7 @@ class CourseLevel extends BaseAddon {
     }
 
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-single-course-meta ul li.tutor-course-level';
+        $selector = '{{WRAPPER}} .etlms-course-level';
 
         //Section Label
         $this->start_controls_section(
@@ -96,7 +94,7 @@ class CourseLevel extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector.' strong' => 'color: {{VALUE}}',
+                    $selector => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -105,7 +103,7 @@ class CourseLevel extends BaseAddon {
             [
                 'name'      => 'course_level_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector.' strong',
+                'selector'  => $selector,
             ]
         );
         $this->end_controls_section();
@@ -124,7 +122,7 @@ class CourseLevel extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector => 'color: {{VALUE}}',
+                    $selector.' strong' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -133,20 +131,25 @@ class CourseLevel extends BaseAddon {
             [
                 'name'      => 'course_level_value_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector,
+                'selector'  => $selector.' strong',
             ]
         );
         $this->end_controls_section();
-
     }
 
     protected function render($instance = []) {
-        ob_start();
-        $course = etlms_get_course();
-        if ($course) {
-            include_once etlms_get_template('course/level');
+        $disable_course_level = get_tutor_option('disable_course_level');
+        if (!$disable_course_level) {
+            $course = etlms_get_course();
+            if ($course) {
+                $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor');
+                $markup = '<div class="etlms-course-level">';
+                $markup .= __('Course level:', 'tutor');
+                $markup .= '<strong>'. $level .'</strong>';
+                $markup .= '</div>';
+                echo $markup;
+            }
         }
-        echo ob_get_clean();
     }
 
 }

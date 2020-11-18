@@ -17,17 +17,16 @@ class CourseDuration extends BaseAddon {
 
     private static $prefix_class_layout = "elementor-layout-";
 
-    private static $prefix_class_alignment = "elementor-align-";
+    private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
-        return __('Course Duration', 'tutor-elementor-addons');
+        return __('Course Level', 'tutor-elementor-addons');
     }
-
-    //content section
+    
     protected function register_content_controls(){
         //layout 
         $this->start_controls_section(
-           'course_duration_content_settings',
+           'course_level_layout_settings',
             [
                 'label' => __( 'General Settings', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
@@ -36,21 +35,20 @@ class CourseDuration extends BaseAddon {
         );
 
         $this->add_responsive_control(
-            'course_duration_layout',
+            'course_level_layout',
             //layout options
             $this->etlms_layout()
         ); 
-        $this->add_responsive_control(
-            'course_duration_alignment',
+
         //alignment    
+        $this->add_responsive_control(
+            'course_level_alignment',
+            //alignment options
             $this->etlms_alignment()
         );
 
-        $duration_spacing = is_rtl() ? 'margin-left: {{SIZE}}{{UNIT}};' : 'margin-right: {{SIZE}}{{UNIT}};';
-
-
         $this->add_responsive_control(
-            'course_category_gap',
+            'course_level_gap',
             [
                 'label' => __( 'Gap', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -59,55 +57,83 @@ class CourseDuration extends BaseAddon {
                     'px' => [
                         'min' => 0,
                         'max' => 300,
-                       
                     ]
-
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 13,
+                    'size' => 5,
                 ],
                 'selectors' => [
-                    '.elementor-layout-left .etmls-single-course-meta-duration a:not(:last-child)' => $duration_spacing,                    
-                    '.elementor-layout-up .etmls-single-course-meta-duration a:first-child' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--tabletleft .etmls-single-course-meta-duration a:not(:last-child)' => $duration_spacing,                    
-                    '.elementor-layout--tabletup .etmls-single-course-meta-duration a:first-child' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--mobileleft .etmls-single-course-meta-duration a:not(:last-child)' => $duration_spacing,                    
-                    '.elementor-layout--mobileup .etmls-single-course-meta-duration a:first-child' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                    '.elementor-layout-up .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout-left .etlms-course-duration strong' => 'margin-left: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletup .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletleft .etlms-course-duration strong' => 'margin-lef: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileup .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileleft .etlms-course-duration strong' => 'margin-left: {{SIZE}}{{UNIT}};'
                 ]
             ]
-        );        
+        );
+
         $this->end_controls_section();
-    } 
+    }
 
     protected function register_style_controls() {
-        $selector = '.etmls-single-course-meta-duration a';
+        $selector = '{{WRAPPER}} .etlms-course-duration';
+
+        //Section Label
         $this->start_controls_section(
-            'course_duration_section',
+            'course_level_label_section',
             [
-                'label' => __('Style', 'tutor-elementor-addons'),
+                'label' => __('Label', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_duration_color',
+            'course_level_label_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$selector => 'color: {{VALUE}}',
-				],
+                    $selector => 'color: {{VALUE}}',
+                ],
             ]
         );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_duration_typo',
+                'name'      => 'course_level_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             ]
         );
+        $this->end_controls_section();
 
+        //Section Value
+        $this->start_controls_section(
+            'course_level_value_section',
+            [
+                'label' => __('Value', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'course_level_value_color',
+            [
+                'label'     => __('Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    $selector.' strong' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'course_level_value_typo',
+                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'selector'  => $selector.' strong',
+            ]
+        );
         $this->end_controls_section();
     }
 
@@ -120,9 +146,9 @@ class CourseDuration extends BaseAddon {
                 $course_duration = get_tutor_course_duration_context();
             }
             if(!empty($course_duration)) {
-                $markup = '<div class="etmls-single-course-meta-duration">';
-                $markup .= __('<a>Course Duration</a>','tutor-elementor-addons');
-                $markup .= '<a>'.$course_duration.'</a>';
+                $markup = '<div class="etlms-course-duration">';
+                $markup .= __('Course Duration:', 'tutor-elementor-addons');
+                $markup .= '<strong>'. $course_duration .'</strong>';
                 $markup .= '</div>';
                 echo $markup;
             }

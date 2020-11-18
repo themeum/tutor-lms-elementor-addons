@@ -16,6 +16,12 @@
 .etlms-author-layout-up .tutor-single-course-author-name {
     display: block;
 }
+.etlms-course-level .tutor-single-course-meta.tutor-meta-top ul {
+    padding: 0;
+}
+.etlms-course-level .tutor-single-course-meta.tutor-meta-top ul li {
+    width: 100%;
+}
 .elementor-widget-container .tutor-course-enrollment-box {
     margin-bottom: 0;
 }
