@@ -611,8 +611,8 @@ class CourseList extends BaseAddon{
         $cart_selector = $wrapper.".tutor-loop-cart-btn-wrap a::before";
         $cart_hover_selector = $wrapper.".tutor-loop-cart-btn-wrap a:hover:before";
         $cart_button_selector = $wrapper.".tutor-loop-cart-btn-wrap a";
-        $row_selector = '';
-        $column_selector = '';
+        $row_selector = $wrapper.".etlms-course-list-col";
+        $column_selector = $wrapper.".etlms-course-list-col";
 
         $this->start_controls_section(
             'course_list_layout_style',
@@ -640,7 +640,7 @@ class CourseList extends BaseAddon{
                     'size' => 0
                 ],
                 'selectors' => [
-                    $column_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    $column_selector => 'padding-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );         
@@ -663,18 +663,18 @@ class CourseList extends BaseAddon{
                     'size' => 0
                 ],
                 'selectors' => [
-                    $row_selector => 'margin-right: {{SIZE}}{{UNIT}};',
+                    $row_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         ); 
 
         $this->add_control(
-            'course_list_dots_alignment',
+            'course_list_cols_alignment',
             [
                 'label'        => __('Alignment', 'tutor-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
-                    'left'   => [
+                    'flex-start'   => [
                         'title' => __('Left', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
@@ -682,14 +682,14 @@ class CourseList extends BaseAddon{
                         'title' => __('Center', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
-                    'right'  => [
+                    'flex-end'  => [
                         'title' => __('Right', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-right'
                     ],
 
                 ],
                 'selectors' => [
-                    $wrapper => 'text-align: {{VALUE}};',
+                    $wrapper.".tutor-courses" => 'justify-content: {{VALUE}};',
                 ],                          
             ]
         );

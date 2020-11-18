@@ -56,9 +56,9 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         <?php while ( $the_query->have_posts() ) : $the_query->the_post();
         ?>
 
-<!-- slick-slider-main-wrapper -->
+<!-- course -wrapper -->
 
-<div class="tutor-course-col-<?= $course_list_column?>">
+<div class="tutor-course-col-<?= $course_list_column?> etlms-course-list-col">
 
     <div class="<?php tutor_course_loop_wrap_classes(); ?>"
         <?php
@@ -241,7 +241,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
     </div>    
 </div>   
     
-<!-- slick-slider-main-wrapper -->
+<!-- course -wrapper -->
 
         <?php  
         endwhile;
