@@ -3,13 +3,25 @@
 
 <!--loading course init-->
 <?php
+    
+    /*
+        *get settings from elementor
+
+    */
+    $course_list_perpage = $settings['course_list_perpage'];
+    $course_list_column = $settings['course_list_column'];
+
+    /*
+        *query arguements
+    */
     $args = [
         'post_type' => tutor()->course_post_type,
-        'post_status' => 'publish'
+        'post_status' => 'publish',
+        'posts_per_page' => $course_list_perpage 
     ];
     
-// the query
-$the_query = new WP_Query( $args );
+    // the query
+    $the_query = new WP_Query( $args );
 
     //wp_reset_postdata();
     //do_action('tutor_course/archive/before_loop');
@@ -44,10 +56,11 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
 <!-- slick-slider-main-wrapper -->
 
-<div class="<?php tutor_course_loop_col_classes(); ?>">
+<div class="tutor-course-col-<?= $course_list_column?>">
+
     <div class="<?php tutor_course_loop_wrap_classes(); ?>"
         <?php
-            $image_size = $settings['course_carousel_image_size_size'];
+            $image_size = $settings['course_list_image_size_size'];
             $image_url = get_tutor_course_thumbnail($image_size, $url=true);
             if("overlayed" == $settings['course_list_skin'])
             {
@@ -60,13 +73,13 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         <!-- header -->
         <div class="tutor-course-header">
             <?php 
-                $custom_image_size = $settings['course_carousel_image_size_size'];
+                $custom_image_size = $settings['course_list_image_size_size'];
 
                 if("overlayed" !=$settings['course_list_skin']):
             ?>
             <a href="<?php the_permalink(); ?>"> 
                 <?php
-                    if("yes" === $settings['course_carousel_image']){
+                    if("yes" === $settings['course_list_image']){
 
                         get_tutor_course_thumbnail($custom_image_size);
                     }
@@ -91,10 +104,10 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
                 }else{
                     $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
                 }
-                if("yes" === $settings['course_carousel_difficulty_settings']){
+                if("yes" === $settings['course_list_difficulty_settings']){
                     echo '<span class="tutor-course-loop-level">'.get_tutor_course_level().'</span>';
                 }
-                if("yes" === $settings['course_carousel_wishlist_settings']){
+                if("yes" === $settings['course_list_wishlist_settings']){
                     echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line '.$action_class.' '.$has_wish_list.' " data-course-id="'.$course_id.'"></a> </span>';    
                 }
 
@@ -114,7 +127,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             <div class="tutor-loop-course-container">
 
             <!-- loop rating -->
-            <?php if("yes" === $settings['course_carousel_rating_settings']):?>
+            <?php if("yes" === $settings['course_list_rating_settings']):?>
             <div class="tutor-loop-rating-wrap">
                 <?php
                 $course_rating = tutor_utils()->get_course_rating();
@@ -148,7 +161,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             ?>
 
 
-            <?php if("yes" === $settings['course_carousel_meta_data']):?>
+            <?php if("yes" === $settings['course_list_meta_data']):?>
             <div class="tutor-course-loop-meta">
                 <?php
                 $course_duration = get_tutor_course_duration_context();
@@ -168,18 +181,19 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
             <div class="tutor-loop-author">
                 <div class="tutor-single-course-avatar">
-                    <?php if("yes" === $settings['course_carousel_avatar_settings']):?>
+                    <?php if("yes" === $settings['course_list_avatar_settings']):?>
                     <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
                     <?php endif;?>
                 </div>
+                <?php if("yes" == $settings['course_list_author_settings']):?>
                 <div class="tutor-single-course-author-name">
                     <span><?php _e('by', 'tutor'); ?></span>
                     <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
                 </div>
-
+                <?php endif;?>
                 <div class="tutor-course-lising-category">
                     <?php
-                    if("yes" === $settings['course_carousel_category_settings']){
+                    if("yes" === $settings['course_list_category_settings']){
 
                         $course_categories = get_tutor_course_categories();
                         if(!empty($course_categories) && is_array($course_categories ) && count($course_categories)){
@@ -201,15 +215,26 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             </div>
 
             <!-- loop footer -->
-            <?php if("yes" === $settings['course_carousel_footer_settings']):?>
-            <div class="tutor-loop-course-footer etlms-carousel-footer">
+            
             <?php
-                tutor_course_loop_price()
-            ?>    
+            $is_footer = $settings['course_list_footer_settings'];
+            ?>
+            <div class="tutor-loop-course-footer etlms-carousel-footer" style="
+            <?php if($is_footer=='yes'):?>
+                display:block;
+                <?php else:?>
+                display: none;
+            <?php endif;?>    
+            ">
+            <?php
+
+                tutor_course_loop_price();
+
+            ?>   
             </div>
 
         </div>  <!-- etlms-course-container -->
-        <?php endif;?>
+        
         
 
     </div>    

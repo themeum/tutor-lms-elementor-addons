@@ -38,7 +38,7 @@ class CourseList extends BaseAddon{
 
         $meta_content_selector = $content_selector.".tutor-single-loop-meta";
         $this->start_controls_section(
-            'course_carousel_content_section',
+            'course_list_content_section',
             [
                 'label' => __('Layout','tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_CONTENT
@@ -61,40 +61,36 @@ class CourseList extends BaseAddon{
             ]
         );
     
-        // $this->add_responsive_control(
-        //  'course_carousel_column',
-        //  [
-        //      'label' => __( 'Column', 'tutor-elementor-addons' ),
-        //      'type' =>Controls_Manager::SELECT,
-        //      'default' => '3',
-        //      'options' => [
-        //          '1'  => __( '1', 'tutor-elementor-addons' ),
-        //          '2' => __( '2', 'tutor-elementor-addons' ),
-        //          '3' => __( '3', 'tutor-elementor-addons' ),
-        //          '4' => __( '4', 'tutor-elementor-addons' ),
-        //          '5' => __( '5', 'tutor-elementor-addons' ),
-        //      ],
-        //  ]
-        // );
-        $slides_to_show = range( 1, 10 );
-
-        $slides_to_show = array_combine( $slides_to_show, $slides_to_show );
-
         $this->add_responsive_control(
-            'etlms_course_carousel_column',
+         'course_list_column',
+         [
+             'label' => __( 'Columns', 'tutor-elementor-addons' ),
+             'type' =>Controls_Manager::SELECT,
+             'default' => '3',
+             'options' => [
+                 '1'  => __( '1', 'tutor-elementor-addons' ),
+                 '2' => __( '2', 'tutor-elementor-addons' ),
+                 '3' => __( '3', 'tutor-elementor-addons' ),
+                 '4' => __( '4', 'tutor-elementor-addons' ),
+                 '5' => __( '5', 'tutor-elementor-addons' ),
+             ],
+         ]
+        );
+
+        $this->add_control(
+            'course_list_perpage',
             [
-                'label' => __( 'Slides to Show', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SELECT,
-                'options' => [
-                    '' => __( 'Default', 'tutor-elementor-addons' ),
-                ] + $slides_to_show,
-                'devices' => [ 'desktop', 'tablet', 'mobile' ],
-                'frontend_available' => true,
+                'label' => __( 'Post Per Page', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 100,
+                'step' => 1,
+                'default' => 6,
             ]
         );
 
         $this->add_control(
-            'course_carousel_image',
+            'course_list_image',
             [
                 'label' => __( 'Show Image', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -108,17 +104,17 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),
             [
-                'name' => 'course_carousel_image_size', // Actually its `image_size`.
+                'name' => 'course_list_image_size', // Actually its `image_size`.
                 'label' => __( 'Image Size', 'tutor-elementor-addons' ),
                 'default' => 'medium',
                 'condition'=>[
-                    'course_carousel_image' => 'yes'
+                    'course_list_image' => 'yes'
                 ]
             ]
         );
 
         $this->add_control(
-            'course_carousel_image_ratio',
+            'course_list_image_ratio',
             [
                 'label' => __('Image Ratio'),
                 'type' => Controls_Manager::SLIDER,
@@ -141,7 +137,7 @@ class CourseList extends BaseAddon{
         );      
 
         $this->add_control(
-            'course_carousel_meta_data',
+            'course_list_meta_data',
             [
                 'label' => __( 'Meta Data', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -153,7 +149,7 @@ class CourseList extends BaseAddon{
         );      
 
         $this->add_control(
-            'course_carousel_meta_space',
+            'course_list_meta_space',
             [
                 'label' => __('Space Between'),
                 'type' => Controls_Manager::SLIDER,
@@ -169,7 +165,7 @@ class CourseList extends BaseAddon{
                     'unit' => 'px'
                 ],
                 'condition'=>[
-                    'course_carousel_meta_data' => "yes"
+                    'course_list_meta_data' => "yes"
                 ],
                 "selectors" =>[
                     $meta_content_selector => "padding-right:{{SIZE}}{{UNIT}};"
@@ -185,7 +181,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_rating_settings',
+            'course_list_rating_settings',
             [
                 'label' => __( 'Rating', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -198,9 +194,21 @@ class CourseList extends BaseAddon{
         );          
 
         $this->add_control(
-            'course_carousel_avatar_settings',
+            'course_list_avatar_settings',
             [
                 'label' => __( 'Avatar', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );           
+
+        $this->add_control(
+            'course_list_author_settings',
+            [
+                'label' => __( 'Author', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __( 'Show', 'tutor-elementor-addons' ),
                 'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
@@ -210,7 +218,7 @@ class CourseList extends BaseAddon{
         );          
 
         $this->add_control(
-            'course_carousel_difficulty_settings',
+            'course_list_difficulty_settings',
             [
                 'label' => __( 'Difficulty Level', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -222,7 +230,7 @@ class CourseList extends BaseAddon{
         );    
 
         $this->add_control(
-            'course_carousel_category_settings',
+            'course_list_category_settings',
             [
                 'label' => __( 'Category', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -234,7 +242,7 @@ class CourseList extends BaseAddon{
         );          
 
         $this->add_control(
-            'course_carousel_wishlist_settings',
+            'course_list_wishlist_settings',
             [
                 'label' => __( 'Wishlist', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -246,7 +254,7 @@ class CourseList extends BaseAddon{
         );          
 
         $this->add_control(
-            'course_carousel_footer_settings',
+            'course_list_footer_settings',
             [
                 'label' => __( 'Footer', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -256,7 +264,22 @@ class CourseList extends BaseAddon{
                 'default' => 'yes',
             ]
         );          
+
+        $this->add_control(
+            'course_list_pagination_settings',
+            [
+                'label' => __( 'Pagination', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );   
+
         $this->end_controls_section();
+
+        
 
         //enroll button
 
