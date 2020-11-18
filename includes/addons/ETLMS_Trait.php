@@ -15,11 +15,11 @@ trait ETLMS_Trait {
 			'options' => [
 				'left' => [
 					'title' => __('Left', 'tutor-elementor-addons'),
-					'icon' => 'fa fa-long-arrow-left',
+					'icon' => 'eicon-h-align-left',
 				],
 				'up' => [
 					'title' => __('Up', 'tutor-elementor-addons'),
-					'icon' => 'fa fa-long-arrow-up'
+					'icon' => 'eicon-v-align-top'
 				]
 
 			],
@@ -60,16 +60,16 @@ trait ETLMS_Trait {
 	//icon left right alignment
 	public function etlms_icon_align($prefix_class, $default_layout = 'left') {
 		return [
-			'label' => __('Alignment', 'tutor-elementor-addons'),
+			'label' => __('Position', 'tutor-elementor-addons'),
 			'type' => \Elementor\Controls_Manager::CHOOSE,
 			'options' => [
 				'left' => [
 					'title' => __('Left', 'tutor-elementor-addons'),
-					'icon' => 'fa fa-long-arrow-left',
+					'icon' => 'eicon-h-align-left',
 				],
 				'right' => [
 					'title' => __('Right', 'tutor-elementor-addons'),
-					'icon' => 'fa fa-long-arrow-up'
+					'icon' => 'eicon-h-align-right'
 				]
 
 			],
@@ -114,11 +114,11 @@ trait ETLMS_Trait {
 			'options' => [
 				'left' => [
 					'title' => __('Left', 'tutor-elementor-addons'),
-					'icon' => 'fa fa-long-arrow-left',
+					'icon' => 'eicon-h-align-left',
 				],
 				'up' => [
 					'title' => __('Center', 'tutor-elementor-addons'),
-					'icon' => 'fa fa-long-arrow-up'
+					'icon' => 'eicon-v-align-top'
 				]
 
 			],

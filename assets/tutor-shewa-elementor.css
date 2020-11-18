@@ -156,11 +156,7 @@
     border-radius: 50%;
 } 
 .etlms-topic-icon-align-left 
-.etlms-course-title > h4,
-.etlms-assignment-icon-align-left
-.etlms-course-assignment h5,
-.etlms-quiz-icon-align-left
-.etlms-course-quiz h5
+.etlms-course-curriculum-title > h4
 {
 	display: flex;
 	flex-direction: row;
@@ -169,15 +165,11 @@
 	column-gap: 3px;	
 }
 .etlms-topic-icon-align-right 
-.etlms-course-title > h4,
-.etlms-assignment-icon-align-right
-.etlms-course-assignment h5,
-.etlms-quiz-icon-align-right
-.etlms-course-quiz h5
+.etlms-course-curriculum-title > h4
 {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     column-gap: 8px;	
 }
@@ -400,7 +392,7 @@
 	}	
 /*course topics*/
 	.etlms-topic-icon-align--tabletleft 
-	.etlms-course-title > h4,
+	.etlms-course-curriculum-title > h4,
 	.etlms-assignment-icon-align--tabletleft
 	.etlms-course-assignment h5,
 	.etlms-quiz-icon-align--tabletleft
@@ -413,7 +405,7 @@
 		column-gap: 3px;	
 	}
 	.etlms-topic-icon-align--tabletright 
-	.etlms-course-title > h4,
+	.etlms-course-curriculum-title > h4,
 	.etlms-assignment-icon-align--tabletright
 	.etlms-course-assignment h5,
 	.etlms-quiz-icon-align--tabletright
@@ -518,7 +510,7 @@
 	}
 	/*course topics*/
 	.etlms-topic-icon-align--mobileleft 
-	.etlms-course-title > h4,
+	.etlms-course-curriculum-title > h4,
 	.etlms-assignment-icon-align--mobileleft
 	.etlms-course-assignment h5,
 	.etlms-quiz-icon-align--mobileleft
@@ -531,7 +523,7 @@
 		column-gap: 3px;	
 	}
 	.etlms-topic-icon-align--mobileright 
-	.etlms-course-title > h4,
+	.etlms-course-curriculum-title > h4,
 	.etlms-assignment-icon-align--mobileright
 	.etlms-course-assignment h5,
 	.etlms-quiz-icon-align--mobileright

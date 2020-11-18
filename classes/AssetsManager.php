@@ -73,7 +73,6 @@ class AssetsManager {
     }
 
     public static function etlms_elementor_styles(){
-
         //Register FontAwesome for fallback
         wp_register_style(
             'font-awesome-5-all',
@@ -127,15 +126,16 @@ class AssetsManager {
         );        
 
         wp_register_script (
-            'etlms-course-topics',
-            ETLMS_ASSETS.'course-topics.js',
+            'tutor-elementor-js',
+            ETLMS_ASSETS.'tutor-elementor.js',
             array('jquery'),
-            filemtime(ETLMS_DIR_PATH.'/assets/course-topics.js'),
+            filemtime(ETLMS_DIR_PATH.'/assets/tutor-elementor.js'),
             true
-        );  
+        );
+        wp_enqueue_script('tutor-elementor-js');
+
         wp_enqueue_script( 'etlms-slick-library');
         wp_enqueue_script( 'etlms-slick-slider');
-        wp_enqueue_script('etlms-course-topics');
         wp_enqueue_script('etlms-enroll-button');
     }
 }
