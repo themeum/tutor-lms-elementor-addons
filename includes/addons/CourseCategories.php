@@ -22,6 +22,7 @@ class CourseCategories extends BaseAddon {
     public function get_title() {
         return __('Course Categories', 'tutor-elementor-addons');
     }
+
     //content section
     protected function register_content_controls(){
         //layout 
@@ -60,17 +61,15 @@ class CourseCategories extends BaseAddon {
                         'max' => 300,
                        
                     ]
-
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 13,
+                    'size' => 10,
                 ],
                 'selectors' => [
                     '.elementor-layout-left .etlms-single-course-meta-categories a:not(:last-child)' => $category_spacing,                    
                     '.elementor-layout-up .etlms-single-course-meta-categories a:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
                     '.elementor-layout--tabletleft .etlms-single-course-meta-categories a:not(:last-child)' => $category_spacing,
-
                     '.elementor-layout--tabletup .etlms-single-course-meta-categories a:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',                    
                     '.elementor-layout--mobileleft .etlms-single-course-meta-categories a:not(:last-child)' => $category_spacing,                    
                     '.elementor-layout--mobileup .etlms-single-course-meta-categories a:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
@@ -81,7 +80,7 @@ class CourseCategories extends BaseAddon {
     }
 
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-single-course-meta-categories a';
+        $selector = '{{WRAPPER}} .etlms-single-course-meta-categories a';
         $this->start_controls_section(
             'course_categories_style_section',
             [
@@ -155,13 +154,16 @@ class CourseCategories extends BaseAddon {
         if ($course) {
             $course_categories = get_tutor_course_categories();
         }
-        if (is_array($course_categories) && count($course_categories)) {
-            //$markup = '<div class="tutor-single-course-meta-categories">';
+        $total_categories = count($course_categories);
+        if (is_array($course_categories) && $total_categories) {
+            $item = 1;
             $markup = '<div class="etlms-single-course-meta-categories">';
                 foreach ($course_categories as $course_category) {
                     $category_name = $course_category->name;
                     $category_link = get_term_link($course_category->term_id);
-                    $markup .= " <a href='$category_link'>$category_name</a>";
+                    $comma = ($item < $total_categories) ? ',' : '';
+                    $markup .= "<a href='$category_link'>{$category_name}{$comma}</a>";
+                    $item++;
                 }
             $markup .= "</div>";
             echo $markup;

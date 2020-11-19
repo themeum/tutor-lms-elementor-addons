@@ -17,17 +17,16 @@ class CourseLastUpdate extends BaseAddon {
 
     private static $prefix_class_layout = "elementor-layout-";
 
-    private static $prefix_class_alignment = "elementor-align-";
+    private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
-        return __('Course Last Updated', 'tutor-elementor-addons');
+        return __('Course Level', 'tutor-elementor-addons');
     }
-
-    //content section
+    
     protected function register_content_controls(){
         //layout 
         $this->start_controls_section(
-           'course_last_update_content_settings',
+           'course_level_layout_settings',
             [
                 'label' => __( 'General Settings', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
@@ -35,22 +34,21 @@ class CourseLastUpdate extends BaseAddon {
             ]
         );
 
-        $this->add_control(
-            'course_last_update_layout',
+        $this->add_responsive_control(
+            'course_level_layout',
             //layout options
-            $this->etlms_non_responsive_layout()
+            $this->etlms_layout()
         ); 
-        $this->add_control(
-            'course_last_update_alignment',
+
         //alignment    
-            $this->etlms_non_responsive_alignment()
+        $this->add_responsive_control(
+            'course_level_alignment',
+            //alignment options
+            $this->etlms_alignment()
         );
 
-        $duration_spacing = is_rtl() ? 'margin-left: {{SIZE}}{{UNIT}};' : 'margin-right: {{SIZE}}{{UNIT}};';
-
-
         $this->add_responsive_control(
-            'course_last_update_gap',
+            'course_level_gap',
             [
                 'label' => __( 'Gap', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -59,83 +57,84 @@ class CourseLastUpdate extends BaseAddon {
                     'px' => [
                         'min' => 0,
                         'max' => 300,
-                       
                     ]
-
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 13,
+                    'size' => 5,
                 ],
                 'selectors' => [
-                    '.elementor-layout-left .etlms-single-course-meta-last-update a:not(:last-child)' => $duration_spacing,                    
-                    '.elementor-layout-up .etlms-single-course-meta-last-update a:first-child' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+                    '.elementor-layout-up .etlms-course-last-update strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout-left .etlms-course-last-update strong' => 'margin-left: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletup .etlms-course-last-update strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--tabletleft .etlms-course-last-update strong' => 'margin-lef: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileup .etlms-course-last-update strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
+                    '.elementor-layout--mobileleft .etlms-course-last-update strong' => 'margin-left: {{SIZE}}{{UNIT}};'
                 ]
             ]
-        );        
+        );
+
         $this->end_controls_section();
     }
 
     protected function register_style_controls() {
-        $selector_label = '{{WRAPPER}} .etlms-single-course-meta-last-update a:first-child';
-        $selector_value = '{{WRAPPER}} .etlms-single-course-meta-last-update a:last-child';
+        $selector = '{{WRAPPER}} .etlms-course-last-update';
 
+        //Section Label
         $this->start_controls_section(
-            'course_last_update_label_section',
+            'course_level_label_section',
             [
                 'label' => __('Label', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_last_update_label_color',
+            'course_level_label_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-					$selector_label => 'color: {{VALUE}}',
-				],
+                    $selector => 'color: {{VALUE}}',
+                ],
             ]
         );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_last_update_label_typo',
+                'name'      => 'course_level_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector_label,
+                'selector'  => $selector,
             ]
         );
+        $this->end_controls_section();
 
-        $this->end_controls_section();        
-
+        //Section Value
         $this->start_controls_section(
-            'course_last_update_value_section',
+            'course_level_value_section',
             [
                 'label' => __('Value', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_last_update_value_color',
+            'course_level_value_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector_value => 'color: {{VALUE}}',
-                ]
+                    $selector.' strong' => 'color: {{VALUE}}',
+                ],
             ]
         );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_last_update_value_typo',
+                'name'      => 'course_level_value_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector_value
+                'selector'  => $selector.' strong',
             ]
         );
-
         $this->end_controls_section();
-
     }
 
     protected function render($instance = []) {
@@ -143,10 +142,10 @@ class CourseLastUpdate extends BaseAddon {
         if (!$disable_update_date) {
             $course = etlms_get_course();
             if ($course) {
-                $markup = '<div class="etlms-single-course-meta-last-update">';
                 $last_update = esc_html(get_the_modified_date());
-                $markup .= __('<a>Last Updated </a>','tutor-elementor-addons');
-                $markup .= __('<a>'.$last_update.'</a>','tutor-elementor-addons');
+                $markup = '<div class="etlms-course-last-update">';
+                $markup .= __('Last Updated:', 'tutor-elementor-addons');
+                $markup .= '<strong>'. $last_update .'</strong>';
                 $markup .= '</div>';
                 echo $markup;
             }
