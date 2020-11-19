@@ -61,7 +61,7 @@ class CourseList extends BaseAddon{
             ]
         );
     
-        $this->add_responsive_control(
+        $this->add_control(
          'course_list_column',
          [
              'label' => __( 'Columns', 'tutor-elementor-addons' ),
@@ -98,6 +98,18 @@ class CourseList extends BaseAddon{
                 'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
+            ]
+        );        
+
+        $this->add_control(
+            'course_list_masonry',
+            [
+                'label' => __( 'Masonry', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
+                'label_off' => __( 'No', 'tutor-elementor-addons' ),
+                'return_value' => 'yes',
+                'default' => '',
             ]
         );
 
@@ -607,13 +619,13 @@ class CourseList extends BaseAddon{
         $star_text_selector = $wrapper.".tutor-rating-count";
         $footer_selector = $wrapper.".tutor-loop-course-footer";
         $price_selector = $wrapper.".price";
-        $cart_text_selector = $wrapper.".tutor-loop-cart-btn-wrap >a";
-        $cart_selector = $wrapper.".tutor-loop-cart-btn-wrap a::before";
-        $cart_hover_selector = $wrapper.".tutor-loop-cart-btn-wrap a:hover:before";
-        $cart_button_selector = $wrapper.".tutor-loop-cart-btn-wrap a";
+        $cart_text_selector = $wrapper.".etlms-loop-cart-btn-wrap >a";
+        $cart_selector = $wrapper.".etlms-loop-cart-btn-wrap a >i";
+        $cart_button_selector = $wrapper.".etlms-loop-cart-btn-wrap a";
         $row_selector = $wrapper.".etlms-course-list-col";
         $column_selector = $wrapper.".etlms-course-list-col";
-        $pagination_typo_selector = $wrapper.".etlms-course-list-pagination-wrap,".$wrapper.".etlms-course-list-pagination-wrap a";
+        $pagination_selector = $wrapper.".etlms-course-list-pagination-wrap";
+
 
         $this->start_controls_section(
             'course_list_layout_style',
@@ -1357,7 +1369,7 @@ class CourseList extends BaseAddon{
                 'name' => 'course_list_pagination_typo',
                 'label' => __( 'Typography', 'tutor-elementor-addons' ),
                 
-                'selector' => '',
+                'selector' => $pagination_selector,
             ]
         );   
 
@@ -1388,7 +1400,10 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                        ".etlms-pagination.prev-next span"=> 'color: {{VALUE}}',
+                        ".etlms-pagination.prev-next a"=> 'color: {{VALUE}}',
+                        ".etlms-pagination.pagination-numbers-prev-next a"=> 'color: {{VALUE}}'
+                       
                     ],
                 ]
             );
@@ -1400,43 +1415,20 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        '{{WRAPPER}} .title' => 'background-color: {{VALUE}}',
+                        $pagination_selector => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
 
-            $this->add_control(
-                'course_list_pagination_normal_border_color',
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
                 [
-                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::COLOR,
-
-                    'selectors' => [
-                        '{{WRAPPER}} .title' => 'border-color: {{VALUE}}',
-                    ],
+                    'name' => 'course_list_pagination_normal_border',
+                    'label' => __( 'Border', 'tutor-elementor-addons' ),
+                    'selector' => $pagination_selector,
                 ]
-            ); 
+            );   
 
-            $this->add_control(
-                'course_list_pagination_normal_border_width',
-                [
-                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px'],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 1,
-                        ],
-
-                    ],
-
-                    'selectors' => [
-                        '{{WRAPPER}} .box' => 'border-width: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );                       
             $this->end_controls_tab();
             //normal tabs end 
 
@@ -1455,7 +1447,10 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                        ".etlms-pagination.prev-next span:hover"=> 'color: {{VALUE}}',
+                        ".etlms-pagination.prev-next a:hover" => 'color: {{VALUE}}',
+                        ".etlms-pagination.pagination-numbers-prev-next a:hover"=> 'color: {{VALUE}}'
+                       
                     ],
                 ]
             );
@@ -1467,43 +1462,19 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        '{{WRAPPER}} .title' => 'background-color: {{VALUE}}',
+                        $pagination_selector.":hover" => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
 
-            $this->add_control(
-                'course_list_pagination_hover_border_color',
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
                 [
-                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::COLOR,
-
-                    'selectors' => [
-                        '{{WRAPPER}} .title' => 'border-color: {{VALUE}}',
-                    ],
+                    'name' => 'course_list_pagination_hover_border',
+                    'label' => __( 'Border', 'tutor-elementor-addons' ),
+                    'selector' => $pagination_selector.":hover",
                 ]
             ); 
-
-            $this->add_control(
-                'course_list_pagination_hover_border_width',
-                [
-                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px'],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 1,
-                        ],
-
-                    ],
-
-                    'selectors' => [
-                        '{{WRAPPER}} .box' => 'border-width: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );  
 
             $this->end_controls_tab();
             //hover tabs end
@@ -1524,7 +1495,7 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        '{{WRAPPER}} .title' => 'color: {{VALUE}}',
+                        ".etlms-pagination.pagination-numbers-prev-next .current" => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1536,43 +1507,19 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        '{{WRAPPER}} .title' => 'background-color: {{VALUE}}',
+                        ".etlms-pagination.pagination-numbers-prev-next .current" => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
 
-            $this->add_control(
-                'course_list_pagination_active_border_color',
+            $this->add_group_control(
+                Group_Control_Border::get_type(),
                 [
-                    'label' => __( 'Border Color', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::COLOR,
-
-                    'selectors' => [
-                        '{{WRAPPER}} .title' => 'border-color: {{VALUE}}',
-                    ],
+                    'name' => 'course_list_pagination_active_border',
+                    'label' => __( 'Border', 'tutor-elementor-addons' ),
+                    'selector' => ".etlms-pagination.pagination-numbers-prev-next .current",
                 ]
-            ); 
-
-            $this->add_control(
-                'course_list_pagination_active_border_width',
-                [
-                    'label' => __( 'Border Width', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => [ 'px'],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                            'step' => 1,
-                        ],
-
-                    ],
-
-                    'selectors' => [
-                        '{{WRAPPER}} .box' => 'border-width: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );  
+            );
 
             $this->end_controls_tab();
             //active tabs end
@@ -1585,7 +1532,7 @@ class CourseList extends BaseAddon{
             [
                 'name' => 'course_list_pagination_box_shadow',
                 'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
-                'selector' => '{{WRAPPER}} .wrapper',
+                'selector' => $pagination_selector,
                 'separator' => 'before'
             ]
         );
@@ -1597,7 +1544,7 @@ class CourseList extends BaseAddon{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $pagination_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1609,7 +1556,7 @@ class CourseList extends BaseAddon{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
-                    '{{WRAPPER}} .your-class' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $pagination_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1636,7 +1583,11 @@ class CourseList extends BaseAddon{
                     'size' => 50,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .box' => 'width: {{SIZE}}{{UNIT}};',
+                    ".etlms-pagination.prev-next span"=> 'padding-right: {{SIZE}}{{UNIT}}',
+                    ".etlms-pagination.prev-next a" => 'padding-right: {{SIZE}}{{UNIT}}',
+                    ".etlms-pagination.pagination-numbers-prev-next a"=> 'padding-right: {{SIZE}}{{UNIT}}',
+                    ".etlms-pagination.pagination-numbers-prev-next span"=> 'padding-right: {{SIZE}}{{UNIT}}'
+                   
                 ],
             ]
         );
@@ -1731,7 +1682,7 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Text_Shadow::get_type(),
             [
-                'name' => 'course_carousel_cart_text_shadow',
+                'name' => $cart_text_selector,
                 'label' => __( 'Text Shadow', 'tutor-elementor-addons' ),
                 'selector' => $cart_text_selector,
             ]
@@ -1750,7 +1701,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_course_text_normal_color',
                 [
-                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'label'     => __('Text Color', 'tutor-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_text_selector => 'color: {{VALUE}} ',
@@ -1766,6 +1717,47 @@ class CourseList extends BaseAddon{
                     'selectors' => [
                         $cart_selector => 'color: {{VALUE}}',
                     ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'text_with_cart'
+                            ]
+                        ]
+                    ]  //condition end
+                ]
+            );            
+
+            $this->add_control(
+                'course_course_cart_background_color',
+                [
+                    'label'     => __('Background Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_button_selector => 'background-color: {{VALUE}}',
+                    ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default'
+                            ]
+                        ]
+                    ]  //condition end                    
                 ]
             );
 
@@ -1780,7 +1772,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_course_text_hover_color',
                 [
-                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'label'     => __('Text Color', 'tutor-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_text_selector.":hover" => 'color: {{VALUE}} ',
@@ -1794,10 +1786,51 @@ class CourseList extends BaseAddon{
                     'label'     => __('Icon Color', 'tutor-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        $cart_hover_selector => 'color: {{VALUE}}',
+                        $cart_selector.":hover" => 'color: {{VALUE}}',
                     ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'text_with_cart'
+                            ]
+                        ]
+                    ]                  
                 ]
-            );  
+            ); 
+
+            $this->add_control(
+                'course_course_cart_background_hover_color',
+                [
+                    'label'     => __('Background Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_button_selector => 'background-color: {{VALUE}}',
+                    ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default'
+                            ]
+                        ]
+                    ]  //condition end                    
+                ]
+            );             
         $this->end_controls_tab();
 
         $this->end_controls_tabs();

@@ -51,14 +51,26 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             $card_hover_shadow = "etlms-loop-course-hover-shadow-no";
         }
     ?> 
-    <div class="etlms-course-list-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-course-list-<?= $settings['course_list_skin']?>" >
+    <?php
+        //set class masonry if yes
+        $listStyle = "";
+        if("yes" == $settings['course_list_masonry'])
+        {
+            $listStyle = "masonry";
+        }
+        else
+        {
+            $listStyle = "tutor-courses";
+        }
+    ?>
+    <div class="etlms-course-list-loop-wrap <?= $listStyle?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-course-list-<?= $settings['course_list_skin']?>" >
 
         <?php while ( $the_query->have_posts() ) : $the_query->the_post();
         ?>
 
 <!-- course -wrapper -->
 
-<div class="tutor-course-col-<?= $course_list_column?> etlms-course-list-col">
+<div class="tutor-course-col-<?= $course_list_column?> etlms-course-list-col <?= "yes"== $settings['course_list_masonry'] ? 'masonry-brick': '' ?>">
 
     <div class="<?php tutor_course_loop_wrap_classes(); ?>"
         <?php
@@ -290,9 +302,12 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         
     ?>
     <div class="etlms-course-list-pagination-wrap">     
-        <?php if($pagination_type=="prev_next"):?>
 
-            <div class="prev-next">
+
+            <div class="etlms-pagination prev-next">
+            <?php if($pagination_type=="prev_next"):?>
+
+                <?php if($the_query->found_posts > $course_list_perpage):?>                
                 <?php 
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $prev_page = $paged - 1;
@@ -322,10 +337,16 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
                             
                     </a>
                 <?php endif;?>
+
+                <?php endif;?>
+
+            <?php else:?>                
             </div>
-        <?php else:?>
+
             
-        <?= $pagination_links;?>
+        <div class="etlms-pagination pagination-numbers-prev-next">
+            <?= $pagination_links;?>
+        </div>
 
         <?php endif;?>
     </div> 

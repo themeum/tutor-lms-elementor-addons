@@ -471,6 +471,30 @@
 	width: 90%;
 }
 
+.masonry { 
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px; /* Adjustment for the gutter */
+  width: 100%;
+}
+
+.masonry-brick {
+  flex: auto;
+  min-width: 150px;
+  margin: 0 8px 8px 0; /* Some gutter */
+}
+.masonry-brick:nth-child(4n+1) {
+  width: 250px;
+}
+.masonry-brick:nth-child(4n+1):nth-child(4n+2) {
+  width:  180px;
+}
+.masonry-brick:nth-child(4n+1):nth-child(4n+3) {
+  width: 325px;
+}
+.masonry-brick:nth-child(4n+1):nth-child(4n+4) {
+  width: 380px;
+}
 /*tablet*/
 @media only screen and (max-width: 768px){
 
