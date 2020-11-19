@@ -369,13 +369,16 @@ class CourseInstructors extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $course = etlms_get_course();
-        if($course){
-            ob_start();
-            $settings = $this->get_settings_for_display();
-            include_once etlms_get_template('course/instructors');
-            $output = apply_filters( 'tutor_course/single/instructors_html', ob_get_clean() );
-            echo $output;
+        global $wp_query;
+        if (empty($wp_query->query_vars['course_subpage'])) {
+            $course = etlms_get_course();
+            if($course){
+                ob_start();
+                $settings = $this->get_settings_for_display();
+                include_once etlms_get_template('course/instructors');
+                $output = apply_filters( 'tutor_course/single/instructors_html', ob_get_clean() );
+                echo $output;
+            }
         }
     }
 }

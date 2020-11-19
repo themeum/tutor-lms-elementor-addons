@@ -391,14 +391,17 @@ class CourseReviews extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $course = etlms_get_course();
-        if ($course) {
-            echo '<div class="tutor-course-reviews">';
-            tutor_course_target_reviews_html();
-            if (is_user_logged_in() && tutils()->is_enrolled()) {
-                tutor_course_target_review_form_html();
+        global $wp_query;
+        if (empty($wp_query->query_vars['course_subpage'])) {
+            $course = etlms_get_course();
+            if ($course) {
+                echo '<div class="tutor-course-reviews">';
+                tutor_course_target_reviews_html();
+                if (is_user_logged_in() && tutils()->is_enrolled()) {
+                    tutor_course_target_review_form_html();
+                }
+                echo '</div>';
             }
-            echo '</div>';
         }
     }
 }
