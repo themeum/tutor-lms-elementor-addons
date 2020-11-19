@@ -850,7 +850,11 @@ class CourseEnrolmentBox extends BaseAddon {
         $settings = $this->get_settings_for_display();
         $edit_mode = $settings['course_enrolment_edit_mode'];
         $editor_mode = \Elementor\Plugin::instance()->editor->is_edit_mode();
-        if (($editor_mode && $edit_mode == 'enrolled_box') || (is_user_logged_in() && tutils()->is_enrolled())) {
+        $is_enrolled = tutils()->is_enrolled();
+        $is_administrator = current_user_can('administrator');
+        $is_instructor = tutor_utils()->is_instructor_of_this_course();
+        $course_content_access = (bool) get_tutor_option('course_content_access_for_ia');
+        if (($editor_mode && $edit_mode == 'enrolled_box') || $is_enrolled || ($course_content_access && ($is_administrator || $is_instructor))) {
             include_once etlms_get_template('course/enrolled-box');
         } else {
             include_once etlms_get_template('course/enrolment-box');
