@@ -174,50 +174,95 @@
     column-gap: 8px;	
 }
 
-/*course carousel*/
+/*course carousel and course list*/
+
+/*card box shadow*/
+
+.etlms-carousel-main-wrap
+.etlms-loop-course-hover-shadow-no
+.tutor-course-loop:hover,
+/*style for course list*/
+.etlms-course-list-main-wrap
 .etlms-loop-course-hover-shadow-no
 .tutor-course-loop:hover
 {
 	box-shadow: none !important;
 }
+
+.etlms-carousel-main-wrap
+.etlms-loop-course-normal-shadow 
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-main-wrap
 .etlms-loop-course-normal-shadow 
 .tutor-course-loop
 {
 	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
 }
+.etlms-carousel-main-wrap
+.etlms-loop-course-hover-shadow 
+.tutor-course-loop:hover,
+/*style for course list*/
+.etlms-course-list-main-wrap
 .etlms-loop-course-hover-shadow 
 .tutor-course-loop:hover
 {
 	box-shadow: 0 4px 23px rgba(0,0,0,0.1);
 }
+
 .etlms-coursel-classic
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-classic
 .tutor-course-loop
 {
 	border: 1px solid #EBEBEB !important;
 }
+
 .etlms-coursel-card
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-card
 .tutor-course-loop
 {
 	border: 0px 2px 4px rgba(0, 0, 0, 0.08);
 }
+
 .etlms-coursel-stacked
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-stacked
 .tutor-course-loop
 {
 	background:transparent;
 }
+
 .etlms-coursel-stacked
+.tutor-course-loop 
+.tutor-course-header,
+/*style for course list*/
+.etlms-course-list-stacked
 .tutor-course-loop 
 .tutor-course-header
 {
 	z-index: 1;
 }
+
 .etlms-coursel-stacked
+.tutor-course-loop 
+.tutor-course-header a >img,
+/*style for course list*/
+.etlms-course-list-stacked
 .tutor-course-loop 
 .tutor-course-header a >img
 {
 	border-radius: 10px;
 }
+
 .etlms-coursel-stacked
+.etlms-carousel-course-container,
+/*style for course list*/
+.etlms-course-list-stacked
 .etlms-carousel-course-container
 {
 	z-index: 99;
@@ -230,6 +275,9 @@
 }
 
 .etlms-coursel-overlayed
+.tutor-course-loop,
+/*style for course list*/
+.etlms-course-list-overlayed
 .tutor-course-loop 
 {
 	background-size: cover;
@@ -301,6 +349,82 @@
 	width: 90%;
 }
 
+.masonry { 
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px; /* Adjustment for the gutter */
+  width: 100%;
+}
+
+.masonry-brick {
+  flex: auto;
+  min-width: 150px;
+  margin: 0 8px 8px 0; /* Some gutter */
+}
+.masonry-brick:nth-child(4n+1) {
+  width: 250px;
+}
+.masonry-brick:nth-child(4n+1):nth-child(4n+2) {
+  width:  180px;
+}
+.masonry-brick:nth-child(4n+1):nth-child(4n+3) {
+  width: 325px;
+}
+.masonry-brick:nth-child(4n+1):nth-child(4n+4) {
+  width: 380px;
+}
+
+.etlms-carousel-main-wrap
+.image-ratio-four-three,
+.etlms-course-list-main-wrap
+.image-ratio-four-three
+{
+	position: relative;
+	padding-top: 75%;
+}
+.etlms-carousel-main-wrap
+.image-ratio-sixteen-nine,
+.etlms-course-list-main-wrap
+.image-ratio-sixteen-nine
+
+{
+	position: relative;
+	padding-top: 56.25%;
+}
+.etlms-carousel-main-wrap
+.image-ratio-three-two,
+.etlms-course-list-main-wrap
+.image-ratio-three-two
+{
+	position: relative;
+	padding-top: 66.66%;;
+}
+.etlms-carousel-main-wrap
+.image-ratio-four-three a >img,
+.etlms-carousel-main-wrap
+.image-ratio-sixteen-nine a >img,
+.etlms-carousel-main-wrap
+.image-ratio-three-two a >img,
+.etlms-course-list-main-wrap
+.image-ratio-four-three a >img,
+.etlms-course-list-main-wrap
+.image-ratio-sixteen-nine a >img,
+.etlms-course-list-main-wrap
+.image-ratio-three-two a >img
+{
+   position:  absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   z-index: 0;
+}
+
+.etlms-carousel-dots-inside
+.slick-dots{
+	position: initial;
+	margin-top: -120px;
+}
 
 /*tablet*/
 @media only screen and (max-width: 768px){

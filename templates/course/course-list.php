@@ -1,15 +1,29 @@
 
-<div class="<?php tutor_container_classes(); ?> etlms-carousel-main-wrap">
+<div class="<?php tutor_container_classes(); ?> etlms-course-list-main-wrap">
 
 <!--loading course init-->
 <?php
+    
+    /*
+        *get settings from elementor
+
+    */
+    $course_list_perpage = $settings['course_list_perpage'];
+    $course_list_column = $settings['course_list_column'];
+
+    /*
+        *query arguements
+    */
+    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
     $args = [
         'post_type' => tutor()->course_post_type,
-        'post_status' => 'publish'
+        'post_status' => 'publish',
+        'posts_per_page' => $course_list_perpage,
+        'paged' => $paged 
     ];
     
-// the query
-$the_query = new WP_Query( $args );
+    // the query
+    $the_query = new WP_Query( $args );
 
     //wp_reset_postdata();
     //do_action('tutor_course/archive/before_loop');
@@ -37,19 +51,32 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             $card_hover_shadow = "etlms-loop-course-hover-shadow-no";
         }
     ?> 
-    <div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-coursel-<?= $settings['course_carousel_skin']?> etlms-carousel-dots-<?= $settings['course_carousel_dots_position']?>" id="etlms-slick-responsive">
+    <?php
+        //set class masonry if yes
+        $listStyle = "";
+        if("yes" == $settings['course_list_masonry'])
+        {
+            $listStyle = "masonry";
+        }
+        else
+        {
+            $listStyle = "tutor-courses";
+        }
+    ?>
+    <div class="etlms-course-list-loop-wrap <?= $listStyle?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-course-list-<?= $settings['course_list_skin']?>" >
 
         <?php while ( $the_query->have_posts() ) : $the_query->the_post();
         ?>
 
-<!-- slick-slider-main-wrapper -->
+<!-- course -wrapper -->
 
-<div class="<?php tutor_course_loop_col_classes(); ?>">
+<div class="tutor-course-col-<?= $course_list_column?> etlms-course-list-col <?= "yes"== $settings['course_list_masonry'] ? 'masonry-brick': '' ?>">
+
     <div class="<?php tutor_course_loop_wrap_classes(); ?>"
         <?php
-            $image_size = $settings['course_carousel_image_size_size'];
+            $image_size = $settings['course_list_image_size_size'];
             $image_url = get_tutor_course_thumbnail($image_size, $url=true);
-            if("overlayed" == $settings['course_carousel_skin'])
+            if("overlayed" == $settings['course_list_skin'])
             {
                 echo 'style= "background-image:url('.$image_url.')" ';
             }
@@ -58,15 +85,15 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
 
         <!-- header -->
-        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio'];?>">
+        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio']?>">
             <?php 
-                $custom_image_size = $settings['course_carousel_image_size_size'];
+                $custom_image_size = $settings['course_list_image_size_size'];
 
-                if("overlayed" !=$settings['course_carousel_skin']):
+                if("overlayed" !=$settings['course_list_skin']):
             ?>
             <a href="<?php the_permalink(); ?>"> 
                 <?php
-                    if("yes" === $settings['course_carousel_image']){
+                    if("yes" === $settings['course_list_image']){
 
                         get_tutor_course_thumbnail($custom_image_size);
                     }
@@ -91,10 +118,10 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
                 }else{
                     $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
                 }
-                if("yes" === $settings['course_carousel_difficulty_settings']){
+                if("yes" === $settings['course_list_difficulty_settings']){
                     echo '<span class="tutor-course-loop-level">'.get_tutor_course_level().'</span>';
                 }
-                if("yes" === $settings['course_carousel_wishlist_settings']){
+                if("yes" === $settings['course_list_wishlist_settings']){
                     echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line '.$action_class.' '.$has_wish_list.' " data-course-id="'.$course_id.'"></a> </span>';    
                 }
 
@@ -105,7 +132,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         <!-- start loop content wrap -->
         <div class="etlms-carousel-course-container"
         <?php 
-            if("overlayed" == $settings['course_carousel_skin'])
+            if("overlayed" == $settings['course_list_skin'])
             {
                 echo 'style= "margin-top:40px"';
             }
@@ -114,7 +141,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             <div class="tutor-loop-course-container">
 
             <!-- loop rating -->
-            <?php if("yes" === $settings['course_carousel_rating_settings']):?>
+            <?php if("yes" === $settings['course_list_rating_settings']):?>
             <div class="tutor-loop-rating-wrap">
                 <?php
                 $course_rating = tutor_utils()->get_course_rating();
@@ -148,7 +175,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             ?>
 
 
-            <?php if("yes" === $settings['course_carousel_meta_data']):?>
+            <?php if("yes" === $settings['course_list_meta_data']):?>
             <div class="tutor-course-loop-meta">
                 <?php
                 $course_duration = get_tutor_course_duration_context();
@@ -168,18 +195,19 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
             <div class="tutor-loop-author">
                 <div class="tutor-single-course-avatar">
-                    <?php if("yes" === $settings['course_carousel_avatar_settings']):?>
+                    <?php if("yes" === $settings['course_list_avatar_settings']):?>
                     <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
                     <?php endif;?>
                 </div>
+                <?php if("yes" == $settings['course_list_author_settings']):?>
                 <div class="tutor-single-course-author-name">
                     <span><?php _e('by', 'tutor'); ?></span>
                     <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
                 </div>
-
+                <?php endif;?>
                 <div class="tutor-course-lising-category">
                     <?php
-                    if("yes" === $settings['course_carousel_category_settings']){
+                    if("yes" === $settings['course_list_category_settings']){
 
                         $course_categories = get_tutor_course_categories();
                         if(!empty($course_categories) && is_array($course_categories ) && count($course_categories)){
@@ -201,34 +229,128 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             </div>
 
             <!-- loop footer -->
-            <?php if("yes" === $settings['course_carousel_footer_settings']):?>
-            <div class="tutor-loop-course-footer etlms-carousel-footer">
+            
             <?php
-                tutor_course_loop_price()
-            ?>    
+            $is_footer = $settings['course_list_footer_settings'];
+            ?>
+            <div class="tutor-loop-course-footer etlms-carousel-footer" style="
+            <?php if($is_footer=='yes'):?>
+                display:block;
+                <?php else:?>
+                display: none;
+            <?php endif;?>    
+            ">
+            <?php
+
+                tutor_course_loop_price();
+
+            ?>   
             </div>
 
         </div>  <!-- etlms-course-container -->
-        <?php endif;?>
         
-
+    
     </div>    
 </div>   
     
-<!-- slick-slider-main-wrapper -->
+<!-- course -wrapper -->
 
         <?php  
         endwhile;
         ?>
     </div> 
-    <div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?= $settings['course_carousel_arrow_style']?> etlms-carousel-arrow-position-<?= $settings['course_carousel_arrows_position'];?> ">
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-    </div> 
-    <div class="etlms-carousel-arrow etlms-carousel-arrow-next arrow-<?= $settings['course_carousel_arrow_style']?> etlms-carousel-arrow-position-<?= $settings['course_carousel_arrows_position'];?>">
-        <i class="fa fa-angle-right" aria-hidden="true"></i>
-    </div> 
+    <!-- loop end -->  
 
-    <!-- loop end -->    
+    <!-- pagination start --> 
+
+    <?php
+        /*
+            *elementor pagination settings
+            *pagination type
+            *pagination label
+        */
+        $prev_next_pagination = true;
+        $pagination_type = $settings['course_list_pagination_type'];
+
+        //setting pagination type
+       
+        if($pagination_type == 'numbers')
+        {
+           $prev_next_pagination = false; 
+        }
+
+        $pagination_page_limit = $settings['course_list_pagination_page_limit'];
+        $pagination_prev_label = $settings['course_list_pagination_previous_label'];
+        $pagination_next_label = $settings['course_list_pagination_next_label'];
+
+        $big = 999999999; // need an unlikely integer
+         
+        $pagination_link_arg = array(
+            'base' => str_replace( $big, '%#%', esc_url( site_url( 'courses/page/'.$big ) ) ),
+            'format' => '?paged=%#%',
+            'current' => max( 1, get_query_var('paged') ),
+            'end_size' => $pagination_page_limit,
+            'prev_next' => $prev_next_pagination,
+            'prev_text' => __($pagination_prev_label, 'tutor-elementor-addons'),
+            'next_text' => __($pagination_next_label, 'tutor-elementor-addons'),
+
+            'total' => $the_query->max_num_pages        
+        ); 
+
+        $pagination_links = paginate_links($pagination_link_arg);
+
+        
+    ?>
+    <div class="etlms-course-list-pagination-wrap">     
+
+
+            <div class="etlms-pagination prev-next">
+            <?php if($pagination_type=="prev_next"):?>
+
+                <?php if($the_query->found_posts > $course_list_perpage):?>                
+                <?php 
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                    $prev_page = $paged - 1;
+                    $next_page = $paged + 1;
+                    $prev_link = esc_url(site_url( 'courses/page/'.$prev_page ));
+                    $next_link = esc_url(site_url( 'courses/page/'.$next_page ));
+                    $max_page = $the_query->max_num_pages;
+                ?>
+                <?php if($prev_page < 1):?>
+                    <span>
+                        <?= $pagination_prev_label;?>
+                    </span>
+                <?php else:?>    
+                    <a href="<?= $prev_link?>">
+                        <?= $pagination_prev_label;?>
+                            
+                    </a>
+                <?php endif;?>
+
+                <?php if($next_page > $max_page):?>
+                    <span>
+                        <?= $pagination_next_label;?>  
+                    </span>
+                <?php else:?>    
+                    <a href="<?= $next_link?>">
+                        <?= $pagination_next_label;?>
+                            
+                    </a>
+                <?php endif;?>
+
+                <?php endif;?>
+
+            <?php else:?>                
+            </div>
+
+            
+        <div class="etlms-pagination pagination-numbers-prev-next">
+            <?= $pagination_links;?>
+        </div>
+
+        <?php endif;?>
+    </div> 
+    <!-- pagination end -->  
     <?php    
 
     else :
@@ -246,59 +368,8 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 ?>
 <!--loading course init-->
 
-<!-- handle elementor settings -->
-<?php
-$carousel_column = "3";
-$carousel_column_tablet = "2";
-$carousel_column_mobile = "1";
-$carousel_arrows = 'yes' ;
-$carousel_dots = "yes";
-$carousel_transition = '600';
-$carousel_center = 'yes';
-$carousel_smooth_scroll = 'yes';
-$carousel_autoplay = 'yes';
-$carousel_autoplay_speed = '5000';
-$carousel_infinite_loop = 'yes';
-$carousel_pause_on_hover = 'yes';
-$carousel_pause_on_interaction = 'yes';
-
-if(isset($settings)){
-
-    $settings['etlms_course_carousel_column'] != '' ? $carousel_column =  $settings['etlms_course_carousel_column'] : '';
-
-    $settings['etlms_course_carousel_column_tablet'] != '' ? $carousel_column_tablet =  $settings['etlms_course_carousel_column_tablet'] : '';
-
-    $settings['etlms_course_carousel_column_mobile'] != '' ? $carousel_column_mobile =  $settings['etlms_course_carousel_column_mobile'] : '';
 
 
-    isset($settings['course_carousel_column_mobile']) ? $carousel_column_mobile = $settings['course_carousel_column_mobile'] : '';
-
-    $settings['course_carousel_settings_arrows'] =='yes' ? '' : $carousel_arrows = 'no';
-
-    $settings['course_carousel_settings_dots'] =='yes' ? '' : $carousel_dots = 'no';    
-
-    $carousel_transition = $settings['course_carousel_settings_transition'];
-
-    $settings['course_carousel_settings_center_slides'] =='yes' ? '' : $carousel_center = 'no';
-
-    $settings['course_carousel_settings_scroll'] =='yes' ? $carousel_smooth_scroll = 'linear' : $carousel_smooth_scroll = 'ease';
-
-    $settings['course_carousel_settings_autoplay'] =='yes' ? '' : $carousel_autoplay = 'no';
-
-    $carousel_autoplay_speed = $settings['course_carousel_settings_autoplay_speed'];
-
-    $settings['course_carousel_settings_infinite_loop'] =='yes' ? '' : $carousel_infinite_loop = 'no';
-
-    $settings['course_carousel_settings_pause_onhover'] =='yes' ? '' : $carousel_pause_on_hover = 'no';
-
-    $settings['course_carousel_settings_pause_oninteraction'] =='yes' ? '' : $carousel_pause_on_interaction = 'no';
-
-}
-?>
-    <div id="etlms_carousel_settings" arrows="<?= $carousel_arrows?>" dots="<?= $carousel_dots?>" transition="<?= $carousel_transition?>" center="<?= $carousel_center?>" smoth_scroll="<?= $carousel_smooth_scroll?>" auto_play="<?= $carousel_autoplay?>" auto_play_speed="<?= $carousel_autoplay_speed?>" infinite_loop="<?= $carousel_infinite_loop?>" pause_on_hover="<?= $carousel_pause_on_hover?>" pause_on_interaction="<?= $carousel_pause_on_interaction?>" desktop="<?= $carousel_column?>" medium="<?= $carousel_column_tablet?>" mobile="<?= $carousel_column_mobile?>">
-     
-
-    </div>
 <input type="hidden" id="etlms_enroll_btn_type" value="<?= $settings['course_carousel_enroll_btn_type']?>">
 <input type="hidden" id="etlms_enroll_btn_cart" value="<?= $settings['course_coursel_button_icon']?>">    
 </div>

@@ -142,6 +142,9 @@ class AddonsManager {
             ],            
             'CourseCarousel' => [
                 'title' => __('Course Carousel', 'tutor-elementor-addons'),
+            ],            
+            'CourseList' => [
+                'title' => __('Course List', 'tutor-elementor-addons'),
             ],
         ];
     }
