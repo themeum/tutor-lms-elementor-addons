@@ -116,7 +116,7 @@ class CourseCarousel extends BaseAddon{
 			[
 				'name' => 'course_carousel_image_size', // Actually its `image_size`.
 				'label' => __( 'Image Size', 'tutor-elementor-addons' ),
-				'default' => 'medium',
+				'default' => 'large',
 				'condition'=>[
 					'course_carousel_image' => 'yes'
 				]
@@ -126,25 +126,21 @@ class CourseCarousel extends BaseAddon{
 		$this->add_control(
 			'course_carousel_image_ratio',
 			[
-				'label' => __('Image Ratio'),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => ['%'],
-				'range' => [
-					'%'=> [
-						'min' => 0.00,
-						'max' => 1.00,
-
-					]
+				'label' => __( 'Image Ratio', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'one-one',
+				'options' => [
+					'one-one'  => __( '1:1', 'tutor-elementor-addons' ),
+					'four-three' => __( '4:3', 'tutor-elementor-addons' ),
+					'sixteen-nine' => __( '16:9', 'tutor-elementor-addons' ),
+					'three-two' => __( '3:2', 'tutor-elementor-addons' ),
+					
 				],
-				'default' => [
-					'unit' => '%',
-					'size' => 0.66,
-				],				
-				'condition'=>[
+				'condition' => [
 					'course_carousel_image' => 'yes'
-				]				
+				]
 			]
-		);		
+		);	
 
 		$this->add_control(
 			'course_carousel_meta_data',
@@ -503,15 +499,15 @@ class CourseCarousel extends BaseAddon{
 		$star_text_selector = $wrapper.".tutor-rating-count";
 		$footer_selector = $wrapper.".tutor-loop-course-footer";
 		$price_selector = $wrapper.".price";
-		$cart_text_selector = $wrapper.".tutor-loop-cart-btn-wrap >a";
-		$cart_selector = $wrapper.".tutor-loop-cart-btn-wrap a::before";
-		$cart_hover_selector = $wrapper.".tutor-loop-cart-btn-wrap a:hover:before";
-		$cart_button_selector = $wrapper.".tutor-loop-cart-btn-wrap a";
+
+        $cart_text_selector = $wrapper.".etlms-loop-cart-btn-wrap >a";
+        $cart_selector = $wrapper.".etlms-loop-cart-btn-wrap a >i";
+        $cart_button_selector = $wrapper.".etlms-loop-cart-btn-wrap a";
+
 		$arrow_icon_selector = $wrapper.".etlms-carousel-arrow i";
 		$arrow_shape_selector = $wrapper.".etlms-carousel-arrow >i";
 		$arrow_ghost_selector = $wrapper.".etlms-carousel-arrow";
-		$dots_selector = $wrapper.".slick-dots li button::before";
-		$dots_area_selector = $wrapper.".slick-dots li button";
+		$dots_selector = $wrapper.".etlms-carousel-dots";
 
 		$this->start_controls_section(
 			'course_carousel_style_section',
@@ -1251,70 +1247,152 @@ class CourseCarousel extends BaseAddon{
 			]
 		);
 
-		$this->start_controls_tabs(
-			'course_carousel_cart_tabs'
-		);
-		//normal tab
-		$this->start_controls_tab(
-			'course_carousel_text_normal_tab',
-			[
-				'label' => __('Normal','tutor-elementor-addons')
-			]
-		);
-	        $this->add_control(
-	            'course_course_text_normal_color',
-	            [
-	                'label'     => __('Color', 'tutor-elementor-addons'),
-	                'type'      => Controls_Manager::COLOR,
-	                'selectors' => [
-						$cart_text_selector => 'color: {{VALUE}} ',
-					],
-	            ]
-	        );	        
+        $this->start_controls_tabs(
+            'course_carousel_cart_tabs'
+        );
+        //normal tab
+        $this->start_controls_tab(
+            'course_carousel_text_normal_tab',
+            [
+                'label' => __('Normal','tutor-elementor-addons')
+            ]
+        );
+            $this->add_control(
+                'course_course_text_normal_color',
+                [
+                    'label'     => __('Text Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_text_selector => 'color: {{VALUE}} ',
+                    ],
+                ]
+            );          
 
-	        $this->add_control(
-	            'course_course_cart_icon_color',
-	            [
-	                'label'     => __('Icon Color', 'tutor-elementor-addons'),
-	                'type'      => Controls_Manager::COLOR,
-	                'selectors' => [
-						$cart_selector => 'color: {{VALUE}}',
-					],
-	            ]
-	        );
+            $this->add_control(
+                'course_course_cart_icon_color',
+                [
+                    'label'     => __('Icon Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_selector => 'color: {{VALUE}}',
+                    ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'text_with_cart'
+                            ]
+                        ]
+                    ]  //condition end
+                ]
+            );            
 
-		$this->end_controls_tab();		
-		//hover tab
-		$this->start_controls_tab(
-			'course_carousel_cart_hover_tab',
-			[
-				'label' => __('Hover','tutor-elementor-addons')
-			]
-		);
-	        $this->add_control(
-	            'course_course_text_hover_color',
-	            [
-	                'label'     => __('Color', 'tutor-elementor-addons'),
-	                'type'      => Controls_Manager::COLOR,
-	                'selectors' => [
-						$cart_text_selector.":hover" => 'color: {{VALUE}} ',
-					],
-	            ]
-	        );	        
+            $this->add_control(
+                'course_course_cart_background_color',
+                [
+                    'label'     => __('Background Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_button_selector => 'background-color: {{VALUE}}',
+                    ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default'
+                            ]
+                        ]
+                    ]  //condition end                    
+                ]
+            );
 
-	        $this->add_control(
-	            'course_course_cart_icon_hover_color',
-	            [
-	                'label'     => __('Icon Color', 'tutor-elementor-addons'),
-	                'type'      => Controls_Manager::COLOR,
-	                'selectors' => [
-						$cart_hover_selector => 'color: {{VALUE}}',
-					],
-	            ]
-	        );	
-		$this->end_controls_tab();
+        $this->end_controls_tab();      
+        //hover tab
+        $this->start_controls_tab(
+            'course_carousel_cart_hover_tab',
+            [
+                'label' => __('Hover','tutor-elementor-addons')
+            ]
+        );
+            $this->add_control(
+                'course_course_text_hover_color',
+                [
+                    'label'     => __('Text Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_text_selector.":hover" => 'color: {{VALUE}} ',
+                    ],
+                ]
+            );          
 
-		$this->end_controls_tabs();
+            $this->add_control(
+                'course_course_cart_icon_hover_color',
+                [
+                    'label'     => __('Icon Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_selector.":hover" => 'color: {{VALUE}}',
+                    ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'text_with_cart'
+                            ]
+                        ]
+                    ]                  
+                ]
+            ); 
+
+            $this->add_control(
+                'course_course_cart_background_hover_color',
+                [
+                    'label'     => __('Background Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $cart_button_selector => 'background-color: {{VALUE}}',
+                    ],
+                    'conditions' => [
+                        'relation' => 'or',
+                        'terms' => [
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default_with_cart_icon'
+                            ],
+                            [
+                                'name' => 'course_carousel_enroll_btn_type',
+                                'operator' => '==',
+                                'value' => 'default'
+                            ]
+                        ]
+                    ]  //condition end                    
+                ]
+            );             
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
 
 		$this->add_control(
 			'course_carousel_footer_tab_divider',
@@ -1717,29 +1795,31 @@ class CourseCarousel extends BaseAddon{
 				'options' => [
 					'inside' => __('Inside','tutor-elementor-addons'),
 					'outside' => __('Outside','tutor-elementor-addons'),
-				]
+				],
+
 			]
 		);
 
 
 
-        $this->add_control(
-            'course_carousel_dots_radius',
-            [
-                'label' => __( 'Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    $dots_selector => 'border-radius: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );        
+        // $this->add_control(
+        //     'course_carousel_dots_radius',
+        //     [
+        //         'label' => __( 'Radius', 'tutor-elementor-addons' ),
+        //         'type' => Controls_Manager::SLIDER,
+        //         'size_units' => [ 'px' ],
+        //         'range' => [
+        //             'px' => [
+        //                 'min' => 5,
+        //                 'max' => 200,
+        //             ],
+        //         ],
+        //         'selectors' => [
+        //             $wrapper.".slick-dots li.slick-active button:before" => 'border-radius: {{SIZE}}{{UNIT}};',
+        //             $wrapper.".slick-dots li button:before" => 'border-radius: {{SIZE}}{{UNIT}};',
+        //         ],
+        //     ]
+        // );        
 
         $this->add_control(
             'course_carousel_dots_size',
@@ -1754,7 +1834,7 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    $dots_selector => 'width: {{SIZE}}{{UNIT}};',
+                    $wrapper.".slick-dots li button:before" => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );        
@@ -1800,7 +1880,7 @@ class CourseCarousel extends BaseAddon{
                     ],
                 ],
                 'selectors' => [
-                    $dots_selector=> 'margin-right: {{SIZE}}{{UNIT}};',
+                    $wrapper.".slick-dots li"=> 'padding-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1821,21 +1901,22 @@ class CourseCarousel extends BaseAddon{
 	                'label'     => __('Fill Color', 'tutor-elementor-addons'),
 	                'type'      => Controls_Manager::COLOR,
 	                'selectors' => [
-						$dots_selector => 'color: {{VALUE}}',
+						$wrapper.".slick-dots li button:before" => 'color: {{VALUE}}',
 					],
 	            ]
 	        );	
 
-	        $this->add_control(
-	            'course_carousel_dots_border_normal_color',
-	            [
-	                'label'     => __('Border Color', 'tutor-elementor-addons'),
-	                'type'      => Controls_Manager::COLOR,
-	                'selectors' => [
-						$dots_selector => 'border-color: {{VALUE}}',
-					],
-	            ]
-	        );
+	    //     $this->add_control(
+	    //         'course_carousel_dots_border_normal_color',
+	    //         [
+	    //             'label'     => __('Border Color', 'tutor-elementor-addons'),
+	    //             'type'      => Controls_Manager::COLOR,
+	    //             'selectors' => [
+
+					// 	$wrapper.".slick-dots li button:before" => 'border-color: {{VALUE}}',
+					// ],
+	    //         ]
+	    //     );
 
         $this->end_controls_tab();
 
@@ -1853,21 +1934,22 @@ class CourseCarousel extends BaseAddon{
 	                'label'     => __('Fill Color', 'tutor-elementor-addons'),
 	                'type'      => Controls_Manager::COLOR,
 	                'selectors' => [
-						$dots_selector.":hover" => 'color: {{VALUE}}',
+						$wrapper.".slick-dots li button:hover:before" => 'color: {{VALUE}}',
 					],
 	            ]
 	        );	
 
-	        $this->add_control(
-	            'course_carousel_dots_border_hover_color',
-	            [
-	                'label'     => __('Border Color', 'tutor-elementor-addons'),
-	                'type'      => Controls_Manager::COLOR,
-	                'selectors' => [
-						$dots_selector."hover" => 'border-color: {{VALUE}}',
-					],
-	            ]
-	        );
+	    //     $this->add_control(
+	    //         'course_carousel_dots_border_hover_color',
+	    //         [
+	    //             'label'     => __('Border Color', 'tutor-elementor-addons'),
+	    //             'type'      => Controls_Manager::COLOR,
+	    //             'selectors' => [
+					// 	$dots_selector."i:hover" => 'border-color: {{VALUE}}',
+					// ],
+	    //         ]
+	    //     );
+	        
         $this->end_controls_tab();
 
         $this->end_controls_tabs();

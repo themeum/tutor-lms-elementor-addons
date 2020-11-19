@@ -37,7 +37,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             $card_hover_shadow = "etlms-loop-course-hover-shadow-no";
         }
     ?> 
-    <div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-coursel-<?= $settings['course_carousel_skin']?>" id="etlms-slick-responsive">
+    <div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-coursel-<?= $settings['course_carousel_skin']?> etlms-carousel-dots-<?= $settings['course_carousel_dots_position']?>" id="etlms-slick-responsive">
 
         <?php while ( $the_query->have_posts() ) : $the_query->the_post();
         ?>
@@ -58,7 +58,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
 
         <!-- header -->
-        <div class="tutor-course-header">
+        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio'];?>">
             <?php 
                 $custom_image_size = $settings['course_carousel_image_size_size'];
 
@@ -227,6 +227,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
     <div class="etlms-carousel-arrow etlms-carousel-arrow-next arrow-<?= $settings['course_carousel_arrow_style']?> etlms-carousel-arrow-position-<?= $settings['course_carousel_arrows_position'];?>">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
     </div> 
+
     <!-- loop end -->    
     <?php    
 

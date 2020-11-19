@@ -76,6 +76,7 @@ jQuery(window).on('elementor/frontend/init', function(){
         slidesToScroll: 1,
         prevArrow: $scope.find('.etlms-carousel-arrow-prev'),
         nextArrow: $scope.find('.etlms-carousel-arrow-next'),
+
         responsive: [
           {
             breakpoint: 1024,

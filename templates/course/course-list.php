@@ -85,7 +85,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 
 
         <!-- header -->
-        <div class="tutor-course-header">
+        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio']?>">
             <?php 
                 $custom_image_size = $settings['course_list_image_size_size'];
 

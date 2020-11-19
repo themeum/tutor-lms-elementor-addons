@@ -118,35 +118,32 @@ class CourseList extends BaseAddon{
             [
                 'name' => 'course_list_image_size', // Actually its `image_size`.
                 'label' => __( 'Image Size', 'tutor-elementor-addons' ),
-                'default' => 'medium',
+                'default' => 'large',
                 'condition'=>[
                     'course_list_image' => 'yes'
                 ]
             ]
         );
 
+
         $this->add_control(
             'course_list_image_ratio',
             [
-                'label' => __('Image Ratio'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['%'],
-                'range' => [
-                    '%'=> [
-                        'min' => 0.00,
-                        'max' => 1.00,
-
-                    ]
+                'label' => __( 'Image Ratio', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'one-one',
+                'options' => [
+                    'one-one'  => __( '1:1', 'tutor-elementor-addons' ),
+                    'four-three' => __( '4:3', 'tutor-elementor-addons' ),
+                    'sixteen-nine' => __( '16:9', 'tutor-elementor-addons' ),
+                    'three-two' => __( '3:2', 'tutor-elementor-addons' ),
+                    
                 ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 0.66,
-                ],              
-                'condition'=>[
-                    'course_carousel_image' => 'yes'
-                ]               
+                'condition' => [
+                    'course_list_image' => 'yes'
+                ]
             ]
-        );      
+        );       
 
         $this->add_control(
             'course_list_meta_data',
