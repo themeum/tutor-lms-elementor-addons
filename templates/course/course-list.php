@@ -36,21 +36,7 @@ $shortcode_arg = isset($GLOBALS['tutor_shortcode_arg']) ? $GLOBALS['tutor_shortc
 $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_per_row', 4 ) : $shortcode_arg;
 ?>  
     <!-- loop start --> 
-    <?php 
-        $card_normal_shadow = '';
-        $card_hover_shadow = '';
-        if("yes" === $settings['course_coursel_box_shadow']){
-            $card_normal_shadow = "etlms-loop-course-normal-shadow";
-        }   
 
-        if("yes" === $settings['course_coursel_box_hover_shadow']){
-            $card_hover_shadow = "etlms-loop-course-hover-shadow";
-        }
-        else
-        {
-            $card_hover_shadow = "etlms-loop-course-hover-shadow-no";
-        }
-    ?> 
     <?php
         //set class masonry if yes
         $listStyle = "";
@@ -63,7 +49,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
             $listStyle = "tutor-courses";
         }
     ?>
-    <div class="etlms-course-list-loop-wrap <?= $listStyle?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols.' '.$card_normal_shadow.' '.$card_hover_shadow; ?> etlms-course-list-<?= $settings['course_list_skin']?>" >
+    <div class="etlms-course-list-loop-wrap <?= $listStyle?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols ?> etlms-course-list-<?= $settings['course_list_skin']?>" >
 
         <?php while ( $the_query->have_posts() ) : $the_query->the_post();
         ?>
@@ -71,8 +57,32 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
 <!-- course -wrapper -->
 
 <div class="tutor-course-col-<?= $course_list_column?> etlms-course-list-col <?= "yes"== $settings['course_list_masonry'] ? 'masonry-brick': '' ?>">
+    <?php 
+        $card_normal_shadow = '';
+        $card_hover_shadow = '';
+        if("yes" == $settings['course_coursel_box_shadow'] AND $settings['course_list_skin']=="card"){
+            $card_normal_shadow = "etlms-card-normal-shadow";
+        }         
+        if("yes" == $settings['course_coursel_box_shadow'] AND $settings['course_list_skin']=="stacked"){
+            $card_normal_shadow = "etlms-stacked-normal-shadow";
+        }   
 
-    <div class="<?php tutor_course_loop_wrap_classes(); ?>"
+        if("yes" == $settings['course_coursel_box_hover_shadow'] AND $settings['course_list_skin']=="card"){
+            $card_hover_shadow = "etlms-card-hover-shadow";
+        }        
+        if("yes" == $settings['course_coursel_box_hover_shadow'] AND $settings['course_list_skin']=="stacked"){
+            $card_hover_shadow = "etlms-stacked-hover-shadow";
+        }
+
+    ?> 
+    <div class="etlms-card <?= $card_normal_shadow." ".$card_hover_shadow;?> <?php 
+        if($settings['course_list_column'] ==1 AND $settings['course_list_skin'] !='overlayed')
+        {
+            echo "etlms-course-list-style";
+        }
+ 
+    ?>
+    "
         <?php
             $image_size = $settings['course_list_image_size_size'];
             $image_url = get_tutor_course_thumbnail($image_size, $url=true);
@@ -134,7 +144,7 @@ $courseCols = $shortcode_arg===null ? tutor_utils()->get_option( 'courses_col_pe
         <?php 
             if("overlayed" == $settings['course_list_skin'])
             {
-                echo 'style= "margin-top:40px"';
+                echo 'style= "padding-top:40px;background:transparent"';
             }
         ?>
         >

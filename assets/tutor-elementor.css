@@ -341,75 +341,114 @@
 /*course carousel and course list*/
 
 /*card box shadow*/
+
+/*card normal shadow*/
 .etlms-carousel-main-wrap
-.etlms-loop-course-hover-shadow-no
-.tutor-course-loop:hover,
-/*style for course list*/
+.etlms-card-normal-shadow
+.etlms-carousel-course-container,
+
 .etlms-course-list-main-wrap
-.etlms-loop-course-hover-shadow-no
-.tutor-course-loop:hover {
-  box-shadow: none !important;
+.etlms-card-normal-shadow
+.etlms-carousel-course-container
+{
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 }
 
+/*card hover shadow*/
 .etlms-carousel-main-wrap
-.etlms-loop-course-normal-shadow 
-.tutor-course-loop,
-/*style for course list*/
+.etlms-card-hover-shadow
+.etlms-carousel-course-container:hover,
+
 .etlms-course-list-main-wrap
-.etlms-loop-course-normal-shadow 
-.tutor-course-loop {
-  box-shadow: 0 4px 23px rgba(0, 0, 0, 0.1);
+.etlms-card-hover-shadow
+.etlms-carousel-course-container:hover
+{
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 }
+
+/*stacked hover shadow*/
 .etlms-carousel-main-wrap
-.etlms-loop-course-hover-shadow 
-.tutor-course-loop:hover,
-/*style for course list*/
+.etlms-stacked-normal-shadow
+.etlms-carousel-course-container,
+
 .etlms-course-list-main-wrap
-.etlms-loop-course-hover-shadow 
-.tutor-course-loop:hover {
-  box-shadow: 0 4px 23px rgba(0, 0, 0, 0.1);
+.etlms-stacked-normal-shadow
+.etlms-carousel-course-container
+{
+  box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+  webkit-box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+}
+
+/*stacked hover shadow*/
+.etlms-carousel-main-wrap
+.etlms-stacked-hover-shadow
+.etlms-carousel-course-container:hover,
+
+.etlms-course-list-main-wrap
+.etlms-stacked-hover-shadow
+.etlms-carousel-course-container:hover
+{
+  box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+  webkit-box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
 }
 
 .etlms-coursel-classic
-.tutor-course-loop,
+.tutor-course-header a > img,
+.etlms-course-list-classic
+.tutor-course-header a > img,
+.etlms-coursel-card
+.tutor-course-header a > img,
+.etlms-course-list-card
+.tutor-course-header a > img
+{
+  border-radius: 8px 8px 0px 0px;
+}
+
+.etlms-carousel-stacked
+.tutor-course-header a > img,
+.etlms-course-list-stacked
+.tutor-course-header a > img
+{
+  border-radius: 10px;
+}
+
+
+.etlms-coursel-classic
+.etlms-card,
 /*style for course list*/
 .etlms-course-list-classic
-.tutor-course-loop {
-  border: 1px solid #ebebeb !important;
+.etlms-card
+{
+  border: 1px solid #EBEBEB;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
 .etlms-coursel-card
-.tutor-course-loop,
+.etlms-card ,
 /*style for course list*/
 .etlms-course-list-card
-.tutor-course-loop {
-  border: 0px 2px 4px rgba(0, 0, 0, 0.08);
+.etlms-card
+{
+  border-radius: 8px;
 }
 
 .etlms-coursel-stacked
-.tutor-course-loop,
-/*style for course list*/
-.etlms-course-list-stacked
-.tutor-course-loop {
-  background: transparent;
-}
-
-.etlms-coursel-stacked
-.tutor-course-loop 
+.etlms-card 
 .tutor-course-header,
 /*style for course list*/
 .etlms-course-list-stacked
-.tutor-course-loop 
+.etlms-card 
 .tutor-course-header {
   z-index: 1;
 }
 
 .etlms-coursel-stacked
-.tutor-course-loop 
 .tutor-course-header a >img,
 /*style for course list*/
 .etlms-course-list-stacked
-.tutor-course-loop 
 .tutor-course-header a >img {
   border-radius: 10px;
 }
@@ -425,14 +464,17 @@
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
   border-radius: 10px;
 }
 
+
+
 .etlms-coursel-overlayed
-.tutor-course-loop,
+.etlms-card,
 /*style for course list*/
 .etlms-course-list-overlayed
-.tutor-course-loop {
+.etlms-card {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -490,8 +532,37 @@
   color: #fff;
 }
 
-.etlms-loop-cart-btn-wrap {
-  width: 90%;
+.etlms-carousel-main-wrap
+.price,
+.etlms-course-list-main-wrap
+.price
+{
+  display: flex;
+}
+
+.etlms-carousel-main-wrap
+.etlms-loop-cart-btn-wrap,
+.etlms-course-list-main-wrap
+.etlms-loop-cart-btn-wrap
+{
+  margin-left: 10px;
+}
+
+.enroll-button-align-left
+.etlms-loop-cart-btn-wrap
+{
+  margin-right: auto;
+}
+.enroll-button-align-center
+.etlms-loop-cart-btn-wrap
+{
+  margin-left: auto;
+  margin-right: auto;
+}
+.enroll-button-align-right
+.etlms-loop-cart-btn-wrap
+{
+  margin-left: auto;
 }
 
 .masonry {
@@ -551,6 +622,94 @@
 .etlms-carousel-dots-inside .slick-dots {
   position: initial;
   margin-top: -120px;
+}
+
+/*course list style 1 col*/
+
+@media only screen and (min-width: 768px){
+
+  /*
+    @list style main style
+  */
+
+  .etlms-course-list-style{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-height: 290px;
+  }
+
+
+  .etlms-course-list-style
+  .tutor-course-header a >img
+  {
+    height: 100% !important;
+  }  
+
+  .etlms-course-list-style
+  .tutor-course-header
+  {
+    max-width: 40%;
+    flex: 0 0 40%;
+  }  
+  .etlms-course-list-style
+  .etlms-carousel-course-container
+  {
+    max-width: 60%;
+    flex: 0 0 60%;
+  }
+
+  /*
+    @override image border radius
+    for list view
+  */
+  .etlms-course-list-style
+  .tutor-course-header a > img
+  {
+    border-radius: 8px 0px 0px 8px !important; 
+  }
+
+  /*
+    @style for classic skin
+  */
+  .etlms-course-list-classic
+  .etlms-course-list-style
+  .etlms-carousel-course-container
+  {
+    border: 1px solid #EBEBEB;
+    box-sizing: border-box;
+    border-radius: 8px;
+  }  
+
+  /*
+    @style for card skin
+  */
+  .etlms-course-list-card
+  .etlms-course-list-style
+  .etlms-carousel-course-container
+  {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 8px 8px 0px;
+  }  
+
+  /*
+    @style for stacked skin
+  */
+  .etlms-course-list-stacked
+  .etlms-course-list-style
+  .etlms-carousel-course-container
+  {
+    box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    z-index: 99;
+    margin-left: -50px;
+    height: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+
+
 }
 
 /*tablet*/

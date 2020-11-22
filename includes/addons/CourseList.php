@@ -18,7 +18,7 @@ class CourseList extends BaseAddon{
 
     private static $prefix_class_layout = "elementor-layout-";
 
-    private static $prefix_class_alignment = "elementor-align-";
+    private static $prefix_class_alignment = "enroll-button-align-";
 
     public function get_title() {
         return __('Course List', 'tutor-elementor-addons');
@@ -389,33 +389,8 @@ class CourseList extends BaseAddon{
 
         $this->add_responsive_control(
             'course_carousel_enroll_btn_align',
-        [
-            'label'        => __('Alignment', 'tutor-elementor-addons'),
-            'type'         => \Elementor\Controls_Manager::CHOOSE,
-            'options'      => [
-                'left'   => [
-                    'title' => __('Left', 'tutor-elementor-addons'),
-                    'icon'  => 'fa fa-align-left',
-                ],
-                'center' => [
-                    'title' => __('Center', 'tutor-elementor-addons'),
-                    'icon'  => 'fa fa-align-center',
-                ],
-                'right'  => [
-                    'title' => __('Right', 'tutor-elementor-addons'),
-                    'icon'  => 'fa fa-align-right'
-                ],              
-                'justify'  => [
-                    'title' => __('Justified', 'tutor-elementor-addons'),
-                    'icon'  => 'fa fa-align-justify'
-                ]
-            ],
-            'default'=>'right',
-            'selectors' => [
-                "{{WRAPPER}} .etlms-loop-cart-btn-wrap"=> 'text-align:{{VALUE}};'
-            ]
-                
-        ]           
+        
+            $this->etlms_non_responsive_alignment('right') 
         );
 
         $this->add_control(
@@ -441,6 +416,16 @@ class CourseList extends BaseAddon{
                 'type' => Controls_Manager::ICON,
                 
                 'label_block' => true,
+                'conditions' => [
+                    'relation'=>'or',
+                    'terms' => [
+                        [
+                            'name' => 'course_carousel_enroll_btn_type',
+                            'operator' => 'in',
+                            'value' => ['default_with_cart_icon','text_with_cart']
+                        ]
+                    ]
+                ],
                 'default' => 'fa fa-shopping-cart'
             ]
         );          
@@ -462,6 +447,16 @@ class CourseList extends BaseAddon{
                         'max' => 100,
                     ],
                 ],
+                'conditions' => [
+                    'relation'=>'or',
+                    'terms' => [
+                        [
+                            'name' => 'course_carousel_enroll_btn_type',
+                            'operator' => 'in',
+                            'value' => ['default_with_cart_icon','text_with_cart']
+                        ]
+                    ]
+                ],                
                 'default' => [
                     'unit' => 'px',
                     'size' => 0,
@@ -474,136 +469,13 @@ class CourseList extends BaseAddon{
 
         $this->end_controls_section();
 
-        //carousel settings
 
-        $this->start_controls_section(
-            'course_carousel_settings_section',
-            [
-                'label' => __('Carousel Settings'),
-                'type' => Controls_Manager::TAB_CONTENT
-            ] 
-        );
-
-        $this->add_control(
-            'course_carousel_settings_arrows',
-            [
-                'label' => __( 'Arrows', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );      
-
-        $this->add_control(
-            'course_carousel_settings_dots',
-            [
-                'label' => __( 'Dots', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_transition',
-            [
-                'label' => __('Transition Duration'),
-                'type' => Controls_Manager::TEXT,
-                'default' => '600'
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_center_slides',
-            [
-                'label' => __( 'Centered Slides', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => '',
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_scroll',
-            [
-                'label' => __( 'Smooth Scrolling', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_autoplay',
-            [
-                'label' => __( 'Auto Play', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_autoplay_speed',
-            [
-                'label' => __('Auto Play Speed'),
-                'type' => Controls_Manager::TEXT,
-                'default' => '5000'
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_infinite_loop',
-            [
-                'label' => __( 'Infinite Loop', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_pause_onhover',
-            [
-                'label' => __( 'Paush on Hover', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'course_carousel_settings_pause_oninteraction',
-            [
-                'label' => __( 'Paush on Interaction', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-        $this->end_controls_section();
     }
 
     protected function register_style_controls(){
 
         $wrapper = "{{WRAPPER}} .etlms-course-list-main-wrap ";
-        $card_selector = $wrapper.".tutor-course-loop";
+        
         $footer_seperator_selector =  $wrapper.".tutor-loop-course-footer";
         $image_selector = $wrapper.".tutor-course-header a >img";
         $badge_selector = $wrapper.".tutor-course-loop-header-meta span:first-child";
@@ -623,6 +495,11 @@ class CourseList extends BaseAddon{
         $column_selector = $wrapper.".etlms-course-list-col";
         $pagination_selector = $wrapper.".etlms-course-list-pagination-wrap";
 
+        /*
+        @card selector change as per skin style
+        */
+
+        $card_selector = $wrapper.".etlms-carousel-course-container";
 
         $this->start_controls_section(
             'course_list_layout_style',
@@ -670,7 +547,7 @@ class CourseList extends BaseAddon{
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 0
+                    'size' => 20
                 ],
                 'selectors' => [
                     $row_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -719,22 +596,39 @@ class CourseList extends BaseAddon{
             [
                 'label'     => __('Background Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'course_list_skin',
+                            'operator' => 'in',
+                            'value' => ['classic','card']
+                        ]
+                    ],
+                ],
+                'default' => '#fff',
                 'selectors' => [
-                    $card_selector => 'background-color: {{VALUE}};',
+                    $wrapper.'.etlms-card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );         
+      
 
         $this->add_control(
             'course_carousel_card_border_color',
             [
                 'label'     => __('Border Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
+                'default' => '#ebebeb',
+                'condition' => [
+                    'course_list_skin' => 'classic'
+                ],
                 'selectors' => [
-                    $card_selector => ' border-color: {{VALUE}};',
+                    $wrapper.".etlms-card" => ' border-color: {{VALUE}};',
                 ],
             ]
         );         
+        
 
         $this->add_control(
             'course_carousel_card_border_width',
@@ -750,11 +644,15 @@ class CourseList extends BaseAddon{
                     ]
                 ],
                 'default' => [
-                    'unit' => 'px',
-                    'size' => 0
+                    'size' => 1,
+                    'unit' => 'px'
+                
+                ],
+                'condition' => [
+                    'course_list_skin' => 'classic'
                 ],
                 'selectors' => [
-                    $card_selector => 'border-width: {{SIZE}}{{UNIT}};',
+                    $wrapper.".etlms-card" => 'border-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         ); 
@@ -763,10 +661,45 @@ class CourseList extends BaseAddon{
             'course_carousel_card_border_radius',
             [
                 'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'default' =>[
+                    'size' => 8,
+                    'unit' => 'px'
+                ],
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'course_list_skin',
+                            'operator' => 'in',
+                            'value' => ['classic','card']
+                        ]
+                    ]
+                ],
+                'selectors' => [
+                    $wrapper.".etlms-card" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                ],
+            ]
+        );         
+
+
+        $this->add_control(
+            'course_carousel_card_border_radius_stacked',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
+                'default' =>[
+                    'size' => 10,
+                    'unit' => 'px'
+                ],
+                'condition' => [
+                    'course_list_skin' => 'stacked'
+
+                ],
                 'selectors' => [
-                    $card_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $wrapper.".etlms-carousel-course-container" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );       
@@ -800,7 +733,17 @@ class CourseList extends BaseAddon{
                         'label_on' => __('Yes','tutor-elementor-addons'),
                         'label_off'=> __('No','tutor-elementor-addons'),
                         'return_value' => 'yes',
-                        'default' => ''
+                        'conditions' => [
+                            'relation' => 'or',
+                            'terms' => [
+                                [
+                                    'name'=> 'course_list_skin',
+                                    'operator' => 'in',
+                                    'value' => ['card','stacked']
+                                ]
+                            ]
+                        ],
+                        'default' => 'yes'
                     ]
                 );                
 
@@ -854,9 +797,19 @@ class CourseList extends BaseAddon{
                     [
                         'label'     => __('Box Shadow', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::SWITCHER,
-                        'label_on' => __('Show','tutor-elementor-addons'),
-                        'label_off'=> __('Hide','tutor-elementor-addons'),
+                        'label_on' => __('Yes','tutor-elementor-addons'),
+                        'label_off'=> __('No','tutor-elementor-addons'),
                         'return_value' => 'yes',
+                        'conditions' => [
+                            'relation' => 'or',
+                            'terms' => [
+                                [
+                                    'name'=> 'course_list_skin',
+                                    'operator' => 'in',
+                                    'value' => ['card','stacked']
+                                ]
+                            ]
+                        ],                        
                         'default' => 'yes',
 
                     ]
@@ -1576,8 +1529,8 @@ class CourseList extends BaseAddon{
                     ],
                 ],
                 'default' => [
-                    'unit' => '%',
-                    'size' => 50,
+                    'unit' => 'px',
+                    'size' => 10,
                 ],
                 'selectors' => [
                     ".etlms-pagination.prev-next span"=> 'padding-right: {{SIZE}}{{UNIT}}',
@@ -1895,6 +1848,7 @@ class CourseList extends BaseAddon{
 
     protected function render(){
         ob_start();
+
         $settings = $this->get_settings_for_display();
 
         include_once etlms_get_template('course/course-list');
