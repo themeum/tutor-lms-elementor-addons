@@ -44,11 +44,25 @@
 		 * add cart icon to all button
 		 */
 		if (button_type == 'text_with_cart' || button_type == 'default_with_cart_icon') {
+
+
 			var length = carousel_footer.length;
 			var i = 0;
 			for (i; i < length; i++) {
-				var text = carousel_footer.children("a")[i].innerHTML;
-				carousel_footer.children("a")[i].innerHTML = `<i class="${cart_icon}" aria-hidden="true"></i> ${text}`;
+
+				/*
+					*check if it is add to cart
+					button then add cart icon
+				*/
+				var is_add_to_cart = carousel_footer.children("a")[i].classList.contains('add_to_cart_button');
+					
+				if(is_add_to_cart)
+				{
+
+					var text = carousel_footer.children("a")[i].innerHTML;
+					carousel_footer.children("a")[i].innerHTML = `<i class="${cart_icon}" aria-hidden="true"></i> ${text}`;
+				}
+
 			}
 		}
 	}
