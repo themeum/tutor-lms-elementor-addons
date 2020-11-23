@@ -327,7 +327,7 @@
 /*card box shadow*/
 
 /*card normal shadow*/
-<<<<<<< HEAD
+
 .etlms-carousel-main-wrap
 .etlms-card.etlms-card-normal-shadow,
 
@@ -347,23 +347,11 @@
 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-=======
-.etlms-carousel-main-wrap .etlms-card-normal-shadow .etlms-carousel-course-container,
-.etlms-course-list-main-wrap .etlms-card-normal-shadow .etlms-carousel-course-container {
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-/*card hover shadow*/
-.etlms-carousel-main-wrap .etlms-card-hover-shadow,
-.etlms-course-list-main-wrap .etlms-card-hover-shadow {
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-	-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
->>>>>>> 9fe202051621577079c4c729a83583b4047233c1
 }
 
 /*stacked hover shadow*/
-.etlms-carousel-main-wrap .etlms-stacked-normal-shadow .etlms-carousel-course-container,
+.etlms-carousel-main-wrap 
+.etlms-stacked-normal-shadow .etlms-carousel-course-container,
 .etlms-course-list-main-wrap .etlms-stacked-normal-shadow .etlms-carousel-course-container {
 	box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
 	-webkit-box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
