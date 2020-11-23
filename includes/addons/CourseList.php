@@ -747,6 +747,30 @@ class CourseList extends BaseAddon{
                     ]
                 );                
 
+                $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'carousel_card_box_shadow_control',
+                        'label' => __( 'Shadow Control', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin' => 'card'
+                        ],
+                        'selector' => $wrapper.".etlms-card",
+                    ]
+                );                
+
+                $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'carousel_stacked_box_shadow_control',
+                        'label' => __( 'Shadow Control', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin' => 'stacked'
+                        ],
+                        'selector' => $wrapper.".etlms-carousel-course-container",
+                    ]
+                );
+
                 $this->add_control(
                     'course_coursel_footer_seperator_color',
                     [
