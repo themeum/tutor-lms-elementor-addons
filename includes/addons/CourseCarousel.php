@@ -265,13 +265,13 @@ class CourseCarousel extends BaseAddon{
 			[
 				'label' => __('Button Type','tutor-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'default',
 				'options' => [
 					'default' => __('Default','tutor-elementor-addons'), 
 					'default_with_cart_icon' => __('Default with Cart Icon','tutor-elementor-addons'), 
 					'text_button' => __('Text Button','tutor-elementor-addons'), 
 					'text_with_cart' => __('Text with Cart','tutor-elementor-addons'), 
-				]
+				],
+				'default' => 'text_with_cart'
 			]
 
 		);
