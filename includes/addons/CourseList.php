@@ -118,7 +118,7 @@ class CourseList extends BaseAddon{
             [
                 'name' => 'course_list_image_size', // Actually its `image_size`.
                 'label' => __( 'Image Size', 'tutor-elementor-addons' ),
-                'default' => 'large',
+                'default' => 'medium_large',
                 'condition'=>[
                     'course_list_image' => 'yes'
                 ]
@@ -153,9 +153,9 @@ class CourseList extends BaseAddon{
                 'label_on' => __( 'Show', 'tutor-elementor-addons' ),
                 'label_off' => __( 'Hide', 'your-plugin' ),
                 'return_value' => 'yes',
-                'default' => 'yes',
+                'default' => 'no',
             ]
-        );      
+        );
 
         $this->add_control(
             'course_list_meta_space',
@@ -366,7 +366,7 @@ class CourseList extends BaseAddon{
                     ]
                 ],
                 
-                'default'      => 'left',
+                'default'      => 'center',
                 'selectors' => [
                     '{{WRAPPER}} .etlms-course-list-pagination-wrap' => 'text-align:{{VALUE}};'
                 ]
@@ -398,13 +398,13 @@ class CourseList extends BaseAddon{
             [
                 'label' => __('Button Type','tutor-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'default',
                 'options' => [
                     'default' => __('Default','tutor-elementor-addons'), 
                     'default_with_cart_icon' => __('Default with Cart Icon','tutor-elementor-addons'), 
                     'text_button' => __('Text Button','tutor-elementor-addons'), 
                     'text_with_cart' => __('Text with Cart','tutor-elementor-addons'), 
-                ]
+                ],
+                'default' => 'text_with_cart'
             ]
 
         );

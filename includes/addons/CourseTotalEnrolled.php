@@ -20,7 +20,7 @@ class CourseTotalEnrolled extends BaseAddon {
     private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
-        return __('Course Level', 'tutor-elementor-addons');
+        return __('Course Total Enrolled', 'tutor-elementor-addons');
     }
     
     protected function register_content_controls(){
