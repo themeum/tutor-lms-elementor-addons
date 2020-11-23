@@ -62,6 +62,20 @@ class AssetsManager {
         );
 
         wp_enqueue_style(
+            'slick-css',
+            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css',
+            null,
+            ETLMS_VERSION
+        );      
+
+        wp_enqueue_style(
+            'slick-theme-css',
+            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css',
+            null,
+            ETLMS_VERSION
+        );
+
+        wp_enqueue_style(
             'tutor-elementor-css',
             ETLMS_ASSETS . 'tutor-elementor.css',
             null,
@@ -74,20 +88,23 @@ class AssetsManager {
      * @since 1.0.0
      */
     public static function enqueue_elementor_scripts() {
+
+        $slick_lib_url = 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js';
+        if (file_exists(ELEMENTOR_ASSETS_PATH.'lib/slick/slick.min.js')) {
+            $slick_lib_url = ELEMENTOR_ASSETS_URL.'lib/slick/slick.min.js';
+        }
         wp_enqueue_script(
             'etlms-slick-library',
-            ELEMENTOR_ASSETS_URL . 'lib/slick/slick.min.js',
-            array(),
-            '1.0.0',
-            true
+            $slick_lib_url,
+            array('jquery'),
+            ETLMS_VERSION
         );
 
         wp_enqueue_script(
             'tutor-elementor-js',
             ETLMS_ASSETS . 'tutor-elementor.js',
             array('jquery'),
-            ETLMS_VERSION,
-            true
+            ETLMS_VERSION
         );
     }
 }
