@@ -344,12 +344,10 @@
 
 /*card normal shadow*/
 .etlms-carousel-main-wrap
-.etlms-card-normal-shadow
-.etlms-carousel-course-container,
+.etlms-card.etlms-card-normal-shadow,
 
 .etlms-course-list-main-wrap
-.etlms-card-normal-shadow
-.etlms-carousel-course-container
+.etlms-card.etlms-card-normal-shadow
 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
@@ -357,12 +355,10 @@
 
 /*card hover shadow*/
 .etlms-carousel-main-wrap
-.etlms-card-hover-shadow
-.etlms-carousel-course-container:hover,
+.etlms-card.etlms-card-normal-shadow:hover,
 
 .etlms-course-list-main-wrap
-.etlms-card-hover-shadow
-.etlms-carousel-course-container:hover
+.etlms-card.etlms-card-normal-shadow:hover
 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
