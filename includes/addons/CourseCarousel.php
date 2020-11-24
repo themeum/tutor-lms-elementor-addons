@@ -578,7 +578,7 @@ class CourseCarousel extends BaseAddon{
                         [
                             'name' => 'course_carousel_skin',
                             'operator' => 'in',
-                            'value' => ['classic','card']
+                            'value' => ['classic','card','overlayed']
                         ]
                     ]
                 ],
@@ -621,6 +621,18 @@ class CourseCarousel extends BaseAddon{
 			]
 		);        
 
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'course_list_overlay_color',
+                'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                'types' => [ 'classic', 'gradient' ],
+                'condition' => [
+                    'course_carousel_skin' => 'overlayed'
+                ],
+                'selector' => $wrapper.'.etlms-color-overlay'
+            ]
+        );
         /* Start Tabs */
         $this->start_controls_tabs('course_carousel_card_tabs');
             /* Normal Tab */
@@ -676,18 +688,7 @@ class CourseCarousel extends BaseAddon{
                     ]
                 );                               
 
-                $this->add_group_control(
-                    Group_Control_Background::get_type(),
-                    [
-                        'name' => 'course_list_overlay_color',
-                        'label' => __( 'Overlay Color', 'tutor-elementor-addons' ),
-                        'types' => [ 'classic', 'gradient' ],
-                        'condition' => [
-                            'course_carousel_skin' => 'overlayed'
-                        ],
-                        'selector' => $wrapper.'.etlms-color-overlay'
-                    ]
-                );
+
 
                 $this->add_control(
                     'course_coursel_footer_seperator_color',
