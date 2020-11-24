@@ -1682,6 +1682,16 @@ class CourseCarousel extends BaseAddon{
                 [
                     'label'     => __( 'Shape Color', 'tutor-elementor-addons' ),
                     'type'      => Controls_Manager::COLOR,
+                    'conditions' => [
+                    	'relation' => 'or',
+                    	'terms' => [
+                    		[
+                    			'name' => 'course_carousel_arrow_style',
+                    			'operator' => 'in',
+                    			'value' => ['ghost','fill']
+                    		]
+                    	]
+                    ],
                     'selectors' => [
                         $arrow_shape_selector => 'background-color: {{VALUE}};',
                     ],
