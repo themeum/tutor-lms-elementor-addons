@@ -948,8 +948,7 @@ class CourseList extends BaseAddon{
 
         //start tabs
         $this->start_controls_tabs(
-            'course_carousel_image_tabs',
- 
+            'course_carousel_image_tabs'
         );
         //normal tab
         $this->start_controls_tab(
