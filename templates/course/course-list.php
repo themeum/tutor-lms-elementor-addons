@@ -68,8 +68,13 @@
                     }
 
                     ?>
-                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; ?> 
-                    <?php if ($settings['course_list_column'] == 1 and $settings['course_list_skin'] != 'overlayed') { 
+                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; 
+                    //if overlayed skin then add overlay color class
+                        echo $settings['course_list_skin']=='overlayed' ? 'etlms-color-overlay' :'';
+                    ?> 
+                    <?php 
+                    //course list style omit for overlayed skin
+                    if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 
                         echo "etlms-course-list-style"; } ?>" 
                     <?php
                         $image_size = $settings['course_list_image_size_size'];
