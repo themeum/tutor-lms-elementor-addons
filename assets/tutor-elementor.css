@@ -415,6 +415,22 @@
 	position: relative;
 	border-radius: 10px;
 }
+
+/*overlay color*/
+.etlms-course-list-main-wrap
+.etlms-color-overlay,
+.etlms-carousel-main-wrap
+.etlms-color-overlay
+{
+    background-image: linear-gradient(to right, #110e0e3b , #5d5d526e);
+    border-radius: inherit;
+
+    margin: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
 .etlms-coursel-overlayed .etlms-card,
 /*style for course list*/
 .etlms-course-list-overlayed .etlms-card {

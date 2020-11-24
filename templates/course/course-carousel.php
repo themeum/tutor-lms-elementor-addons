@@ -45,15 +45,21 @@
                 }
                 ?>
                 <div class="<?php tutor_course_loop_col_classes(); ?>">
-                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; ?>" <?php
-                                                                                                $image_size = $settings['course_carousel_image_size_size'];
-                                                                                                $image_url = get_tutor_course_thumbnail($image_size, $url = true);
-                                                                                                if ("overlayed" == $settings['course_carousel_skin']) {
-                                                                                                    echo 'style= "background-image:url(' . $image_url . ')" ';
-                                                                                                }
-                                                                                                ?>>
+                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; 
+                        echo $settings['course_carousel_skin']=='overlayed' ? 'etlms-color-overlay'  : '';
+                    ?>" 
 
+                    <?php
+						$image_size = $settings['course_carousel_image_size_size'];
+						$image_url = get_tutor_course_thumbnail($image_size, $url = true);
+						if ("overlayed" == $settings['course_carousel_skin']) {
+							echo 'style= "background-image:url(' . $image_url . ')" ';
+						}
+                    ?>
+					>
 
+						<!--if overlayed skin then add overlay color class-->
+						<?php if("overlayed" == $settings['course_carousel_skin']) {echo '<div class="etlms-color-overlay">';}?>
                         <!-- header -->
                         <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio']; ?>">
                             <?php
@@ -205,8 +211,8 @@
                         </div> <!-- etlms-course-container -->
                     <?php endif; ?>
 
-
-                    </div>
+						<?php if("overlayed" == $settings['course_carousel_skin']){echo '</div>';};?>	<!--overlay end-->	
+                    </div><!--card-end-->
                 </div>
 
                 <!-- slick-slider-main-wrapper -->

@@ -79,7 +79,7 @@ class AssetsManager {
             'tutor-elementor-css',
             ETLMS_ASSETS . 'tutor-elementor.css',
             null,
-            ETLMS_VERSION
+            time()//ETLMS_VERSION
         );
     }
 

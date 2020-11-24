@@ -60,7 +60,7 @@
                         $card_normal_shadow = "etlms-stacked-normal-shadow";
                     }
 
-                    if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_list_skin'] == "card") {
+                    if ("yes" == $settings['course_coursel_box_hover_shadow'] AND $settings['course_list_skin'] == "card") {
                         $card_hover_shadow = "etlms-card-hover-shadow";
                     }
                     if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_list_skin'] == "stacked") {
@@ -69,8 +69,8 @@
 
                     ?>
                     <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; 
-                    //if overlayed skin then add overlay color class
-                        echo $settings['course_list_skin']=='overlayed' ? 'etlms-color-overlay' :'';
+                    
+                        
                     ?> 
                     <?php 
                     //course list style omit for overlayed skin
@@ -82,163 +82,170 @@
                         if ("overlayed" == $settings['course_list_skin']) {
                             echo 'style= "background-image:url(' . $image_url . ')" ';
                         }
-                    ?>>
+                    ?>
+					>
+						<!--if overlayed skin then add overlay color class-->
+						<?php if("overlayed" == $settings['course_list_skin']) {echo '<div class="etlms-color-overlay">';}?>
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'] ?>">
-                            <?php
-                            $custom_image_size = $settings['course_list_image_size_size'];
+							<div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'] ?>">
+								<?php
+								$custom_image_size = $settings['course_list_image_size_size'];
 
-                            if ("overlayed" != $settings['course_list_skin']) :
-                            ?>
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php
-                                    if ("yes" === $settings['course_list_image']) {
+								if ("overlayed" != $settings['course_list_skin']) :
+								?>
+									<a href="<?php the_permalink(); ?>">
+										<?php
+										if ("yes" === $settings['course_list_image']) {
 
-                                        get_tutor_course_thumbnail($custom_image_size);
-                                    }
-                                    ?>
-                                </a>
-                            <?php
+											get_tutor_course_thumbnail($custom_image_size);
+										}
+										?>
+									</a>
+								<?php
 
-                            endif;
-                            $course_id = get_the_ID();
-                            ?>
-                            <div class="tutor-course-loop-header-meta">
-                                <?php
-                                $is_wishlisted = tutor_utils()->is_wishlisted($course_id);
-                                $has_wish_list = '';
-                                if ($is_wishlisted) {
-                                    $has_wish_list = 'has-wish-listed';
-                                }
+								endif;
+								$course_id = get_the_ID();
+								?>
+								<div class="tutor-course-loop-header-meta">
+									<?php
+									$is_wishlisted = tutor_utils()->is_wishlisted($course_id);
+									$has_wish_list = '';
+									if ($is_wishlisted) {
+										$has_wish_list = 'has-wish-listed';
+									}
 
-                                $action_class = '';
-                                if (is_user_logged_in()) {
-                                    $action_class = apply_filters('tutor_wishlist_btn_class', 'tutor-course-wishlist-btn');
-                                } else {
-                                    $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
-                                }
-                                if ("yes" === $settings['course_list_difficulty_settings']) {
-                                    echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
-                                }
-                                if ("yes" === $settings['course_list_wishlist_settings']) {
-                                    echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <!-- start loop content wrap -->
-                        <div class="etlms-carousel-course-container" <?php
-                                                                        if ("overlayed" == $settings['course_list_skin']) {
-                                                                            echo 'style= "padding-top:40px;background:transparent"';
-                                                                        }
-                                                                        ?>>
-                            <div class="tutor-loop-course-container">
+									$action_class = '';
+									if (is_user_logged_in()) {
+										$action_class = apply_filters('tutor_wishlist_btn_class', 'tutor-course-wishlist-btn');
+									} else {
+										$action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
+									}
+									if ("yes" === $settings['course_list_difficulty_settings']) {
+										echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
+									}
+									if ("yes" === $settings['course_list_wishlist_settings']) {
+										echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+									}
+									?>
+								</div>
+							</div>
+							<!-- start loop content wrap -->
+							<div class="etlms-carousel-course-container" <?php
+																			if ("overlayed" == $settings['course_list_skin']) {
+																				echo 'style= "padding-top:40px;background:transparent"';
+																			}
+																			?>>
+								<div class="tutor-loop-course-container">
 
-                                <!-- loop rating -->
-                                <?php if ("yes" === $settings['course_list_rating_settings']) : ?>
-                                    <div class="tutor-loop-rating-wrap">
-                                        <?php
-                                        $course_rating = tutor_utils()->get_course_rating();
-                                        tutor_utils()->star_rating_generator($course_rating->rating_avg);
-                                        ?>
-                                        <span class="tutor-rating-count">
-                                            <?php
-                                            if ($course_rating->rating_avg > 0) {
-                                                echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
-                                                echo '<i>(' . apply_filters('tutor_course_rating_count', $course_rating->rating_count) . ')</i>';
-                                            }
-                                            ?>
-                                        </span>
-                                    </div>
-                                <?php endif; ?>
-                                <!-- loop title -->
-                                <div class="tutor-course-loop-title">
-                                    <h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                </div>
+									<!-- loop rating -->
+									<?php if ("yes" === $settings['course_list_rating_settings']) : ?>
+										<div class="tutor-loop-rating-wrap">
+											<?php
+											$course_rating = tutor_utils()->get_course_rating();
+											tutor_utils()->star_rating_generator($course_rating->rating_avg);
+											?>
+											<span class="tutor-rating-count">
+												<?php
+												if ($course_rating->rating_avg > 0) {
+													echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
+													echo '<i>(' . apply_filters('tutor_course_rating_count', $course_rating->rating_count) . ')</i>';
+												}
+												?>
+											</span>
+										</div>
+									<?php endif; ?>
+									<!-- loop title -->
+									<div class="tutor-course-loop-title">
+										<h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
+									</div>
 
-                                <!-- loop meta -->
-                                <?php
-                                /**
-                                 * @package TutorLMS/Templates
-                                 * @version 1.4.3
-                                 */
-                                global $post, $authordata;
-                                $profile_url = tutor_utils()->profile_url($authordata->ID);
-                                ?>
+									<!-- loop meta -->
+									<?php
+									/**
+									 * @package TutorLMS/Templates
+									 * @version 1.4.3
+									 */
+									global $post, $authordata;
+									$profile_url = tutor_utils()->profile_url($authordata->ID);
+									?>
 
-                                <?php if ("yes" === $settings['course_list_meta_data']) : ?>
-                                    <div class="tutor-course-loop-meta">
-                                        <?php
-                                        $course_duration = get_tutor_course_duration_context();
-                                        $course_students = tutor_utils()->count_enrolled_users_by_course();
-                                        ?>
-                                        <div class="tutor-single-loop-meta">
-                                            <i class='tutor-icon-user'></i><span><?php echo $course_students; ?></span>
-                                        </div>
-                                        <?php
-                                        if (!empty($course_duration)) { ?>
-                                            <div class="tutor-single-loop-meta">
-                                                <i class='tutor-icon-clock'></i> <span><?php echo $course_duration; ?></span>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                <?php endif; ?>
+									<?php if ("yes" === $settings['course_list_meta_data']) : ?>
+										<div class="tutor-course-loop-meta">
+											<?php
+											$course_duration = get_tutor_course_duration_context();
+											$course_students = tutor_utils()->count_enrolled_users_by_course();
+											?>
+											<div class="tutor-single-loop-meta">
+												<i class='tutor-icon-user'></i><span><?php echo $course_students; ?></span>
+											</div>
+											<?php
+											if (!empty($course_duration)) { ?>
+												<div class="tutor-single-loop-meta">
+													<i class='tutor-icon-clock'></i> <span><?php echo $course_duration; ?></span>
+												</div>
+											<?php } ?>
+										</div>
+									<?php endif; ?>
 
-                                <div class="tutor-loop-author">
-                                    <div class="tutor-single-course-avatar">
-                                        <?php if ("yes" === $settings['course_list_avatar_settings']) : ?>
-                                            <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
-                                        <?php endif; ?>
-                                    </div>
-                                    <?php if ("yes" == $settings['course_list_author_settings']) : ?>
-                                        <div class="tutor-single-course-author-name">
-                                            <span><?php _e('by', 'tutor'); ?></span>
-                                            <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
-                                        </div>
-                                    <?php endif; ?>
-                                    <div class="tutor-course-lising-category">
-                                        <?php
-                                        if ("yes" === $settings['course_list_category_settings']) {
+									<div class="tutor-loop-author">
+										<div class="tutor-single-course-avatar">
+											<?php if ("yes" === $settings['course_list_avatar_settings']) : ?>
+												<a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
+											<?php endif; ?>
+										</div>
+										<?php if ("yes" == $settings['course_list_author_settings']) : ?>
+											<div class="tutor-single-course-author-name">
+												<span><?php _e('by', 'tutor'); ?></span>
+												<a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
+											</div>
+										<?php endif; ?>
+										<div class="tutor-course-lising-category">
+											<?php
+											if ("yes" === $settings['course_list_category_settings']) {
 
-                                            $course_categories = get_tutor_course_categories();
-                                            if (!empty($course_categories) && is_array($course_categories) && count($course_categories)) {
-                                        ?>
-                                                <span><?php esc_html_e('In', 'tutor') ?></span>
-                                        <?php
-                                                foreach ($course_categories as $course_category) {
-                                                    $category_name = $course_category->name;
-                                                    $category_link = get_term_link($course_category->term_id);
-                                                    echo "<a href='$category_link'>$category_name </a>";
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
+												$course_categories = get_tutor_course_categories();
+												if (!empty($course_categories) && is_array($course_categories) && count($course_categories)) {
+											?>
+													<span><?php esc_html_e('In', 'tutor') ?></span>
+											<?php
+													foreach ($course_categories as $course_category) {
+														$category_name = $course_category->name;
+														$category_link = get_term_link($course_category->term_id);
+														echo "<a href='$category_link'>$category_name </a>";
+													}
+												}
+											}
+											?>
+										</div>
+									</div>
 
-                                <!-- end content wrap -->
-                            </div>
+									<!-- end content wrap -->
+								</div>
 
-                            <!-- loop footer -->
+								<!-- loop footer -->
 
-                            <?php
-                            $is_footer = $settings['course_list_footer_settings'];
-                            ?>
-                            <div class="tutor-loop-course-footer etlms-carousel-footer" style="
-                                <?php if ($is_footer == 'yes') : ?>
-                                    display:block;
-                                    <?php else : ?>
-                                    display: none;
-                                <?php endif; ?>    
-                                ">
-                                <?php
-                                tutor_course_loop_price();
-                                ?>
-                            </div>
-                        </div> <!-- etlms-course-container -->
-                    </div>
+								<?php
+								$is_footer = $settings['course_list_footer_settings'];
+								?>
+								<div class="tutor-loop-course-footer etlms-carousel-footer" style="
+									<?php if ($is_footer == 'yes') : ?>
+										display:block;
+										<?php else : ?>
+										display: none;
+									<?php endif; ?>    
+									">
+									<?php
+									tutor_course_loop_price();
+									?>
+								</div>
+							</div> <!-- etlms-course-container -->
+						
+						<?php if("overlayed" == $settings['course_list_skin']){echo '</div>';};?>	<!--overlay end-->					
+					</div>
+					
                 </div>
                 <!-- course -wrapper -->
+				
             <?php
             endwhile;
             ?>

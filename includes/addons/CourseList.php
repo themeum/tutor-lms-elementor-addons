@@ -9,6 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
+use Elementor\Group_Control_Background;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -768,6 +769,19 @@ class CourseList extends BaseAddon{
                             'course_list_skin' => 'stacked'
                         ],
                         'selector' => $wrapper.".etlms-carousel-course-container",
+                    ]
+                );
+       
+                $this->add_group_control(
+                    Group_Control_Background::get_type(),
+                    [
+                        'name' => 'course_list_overlay_color',
+                        'label' => __( 'Overlay Color', 'tutor-elementor-addons' ),
+                        'types' => [ 'classic', 'gradient' ],
+                        'condition' => [
+                            'course_list_skin' => 'overlayed'
+                        ],
+                        'selector' => $wrapper.'.etlms-color-overlay'
                     ]
                 );
 
