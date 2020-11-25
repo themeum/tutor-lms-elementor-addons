@@ -862,7 +862,7 @@ class CourseCarousel extends BaseAddon{
 				Group_Control_Css_Filter::get_type(),
 				[
 					'label' => __('CSS Filters','tutor-elementor-addons'),
-					'name' => 'course_caroulse_image_normal_filters',
+					'name' => 'course_carousel_image_normal_filters',
 
 					'selector' => $image_selector,
 				]
@@ -880,7 +880,7 @@ class CourseCarousel extends BaseAddon{
 				Group_Control_Css_Filter::get_type(),
 				[
 					'label' => __('CSS Filters','tutor-elementor-addons'),
-					'name' => 'course_caroulse_image_hover_filters',
+					'name' => 'course_carousel_image_hover_filters',
 
 					'selector' => $image_selector.":hover",
 				]

@@ -355,6 +355,6 @@
     ?>
     <!--loading course init-->
 
-    <input type="hidden" id="etlms_enroll_btn_type" value="<?= $settings['course_carousel_enroll_btn_type'] ?>">
+    <input type="hidden" id="etlms_enroll_btn_type" value="<?= $settings['course_list_enroll_btn_type'] ?>">
     <input type="hidden" id="etlms_enroll_btn_cart" value="<?= $settings['course_coursel_button_icon'] ?>">
 </div>
