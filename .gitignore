@@ -9,5 +9,6 @@ package-lock.json
 yarn.lock
 .sass-cache
 .prettierignore
+.DS_Store
 *.zip
 *.map

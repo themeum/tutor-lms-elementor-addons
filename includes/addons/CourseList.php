@@ -184,7 +184,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_meta_divider',
+            'course_list_meta_divider',
             [
                 'type' => Controls_Manager::DIVIDER
             ]
@@ -389,13 +389,13 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_responsive_control(
-            'course_carousel_enroll_btn_align',
+            'course_list_enroll_btn_align',
         
             $this->etlms_non_responsive_alignment('right') 
         );
 
         $this->add_control(
-            'course_carousel_enroll_btn_type',
+            'course_list_enroll_btn_type',
             [
                 'label' => __('Button Type','tutor-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
@@ -421,7 +421,7 @@ class CourseList extends BaseAddon{
                     'relation'=>'or',
                     'terms' => [
                         [
-                            'name' => 'course_carousel_enroll_btn_type',
+                            'name' => 'course_list_enroll_btn_type',
                             'operator' => 'in',
                             'value' => ['default_with_cart_icon','text_with_cart']
                         ]
@@ -432,7 +432,7 @@ class CourseList extends BaseAddon{
         );          
 
         $this->add_control(
-            'course_carousel_btn_icon_spacing',
+            'course_list_btn_icon_spacing',
             [
                 'label' => __( 'Icon Spacing', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -452,7 +452,7 @@ class CourseList extends BaseAddon{
                     'relation'=>'or',
                     'terms' => [
                         [
-                            'name' => 'course_carousel_enroll_btn_type',
+                            'name' => 'course_list_enroll_btn_type',
                             'operator' => 'in',
                             'value' => ['default_with_cart_icon','text_with_cart']
                         ]
@@ -585,7 +585,7 @@ class CourseList extends BaseAddon{
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'course_carousel_style_section',
+            'course_list_style_section',
             [
                 'label' => __('Card','tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
@@ -593,7 +593,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_card_background_color',
+            'course_list_card_background_color',
             [
                 'label'     => __('Background Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -616,7 +616,7 @@ class CourseList extends BaseAddon{
       
 
         $this->add_control(
-            'course_carousel_card_border_color',
+            'course_list_card_border_color',
             [
                 'label'     => __('Border Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -632,7 +632,7 @@ class CourseList extends BaseAddon{
         
 
         $this->add_control(
-            'course_carousel_card_border_width',
+            'course_list_card_border_width',
             [
                 'label'     => __('Border Width', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::SLIDER,
@@ -659,7 +659,7 @@ class CourseList extends BaseAddon{
         ); 
 
         $this->add_control(
-            'course_carousel_card_border_radius',
+            'course_list_card_border_radius',
             [
                 'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -686,7 +686,7 @@ class CourseList extends BaseAddon{
 
 
         $this->add_control(
-            'course_carousel_card_border_radius_stacked',
+            'course_list_card_border_radius_stacked',
             [
                 'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -708,7 +708,7 @@ class CourseList extends BaseAddon{
 
 
         $this->add_control(
-            'course_carousel_card_padding',
+            'course_list_card_padding',
             [
                 'label' => __( 'Padding', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -720,10 +720,10 @@ class CourseList extends BaseAddon{
         );        
 
         /* Start Tabs */
-        $this->start_controls_tabs('course_carousel_card_tabs');
+        $this->start_controls_tabs('course_list_card_tabs');
             /* Normal Tab */
             $this->start_controls_tab(
-                'course_carousel_card_normal_tab',
+                'course_list_card_normal_tab',
                 [
                     'label' => __( 'Normal', 'tutor-elementor-addons' ),
                 ]
@@ -788,7 +788,7 @@ class CourseList extends BaseAddon{
                 );                
 
                 $this->add_control(
-                    'course_carousel_footer_width',
+                    'course_list_footer_width',
                     [
                         'label' => __( 'Footer Seperator Width', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
@@ -816,7 +816,7 @@ class CourseList extends BaseAddon{
 
             /* Hovered Tab */
             $this->start_controls_tab(
-                'course_carousel_card_hover_tab',
+                'course_list_card_hover_tab',
                 [
                     'label' => __( 'Hover', 'tutor-elementor-addons' ),
                 ]
@@ -880,7 +880,7 @@ class CourseList extends BaseAddon{
                 );                
 
                 $this->add_control(
-                    'course_carousel_footer_hover_width',
+                    'course_list_footer_hover_width',
                     [
                         'label' => __( 'Footer Seperator Width', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
@@ -911,7 +911,7 @@ class CourseList extends BaseAddon{
 
         //image section start
         $this->start_controls_section(
-            'course_carousel_image_settings',
+            'course_list_image_settings',
             [
                 'label' => __('Image', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
@@ -919,7 +919,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_image_spacing',
+            'course_list_image_spacing',
             [
                 'label' => __('Spacing','tutor-elementor-addons'),
                 'type' => Controls_Manager::SLIDER,
@@ -937,8 +937,7 @@ class CourseList extends BaseAddon{
 
         //start tabs
         $this->start_controls_tabs(
-            'course_carousel_image_tabs',
- 
+            'course_list_image_tabs'
         );
         //normal tab
         $this->start_controls_tab(
@@ -980,7 +979,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Css_Filter::get_type(),
                 [
                     'label' => __('CSS Filters','tutor-elementor-addons'),
-                    'name' => 'course_caroulse_image_normal_filters',
+                    'name' => 'course_list_image_normal_filters',
 
                     'selector' => $image_selector,
                 ]
@@ -1027,7 +1026,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Css_Filter::get_type(),
                 [
                     'label' => __('CSS Filters','tutor-elementor-addons'),
-                    'name' => 'course_caroulse_image_hover_filters',
+                    'name' => 'course_list_image_hover_filters',
 
                     'selector' => $image_selector.":hover",
                 ]
@@ -1037,7 +1036,7 @@ class CourseList extends BaseAddon{
         $this->end_controls_tabs();
 
         $this->add_control(
-            'course_carousel_image_seperator',
+            'course_list_image_seperator',
             [
                 'type' => Controls_Manager::DIVIDER
             ]
@@ -1045,7 +1044,7 @@ class CourseList extends BaseAddon{
 
         //badge
         $this->add_control(
-            'course_carousel_badge_heading',
+            'course_list_badge_heading',
             [
                 'label' => __('Badge','tutor-elementor-addons'),
                 'type' => Controls_Manager::HEADING
@@ -1053,7 +1052,7 @@ class CourseList extends BaseAddon{
         );      
 
         $this->add_control(
-            'course_carousel_badge_background_color',
+            'course_list_badge_background_color',
             [
                 'label'     => __('Background Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1064,7 +1063,7 @@ class CourseList extends BaseAddon{
         );         
 
         $this->add_control(
-            'course_carousel_badge_text_color',
+            'course_list_badge_text_color',
             [
                 'label'     => __('Text Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1075,7 +1074,7 @@ class CourseList extends BaseAddon{
         ); 
 
         $this->add_control(
-            'course_carousel_border_radius',
+            'course_list_border_radius',
             [
                 'label' => __( 'Border Radius', 'elementor' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -1087,7 +1086,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_badge_size',
+            'course_list_badge_size',
             [
                 'label' => __( 'Size', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1105,7 +1104,7 @@ class CourseList extends BaseAddon{
         );         
 
         $this->add_control(
-            'course_carousel_badge_margin',
+            'course_list_badge_margin',
             [
                 'label' => __( 'Margin', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1123,7 +1122,7 @@ class CourseList extends BaseAddon{
         );        
 
         $this->add_control(
-            'course_carousel_badge_seperator',
+            'course_list_badge_seperator',
             [
                 'type' => Controls_Manager::DIVIDER
             ]
@@ -1131,7 +1130,7 @@ class CourseList extends BaseAddon{
 
         //avatar
         $this->add_control(
-            'course_carousel_avatar_heading',
+            'course_list_avatar_heading',
             [
                 'label' => __('Avatar','tutor-elementor-addons'),
                 'type' => Controls_Manager::HEADING
@@ -1139,7 +1138,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_avatar_size',
+            'course_list_avatar_size',
             [
                 'label' => __( 'Size', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1158,7 +1157,7 @@ class CourseList extends BaseAddon{
         );        
 
         $this->add_control(
-            'course_carousel_avatar_border_radius',
+            'course_list_avatar_border_radius',
             [
                 'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1186,7 +1185,7 @@ class CourseList extends BaseAddon{
         //content section start
 
         $this->start_controls_section(
-            'course_carousel_content_styles',
+            'course_list_content_styles',
             [
                 'label' => __('Content','tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
@@ -1194,7 +1193,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_content_title',
+            'course_list_content_title',
             [
                 'label' => __('Title', 'tutor-elementor-addons'),
                 'type' => Controls_Manager::HEADING
@@ -1202,7 +1201,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_content_color',
+            'course_list_content_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1215,14 +1214,14 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_carousel_content_typo',
+                'name'      => 'course_list_content_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $course_title_selector,
             ]
         );
 
         $this->add_control(
-            'course_carousel_content_spacing',
+            'course_list_content_spacing',
             [
                 'label' => __( 'Space', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1241,7 +1240,7 @@ class CourseList extends BaseAddon{
         ); 
 
         $this->add_control(
-            'course_carousel_meta_title',
+            'course_list_meta_title',
             [
                 'label' => __('Meta','tutor-elementor-addons'),
                 'type' => Controls_Manager::HEADING
@@ -1249,7 +1248,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_meta_color',
+            'course_list_meta_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1260,7 +1259,7 @@ class CourseList extends BaseAddon{
         );         
 
         $this->add_control(
-            'course_carousel_meta_separator_color',
+            'course_list_meta_separator_color',
             [
                 'label'     => __('Separator Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1273,7 +1272,7 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_carousel_meta_typo',
+                'name'      => 'course_list_meta_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $meta_selector,
                 
@@ -1281,7 +1280,7 @@ class CourseList extends BaseAddon{
         );        
 
         $this->add_control(
-            'course_carousel_meta_divier',
+            'course_list_meta_divier',
             [
                 'type' => Controls_Manager::DIVIDER
             ]
@@ -1289,7 +1288,7 @@ class CourseList extends BaseAddon{
 
 
         $this->add_control(
-            'course_carousel_category_title',
+            'course_list_category_title',
             [
                 'label' => __('Category', 'tutor-elementor-addons'),
                 'type' => Controls_Manager::HEADING
@@ -1297,7 +1296,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_category_color',
+            'course_list_category_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1310,14 +1309,14 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_carousel_category_typo',
+                'name'      => 'course_list_category_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $category_selector,
             ]
         );
 
         $this->add_control(
-            'course_carousel_category_spacing',
+            'course_list_category_spacing',
             [
                 'label' => __( 'Space', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1341,7 +1340,7 @@ class CourseList extends BaseAddon{
 
         //rating section start
         $this->start_controls_section(
-            'course_carousel_rating_styles',
+            'course_list_rating_styles',
             [
                 'label' => __('Rating','tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
@@ -1349,7 +1348,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_star_color',
+            'course_list_star_color',
             [
                 'label'     => __('Star Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1359,7 +1358,7 @@ class CourseList extends BaseAddon{
             ]
         );                
         $this->add_control(
-            'course_carousel_star_size',
+            'course_list_star_size',
             [
                 'label' => __( 'Star Size', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1386,7 +1385,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_star_text_color',
+            'course_list_star_text_color',
             [
                 'label'     => __('Text Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1396,7 +1395,7 @@ class CourseList extends BaseAddon{
             ]
         );                
         $this->add_responsive_control(
-            'course_carousel_star_gap',
+            'course_list_star_gap',
             [
                 'label' => __( 'Gap', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -1658,7 +1657,7 @@ class CourseList extends BaseAddon{
 
         //footer section start
         $this->start_controls_section(
-            'course_carousel_footer_styles',
+            'course_list_footer_styles',
             [
                 'label' => __('Footer','tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
@@ -1676,7 +1675,7 @@ class CourseList extends BaseAddon{
         );  
 
         $this->add_responsive_control(
-            'course_carousel_footer_padding',
+            'course_list_footer_padding',
             [
                 'label' => __( 'Padding', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -1688,14 +1687,14 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_footer_padding_divider',
+            'course_list_footer_padding_divider',
             [
                 'type' => Controls_Manager::DIVIDER
             ]
         );        
 
         $this->add_control(
-            'course_carousel_price_title',
+            'course_list_price_title',
             [
                 'label' => __('Price','tutor-elementor-addons'),
                 'type' => Controls_Manager::HEADING
@@ -1712,7 +1711,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_price_text_color',
+            'course_list_price_text_color',
             [
                 'label'     => __('Text Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -1724,7 +1723,7 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
-            'course_carousel_cart_title',
+            'course_list_cart_title',
             [
                 'label' => __('Cart Button','tutor-elementor-addons'),
                 'type' => Controls_Manager::HEADING
@@ -1734,7 +1733,7 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_carousel_cart_typo',
+                'name'      => 'course_list_cart_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $cart_text_selector,
             ]
@@ -1750,11 +1749,11 @@ class CourseList extends BaseAddon{
         );
 
         $this->start_controls_tabs(
-            'course_carousel_cart_tabs'
+            'course_list_cart_tabs'
         );
         //normal tab
         $this->start_controls_tab(
-            'course_carousel_text_normal_tab',
+            'course_list_text_normal_tab',
             [
                 'label' => __('Normal','tutor-elementor-addons')
             ]
@@ -1782,12 +1781,12 @@ class CourseList extends BaseAddon{
                         'relation' => 'or',
                         'terms' => [
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'default_with_cart_icon'
                             ],
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'text_with_cart'
                             ]
@@ -1808,12 +1807,12 @@ class CourseList extends BaseAddon{
                         'relation' => 'or',
                         'terms' => [
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'default_with_cart_icon'
                             ],
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'default'
                             ]
@@ -1825,7 +1824,7 @@ class CourseList extends BaseAddon{
         $this->end_controls_tab();      
         //hover tab
         $this->start_controls_tab(
-            'course_carousel_cart_hover_tab',
+            'course_list_cart_hover_tab',
             [
                 'label' => __('Hover','tutor-elementor-addons')
             ]
@@ -1853,12 +1852,12 @@ class CourseList extends BaseAddon{
                         'relation' => 'or',
                         'terms' => [
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'default_with_cart_icon'
                             ],
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'text_with_cart'
                             ]
@@ -1879,12 +1878,12 @@ class CourseList extends BaseAddon{
                         'relation' => 'or',
                         'terms' => [
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'default_with_cart_icon'
                             ],
                             [
-                                'name' => 'course_carousel_enroll_btn_type',
+                                'name' => 'course_list_enroll_btn_type',
                                 'operator' => '==',
                                 'value' => 'default'
                             ]
@@ -1897,7 +1896,7 @@ class CourseList extends BaseAddon{
         $this->end_controls_tabs();
 
         $this->add_control(
-            'course_carousel_footer_tab_divider',
+            'course_list_footer_tab_divider',
             [
                 'type' => Controls_Manager::DIVIDER
             ]
@@ -1906,14 +1905,14 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name' => 'course_carousel_cart_border',
+                'name' => 'course_list_cart_border',
                 'label' => __( 'Border Type', 'tutor-elementor-addons' ),
                 'selector' => $cart_button_selector,
             ]
         );
 
         $this->add_control(
-            'course_carousel_cart_border_radius',
+            'course_list_cart_border_radius',
             [
                 'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -1926,14 +1925,14 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
-                'name' => 'course_carousel_cart_box_shadow',
+                'name' => 'course_list_cart_box_shadow',
                 'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
                 'selector' => $cart_button_selector,
             ]
         );
 
         $this->add_control(
-            'course_carousel_cart_border_divider',
+            'course_list_cart_border_divider',
             [
                 'type' => Controls_Manager::DIVIDER
             ]

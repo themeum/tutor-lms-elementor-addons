@@ -324,6 +324,10 @@
 	margin: 0;
 }
 
+.etlms-course-carousel div[class*="tutor-course-col"] {
+	margin-bottom: 15px;
+}
+
 /*card box shadow*/
 
 /*card normal shadow*/
@@ -335,7 +339,7 @@
 .etlms-card.etlms-card-normal-shadow
 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-  webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 /*card hover shadow*/
@@ -346,7 +350,7 @@
 .etlms-card.etlms-card-normal-shadow:hover
 {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-  webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 /*stacked hover shadow*/
