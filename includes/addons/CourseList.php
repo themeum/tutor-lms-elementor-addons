@@ -705,18 +705,7 @@ class CourseList extends BaseAddon{
             ]
         );       
 
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name' => 'course_list_overlay_color',
-                'label' => __( 'Overlay', 'tutor-elementor-addons' ),
-                'types' => [ 'classic', 'gradient' ],
-                'condition' => [
-                    'course_list_skin' => 'overlayed'
-                ],
-                'selector' => $wrapper.'.etlms-color-overlay'
-            ]
-        );
+
 
         $this->add_control(
             'course_carousel_card_padding',
@@ -958,6 +947,35 @@ class CourseList extends BaseAddon{
                 'label' => __('Normal','tutor-elementor-addons')
             ]
         );
+             
+            //for classic,card,stacked 
+            $this->add_group_control(
+                Group_Control_Background::get_type(),
+                [
+                    'name' => 'course_list_overlay_classic_card_stacked_normal',
+                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'types' => [ 'classic', 'gradient' ],
+                    'condition' => [
+                        'course_list_skin!' => 'overlayed'
+                    ],
+                    'selector' => $image_selector."::before"
+                ]
+            ); 
+
+            //for overlayed skin only
+            $this->add_group_control(
+                Group_Control_Background::get_type(),
+                [
+                    'name' => 'course_list_overlay_normal',
+                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'types' => [ 'classic', 'gradient' ],
+                    'condition' => [
+                        'course_list_skin' => 'overlayed'
+                    ],
+                    'selector' => $wrapper.'.etlms-color-overlay'
+                ]
+            );
+
             $this->add_group_control(
                 Group_Control_Css_Filter::get_type(),
                 [
@@ -976,6 +994,35 @@ class CourseList extends BaseAddon{
                 'label' => __('Hover','tutor-elementor-addons')
             ]
         );
+            //for classic,card,stacked
+            $this->add_group_control(
+                Group_Control_Background::get_type(),
+                [
+                    'name' => 'course_list_overlay_classic_card_stacked_hover',
+                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'types' => [ 'classic', 'gradient' ],
+                    'condition' => [
+                        'course_list_skin!' => 'overlayed'
+                    ],
+                    'selector' => $image_selector.":hover"
+                ]
+            ); 
+
+            //for overlayed skin only
+            $this->add_group_control(
+                Group_Control_Background::get_type(),
+                [
+                    'name' => 'course_list_overlay_hover',
+                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'types' => [ 'classic', 'gradient' ],
+                    'condition' => [
+                        'course_list_skin' => 'overlayed'
+                    ],
+                    'selector' => $wrapper.'.etlms-color-overlay:hover'
+                ]
+            );             
+
+                   
             $this->add_group_control(
                 Group_Control_Css_Filter::get_type(),
                 [
