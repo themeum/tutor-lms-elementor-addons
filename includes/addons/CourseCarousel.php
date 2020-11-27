@@ -1000,7 +1000,16 @@ class CourseCarousel extends BaseAddon{
 					'selector' => $wrapper.".etlms-color-overlay:hover",
 				]
 			);
-
+            $this->add_control(
+                'course_carousel_card_hover_animation',
+                [
+                   
+                    'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::HOVER_ANIMATION,
+                    //'type' => Controls_Manager::ANIMATION,
+                
+                ]
+            );
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();

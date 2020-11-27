@@ -1057,7 +1057,7 @@ class CourseList extends BaseAddon{
                     'selector' => $wrapper.".etlms-common-overlay",
                 ]
             );
-            
+
             $this->add_group_control(
                 Group_Control_Css_Filter::get_type(),
                 [
@@ -1137,7 +1137,8 @@ class CourseList extends BaseAddon{
                    
                     'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
                     'type' => Controls_Manager::HOVER_ANIMATION,
-                    'prefix_class' => "elementor-animation",
+                    //'type' => Controls_Manager::ANIMATION,
+                
                 ]
             );
 

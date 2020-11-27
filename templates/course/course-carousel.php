@@ -30,7 +30,7 @@
 
                 <div class="<?php tutor_course_loop_col_classes(); ?>">
                     <div class="etlms-card <?php
-                        echo $settings['course_carousel_skin']=='overlayed' ? 'etlms-color-overlay'  : '';
+                        echo $settings['course_carousel_skin']=='overlayed' ? 'etlms-color-overlay elementor-animation-'.$settings['course_carousel_card_hover_animation'].' '  : '';
                     ?>" 
 
                     <?php
@@ -45,7 +45,12 @@
 						<!--if overlayed skin then add overlay color class-->
 						<?php if("overlayed" == $settings['course_carousel_skin']) {echo '<div class="etlms-color-overlay">';}?>
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio']; ?>"
+                        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio']; 
+                        if(!empty($settings['course_carousel_card_hover_animation']) AND "overlayed" != $settings['course_carousel_skin'] )
+                        {
+                            echo " ".'elementor-animation-'.$settings['course_carousel_card_hover_animation'];
+                        }
+                        ?>"
                         <?php
                             if ("overlayed" != $settings['course_carousel_skin']) {
                                 echo 'style= "background-image:url(' . $image_url . ')" ';

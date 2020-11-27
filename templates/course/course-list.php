@@ -53,10 +53,12 @@
 
                     <div class="etlms-card 
                     <?php 
-                    echo $settings['course_list_card_hover_animation'];
+                 
                     //course list style omit for overlayed skin
                     if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 
-                        echo "etlms-course-list-style"; } ?>" 
+                        echo "etlms-course-list-style"; } 
+                    
+                    ?>" 
                     <?php
                         $image_size = $settings['course_list_image_size_size'];
                         $image_url = get_tutor_course_thumbnail($image_size, $url = true);
@@ -67,10 +69,16 @@
                     ?>
 					>
 						<!--if overlayed skin then add overlay color class-->
-						<?php if("overlayed" == $settings['course_list_skin']) {echo '<div class="etlms-color-overlay">';}?>
+						<?php if("overlayed" == $settings['course_list_skin']) {echo '<div class="etlms-color-overlay elementor-animation-'.$settings['course_list_card_hover_animation'].' ">';}?>
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'] ?>"
+                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'];  
+                        if(!empty($settings['course_list_card_hover_animation']) AND "overlayed" != $settings['course_list_skin'])
+                        {
+                            echo " ".'elementor-animation-'.$settings['course_list_card_hover_animation'];
+                        }
+                        ?>"
                         <?php
+ 
                             if ("overlayed" != $settings['course_list_skin']) {
                                 echo 'style= "background-image:url(' . $image_url . ')" ';
                             }
