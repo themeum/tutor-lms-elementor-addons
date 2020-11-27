@@ -520,6 +520,22 @@ class CourseCarousel extends BaseAddon{
         );        
 
         $this->add_control(
+            'course_carousel_stacked_background_color',
+            [
+                'label'     => __('Background Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'condition' => [
+                    'course_carousel_skin' => 'stacked',
+
+                ],
+                'default' => '#fff',
+                'selectors' => [
+                    $wrapper.'.etlms-carousel-course-container' => 'background-color: {{VALUE}};',
+                ],
+            ]
+		);  
+				
+        $this->add_control(
             'course_carousel_card_border_color',
             [
                 'label'     => __('Border Color', 'tutor-elementor-addons'),
