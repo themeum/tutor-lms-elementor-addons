@@ -368,13 +368,49 @@
 	-webkit-box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
 }
 
+/*
+	@set header background image
+	@classic, card, stacked skin 
+*/
+.etlms-coursel-classic
+.tutor-course-header,
+.etlms-coursel-card
+.tutor-course-header,
+.etlms-coursel-stacked
+.tutor-course-header,
+.etlms-course-list-classic
+.tutor-course-header,
+.etlms-course-list-card
+.tutor-course-header,
+.etlms-course-list-stacked
+.tutor-course-header
+{
+	height: 255px;
+	background-size: cover;
+	background-position: top center;
+	background-repeat: no-repeat;
+	width: 100%;
+}
+
+.etlms-carousel-main-wrap
+.etlms-common-overlay,
+.etlms-course-list-main-wrap
+.etlms-common-overlay
+{
+    background-image: linear-gradient(to right, #110e0e3b , #5d5d526e);
+    border-radius: inherit;
+    margin: inherit;
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+	width: 100%;
+	height: inherit;
+}
 
 .etlms-coursel-classic .etlms-card,
 .etlms-course-list-classic .etlms-card
 {
 	border-radius: 8px;
-	width: 100%;
-	height: 255px;
 	border: 1px solid #EBEBEB;
 	overflow: hidden;
 }
@@ -383,50 +419,16 @@
 {
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 	border-radius: 8px;
-	width: 100%;
-	height: 255px;
 	overflow: hidden;
 }
 
-.etlms-coursel-stacked .tutor-course-header a > img, 
-.etlms-course-list-stacked .tutor-course-header a > img 
+.etlms-coursel-stacked .tutor-course-header, 
+.etlms-course-list-stacked .tutor-course-header
 {
 	border-radius: 10px;
-	width: 100%;
-	height: 255px;
-}
-/* overlay for classic, card, stacked */
-.etlms-coursel-classic
-.etlms-common-overlay,
-.etlms-coursel-card
-.etlms-common-overlay,
-.etlms-course-list-classic
-.etlms-common-overlay,
-.etlms-course-list-card
-.etlms-common-overlay
-{
-	position: absolute;
-	height: 255px;
-	border-radius: 8px 8px 0px 0px;
-	width: 100%;
-	margin-top: -255px;
-	z-index: 99;
-	background-color: rgba(32, 65, 172, 0.137);
+	overflow: hidden;
 }
 
-.etlms-course-list-stacked
-.etlms-common-overlay,
-.etlms-coursel-stacked
-.etlms-common-overlay
-{
-	position: absolute;
-	height: 255px;
-	border-radius: 10px;
-	width: 100%;
-	margin-top: -255px;
-	z-index: 99;
-	background-color: rgba(32, 65, 172, 0.137);
-}
 
 
 .etlms-carousel-stacked .tutor-course-header a > img,
@@ -484,7 +486,6 @@
 {
     background-image: linear-gradient(to right, #110e0e3b , #5d5d526e);
     border-radius: inherit;
-
     margin: inherit;
     background-repeat: no-repeat;
     background-size: cover;
@@ -518,7 +519,7 @@
 	font-size: 0;
 	line-height: 0;
 	position: absolute;
-	top: 45%;
+	top: 40%;
 	display: block;
 	left: 0px;
 	font-size: 20px;
@@ -528,7 +529,7 @@
 	font-size: 0;
 	line-height: 0;
 	position: absolute;
-	top: 45%;
+	top: 40%;
 	display: block;
 	right: 0px;
 	font-size: 20px;
@@ -639,7 +640,31 @@
 	margin-top: -120px;
 }
 /*course list style 1 col*/
+@media only screen and (min-width: 768px) {
+	/* @list style main style */
+	.etlms-course-list-style {
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: nowrap !important;
+		height: 255px;
+	}
 
+	.etlms-course-list-style .tutor-course-header {
+		max-width: 40%;
+		flex: 0 0 40% !important;
+		height: 255px;
+	}
+	.etlms-course-list-style .etlms-carousel-course-container {
+		max-width: 60%;
+		flex: 0 0 60% !important;
+	}
+	.etlms-course-list-stacked
+	.etlms-course-list-style
+	.etlms-carousel-course-container
+	{
+		margin: auto 0 auto -42px;
+	}
+}	
 
 /*tablet*/
 
