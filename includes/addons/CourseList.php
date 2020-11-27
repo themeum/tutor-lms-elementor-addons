@@ -696,7 +696,7 @@ class CourseList extends BaseAddon{
 
                         ],
                         'selectors' => [
-                            $card_selector => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                            $stacked_selector => 'border-radius: {{SIZE}}{{UNIT}} ;',
                         ],
                     ]
                 );  
@@ -720,7 +720,7 @@ class CourseList extends BaseAddon{
                         'condition' => [
                             'course_list_skin' => 'stacked'
                         ],
-                        'selector' => $wrapper.".etlms-carousel-course-container",
+                        'selector' => $stacked_selector,
                     ]
                 );                
 
@@ -731,6 +731,92 @@ class CourseList extends BaseAddon{
             $this->start_controls_tab('course_list_card_hover_tab',[
                 'label' => __('Hover','tutor-elementor-addons')
             ]);
+
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'course_list_card_hover_border',
+                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin!' => 'stacked'
+                        ],
+                        'selector' => $wrapper.".etlms-card:hover",
+                    ]
+                );
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'course_list_stacked_hover_border',
+                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin' => 'stacked'
+                        ],
+                        'selector' => $stacked_selector.":hover",
+                    ]
+                );
+
+                $this->add_control(
+                    'course_carousel_card_hover_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 8,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_list_skin!' => 'stacked',
+
+                        ],
+                        'selectors' => [
+                            $wrapper.".etlms-card:hover" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
+                );  
+                $this->add_control(
+                    'course_carousel_stacked_hover_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 8,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_list_skin' => 'stacked',
+
+                        ],
+                        'selectors' => [
+                            $stacked_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
+                );  
+                $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'carousel_card_hover_box_shadow_control',
+                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin!' => 'stacked'
+                        ],
+                        'selector' => $wrapper.".etlms-card:hover",
+                    ]
+                );                
+
+                $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'carousel_stacked_hover_box_shadow_control',
+                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin' => 'stacked'
+                        ],
+                        'selector' => $stacked_selector.":hover",
+                    ]
+                ); 
+
             $this->end_controls_tab();
             //hover tab end
 
