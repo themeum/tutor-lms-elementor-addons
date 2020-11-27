@@ -820,7 +820,7 @@ class CourseList extends BaseAddon{
             $this->end_controls_tab();
             //hover tab end
 
-        $this->end_controls_tabs('course_list_card_border');
+        $this->end_controls_tabs();
         //border tabs end
 
         $this->add_control(
@@ -1007,12 +1007,12 @@ class CourseList extends BaseAddon{
 
         //start tabs
         $this->start_controls_tabs(
-            'course_carousel_image_tabs',
+            'course_list_image_tabs',
  
         );
         //normal tab
         $this->start_controls_tab(
-            'course_course_normal_tab',
+            'course_list_normal_tab',
             [
                 'label' => __('Normal','tutor-elementor-addons')
             ]
@@ -1028,7 +1028,7 @@ class CourseList extends BaseAddon{
                     'condition' => [
                         'course_list_skin!' => 'overlayed'
                     ],
-                    'selector' => $image_selector."::before"
+                    'selector' => $wrapper.".etlms-common-overlay"
                 ]
             ); 
 
@@ -1051,10 +1051,25 @@ class CourseList extends BaseAddon{
                 [
                     'label' => __('CSS Filters','tutor-elementor-addons'),
                     'name' => 'course_caroulse_image_normal_filters',
-
-                    'selector' => $image_selector,
+                    'condition' => [
+                        'course_list_skin!' => 'overlayed'
+                    ],
+                    'selector' => $wrapper.".etlms-common-overlay",
                 ]
             );
+            
+            $this->add_group_control(
+                Group_Control_Css_Filter::get_type(),
+                [
+                    'label' => __('CSS Filters','tutor-elementor-addons'),
+                    'name' => 'course_caroulse_image_overlayed_normal_filters',
+                    'condition' => [
+                        'course_list_skin' => 'overlayed'
+                    ],
+                    'selector' => $wrapper.".etlms-color-overlay",
+                ]
+            );
+
         $this->end_controls_tab();
 
         //hover tab
@@ -1074,7 +1089,7 @@ class CourseList extends BaseAddon{
                     'condition' => [
                         'course_list_skin!' => 'overlayed'
                     ],
-                    'selector' => $image_selector.":hover"
+                    'selector' => $wrapper.".etlms-common-overlay:hover"
                 ]
             ); 
 
@@ -1098,10 +1113,34 @@ class CourseList extends BaseAddon{
                 [
                     'label' => __('CSS Filters','tutor-elementor-addons'),
                     'name' => 'course_caroulse_image_hover_filters',
-
-                    'selector' => $image_selector.":hover",
+                    'condition' => [
+                        'course_list_skin!' => 'overlayed'
+                    ],
+                    'selector' => $wrapper.".etlms-common-overlay:hover",
                 ]
-            );  
+            );
+            $this->add_group_control(
+                Group_Control_Css_Filter::get_type(),
+                [
+                    'label' => __('CSS Filters','tutor-elementor-addons'),
+                    'name' => 'course_caroulse_image_overlayed_hover_filters',
+                    'condition' => [
+                        'course_list_skin' => 'overlayed'
+                    ],
+                    'selector' => $wrapper.".etlms-color-overlay:hover",
+                ]
+            ); 
+
+            $this->add_control(
+                'course_list_card_hover_animation',
+                [
+                   
+                    'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
+                    'type' => Controls_Manager::HOVER_ANIMATION,
+                    'prefix_class' => "elementor-animation",
+                ]
+            );
+
         $this->end_controls_tab();
 
         $this->end_controls_tabs();

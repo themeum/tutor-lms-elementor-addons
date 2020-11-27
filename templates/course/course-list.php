@@ -53,6 +53,7 @@
 
                     <div class="etlms-card 
                     <?php 
+                    echo $settings['course_list_card_hover_animation'];
                     //course list style omit for overlayed skin
                     if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 
                         echo "etlms-course-list-style"; } ?>" 
@@ -62,6 +63,7 @@
                         if ("overlayed" == $settings['course_list_skin']) {
                             echo 'style= "background-image:url(' . $image_url . ')" ';
                         }
+                        
                     ?>
 					>
 						<!--if overlayed skin then add overlay color class-->

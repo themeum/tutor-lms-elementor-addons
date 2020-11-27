@@ -27,25 +27,9 @@
             <?php while ($the_query->have_posts()) : $the_query->the_post();
             ?>
                 <!-- slick-slider-main-wrapper -->
-                <?php
-                $card_normal_shadow = '';
-                $card_hover_shadow = '';
-                if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_carousel_skin'] == "card") {
-                    $card_normal_shadow = "etlms-card-normal-shadow";
-                }
-                if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_carousel_skin'] == "stacked") {
-                    $card_normal_shadow = "etlms-stacked-normal-shadow";
-                }
 
-                if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_carousel_skin'] == "card") {
-                    $card_hover_shadow = "etlms-card-hover-shadow";
-                }
-                if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_carousel_skin'] == "stacked") {
-                    $card_hover_shadow = "etlms-stacked-hover-shadow";
-                }
-                ?>
                 <div class="<?php tutor_course_loop_col_classes(); ?>">
-                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; 
+                    <div class="etlms-card <?php
                         echo $settings['course_carousel_skin']=='overlayed' ? 'etlms-color-overlay'  : '';
                     ?>" 
 
