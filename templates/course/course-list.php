@@ -50,28 +50,8 @@
             ?>
                 <!-- course -wrapper -->
                 <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col <?= "yes" == $settings['course_list_masonry'] ? 'masonry-brick' : '' ?>">
-                    <?php
-                    $card_normal_shadow = '';
-                    $card_hover_shadow = '';
-                    if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_list_skin'] == "card") {
-                        $card_normal_shadow = "etlms-card-normal-shadow";
-                    }
-                    if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_list_skin'] == "stacked") {
-                        $card_normal_shadow = "etlms-stacked-normal-shadow";
-                    }
 
-                    if ("yes" == $settings['course_coursel_box_hover_shadow'] AND $settings['course_list_skin'] == "card") {
-                        $card_hover_shadow = "etlms-card-hover-shadow";
-                    }
-                    if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_list_skin'] == "stacked") {
-                        $card_hover_shadow = "etlms-stacked-hover-shadow";
-                    }
-
-                    ?>
-                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; 
-                    
-                        
-                    ?> 
+                    <div class="etlms-card 
                     <?php 
                     //course list style omit for overlayed skin
                     if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 

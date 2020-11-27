@@ -495,7 +495,8 @@ class CourseList extends BaseAddon{
         $row_selector = $wrapper.".etlms-course-list-col";
         $column_selector = $wrapper.".etlms-course-list-col";
         $pagination_selector = $wrapper.".etlms-course-list-pagination-wrap";
-
+        $card_selector = $wrapper.".etlms-card";
+        $stacked_selector = $wrapper.".etlms-carousel-course-container";
         /*
         @card selector change as per skin style
         */
@@ -628,99 +629,113 @@ class CourseList extends BaseAddon{
                     $wrapper.'.etlms-carousel-course-container' => 'background-color: {{VALUE}};',
                 ],
             ]
-        );      
-
-        $this->add_control(
-            'course_carousel_card_border_color',
-            [
-                'label'     => __('Border Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'default' => '#ebebeb',
-                'condition' => [
-                    'course_list_skin' => 'classic'
-                ],
-                'selectors' => [
-                    $wrapper.".etlms-card" => ' border-color: {{VALUE}};',
-                ],
-            ]
-        );         
+        );   
         
+        //border tabs
+        $this->start_controls_tabs('course_list_card_border_tabs');
 
-        $this->add_control(
-            'course_carousel_card_border_width',
-            [
-                'label'     => __('Border Width', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::SLIDER,
-                'size_unit' => ['px'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1
+            //normal tab start
+            $this->start_controls_tab('course_list_card_normal_tab',[
+                'label' => __('Normal','tutor-elementor-addons')
+            ]);
+
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'course_list_card_border',
+                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin!' => 'stacked'
+                        ],
+                        'selector' => $wrapper.".etlms-card",
                     ]
-                ],
-                'default' => [
-                    'size' => 1,
-                    'unit' => 'px'
-                
-                ],
-                'condition' => [
-                    'course_list_skin' => 'classic'
-                ],
-                'selectors' => [
-                    $wrapper.".etlms-card" => 'border-width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        ); 
-
-        $this->add_control(
-            'course_carousel_card_border_radius',
-            [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%' ],
-                'default' =>[
-                    'size' => 8,
-                    'unit' => 'px'
-                ],
-                'conditions' => [
-                    'relation' => 'or',
-                    'terms' => [
-                        [
-                            'name' => 'course_list_skin',
-                            'operator' => 'in',
-                            'value' => ['classic','card','overlayed']
-                        ]
+                );
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'course_list_stacked_border',
+                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin' => 'stacked'
+                        ],
+                        'selector' => $stacked_selector,
                     ]
-                ],
-                'selectors' => [
-                    $wrapper.".etlms-card" => 'border-radius: {{SIZE}}{{UNIT}} ;',
-                ],
-            ]
-        );         
+                );
 
+                $this->add_control(
+                    'course_carousel_card_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 8,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_list_skin!' => 'stacked',
 
-        $this->add_control(
-            'course_carousel_card_border_radius_stacked',
-            [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'default' =>[
-                    'size' => 10,
-                    'unit' => 'px'
-                ],
-                'condition' => [
-                    'course_list_skin' => 'stacked'
+                        ],
+                        'selectors' => [
+                            $wrapper.".etlms-card" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
+                );  
+                $this->add_control(
+                    'course_carousel_stacked_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 8,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_list_skin' => 'stacked',
 
-                ],
-                'selectors' => [
-                    $wrapper.".etlms-carousel-course-container" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );       
+                        ],
+                        'selectors' => [
+                            $card_selector => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
+                );  
+                $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'carousel_card_box_shadow_control',
+                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin!' => 'stacked'
+                        ],
+                        'selector' => $wrapper.".etlms-card",
+                    ]
+                );                
 
+                $this->add_group_control(
+                    Group_Control_Box_Shadow::get_type(),
+                    [
+                        'name' => 'carousel_stacked_box_shadow_control',
+                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'condition' => [
+                            'course_list_skin' => 'stacked'
+                        ],
+                        'selector' => $wrapper.".etlms-carousel-course-container",
+                    ]
+                );                
 
+            $this->end_controls_tab();
+            //normal tab end
+
+            //hover tab start
+            $this->start_controls_tab('course_list_card_hover_tab',[
+                'label' => __('Hover','tutor-elementor-addons')
+            ]);
+            $this->end_controls_tab();
+            //hover tab end
+
+        $this->end_controls_tabs('course_list_card_border');
+        //border tabs end
 
         $this->add_control(
             'course_carousel_card_padding',
@@ -743,53 +758,7 @@ class CourseList extends BaseAddon{
                     'label' => __( 'Normal', 'tutor-elementor-addons' ),
                 ]
             );
-                $this->add_control(
-                    'course_coursel_box_shadow',
-                    [
-                        'label'     => __('Box Shadow', 'tutor-elementor-addons'),
-                        'type'      => Controls_Manager::SWITCHER,
-                        'label_on' => __('Yes','tutor-elementor-addons'),
-                        'label_off'=> __('No','tutor-elementor-addons'),
-                        'return_value' => 'yes',
-                        'conditions' => [
-                            'relation' => 'or',
-                            'terms' => [
-                                [
-                                    'name'=> 'course_list_skin',
-                                    'operator' => 'in',
-                                    'value' => ['card','stacked']
-                                ]
-                            ]
-                        ],
-                        'default' => 'yes'
-                    ]
-                );                
-
-                $this->add_group_control(
-                    Group_Control_Box_Shadow::get_type(),
-                    [
-                        'name' => 'carousel_card_box_shadow_control',
-                        'label' => __( 'Shadow Control', 'tutor-elementor-addons' ),
-                        'condition' => [
-                            'course_list_skin' => 'card'
-                        ],
-                        'selector' => $wrapper.".etlms-card",
-                    ]
-                );                
-
-                $this->add_group_control(
-                    Group_Control_Box_Shadow::get_type(),
-                    [
-                        'name' => 'carousel_stacked_box_shadow_control',
-                        'label' => __( 'Shadow Control', 'tutor-elementor-addons' ),
-                        'condition' => [
-                            'course_list_skin' => 'stacked'
-                        ],
-                        'selector' => $wrapper.".etlms-carousel-course-container",
-                    ]
-                );
-       
-
+           
 
                 $this->add_control(
                     'course_coursel_footer_seperator_color',
