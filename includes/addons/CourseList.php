@@ -526,10 +526,10 @@ class CourseList extends BaseAddon{
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 0
+                    'size' => 10
                 ],
                 'selectors' => [
-                    $column_selector => 'padding-right: {{SIZE}}{{UNIT}};',
+                    $column_selector => 'padding: 0 {{SIZE}}{{UNIT}};',
                 ],
             ]
         );         
@@ -1089,9 +1089,9 @@ class CourseList extends BaseAddon{
                     'condition' => [
                         'course_list_skin!' => 'overlayed'
                     ],
-                    'selector' => $wrapper.".etlms-common-overlay:hover"
+                    'selector' => $wrapper.".etlms-card:hover .etlms-common-overlay"
                 ]
-            ); 
+            );
 
             //for overlayed skin only
             $this->add_group_control(
