@@ -319,6 +319,9 @@
 
 
 /*course carousel and course list*/
+.etlms-card {
+	overflow: hidden;
+}
 .etlms-course-list .tutor-courses-wrap,
 .etlms-course-carousel .tutor-courses-wrap {
 	margin: 0;
@@ -326,46 +329,6 @@
 
 .etlms-course-carousel div[class*="tutor-course-col"] {
 	margin-bottom: 15px;
-}
-
-
-/*
-	@set header background image
-	@classic, card, stacked skin 
-*/
-.etlms-coursel-classic
-.tutor-course-header,
-.etlms-coursel-card
-.tutor-course-header,
-.etlms-coursel-stacked
-.tutor-course-header,
-.etlms-course-list-classic
-.tutor-course-header,
-.etlms-course-list-card
-.tutor-course-header,
-.etlms-course-list-stacked
-.tutor-course-header
-{
-	height: 255px;
-	background-size: cover;
-	background-position: top center;
-	background-repeat: no-repeat;
-	width: 100%;
-}
-
-.etlms-carousel-main-wrap
-.etlms-common-overlay,
-.etlms-course-list-main-wrap
-.etlms-common-overlay
-{
-    background-image: linear-gradient(to right, #110e0e3b , #5d5d526e);
-    border-radius: inherit;
-    margin: inherit;
-    background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top center;
-	width: 100%;
-	height: inherit;
 }
 
 .etlms-coursel-classic .etlms-card,
@@ -439,28 +402,66 @@
 	border-radius: 10px;
 }
 
-/*overlay color*/
-.etlms-course-list-main-wrap
-.etlms-color-overlay,
-.etlms-carousel-main-wrap
-.etlms-color-overlay
-{
-    background-image: linear-gradient(to right, #110e0e3b , #5d5d526e);
-    border-radius: inherit;
-    margin: inherit;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-}
-
-.etlms-coursel-overlayed .etlms-card,
-/*style for course list*/
-.etlms-course-list-overlayed .etlms-card {
+/*
+	@overlayed styles
+*/
+.etlms-coursel-overlayed 
+.etlms-card,
+.etlms-course-list-overlayed 
+.etlms-card {
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: top center;
 	border-radius: 20px;
+	position: relative;
+	height: 300px;
 }
+
+.etlms-coursel-overlayed 
+.etlms-card:before,
+.etlms-course-list-overlayed 
+.etlms-card:before {
+	background-image: none;
+	background-color: rgba(0,0,0,0.35);
+	position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+    -webkit-transition: .4s;
+    transition: .4s;	
+}
+.etlms-coursel-overlayed 
+.tutor-course-header img,
+.etlms-course-list-overlayed
+.tutor-course-header img {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+}
+.etlms-coursel-overlayed
+.tutor-course-header,
+.etlms-course-list-overlayed
+.tutor-course-header
+{
+	position: absolute;
+	z-index: 2;
+	height: 100%;
+}
+.etlms-coursel-overlayed
+.etlms-carousel-course-container,
+.etlms-course-list-overlayed
+.etlms-carousel-course-container
+{
+	position: absolute;
+	z-index: 99;
+	width: 100%;
+	bottom:0 !important;
+}
+
 .etlms-coursel-overlayed .tutor-rating-count,
 .etlms-coursel-overlayed .tutor-course-loop-title h2 a,
 .etlms-coursel-overlayed .tutor-course-loop-meta,
