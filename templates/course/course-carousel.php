@@ -29,70 +29,44 @@
                 <!-- slick-slider-main-wrapper -->
 
                 <div class="<?php tutor_course_loop_col_classes(); ?>">
-                    <div class="etlms-card <?php
-                        echo $settings['course_carousel_skin']=='overlayed' ? 'etlms-color-overlay elementor-animation-'.$settings['course_carousel_card_hover_animation'].' '  : '';
-                    ?>" 
+                    <div class="etlms-card">
 
-                    <?php
-						$image_size = $settings['course_carousel_image_size_size'];
-						$image_url = get_tutor_course_thumbnail($image_size, $url = true);
-						if ("overlayed" == $settings['course_carousel_skin']) {
-							echo 'style= "background-image:url(' . $image_url . ')" ';
-						}
-                    ?>
-					>
-
-						<!--if overlayed skin then add overlay color class-->
-						<?php if("overlayed" == $settings['course_carousel_skin']) {echo '<div class="etlms-color-overlay">';}?>
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio']; 
-                        if(!empty($settings['course_carousel_card_hover_animation']) AND "overlayed" != $settings['course_carousel_skin'] )
-                        {
-                            echo " ".'elementor-animation-'.$settings['course_carousel_card_hover_animation'];
-                        }
-                        ?>"
-                        <?php
-                            if ("overlayed" != $settings['course_carousel_skin']) {
-                                echo 'style= "background-image:url(' . $image_url . ')" ';
-                            }
-                        ?>  
-                        >
+                        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio']?>">
+                            <?php
+                                $image_size = $settings['course_carousel_image_size_size'];
+                                $image_url = get_tutor_course_thumbnail($image_size, $url = false);
+                            ?>                           
+                            <div class="tutor-course-loop-header-meta">
+                                <?php
+                                $course_id = get_the_ID();
+                                $is_wishlisted = tutor_utils()->is_wishlisted($course_id);
+                                $has_wish_list = '';
+                                if ($is_wishlisted) {
+                                    $has_wish_list = 'has-wish-listed';
+                                }
 
-                            <div class="<?= "overlayed" != $settings['course_carousel_skin'] ? "etlms-common-overlay" :'';?>">
-                                <div class="tutor-course-loop-header-meta">
-                                    <?php
-                                    $course_id = get_the_ID();
-                                    $is_wishlisted = tutor_utils()->is_wishlisted($course_id);
-                                    $has_wish_list = '';
-                                    if ($is_wishlisted) {
-                                        $has_wish_list = 'has-wish-listed';
-                                    }
-
-                                    $action_class = '';
-                                    if (is_user_logged_in()) {
-                                        $action_class = apply_filters('tutor_wishlist_btn_class', 'tutor-course-wishlist-btn');
-                                    } else {
-                                        $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
-                                    }
-                                    if ("yes" === $settings['course_carousel_difficulty_settings']) {
-                                        echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
-                                    }
-                                    if ("yes" === $settings['course_carousel_wishlist_settings']) {
-                                        echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
-                                    }
+                                $action_class = '';
+                                if (is_user_logged_in()) {
+                                    $action_class = apply_filters('tutor_wishlist_btn_class', 'tutor-course-wishlist-btn');
+                                } else {
+                                    $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
+                                }
+                                if ("yes" === $settings['course_carousel_difficulty_settings']) {
+                                    echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
+                                }
+                                if ("yes" === $settings['course_carousel_wishlist_settings']) {
+                                    echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+                                }
 
 
-                                    ?>
-                                </div>                                
-                            </div>
+                                ?>
+                            </div>                                
+                       
 
                         </div><!--header end-->
                         <!-- start loop content wrap -->
-                        <div class="etlms-carousel-course-container" <?php
-                                                                        if ("overlayed" == $settings['course_carousel_skin']) {
-                                                                            echo 'style= "padding-top:40px;background:transparent"';
-                                                                        }
-                                                                        ?>>
+                        <div class="etlms-carousel-course-container">
                             <div class="tutor-loop-course-container">
 
                                 <!-- loop rating -->
@@ -189,19 +163,17 @@
                                     tutor_course_loop_price()
                                     ?>
                                 </div>
-
+                            <?php endif; ?>    
                         </div> <!-- etlms-course-container -->
-                    <?php endif; ?>
+                        
 
-						<?php if("overlayed" == $settings['course_carousel_skin']){echo '</div>';};?>	<!--overlay end-->	
+
                     </div><!--card-end-->
                 </div>
 
                 <!-- slick-slider-main-wrapper -->
 
-            <?php
-            endwhile;
-            ?>
+            <?php endwhile;?>
         </div>
         <div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?= $settings['course_carousel_arrow_style'] ?> etlms-carousel-arrow-position-<?= $settings['course_carousel_arrows_position']; ?> ">
             <i class="fa fa-angle-left" aria-hidden="true"></i>

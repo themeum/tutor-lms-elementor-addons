@@ -61,12 +61,16 @@
                     ?>" >
 
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'];?>">
-                            <?php
-                                $image_size = $settings['course_list_image_size_size'];
-                                $image_url = get_tutor_course_thumbnail($image_size, $url = false);
-                            ?>
-                            
+                        <?php
+                            $image_size = $settings['course_list_image_size_size'];
+                            $image_url = get_tutor_course_thumbnail($image_size, $url = true);
+                            $animation = 'elementor-animation-'.$settings['course_list_card_hover_animation'];
+                        ?>
+                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'].' '.$animation;?>">
+
+                            <a href="<?php the_permalink();?>">
+                                <img src="<?= $image_url?>" alt="thumbnail" >
+                            </a>
                             <div class="tutor-course-loop-header-meta">
                                 <?php
                                 $course_id = get_the_ID();
