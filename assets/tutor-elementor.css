@@ -419,7 +419,14 @@
 .etlms-course-list-card
 .tutor-course-header:before,
 .etlms-course-list-stacked
-.tutor-course-header:before {
+.tutor-course-header:before,
+.etlms-coursel-classic
+.tutor-course-header:before,
+.etlms-coursel-card
+.tutor-course-header:before,
+.etlms-coursel-stacked
+.tutor-course-header:before
+ {
 	width: 100%;
 	height: 100%;
 	position: absolute;

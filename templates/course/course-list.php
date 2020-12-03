@@ -50,23 +50,26 @@
             ?>
                 <!-- course -wrapper -->
                 <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col <?= "yes" == $settings['course_list_masonry'] ? 'masonry-brick' : '' ?>">
-
+                    <?php
+                        $image_size = $settings['course_list_image_size_size'];
+                        $image_url = get_tutor_course_thumbnail($image_size, $url = true);
+                        $animation = 'elementor-animation-'.$settings['course_list_card_hover_animation'];
+                    ?>
                     <div class="etlms-card 
                     <?php 
                  
                     //course list style omit for overlayed skin
                     if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 
                         echo "etlms-course-list-style"; } 
-                    
+                    echo "overlayed" == $settings['course_list_skin'] ? ' '.$animation:'';
                     ?>" >
 
                         <!-- header -->
-                        <?php
-                            $image_size = $settings['course_list_image_size_size'];
-                            $image_url = get_tutor_course_thumbnail($image_size, $url = true);
-                            $animation = 'elementor-animation-'.$settings['course_list_card_hover_animation'];
-                        ?>
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'].' '.$animation;?>">
+                        <div class="tutor-course-header image-ratio-
+                        <?php 
+                            $settings['course_list_image_ratio'];
+                            echo "overlayed" != $settings['course_list_skin'] ? ' '.$animation : '';
+                        ?>">
 
                             <a href="<?php the_permalink();?>">
                                 <img src="<?= $image_url?>" alt="thumbnail" >

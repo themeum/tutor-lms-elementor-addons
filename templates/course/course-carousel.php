@@ -29,14 +29,24 @@
                 <!-- slick-slider-main-wrapper -->
 
                 <div class="<?php tutor_course_loop_col_classes(); ?>">
-                    <div class="etlms-card">
+                <?php
+                    $image_size = $settings['course_carousel_image_size_size'];
+                    $image_url = get_tutor_course_thumbnail($image_size, $url = true);
+                    $animation = 'elementor-animation-'.$settings['course_carousel_img_hover_animation'];
+                ?>
+                <div class="etlms-card <?= "overlayed" == $settings['course_carousel_skin'] ? $animation : ''; ?>">
 
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio']?>">
-                            <?php
-                                $image_size = $settings['course_carousel_image_size_size'];
-                                $image_url = get_tutor_course_thumbnail($image_size, $url = false);
-                            ?>                           
+                        <div class="tutor-course-header image-ratio-
+                        <?php 
+                            echo $settings['course_carousel_image_ratio'] .' '.$animation;
+                            echo "overlayed" != $settings['course_carousel_skin'] ?' '. $animation : '';
+                        ?> 
+                        ">
+
+                            <a href="<?php the_permalink();?>">
+                                <img src="<?= $image_url?>" alt="">
+                            </a>                            
                             <div class="tutor-course-loop-header-meta">
                                 <?php
                                 $course_id = get_the_ID();
@@ -61,8 +71,7 @@
 
 
                                 ?>
-                            </div>                                
-                       
+                            </div> 
 
                         </div><!--header end-->
                         <!-- start loop content wrap -->
@@ -163,9 +172,9 @@
                                     tutor_course_loop_price()
                                     ?>
                                 </div>
-                            <?php endif; ?>    
+
                         </div> <!-- etlms-course-container -->
-                        
+                        <?php endif; ?>
 
 
                     </div><!--card-end-->
@@ -173,7 +182,9 @@
 
                 <!-- slick-slider-main-wrapper -->
 
-            <?php endwhile;?>
+            <?php
+            endwhile;
+            ?>
         </div>
         <div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?= $settings['course_carousel_arrow_style'] ?> etlms-carousel-arrow-position-<?= $settings['course_carousel_arrows_position']; ?> ">
             <i class="fa fa-angle-left" aria-hidden="true"></i>
