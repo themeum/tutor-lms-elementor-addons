@@ -65,9 +65,7 @@
                     ?>" >
 
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-
-                        <?php 
-                            $settings['course_list_image_ratio'];
+                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'];
                             echo "overlayed" != $settings['course_list_skin'] ? ' '.$animation : '';
                         ?>">
 
