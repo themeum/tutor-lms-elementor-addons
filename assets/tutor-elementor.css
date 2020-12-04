@@ -590,34 +590,8 @@
 .masonry-brick:nth-child(4n + 1):nth-child(4n + 4) {
 	width: 380px;
 }
-.etlms-carousel-main-wrap .image-ratio-four-three,
-.etlms-course-list-main-wrap .image-ratio-four-three {
-	position: relative;
-	padding-top: 75%;
-}
-.etlms-carousel-main-wrap .image-ratio-sixteen-nine,
-.etlms-course-list-main-wrap .image-ratio-sixteen-nine {
-	position: relative;
-	padding-top: 56.25%;
-}
-.etlms-carousel-main-wrap .image-ratio-three-two,
-.etlms-course-list-main-wrap .image-ratio-three-two {
-	position: relative;
-	padding-top: 66.66%;
-}
-.etlms-carousel-main-wrap .image-ratio-four-three a > img,
-.etlms-carousel-main-wrap .image-ratio-sixteen-nine a > img,
-.etlms-carousel-main-wrap .image-ratio-three-two a > img,
-.etlms-course-list-main-wrap .image-ratio-four-three a > img,
-.etlms-course-list-main-wrap .image-ratio-sixteen-nine a > img,
-.etlms-course-list-main-wrap .image-ratio-three-two a > img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	z-index: 0;
-}
+
+
 .etlms-carousel-dots-inside .slick-dots {
 	position: initial;
 	margin-top: -120px;
