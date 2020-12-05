@@ -353,7 +353,7 @@ class CourseList extends BaseAddon{
                 'label'        => __('Alignment', 'tutor-elementor-addons'),
                 'type'         => \Elementor\Controls_Manager::CHOOSE,
                 'options'      => [
-                    'left'   => [
+                    'flex-start'   => [
                         'title' => __('Left', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
@@ -361,7 +361,7 @@ class CourseList extends BaseAddon{
                         'title' => __('Center', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
-                    'right'  => [
+                    'flex-end'  => [
                         'title' => __('Right', 'tutor-elementor-addons'),
                         'icon'  => 'fa fa-align-right'
                     ]
@@ -369,7 +369,7 @@ class CourseList extends BaseAddon{
                 
                 'default'      => 'center',
                 'selectors' => [
-                    '{{WRAPPER}} .etlms-course-list-pagination-wrap' => 'text-align:{{VALUE}};'
+                    '{{WRAPPER}} .etlms-pagination' => 'justify-content:{{VALUE}};'
                 ]
             ]
         );
@@ -1542,9 +1542,7 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        ".etlms-pagination.prev-next span"=> 'color: {{VALUE}}',
-                        ".etlms-pagination.prev-next a"=> 'color: {{VALUE}}',
-                        ".etlms-pagination.pagination-numbers-prev-next a"=> 'color: {{VALUE}}'
+                        ".etlms-pagination .page-numbers"=> 'color: {{VALUE}}',
                        
                     ],
                 ]
@@ -1557,7 +1555,7 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        $pagination_selector => 'background-color: {{VALUE}}',
+                        ".etlms-pagination .page-numbers" => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1567,7 +1565,7 @@ class CourseList extends BaseAddon{
                 [
                     'name' => 'course_list_pagination_normal_border',
                     'label' => __( 'Border', 'tutor-elementor-addons' ),
-                    'selector' => $pagination_selector,
+                    'selector' => ".etlms-pagination .page-numbers",
                 ]
             );   
 
@@ -1589,9 +1587,7 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        ".etlms-pagination.prev-next span:hover"=> 'color: {{VALUE}}',
-                        ".etlms-pagination.prev-next a:hover" => 'color: {{VALUE}}',
-                        ".etlms-pagination.pagination-numbers-prev-next a:hover"=> 'color: {{VALUE}}'
+                        ".etlms-pagination .page-numbers:hover"=> 'color: {{VALUE}}',
                        
                     ],
                 ]
@@ -1604,7 +1600,7 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        $pagination_selector.":hover" => 'background-color: {{VALUE}}',
+                        ".etlms-pagination .page-numbers:hover" => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1614,7 +1610,7 @@ class CourseList extends BaseAddon{
                 [
                     'name' => 'course_list_pagination_hover_border',
                     'label' => __( 'Border', 'tutor-elementor-addons' ),
-                    'selector' => $pagination_selector.":hover",
+                    'selector' => ".etlms-pagination .page-numbers:hover",
                 ]
             ); 
 
@@ -1637,7 +1633,7 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        ".etlms-pagination.pagination-numbers-prev-next .current" => 'color: {{VALUE}}',
+                        ".etlms-pagination .current" => 'color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1649,7 +1645,7 @@ class CourseList extends BaseAddon{
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
-                        ".etlms-pagination.pagination-numbers-prev-next .current" => 'background-color: {{VALUE}}',
+                        ".etlms-pagination .current" => 'background-color: {{VALUE}}',
                     ],
                 ]
             );
@@ -1659,7 +1655,7 @@ class CourseList extends BaseAddon{
                 [
                     'name' => 'course_list_pagination_active_border',
                     'label' => __( 'Border', 'tutor-elementor-addons' ),
-                    'selector' => ".etlms-pagination.pagination-numbers-prev-next .current",
+                    'selector' => ".etlms-pagination .current",
                 ]
             );
 
@@ -1668,13 +1664,18 @@ class CourseList extends BaseAddon{
 
         $this->end_controls_tabs();  
         //tabs end
-
+        $this->add_control(
+            'pagination_after_tab_border',
+            [
+                'type' => Controls_Manager::DIVIDER
+            ]
+        );
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'course_list_pagination_box_shadow',
                 'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
-                'selector' => $pagination_selector,
+                'selector' => ".etlms-pagination .page-numbers",
                 'separator' => 'before'
             ]
         );
@@ -1686,7 +1687,7 @@ class CourseList extends BaseAddon{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    $pagination_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ".etlms-pagination .page-numbers" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1698,7 +1699,7 @@ class CourseList extends BaseAddon{
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
-                    $pagination_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ".etlms-pagination .page-numbers" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1712,8 +1713,8 @@ class CourseList extends BaseAddon{
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 1000,
-                        'step' => 5,
+                        'max' => 200,
+                        'step' => 1,
                     ],
                     '%' => [
                         'min' => 0,
@@ -1725,11 +1726,8 @@ class CourseList extends BaseAddon{
                     'size' => 10,
                 ],
                 'selectors' => [
-                    ".etlms-pagination.prev-next span"=> 'padding-right: {{SIZE}}{{UNIT}}',
-                    ".etlms-pagination.prev-next a" => 'padding-right: {{SIZE}}{{UNIT}}',
-                    ".etlms-pagination.pagination-numbers-prev-next a"=> 'padding-right: {{SIZE}}{{UNIT}}',
-                    ".etlms-pagination.pagination-numbers-prev-next span"=> 'padding-right: {{SIZE}}{{UNIT}}'
-                   
+                    ".etlms-pagination"=> 'gap: {{SIZE}}{{UNIT}}',
+                    
                 ],
             ]
         );

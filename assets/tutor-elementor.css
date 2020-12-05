@@ -591,11 +591,16 @@
 	width: 380px;
 }
 
-
 .etlms-carousel-dots-inside .slick-dots {
 	position: initial;
 	margin-top: -120px;
 }
+/*course grid pagination*/
+.etlms-pagination {
+	display: flex;
+	gap: 10px;
+}
+
 /*course list style 1 col*/
 @media only screen and (min-width: 768px) {
 	/* @list style main style */

@@ -270,22 +270,22 @@
                         $max_page = $the_query->max_num_pages;
                         ?>
                         <?php if ($prev_page < 1) : ?>
-                            <span>
+                            <span class="page-numbers">
                                 <?= $pagination_prev_label; ?>
                             </span>
                         <?php else : ?>
-                            <a href="<?= $prev_link ?>">
+                            <a class="page-numbers" href="<?= $prev_link ?>">
                                 <?= $pagination_prev_label; ?>
 
                             </a>
                         <?php endif; ?>
 
                         <?php if ($next_page > $max_page) : ?>
-                            <span>
+                            <span class="page-numbers">
                                 <?= $pagination_next_label; ?>
                             </span>
                         <?php else : ?>
-                            <a href="<?= $next_link ?>">
+                            <a class="page-numbers" href="<?= $next_link ?>">
                                 <?= $pagination_next_label; ?>
 
                             </a>
