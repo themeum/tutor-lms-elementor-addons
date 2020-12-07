@@ -20,13 +20,13 @@ class CourseDuration extends BaseAddon {
     private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
-        return __('Course Level', 'tutor-elementor-addons');
+        return __('Course Duration', 'tutor-elementor-addons');
     }
     
     protected function register_content_controls(){
         //layout 
         $this->start_controls_section(
-           'course_level_layout_settings',
+           'course_duration_layout_settings',
             [
                 'label' => __( 'General Settings', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
@@ -35,20 +35,20 @@ class CourseDuration extends BaseAddon {
         );
 
         $this->add_responsive_control(
-            'course_level_layout',
+            'course_duration_layout',
             //layout options
             $this->etlms_layout()
         ); 
 
         //alignment    
         $this->add_responsive_control(
-            'course_level_alignment',
+            'course_duration_alignment',
             //alignment options
             $this->etlms_alignment()
         );
 
         $this->add_responsive_control(
-            'course_level_gap',
+            'course_duration_gap',
             [
                 'label' => __( 'Gap', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -82,14 +82,14 @@ class CourseDuration extends BaseAddon {
 
         //Section Label
         $this->start_controls_section(
-            'course_level_label_section',
+            'course_duration_label_section',
             [
                 'label' => __('Label', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_level_label_color',
+            'course_duration_label_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -101,7 +101,7 @@ class CourseDuration extends BaseAddon {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_level_label_typo',
+                'name'      => 'course_duration_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector,
             ]
@@ -110,14 +110,14 @@ class CourseDuration extends BaseAddon {
 
         //Section Value
         $this->start_controls_section(
-            'course_level_value_section',
+            'course_duration_value_section',
             [
                 'label' => __('Value', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
-            'course_level_value_color',
+            'course_duration_value_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
@@ -129,7 +129,7 @@ class CourseDuration extends BaseAddon {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'      => 'course_level_value_typo',
+                'name'      => 'course_duration_value_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $selector.' strong',
             ]
