@@ -330,6 +330,18 @@
 	height: 100%;
 }
 
+/*for carousel height to be equal*/
+.etlms-carousel-main-wrap
+.slick-track
+{
+    display: flex !important;
+}
+.etlms-carousel-main-wrap
+.slick-slide
+{
+    height: inherit !important;
+}
+
 .etlms-course-list .tutor-courses-wrap,
 .etlms-course-carousel .tutor-courses-wrap {
 	margin: 0;
