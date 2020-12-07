@@ -147,7 +147,7 @@ class CourseAuthor extends BaseAddon {
         );
 
         $this->add_control(
-            'add_to_cart_btn_normal_border_radius',
+            'image_radius',
             [
                 'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -161,6 +161,7 @@ class CourseAuthor extends BaseAddon {
                     'bottom' => 50,
                     'left' => 50,
                     'unit' => '%',
+                    'isLinked' => true
                 ],
             ]
         );
