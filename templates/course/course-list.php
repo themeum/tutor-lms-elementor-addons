@@ -51,90 +51,56 @@
                 <!-- course -wrapper -->
                 <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col <?= "yes" == $settings['course_list_masonry'] ? 'masonry-brick' : '' ?>">
                     <?php
-                    $card_normal_shadow = '';
-                    $card_hover_shadow = '';
-                    if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_list_skin'] == "card") {
-                        $card_normal_shadow = "etlms-card-normal-shadow";
-                    }
-                    if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_list_skin'] == "stacked") {
-                        $card_normal_shadow = "etlms-stacked-normal-shadow";
-                    }
-
-                    if ("yes" == $settings['course_coursel_box_hover_shadow'] AND $settings['course_list_skin'] == "card") {
-                        $card_hover_shadow = "etlms-card-hover-shadow";
-                    }
-                    if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_list_skin'] == "stacked") {
-                        $card_hover_shadow = "etlms-stacked-hover-shadow";
-                    }
-
-                    ?>
-                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; 
-                    
-                        
-                    ?> 
-                    <?php 
-                    //course list style omit for overlayed skin
-                    if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 
-                        echo "etlms-course-list-style"; } ?>" 
-                    <?php
                         $image_size = $settings['course_list_image_size_size'];
                         $image_url = get_tutor_course_thumbnail($image_size, $url = true);
-                        if ("overlayed" == $settings['course_list_skin']) {
-                            echo 'style= "background-image:url(' . $image_url . ')" ';
-                        }
+                        $animation = 'elementor-animation-'.$settings['course_list_card_hover_animation'];
                     ?>
-					>
-						<!--if overlayed skin then add overlay color class-->
-						<?php if("overlayed" == $settings['course_list_skin']) {echo '<div class="etlms-color-overlay">';}?>
+                    <div class="etlms-card 
+                    <?php 
+                 
+                    //course list style omit for overlayed skin
+                    if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 
+                        echo "etlms-course-list-style"; } 
+                    echo "overlayed" == $settings['course_list_skin'] ? ' '.$animation:'';
+                    ?>" >
+
                         <!-- header -->
-							<div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'] ?>">
-								<?php
-								$custom_image_size = $settings['course_list_image_size_size'];
+                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'];
+                            echo "overlayed" != $settings['course_list_skin'] ? ' '.$animation : '';
+                        ?>">
 
-								if ("overlayed" != $settings['course_list_skin']) :
-								?>
-									<a href="<?php the_permalink(); ?>">
-										<?php
-										if ("yes" === $settings['course_list_image']) {
+                            <a href="<?php the_permalink();?>">
+                                <img src="<?= $image_url?>" alt="thumbnail" >
+                            </a>
+                            <div class="tutor-course-loop-header-meta">
+                                <?php
+                                $course_id = get_the_ID();
+                                $is_wishlisted = tutor_utils()->is_wishlisted($course_id);
+                                $has_wish_list = '';
+                                if ($is_wishlisted) {
+                                    $has_wish_list = 'has-wish-listed';
+                                }
 
-											get_tutor_course_thumbnail($custom_image_size);
-										}
-										?>
-									</a>
-								<?php
-
-								endif;
-								$course_id = get_the_ID();
-								?>
-								<div class="tutor-course-loop-header-meta">
-									<?php
-									$is_wishlisted = tutor_utils()->is_wishlisted($course_id);
-									$has_wish_list = '';
-									if ($is_wishlisted) {
-										$has_wish_list = 'has-wish-listed';
-									}
-
-									$action_class = '';
-									if (is_user_logged_in()) {
-										$action_class = apply_filters('tutor_wishlist_btn_class', 'tutor-course-wishlist-btn');
-									} else {
-										$action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
-									}
-									if ("yes" === $settings['course_list_difficulty_settings']) {
-										echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
-									}
-									if ("yes" === $settings['course_list_wishlist_settings']) {
-										echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
-									}
-									?>
-								</div>
-							</div>
+                                $action_class = '';
+                                if (is_user_logged_in()) {
+                                    $action_class = apply_filters('tutor_wishlist_btn_class', 'tutor-course-wishlist-btn');
+                                } else {
+                                    $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
+                                }
+                                if ("yes" === $settings['course_list_difficulty_settings']) {
+                                    echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
+                                }
+                                if ("yes" === $settings['course_list_wishlist_settings']) {
+                                    echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+                                }
+                                ?>
+                            </div>                                
+                       
+                                    
+                        </div> <!--header end--> 
+   
 							<!-- start loop content wrap -->
-							<div class="etlms-carousel-course-container" <?php
-																			if ("overlayed" == $settings['course_list_skin']) {
-																				echo 'style= "padding-top:40px;background:transparent"';
-																			}
-																			?>>
+							<div class="etlms-carousel-course-container">
 								<div class="tutor-loop-course-container">
 
 									<!-- loop rating -->
@@ -239,8 +205,7 @@
 									?>
 								</div>
 							</div> <!-- etlms-course-container -->
-						
-						<?php if("overlayed" == $settings['course_list_skin']){echo '</div>';};?>	<!--overlay end-->					
+				
 					</div>
 					
                 </div>
@@ -305,22 +270,22 @@
                         $max_page = $the_query->max_num_pages;
                         ?>
                         <?php if ($prev_page < 1) : ?>
-                            <span>
+                            <span class="page-numbers">
                                 <?= $pagination_prev_label; ?>
                             </span>
                         <?php else : ?>
-                            <a href="<?= $prev_link ?>">
+                            <a class="page-numbers" href="<?= $prev_link ?>">
                                 <?= $pagination_prev_label; ?>
 
                             </a>
                         <?php endif; ?>
 
                         <?php if ($next_page > $max_page) : ?>
-                            <span>
+                            <span class="page-numbers">
                                 <?= $pagination_next_label; ?>
                             </span>
                         <?php else : ?>
-                            <a href="<?= $next_link ?>">
+                            <a class="page-numbers" href="<?= $next_link ?>">
                                 <?= $pagination_next_label; ?>
 
                             </a>
@@ -355,6 +320,6 @@
     ?>
     <!--loading course init-->
 
-    <input type="hidden" id="etlms_enroll_btn_type" value="<?= $settings['course_list_enroll_btn_type'] ?>">
+    <input type="hidden" id="etlms_enroll_btn_type" value="<?= $settings['course_carousel_enroll_btn_type'] ?>">
     <input type="hidden" id="etlms_enroll_btn_cart" value="<?= $settings['course_coursel_button_icon'] ?>">
 </div>

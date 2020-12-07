@@ -36,12 +36,24 @@ class CourseSocialShare extends BaseAddon {
         );
 
         $this->add_control(
+            'course_share_label_content',
+            [
+                'label' => __('Label', 'tutor-elementor-addons'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+
+            ]
+        );
+
+        $this->add_control(
             'course_share_icon_shape',
             [
                 'label' => __('Shape','tutor-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'none'  => __( 'None', 'tutor-elementor-addons' ),
                     'rounded' => __( 'Rounded', 'tutor-elementor-addons' ),
                     'square' => __( 'Square', 'tutor-elementor-addons' ),
                     'circle' => __( 'circle', 'tutor-elementor-addons' ),
@@ -61,25 +73,13 @@ class CourseSocialShare extends BaseAddon {
     }
 
     protected function register_style_controls() {
+        $icon_selector = '{{WRAPPER}} .etlms-social-share-wrap >button >i';
         /* Label */
         $this->start_controls_section(
             'course_share_label_section',
             [
                 'label' => __('Label', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'course_share_label_content',
-            [
-                'label' => __('Label', 'tutor-elementor-addons'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-
             ]
         );
 
@@ -112,7 +112,7 @@ class CourseSocialShare extends BaseAddon {
                 'label' => __('Icon', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
-        );        
+        );
         $this->add_control(
             'course_share_icon_color_settings',
             [
@@ -162,7 +162,7 @@ class CourseSocialShare extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 6,
-                        'max' => 300,
+                        'max' => 100,
                     ],
                 ],
                 'default' => [
@@ -170,33 +170,27 @@ class CourseSocialShare extends BaseAddon {
                     'size' => 14
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .etlms-social-share-wrap >button >i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    $icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
 
-        $this->add_responsive_control(
+        $this->add_control(
             'course_share_icon_padding',
             [
                 'label' => __( 'Padding', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .etlms-social' => 'padding: {{SIZE}}{{UNIT}};',
+                    $icon_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default' => [
-                    'unit' => 'em',
-                ],
-                'tablet_default' => [
-                    'unit' => 'em',
-                ],
-                'mobile_default' => [
-                    'unit' => 'em',
-                ],
-                'range' => [
-                    'em' => [
-                        'min' => 0,
-                        'max' => 5,
-                    ],
+                    'top' => 10,
+                    'right' => 10,
+                    'bottom' => 10,
+                    'left' => 10,
+                    'unit' => 'px',
+                    'isLinked' => true
                 ],
             ]
         );
@@ -217,6 +211,9 @@ class CourseSocialShare extends BaseAddon {
                 'selectors' => [
                     '{{WRAPPER}} .etlms-social-share-wrap >button:not(:last-child)' => $icon_spacing,
                 ],
+                'default' => [
+                    'size' => 5
+                ]
             ]
         );
 
@@ -229,16 +226,41 @@ class CourseSocialShare extends BaseAddon {
             ]
         );
 
-        $this->add_control(
-            'course_share_border_radius',
-            [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .etlms-social-share-wrap >button >i' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+        $border_radius = [
+            'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+            'type' => Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%' ],
+            'selectors' => [
+                $icon_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+            'default' => [
+                'top' => 0,
+                'right' => 0,
+                'bottom' => 0,
+                'left' => 0,
+                'unit' => 'px',
+                'isLinked' => true
             ]
+        ];
+
+        //for square shape
+        $border_radius['condition'] = ['course_share_icon_shape' => ['square']];
+        $this->add_control(
+            'course_share_border_radius_square', $border_radius
+        );
+
+        //for rounded shape
+        $border_radius['condition'] = ['course_share_icon_shape' => ['rounded']];
+        $border_radius['default'] = ['top' => 10, 'right' => 10, 'bottom' => 10, 'left' => 10, 'unit' => 'px', 'isLinked' => true];
+        $this->add_control(
+            'course_share_border_radius_rounded', $border_radius
+        );
+
+        //for rounded shape
+        $border_radius['condition'] = ['course_share_icon_shape' => ['circle']];
+        $border_radius['default'] = ['top' => 50, 'right' => 50, 'bottom' => 50, 'left' => 50, 'unit' => '%', 'isLinked' => true];
+        $this->add_control(
+            'course_share_border_radius_circle', $border_radius
         );
 
         $this->end_controls_section();
@@ -305,7 +327,6 @@ class CourseSocialShare extends BaseAddon {
             [
                 'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::HOVER_ANIMATION,
-
                 'condition' => [
                     'course_share_icon_shape' =>[
                         'square','rounded','circle'

@@ -27,61 +27,29 @@
             <?php while ($the_query->have_posts()) : $the_query->the_post();
             ?>
                 <!-- slick-slider-main-wrapper -->
-                <?php
-                $card_normal_shadow = '';
-                $card_hover_shadow = '';
-                if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_carousel_skin'] == "card") {
-                    $card_normal_shadow = "etlms-card-normal-shadow";
-                }
-                if ("yes" == $settings['course_coursel_box_shadow'] and $settings['course_carousel_skin'] == "stacked") {
-                    $card_normal_shadow = "etlms-stacked-normal-shadow";
-                }
 
-                if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_carousel_skin'] == "card") {
-                    $card_hover_shadow = "etlms-card-hover-shadow";
-                }
-                if ("yes" == $settings['course_coursel_box_hover_shadow'] and $settings['course_carousel_skin'] == "stacked") {
-                    $card_hover_shadow = "etlms-stacked-hover-shadow";
-                }
-                ?>
                 <div class="<?php tutor_course_loop_col_classes(); ?>">
-                    <div class="etlms-card <?= $card_normal_shadow . " " . $card_hover_shadow; 
-                        echo $settings['course_carousel_skin']=='overlayed' ? 'etlms-color-overlay'  : '';
-                    ?>" 
+                <?php
+                    $image_size = $settings['course_carousel_image_size_size'];
+                    $image_url = get_tutor_course_thumbnail($image_size, $url = true);
+                    $animation = 'elementor-animation-'.$settings['course_carousel_img_hover_animation'];
+                ?>
+                <div class="etlms-card <?= "overlayed" == $settings['course_carousel_skin'] ? $animation : ''; ?>">
 
-                    <?php
-						$image_size = $settings['course_carousel_image_size_size'];
-						$image_url = get_tutor_course_thumbnail($image_size, $url = true);
-						if ("overlayed" == $settings['course_carousel_skin']) {
-							echo 'style= "background-image:url(' . $image_url . ')" ';
-						}
-                    ?>
-					>
-
-						<!--if overlayed skin then add overlay color class-->
-						<?php if("overlayed" == $settings['course_carousel_skin']) {echo '<div class="etlms-color-overlay">';}?>
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_carousel_image_ratio']; ?>">
-                            <?php
-                            $custom_image_size = $settings['course_carousel_image_size_size'];
+                        <div class="tutor-course-header image-ratio-
+                        <?php 
+                            echo $settings['course_carousel_image_ratio'] .' '.$animation;
+                            echo "overlayed" != $settings['course_carousel_skin'] ?' '. $animation : '';
+                        ?> 
+                        ">
 
-                            if ("overlayed" != $settings['course_carousel_skin']) :
-                            ?>
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php
-                                    if ("yes" === $settings['course_carousel_image']) {
-
-                                        get_tutor_course_thumbnail($custom_image_size);
-                                    }
-                                    ?>
-                                </a>
-                            <?php
-
-                            endif;
-                            $course_id = get_the_ID();
-                            ?>
+                            <a href="<?php the_permalink();?>">
+                                <img src="<?= $image_url?>" alt="">
+                            </a>                            
                             <div class="tutor-course-loop-header-meta">
                                 <?php
+                                $course_id = get_the_ID();
                                 $is_wishlisted = tutor_utils()->is_wishlisted($course_id);
                                 $has_wish_list = '';
                                 if ($is_wishlisted) {
@@ -103,14 +71,11 @@
 
 
                                 ?>
-                            </div>
-                        </div>
+                            </div> 
+
+                        </div><!--header end-->
                         <!-- start loop content wrap -->
-                        <div class="etlms-carousel-course-container" <?php
-                                                                        if ("overlayed" == $settings['course_carousel_skin']) {
-                                                                            echo 'style= "padding-top:40px;background:transparent"';
-                                                                        }
-                                                                        ?>>
+                        <div class="etlms-carousel-course-container">
                             <div class="tutor-loop-course-container">
 
                                 <!-- loop rating -->
@@ -209,9 +174,9 @@
                                 </div>
 
                         </div> <!-- etlms-course-container -->
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-						<?php if("overlayed" == $settings['course_carousel_skin']){echo '</div>';};?>	<!--overlay end-->	
+
                     </div><!--card-end-->
                 </div>
 
