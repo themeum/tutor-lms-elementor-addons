@@ -578,14 +578,14 @@ class CourseCarousel extends BaseAddon{
                             'unit' => 'px'
                         ],
                         'condition' => [
-                            'course_carousel_skin!' => 'stacked',
+                            'course_carousel_skin' => ['classic','card'],
 
                         ],
                         'selectors' => [
                             $wrapper.".etlms-card" => 'border-radius: {{SIZE}}{{UNIT}} ;',
                         ],
                     ]
-                );  
+				);
                 $this->add_control(
                     'course_carousel_stacked_border_radius',
                     [
@@ -593,7 +593,7 @@ class CourseCarousel extends BaseAddon{
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
-                            'size' => 8,
+                            'size' => 10,
                             'unit' => 'px'
                         ],
                         'condition' => [
@@ -604,7 +604,27 @@ class CourseCarousel extends BaseAddon{
                             $stacked_selector => 'border-radius: {{SIZE}}{{UNIT}} ;',
                         ],
                     ]
+                ); 				  
+                $this->add_control(
+                    'course_carousel_card_overlayed_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 20,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_carousel_skin' => 'overlayed',
+
+                        ],
+                        'selectors' => [
+                            $wrapper.".etlms-card" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
                 );  
+ 
                 $this->add_group_control(
                     Group_Control_Box_Shadow::get_type(),
                     [
@@ -615,7 +635,8 @@ class CourseCarousel extends BaseAddon{
                         ],
                         'selector' => $wrapper.".etlms-card",
                     ]
-                );                
+				);         
+				                      
 
                 $this->add_group_control(
                     Group_Control_Box_Shadow::get_type(),
@@ -624,7 +645,8 @@ class CourseCarousel extends BaseAddon{
                         'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
                         'condition' => [
                             'course_carousel_skin' => 'stacked'
-                        ],
+						],
+						
                         'selector' => $stacked_selector,
                     ]
                 );                
@@ -671,7 +693,8 @@ class CourseCarousel extends BaseAddon{
                             'unit' => 'px'
                         ],
                         'condition' => [
-                            'course_carousel_skin!' => 'stacked',
+							
+                            'course_carousel_skin' => ['classic','card'],
 
                         ],
                         'selectors' => [
@@ -686,7 +709,7 @@ class CourseCarousel extends BaseAddon{
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
-                            'size' => 8,
+                            'size' => 10,
                             'unit' => 'px'
                         ],
                         'condition' => [
@@ -697,7 +720,27 @@ class CourseCarousel extends BaseAddon{
                             $stacked_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}} ;',
                         ],
                     ]
-                );  
+				);  
+                $this->add_control(
+                    'course_carousel_overlayed_hover_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 20,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_carousel_skin' => 'stacked',
+
+                        ],
+                        'selectors' => [
+                            $stacked_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
+				);  
+				
                 $this->add_group_control(
                     Group_Control_Box_Shadow::get_type(),
                     [

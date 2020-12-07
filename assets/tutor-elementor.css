@@ -331,6 +331,7 @@
 }
 
 /*for carousel height to be equal*/
+
 .etlms-carousel-main-wrap
 .slick-track
 {
@@ -342,6 +343,7 @@
     height: inherit !important;
 }
 
+
 .etlms-course-list .tutor-courses-wrap,
 .etlms-course-carousel .tutor-courses-wrap {
 	margin: 0;
@@ -351,6 +353,9 @@
 	margin-bottom: 15px;
 }
 
+/*
+@classic style
+*/
 .etlms-coursel-classic .etlms-card,
 .etlms-course-list-classic .etlms-card
 {
@@ -358,29 +363,8 @@
 	border: 1px solid #EBEBEB;
 	overflow: hidden;
 }
-.etlms-coursel-card .etlms-card,
-.etlms-course-list-card .etlms-card
-{
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-	border-radius: 8px;
-	overflow: hidden;
-}
 
-.etlms-coursel-stacked .tutor-course-header, 
-.etlms-course-list-stacked .tutor-course-header
-{
-	border-radius: 10px;
-	overflow: hidden;
-}
-
-
-
-.etlms-carousel-stacked .tutor-course-header a > img,
-.etlms-course-list-stacked .tutor-course-header a > img {
-	border-radius: 10px;
-}
 .etlms-coursel-classic .etlms-card,
-/*style for course list*/
 .etlms-course-list-classic .etlms-card {
 	display: flex;
 	flex-direction: column;
@@ -390,28 +374,54 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 }
+/*
+@card style
+*/
 .etlms-coursel-card .etlms-card,
-/*style for course list*/
 .etlms-course-list-card .etlms-card {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	height: 100%;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 	border-radius: 8px;
+	overflow: hidden;
 }
+.etlms-coursel-card .etlms-card:hover,
+.etlms-course-list-card .etlms-card:hover {
+	box-shadow: 0px 2px 16px rgb(0 0 0 / 31%);
+}
+
+/*
+@stacked style
+*/
+.etlms-coursel-stacked .tutor-course-header, 
+.etlms-course-list-stacked .tutor-course-header
+{
+	border-radius: 10px;
+	overflow: hidden;
+}
+
 .etlms-coursel-stacked .etlms-card .tutor-course-header,
-/*style for course list*/
 .etlms-course-list-stacked .etlms-card .tutor-course-header {
 	z-index: 1;
 }
-.etlms-coursel-stacked .tutor-course-header a >img,
-/*style for course list*/
-.etlms-course-list-stacked .tutor-course-header a >img {
-	border-radius: 10px;
+
+/*
+@overflow visible for stacked 
+@to show box shadow
+*/
+.etlms-coursel-stacked
+.etlms-card,
+.etlms-course-list-stacked
+.etlms-card {
+	overflow: visible !important;
 }
-.etlms-coursel-stacked .etlms-carousel-course-container,
-/*style for course list*/
-.etlms-course-list-stacked .etlms-carousel-course-container {
+
+.etlms-coursel-stacked 
+.etlms-carousel-course-container,
+.etlms-course-list-stacked 
+.etlms-carousel-course-container {
 	z-index: 99;
 	margin-top: -80px;
 	background: white;
@@ -420,8 +430,15 @@
 	margin-right: auto;
 	position: relative;
 	border-radius: 10px;
+	box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+	
 }
-
+.etlms-coursel-stacked 
+.etlms-carousel-course-container:hover,
+.etlms-course-list-stacked 
+.etlms-carousel-course-container:hover {
+	box-shadow: 0px 34px 28px -20px rgb(0 0 0 / 35%);
+}
 /*
 	@overlayed styles
 */
@@ -480,7 +497,6 @@
 .etlms-course-list-overlayed
 .tutor-course-header
 {
-	position: absolute;
 	z-index: 2;
 	height: 100%;
 }
@@ -631,7 +647,13 @@
 	.etlms-course-list-style .etlms-carousel-course-container {
 		max-width: 60%;
 		flex: 0 0 60% !important;
+		display: flex;
+		flex-direction: column;
 	}
+	.etlms-course-list-style .etlms-carousel-footer {
+		margin-top: auto;
+	}
+
 	.etlms-course-list-stacked
 	.etlms-course-list-style
 	.etlms-carousel-course-container
