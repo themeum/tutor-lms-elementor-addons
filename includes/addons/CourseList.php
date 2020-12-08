@@ -711,7 +711,7 @@ class CourseList extends BaseAddon{
                             'unit' => 'px'
                         ],
                         'condition' => [
-                            'course_list_skin' => 'stacked',
+                            'course_list_skin' => 'overlayed',
 
                         ],
                         'selectors' => [

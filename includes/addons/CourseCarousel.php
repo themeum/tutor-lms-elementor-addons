@@ -717,7 +717,7 @@ class CourseCarousel extends BaseAddon{
 
                         ],
                         'selectors' => [
-                            $stacked_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                            $stacked_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}};',
                         ],
                     ]
 				);  
@@ -732,7 +732,7 @@ class CourseCarousel extends BaseAddon{
                             'unit' => 'px'
                         ],
                         'condition' => [
-                            'course_carousel_skin' => 'stacked',
+                            'course_carousel_skin' => 'overlayed',
 
                         ],
                         'selectors' => [
