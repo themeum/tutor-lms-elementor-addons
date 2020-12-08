@@ -30,7 +30,6 @@ class CourseDuration extends BaseAddon {
             [
                 'label' => __( 'General Settings', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
-                
             ]
         );
 

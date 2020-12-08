@@ -62,7 +62,7 @@ class CourseBenefits extends BaseAddon {
 	}
     
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .etlms-course-specifications.etlms-course-benefits';
+        $selector = '.etlms-course-specifications.etlms-course-benefits';
         $title_selector = $selector.' h3';
         $list_selector = $selector.' .etlms-course-specification-items li';
         $icon_selector = $list_selector.' i';
@@ -137,12 +137,16 @@ class CourseBenefits extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 100,
+                        'max' => 200,
                     ],
                 ],
                 'selectors' => [
-                    $list_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '.etlms-author-specifications-list '.$list_selector.':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '.etlms-author-specifications-inline '.$list_selector.':not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 5
+                ]
             ]
         );
         $this->add_responsive_control(

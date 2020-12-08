@@ -132,7 +132,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	margin-bottom: 5px;
 }
 .etlms-course-specifications ul li i {
 	color: var(--tutor-primary-color);
@@ -141,7 +140,7 @@
 	padding-left: 10px;
 }
 .etlms-author-specifications-inline .etlms-course-specifications ul li {
-	display: inline;
+	display: inline-block;
 }
 
 /* Enrollment */
