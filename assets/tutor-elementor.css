@@ -96,6 +96,23 @@
 	top: -32px;
 }
 
+/* Thumbnail */
+.tutor-course-thumbnail .tutor-lesson-video-wrap {
+	margin-bottom: 0;
+}
+.tutor-course-thumbnail .tutor-lesson-video-wrap > .plyr__video-embed {
+	position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.tutor-course-thumbnail .tutor-lesson-video-wrap > .plyr__video-embed > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 /* Specification */
 .etlms-course-specifications h3 {
 	font-size: 18px;

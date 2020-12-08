@@ -9,6 +9,7 @@ namespace TutorLMS\Elementor\Addons;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Css_Filter;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -40,6 +41,15 @@ class CourseThumbnail extends BaseAddon {
                 ]
             );
                 $this->add_group_control(
+                    Group_Control_Css_Filter::get_type(),
+                    [
+                        'label' => __('CSS Filters','tutor-elementor-addons'),
+                        'name' => 'course_normal_thumbnail_filter',
+                        'selector' => $selector,
+                    ]
+                );
+
+                $this->add_group_control(
                     Group_Control_Border::get_type(),
                     [
                         'name' => 'course_normal_thumbnail_border',
@@ -54,30 +64,6 @@ class CourseThumbnail extends BaseAddon {
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selector' => $selector
-                    ]
-                );
-
-                $this->add_responsive_control(
-                    'course_normal_thumbnail_padding',
-                    [
-                        'label' => __( 'Padding', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-
-                $this->add_responsive_control(
-                    'course_normal_thumbnail_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
                     ]
                 );
 
@@ -100,6 +86,16 @@ class CourseThumbnail extends BaseAddon {
                     'label' => __( 'Hover', 'tutor-elementor-addons' ),
                 ]
             );
+
+                $this->add_group_control(
+                    Group_Control_Css_Filter::get_type(),
+                    [
+                        'label' => __('CSS Filters','tutor-elementor-addons'),
+                        'name' => 'course_hover_thumbnail_filter',
+                        'selector' => $selector.':hover',
+                    ]
+                );
+                
                 $this->add_group_control(
                     Group_Control_Border::get_type(),
                     [
@@ -115,30 +111,6 @@ class CourseThumbnail extends BaseAddon {
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
                         'selector' => $hover_selector
-                    ]
-                );
-
-                $this->add_responsive_control(
-                    'course_hovered_thumbnail_padding',
-                    [
-                        'label' => __( 'Padding', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $hover_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                    ]
-                );
-
-                $this->add_responsive_control(
-                    'course_hovered_thumbnail_margin',
-                    [
-                        'label' => __( 'Margin', 'tutor-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', 'em' ],
-                        'selectors' => [
-                            $hover_selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
                     ]
                 );
 
