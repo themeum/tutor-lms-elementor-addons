@@ -1113,7 +1113,7 @@ class CourseList extends BaseAddon{
                     'condition' => [
                         'course_list_skin!' => 'overlayed'
                     ],
-                    'selector' => $wrapper.".tutor-course-header:hover:before"
+                    'selector' => $wrapper.".etlms-card:hover .tutor-course-header:before"
                 ]
             );
 
@@ -1127,7 +1127,7 @@ class CourseList extends BaseAddon{
                     'condition' => [
                         'course_list_skin' => 'overlayed'
                     ],
-                    'selector' => $wrapper.'.etlms-card:hover:before",'
+                    'selector' => $wrapper.'.etlms-card:hover:before'
                 ]
             );             
 
@@ -1137,7 +1137,7 @@ class CourseList extends BaseAddon{
                 [
                     'label' => __('CSS Filters','tutor-elementor-addons'),
                     'name' => 'course_caroulse_image_overlayed_hover_filters',
-                    'selector' => $wrapper.".tutor-course-header:hover",
+                    'selector' => $wrapper.".etlms-card:hover .tutor-course-header",
                 ]
             ); 
 

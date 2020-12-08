@@ -327,8 +327,17 @@
 .tutor-course-header img
 {
 	width: 100%;
-	height: auto;
+	height: 100%;
 	overflow: hidden;
+}
+
+.etlms-coursel-overlayed
+.tutor-course-header a img,
+.etlms-course-list-overlayed
+.tutor-course-header a img {
+	height: auto;
+	min-height: 300px;
+	
 }
 
 /*for carousel height to be equal*/
@@ -473,6 +482,7 @@
 	border-radius: 20px;
 	position: relative;
 	height: 300px;
+
 }
 
 

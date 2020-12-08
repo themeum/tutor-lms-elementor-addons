@@ -990,7 +990,7 @@ class CourseCarousel extends BaseAddon{
 						
 						'course_carousel_skin!' => 'overlayed'
 					],
-					'selector' => $wrapper.".tutor-course-header:hover:before"
+					'selector' =>  $wrapper.".etlms-card:hover .tutor-course-header:before "
 				]
 			); 
 
@@ -1016,7 +1016,7 @@ class CourseCarousel extends BaseAddon{
 					'condition' => [
 						'course_carousel_skin!' => 'overlayed'
 					],
-					'selector' => $wrapper.".tutor-course-header:hover",
+					'selector' => $wrapper.".etlms-card:hover .tutor-course-header",
 				]
 			);
 
@@ -1025,7 +1025,8 @@ class CourseCarousel extends BaseAddon{
                 [
                    
                     'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
-                    'type' => Controls_Manager::HOVER_ANIMATION,                
+					'type' => Controls_Manager::HOVER_ANIMATION, 
+					'selector' => $wrapper.'.etlms-card:hover'
                 ]
             );
 		$this->end_controls_tab();

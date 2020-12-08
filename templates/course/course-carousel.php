@@ -1,3 +1,4 @@
+
 <div class="<?php tutor_container_classes(); ?> etlms-carousel-main-wrap">
 
     <!--loading course init-->
@@ -39,7 +40,7 @@
                         <!-- header -->
                         <div class="tutor-course-header image-ratio-
                         <?php 
-                            echo $settings['course_carousel_image_ratio'] .' '.$animation;
+                            echo $settings['course_carousel_image_ratio'];
                             echo "overlayed" != $settings['course_carousel_skin'] ?' '. $animation : '';
                         ?> 
                         ">
