@@ -327,7 +327,8 @@
 .tutor-course-header img
 {
 	width: 100%;
-	height: 100%;
+	height: auto;
+	overflow: hidden;
 }
 
 /*for carousel height to be equal*/
