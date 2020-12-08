@@ -159,6 +159,9 @@
 .etlms-course-enrolment-box .tutor-course-enrolled-wrap {
 	margin: 0 !important;
 }
+.etlms-course-enrolment-box .tutor-course-enrolled-wrap p {
+	display: inline-block;
+}
 .etlms-course-enrolment-box .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box .tutor-course-purchase-box,
