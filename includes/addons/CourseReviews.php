@@ -98,12 +98,15 @@ class CourseReviews extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 5,
-                        'max' => 200,
+                        'max' => 64,
                     ],
                 ],
                 'selectors' => [
                     '.course-avg-rating-wrap .tutor-star-rating-group' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 18
+                ]
             ]
         );
 
@@ -216,12 +219,15 @@ class CourseReviews extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 5,
-                        'max' => 200,
+                        'max' => 64,
                     ],
                 ],
                 'selectors' => [
                     $review_avg_right_stars_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 16
+                ]
             ]
         );  
         
@@ -249,18 +255,9 @@ class CourseReviews extends BaseAddon {
         //right rating star text end
 
         $this->end_controls_section();
-         /* Review list section */
-         $review_list_section_selector = $selector.' .tutor-course-reviews-list';
-        global $post;
-        $user_id = $post->post_author;
-        $avatar_url = get_avatar_url($user_id);
-
-        if($avatar_url){
-            $reviewer_image_selector = $review_list_section_selector.' .review-avatar img';  
-        }
-        else{
-            $reviewer_image_selector = $review_list_section_selector.' .review-avatar span'; 
-        }
+        /* Review list section */
+        $review_list_section_selector = $selector.' .tutor-course-reviews-list';
+        $reviewer_image_selector = $review_list_section_selector.' .review-avatar';  
         
          $reviewer_name_selector = $review_list_section_selector.' .review-time-name p:first-child a';
          $reviewer_time_selector = $review_list_section_selector.' .review-time-name p.review-meta';
@@ -287,8 +284,7 @@ class CourseReviews extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $reviewer_image_selector => 'width: {{SIZE}}{{UNIT}};',
-                    $reviewer_image_selector => 'height: {{SIZE}}{{UNIT}};'
+                    $reviewer_image_selector.' span, '.$reviewer_image_selector.' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
                 ],
             ]
         );
@@ -349,12 +345,15 @@ class CourseReviews extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 5,
-                        'max' => 200,
+                        'max' => 64,
                     ],
                 ],
                 'selectors' => [
                     $reviewer_stars_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 16
+                ]
             ]
         );
         $this->add_control(
@@ -373,18 +372,6 @@ class CourseReviews extends BaseAddon {
                 'name'      => 'reviewer_content_typo',
                 'label'     => __('Comment Typography', 'tutor-elementor-addons'),
                 'selector'  => $reviewer_content_selector,
-            ]
-        );
-        $this->add_control(
-            'review_list_padding',
-            [
-                'label' => __('Padding', 'tutor-elementor-addons'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    $review_list_section_selector.' .tutor-review-individual-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before',
             ]
         );
         $this->end_controls_section();
