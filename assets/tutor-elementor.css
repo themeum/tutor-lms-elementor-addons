@@ -320,12 +320,12 @@
 }
 
 /*course curriculum */
-.etlms-course-curriculum-title {
-	padding: 14px 20px;
-	cursor: pointer;
+.etlms-course-curriculum .etlms-course-topic {
+	border: 1px solid #DCE4E6;
 }
-#etlms-course-topic-icon {
-	margin-right: 5px;
+
+.etlms-course-curriculum-title {
+	cursor: pointer;
 }
 
 /*course topics*/

@@ -50,7 +50,7 @@ if (!defined('ABSPATH'))
 		<?php do_action('tutor_course/single/before/topics'); ?>
 
 		<?php if ($topics->have_posts()) { ?>
-			<div class="tutor-single-course-segment  tutor-course-topics-wrap">
+			<div class="tutor-course-topics-wrap">
 				<div class="tutor-course-topics-header">
 					<div class="tutor-course-topics-header-left">
 						<h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor'); ?></h4>
@@ -83,7 +83,7 @@ if (!defined('ABSPATH'))
 							$index++;
 					?>
 
-							<div class="tutor-course-topic tutor-topics-in-single-lesson <?php if ($index == 1) echo "tutor-active"; ?>">
+							<div class="etlms-course-topic <?php if ($index == 1) echo "tutor-active"; ?>">
 								<div class="etlms-course-curriculum-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
 									<h4>
 										<i class="<?php echo ($index == 1) ? $topic_expand_icon : $topic_collapse_icon; ?>" id="etlms-course-topic-icon"></i>
