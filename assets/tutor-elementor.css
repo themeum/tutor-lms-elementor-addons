@@ -97,6 +97,9 @@
 }
 
 /* Thumbnail */
+.tutor-course-thumbnail {
+	overflow: hidden;
+}
 .tutor-course-thumbnail .tutor-lesson-video-wrap {
 	margin-bottom: 0;
 }
@@ -136,12 +139,22 @@
 .etlms-course-specifications ul li i {
 	color: var(--tutor-primary-color);
 }
-.etlms-course-specifications ul li span {
-	padding-left: 10px;
-}
 .etlms-author-specifications-inline .etlms-course-specifications ul li {
 	display: inline-block;
 }
+.etlms-course-specifications-left {
+	justify-content: flex-start;
+}
+.elementor-align-left .etlms-course-specification-items li {
+	justify-content: flex-start;
+}
+.elementor-align-center .etlms-course-specification-items li {
+	justify-content: center;
+}
+.elementor-align-right .etlms-course-specification-items li {
+	justify-content: flex-end;
+}
+
 
 /* Enrollment */
 .elementor-widget-container .tutor-course-enrollment-box {

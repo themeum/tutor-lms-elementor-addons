@@ -14,6 +14,10 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseTargetAudience extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_alignment = "elementor-align-"; 
+
     public function get_title() {
         return __('Course Target Audience', 'tutor-elementor-addons');
     }
@@ -58,6 +62,11 @@ class CourseTargetAudience extends BaseAddon {
 			]
         );
 
+        $this->add_responsive_control(
+            'course_target_audience_align',
+            $this->etlms_alignment() //alignment
+        );
+
         $this->end_controls_section();
 	}
     
@@ -94,30 +103,6 @@ class CourseTargetAudience extends BaseAddon {
                 'selector'  => $title_selector,
             ]
         );
-        $this->add_responsive_control(
-            'course_target_audience_title_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-                'selector'     => $title_selector,
-            ]
-        );
         $this->end_controls_section();
 
         /* List  Section */
@@ -149,47 +134,6 @@ class CourseTargetAudience extends BaseAddon {
                 ]
             ]
         );
-        $this->add_responsive_control(
-            'course_target_audience_list_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'flex-start'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'flex-end'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'default'      => 'flex-start',
-                'selectors' => [
-                    $list_selector => 'justify-content: {{VALUE}};'
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'course_target_audience_list_vertical_align',
-            [
-                'label'   => __('Vertical Align', 'tutor-elementor-addons'),
-                'type'    => Controls_Manager::SELECT,
-                'options' => [
-                    'flex-start' => 'Top', 
-                    'center' => 'Middle', 
-                    'flex-end' => 'Bottom',
-                ],
-                'default' => 'center',
-                'selectors' => [
-                    $list_selector => 'align-items: {{VALUE}};',
-                ],
-            ]
-        );
         $this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
@@ -197,6 +141,17 @@ class CourseTargetAudience extends BaseAddon {
 				'label' => __('Border', 'tutor-elementor-addons'),
 				'selector' => $list_selector,
 			]
+        );
+        $this->add_responsive_control(
+            'course_target_audience_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    $list_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
         );
         $this->add_control(
             'course_target_audience_list_padding',
@@ -245,6 +200,9 @@ class CourseTargetAudience extends BaseAddon {
                 'selectors' => [
                     $icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 16
+                ]
             ]
         );
         $this->end_controls_section();
@@ -282,6 +240,9 @@ class CourseTargetAudience extends BaseAddon {
                 'selectors' => [
                     $text_selector => 'padding-left: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 5
+                ]
             ]
         );
         $this->add_group_control(

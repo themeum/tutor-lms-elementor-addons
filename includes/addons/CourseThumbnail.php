@@ -63,7 +63,9 @@ class CourseThumbnail extends BaseAddon {
                         'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
-                        'selector' => $selector
+                        'selectors' => [
+                            $selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
                     ]
                 );
 
@@ -110,7 +112,9 @@ class CourseThumbnail extends BaseAddon {
                         'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
                         'size_units' => [ 'px', '%' ],
-                        'selector' => $hover_selector
+                        'selectors' => [
+                            $hover_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ]
                     ]
                 );
 
