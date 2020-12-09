@@ -17,7 +17,7 @@ class CourseAuthor extends BaseAddon {
 
     use ETLMS_Trait;
 
-    private static $prefix_class_layout = "etlms-author-layout-";
+    private static $prefix_class_layout = "elementor-layout-";
 
     private static $prefix_class_alignment = "elementor-align-"; 
 
@@ -93,7 +93,7 @@ class CourseAuthor extends BaseAddon {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $img_selector = '{{WRAPPER}} .tutor-single-course-avatar a span';
+        $img_selector = '.etlms-author .tutor-single-course-avatar a span';
         $this->add_responsive_control(
             'image_size',
             [
@@ -102,20 +102,23 @@ class CourseAuthor extends BaseAddon {
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 10,
-                        'max' => 200,
+                        'min' => 16,
+                        'max' => 100,
                     ],
                 ],
+                'default' => [
+					'size' => 26,
+				],
                 'selectors' => [
-                    $img_selector => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
-                ],
+                    $img_selector => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
+                ]
             ]
         );
 
         $this->add_responsive_control(
             'image_gap',
             [
-                'label' => __( 'Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -124,8 +127,12 @@ class CourseAuthor extends BaseAddon {
                         'max' => 100,
                     ],
                 ],
+                'default' => [
+					'size' => 5,
+				],
                 'selectors' => [
-                    $img_selector => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '.elementor-layout-left '. $img_selector => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '.elementor-layout-up '. $img_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -140,12 +147,21 @@ class CourseAuthor extends BaseAddon {
         );
 
         $this->add_control(
-            'add_to_cart_btn_normal_border_radius',
+            'image_radius',
             [
                 'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ '%', 'px' ],
                 'selectors' => [
                     $img_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'default' => [
+                    'top' => 50,
+                    'right' => 50,
+                    'bottom' => 50,
+                    'left' => 50,
+                    'unit' => '%',
+                    'isLinked' => true
                 ],
             ]
         );
