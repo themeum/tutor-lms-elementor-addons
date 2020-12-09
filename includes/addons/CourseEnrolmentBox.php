@@ -799,12 +799,24 @@ class CourseEnrolmentBox extends BaseAddon {
 				],
             ]
         );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
+        $this->add_responsive_control(
+            'enrolled_info_icon_size',
             [
-                'name'      => 'enrolled_info_icon_typo',
-                'label'     => __('Icon Typography', 'tutor-elementor-addons'),
-                'selector'  => $enrolled_info_icon_selector,
+                'label' => __( 'Icon Size', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    $enrolled_info_icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+                    'size' => 18
+                ]
             ]
         );
         $this->add_control(

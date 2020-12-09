@@ -14,6 +14,10 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseBenefits extends BaseAddon {
 
+    use ETLMS_Trait;
+
+    private static $prefix_class_alignment = "elementor-align-"; 
+
     public function get_title() {
         return __('Course Benefits', 'tutor-elementor-addons');
     }
@@ -58,11 +62,16 @@ class CourseBenefits extends BaseAddon {
 			]
         );
 
+        $this->add_responsive_control(
+            'course_benefits_align',
+            $this->etlms_alignment() //alignment
+        );
+
         $this->end_controls_section();
 	}
     
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .etlms-course-specifications.etlms-course-benefits';
+        $selector = '.etlms-course-specifications.etlms-course-benefits';
         $title_selector = $selector.' h3';
         $list_selector = $selector.' .etlms-course-specification-items li';
         $icon_selector = $list_selector.' i';
@@ -94,30 +103,6 @@ class CourseBenefits extends BaseAddon {
                 'selector'  => $title_selector,
             ]
         );
-        $this->add_responsive_control(
-            'course_benefits_title_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'prefix_class' => 'elementor-align-%s',
-                'default'      => 'left',
-                'selector'     => $title_selector,
-            ]
-        );
         $this->end_controls_section();
 
         /* List  Section */
@@ -137,53 +122,16 @@ class CourseBenefits extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 100,
+                        'max' => 200,
                     ],
                 ],
                 'selectors' => [
-                    $list_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '.etlms-author-specifications-list '.$list_selector.':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '.etlms-author-specifications-inline '.$list_selector.':not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
-            ]
-        );
-        $this->add_responsive_control(
-            'course_benefits_list_align',
-            [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'flex-start'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'flex-end'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'default'      => 'flex-start',
-                'selectors' => [
-                    $list_selector => 'justify-content: {{VALUE}};'
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'course_benefits_list_vertical_align',
-            [
-                'label'   => __('Vertical Align', 'tutor-elementor-addons'),
-                'type'    => Controls_Manager::SELECT,
-                'options' => [
-                    'flex-start' => 'Top', 
-                    'center' => 'Middle', 
-                    'flex-end' => 'Bottom',
-                ],
-                'default' => 'center',
-                'selectors' => [
-                    $list_selector => 'align-items: {{VALUE}};',
-                ],
+                'default' => [
+                    'size' => 5
+                ]
             ]
         );
         $this->add_group_control(
@@ -193,6 +141,17 @@ class CourseBenefits extends BaseAddon {
 				'label' => __('Border', 'tutor-elementor-addons'),
 				'selector' => $list_selector,
 			]
+        );
+        $this->add_responsive_control(
+            'course_benefits_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    $list_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
         );
         $this->add_control(
             'course_benefits_list_padding',
@@ -241,6 +200,9 @@ class CourseBenefits extends BaseAddon {
                 'selectors' => [
                     $icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 16
+                ]
             ]
         );
         $this->end_controls_section();
@@ -278,6 +240,9 @@ class CourseBenefits extends BaseAddon {
                 'selectors' => [
                     $text_selector => 'padding-left: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 5
+                ]
             ]
         );
         $this->add_group_control(

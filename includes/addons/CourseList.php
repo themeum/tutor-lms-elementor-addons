@@ -673,7 +673,7 @@ class CourseList extends BaseAddon{
                             'unit' => 'px'
                         ],
                         'condition' => [
-                            'course_list_skin!' => 'stacked',
+                            'course_list_skin' => ['classic','card'],
 
                         ],
                         'selectors' => [
@@ -688,11 +688,30 @@ class CourseList extends BaseAddon{
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
-                            'size' => 8,
+                            'size' => 10,
                             'unit' => 'px'
                         ],
                         'condition' => [
                             'course_list_skin' => 'stacked',
+
+                        ],
+                        'selectors' => [
+                            $stacked_selector => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
+                );  
+                $this->add_control(
+                    'course_carousel_overlayed_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 20,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_list_skin' => 'overlayed',
 
                         ],
                         'selectors' => [
@@ -767,7 +786,7 @@ class CourseList extends BaseAddon{
                             'unit' => 'px'
                         ],
                         'condition' => [
-                            'course_list_skin!' => 'stacked',
+                            'course_list_skin' => ['classic','card'],
 
                         ],
                         'selectors' => [
@@ -782,11 +801,30 @@ class CourseList extends BaseAddon{
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
-                            'size' => 8,
+                            'size' => 10,
                             'unit' => 'px'
                         ],
                         'condition' => [
                             'course_list_skin' => 'stacked',
+
+                        ],
+                        'selectors' => [
+                            $stacked_selector.":hover" => 'border-radius: {{SIZE}}{{UNIT}} ;',
+                        ],
+                    ]
+                );  
+                $this->add_control(
+                    'course_carousel_overlayed_hover_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'default' =>[
+                            'size' => 20,
+                            'unit' => 'px'
+                        ],
+                        'condition' => [
+                            'course_list_skin' => 'overlayed',
 
                         ],
                         'selectors' => [
@@ -1075,7 +1113,7 @@ class CourseList extends BaseAddon{
                     'condition' => [
                         'course_list_skin!' => 'overlayed'
                     ],
-                    'selector' => $wrapper.".tutor-course-header:hover:before"
+                    'selector' => $wrapper.".etlms-card:hover .tutor-course-header:before"
                 ]
             );
 
@@ -1089,7 +1127,7 @@ class CourseList extends BaseAddon{
                     'condition' => [
                         'course_list_skin' => 'overlayed'
                     ],
-                    'selector' => $wrapper.'.etlms-card:hover:before",'
+                    'selector' => $wrapper.'.etlms-card:hover:before'
                 ]
             );             
 
@@ -1099,7 +1137,7 @@ class CourseList extends BaseAddon{
                 [
                     'label' => __('CSS Filters','tutor-elementor-addons'),
                     'name' => 'course_caroulse_image_overlayed_hover_filters',
-                    'selector' => $wrapper.".tutor-course-header:hover",
+                    'selector' => $wrapper.".etlms-card:hover .tutor-course-header",
                 ]
             ); 
 

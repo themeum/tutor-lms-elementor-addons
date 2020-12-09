@@ -11,16 +11,12 @@
 $instructors = tutor_utils()->get_instructors_by_course();
 
 //settings from elementor
-$show_profile_picture = 'yes';
-$display_name = 'yes';
-$profile_link = 'none';
-$border_radius = "50px";
-if (isset($settings)) {
-	$show_profile_picture = $settings['course_instructor_profile'];
-	$display_name = $settings['course_instructor_name'];
-	$profile_link = $settings['course_instructor_link'];
-	$border_radius = $settings['course_instructors_avatar_border_radius'];
-}
+$show_profile_picture = $settings['course_instructor_profile'];
+$display_name = $settings['course_instructor_name'];
+$designation = $settings['course_instructor_designation'];
+$profile_link = $settings['course_instructor_link'];
+$target_blank = ($settings['course_instructor_link'] == 'new_window') ? 'target="_blank"' : '';
+$border_radius = $settings['course_instructors_avatar_border_radius'];
 
 if ($instructors) {
 	$count = is_array($instructors) ? count($instructors) : 0;
@@ -28,43 +24,33 @@ if ($instructors) {
 	do_action('tutor_course/single/enrolled/before/instructors');
 ?>
 	<div class="etlms-course-instructor-title">
-		<h4 class="tutor-segment-title" align="left"><?php $count > 1 ? _e('About the instructors', 'tutor') : _e('About the instructor', 'tutor'); ?></h4>
+		<h4 class="tutor-segment-title" align="left"><?php $count > 1 ? _e('About the instructors', 'tutor-elementor-addons') : _e('About the instructor', 'tutor-elementor-addons'); ?></h4>
 	</div>
 	<div class="tutor-course-instructors-wrap tutor-single-course-segment etlms-course-instructors-wrap" id="single-course-ratings">
 		<?php
 		foreach ($instructors as $instructor) {
-			$profile_url = tutor_utils()->profile_url($instructor->ID); ?>
+			$profile_url = ($profile_link != 'none') ? tutor_utils()->profile_url($instructor->ID) : ''; ?>
 			<div class="single-instructor-wrap etlms-single-instructor-wrap">
 				<div class="single-instructor-top">
-					<a <?php if ($profile_link != 'none') {
-							echo "href = $profile_url";
-						}
-						?> target="<?php if ($profile_link == 'new_window') {
-									echo "_blank";
-								} ?>">
-						<div class="tutor-instructor-left">
-							<?php if ($show_profile_picture == 'yes') : ?>
-								<div class="instructor-avatar etlms-course-instructor-avatar">
-
+					<div class="tutor-instructor-left">
+						<?php if ($show_profile_picture == 'yes') : ?>
+							<div class="instructor-avatar">
+								<a href="<?php echo $profile_url; ?>" <?php echo $target_blank; ?>>
 									<?php echo tutor_utils()->get_tutor_avatar($instructor->ID); ?>
-
-								</div>
-							<?php endif; ?>
-
-							<div class="instructor-name etlms-instructors-info">
-								<?php if ($display_name == 'yes') : ?>
-									<a class="etlms-instructor-name"><?php echo $instructor->display_name; ?>
-									</a>
-									<br>
-								<?php endif; ?>
-								<?php
-								if (!empty($instructor->tutor_profile_job_title)) {
-									echo "<a class='etlms-instructor-jobtitle'>{$instructor->tutor_profile_job_title}</a>";
-								}
-								?>
+								</a>
 							</div>
+						<?php endif; ?>
+						<div class="instructor-name">
+							<?php if ($display_name == 'yes') : ?>
+								<h3><a href="<?php echo $profile_url; ?>"><?php echo $instructor->display_name; ?></a> </h3>
+							<?php endif; ?>
+							<?php
+							if ($designation == 'yes' && !empty($instructor->tutor_profile_job_title)) {
+								echo "<h4>{$instructor->tutor_profile_job_title}</h4>";
+							}
+							?>
 						</div>
-					</a>
+					</div>
 					<div class="instructor-bio">
 						<?php echo $instructor->tutor_profile_bio ?>
 					</div>
@@ -74,21 +60,22 @@ if ($instructors) {
 				$instructor_rating = tutor_utils()->get_instructor_ratings($instructor->ID);
 				?>
 
-				<div class="etlms-single-instructor-bottom">
+				<div class="single-instructor-bottom">
 					<div class="ratings">
 						<span class="rating-generated">
 							<?php tutor_utils()->star_rating_generator($instructor_rating->rating_avg); ?>
 						</span>
+
 						<?php
 						echo " <span class='rating-digits'>{$instructor_rating->rating_avg}</span> ";
-						echo " <span class='rating-total-meta'>({$instructor_rating->rating_count} " . __('ratings', 'tutor') . ")</span> ";
+						echo " <span class='rating-total-meta'>({$instructor_rating->rating_count} ".__('ratings', 'tutor-elementor-addons').")</span> ";
 						?>
 					</div>
 
 					<div class="courses">
 						<p>
 							<i class='tutor-icon-mortarboard'></i>
-							<?php echo tutor_utils()->get_course_count_by_instructor($instructor->ID); ?> <span class="tutor-text-mute"> <?php _e('Courses', 'tutor'); ?></span>
+							<?php echo tutor_utils()->get_course_count_by_instructor($instructor->ID); ?> <span class="tutor-text-mute"> <?php _e('Courses', 'tutor-elementor-addons'); ?></span>
 						</p>
 					</div>
 
@@ -99,7 +86,7 @@ if ($instructors) {
 						<p>
 							<i class='tutor-icon-user'></i>
 							<?php echo $total_students; ?>
-							<span class="tutor-text-mute"> <?php _e('students', 'tutor'); ?></span>
+							<span class="tutor-text-mute">  <?php _e('students', 'tutor-elementor-addons'); ?></span>
 						</p>
 					</div>
 				</div>
