@@ -528,6 +528,34 @@ class CourseList extends BaseAddon{
                     'unit' => 'px',
                     'size' => 10
                 ],
+                'condition' => [
+                    'course_list_masonry!'=> 'yes'
+                ],
+                'selectors' => [
+                    $column_selector => 'padding: 0 {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );         
+        $this->add_control(
+            'course_list_columns_gap_masonry',
+            [
+                'label'     => __('Columns Gap', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::SLIDER,
+                'size_unit' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1
+                    ]
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0
+                ],
+                'condition' => [
+                    'course_list_masonry'=> 'yes'
+                ],
                 'selectors' => [
                     $column_selector => 'padding: 0 {{SIZE}}{{UNIT}};',
                 ],
@@ -549,8 +577,9 @@ class CourseList extends BaseAddon{
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 20
+                    'size' => 10
                 ],
+
                 'selectors' => [
                     $row_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
@@ -1046,8 +1075,7 @@ class CourseList extends BaseAddon{
 
         //start tabs
         $this->start_controls_tabs(
-            'course_list_image_tabs',
- 
+            'course_list_image_tabs'
         );
         //normal tab
         $this->start_controls_tab(

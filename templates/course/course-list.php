@@ -44,12 +44,12 @@
             $listStyle = "tutor-courses";
         }
         ?>
-        <div class="etlms-course-list-loop-wrap <?= $listStyle ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols ?> etlms-course-list-<?= $settings['course_list_skin'] ?>">
+        <div class="etlms-course-list-loop-wrap <?= $listStyle;?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo $settings['course_list_column'] ?> etlms-course-list-<?= $settings['course_list_skin']; echo "yes"== $settings['course_list_masonry'] ?' etlms-masonry':'';?>">
 
             <?php while ($the_query->have_posts()) : $the_query->the_post();
             ?>
                 <!-- course -wrapper -->
-                <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col <?= "yes" == $settings['course_list_masonry'] ? 'masonry-brick' : '' ?>">
+                <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col">
                     <?php
                         $image_size = $settings['course_list_image_size_size'];
                         $image_url = get_tutor_course_thumbnail($image_size, $url = true);
@@ -67,6 +67,7 @@
                         <!-- header -->
                         <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'];
                             echo "overlayed" != $settings['course_list_skin'] ? ' '.$animation : '';
+                            //"yes" == $settings['course_list_masonry'] ? 'etlms-masonry-brick' : '';
                         ?>">
 
                             <a href="<?php the_permalink();?>">
