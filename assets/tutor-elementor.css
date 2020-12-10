@@ -320,8 +320,12 @@
 }
 
 /*course curriculum */
+.etlms-course-curriculum .tutor-segment-title {
+	font-size: 20px;
+}
+
 .etlms-course-curriculum .etlms-course-topic {
-	border: 1px solid #DCE4E6;
+	border: 1px solid #E1EBF0;
 }
 
 .etlms-course-curriculum-title {

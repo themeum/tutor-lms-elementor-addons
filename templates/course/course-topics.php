@@ -83,7 +83,7 @@ if (!defined('ABSPATH'))
 							$index++;
 					?>
 
-							<div class="etlms-course-topic <?php if ($index == 1) echo "tutor-active"; ?>">
+							<div class="etlms-course-topic <?php if ($index == 1) echo "etlms-topic-active"; ?>">
 								<div class="etlms-course-curriculum-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
 									<h4>
 										<i class="<?php echo ($index == 1) ? $topic_expand_icon : $topic_collapse_icon; ?>" id="etlms-course-topic-icon"></i>
