@@ -59,6 +59,18 @@ class CourseInstructors extends BaseAddon {
                 'default' => 'yes'                
             ]
         );
+        
+        $this->add_control(
+            'course_instructor_designation',
+            [
+                'label' => __('Designation','tutor-elementor-addons'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'return_value' => 'yes',
+                'default' => 'yes'                
+            ]
+        );
 
 
         //link        
@@ -74,20 +86,8 @@ class CourseInstructors extends BaseAddon {
                     'same_window' => 'Same Window',
                 ],
 
-                'default' => 'none',
-                'separator' => 'after'
+                'default' => 'new_window',
             ]
-        );
-
-
-        $this->add_control(
-            'course_instructor_layout',
-            $this->etlms_non_responsive_layout()
-        );        
-
-        $this->add_control(
-            'course_instructor_alignment',
-            $this->etlms_non_responsive_alignment()
         );
 
         $this->end_controls_section();
@@ -126,10 +126,11 @@ class CourseInstructors extends BaseAddon {
         $this->end_controls_section();
 
         /* Instructor Section */
-        $img_selector = ".etlms-course-instructor-avatar img";
-        $no_img_selector = ".etlms-course-instructor-avatar .tutor-text-avatar";
-        $name_selector = ".etlms-instructor-name";
-        $designation_selector = ".etlms-instructor-jobtitle";
+        $instructor_wrap = ".etlms-single-instructor-wrap";
+        $img_selector = $instructor_wrap." .instructor-avatar a";
+        $name_selector = $instructor_wrap." .instructor-name h3";
+        $designation_selector = $instructor_wrap." .instructor-name h4";
+        $biography_selector = $instructor_wrap." .instructor-bio";
 
         $this->start_controls_section(
             'course_instructor_section',
@@ -151,10 +152,54 @@ class CourseInstructors extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $img_selector => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',                    
-                    $no_img_selector => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                   
+                    $img_selector.' span, '.$img_selector.' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
                 ],
+                'default' => [
+					'size' => 26,
+				]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'course_instructor_background',
+                'label' => __( 'Background Type', 'tutor-elementor-addons' ),
+                'types' => [ 'classic', 'gradient'],
+                'selector' => $img_selector.' span',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'course_instructor_img_border',
+                'selector' => $img_selector.' span, '.$img_selector.' img'
+            ]
+        );
+
+        $this->add_control(
+            'course_instructors_avatar_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .etlms-course-instructor-avatar img ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .etlms-course-instructor-avatar span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'selectors' => [
+                    $img_selector.' span, '.$img_selector.' img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'default' => [
+                    'top' => 50,
+                    'right' => 50,
+                    'bottom' => 50,
+                    'left' => 50,
+                    'unit' => '%',
+                    'isLinked' => true
+                ],
+                'separator' => 'after'
             ]
         );
 
@@ -165,7 +210,7 @@ class CourseInstructors extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$name_selector => 'color: {{VALUE}}',
-				],
+                ],
             ]
         );
         $this->add_group_control(
@@ -195,48 +240,30 @@ class CourseInstructors extends BaseAddon {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name' => 'course_instructor_background',
-                'label' => __( 'Background Type', 'tutor-elementor-addons' ),
-                //'types' => [ 'classic', 'gradient', 'video' ],
-                'types' => [ 'classic', 'gradient'],
-                'selector' => $no_img_selector,
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'course_instructor_img_border', 
-                
-                'selector' =>'.etlms-course-instructor-avatar > img ,.etlms-course-instructor-avatar > span',
-                'separator' => 'before',
-            ]
-        );
-
         $this->add_control(
-            'course_instructors_avatar_border_radius',
+            'course_instructor_bio_color',
             [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
+                'label'     => __('Biography Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .etlms-course-instructor-avatar img ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .etlms-course-instructor-avatar span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+					$biography_selector => 'color: {{VALUE}}',
+				],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'course_instructor_bio_typo',
+                'label'     => __('Biography Typography', 'tutor-elementor-addons'),
+                'selector'  => $biography_selector,
             ]
         );
 
         $this->end_controls_section();
 
         /* Instructor Rating Section */
-        $ins_selector = ".etlms-single-instructor-bottom .tutor-instructor-left";
-        $bottom_info_selector = ".etlms-course-instructors-wrap .etlms-single-instructor-bottom";
-        $ins_info_selector = ".etlms-single-instructor-bottom";
-        $ins_rating_star_selector = ".etlms-single-instructor-bottom  .tutor-star-rating-group";
-
+        $ins_info_selector = $instructor_wrap." .single-instructor-bottom";
+        $ins_rating_star_selector = $instructor_wrap." .single-instructor-bottom  .tutor-star-rating-group";
 
         /* Bottom Info Section */
         $this->start_controls_section(
@@ -266,12 +293,15 @@ class CourseInstructors extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 5,
-                        'max' => 200,
+                        'max' => 64,
                     ],
                 ],
                 'selectors' => [
                     $ins_rating_star_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 18
+                ]
             ]
         );  
 
@@ -299,7 +329,7 @@ class CourseInstructors extends BaseAddon {
                 'label'     => __('Value Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $ins_info_selector.' .rating-total-meta,'. $ins_info_selector.' .tutor-text-mute' => 'color: {{VALUE}};',
+                    $ins_info_selector.' .rating-total-meta,'. $ins_info_selector.' .tutor-text-mute' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -308,9 +338,29 @@ class CourseInstructors extends BaseAddon {
             array(
                 'name'      => 'course_instructor_value_typography',
                 'label'     => __('Value Typography', 'tutor-elementor-addons'),
-                'selector'  => $ins_info_selector.' .rating-total-meta,'. $ins_info_selector.' .tutor-text-mute'
+                'selector'  => $ins_info_selector.' .ratings .rating-total-meta,'. $ins_info_selector.' .tutor-text-mute'
             )
         );
+        $this->add_control(
+            'course_instructor_bottom_info_icon_size',
+            [
+                'label' => __( 'Icon Size', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 5,
+                        'max' => 64,
+                    ],
+                ],
+                'selectors' => [
+                    $ins_info_selector.' .courses i, '.$ins_info_selector.' .students i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+                    'size' => 18
+                ]
+            ]
+        );  
         $this->end_controls_section();
 
         //spacing section
@@ -329,7 +379,7 @@ class CourseInstructors extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '.etlms-course-instructors-wrap .tutor-instructor-left' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $$instructor_wrap.' .single-instructor-top' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
                 'separator' => 'before',
             ]
@@ -341,7 +391,7 @@ class CourseInstructors extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '.etlms-single-instructor-bottom'=> 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $ins_info_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'separator' => 'before',
             ]
@@ -360,8 +410,11 @@ class CourseInstructors extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    '.etlms-single-instructor-bottom' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    $instructor_wrap.':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 20
+                ]
             ]
         );
 
