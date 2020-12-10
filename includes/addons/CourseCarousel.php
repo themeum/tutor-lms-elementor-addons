@@ -86,6 +86,20 @@ class CourseCarousel extends BaseAddon{
 		);
 
 		$this->add_control(
+            'card_hover_animation',
+            [
+                'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
+                'label_off' => __( 'No', 'tutor-elementor-addons' ),
+                'return_value' => 'yes',
+                'condition' => [
+                    'course_carousel_skin' => 'card'
+                ],
+                'default' => 'yes',
+            ]
+        ); 
+		$this->add_control(
 			'course_carousel_image',
 			[
 				'label' => __( 'Show Image', 'tutor-elementor-addons' ),
