@@ -40,19 +40,21 @@ if ($instructors) {
 								</a>
 							</div>
 						<?php endif; ?>
+					</div>
+					<div class="tutor-instructor-right">
 						<div class="instructor-name">
 							<?php if ($display_name == 'yes') : ?>
 								<h3><a href="<?php echo $profile_url; ?>"><?php echo $instructor->display_name; ?></a> </h3>
 							<?php endif; ?>
 							<?php
 							if ($designation == 'yes' && !empty($instructor->tutor_profile_job_title)) {
-								echo "<h4>{$instructor->tutor_profile_job_title}</h4>";
+								echo "<p>{$instructor->tutor_profile_job_title}</p>";
 							}
 							?>
 						</div>
-					</div>
-					<div class="instructor-bio">
-						<?php echo $instructor->tutor_profile_bio ?>
+						<div class="instructor-bio">
+							<?php echo $instructor->tutor_profile_bio ?>
+						</div>
 					</div>
 				</div>
 
