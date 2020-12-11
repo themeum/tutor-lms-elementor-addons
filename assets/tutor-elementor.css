@@ -230,6 +230,15 @@
 	justify-content: center;
 }
 
+/* Tag */
+.etlms-course-tags .tutor-single-course-segment {
+	margin-bottom: 0;
+}
+.etlms-course-tags .tutor-course-tags a {
+	border: 1px solid #E1EBF0;
+}
+
+
 /*layout css for: course level,categories,duration,total enrollment,last update*/
 .elementor-layout-up .etlms-course-level strong,
 .elementor-layout-up .etlms-course-duration strong,
@@ -371,11 +380,59 @@
 }
 
 /* Reviews */
+.tutor-star-rating-group i:nth-child(5) {
+	margin-right: 0;
+}
+.etlms-course-reviews .course-avg-rating {
+    margin-bottom: 10px;
+}
+.etlms-course-reviews .course-avg-rating-wrap {
+    padding: 30px 20px 20px 30px;
+}
+.etlms-course-reviews .tutor-col-auto {
+	text-align: center;
+	padding-right: 40px;
+}
 .etlms-course-reviews .course-rating-meter {
 	align-items: center;
 }
 .etlms-course-reviews .course-rating-meter .rating-meter-bar {
 	margin-top: 0;
+}
+.etlms-course-reviews .rating-meter-bar-wrap {
+	flex: 0 0 70%;
+}
+.etlms-course-reviews .rating-meter-col.rating-text-col {
+    margin-left: 25px;
+}
+.etlms-review-individual-item {
+	display: flex;
+	padding: 30px;
+	border-top: 1px solid #e8eff1;
+}
+.etlms-review-individual-item p {
+	margin: 0;
+}
+.etlms-review-individual-item .etlms-review-left {
+	flex: 0 0 23%;
+}
+.etlms-review-individual-item .etlms-review-avatar {
+	margin-bottom: 15px;
+}
+.etlms-review-individual-item .etlms-review-avatar span {
+	display: block;
+	text-align: center;
+}
+.etlms-review-individual-item .etlms-review-left .review-time-name h4 {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1;
+}
+.etlms-review-individual-item .etlms-review-left .review-meta{
+	font-size: 13px;
+}
+.etlms-review-content .individual-review-rating-wrap {
+	margin-bottom: 8px;
 }
 
 /*course carousel and course list*/
@@ -831,6 +888,14 @@
 		column-count: 2 !important;
 		column-gap: 10px;
 	}
+
+	/*reviews*/
+	.etlms-course-reviews .rating-meter-bar-wrap {
+		flex: 0 0 50%;
+	}
+	.etlms-course-reviews .rating-meter-col.rating-text-col {
+		margin-left: 5px;
+	}
 }
 /*mobile*/
 
@@ -907,5 +972,13 @@
 	.etlms-masonry {
 		column-count: 1 !important;
 		column-gap: 10px;
+	}
+
+	/*reviews*/
+	.etlms-course-reviews .rating-meter-bar-wrap {
+		flex: 0 0 60%;
+	}
+	.etlms-course-reviews .rating-meter-col.rating-text-col {
+		margin-left: 5px;
 	}
 }

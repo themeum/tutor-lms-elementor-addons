@@ -62,32 +62,30 @@ if ( ! is_array($reviews) || ! count($reviews)){
             </div>
         </div>
 
-
-        <div class="tutor-course-reviews-list">
+        <div class="etlms-course-reviews-list">
 			<?php
 			foreach ($reviews as $review){
 				$profile_url = tutor_utils()->profile_url($review->user_id);
 				?>
-                <div class="tutor-review-individual-item tutor-review-<?php echo $review->comment_ID; ?>">
-                    <div class="review-left">
-                        <div class="review-avatar">
+                <div class="etlms-review-individual-item tutor-review-<?php echo $review->comment_ID; ?>">
+                    <div class="etlms-review-left">
+                        <div class="etlms-review-avatar">
                             <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($review->user_id); ?> </a>
                         </div>
-                        <div class="tutor-review-user-info">
+                        <div class="etlms-review-user-info">
                             <div class="review-time-name">
-                                <p> <a href="<?php echo $profile_url; ?>">  <?php echo $review->display_name; ?> </a> </p>
+                                <h4> <a href="<?php echo $profile_url; ?>">  <?php echo $review->display_name; ?> </a> </h4>
                                 <p class="review-meta">
                                     <?php echo sprintf(__('%s ago', 'tutor'), human_time_diff(strtotime($review->comment_date))); ?>
                                 </p>
                             </div>
-                            <div class="individual-review-rating-wrap">
-								<?php tutor_utils()->star_rating_generator($review->rating); ?>
-                            </div>
                         </div>
-
                     </div>
 
-                    <div class="review-content review-right">
+                    <div class="etlms-review-content">
+                        <div class="individual-review-rating-wrap">
+                            <?php tutor_utils()->star_rating_generator($review->rating); ?>
+                        </div>
 						<?php echo wpautop(stripslashes($review->comment_content)); ?>
                     </div>
                 </div>
