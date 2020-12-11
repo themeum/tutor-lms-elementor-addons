@@ -467,10 +467,14 @@
 	box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);
 }
 .etlms-card.hover-animation:hover {
+	
 	position: relative;
 	top: -5px;
-	transition: 1s;
+	transition: .5s;
+
+	
 }
+
 
 /*
 @stacked style
@@ -558,7 +562,7 @@
 .etlms-card:hover,
 .etlms-coursel-overlayed
 .etlms-card:hover {
-	box-shadow: 0px 8px 28px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 8px 28px 0px #d0d0d0;
 }
 
 .etlms-coursel-overlayed 
