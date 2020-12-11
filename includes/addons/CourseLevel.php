@@ -142,9 +142,9 @@ class CourseLevel extends BaseAddon {
         if (!$disable_course_level) {
             $course = etlms_get_course();
             if ($course) {
-                $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor');
+                $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor-elementor-addons');
                 $markup = '<div class="etlms-course-level">';
-                $markup .= __('Course level:', 'tutor');
+                $markup .= __('Course level:', 'tutor-elementor-addons');
                 $markup .= '<strong>'. $level .'</strong>';
                 $markup .= '</div>';
                 echo $markup;
