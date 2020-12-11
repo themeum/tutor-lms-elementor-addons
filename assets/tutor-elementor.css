@@ -447,6 +447,7 @@
 .etlms-card.hover-animation:hover {
 	position: relative;
 	top: -5px;
+	transition: 1s;
 }
 
 /*
