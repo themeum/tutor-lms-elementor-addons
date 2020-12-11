@@ -47,6 +47,26 @@ class CourseDescription extends BaseAddon {
                 'selector'  => $heading_selector,
             ]
         );
+        $this->add_responsive_control(
+            'etlms_heading_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    $heading_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 15,
+                ]
+            ]
+        );
         $this->end_controls_section();
 
         /* Paragraph  Section */
