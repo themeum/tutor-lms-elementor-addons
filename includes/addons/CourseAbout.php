@@ -42,8 +42,8 @@ class CourseAbout extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $paragraph_selector = '{{WRAPPER}} .etlms-course-excerpt';
-        $heading_selector = '{{WRAPPER}} .etlms-course-summery >h4';
+        $paragraph_selector = '{{WRAPPER}} .tutor-course-excerpt';
+        $heading_selector = '{{WRAPPER}} .tutor-segment-title';
 
         /* Heading Section */
         $this->start_controls_section(
@@ -60,7 +60,8 @@ class CourseAbout extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$heading_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#161616'
             ]
         );
         $this->add_group_control(
@@ -71,6 +72,28 @@ class CourseAbout extends BaseAddon {
                 'selector'  => $heading_selector,
             ]
         );
+
+        $this->add_responsive_control(
+            'etlms_heading_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    $heading_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 10,
+				]
+            ]
+        );
+
         $this->end_controls_section();
 
         /* Paragraph  Section */
