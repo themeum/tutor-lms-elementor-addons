@@ -445,6 +445,10 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 }
+.etlms-coursel-classic .etlms-card:hover,
+.etlms-course-list-classic .etlms-card:hover {
+	box-shadow: 0px 5px 2px #ebebeb;
+} 
 /*
 @card style
 */
@@ -460,8 +464,17 @@
 }
 .etlms-coursel-card .etlms-card:hover,
 .etlms-course-list-card .etlms-card:hover {
-	box-shadow: 0px 2px 16px rgb(0 0 0 / 31%);
+	box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);
 }
+.etlms-card.hover-animation:hover {
+	
+	position: relative;
+	top: -5px;
+	transition: .5s;
+
+	
+}
+
 
 /*
 @stacked style
@@ -508,7 +521,7 @@
 .etlms-carousel-course-container:hover,
 .etlms-course-list-stacked 
 .etlms-carousel-course-container:hover {
-	box-shadow: 0px 34px 28px -20px rgb(0 0 0 / 35%);
+	box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
 }
 /*
 	@overlayed styles
@@ -545,14 +558,19 @@
 	height: 300px;
 
 }
-
+.etlms-course-list-overlayed
+.etlms-card:hover,
+.etlms-coursel-overlayed
+.etlms-card:hover {
+	box-shadow: 0px 8px 28px 0px #d0d0d0;
+}
 
 .etlms-coursel-overlayed 
 .etlms-card:before,
 .etlms-course-list-overlayed 
 .etlms-card:before {
-	background-image: none;
-	background-color: rgba(0,0,0,0.35);
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);;
+	
 	position: absolute;
     content: "";
     left: 0;
@@ -665,30 +683,32 @@
 .enroll-button-align-right .etlms-loop-cart-btn-wrap {
 	margin-left: auto;
 }
-.masonry {
-	display: flex;
-	flex-flow: row wrap;
-	margin-left: -8px;
-	/* Adjustment for the gutter */
-	width: 100%;
+/*
+@masonry height wise
+*/
+.etlms-masonry.tutor-courses-layout-2 {
+	column-count: 2;
+	column-gap: 10px;
 }
-.masonry-brick {
-	flex: auto;
-	min-width: 150px;
-	margin: 0 8px 8px 0;
-	/* Some gutter */
+.etlms-masonry.tutor-courses-layout-3 {
+	column-count: 3 ;
+	column-gap: 10px;
 }
-.masonry-brick:nth-child(4n + 1) {
-	width: 250px;
+.etlms-masonry.tutor-courses-layout-4 {
+	column-count: 4 ;
+	column-gap: 10px;
 }
-.masonry-brick:nth-child(4n + 1):nth-child(4n + 2) {
-	width: 180px;
+.etlms-masonry.tutor-courses-layout-5 {
+	column-count: 5 ;
+	column-gap: 10px;
 }
-.masonry-brick:nth-child(4n + 1):nth-child(4n + 3) {
-	width: 325px;
+.etlms-masonry .etlms-course-list-col {
+	display: inline-block;
+	width: auto;
 }
-.masonry-brick:nth-child(4n + 1):nth-child(4n + 4) {
-	width: 380px;
+.etlms-masonry.etlms-course-list-overlayed .etlms-card{
+	height: auto !important;
+	min-height: 180px;
 }
 
 .etlms-carousel-dots-inside .slick-dots {
@@ -806,6 +826,11 @@
 		align-items: center;
 		column-gap: 8px;
 	}
+	/*masonry*/
+	.etlms-masonry {
+		column-count: 2 !important;
+		column-gap: 10px;
+	}
 }
 /*mobile*/
 
@@ -877,5 +902,10 @@
 		justify-content: flex-end;
 		align-items: center;
 		column-gap: 8px;
+	}
+	/*masonry*/
+	.etlms-masonry {
+		column-count: 1 !important;
+		column-gap: 10px;
 	}
 }

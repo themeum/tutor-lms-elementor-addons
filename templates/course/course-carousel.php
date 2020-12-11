@@ -35,13 +35,18 @@
                     $image_url = get_tutor_course_thumbnail($image_size, $url = true);
                     $animation = 'elementor-animation-'.$settings['course_carousel_img_hover_animation'];
                 ?>
-                <div class="etlms-card <?= "overlayed" == $settings['course_carousel_skin'] ? $animation : ''; ?>">
+                <div class="etlms-card <?= "overlayed" == $settings['course_carousel_skin'] ? $animation : ''; 
+                if("card"== $settings['course_carousel_skin'] AND "yes"== $settings['card_hover_animation']){
+                    echo " hover-animation";
+                }
+                ?>">
 
                         <!-- header -->
                         <div class="tutor-course-header image-ratio-
                         <?php 
                             echo $settings['course_carousel_image_ratio'];
                             echo "overlayed" != $settings['course_carousel_skin'] ?' '. $animation : '';
+                            
                         ?> 
                         ">
 

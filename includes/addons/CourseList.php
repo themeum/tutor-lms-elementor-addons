@@ -91,6 +91,20 @@ class CourseList extends BaseAddon{
         );
 
         $this->add_control(
+            'card_hover_animation',
+            [
+                'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
+                'label_off' => __( 'No', 'tutor-elementor-addons' ),
+                'return_value' => 'yes',
+                'condition' => [
+                    'course_list_skin' => 'card'
+                ],
+                'default' => 'yes',
+            ]
+        );        
+        $this->add_control(
             'course_list_image',
             [
                 'label' => __( 'Show Image', 'tutor-elementor-addons' ),
@@ -528,6 +542,34 @@ class CourseList extends BaseAddon{
                     'unit' => 'px',
                     'size' => 10
                 ],
+                'condition' => [
+                    'course_list_masonry!'=> 'yes'
+                ],
+                'selectors' => [
+                    $column_selector => 'padding: 0 {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );         
+        $this->add_control(
+            'course_list_columns_gap_masonry',
+            [
+                'label'     => __('Columns Gap', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::SLIDER,
+                'size_unit' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1
+                    ]
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0
+                ],
+                'condition' => [
+                    'course_list_masonry'=> 'yes'
+                ],
                 'selectors' => [
                     $column_selector => 'padding: 0 {{SIZE}}{{UNIT}};',
                 ],
@@ -549,8 +591,9 @@ class CourseList extends BaseAddon{
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 20
+                    'size' => 10
                 ],
+
                 'selectors' => [
                     $row_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
@@ -1046,8 +1089,7 @@ class CourseList extends BaseAddon{
 
         //start tabs
         $this->start_controls_tabs(
-            'course_list_image_tabs',
- 
+            'course_list_image_tabs'
         );
         //normal tab
         $this->start_controls_tab(
