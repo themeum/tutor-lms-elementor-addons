@@ -60,6 +60,7 @@ class CourseRating extends BaseAddon {
                 'selectors' => [
                     $rating_group => 'color: {{VALUE}};',
                 ],
+                'default'   => '#ED9700'
             ]
         );
 
@@ -71,12 +72,15 @@ class CourseRating extends BaseAddon {
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 5,
+                        'min' => 10,
                         'max' => 100,
                     ],
                 ],
                 'selectors' => [
                     $rating_group.' i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 16,
                 ],
             ]
         );
@@ -98,6 +102,7 @@ class CourseRating extends BaseAddon {
                 'selectors' => [
                     $rating_count => 'color: {{VALUE}};',
                 ],
+                'default'   => '#525252'
             ]
         );
 
@@ -109,12 +114,15 @@ class CourseRating extends BaseAddon {
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 4,
+                        'min' => 0,
                         'max' => 50,
                     ],
                 ],
                 'selectors' => [
                     $rating_group.' i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 5,
                 ],
             ]
         );
