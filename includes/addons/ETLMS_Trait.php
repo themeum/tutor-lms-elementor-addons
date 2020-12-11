@@ -58,9 +58,9 @@ trait ETLMS_Trait {
 	}
 
 	//icon left right alignment
-	public function etlms_icon_align($prefix_class, $default_layout = 'left') {
+	public function etlms_icon_align($prefix_class, $default_layout = 'right') {
 		return [
-			'label' => __('Position', 'tutor-elementor-addons'),
+			'label' => __('Icon Position', 'tutor-elementor-addons'),
 			'type' => \Elementor\Controls_Manager::CHOOSE,
 			'options' => [
 				'left' => [

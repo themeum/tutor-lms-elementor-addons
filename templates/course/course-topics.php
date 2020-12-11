@@ -34,22 +34,23 @@ if (!defined('ABSPATH'))
 		$course_id = get_the_ID();
 		$is_enrolled = tutor_utils()->is_enrolled($course_id);
 
-		$topic_inactive_icon = 'fa fa-minus';
-		$topic_active_icon = 'fa fa-plus';
+
+		$topic_collapse_icon = 'fa fa-plus';
+		$topic_expand_icon = 'fa fa-minus';
 
 		if (isset($settings)) {
-			$settings['course_topic_active_icon'] ? $topic_active_icon = $settings['course_topic_active_icon'] : '';
-			$settings['course_topic_inactive_icon'] ? $topic_inactive_icon = $settings['course_topic_inactive_icon'] : '';
+			$settings['course_topic_collapse_icon'] ? $topic_collapse_icon = $settings['course_topic_collapse_icon'] : '';
+			$settings['course_topic_expand_icon'] ? $topic_expand_icon = $settings['course_topic_expand_icon'] : '';
 
-			echo "<input type='hidden' id='etlms-course-topic-active' value='" . $topic_active_icon . "'>";
-			echo "<input type='hidden' id='etlms-course-topic-inactive' value='" . $topic_inactive_icon . "'>";
+			echo "<input type='hidden' id='etlms-course-topic-collapse-icon' value='" . $topic_collapse_icon . "'>";
+			echo "<input type='hidden' id='etlms-course-topic-expand-icon' value='" . $topic_expand_icon . "'>";
 		}
 		?>
 
 		<?php do_action('tutor_course/single/before/topics'); ?>
 
 		<?php if ($topics->have_posts()) { ?>
-			<div class="tutor-single-course-segment  tutor-course-topics-wrap">
+			<div class="tutor-course-topics-wrap">
 				<div class="tutor-course-topics-header">
 					<div class="tutor-course-topics-header-left">
 						<h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor'); ?></h4>
@@ -82,10 +83,10 @@ if (!defined('ABSPATH'))
 							$index++;
 					?>
 
-							<div class="tutor-course-topic tutor-topics-in-single-lesson <?php if ($index == 1) echo "tutor-active"; ?>">
+							<div class="etlms-course-topic <?php if ($index == 1) echo "etlms-topic-active"; ?>">
 								<div class="etlms-course-curriculum-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
 									<h4>
-										<i class="<?php echo ($index == 1) ? $topic_active_icon : $topic_inactive_icon; ?>" id="etlms-course-topic-icon"></i>
+										<i class="<?php echo ($index == 1) ? $topic_expand_icon : $topic_collapse_icon; ?>" id="etlms-course-topic-icon"></i>
 										<?php
 										the_title();
 										if ($topic_summery) {

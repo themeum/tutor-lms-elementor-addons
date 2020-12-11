@@ -1,3 +1,8 @@
+/* segment title */
+.elementor-widget-container .tutor-segment-title {
+	font-size: 20px;
+}
+
 /* Rating */
 .etlms-rating {
 	margin-bottom: 0 !important;
@@ -239,16 +244,26 @@
 .etlms-single-instructor-wrap {
 	width: 100%;
 }
-.etlms-course-instructors-wrap, .etlms-single-instructor-wrap {
+.etlms-single-instructor-wrap p {
+	margin-bottom: 15px;
+}
+.etlms-single-instructor-wrap {
 	margin-bottom: 0;
 }
-.elementor-layout-left .etlms-course-instructors-wrap {
-	display: flex;
-	flex-direction: row;
-	column-gap: 15px;
+.etlms-single-instructor-wrap .tutor-instructor-left {
+    padding-right: 15px;
 }
-.elementor-layout-up .etlms-course-instructors-wrap {
+.etlms-single-instructor-wrap .tutor-instructor-right {
 	display: flex;
+}
+.etlms-single-instructor-wrap .tutor-instructor-right .instructor-name {
+	padding-left: 0;
+	flex: 0 0 30%;
+}
+.elementor-layout-left .etlms-course-instructors-wrap .tutor-instructor-right {
+	flex-direction: row;
+}
+.elementor-layout-up .etlms-course-instructors-wrap .tutor-instructor-right {
 	flex-direction: column;
 }
 .etlms-single-instructor-bottom {
@@ -320,12 +335,12 @@
 }
 
 /*course curriculum */
-.etlms-course-curriculum-title {
-	padding: 14px 20px;
-	cursor: pointer;
+.etlms-course-curriculum .etlms-course-topic {
+	border: 1px solid #E1EBF0;
 }
-#etlms-course-topic-icon {
-	margin-right: 5px;
+
+.etlms-course-curriculum-title {
+	cursor: pointer;
 }
 
 /*course topics*/
@@ -355,6 +370,13 @@
 	column-gap: 8px;
 }
 
+/* Reviews */
+.etlms-course-reviews .course-rating-meter {
+	align-items: center;
+}
+.etlms-course-reviews .course-rating-meter .rating-meter-bar {
+	margin-top: 0;
+}
 
 /*course carousel and course list*/
 .etlms-card {

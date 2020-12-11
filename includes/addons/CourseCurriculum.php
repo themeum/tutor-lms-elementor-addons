@@ -41,151 +41,106 @@ class CourseCurriculum extends BaseAddon {
       
     protected function register_content_controls(){
 
-        $topic_icon_selector = "{{WRAPPER}} .etlms-course-curriculum-title h4 i";
-        $lesson_icon_selector = "{{WRAPPER}} .tutor-course-lesson .lesson-preview-title i";
-
         $this->start_controls_section(
             'course_curriculum_content_topic_section',
             [
-                'label' => __('Topic Icon','tutor-elementor-addons'),
+                'label' => __('General Settings','tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
 
         $this->add_control(
-            'course_topic_active_icon',
+            'course_topic_collapse_icon',
             [
-                'label' => __('Topic Active Icon','tutor-elementor-addons'),
+                'label' => __('Collapse Icon','tutor-elementor-addons'),
                 'type' => Controls_Manager::ICON,
-                'default' =>'fa fa-minus',
+                'include' => [
+                    'fa fa-plus',
+                    'fa fa-plus-circle',
+                    'fa fa-plus-square-o',
+                    'fa fa-plus-square',
+                    'fa fa-angle-right',
+                    'fa fa-angle-double-right',
+                    'fa fa-chevron-right',
+                    'fa fa-caret-right',
+                    'fa fa-caret-square-o-right',
+                    'fa fa-arrow-right',
+                    'fa fa-arrow-circle-right',
+                    'fa fa-arrow-circle-o-right',
+                    'fa fa-angle-down',
+                    'fa fa-angle-double-down',
+                    'fa fa-chevron-down',
+                    'fa fa-caret-down',
+                    'fa fa-caret-square-o-down',
+                    'fa fa-arrow-down',
+                    'fa fa-arrow-circle-down',
+                    'fa fa-arrow-circle-o-down'
+                ],
+                'default' =>'fa fa-chevron-down',
                 'label_block' => true,
+
             ]
-        );         
+        );
 
         $this->add_control(
-            'course_topic_inactive_icon',
+            'course_topic_expand_icon',
             [
-                'label' => __('Topic Inactive Icon','tutor-elementor-addons'),
+                'label' => __('Expand Icon','tutor-elementor-addons'),
                 'type' => Controls_Manager::ICON,
-                'default' =>'fa fa-plus',
+                'include' => [
+                    'fa fa-minus',
+                    'fa fa-minus-circle',
+                    'fa fa-minus-square-o',
+                    'fa fa-minus-square',
+                    'fa fa-angle-up',
+                    'fa fa-angle-double-up',
+                    'fa fa-chevron-up',
+                    'fa fa-caret-up',
+                    'fa fa-caret-square-o-up',
+                    'fa fa-arrow-up',
+                    'fa fa-arrow-circle-up',
+                    'fa fa-arrow-circle-o-up',
+                    'fa fa-angle-down',
+                    'fa fa-angle-double-down',
+                    'fa fa-chevron-down',
+                    'fa fa-caret-down',
+                    'fa fa-caret-square-o-down',
+                    'fa fa-arrow-down',
+                    'fa fa-arrow-circle-down',
+                    'fa fa-arrow-circle-o-down'
+                ],
+                'default' =>'fa fa-chevron-up',
                 'label_block' => true,
             ]
-        );       
+        );
 
         $this->add_responsive_control(
             'course_curriculum_topic_icon_align',
             $this->etlms_icon_align($prefix_class='etlms-topic-icon-align-')
         );
 
-        $this->add_control(
-            'course_curriculum_topic_icon_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $topic_icon_selector => 'color: {{VALUE}}',
-                ],
-            ]
-        );        
-
-        $this->add_control(
-            'course_curriculum_topic_icon_hover_color',
-            [
-                'label'     => __('Hover', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $topic_icon_selector.":hover"=> 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'course_curriculum_topic_icon_size',
-            [
-                'label' => __( 'Size', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    $topic_icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->end_controls_section();
-
-        //lesson settings
-        $this->start_controls_section(
-            'course_curriculum_content_lesson_section',
-            [
-                'label' => __('Lesson Icon','tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_CONTENT
-            ]
-        );
-
-        $this->add_control(
-            'course_curriculum_lesson_icon_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $lesson_icon_selector => 'color: {{VALUE}}',
-                ],
-            ]
-        );        
-
-        $this->add_control(
-            'course_curriculum_lesson_icon_hover_color',
-            [
-                'label'     => __('Hover', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $lesson_icon_selector.':hover' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'course_curriculum_lesson_icon_size',
-            [
-                'label' => __( 'Size', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    $lesson_icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
         $this->end_controls_section();
     }
     
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .tutor-course-topics-wrap';
         $topic_header = $selector.' .tutor-course-topics-header';
-        $course_topic = $selector.' .tutor-course-topic';
-        $course_topic_background = $selector.' .etlms-course-curriculum-title';
+        $course_topic = $selector.' .etlms-course-topic';
+        $course_topic_title_area = $course_topic.' .etlms-course-curriculum-title';
+        $course_topic_active_title_area = $course_topic.'.etlms-topic-active .etlms-course-curriculum-title';
+
         /* Header Title Section */
         $this->start_controls_section(
-            'course_topics_header_title_section',
+            'course_topics_header_section',
             [
-                'label' => __('Header Title', 'tutor-elementor-addons'),
+                'label' => __('Header', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_topics_header_title_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Title Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$topic_header.' .tutor-segment-title' => 'color: {{VALUE}}',
@@ -196,65 +151,60 @@ class CourseCurriculum extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_topics_header_title_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Title Typography', 'tutor-elementor-addons'),
                 'selector'  => $topic_header.' .tutor-segment-title',
             ]
         );
 
-        $this->end_controls_section();
-
-        /* Header Info Section */
-        $this->start_controls_section(
-            'course_topics_header_info_section',
-            [
-                'label' => __('Header Info', 'tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
         $this->add_control(
             'course_topics_header_info_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Info Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$topic_header.' .tutor-course-topics-header-right' => 'color: {{VALUE}}',
-				],
+                ],
+                'separator' => 'before',
             ]
         );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_topics_header_info_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Info Typography', 'tutor-elementor-addons'),
                 'selector'  => $topic_header.' .tutor-course-topics-header-right',
             ]
         );
 
-        $this->add_control(
-            'course_topics_header_space',
-            [
-                'label' => __( 'Space Between', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 300,
-                    ],
-                ],
-                'selectors' => [
-                    $topic_header => 'margin-right: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );        
         $this->end_controls_section();
 
         /* Course Topics Section */
         $this->start_controls_section(
             'course_topics_title_section',
             [
-                'label' => __('Topic Title', 'tutor-elementor-addons'),
+                'label' => __('Topic', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'course_curriculum_topic_icon_size',
+            [
+                'label' => __( 'Icon Size', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 5,
+                        'max' => 200,
+                    ],
+                ],
+                'selectors' => [
+                    $course_topic_title_area.' h4 i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+                'default'   => [
+                    'size' => 18
+                ]
             ]
         );
 
@@ -283,6 +233,9 @@ class CourseCurriculum extends BaseAddon {
                 'selectors' => [
                     $course_topic.' .etlms-course-curriculum-title h4 i' => 'padding-right: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 5
+                ]
             ]
         );
 
@@ -297,15 +250,28 @@ class CourseCurriculum extends BaseAddon {
                 ]
             );
                 $this->add_control(
-                    'course_topic_normal_color',
+                    'course_curriculum_topic_icon_normal_color',
                     [
-                        'label'     => __('Color', 'tutor-elementor-addons'),
+                        'label'     => __('Icon Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $course_topic.' .etlms-course-curriculum-title h4' => 'color: {{VALUE}}',
+                            $course_topic_title_area.' h4 i' => 'color: {{VALUE}}',
                         ],
+                        'default'   => '#175CFF'
                     ]
-                );                
+                );
+                
+                $this->add_control(
+                    'course_topic_normal_color',
+                    [
+                        'label'     => __('Text Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $course_topic_title_area.' h4' => 'color: {{VALUE}}',
+                        ],
+                        'default'   => '#161616'
+                    ]
+                );
 
                 $this->add_control(
                     'course_topic_normal_background_color',
@@ -313,33 +279,105 @@ class CourseCurriculum extends BaseAddon {
                         'label'     => __('Background Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $course_topic_background => 'background-color: {{VALUE}}',
+                            $course_topic_title_area => 'background-color: {{VALUE}}',
+                        ],
+                        'default'   => '#F7F9FA'
+                    ]
+                );
+
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'course_topic_normal_border_type',
+                        'selector' => $course_topic,
+                        'separator' => 'before',
+                    ]
+                );
+
+                $this->add_control(
+                    'course_topic_normal_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                            $course_topic => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                        'default' => [
+                            'top' => 5,
+                            'right' => 5,
+                            'bottom' => 5,
+                            'left' => 5,
+                            'unit' => 'px',
+                            'isLinked' => true
                         ],
                     ]
                 );
 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'course_topic_normal_border_type', 
+            $this->end_controls_tab();
+
+            /* Active Tab */
+            $this->start_controls_tab(
+                'course_topic_active_style_tab',
+                [
+                    'label' => __( 'Active', 'tutor-elementor-addons' ),
+                ]
+            );
+                $this->add_control(
+                    'course_curriculum_topic_icon_active_color',
+                    [
+                        'label'     => __('Icon Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $course_topic_active_title_area.' h4 i' => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
                 
-                'selector' => $course_topic_background,
-                'separator' => 'before',
-            ]
-        );
+                $this->add_control(
+                    'course_topic_active_color',
+                    [
+                        'label'     => __('Text Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $course_topic_active_title_area.' h4' => 'color: {{VALUE}}',
+                        ],
+                        'default'   => '#175CFF'
+                    ]
+                );
 
+                $this->add_control(
+                    'course_topic_active_background_color',
+                    [
+                        'label'     => __('Background Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $course_topic_active_title_area => 'background-color: {{VALUE}}',
+                        ]
+                    ]
+                );
 
-        $this->add_control(
-            'course_topic_normal_border_radius',
-            [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    $course_topic_background => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'course_topic_active_border_type',
+                        'selector' => $course_topic.'.etlms-topic-active',
+                        'separator' => 'before',
+                    ]
+                );
+
+                $this->add_control(
+                    'course_topic_active_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                            $course_topic.'.etlms-topic-active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ]
+                    ]
+                );
+
             $this->end_controls_tab();
 
             /* Hovered Icon */
@@ -350,12 +388,23 @@ class CourseCurriculum extends BaseAddon {
                 ]
             );
                 $this->add_control(
-                    'course_topic_hover_color',
+                    'course_curriculum_topic_icon_hover_color',
                     [
-                        'label'     => __('Color', 'tutor-elementor-addons'),
+                        'label'     => __('Icon Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $course_topic.' .etlms-course-curriculum-title h4:hover' => 'color: {{VALUE}}',
+                            $course_topic_title_area.':hover h4 i' => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
+                
+                $this->add_control(
+                    'course_topic_hover_color',
+                    [
+                        'label'     => __('Text Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $course_topic_title_area.':hover h4' => 'color: {{VALUE}}',
                         ],
                     ]
                 );                
@@ -366,64 +415,78 @@ class CourseCurriculum extends BaseAddon {
                         'label'     => __('Background Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $course_topic_background.':hover' => 'background-color: {{VALUE}}',
+                            $course_topic_title_area.':hover' => 'background-color: {{VALUE}}',
                         ],
                     ]
                 );
 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'course_topic_hover_border_type', 
-                
-                'selector' => $course_topic_background.':hover',
-                'separator' => 'before',
-            ]
-        );
+                $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'course_topic_hover_border_type', 
+                        
+                        'selector' => $course_topic.':hover',
+                        'separator' => 'before',
+                    ]
+                );
 
+                $this->add_control(
+                    'course_topic_hover_border_radius',
+                    [
+                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                            $course_topic.":hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                    ]
+                );
 
-        $this->add_control(
-            'course_topic_hover_border_radius',
-            [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    $course_topic_background.":hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
             $this->end_controls_tab();
-            $this->end_controls_tabs();
+
+        $this->end_controls_tabs();
 
         $this->end_controls_section();
 
         /* Course Lesson Section */
-        $lesson_background_selector = $selector." .tutor-course-lessons";
-        $lession_title_selector = $course_topic. ' .tutor-course-lesson h5, .tutor-course-lesson h5 a';
+        $lesson_selector = $selector." .tutor-course-lessons .tutor-course-lesson";
+        $lesson_title_selector = $lesson_selector." h5 .lesson-preview-title, ".$lesson_selector." h5 a";
+
         $this->start_controls_section(
-            'course_lesson_title_section',
+            'course_lesson_section',
             [
-                'label' => __('Lesson Title', 'tutor-elementor-addons'),
+                'label' => __('Lesson', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+
         $this->add_control(
-            'course_lesson_title_color',
+            'course_curriculum_lesson_icon_size',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
+                'label' => __( 'Icon Size', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 5,
+                        'max' => 200,
+                    ],
+                ],
                 'selectors' => [
-					$lession_title_selector => 'color: {{VALUE}}',
-				],
+                    $lesson_selector.' i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+                'default'   => [
+                    'size' => 18
+                ]
             ]
         );
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_lesson_title_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $lession_title_selector,
+                'selector'  => $lesson_title_selector,
             ]
         );
 
@@ -437,16 +500,42 @@ class CourseCurriculum extends BaseAddon {
                     'label' => __( 'Normal', 'tutor-elementor-addons' ),
                 ]
             );
+
                 $this->add_control(
-                    'course_lesson_normal_color',
+                    'course_curriculum_lesson_icon_normal_color',
                     [
-                        'label'     => __('Color', 'tutor-elementor-addons'),
+                        'label'     => __('Icon Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $lession_title_selector => 'color: {{VALUE}}',
+                            $lesson_selector.' i' => 'color: {{VALUE}}',
                         ],
+                        'default'   => '#939AA3'
                     ]
-                );                
+                );
+
+                $this->add_control(
+                    'course_lesson_normal_text_color',
+                    [
+                        'label'     => __('Text Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $lesson_title_selector => 'color: {{VALUE}}',
+                        ],
+                        'default'   => '#161616'
+                    ]
+                );
+
+                $this->add_control(
+                    'course_lesson_normal_info_text_color',
+                    [
+                        'label'     => __('Info Text Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $lesson_selector." .tutor-lesson-duration" => 'color: {{VALUE}}',
+                        ],
+                        'default'   => '#7A7A7A'
+                    ]
+                );
 
                 $this->add_control(
                     'course_lesson_normal_background_color',
@@ -454,34 +543,45 @@ class CourseCurriculum extends BaseAddon {
                         'label'     => __('Background Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $lesson_background_selector => 'background-color: {{VALUE}}',
+                            $lesson_selector => 'background-color: {{VALUE}}',
                         ],
+                        'default'   => '#F7F9FA',
+                        'separator' => 'after'
                     ]
                 );
 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'course_lesson_normal_border_type', 
-                
-                'selector' => $lesson_background_selector,
-                'separator' => 'before',
-            ]
-        );
+                $this->add_control(
+                    'course_lesson_normal_border_width',
+                    [
+                        'label' => __( 'Border Width', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px' ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 10,
+                            ],
+                        ],
+                        'selectors' => [
+                            $lesson_selector => 'border-top-width: {{SIZE}}{{UNIT}};',
+                        ],
+                        'default' => [
+                            'size' => 1
+                        ]
+                    ]
+                );
 
-
-        $this->add_control(
-            'course_lesson_normal_border_radius',
-            [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    $lesson_background_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
-                    '
-                ],
-            ]
-        );
+                $this->add_control(
+                    'course_lesson_normal_border_color',
+                    [
+                        'label'     => __('Border Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $lesson_selector => 'border-color: {{VALUE}}',
+                        ],
+                        'default'   => '#E1EBF0'
+                    ]
+                );
 
             $this->end_controls_tab();
 
@@ -492,16 +592,39 @@ class CourseCurriculum extends BaseAddon {
                     'label' => __( 'Hover', 'tutor-elementor-addons' ),
                 ]
             );
+
+                $this->add_control(
+                    'course_curriculum_lesson_icon_hover_color',
+                    [
+                        'label'     => __('Icon Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $lesson_selector.':hover i' => 'color: {{VALUE}}',
+                        ],
+                    ]
+                );
+                
                 $this->add_control(
                     'course_lesson_hover_color',
                     [
-                        'label'     => __('Color', 'tutor-elementor-addons'),
+                        'label'     => __('Text Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $lession_title_selector.':hover' => 'color: {{VALUE}}',
+                            $lesson_selector.":hover h5 .lesson-preview-title, ".$lesson_selector.":hover h5 a" => 'color: {{VALUE}}',
                         ],
                     ]
-                );                
+                );   
+                
+                $this->add_control(
+                    'course_lesson_normal_info_text_hover_color',
+                    [
+                        'label'     => __('Info Text Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $lesson_title_selector.':hover .tutor-lesson-duration' => 'color: {{VALUE}}',
+                        ]
+                    ]
+                );
 
                 $this->add_control(
                     'course_lesson_hover_background_color',
@@ -509,36 +632,46 @@ class CourseCurriculum extends BaseAddon {
                         'label'     => __('Background Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $lesson_background_selector.':hover' => 'background-color: {{VALUE}}',
+                            $lesson_selector.':hover' => 'background-color: {{VALUE}}',
                         ],
+                        'separator' => 'after',
                     ]
                 );
 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'course_lesson_hover_border_type', 
-                
-                'selector' => $lesson_background_selector.':hover',
-                'separator' => 'before',
-            ]
-        );
+                $this->add_control(
+                    'course_lesson_normal_border_hover_width',
+                    [
+                        'label' => __( 'Border Width', 'tutor-elementor-addons' ),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ 'px' ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 10,
+                            ],
+                        ],
+                        'selectors' => [
+                            $lesson_selector.':hover' => 'border-top-width: {{SIZE}}{{UNIT}};',
+                        ],
+                        'default' => [
+                            'size' => 1
+                        ]
+                    ]
+                );
 
+                $this->add_control(
+                    'course_lesson_normal_border_hover_color',
+                    [
+                        'label'     => __('Border Color', 'tutor-elementor-addons'),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            $lesson_selector => 'border-color: {{VALUE}}',
+                        ],
+                        'default'   => '#E1EBF0'
+                    ]
+                );
 
-        $this->add_control(
-            'course_lesson_hover_border_radius',
-            [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    $lesson_background_selector.':hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};
-                    '
-                ],
-            ]
-        );
-
-        $this->end_controls_tabs();
+            $this->end_controls_tabs();
 
         $this->end_controls_section();
 
@@ -553,11 +686,18 @@ class CourseCurriculum extends BaseAddon {
         $this->add_responsive_control(
             'topic_title_padding',
             [
-                'label' => __( 'Topic Title Padding', 'tutor-elementor-addons' ),
+                'label' => __( 'Topic Padding', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
-                    '.etlms-course-curriculum-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $course_topic_title_area => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'default' => [
+                    'top' => 15,
+                    'right' => 20,
+                    'bottom' => 15,
+                    'left' => 20,
+                    'unit' => 'px',
                 ],
             ]
         );
@@ -565,29 +705,18 @@ class CourseCurriculum extends BaseAddon {
         $this->add_responsive_control(
             'lesson_title_padding',
             [
-                'label' => __( 'Lesson Title Padding', 'tutor-elementor-addons' ),
+                'label' => __( 'Lesson Padding', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
                     '.tutor-course-lesson' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-            ]
-        );
-
-        $this->add_control(
-            'course_curriculum_lesson_space',
-            [
-                'label' => __( 'Spacing Between Lessons', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 5,
-                        'max' => 200,
-                    ],
-                ],
-                'selectors' => [
-                    '.tutor-course-lesson' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                'default' => [
+                    'top' => 15,
+                    'right' => 20,
+                    'bottom' => 15,
+                    'left' => 20,
+                    'unit' => 'px',
                 ],
             ]
         );
@@ -595,7 +724,7 @@ class CourseCurriculum extends BaseAddon {
         $this->add_control(
             'course_curriculum_topic_space',
             [
-                'label' => __( 'Spacing After Topic', 'tutor-elementor-addons' ),
+                'label' => __( 'Space Between Topic', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -605,11 +734,13 @@ class CourseCurriculum extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $course_topic_background => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    $course_topic.':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 20
+                ]
             ]
         );
-
 
         $this->end_controls_section();
     }

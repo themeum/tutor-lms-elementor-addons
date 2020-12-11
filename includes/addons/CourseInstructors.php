@@ -90,6 +90,11 @@ class CourseInstructors extends BaseAddon {
             ]
         );
 
+        $this->add_responsive_control(
+            'course_author_layout',
+            $this->etlms_layout('up') // default layout up 
+        );
+
         $this->end_controls_section();
     }
 
@@ -129,7 +134,7 @@ class CourseInstructors extends BaseAddon {
         $instructor_wrap = ".etlms-single-instructor-wrap";
         $img_selector = $instructor_wrap." .instructor-avatar a";
         $name_selector = $instructor_wrap." .instructor-name h3";
-        $designation_selector = $instructor_wrap." .instructor-name h4";
+        $designation_selector = $instructor_wrap." .instructor-name p";
         $biography_selector = $instructor_wrap." .instructor-bio";
 
         $this->start_controls_section(
@@ -155,7 +160,7 @@ class CourseInstructors extends BaseAddon {
                     $img_selector.' span, '.$img_selector.' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
                 ],
                 'default' => [
-					'size' => 26,
+					'size' => 50,
 				]
             ]
         );
@@ -211,6 +216,7 @@ class CourseInstructors extends BaseAddon {
                 'selectors' => [
 					$name_selector => 'color: {{VALUE}}',
                 ],
+                'default'   => '#161616'
             ]
         );
         $this->add_group_control(
@@ -228,7 +234,8 @@ class CourseInstructors extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$designation_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#7A7A7A'
             ]
         );
         $this->add_group_control(
@@ -247,7 +254,8 @@ class CourseInstructors extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$biography_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#525252'
             ]
         );
         $this->add_group_control(
@@ -379,7 +387,15 @@ class CourseInstructors extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    $$instructor_wrap.' .single-instructor-top' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    $instructor_wrap.' .single-instructor-top' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+                'default' => [
+                    'top' => 20,
+                    'right' => 20,
+                    'bottom' => 20,
+                    'left' => 20,
+                    'unit' => 'px',
+                    'isLinked' => true
                 ],
                 'separator' => 'before',
             ]
@@ -392,6 +408,14 @@ class CourseInstructors extends BaseAddon {
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
                     $ins_info_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'default' => [
+                    'top' => 15,
+                    'right' => 20,
+                    'bottom' => 15,
+                    'left' => 20,
+                    'unit' => 'px',
+                    'isLinked' => true
                 ],
                 'separator' => 'before',
             ]
