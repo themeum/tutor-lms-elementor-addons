@@ -42,7 +42,7 @@ class CourseTitle extends BaseAddon {
                     'h5' => 'h5', 
                     'h6' => 'h6'
                 ],
-                'default' => 'h1',
+                'default' => 'h2',
             ]
         );
 
@@ -73,6 +73,7 @@ class CourseTitle extends BaseAddon {
                 'selectors' => [
                     $selector => 'color: {{VALUE}};',
                 ],
+                'default'   => '#161616'
             ]
         );
 

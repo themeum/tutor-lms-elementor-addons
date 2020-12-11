@@ -8,6 +8,11 @@
 	margin-bottom: 0 !important;
 }
 
+.etlms-course-title h2 {
+	font-size: 30px;
+	font-weight: bold;
+}
+
 /* Author */
 .etlms-author {
 	display: -webkit-box;
