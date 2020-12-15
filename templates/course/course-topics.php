@@ -53,7 +53,7 @@ if (!defined('ABSPATH'))
 			<div class="tutor-course-topics-wrap">
 				<div class="tutor-course-topics-header">
 					<div class="tutor-course-topics-header-left">
-						<h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor-elementor-addons'); ?></h4>
+						<h4 class="tutor-segment-title"><?php _e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
 					</div>
 					<div class="tutor-course-topics-header-right">
 						<?php

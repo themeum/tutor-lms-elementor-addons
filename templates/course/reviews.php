@@ -14,7 +14,7 @@ if ( ! is_array($reviews) || ! count($reviews)){
 
 <div class="etlms-course-reviews">
     <div class="course-student-rating-title">
-        <h4 class="tutor-segment-title"><?php _e('Student Feedback', 'tutor-elementor-addons'); ?></h4>
+        <h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
     </div>
     <div class="tutor-course-reviews-wrap">
         <div class="tutor-course-student-rating-wrap">

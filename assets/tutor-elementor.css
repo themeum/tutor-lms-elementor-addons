@@ -1,9 +1,13 @@
-/* segment title */
+/* tutor segment */
 .elementor-widget-container .tutor-segment-title {
 	font-size: 20px;
 }
 
 .elementor-widget-container .etlms-lead-info label {
+	margin-bottom: 0;
+}
+
+.elementor-widget-container .tutor-single-course-segment {
 	margin-bottom: 0;
 }
 
@@ -246,9 +250,6 @@
 }
 
 /* Tag */
-.etlms-course-tags .tutor-single-course-segment {
-	margin-bottom: 0;
-}
 .etlms-course-tags .tutor-course-tags a {
 	border: 1px solid #E1EBF0;
 }

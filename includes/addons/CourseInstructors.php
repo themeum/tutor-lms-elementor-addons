@@ -37,6 +37,17 @@ class CourseInstructors extends BaseAddon {
         );
 
         $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'About the instructors', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+        );
+
+        $this->add_control(
             'course_instructor_profile',
             [
                 'label' => __('Profile Picture','tutor-elementor-addons'),
@@ -145,7 +156,7 @@ class CourseInstructors extends BaseAddon {
                     $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-					'size' => 15,
+					'size' => 25,
                 ]
             ]
         );

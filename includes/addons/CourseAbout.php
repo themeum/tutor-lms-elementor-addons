@@ -32,6 +32,17 @@ class CourseAbout extends BaseAddon {
                 'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
+
+        $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'About Course', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+		);
                   
         $this->add_responsive_control(
             'course_about_align',
@@ -129,6 +140,7 @@ class CourseAbout extends BaseAddon {
         ob_start();
         $course = etlms_get_course();
         if ($course) {
+            $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/about');
         }
         echo ob_get_clean();

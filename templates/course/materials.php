@@ -12,7 +12,7 @@ if (is_array($materials) && count($materials)){
 	?>
 
 	<div class="etlms-course-specifications etlms-course-materials">
-        <h3><?php _e('Material Includes', 'tutor-elementor-addons'); ?></h3>
+        <h3><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h3>
 		<ul class="etlms-course-specification-items">
 			<?php
 			foreach ($materials as $material) {

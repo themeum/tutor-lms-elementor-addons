@@ -12,7 +12,7 @@ if (is_array($benefits) && count($benefits)){
 	?>
 
 	<div class="etlms-course-specifications etlms-course-benefits">
-        <h3><?php _e('What Will I Learn?', 'tutor-elementor-addons'); ?></h3>
+        <h3><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h3>
 		<ul class="etlms-course-specification-items">
 			<?php
 			foreach ($benefits as $benefit) {

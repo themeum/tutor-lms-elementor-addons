@@ -16,9 +16,33 @@ class CourseDescription extends BaseAddon {
     public function get_title() {
         return __('Course Description', 'tutor-elementor-addons');
     }
+
+    protected function register_content_controls(){
+
+        $this->start_controls_section(
+            'course_description_content_section',
+            [
+                'label' => 'General Settings',
+                'tab' => Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+        $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'Description', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+        );
+        
+        $this->end_controls_section();
+    }
     
     protected function register_style_controls() {
-        $paragraph_selector = '{{WRAPPER}} .tutor-course-content-wrap';
+        $paragraph_selector = '{{WRAPPER}} .etlms-course-description';
         $heading_selector = $paragraph_selector.' .tutor-segment-title';
 
         /* Heading Section */
@@ -99,17 +123,13 @@ class CourseDescription extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            $markup = '<div class="tutor-course-content-wrap">';
-            $markup .= '<div class="course-content-title"><h4 class="tutor-segment-title">'.__('Description', 'tutor-elementor-addons').'</h4></div>';
-            $markup .= '<div class="tutor-course-content-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>';
-            $markup .= "</div>";
-            echo $markup;
-        } else {
-            $disable_description = get_tutor_option('disable_course_description');
-            if (!$disable_description) {
-                tutor_course_content();
-            }
+        ob_start();
+        $course = etlms_get_course();
+        $disable_description = get_tutor_option('disable_course_description');
+        if ($course && !$disable_description) {
+            $settings = $this->get_settings_for_display();
+            include_once etlms_get_template('course/description');
         }
+        echo ob_get_clean();
     }
 }

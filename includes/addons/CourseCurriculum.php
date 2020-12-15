@@ -50,6 +50,17 @@ class CourseCurriculum extends BaseAddon {
         );
 
         $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'Topics for this course', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+		);
+
+        $this->add_control(
             'course_topic_collapse_icon',
             [
                 'label' => __('Collapse Icon','tutor-elementor-addons'),
@@ -192,7 +203,7 @@ class CourseCurriculum extends BaseAddon {
                     $topic_header.' .tutor-segment-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-					'size' => 15,
+					'size' => 20,
                 ],
                 'separator' => 'before',
             ]
@@ -770,8 +781,8 @@ class CourseCurriculum extends BaseAddon {
     protected function render($instance = []) {
         ob_start();
         $course = etlms_get_course();
-        $settings = $this->get_settings_for_display();
         if ($course) {
+            $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/course-topics');
             echo ob_get_clean();
         }

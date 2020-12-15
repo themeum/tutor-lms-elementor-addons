@@ -18,7 +18,7 @@ do_action('tutor_course/single/enrolled/before/lead_info/progress_bar');
 <div class="etlms-course-enrolled-info">
     <div class="etlms-course-status">
         <h4 class="etlms-segment-title">
-            <?php _e('Course Status', 'tutor-elementor-addons'); ?>
+            <?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?>
         </h4>
         <div class="etlms-progress-bar-wrap etlms-progress-<?= $position ?>">
             <div class="etlms-progress-bar">

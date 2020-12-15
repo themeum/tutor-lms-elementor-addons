@@ -30,6 +30,17 @@ class CourseTargetAudience extends BaseAddon {
             ]
         );
 
+        $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'Target Audience', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+        );
+
         $this->add_responsive_control(
             'course_target_audience_layout',
             [

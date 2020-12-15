@@ -18,9 +18,33 @@ class CourseTags extends BaseAddon {
     public function get_title() {
         return __('Course Tags', 'tutor-elementor-addons');
     }
+
+    protected function register_content_controls(){
+
+        $this->start_controls_section(
+            'course_tags_content_section',
+            [
+                'label' => 'General Settings',
+                'tab' => Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+        $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'Tags', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+        );
+        
+        $this->end_controls_section();
+    }
     
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-single-course-tag-wrap';
+        $selector = '{{WRAPPER}} .etlms-course-tag';
         $title_selector = $selector.' .course-benefits-title h4';
         $tag_selector = $selector.' .tutor-course-tags a';
 
@@ -291,9 +315,11 @@ class CourseTags extends BaseAddon {
     protected function render($instance = []) {
         $course = etlms_get_course();
         if ($course) {
-            echo '<div class="tutor-single-course-tag-wrap">';
-            tutor_course_tags_html();
-            echo '</div>';
+            ob_start();
+            $settings = $this->get_settings_for_display();
+            include_once etlms_get_template('course/tags');
+            $output = apply_filters( 'tutor_course/single/tags_html', ob_get_clean() );
+            echo $output;
         }
     }
 }

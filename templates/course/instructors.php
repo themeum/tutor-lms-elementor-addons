@@ -19,12 +19,10 @@ $target_blank = ($settings['course_instructor_link'] == 'new_window') ? 'target=
 $border_radius = $settings['course_instructors_avatar_border_radius'];
 
 if ($instructors) {
-	$count = is_array($instructors) ? count($instructors) : 0;
-
 	do_action('tutor_course/single/enrolled/before/instructors');
 ?>
 	<div class="etlms-course-instructor-title">
-		<h4 class="tutor-segment-title" align="left"><?php $count > 1 ? _e('About the instructors', 'tutor-elementor-addons') : _e('About the instructor', 'tutor-elementor-addons'); ?></h4>
+		<h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
 	</div>
 	<div class="tutor-course-instructors-wrap tutor-single-course-segment etlms-course-instructors-wrap" id="single-course-ratings">
 		<?php

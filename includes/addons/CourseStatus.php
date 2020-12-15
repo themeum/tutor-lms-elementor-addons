@@ -22,10 +22,23 @@ class CourseStatus extends BaseAddon {
         $this->start_controls_section(
             'course_status_content_section',
             [
-                'label' => 'Progress Bar',
+                'label' => 'General Settings',
                 'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
+
+        $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'Course Status', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+        );
+        
+        $this->end_controls_section();
 
         $this->add_control(
             'course_status_display_percent',

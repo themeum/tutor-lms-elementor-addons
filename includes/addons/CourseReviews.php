@@ -18,6 +18,30 @@ class CourseReviews extends BaseAddon {
     public function get_title() {
         return __('Course Reviews', 'tutor-elementor-addons');
     }
+
+    protected function register_content_controls(){
+
+        $this->start_controls_section(
+            'course_reviews_content_section',
+            [
+                'label' => 'General Settings',
+                'tab' => Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+        $this->add_control(
+			'section_title_text',
+			[
+				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => __( 'Student Ratings & Reviews', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'rows' => 3,
+			]
+        );
+        
+        $this->end_controls_section();
+    }
     
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .etlms-course-reviews';
