@@ -42,7 +42,7 @@ class CourseEnrolmentBox extends BaseAddon {
                     'enrolment_box' => 'Enrolment Box', 
                     'enrolled_box' => 'Enrolled Box',
                 ],
-                'enrolment_box' => 'Enrolment Box',
+                'default' => 'enrolment_box',
             ]
         );
         $this->end_controls_section();
@@ -194,6 +194,22 @@ class CourseEnrolmentBox extends BaseAddon {
                         'type' => Controls_Manager::DIMENSIONS,
                         'selectors' => [
                             $add_to_cart_btn_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                        'default' => [
+                            'top' => 45,
+                            'right' => 45,
+                            'bottom' => 45,
+                            'left' => 45,
+                            'unit' => 'px',
+                            'isLinked' => true
+                        ],
+                        'default' => [
+                            'top' => 45,
+                            'right' => 45,
+                            'bottom' => 45,
+                            'left' => 45,
+                            'unit' => 'px',
+                            'isLinked' => true
                         ],
                     ]
                 );
@@ -360,6 +376,14 @@ class CourseEnrolmentBox extends BaseAddon {
                         'selectors' => [
                             $enroll_btn_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
+                        'default' => [
+                            'top' => 45,
+                            'right' => 45,
+                            'bottom' => 45,
+                            'left' => 45,
+                            'unit' => 'px',
+                            'isLinked' => true
+                        ],
                     ]
                 );
                 $this->add_group_control(
@@ -524,6 +548,14 @@ class CourseEnrolmentBox extends BaseAddon {
                         'selectors' => [
                             $start_btn_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                         ],
+                        'default' => [
+                            'top' => 45,
+                            'right' => 45,
+                            'bottom' => 45,
+                            'left' => 45,
+                            'unit' => 'px',
+                            'isLinked' => true
+                        ],
                     ]
                 );
                 $this->add_group_control(
@@ -687,6 +719,14 @@ class CourseEnrolmentBox extends BaseAddon {
                         'type' => Controls_Manager::DIMENSIONS,
                         'selectors' => [
                             $complete_btn_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                        'default' => [
+                            'top' => 45,
+                            'right' => 45,
+                            'bottom' => 45,
+                            'left' => 45,
+                            'unit' => 'px',
+                            'isLinked' => true
                         ],
                     ]
                 );

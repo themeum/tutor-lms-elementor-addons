@@ -3,12 +3,22 @@
 	font-size: 20px;
 }
 
+.elementor-widget-container .etlms-lead-info label {
+	margin-bottom: 0;
+}
+
 /* Rating */
 .etlms-rating {
 	margin-bottom: 0 !important;
 }
 
 .etlms-course-title h2 {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+/* Price */
+.etlms-course-price .amount {
 	font-size: 30px;
 	font-weight: bold;
 }
@@ -244,11 +254,8 @@
 }
 
 
-/*layout css for: course level,categories,duration,total enrollment,last update*/
-.elementor-layout-up .etlms-course-level strong,
-.elementor-layout-up .etlms-course-duration strong,
-.elementor-layout-up .etlms-course-total-enroll strong,
-.elementor-layout-up .etlms-course-last-update strong,
+/*layout css for: course lead info ,categories */
+.elementor-layout-up .etlms-lead-info strong,
 .elementor-layout-up .etlms-single-course-meta-categories a {
 	display: block;
 }

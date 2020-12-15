@@ -11,7 +11,7 @@ if (!$disable) {
             <span class="tutor-single-rating-count">
                 <?php
                 echo $course_rating->rating_avg;
-                echo '<i>(' . $course_rating->rating_count . ')</i>';
+                echo '<i>(' . $course_rating->rating_count .' '. __('Ratings') . ')</i>';
                 ?>
             </span>
         </span>

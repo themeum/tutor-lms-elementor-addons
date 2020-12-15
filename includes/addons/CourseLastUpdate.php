@@ -34,6 +34,16 @@ class CourseLastUpdate extends BaseAddon {
             ]
         );
 
+        $this->add_control(
+			'course_last_update_label',
+			[
+				'label' => __( 'Label', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Last Updated:', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your label here', 'tutor-elementor-addons' ),
+			]
+		);
+
         $this->add_responsive_control(
             'course_level_layout',
             //layout options
@@ -94,8 +104,9 @@ class CourseLastUpdate extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector => 'color: {{VALUE}}',
+                    $selector.' label' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -103,7 +114,7 @@ class CourseLastUpdate extends BaseAddon {
             [
                 'name'      => 'course_level_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector,
+                'selector'  => $selector.' label',
             ]
         );
         $this->end_controls_section();
@@ -124,6 +135,7 @@ class CourseLastUpdate extends BaseAddon {
                 'selectors' => [
                     $selector.' strong' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -138,13 +150,14 @@ class CourseLastUpdate extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $settings = $this->get_settings_for_display();
         $disable_update_date = get_tutor_option('disable_course_update_date');
         if (!$disable_update_date) {
             $course = etlms_get_course();
             if ($course) {
                 $last_update = esc_html(get_the_modified_date());
-                $markup = '<div class="etlms-course-last-update">';
-                $markup .= __('Last Updated:', 'tutor-elementor-addons');
+                $markup = '<div class="etlms-lead-info etlms-course-last-update">';
+                $markup .= ($settings['course_last_update_label']) ? '<label>'.$settings['course_last_update_label'].'</label>' : '';
                 $markup .= '<strong>'. $last_update .'</strong>';
                 $markup .= '</div>';
                 echo $markup;

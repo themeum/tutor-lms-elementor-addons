@@ -33,6 +33,16 @@ class CourseDuration extends BaseAddon {
             ]
         );
 
+        $this->add_control(
+			'course_duration_label',
+			[
+				'label' => __( 'Label', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Course Duration:', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your label here', 'tutor-elementor-addons' ),
+			]
+		);
+
         $this->add_responsive_control(
             'course_duration_layout',
             //layout options
@@ -93,8 +103,9 @@ class CourseDuration extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector => 'color: {{VALUE}}',
+                    $selector.' label' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -102,7 +113,7 @@ class CourseDuration extends BaseAddon {
             [
                 'name'      => 'course_duration_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector,
+                'selector'  => $selector.' label',
             ]
         );
         $this->end_controls_section();
@@ -123,6 +134,7 @@ class CourseDuration extends BaseAddon {
                 'selectors' => [
                     $selector.' strong' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -137,6 +149,7 @@ class CourseDuration extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $settings = $this->get_settings_for_display();
         $disable_course_duration = get_tutor_option('disable_course_duration');
         if (!$disable_course_duration) {
             $course = etlms_get_course();
@@ -145,8 +158,8 @@ class CourseDuration extends BaseAddon {
                 $course_duration = get_tutor_course_duration_context();
             }
             if(!empty($course_duration)) {
-                $markup = '<div class="etlms-course-duration">';
-                $markup .= __('Course Duration:', 'tutor-elementor-addons');
+                $markup = '<div class="etlms-lead-info etlms-course-duration">';
+                $markup .= ($settings['course_duration_label']) ? '<label>'.$settings['course_duration_label'].'</label>' : '';
                 $markup .= '<strong>'. $course_duration .'</strong>';
                 $markup .= '</div>';
                 echo $markup;

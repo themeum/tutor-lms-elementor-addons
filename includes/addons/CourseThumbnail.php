@@ -114,7 +114,15 @@ class CourseThumbnail extends BaseAddon {
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
                             $hover_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ]
+                        ],
+                        'default' => [
+                            'top' => 8,
+                            'right' => 8,
+                            'bottom' => 8,
+                            'left' => 8,
+                            'unit' => 'px',
+                            'isLinked' => true
+                        ],
                     ]
                 );
 
