@@ -78,6 +78,53 @@ class CourseStatus extends BaseAddon {
         $progress_bar_filled = $selector.' .etlms-progress-filled';
         $progress_percent = $selector.' .etlms-progress-percent h4';
 
+        /* Section Title */
+        $this->start_controls_section(
+            'course_status_title_section',
+            [
+                'label' => __('Section Title', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE
+            ]
+        );
+        $this->add_control(
+            'course_status_title_color',
+            [
+                'label'     => __('Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    $title_selector => 'color: {{VALUE}}'
+                ]
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'      => 'course_status_title_typo',
+                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'selector'  => $title_selector,
+            ]
+        );
+        $this->add_responsive_control(
+            'etlms_heading_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 15,
+                ]
+            ]
+        );
+        $this->end_controls_section();
 
         /* Section Bar */
         $this->start_controls_section(
@@ -191,54 +238,6 @@ class CourseStatus extends BaseAddon {
             ]
         );
 
-        $this->end_controls_section();
-
-        /* Section Title */
-        $this->start_controls_section(
-            'course_status_title_section',
-            [
-                'label' => __('Section Title', 'tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE
-            ]
-        );
-        $this->add_control(
-            'course_status_title_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $title_selector => 'color: {{VALUE}}'
-                ]
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_status_title_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $title_selector,
-            ]
-        );
-        $this->add_responsive_control(
-            'etlms_heading_gap',
-            [
-                'label' => __( 'Gap', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 50,
-                    ],
-                ],
-                'selectors' => [
-                    $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                ],
-                'default' => [
-					'size' => 15,
-                ]
-            ]
-        );
         $this->end_controls_section();
     }
 
