@@ -34,6 +34,16 @@ class CourseLevel extends BaseAddon {
             ]
         );
 
+        $this->add_control(
+			'course_level_label',
+			[
+				'label' => __( 'Label', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Course level:', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your label here', 'tutor-elementor-addons' ),
+			]
+		);
+
         $this->add_responsive_control(
             'course_level_layout',
             //layout options
@@ -94,8 +104,9 @@ class CourseLevel extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector => 'color: {{VALUE}}',
+                    $selector.' label' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -103,7 +114,7 @@ class CourseLevel extends BaseAddon {
             [
                 'name'      => 'course_level_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector,
+                'selector'  => $selector.' label',
             ]
         );
         $this->end_controls_section();
@@ -124,6 +135,7 @@ class CourseLevel extends BaseAddon {
                 'selectors' => [
                     $selector.' strong' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -138,13 +150,14 @@ class CourseLevel extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $settings = $this->get_settings_for_display();
         $disable_course_level = get_tutor_option('disable_course_level');
         if (!$disable_course_level) {
             $course = etlms_get_course();
             if ($course) {
                 $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor-elementor-addons');
-                $markup = '<div class="etlms-course-level">';
-                $markup .= __('Course level:', 'tutor-elementor-addons');
+                $markup = '<div class="etlms-lead-info etlms-course-level">';
+                $markup .= ($settings['course_level_label']) ? '<label>'.$settings['course_level_label'].'</label>' : '';
                 $markup .= '<strong>'. $level .'</strong>';
                 $markup .= '</div>';
                 echo $markup;

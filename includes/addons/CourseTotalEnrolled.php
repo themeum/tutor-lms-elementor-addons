@@ -34,6 +34,16 @@ class CourseTotalEnrolled extends BaseAddon {
             ]
         );
 
+        $this->add_control(
+			'course_total_enroll_label',
+			[
+				'label' => __( 'Label', 'tutor-elementor-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Enrolled:', 'tutor-elementor-addons' ),
+				'placeholder' => __( 'Type your label here', 'tutor-elementor-addons' ),
+			]
+		);
+
         $this->add_responsive_control(
             'course_level_layout',
             //layout options
@@ -94,8 +104,9 @@ class CourseTotalEnrolled extends BaseAddon {
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector => 'color: {{VALUE}}',
+                    $selector.' label' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -103,7 +114,7 @@ class CourseTotalEnrolled extends BaseAddon {
             [
                 'name'      => 'course_level_label_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector,
+                'selector'  => $selector.' label',
             ]
         );
         $this->end_controls_section();
@@ -124,6 +135,7 @@ class CourseTotalEnrolled extends BaseAddon {
                 'selectors' => [
                     $selector.' strong' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#57586E'
             ]
         );
         $this->add_group_control(
@@ -138,13 +150,14 @@ class CourseTotalEnrolled extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $settings = $this->get_settings_for_display();
         $disable_total_enrolled = get_tutor_option('disable_course_total_enrolled');
         if (!$disable_total_enrolled) {
             $course = etlms_get_course();
             if ($course) {
                 $total_enroll = (int) tutils()->count_enrolled_users_by_course();
-                $markup = '<div class="etlms-course-total-enroll">';
-                $markup .= __('Total Enrollment:', 'tutor-elementor-addons');
+                $markup = '<div class="etlms-lead-info etlms-course-total-enroll">';
+                $markup .= ($settings['course_total_enroll_label']) ? '<label>'.$settings['course_total_enroll_label'].'</label>' : '';
                 $markup .= '<strong>'. $total_enroll .'</strong>';
                 $markup .= '</div>';
                 echo $markup;
