@@ -40,6 +40,13 @@ class AssetsManager {
             null,
             ETLMS_VERSION
         );    
+
+        /* $fileContent = file_get_contents( ETLMS_DIR_PATH.'/assets/default-layout.json' );  
+        \Elementor\Plugin::instance()->templates_manager->import_template( [  
+                'fileData' => base64_encode( $fileContent ),  
+                'fileName' => 'default-layout.json',  
+            ]  
+        ); */
     }
 
     /**
