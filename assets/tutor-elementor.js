@@ -116,26 +116,26 @@
 			carousel_infinite_loop == 'yes' ? carousel_infinite_loop = true : carousel_infinite_loop = false;
 			carousel_pause_on_hover == 'yes' ? carousel_pause_on_hover = true : carousel_pause_on_hover = false;
 			carousel_pause_on_interaction == 'yes' ? carousel_pause_on_interaction = true : carousel_pause_on_interaction = false;
-
+			
 			/**
 			 * applying all settings here
 			 */
 			$scope.find('#etlms-slick-responsive').slick({
 				dots: carousel_dots,
 				arrows: carousel_arrows,
-				infinite: false,
+				infinite: carousel_infinite_loop,
+				autoplay: carousel_autoplay,
+				autoplaySpeed: carousel_auto_play_speed,				
+				slidesToShow: Number(desktop),
+				slidesToScroll: 1,
 				speed: carousel_transition,
 				centerMode: carousel_center,
-				autoplay: carousel_autoplay,
-				autoplaySpeed: carousel_auto_play_speed,
-				infinite: carousel_infinite_loop,
+
 				pauseOnHover: carousel_pause_on_hover,
 				// ineraction
 				pauseOnFocus: carousel_pause_on_interaction,
 				cssEase: smooth_scroll,
-				slidesToShow: desktop,
-				slidesPerRow: desktop,
-				slidesToScroll: 1,
+
 				prevArrow: $scope.find('.etlms-carousel-arrow-prev'),
 				nextArrow: $scope.find('.etlms-carousel-arrow-next'),
 
@@ -143,7 +143,7 @@
 					{
 						breakpoint: 1024,
 						settings: {
-							slidesToShow: medium,
+							slidesToShow: Number(medium),
 							slidesToScroll: 1,
 							infinite: true,
 							dots: true
@@ -152,7 +152,7 @@
 					{
 						breakpoint: 576,
 						settings: {
-							slidesToShow: mobile,
+							slidesToShow: Number(mobile),
 							slidesToScroll: 1
 						}
 					}
