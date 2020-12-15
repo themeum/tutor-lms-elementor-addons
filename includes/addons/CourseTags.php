@@ -50,6 +50,26 @@ class CourseTags extends BaseAddon {
                 'selector'  => $title_selector,
             ]
         );
+        $this->add_responsive_control(
+            'etlms_heading_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 15,
+                ]
+            ]
+        );
         $this->end_controls_section();
 
         /* Tag Section */
@@ -79,6 +99,7 @@ class CourseTags extends BaseAddon {
                         'selectors' => [
                             $tag_selector => 'color: {{VALUE}};',
                         ],
+                        'default'   => '#525252'
                     ]
                 );
 
@@ -99,6 +120,7 @@ class CourseTags extends BaseAddon {
                         'selectors' => [
                             $tag_selector => 'background-color: {{VALUE}}',
                         ],
+                        'default'   => '#F7F9FA'
                     ]
                 );
 
@@ -140,8 +162,17 @@ class CourseTags extends BaseAddon {
                     [
                         'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
                         'type' => Controls_Manager::DIMENSIONS,
+                        'size_units' => [ 'px', '%' ],
                         'selectors' => [
                             $tag_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        ],
+                        'default' => [
+                            'top' => 50,
+                            'right' => 50,
+                            'bottom' => 50,
+                            'left' => 50,
+                            'unit' => 'px',
+                            'isLinked' => true
                         ],
                     ]
                 );

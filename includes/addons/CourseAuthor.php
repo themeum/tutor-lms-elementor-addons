@@ -8,6 +8,7 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 
@@ -178,7 +179,7 @@ class CourseAuthor extends BaseAddon {
         $this->end_controls_section();
 
         //Section Label
-        $author_selector = '{{WRAPPER}} .tutor-single-course-author-meta .tutor-single-course-author-name';
+        $author_selector = '{{WRAPPER}} .etlms-author .tutor-single-course-author-name';
         $this->start_controls_section(
             'course_author_label_section',
             [
@@ -221,7 +222,8 @@ class CourseAuthor extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$author_selector.' a' => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#161616'
             ]
         );
         $this->add_group_control(
@@ -230,6 +232,7 @@ class CourseAuthor extends BaseAddon {
                 'name'      => 'course_author_name_typo',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
                 'selector'  => $author_selector.' a',
+                'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
             ]
         );
         $this->end_controls_section();

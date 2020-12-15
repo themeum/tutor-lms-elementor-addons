@@ -8,6 +8,7 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 
@@ -128,12 +129,32 @@ class CourseInstructors extends BaseAddon {
                 'selector'  => $title_selector,
             ]
         );
+        $this->add_responsive_control(
+            'etlms_heading_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 15,
+                ]
+            ]
+        );
         $this->end_controls_section();
 
         /* Instructor Section */
         $instructor_wrap = ".etlms-single-instructor-wrap";
         $img_selector = $instructor_wrap." .instructor-avatar a";
-        $name_selector = $instructor_wrap." .instructor-name h3";
+        $name_selector = $instructor_wrap." .instructor-name h3 a";
         $designation_selector = $instructor_wrap." .instructor-name p";
         $biography_selector = $instructor_wrap." .instructor-bio";
 
@@ -160,7 +181,7 @@ class CourseInstructors extends BaseAddon {
                     $img_selector.' span, '.$img_selector.' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
                 ],
                 'default' => [
-					'size' => 50,
+					'size' => 48,
 				]
             ]
         );
@@ -290,6 +311,7 @@ class CourseInstructors extends BaseAddon {
                 'selectors' => [
                     $ins_rating_star_selector => 'color: {{VALUE}};',
                 ],
+                'default'   => '#ED9700'
             ]
         );
         $this->add_control(
@@ -328,7 +350,8 @@ class CourseInstructors extends BaseAddon {
             array(
                 'name'      => 'course_instructor_label_typography',
                 'label'     => __('Label Typography', 'tutor-elementor-addons'),
-                'selector'  => $ins_info_selector.' .rating-digits,'. $ins_info_selector.' .courses,'. $ins_info_selector.' .students'
+                'selector'  => $ins_info_selector.' .rating-digits,'. $ins_info_selector.' .courses,'. $ins_info_selector.' .students',
+                'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
             )
         );
         $this->add_control(
@@ -339,6 +362,7 @@ class CourseInstructors extends BaseAddon {
                 'selectors' => [
                     $ins_info_selector.' .rating-total-meta,'. $ins_info_selector.' .tutor-text-mute' => 'color: {{VALUE}} !important;',
                 ],
+                'default'   => '#525252'
             ]
         );
         $this->add_group_control(

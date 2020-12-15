@@ -53,7 +53,7 @@ if (!defined('ABSPATH'))
 			<div class="tutor-course-topics-wrap">
 				<div class="tutor-course-topics-header">
 					<div class="tutor-course-topics-header-left">
-						<h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor'); ?></h4>
+						<h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor-elementor-addons'); ?></h4>
 					</div>
 					<div class="tutor-course-topics-header-right">
 						<?php
@@ -62,7 +62,7 @@ if (!defined('ABSPATH'))
 
 						if ($tutor_lesson_count) {
 							echo "<span> $tutor_lesson_count";
-							_e(' Lessons', 'tutor');
+							_e(' Lessons', 'tutor-elementor-addons');
 							echo "</span>";
 						}
 						if ($tutor_course_duration) {
@@ -159,9 +159,9 @@ if (!defined('ABSPATH'))
 
 														if ($countdown) {
 															if ($zoom_meeting->is_expired) {
-																$lesson_title .= '<span class="tutor-zoom-label">'.__('Expired', 'tutor').'</span>';
+																$lesson_title .= '<span class="tutor-zoom-label">'.__('Expired', 'tutor-elementor-addons').'</span>';
 															} else if ($zoom_meeting->is_started) {
-																$lesson_title .= '<span class="tutor-zoom-label tutor-zoom-live-label">'.__('Live', 'tutor').'</span>';
+																$lesson_title .= '<span class="tutor-zoom-label tutor-zoom-live-label">'.__('Live', 'tutor-elementor-addons').'</span>';
 															}
 															$lesson_title .= $countdown;
 														}

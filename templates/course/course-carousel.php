@@ -144,7 +144,7 @@
                                         <?php endif; ?>
                                     </div>
                                     <div class="tutor-single-course-author-name">
-                                        <span><?php _e('by', 'tutor'); ?></span>
+                                        <span><?php _e('by', 'tutor-elementor-addons'); ?></span>
                                         <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
                                     </div>
 
@@ -155,7 +155,7 @@
                                             $course_categories = get_tutor_course_categories();
                                             if (!empty($course_categories) && is_array($course_categories) && count($course_categories)) {
                                         ?>
-                                                <span><?php esc_html_e('In', 'tutor') ?></span>
+                                                <span><?php esc_html_e('In', 'tutor-elementor-addons') ?></span>
                                         <?php
                                                 foreach ($course_categories as $course_category) {
                                                     $category_name = $course_category->name;

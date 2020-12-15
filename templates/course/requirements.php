@@ -12,7 +12,7 @@ if (is_array($requirements) && count($requirements)){
 	?>
 
 	<div class="etlms-course-specifications etlms-course-requirements">
-        <h3><?php _e('Requirements', 'tutor'); ?></h3>
+        <h3><?php _e('Requirements', 'tutor-elementor-addons'); ?></h3>
 		<ul class="etlms-course-specification-items">
 			<?php
 			foreach ($requirements as $requirement) {

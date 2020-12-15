@@ -176,6 +176,28 @@ class CourseCurriculum extends BaseAddon {
             ]
         );
 
+        $this->add_responsive_control(
+            'etlms_heading_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    $topic_header.' .tutor-segment-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 15,
+                ],
+                'separator' => 'before',
+            ]
+        );
+
         $this->end_controls_section();
 
         /* Course Topics Section */

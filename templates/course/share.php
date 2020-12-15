@@ -12,7 +12,7 @@ if (!$disable_course_share) {
 ?>
 	<div class="etlms-social">
 		<?php if ($settings['course_share_label_content']) : ?>
-			<div class="etlms-social-label"><?php _e('Share:', 'tutor'); ?></div>
+			<div class="etlms-social-label"><?php _e('Share:', 'tutor-elementor-addons'); ?></div>
 		<?php endif; ?>
 		<div class="tutor-social-share-wrap etlms-social-share-wrap" data-social-share-config="<?php echo esc_attr(wp_json_encode($share_config)); ?>">
 			<?php

@@ -13,9 +13,9 @@ global $wp_query;
                 <a href="<?php echo $lesson_url; ?>" class="tutor-button tutor-success">
                     <?php
                         if($completed_lessons){
-                            _e( 'Continue to lesson', 'tutor' );
+                            _e( 'Continue to lesson', 'tutor-elementor-addons' );
                         }else{
-                            _e( 'Start Course', 'tutor' );
+                            _e( 'Start Course', 'tutor-elementor-addons' );
                         }
                     ?>
                 </a>
@@ -33,7 +33,7 @@ global $wp_query;
             <?php
                 $enrolled = tutor_utils()->is_enrolled();
                 $enrolled_date = ($editor_mode) ? date('Y-m-d') : @$enrolled->post_date;
-                echo sprintf(__('You have been enrolled on %s.', 'tutor'),  "<span>". date_i18n(get_option('date_format'), strtotime($enrolled_date)
+                echo sprintf(__('You have been enrolled on %s.', 'tutor-elementor-addons'),  "<span>". date_i18n(get_option('date_format'), strtotime($enrolled_date)
                     )."</span>"  );
                 ?>
         </p>

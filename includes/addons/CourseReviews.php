@@ -8,6 +8,8 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Border;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -18,7 +20,7 @@ class CourseReviews extends BaseAddon {
     }
     
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-course-reviews';
+        $selector = '{{WRAPPER}} .etlms-course-reviews';
         $title_selector = $selector.' .tutor-segment-title';
 
         /* Title Section */
@@ -47,6 +49,26 @@ class CourseReviews extends BaseAddon {
                 'selector'  => $title_selector,
             ]
         );
+        $this->add_responsive_control(
+            'etlms_heading_gap',
+            [
+                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+					'size' => 15,
+                ]
+            ]
+        );
         $this->end_controls_section();
 
         /* Review average section */
@@ -68,7 +90,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_text_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#161616'
             ]
         );
         $this->add_group_control(
@@ -86,7 +109,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_stars_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#ED9700'
             ]
         );
         $this->add_control(
@@ -97,7 +121,7 @@ class CourseReviews extends BaseAddon {
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 5,
+                        'min' => 10,
                         'max' => 64,
                     ],
                 ],
@@ -105,7 +129,7 @@ class CourseReviews extends BaseAddon {
                     '.course-avg-rating-wrap .tutor-star-rating-group' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-                    'size' => 18
+                    'size' => 16
                 ]
             ]
         );
@@ -117,7 +141,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_total_count_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#525252'
             ]
         );
         $this->add_group_control(
@@ -167,7 +192,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_right_bar_main_selector => 'background-color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#E8E8E8'
             ]
         );
         $this->add_control(
@@ -177,7 +203,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_right_bar_fill_selector => 'background-color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#ED9700'
             ]
         );
         $this->add_control(
@@ -195,6 +222,9 @@ class CourseReviews extends BaseAddon {
                 'selectors' => [
                     $review_avg_right_bar_main_selector.', '.$review_avg_right_bar_fill_selector => 'height: {{SIZE}}{{UNIT}};',
                 ],
+                'default' => [
+                    'size' => 8
+                ]
             ]
         );
 
@@ -203,11 +233,12 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_avg_right_stars_color',
             [
-                'label'     => __('Star Color', 'tutor-elementor-addons'),
+                'label'     => __('Stars Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $review_avg_right_stars_selector => 'color: {{VALUE}}',
                 ],
+                'default'   => '#ED9700'
             ]
         );
         $this->add_control(
@@ -226,7 +257,7 @@ class CourseReviews extends BaseAddon {
                     $review_avg_right_stars_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-                    'size' => 16
+                    'size' => 14
                 ]
             ]
         );  
@@ -242,6 +273,7 @@ class CourseReviews extends BaseAddon {
                 'selectors' => [
                     $review_avg_section_count_meter.' .rating-meter-col' => 'color: {{VALUE}}',
                 ],
+                'default'   => '#525252'
             ]
         );
         $this->add_group_control(
@@ -256,13 +288,13 @@ class CourseReviews extends BaseAddon {
 
         $this->end_controls_section();
         /* Review list section */
-        $review_list_section_selector = $selector.' .tutor-course-reviews-list';
-        $reviewer_image_selector = $review_list_section_selector.' .review-avatar';  
+        $review_list_section_selector = $selector.' .etlms-course-reviews-list';
+        $reviewer_image_selector = $review_list_section_selector.' .etlms-review-avatar';  
         
-         $reviewer_name_selector = $review_list_section_selector.' .review-time-name p:first-child a';
+         $reviewer_name_selector = $review_list_section_selector.' .review-time-name h4 a';
          $reviewer_time_selector = $review_list_section_selector.' .review-time-name p.review-meta';
          $reviewer_stars_selector = $review_list_section_selector.' .tutor-star-rating-group';
-         $reviewer_content_selector = $review_list_section_selector.' .review-content p';
+         $reviewer_content_selector = $review_list_section_selector.' .etlms-review-content p';
          $this->start_controls_section(
             'review_list',
             [
@@ -274,21 +306,66 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_list_image_width',
             [
-                'label' => __( 'Image Size', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
+                'label'     => __( 'Image Size', 'tutor-elementor-addons' ),
+                'type'      => Controls_Manager::SLIDER,
+                'size_units'=> ['px'],
+                'range'     => [
                     'px' => [
-                        'min' => 10,
+                        'min' => 20,
                         'max' => 200,
                     ],
                 ],
                 'selectors' => [
                     $reviewer_image_selector.' span, '.$reviewer_image_selector.' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
                 ],
+                'default'   => [
+                    'size' => 48
+                ]
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'course_instructor_background',
+                'label' => __( 'Background Type', 'tutor-elementor-addons' ),
+                'types' => [ 'classic', 'gradient'],
+                'selector' => $reviewer_image_selector.' span',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'course_instructor_img_border',
+                'selector' => $reviewer_image_selector.' span, '.$reviewer_image_selector.' img'
+            ]
+        );
+
+        $this->add_control(
+            'course_instructors_avatar_border_radius',
+            [
+                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .etlms-course-instructor-avatar img ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .etlms-course-instructor-avatar span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'selectors' => [
+                    $reviewer_image_selector.' span, '.$reviewer_image_selector.' img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'default' => [
+                    'top' => 50,
+                    'right' => 50,
+                    'bottom' => 50,
+                    'left' => 50,
+                    'unit' => '%',
+                    'isLinked' => true
+                ],
+                'separator' => 'after'
+            ]
+        );
 
         $this->add_control(
             'reviewer_name_color',
@@ -297,7 +374,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_name_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#161616'
             ]
         );
         $this->add_group_control(
@@ -315,7 +393,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_time_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#7A7A7A'
             ]
         );
         $this->add_group_control(
@@ -333,7 +412,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_stars_selector.' i' => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#ED9700'
             ]
         );
         $this->add_control(
@@ -344,7 +424,7 @@ class CourseReviews extends BaseAddon {
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 5,
+                        'min' => 10,
                         'max' => 64,
                     ],
                 ],
@@ -352,7 +432,7 @@ class CourseReviews extends BaseAddon {
                     $reviewer_stars_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-                    'size' => 16
+                    'size' => 14
                 ]
             ]
         );
@@ -363,7 +443,8 @@ class CourseReviews extends BaseAddon {
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_content_selector => 'color: {{VALUE}}',
-				],
+                ],
+                'default'   => '#525252'
             ]
         );
         $this->add_group_control(
@@ -382,12 +463,11 @@ class CourseReviews extends BaseAddon {
         if (empty($wp_query->query_vars['course_subpage'])) {
             $course = etlms_get_course();
             if ($course) {
-                echo '<div class="tutor-course-reviews">';
-                tutor_course_target_reviews_html();
-                if (is_user_logged_in() && tutils()->is_enrolled()) {
-                    tutor_course_target_review_form_html();
-                }
-                echo '</div>';
+                ob_start();
+                $settings = $this->get_settings_for_display();
+                include_once etlms_get_template('course/reviews');
+                $output = apply_filters( 'tutor_course/single/reviews_html', ob_get_clean() );
+                echo $output;
             }
         }
     }
