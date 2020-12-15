@@ -379,6 +379,15 @@
 }
 
 /*course carousel and course list*/
+
+/*
+@gap removed from main wrap
+*/
+.etlms-carousel-main-wrap,
+.etlms-course-list-main-wrap {
+	padding:0px;
+}
+
 .etlms-card {
 	overflow: hidden;
 }
