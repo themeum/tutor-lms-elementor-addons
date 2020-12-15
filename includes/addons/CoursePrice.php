@@ -58,6 +58,7 @@ class CoursePrice extends BaseAddon {
                 'selectors' => [
                     $selector => 'color: {{VALUE}};',
                 ],
+                'default'   => '#161616'
             ]
         );
 

@@ -13,6 +13,12 @@
 	font-weight: bold;
 }
 
+/* Price */
+.etlms-course-price .amount {
+	font-size: 30px;
+	font-weight: bold;
+}
+
 /* Author */
 .etlms-author {
 	display: -webkit-box;
