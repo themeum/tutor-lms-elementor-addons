@@ -36,7 +36,7 @@
                     $animation = 'elementor-animation-'.$settings['course_carousel_img_hover_animation'];
                 ?>
                 <div class="etlms-card <?= "overlayed" == $settings['course_carousel_skin'] ? $animation : ''; 
-                if("card"== $settings['course_carousel_skin'] AND "yes"== $settings['card_hover_animation']){
+                if("yes"== $settings['card_hover_animation']){
                     echo " hover-animation";
                 }
                 ?>">

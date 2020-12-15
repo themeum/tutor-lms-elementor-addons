@@ -98,9 +98,7 @@ class CourseList extends BaseAddon{
                 'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
                 'label_off' => __( 'No', 'tutor-elementor-addons' ),
                 'return_value' => 'yes',
-                'condition' => [
-                    'course_list_skin' => 'card'
-                ],
+
                 'default' => 'yes',
             ]
         );        

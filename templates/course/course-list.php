@@ -62,7 +62,7 @@
                     if ($settings['course_list_column'] == 1 AND $settings['course_list_skin'] != 'overlayed') { 
                         echo "etlms-course-list-style"; } 
                     echo "overlayed" == $settings['course_list_skin'] ? ' '.$animation:'';
-                    if("card"== $settings['course_list_skin'] AND "yes"== $settings['card_hover_animation']){
+                    if("yes"== $settings['card_hover_animation']){
                         echo " hover-animation";
                     }
                     ?>" >

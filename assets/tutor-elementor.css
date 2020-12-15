@@ -449,6 +449,15 @@
 }
 
 /*course carousel and course list*/
+
+/*
+@gap removed from main wrap
+*/
+.etlms-carousel-main-wrap,
+.etlms-course-list-main-wrap {
+	padding:0px;
+}
+
 .etlms-card {
 	overflow: hidden;
 }
@@ -476,7 +485,10 @@
 .etlms-carousel-main-wrap
 .slick-track
 {
-    display: flex !important;
+	display: flex !important;
+	/*5px for hover animation*/
+	position: relative !important;
+	top: 5px !important;	
 }
 .etlms-carousel-main-wrap
 .slick-slide
@@ -492,6 +504,17 @@
 
 .etlms-course-carousel div[class*="tutor-course-col"] {
 	margin-bottom: 15px;
+}
+
+/*
+@hover animation for all skins
+*/
+.etlms-card.hover-animation:hover {
+	
+	position: relative;
+	top: -5px;
+	transition: .5s;	
+	z-index: 999;
 }
 
 /*
@@ -536,14 +559,7 @@
 .etlms-course-list-card .etlms-card:hover {
 	box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);
 }
-.etlms-card.hover-animation:hover {
-	
-	position: relative;
-	top: -5px;
-	transition: .5s;
 
-	
-}
 
 
 /*
@@ -756,6 +772,7 @@
 /*
 @masonry height wise
 */
+
 .etlms-masonry.tutor-courses-layout-2 {
 	column-count: 2;
 	column-gap: 10px;
@@ -775,6 +792,8 @@
 .etlms-masonry .etlms-course-list-col {
 	display: inline-block;
 	width: auto;
+	position: relative;
+	top: 5px;	
 }
 .etlms-masonry.etlms-course-list-overlayed .etlms-card{
 	height: auto !important;
