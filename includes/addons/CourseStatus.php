@@ -37,8 +37,6 @@ class CourseStatus extends BaseAddon {
 				'rows' => 3,
 			]
         );
-        
-        $this->end_controls_section();
 
         $this->add_control(
             'course_status_display_percent',
