@@ -39,14 +39,10 @@ class AssetsManager {
             ETLMS_ASSETS . 'tutor-elementor-icons.min.css',
             null,
             ETLMS_VERSION
-        );    
+        );
 
-        /* $fileContent = file_get_contents( ETLMS_DIR_PATH.'/assets/default-layout.json' );  
-        \Elementor\Plugin::instance()->templates_manager->import_template( [  
-                'fileData' => base64_encode( $fileContent ),  
-                'fileName' => 'default-layout.json',  
-            ]  
-        ); */
+        // Set default template before enqueue
+        self::set_default_template();
     }
 
     /**
@@ -114,4 +110,22 @@ class AssetsManager {
             ETLMS_VERSION
         );
     }
+
+    // Add default template library
+	public static function set_default_template() {
+		global $post;
+		$postID = $post->ID;
+		$meta_key = '_tutor_elementor_data_used';
+		if (get_post_type($post) === tutor()->course_post_type) {
+			$elementor_data_used = get_post_meta($postID, $meta_key, true);
+			if (!$elementor_data_used) {
+				$elementorControls = file_get_contents(ETLMS_DIR_PATH . '/assets/default-layout-controls.json');
+				$elementorData = file_get_contents(ETLMS_DIR_PATH . '/assets/default-layout.json');
+
+				update_post_meta($postID, '_elementor_controls_usage', $elementorControls);
+				update_post_meta($postID, '_elementor_data', $elementorData);
+				update_post_meta($postID, $meta_key, 'yes');
+			}
+		}
+	}
 }
