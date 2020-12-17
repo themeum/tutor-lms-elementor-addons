@@ -89,21 +89,12 @@ if (!defined('ABSPATH'))
 										<i class="<?php echo ($index == 1) ? $topic_expand_icon : $topic_collapse_icon; ?>" id="etlms-course-topic-icon"></i>
 										<?php
 										the_title();
-										if ($topic_summery) {
-											echo "<i id='topic-toggle' class='toogle-informaiton-icon'>&quest;</i>";
-										}
+										/* if ($topic_summery) {
+											echo "<i id='topic-toggle' class='toogle-informaiton-icon' title='$topic_summery'>&quest;</i>";
+										} */
 										?>
 									</h4>
 								</div>
-
-								<?php
-								if ($topic_summery) { ?>
-									<div class="tutor-topics-summery">
-										<?php echo $topic_summery; ?>
-									</div>
-								<?php
-								}
-								?>
 
 								<div class="tutor-course-lessons" style="<?php echo $index > 1 ? 'display: none' : ''; ?>">
 
