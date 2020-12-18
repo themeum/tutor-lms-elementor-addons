@@ -30,24 +30,24 @@ if (!function_exists('camel2dashed')) {
 
 if (!function_exists('etlms_get_course')) {
 	function etlms_get_course() {
-		if (is_single() && get_post_type() == tutor()->course_post_type) {
-			return true;
-		}
-		$args = array(
-			'post_type' => tutor()->course_post_type,
-			'post_status' => 'publish',
-			'posts_per_page' => 1,
-			'orderby' => 'ID',
-			'order' => 'DESC'
-		);
-		$query = new WP_Query($args);
-		if ($query->have_posts()) {
-			while ($query->have_posts()) {
-				$query->the_post();
+		global $wpdb, $post;
+		$course_id =  $post->ID;
+		$course_post_type = tutor()->course_post_type;
+		$is_editor = \Elementor\Plugin::instance()->editor->is_edit_mode();
+		if ($is_editor) {
+			$elementor_course_id = \Elementor\Plugin::instance()->editor->get_post_id();
+			if ($post->post_type == $course_post_type && $course_id === $elementor_course_id) {
 				return true;
 			}
+			$post_author = get_current_user_id();
+			$course_id =(int) $wpdb->get_var("SELECT ID FROM {$wpdb -> posts} WHERE post_type = {$course_post_type} AND post_author {$post_author} AND post_status = 'publish' ORDER BY ID DESC");
+			$course = get_post($course_id);
+			setup_postdata( $course );
+			return true;
 		}
-
+		if (is_single() && $post->post_type == $course_post_type) {
+			return true;
+		}
 		return false;
 	}
 }

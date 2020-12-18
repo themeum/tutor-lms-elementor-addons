@@ -15,8 +15,6 @@ class CoursePrice extends BaseAddon {
 
     use ETLMS_Trait;
 
-    private static $prefix_class_layout = "etlms-author-layout-";
-
     private static $prefix_class_alignment = "elementor-align-"; 
 
     public function get_title() {
@@ -40,7 +38,7 @@ class CoursePrice extends BaseAddon {
 	}
 
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .course-price';
+        $selector = '{{WRAPPER}} .etlms-course-price';
         // Style
         $this->start_controls_section(
             'course_style_section',
@@ -77,7 +75,7 @@ class CoursePrice extends BaseAddon {
     protected function render($instance = []) {
         $course = etlms_get_course();
         if ($course) {
-            echo '<div class="course-price">';
+            echo '<div class="etlms-course-price">';
             tutor_course_price();
             echo '</div>';
         }

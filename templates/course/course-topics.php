@@ -170,14 +170,14 @@ if (!defined('ABSPATH'))
 
 											<?php
 										}
-										$lessons->reset_postdata();
+										wp_reset_postdata();
 									}
 									?>
 								</div>
 							</div>
 						<?php
 						}
-						$topics->reset_postdata();
+						wp_reset_postdata();
 					}
 					?>
 				</div>

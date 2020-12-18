@@ -1069,11 +1069,11 @@ msgstr ""
 msgid " Lessons"
 msgstr ""
 
-#: templates/course/course-topics.php:164
+#: templates/course/course-topics.php:155
 msgid "Live"
 msgstr ""
 
-#: templates/course/course-topics.php:162
+#: templates/course/course-topics.php:153
 msgid "Expired"
 msgstr ""
 

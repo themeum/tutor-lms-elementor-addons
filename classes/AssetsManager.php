@@ -119,11 +119,11 @@ class AssetsManager {
 		if (get_post_type($post) === tutor()->course_post_type) {
 			$elementor_data_used = get_post_meta($postID, $meta_key, true);
 			if (!$elementor_data_used) {
-				$elementorControls = file_get_contents(ETLMS_DIR_PATH . '/assets/default-layout-controls.json');
-				$elementorData = file_get_contents(ETLMS_DIR_PATH . '/assets/default-layout.json');
+                $elementorData = file_get_contents(ETLMS_DIR_PATH . '/assets/default-layout.json');
+                $elementorData = json_decode($elementorData, true);
 
-				update_post_meta($postID, '_elementor_controls_usage', $elementorControls);
-				update_post_meta($postID, '_elementor_data', $elementorData);
+				update_post_meta($postID, '_elementor_controls_usage', $elementorData['controls']);
+				update_post_meta($postID, '_elementor_data', $elementorData['layout']);
 				update_post_meta($postID, $meta_key, 'yes');
 			}
 		}

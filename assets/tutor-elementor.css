@@ -22,6 +22,7 @@
 }
 
 /* Price */
+.etlms-course-price .price,
 .etlms-course-price .amount {
 	font-size: 30px;
 	font-weight: bold;

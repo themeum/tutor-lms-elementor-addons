@@ -289,6 +289,7 @@ class CourseMaterials extends BaseAddon {
 
     protected function render($instance = []) {
         $course = etlms_get_course();
+        var_dump($course);
         if ($course) {
             ob_start();
             $settings = $this->get_settings_for_display();
