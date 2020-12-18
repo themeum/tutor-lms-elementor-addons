@@ -73,6 +73,9 @@ class CoursePrice extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        if (tutils()->is_enrolled()) {
+            return;
+        }
         $course = etlms_get_course();
         if ($course) {
             echo '<div class="etlms-course-price">';

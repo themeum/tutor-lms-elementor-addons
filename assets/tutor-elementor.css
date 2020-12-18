@@ -203,7 +203,9 @@
 .etlms-course-enrolment-box .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box .tutor-course-purchase-box,
 .etlms-course-enrolment-box .tutor-course-purchase-box form,
-.etlms-course-enrolment-box .tutor-course-enroll-wrap {
+.etlms-course-enrolment-box .tutor-course-enroll-wrap,
+.etlms-course-enrolment-box .generate-course-gradebook-btn-wrap,
+.etlms-course-enrolment-box .tutor-course-enrolled-wrap {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -211,21 +213,27 @@
 .etlms-course-enrolment-box.elementor-align-left .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box.elementor-align-left .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box.elementor-align-left .tutor-course-purchase-box .etlms-course-enrolment-box.elementor-align-left .tutor-course-purchase-box form,
-.etlms-course-enrolment-box.elementor-align-left .tutor-course-enroll-wrap {
+.etlms-course-enrolment-box.elementor-align-left .tutor-course-enroll-wrap,
+.etlms-course-enrolment-box.elementor-align-left .generate-course-gradebook-btn-wrap,
+.etlms-course-enrolment-box.elementor-align-left .tutor-course-enrolled-wrap {
 	align-items: flex-start;
 }
 .etlms-course-enrolment-box.elementor-align-right .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box.elementor-align-right .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box.elementor-align-right .tutor-course-purchase-box,
 .etlms-course-enrolment-box.elementor-align-right .tutor-course-purchase-box form,
-.etlms-course-enrolment-box.elementor-align-right .tutor-course-enroll-wrap {
+.etlms-course-enrolment-box.elementor-align-right .tutor-course-enroll-wrap,
+.etlms-course-enrolment-box.elementor-align-right .generate-course-gradebook-btn-wrap,
+.etlms-course-enrolment-box.elementor-align-right .tutor-course-enrolled-wrap {
 	align-items: flex-end;
 }
 .etlms-course-enrolment-box.elementor-align-center .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box.elementor-align-center .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box.elementor-align-center .tutor-course-purchase-box,
 .etlms-course-enrolment-box.elementor-align-center .tutor-course-purchase-box form,
-.etlms-course-enrolment-box.elementor-align-center .tutor-course-enroll-wrap {
+.etlms-course-enrolment-box.elementor-align-center .tutor-course-enroll-wrap,
+.etlms-course-enrolment-box.elementor-align-center .generate-course-gradebook-btn-wrap,
+.etlms-course-enrolment-box.elementor-align-center .tutor-course-enrolled-wrap {
 	align-items: center;
 }
 .etlms-course-enrolment-box.course-enroll-buttons-size-small button,
@@ -447,6 +455,9 @@
 }
 .etlms-review-content .individual-review-rating-wrap {
 	margin-bottom: 8px;
+}
+.etlms-course-reviews .tutor-course-enrolled-review-wrap {
+	margin-top: 25px;
 }
 
 /*course carousel and course list*/
