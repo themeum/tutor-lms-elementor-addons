@@ -10,6 +10,9 @@
 .elementor-widget-container .tutor-single-course-segment {
 	margin-bottom: 0;
 }
+.elementor-widget-container .tutor-wrap {
+	padding-top: 0;
+}
 
 /* Rating */
 .etlms-rating {
@@ -373,8 +376,16 @@
 .etlms-course-curriculum-title {
 	cursor: pointer;
 }
+.etlms-course-curriculum .tutor-course-lessons .tutor-course-lesson h5 i {
+    height: auto;
+    width: auto;
+    line-height: 1.2;
+    margin-right: 10px;
+}
+.etlms-course-curriculum .tutor-course-lessons .tutor-course-lesson h5 i:after {
+	background: none;
+}
 
-/*course topics*/
 #topic-toggle {
 	background: #ccc;
 	color: #fff;

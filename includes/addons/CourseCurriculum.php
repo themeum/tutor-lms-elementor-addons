@@ -507,6 +507,7 @@ class CourseCurriculum extends BaseAddon {
                 ],
                 'selectors' => [
                     $lesson_selector.' i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    $lesson_selector.' .zoom-icon img' => 'width: calc({{SIZE}}{{UNIT}} + 2px);',
                 ],
                 'default'   => [
                     'size' => 18
@@ -742,7 +743,7 @@ class CourseCurriculum extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
-                    '.tutor-course-lesson' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $lesson_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default' => [
                     'top' => 15,

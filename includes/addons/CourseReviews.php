@@ -453,7 +453,7 @@ class CourseReviews extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $reviewer_stars_selector => 'font-size: {{SIZE}}{{UNIT}};',
+                    $reviewer_stars_selector.' i' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
                     'size' => 14

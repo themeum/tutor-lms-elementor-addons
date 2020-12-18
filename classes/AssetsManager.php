@@ -25,8 +25,8 @@ class AssetsManager {
         add_action('elementor/editor/before_enqueue_scripts', [__CLASS__, 'enqueue_editor_scripts']);
 
         /* Enqueue elementor styles and scripts */
-        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue_elementor_styles']);
-        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue_elementor_scripts']);
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue_elementor_styles'], 99);
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue_elementor_scripts'], 99);
     }
 
     /**
