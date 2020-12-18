@@ -266,15 +266,13 @@
 	border: 1px solid #E1EBF0;
 }
 
-
 /*layout css for: course lead info ,categories */
 .elementor-layout-up .etlms-lead-info strong,
 .elementor-layout-up .etlms-single-course-meta-categories a {
 	display: block;
 }
-/*course instructor*/
 
-/*flex layout instructors*/
+/*course instructor*/
 .etlms-single-instructor-wrap {
 	width: 100%;
 }
@@ -293,6 +291,13 @@
 .etlms-single-instructor-wrap .tutor-instructor-right .instructor-name {
 	padding-left: 0;
 	flex: 0 0 30%;
+	font-size: 18px;
+}
+.etlms-single-instructor-wrap .single-instructor-wrap .instructor-name h3 {
+	font-size: 18px;
+}
+.etlms-single-instructor-wrap .instructor-name p {
+	font-size: 16px;
 }
 .elementor-layout-left .etlms-course-instructors-wrap .tutor-instructor-right {
 	flex-direction: row;
@@ -315,6 +320,12 @@
 .elementor-align-center .etlms-single-instructor-bottom {
 	justify-content: center !important;
 	column-gap: 15px;
+}
+.etlms-single-instructor-wrap .instructor-avatar span.tutor-text-avatar {
+	min-width: 10px;
+    min-height: 10px;
+	font-size: calc(48px/2);
+	border-radius: 50%;
 }
 
 /*social share*/
