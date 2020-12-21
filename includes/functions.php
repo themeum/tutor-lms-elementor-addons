@@ -28,8 +28,8 @@ if (!function_exists('camel2dashed')) {
 	}
 }
 
-if (!function_exists('set_course_data')) {
-	function set_course_data() {
+if (!function_exists('setup_course_data')) {
+	function setup_course_data() {
 		global $wpdb, $post;
 		$post_author = get_current_user_id();
 		$course_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts where post_status = 'publish' and post_type = %s and post_author = %d", tutor()->course_post_type, $post_author));
@@ -56,7 +56,7 @@ if (!function_exists('etlms_get_course')) {
 		if ($post->post_type == 'elementor_library') {
 			$is_tutor_template = get_post_meta($post->ID, '_tutor_lms_elementor_template_id', true);
 			if ($is_tutor_template) {
-				return set_course_data();
+				return setup_course_data();
 			}
 		}
 
@@ -65,7 +65,7 @@ if (!function_exists('etlms_get_course')) {
 			if ($post->post_type == $course_post_type && $course_id === $elementor_course_id) {
 				return true;
 			}
-			return set_course_data();
+			return setup_course_data();
 		}
 
 		return false;

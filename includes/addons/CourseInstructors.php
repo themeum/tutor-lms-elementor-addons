@@ -111,8 +111,7 @@ class CourseInstructors extends BaseAddon {
     }
 
     protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-course-instructors';
-        $title_selector = ".etlms-course-instructor-title >h4";
+        $title_selector = ".etlms-course-instructor-title .tutor-segment-title";
 
         /* Title Section */
         $this->start_controls_section(
@@ -141,7 +140,7 @@ class CourseInstructors extends BaseAddon {
             ]
         );
         $this->add_responsive_control(
-            'etlms_heading_gap',
+            'etlms_instructor_heading_gap',
             [
                 'label' => __( 'Gap', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,

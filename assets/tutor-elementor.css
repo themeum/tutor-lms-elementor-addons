@@ -11,9 +11,12 @@
 
 .elementor-widget-container .tutor-single-course-segment {
 	margin-bottom: 0;
+	margin-top: 0;
 }
 .elementor-widget-container .tutor-wrap {
 	padding-top: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 /* Rating */
@@ -388,7 +391,9 @@
 .etlms-course-curriculum .etlms-course-topic {
 	border: 1px solid #E1EBF0;
 }
-
+.etlms-course-curriculum .tutor-course-topics-header {
+	margin-bottom: 0;
+}
 .etlms-course-curriculum-title {
 	cursor: pointer;
 }
@@ -490,10 +495,25 @@
 }
 
 /* reviews skillet theme css override */
+#single-course-ratings {
+	margin-top: 0;
+}
+.single-instructor-wrap {
+	border: 1px solid #e8eff1;
+}
+.single-instructor-wrap .single-instructor-top {
+	border-bottom: 1px solid #e8eff1;
+}
+.tutor-course-reviews-wrap {
+	border: 1px solid #e8eff1;
+    border-radius: 4px;
+	margin-top: 0;
+}
 .etlms-course-reviews .review-time-name p.review-meta {
 	padding-left: 0;
     padding-top: 0;
 }
+
 
 /*course carousel and course list*/
 
