@@ -28,26 +28,46 @@ if (!function_exists('camel2dashed')) {
 	}
 }
 
+if (!function_exists('set_course_data')) {
+	function set_course_data() {
+		global $wpdb, $post;
+		$post_author = get_current_user_id();
+		$course_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts where post_status = 'publish' and post_type = %s and post_author = %d", tutor()->course_post_type, $post_author));
+
+		if ($course_id) {
+			$post = get_post($course_id);
+			setup_postdata($post);
+			return true;
+		}
+		return false;
+	}
+}
+
 if (!function_exists('etlms_get_course')) {
 	function etlms_get_course() {
-		global $wpdb, $post;
-		$course_id =  $post->ID;
+		global $post;
+		$course_id = $post->ID;
 		$course_post_type = tutor()->course_post_type;
-		$is_editor = \Elementor\Plugin::instance()->editor->is_edit_mode();
-		if ($is_editor) {
+
+		if (is_single() && $post->post_type == $course_post_type) {
+			return true;
+		}
+
+		if ($post->post_type == 'elementor_library') {
+			$is_tutor_template = get_post_meta($post->ID, '_tutor_lms_elementor_template_id', true);
+			if ($is_tutor_template) {
+				return set_course_data();
+			}
+		}
+
+		if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
 			$elementor_course_id = \Elementor\Plugin::instance()->editor->get_post_id();
 			if ($post->post_type == $course_post_type && $course_id === $elementor_course_id) {
 				return true;
 			}
-			$post_author = get_current_user_id();
-			$course_id =(int) $wpdb->get_var("SELECT ID FROM {$wpdb -> posts} WHERE post_type = {$course_post_type} AND post_author {$post_author} AND post_status = 'publish' ORDER BY ID DESC");
-			$course = get_post($course_id);
-			setup_postdata( $course );
-			return true;
+			return set_course_data();
 		}
-		if (is_single() && $post->post_type == $course_post_type) {
-			return true;
-		}
+
 		return false;
 	}
 }

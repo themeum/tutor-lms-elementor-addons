@@ -261,7 +261,7 @@
 }
 .etlms-course-enrolment-box.course-enroll-buttons-width-fill button,
 .etlms-course-enrolment-box.course-enroll-buttons-width-fill .tutor-button {
-	width: 100%;
+	width: 100% !important;
 	align-items: center;
 	justify-content: center;
 }
