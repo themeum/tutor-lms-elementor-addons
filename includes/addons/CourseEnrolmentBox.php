@@ -39,10 +39,10 @@ class CourseEnrolmentBox extends BaseAddon {
                 'label'   => __('Select Mode', 'tutor-elementor-addons'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
-                    'enrolment_box' => 'Enrolment Box', 
-                    'enrolled_box' => 'Enrolled Box',
+                    'enrolment-box' => 'Enrolment Box', 
+                    'enrolled-box' => 'Enrolled Box',
                 ],
-                'default' => 'enrolment_box',
+                'default' => 'enrolment-box',
             ]
         );
         $this->end_controls_section();
@@ -1072,16 +1072,21 @@ class CourseEnrolmentBox extends BaseAddon {
 
     protected function render($instance = []) {
         $settings = $this->get_settings_for_display();
-        $edit_mode = $settings['course_enrolment_edit_mode'];
-        $editor_mode = \Elementor\Plugin::instance()->editor->is_edit_mode();
         $is_enrolled = tutils()->is_enrolled();
         $is_administrator = current_user_can('administrator');
         $is_instructor = tutor_utils()->is_instructor_of_this_course();
         $course_content_access = (bool) get_tutor_option('course_content_access_for_ia');
-        if (($editor_mode && $edit_mode == 'enrolled_box') || $is_enrolled || ($course_content_access && ($is_administrator || $is_instructor))) {
-            include_once etlms_get_template('course/enrolled-box');
+        $editor_mode = $settings['course_enrolment_edit_mode'];
+        $template = 'course/enrolment-box';
+        if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+            $template = $editor_mode;
         } else {
-            include_once etlms_get_template('course/enrolment-box');
+            if ($is_enrolled || ($course_content_access && ($is_administrator || $is_instructor))) {
+                $template = 'course/enrolled-box';
+            } else {
+                $template = 'course/enrolment-box';
+            }
         }
+        include_once etlms_get_template('course/'.$template);
     }
 }
