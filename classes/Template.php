@@ -38,7 +38,6 @@ class Template {
         add_action('save_post', [$this, 'elementor_template_new_post'], 99, 2);
 
         add_action('template_redirect', [$this, 'is_tutor_single_page']);
-        add_action('post_submitbox_misc_actions', [$this, 'course_template_mark_checkbox']);
     }
 
     /**
@@ -189,26 +188,5 @@ class Template {
         global $wpdb;
         $wpdb->delete($wpdb->postmeta, array('meta_key' => '_tutor_lms_elementor_template_id'));
         update_post_meta($post_ID, '_tutor_lms_elementor_template_id', time());
-    }
-
-    /**
-     * Page edit callback for create sidebar option
-     * @param $post
-     * @since v.1.0.0
-     */
-    public function course_template_mark_checkbox($post) {
-        if ($post->post_type !== 'elementor_library') {
-            //return;
-        }
-        $is_elementor_template = (bool) get_post_meta($post->ID, '_tutor_lms_elementor_template_id', true); ?>
-
-        <div class="misc-pub-section misc-pub-mark-course-single-template">
-            <label>
-                Tutor LMS :
-                <input type="checkbox" name="tutor_lms_single_course" <?php checked($is_elementor_template, true) ?>>
-                <span class="checkbox-title"><b>Single Course Template</b></span>
-            </label>
-        </div>
-<?php
     }
 }

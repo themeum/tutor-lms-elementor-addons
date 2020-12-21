@@ -1,9 +1,11 @@
 /* tutor segment */
 .elementor-widget-container .tutor-segment-title {
 	font-size: 20px;
+	margin: 0;
 }
 
 .elementor-widget-container .etlms-lead-info label {
+	display: inline;
 	margin-bottom: 0;
 }
 
@@ -22,6 +24,7 @@
 .etlms-course-title h2 {
 	font-size: 30px;
 	font-weight: bold;
+	margin: 0;
 }
 
 /* Price */
@@ -151,6 +154,7 @@
 	font-weight: 500;
 	margin-bottom: 13px;
 	color: #000;
+	margin: 0;
 }
 .etlms-course-specifications ul {
 	list-style: none;
@@ -163,6 +167,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	margin: 0;
 }
 .etlms-course-specifications ul li i {
 	color: var(--tutor-primary-color);
@@ -414,6 +419,7 @@
 	justify-content: flex-start;
 	align-items: center;
 	column-gap: 3px;
+	margin: 0;
 }
 .etlms-topic-icon-align-right .etlms-course-curriculum-title > h4 {
 	display: flex;
@@ -471,6 +477,7 @@
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 1;
+	margin: 0;
 }
 .etlms-review-individual-item .etlms-review-left .review-meta{
 	font-size: 13px;
@@ -480,6 +487,12 @@
 }
 .etlms-course-reviews .tutor-course-enrolled-review-wrap {
 	margin-top: 25px;
+}
+
+/* reviews skillet theme css override */
+.etlms-course-reviews .review-time-name p.review-meta {
+	padding-left: 0;
+    padding-top: 0;
 }
 
 /*course carousel and course list*/
