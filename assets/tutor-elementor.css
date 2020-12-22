@@ -124,6 +124,7 @@
 }
 .etlms-progress-outside .etlms-progress-percent {
 	margin-left: 10px;
+	flex-basis: 8%;
 }
 .etlms-progress-ontop {
 	display: flex;
@@ -348,6 +349,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+}
+.etlms-social-label {
+	margin-right: 5px;
 }
 .etlms-social-share-wrap .s_facebook {
 	color: #fff;

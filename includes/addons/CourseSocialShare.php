@@ -251,7 +251,7 @@ class CourseSocialShare extends BaseAddon {
 
         //for rounded shape
         $border_radius['condition'] = ['course_share_icon_shape' => ['rounded']];
-        $border_radius['default'] = ['top' => 10, 'right' => 10, 'bottom' => 10, 'left' => 10, 'unit' => 'px', 'isLinked' => true];
+        $border_radius['default'] = ['top' => 5, 'right' => 5, 'bottom' => 5, 'left' => 5, 'unit' => 'px', 'isLinked' => true];
         $this->add_control(
             'course_share_border_radius_rounded', $border_radius
         );
