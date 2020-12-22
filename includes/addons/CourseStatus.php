@@ -73,7 +73,8 @@ class CourseStatus extends BaseAddon {
     
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .etlms-course-status';
-        $title_selector = $selector.' .etlms-segment-title';
+        $title_selector = $selector.' .tutor-segment-title';
+        $progress_bar_wrap = $selector.' .etlms-progress-bar-wrap';
         $progress_bar_background = $selector.' .etlms-progress-bar';
         $progress_bar_filled = $selector.' .etlms-progress-filled';
         $progress_percent = $selector.' .etlms-progress-percent h4';
@@ -118,6 +119,7 @@ class CourseStatus extends BaseAddon {
                 ],
                 'selectors' => [
                     $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '.etlms-progress-ontop .etlms-progress-percent' => 'top: calc(-{{SIZE}}{{UNIT}} - 20px);',
                 ],
                 'default' => [
 					'size' => 15,
@@ -164,8 +166,8 @@ class CourseStatus extends BaseAddon {
                 'size_units' =>['px'],
                 'range' =>[
                     'px'=> [
-                        'min' =>5,
-                        'max' => 100,
+                        'min' => 6,
+                        'max' => 64,
                         'step' => 1
                     ]
                 ],
@@ -174,8 +176,7 @@ class CourseStatus extends BaseAddon {
                     'unit' => 'px'
                 ],
                 'selectors' => [
-					$progress_bar_background => 'height: {{SIZE}}{{UNIT}}',
-                    $progress_bar_filled => 'height: {{SIZE}}{{UNIT}}'
+					$progress_bar_wrap => 'height: {{SIZE}}{{UNIT}}'
 				]
             ]
         );        

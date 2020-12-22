@@ -1027,7 +1027,7 @@ class CourseEnrolmentBox extends BaseAddon {
                     $enrolled_info_icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-                    'size' => 18
+                    'size' => 16
                 ]
             ]
         );

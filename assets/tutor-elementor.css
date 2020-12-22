@@ -90,18 +90,23 @@
 }
 .etlms-progress-bar-wrap {
 	position: relative;
+	height: 25px;
 }
 .etlms-progress-bar {
 	width: 100%;
 	background-color: #eeeeee;
-	height: 25px;
+	height: 100%;
 	border-radius: 10px;
 }
 .etlms-progress-filled {
 	background-color: #66cd74;
-	height: 25px;
+	height: 100%;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
+}
+.etlms-progress-percent h4 {
+	margin: 0;
+	font-size: 18px;
 }
 .etlms-progress-outside {
 	display: flex;
@@ -114,8 +119,8 @@
 .etlms-progress-inside .etlms-progress-percent {
 	position: absolute;
 	height: 100%;
-	top: 5px;
 	left: 50%;
+	bottom: 0;
 }
 .etlms-progress-outside .etlms-progress-percent {
 	margin-left: 10px;
@@ -127,7 +132,6 @@
 .etlms-progress-ontop .etlms-progress-percent {
 	position: absolute;
 	right: 0;
-	top: -32px;
 }
 
 /* Thumbnail */
@@ -209,6 +213,9 @@
 }
 .etlms-course-enrolment-box .tutor-course-enrolled-wrap p {
 	display: inline-block;
+}
+.etlms-course-enrolment-box .tutor-course-enrolled-wrap p i {
+	display: contents;
 }
 .etlms-course-enrolment-box .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box .tutor-lead-info-btn-group form,
