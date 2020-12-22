@@ -1082,9 +1082,9 @@ class CourseEnrolmentBox extends BaseAddon {
             $template = $editor_mode;
         } else {
             if ($is_enrolled || ($course_content_access && ($is_administrator || $is_instructor))) {
-                $template = 'course/enrolled-box';
+                $template = 'enrolled-box';
             } else {
-                $template = 'course/enrolment-box';
+                $template = 'enrolment-box';
             }
         }
         include_once etlms_get_template('course/'.$template);
