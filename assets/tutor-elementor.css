@@ -171,14 +171,15 @@
 }
 .etlms-course-specifications ul li {
 	position: relative;
-	line-height: 30px;
+	line-height: 1.6;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: flex-start;
 	margin: 0;
 }
 .etlms-course-specifications ul li i {
 	color: var(--tutor-primary-color);
+	line-height: 1.6;
 }
 .etlms-author-specifications-inline .etlms-course-specifications ul li {
 	display: inline-block;

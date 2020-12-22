@@ -272,7 +272,7 @@ class CourseRequirements extends BaseAddon {
                     $text_selector => 'padding-left: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-                    'size' => 5
+                    'size' => 7
                 ]
             ]
         );
