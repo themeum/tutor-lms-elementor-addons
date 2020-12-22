@@ -1,30 +1,22 @@
-<?php
+<?php do_action('tutor_course/single/before/benefits'); ?>
 
-do_action('tutor_course/single/before/benefits');
-
-$benefits = tutor_course_benefits();
-
-if ( empty($benefits)){
-	return;
-}
-
-if (is_array($benefits) && count($benefits)){
-	?>
-
-	<div class="etlms-course-specifications etlms-course-benefits">
-        <h3><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h3>
-		<ul class="etlms-course-specification-items">
-			<?php
+<div class="etlms-course-specifications etlms-course-benefits">
+	<h3><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h3>
+	<ul class="etlms-course-specification-items">
+		<?php
+		$benefits = tutor_course_benefits();
+		if (is_array($benefits) && count($benefits)) {
 			foreach ($benefits as $benefit) {
 				echo "<li>";
-				Elementor\Icons_Manager::render_icon( $settings['course_benefits_list_icon'], [ 'aria-hidden' => 'true' ] );
+				Elementor\Icons_Manager::render_icon($settings['course_benefits_list_icon'], ['aria-hidden' => 'true']);
 				echo "<span>{$benefit}</span></li>";
 			}
-			?>
-		</ul>
-	</div>
-
-<?php } ?>
+		} else if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+			echo __('Please add data from the course editor', 'tutor-elementor-addons');
+		}
+		?>
+	</ul>
+</div>
 
 <?php do_action('tutor_course/single/after/benefits'); ?>
 

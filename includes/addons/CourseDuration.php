@@ -153,9 +153,9 @@ class CourseDuration extends BaseAddon {
         $disable_course_duration = get_tutor_option('disable_course_duration');
         if (!$disable_course_duration) {
             $course = etlms_get_course();
-            $course_duration = 0;
             if ($course) {
                 $course_duration = get_tutor_course_duration_context();
+                $course_duration = (!empty($course_duration)) ? $course_duration : 0;
                 $markup = '<div class="etlms-lead-info etlms-course-duration">';
                 $markup .= ($settings['course_duration_label']) ? '<label>'.$settings['course_duration_label'].'</label>' : '';
                 $markup .= '<strong>'. $course_duration .'</strong>';

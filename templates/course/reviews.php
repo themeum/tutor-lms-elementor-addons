@@ -5,11 +5,6 @@ $disable = get_tutor_option('disable_course_review');
 if ($disable){
     return;
 }
-
-$reviews = tutor_utils()->get_course_reviews();
-if ( ! is_array($reviews) || ! count($reviews)){
-	return;
-}
 ?>
 
 <div class="etlms-course-reviews">
@@ -17,6 +12,11 @@ if ( ! is_array($reviews) || ! count($reviews)){
         <h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
     </div>
     <div class="tutor-course-reviews-wrap">
+
+    <?php
+    $reviews = tutor_utils()->get_course_reviews();
+    if (is_array($reviews) && count($reviews)) { ?>
+
         <div class="tutor-course-student-rating-wrap">
             <div class="course-avg-rating-wrap">
                 <div class="tutor-row tutor-align-items-center">
@@ -93,6 +93,13 @@ if ( ! is_array($reviews) || ! count($reviews)){
 			}
 			?>
         </div>
+
+        <?php
+        } else if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+            echo __('Course review not found', 'tutor-elementor-addons');
+        }
+        ?>
+
     </div>
 </div>
 

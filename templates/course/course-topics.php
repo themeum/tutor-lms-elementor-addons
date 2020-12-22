@@ -49,31 +49,30 @@ if (!defined('ABSPATH'))
 
 		<?php do_action('tutor_course/single/before/topics'); ?>
 
-		<?php if ($topics->have_posts()) { ?>
-			<div class="tutor-course-topics-wrap">
-				<div class="tutor-course-topics-header">
-					<div class="tutor-course-topics-header-left">
-						<h4 class="tutor-segment-title"><?php _e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
-					</div>
-					<div class="tutor-course-topics-header-right">
-						<?php
-						$tutor_lesson_count = tutor_utils()->get_lesson_count_by_course($course_id);
-						$tutor_course_duration = get_tutor_course_duration_context($course_id);
-
-						if ($tutor_lesson_count) {
-							echo "<span> $tutor_lesson_count";
-							_e(' Lessons', 'tutor-elementor-addons');
-							echo "</span>";
-						}
-						if ($tutor_course_duration) {
-							echo "<span>$tutor_course_duration</span>";
-						}
-						?>
-					</div>
+		<div class="tutor-course-topics-wrap">
+			<div class="tutor-course-topics-header">
+				<div class="tutor-course-topics-header-left">
+					<h4 class="tutor-segment-title"><?php _e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
 				</div>
-				<div class="tutor-course-topics-contents">
+				<div class="tutor-course-topics-header-right">
 					<?php
+					$tutor_lesson_count = tutor_utils()->get_lesson_count_by_course($course_id);
+					$tutor_course_duration = get_tutor_course_duration_context($course_id);
 
+					if ($tutor_lesson_count) {
+						echo "<span> $tutor_lesson_count";
+						_e(' Lessons', 'tutor-elementor-addons');
+						echo "</span>";
+					}
+					if ($tutor_course_duration) {
+						echo "<span>$tutor_course_duration</span>";
+					}
+					?>
+				</div>
+			</div>
+			<div class="tutor-course-topics-contents">
+				<?php
+				if ($topics->have_posts()) {
 					$index = 0;
 
 					if ($topics->have_posts()) {
@@ -81,7 +80,7 @@ if (!defined('ABSPATH'))
 							$topics->the_post();
 							$topic_summery = get_the_content();
 							$index++;
-					?>
+						?>
 
 							<div class="etlms-course-topic <?php if ($index == 1) echo "etlms-topic-active"; ?>">
 								<div class="etlms-course-curriculum-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
@@ -101,7 +100,7 @@ if (!defined('ABSPATH'))
 									<?php
 									$lessons = tutor_utils()->get_course_contents_by_topic(get_the_ID(), -1);
 
-									if ($lessons->have_posts()){
+									if ($lessons->have_posts()) {
 										while ($lessons->have_posts()){ $lessons->the_post();
 											global $post;
 
@@ -179,10 +178,12 @@ if (!defined('ABSPATH'))
 						}
 						wp_reset_postdata();
 					}
-					?>
-				</div>
+				} else if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+					echo __('Please add data from the course editor', 'tutor-elementor-addons');
+				}
+				?>
 			</div>
-		<?php } ?>
+		</div>
 
 		<?php do_action('tutor_course/single/after/topics');
 
