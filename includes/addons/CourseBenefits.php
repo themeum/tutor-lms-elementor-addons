@@ -161,7 +161,7 @@ class CourseBenefits extends BaseAddon {
                     '.etlms-author-specifications-inline '.$list_selector.':not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
-                    'size' => 5
+                    'size' => 15
                 ]
             ]
         );
