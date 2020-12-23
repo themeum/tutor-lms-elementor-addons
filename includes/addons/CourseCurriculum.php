@@ -699,7 +699,7 @@ class CourseCurriculum extends BaseAddon {
                         'label'     => __('Border Color', 'tutor-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
-                            $lesson_selector => 'border-color: {{VALUE}}',
+                            $lesson_selector.':hover' => 'border-color: {{VALUE}}',
                         ],
                         'default'   => '#E1EBF0'
                     ]

@@ -152,7 +152,7 @@ class CourseInstructors extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    $title_selector => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
                 ],
                 'default' => [
 					'size' => 25,
