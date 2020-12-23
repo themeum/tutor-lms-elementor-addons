@@ -149,7 +149,7 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: includes/addons/CourseAbout.php:82, includes/addons/CourseAbout.php:132, includes/addons/CourseAuthor.php:204, includes/addons/CourseAuthor.php:233, includes/addons/CourseBenefits.php:113, includes/addons/CourseBenefits.php:283, includes/addons/CourseCarousel.php:1228, includes/addons/CourseCarousel.php:1286, includes/addons/CourseCarousel.php:1323, includes/addons/CourseCarousel.php:1392, includes/addons/CourseCarousel.php:1477, includes/addons/CourseCarousel.php:1506, includes/addons/CourseCategories.php:114, includes/addons/CourseCategories.php:141, includes/addons/CourseCurriculum.php:248, includes/addons/CourseCurriculum.php:522, includes/addons/CourseDescription.php:70, includes/addons/CourseDescription.php:118, includes/addons/CourseDuration.php:115, includes/addons/CourseDuration.php:144, includes/addons/CourseEnrolmentBox.php:167, includes/addons/CourseEnrolmentBox.php:258, includes/addons/CourseEnrolmentBox.php:348, includes/addons/CourseEnrolmentBox.php:431, includes/addons/CourseEnrolmentBox.php:520, includes/addons/CourseEnrolmentBox.php:603, includes/addons/CourseEnrolmentBox.php:692, includes/addons/CourseEnrolmentBox.php:775, includes/addons/CourseEnrolmentBox.php:864, includes/addons/CourseEnrolmentBox.php:947, includes/addons/CourseInstructors.php:138, includes/addons/CourseLastUpdate.php:116, includes/addons/CourseLastUpdate.php:145, includes/addons/CourseLevel.php:116, includes/addons/CourseLevel.php:145, includes/addons/CourseList.php:1378, includes/addons/CourseList.php:1436, includes/addons/CourseList.php:1473, includes/addons/CourseList.php:1542, includes/addons/CourseList.php:1590, includes/addons/CourseList.php:1866, includes/addons/CourseList.php:1895, includes/addons/CourseMaterials.php:113, includes/addons/CourseMaterials.php:283, includes/addons/CoursePrice.php:67, includes/addons/CourseRating.php:92, includes/addons/CourseRequirements.php:113, includes/addons/CourseRequirements.php:283, includes/addons/CourseReviews.php:72, includes/addons/CourseSocialShare.php:101, includes/addons/CourseStatus.php:104, includes/addons/CourseStatus.php:237, includes/addons/CourseTags.php:73, includes/addons/CourseTags.php:134, includes/addons/CourseTags.php:238, includes/addons/CourseTargetAudience.php:113, includes/addons/CourseTargetAudience.php:283, includes/addons/CourseTitle.php:84, includes/addons/CourseTotalEnrolled.php:116, includes/addons/CourseTotalEnrolled.php:145
+#: includes/addons/CourseAbout.php:82, includes/addons/CourseAbout.php:132, includes/addons/CourseAuthor.php:204, includes/addons/CourseAuthor.php:233, includes/addons/CourseBenefits.php:113, includes/addons/CourseBenefits.php:283, includes/addons/CourseCarousel.php:1228, includes/addons/CourseCarousel.php:1286, includes/addons/CourseCarousel.php:1323, includes/addons/CourseCarousel.php:1392, includes/addons/CourseCarousel.php:1477, includes/addons/CourseCarousel.php:1506, includes/addons/CourseCategories.php:114, includes/addons/CourseCategories.php:141, includes/addons/CourseCurriculum.php:248, includes/addons/CourseCurriculum.php:522, includes/addons/CourseDescription.php:70, includes/addons/CourseDescription.php:118, includes/addons/CourseDuration.php:115, includes/addons/CourseDuration.php:144, includes/addons/CourseEnrolmentBox.php:167, includes/addons/CourseEnrolmentBox.php:250, includes/addons/CourseEnrolmentBox.php:340, includes/addons/CourseEnrolmentBox.php:423, includes/addons/CourseEnrolmentBox.php:512, includes/addons/CourseEnrolmentBox.php:595, includes/addons/CourseEnrolmentBox.php:684, includes/addons/CourseEnrolmentBox.php:767, includes/addons/CourseEnrolmentBox.php:856, includes/addons/CourseEnrolmentBox.php:939, includes/addons/CourseInstructors.php:138, includes/addons/CourseLastUpdate.php:116, includes/addons/CourseLastUpdate.php:145, includes/addons/CourseLevel.php:116, includes/addons/CourseLevel.php:145, includes/addons/CourseList.php:1378, includes/addons/CourseList.php:1436, includes/addons/CourseList.php:1473, includes/addons/CourseList.php:1542, includes/addons/CourseList.php:1590, includes/addons/CourseList.php:1866, includes/addons/CourseList.php:1895, includes/addons/CourseMaterials.php:113, includes/addons/CourseMaterials.php:283, includes/addons/CoursePrice.php:67, includes/addons/CourseRating.php:92, includes/addons/CourseRequirements.php:113, includes/addons/CourseRequirements.php:283, includes/addons/CourseReviews.php:72, includes/addons/CourseSocialShare.php:101, includes/addons/CourseStatus.php:104, includes/addons/CourseStatus.php:237, includes/addons/CourseTags.php:73, includes/addons/CourseTags.php:134, includes/addons/CourseTags.php:238, includes/addons/CourseTargetAudience.php:113, includes/addons/CourseTargetAudience.php:283, includes/addons/CourseTitle.php:84, includes/addons/CourseTotalEnrolled.php:116, includes/addons/CourseTotalEnrolled.php:145
 msgid "Typography"
 msgstr ""
 
@@ -159,6 +159,10 @@ msgstr ""
 
 #: includes/addons/CourseAbout.php:114, includes/addons/CourseDescription.php:100
 msgid "Paragraph"
+msgstr ""
+
+#: includes/addons/CourseAbout.php:144
+msgid "Please enable course about from tutor settings"
 msgstr ""
 
 #: includes/addons/CourseAuthor.php:33, includes/addons/CourseBenefits.php:29, includes/addons/CourseCategories.php:32, includes/addons/CourseCurriculum.php:47, includes/addons/CourseDuration.php:31, includes/addons/CourseLastUpdate.php:31, includes/addons/CourseLevel.php:31, includes/addons/CourseMaterials.php:29, includes/addons/CoursePrice.php:28, includes/addons/CourseRating.php:30, includes/addons/CourseRequirements.php:29, includes/addons/CourseTargetAudience.php:29, includes/addons/CourseTitle.php:30, includes/addons/CourseTotalEnrolled.php:31
@@ -193,15 +197,15 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: includes/addons/CourseAuthor.php:145, includes/addons/CourseBenefits.php:172, includes/addons/CourseCarousel.php:563, includes/addons/CourseCarousel.php:574, includes/addons/CourseCarousel.php:678, includes/addons/CourseCarousel.php:689, includes/addons/CourseEnrolmentBox.php:186, includes/addons/CourseEnrolmentBox.php:277, includes/addons/CourseEnrolmentBox.php:367, includes/addons/CourseEnrolmentBox.php:450, includes/addons/CourseEnrolmentBox.php:539, includes/addons/CourseEnrolmentBox.php:622, includes/addons/CourseEnrolmentBox.php:711, includes/addons/CourseEnrolmentBox.php:794, includes/addons/CourseEnrolmentBox.php:883, includes/addons/CourseEnrolmentBox.php:966, includes/addons/CourseList.php:687, includes/addons/CourseList.php:698, includes/addons/CourseList.php:799, includes/addons/CourseList.php:811, includes/addons/CourseList.php:1645, includes/addons/CourseList.php:1690, includes/addons/CourseList.php:1735, includes/addons/CourseMaterials.php:172, includes/addons/CourseRequirements.php:172, includes/addons/CourseTags.php:179, includes/addons/CourseTags.php:282, includes/addons/CourseTargetAudience.php:172
+#: includes/addons/CourseAuthor.php:145, includes/addons/CourseBenefits.php:172, includes/addons/CourseCarousel.php:563, includes/addons/CourseCarousel.php:574, includes/addons/CourseCarousel.php:678, includes/addons/CourseCarousel.php:689, includes/addons/CourseEnrolmentBox.php:186, includes/addons/CourseEnrolmentBox.php:269, includes/addons/CourseEnrolmentBox.php:359, includes/addons/CourseEnrolmentBox.php:442, includes/addons/CourseEnrolmentBox.php:531, includes/addons/CourseEnrolmentBox.php:614, includes/addons/CourseEnrolmentBox.php:703, includes/addons/CourseEnrolmentBox.php:786, includes/addons/CourseEnrolmentBox.php:875, includes/addons/CourseEnrolmentBox.php:958, includes/addons/CourseList.php:687, includes/addons/CourseList.php:698, includes/addons/CourseList.php:799, includes/addons/CourseList.php:811, includes/addons/CourseList.php:1645, includes/addons/CourseList.php:1690, includes/addons/CourseList.php:1735, includes/addons/CourseMaterials.php:172, includes/addons/CourseRequirements.php:172, includes/addons/CourseTags.php:179, includes/addons/CourseTags.php:282, includes/addons/CourseTargetAudience.php:172
 msgid "Border"
 msgstr ""
 
-#: includes/addons/CourseAuthor.php:153, includes/addons/CourseBenefits.php:179, includes/addons/CourseCarousel.php:585, includes/addons/CourseCarousel.php:604, includes/addons/CourseCarousel.php:623, includes/addons/CourseCarousel.php:700, includes/addons/CourseCarousel.php:720, includes/addons/CourseCarousel.php:739, includes/addons/CourseCarousel.php:1172, includes/addons/CourseCarousel.php:1686, includes/addons/CourseCurriculum.php:333, includes/addons/CourseCurriculum.php:405, includes/addons/CourseCurriculum.php:469, includes/addons/CourseEnrolmentBox.php:193, includes/addons/CourseEnrolmentBox.php:284, includes/addons/CourseEnrolmentBox.php:374, includes/addons/CourseEnrolmentBox.php:457, includes/addons/CourseEnrolmentBox.php:546, includes/addons/CourseEnrolmentBox.php:629, includes/addons/CourseEnrolmentBox.php:718, includes/addons/CourseEnrolmentBox.php:801, includes/addons/CourseEnrolmentBox.php:890, includes/addons/CourseEnrolmentBox.php:973, includes/addons/CourseInstructors.php:220, includes/addons/CourseList.php:709, includes/addons/CourseList.php:728, includes/addons/CourseList.php:747, includes/addons/CourseList.php:822, includes/addons/CourseList.php:841, includes/addons/CourseList.php:860, includes/addons/CourseList.php:1322, includes/addons/CourseList.php:1764, includes/addons/CourseList.php:2075, includes/addons/CourseMaterials.php:179, includes/addons/CourseRequirements.php:179, includes/addons/CourseReviews.php:372, includes/addons/CourseSocialShare.php:230, includes/addons/CourseStatus.php:187, includes/addons/CourseTags.php:187, includes/addons/CourseTags.php:290, includes/addons/CourseTargetAudience.php:179, includes/addons/CourseThumbnail.php:63, includes/addons/CourseThumbnail.php:112
+#: includes/addons/CourseAuthor.php:153, includes/addons/CourseBenefits.php:179, includes/addons/CourseCarousel.php:585, includes/addons/CourseCarousel.php:604, includes/addons/CourseCarousel.php:623, includes/addons/CourseCarousel.php:700, includes/addons/CourseCarousel.php:720, includes/addons/CourseCarousel.php:739, includes/addons/CourseCarousel.php:1172, includes/addons/CourseCarousel.php:1686, includes/addons/CourseCurriculum.php:333, includes/addons/CourseCurriculum.php:405, includes/addons/CourseCurriculum.php:469, includes/addons/CourseEnrolmentBox.php:193, includes/addons/CourseEnrolmentBox.php:276, includes/addons/CourseEnrolmentBox.php:366, includes/addons/CourseEnrolmentBox.php:449, includes/addons/CourseEnrolmentBox.php:538, includes/addons/CourseEnrolmentBox.php:621, includes/addons/CourseEnrolmentBox.php:710, includes/addons/CourseEnrolmentBox.php:793, includes/addons/CourseEnrolmentBox.php:882, includes/addons/CourseEnrolmentBox.php:965, includes/addons/CourseInstructors.php:220, includes/addons/CourseList.php:709, includes/addons/CourseList.php:728, includes/addons/CourseList.php:747, includes/addons/CourseList.php:822, includes/addons/CourseList.php:841, includes/addons/CourseList.php:860, includes/addons/CourseList.php:1322, includes/addons/CourseList.php:1764, includes/addons/CourseList.php:2075, includes/addons/CourseMaterials.php:179, includes/addons/CourseRequirements.php:179, includes/addons/CourseReviews.php:372, includes/addons/CourseSocialShare.php:230, includes/addons/CourseStatus.php:187, includes/addons/CourseTags.php:187, includes/addons/CourseTags.php:290, includes/addons/CourseTargetAudience.php:179, includes/addons/CourseThumbnail.php:63, includes/addons/CourseThumbnail.php:112
 msgid "Border Radius"
 msgstr ""
 
-#: includes/addons/CourseAuthor.php:174, includes/addons/CourseCarousel.php:644, includes/addons/CourseCarousel.php:657, includes/addons/CourseCarousel.php:760, includes/addons/CourseCarousel.php:772, includes/addons/CourseCarousel.php:1698, includes/addons/CourseEnrolmentBox.php:220, includes/addons/CourseEnrolmentBox.php:295, includes/addons/CourseEnrolmentBox.php:393, includes/addons/CourseEnrolmentBox.php:468, includes/addons/CourseEnrolmentBox.php:565, includes/addons/CourseEnrolmentBox.php:640, includes/addons/CourseEnrolmentBox.php:737, includes/addons/CourseEnrolmentBox.php:812, includes/addons/CourseEnrolmentBox.php:909, includes/addons/CourseEnrolmentBox.php:984, includes/addons/CourseList.php:767, includes/addons/CourseList.php:779, includes/addons/CourseList.php:880, includes/addons/CourseList.php:892, includes/addons/CourseList.php:977, includes/addons/CourseList.php:1755, includes/addons/CourseList.php:2087, includes/addons/CourseTags.php:208, includes/addons/CourseTags.php:302, includes/addons/CourseThumbnail.php:76, includes/addons/CourseThumbnail.php:133
+#: includes/addons/CourseAuthor.php:174, includes/addons/CourseCarousel.php:644, includes/addons/CourseCarousel.php:657, includes/addons/CourseCarousel.php:760, includes/addons/CourseCarousel.php:772, includes/addons/CourseCarousel.php:1698, includes/addons/CourseEnrolmentBox.php:212, includes/addons/CourseEnrolmentBox.php:287, includes/addons/CourseEnrolmentBox.php:385, includes/addons/CourseEnrolmentBox.php:460, includes/addons/CourseEnrolmentBox.php:557, includes/addons/CourseEnrolmentBox.php:632, includes/addons/CourseEnrolmentBox.php:729, includes/addons/CourseEnrolmentBox.php:804, includes/addons/CourseEnrolmentBox.php:901, includes/addons/CourseEnrolmentBox.php:976, includes/addons/CourseList.php:767, includes/addons/CourseList.php:779, includes/addons/CourseList.php:880, includes/addons/CourseList.php:892, includes/addons/CourseList.php:977, includes/addons/CourseList.php:1755, includes/addons/CourseList.php:2087, includes/addons/CourseTags.php:208, includes/addons/CourseTags.php:302, includes/addons/CourseThumbnail.php:76, includes/addons/CourseThumbnail.php:133
 msgid "Box Shadow"
 msgstr ""
 
@@ -211,6 +215,10 @@ msgstr ""
 
 #: includes/addons/CourseAuthor.php:214
 msgid "Name"
+msgstr ""
+
+#: includes/addons/CourseAuthor.php:246
+msgid "Please enable course author from tutor settings"
 msgstr ""
 
 #: includes/addons/CourseBenefits.php:38
@@ -241,7 +249,7 @@ msgstr ""
 msgid "Space Between"
 msgstr ""
 
-#: includes/addons/CourseBenefits.php:190, includes/addons/CourseCarousel.php:789, includes/addons/CourseCarousel.php:1449, includes/addons/CourseCarousel.php:1713, includes/addons/CourseEnrolmentBox.php:174, includes/addons/CourseEnrolmentBox.php:265, includes/addons/CourseEnrolmentBox.php:355, includes/addons/CourseEnrolmentBox.php:438, includes/addons/CourseEnrolmentBox.php:527, includes/addons/CourseEnrolmentBox.php:610, includes/addons/CourseEnrolmentBox.php:699, includes/addons/CourseEnrolmentBox.php:782, includes/addons/CourseEnrolmentBox.php:871, includes/addons/CourseEnrolmentBox.php:954, includes/addons/CourseList.php:909, includes/addons/CourseList.php:1776, includes/addons/CourseList.php:1838, includes/addons/CourseList.php:2102, includes/addons/CourseMaterials.php:190, includes/addons/CourseRequirements.php:190, includes/addons/CourseSocialShare.php:181, includes/addons/CourseTags.php:154, includes/addons/CourseTags.php:257, includes/addons/CourseTargetAudience.php:190
+#: includes/addons/CourseBenefits.php:190, includes/addons/CourseCarousel.php:789, includes/addons/CourseCarousel.php:1449, includes/addons/CourseCarousel.php:1713, includes/addons/CourseEnrolmentBox.php:174, includes/addons/CourseEnrolmentBox.php:257, includes/addons/CourseEnrolmentBox.php:347, includes/addons/CourseEnrolmentBox.php:430, includes/addons/CourseEnrolmentBox.php:519, includes/addons/CourseEnrolmentBox.php:602, includes/addons/CourseEnrolmentBox.php:691, includes/addons/CourseEnrolmentBox.php:774, includes/addons/CourseEnrolmentBox.php:863, includes/addons/CourseEnrolmentBox.php:946, includes/addons/CourseList.php:909, includes/addons/CourseList.php:1776, includes/addons/CourseList.php:1838, includes/addons/CourseList.php:2102, includes/addons/CourseMaterials.php:190, includes/addons/CourseRequirements.php:190, includes/addons/CourseSocialShare.php:181, includes/addons/CourseTags.php:154, includes/addons/CourseTags.php:257, includes/addons/CourseTargetAudience.php:190
 msgid "Padding"
 msgstr ""
 
@@ -255,6 +263,10 @@ msgstr ""
 
 #: includes/addons/CourseBenefits.php:262, includes/addons/CourseCurriculum.php:257, includes/addons/CourseMaterials.php:262, includes/addons/CourseRequirements.php:262, includes/addons/CourseTargetAudience.php:262
 msgid "Text Indent"
+msgstr ""
+
+#: includes/addons/CourseBenefits.php:294
+msgid "Please enable course benefits from tutor settings"
 msgstr ""
 
 #: includes/addons/CourseCarousel.php:58, includes/addons/CourseList.php:52
@@ -353,7 +365,7 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: includes/addons/CourseCarousel.php:266, includes/addons/CourseEnrolmentBox.php:309, includes/addons/CourseList.php:398
+#: includes/addons/CourseCarousel.php:266, includes/addons/CourseEnrolmentBox.php:301, includes/addons/CourseList.php:398
 msgid "Enroll Button"
 msgstr ""
 
@@ -409,15 +421,15 @@ msgstr ""
 msgid "Paush on Interaction"
 msgstr ""
 
-#: includes/addons/CourseCarousel.php:516, includes/addons/CourseCarousel.php:538, includes/addons/CourseCarousel.php:1067, includes/addons/CourseCarousel.php:1438, includes/addons/CourseCarousel.php:1570, includes/addons/CourseCarousel.php:1641, includes/addons/CourseCurriculum.php:312, includes/addons/CourseCurriculum.php:385, includes/addons/CourseCurriculum.php:448, includes/addons/CourseCurriculum.php:577, includes/addons/CourseCurriculum.php:666, includes/addons/CourseEnrolmentBox.php:156, includes/addons/CourseEnrolmentBox.php:247, includes/addons/CourseEnrolmentBox.php:337, includes/addons/CourseEnrolmentBox.php:420, includes/addons/CourseEnrolmentBox.php:509, includes/addons/CourseEnrolmentBox.php:592, includes/addons/CourseEnrolmentBox.php:681, includes/addons/CourseEnrolmentBox.php:764, includes/addons/CourseEnrolmentBox.php:853, includes/addons/CourseEnrolmentBox.php:936, includes/addons/CourseList.php:640, includes/addons/CourseList.php:662, includes/addons/CourseList.php:1217, includes/addons/CourseList.php:1632, includes/addons/CourseList.php:1677, includes/addons/CourseList.php:1722, includes/addons/CourseList.php:1827, includes/addons/CourseList.php:1959, includes/addons/CourseList.php:2030, includes/addons/CourseStatus.php:153, includes/addons/CourseTags.php:142, includes/addons/CourseTags.php:246
+#: includes/addons/CourseCarousel.php:516, includes/addons/CourseCarousel.php:538, includes/addons/CourseCarousel.php:1067, includes/addons/CourseCarousel.php:1438, includes/addons/CourseCarousel.php:1570, includes/addons/CourseCarousel.php:1641, includes/addons/CourseCurriculum.php:312, includes/addons/CourseCurriculum.php:385, includes/addons/CourseCurriculum.php:448, includes/addons/CourseCurriculum.php:577, includes/addons/CourseCurriculum.php:666, includes/addons/CourseEnrolmentBox.php:156, includes/addons/CourseEnrolmentBox.php:239, includes/addons/CourseEnrolmentBox.php:329, includes/addons/CourseEnrolmentBox.php:412, includes/addons/CourseEnrolmentBox.php:501, includes/addons/CourseEnrolmentBox.php:584, includes/addons/CourseEnrolmentBox.php:673, includes/addons/CourseEnrolmentBox.php:756, includes/addons/CourseEnrolmentBox.php:845, includes/addons/CourseEnrolmentBox.php:928, includes/addons/CourseList.php:640, includes/addons/CourseList.php:662, includes/addons/CourseList.php:1217, includes/addons/CourseList.php:1632, includes/addons/CourseList.php:1677, includes/addons/CourseList.php:1722, includes/addons/CourseList.php:1827, includes/addons/CourseList.php:1959, includes/addons/CourseList.php:2030, includes/addons/CourseStatus.php:153, includes/addons/CourseTags.php:142, includes/addons/CourseTags.php:246
 msgid "Background Color"
 msgstr ""
 
-#: includes/addons/CourseCarousel.php:556, includes/addons/CourseCarousel.php:816, includes/addons/CourseCarousel.php:943, includes/addons/CourseCarousel.php:1527, includes/addons/CourseCarousel.php:1819, includes/addons/CourseCarousel.php:2174, includes/addons/CourseCategories.php:97, includes/addons/CourseCurriculum.php:282, includes/addons/CourseCurriculum.php:534, includes/addons/CourseEnrolmentBox.php:140, includes/addons/CourseEnrolmentBox.php:321, includes/addons/CourseEnrolmentBox.php:493, includes/addons/CourseEnrolmentBox.php:665, includes/addons/CourseEnrolmentBox.php:837, includes/addons/CourseList.php:680, includes/addons/CourseList.php:924, includes/addons/CourseList.php:1096, includes/addons/CourseList.php:1612, includes/addons/CourseList.php:1916, includes/addons/CourseTags.php:115, includes/addons/CourseThumbnail.php:40
+#: includes/addons/CourseCarousel.php:556, includes/addons/CourseCarousel.php:816, includes/addons/CourseCarousel.php:943, includes/addons/CourseCarousel.php:1527, includes/addons/CourseCarousel.php:1819, includes/addons/CourseCarousel.php:2174, includes/addons/CourseCategories.php:97, includes/addons/CourseCurriculum.php:282, includes/addons/CourseCurriculum.php:534, includes/addons/CourseEnrolmentBox.php:140, includes/addons/CourseEnrolmentBox.php:313, includes/addons/CourseEnrolmentBox.php:485, includes/addons/CourseEnrolmentBox.php:657, includes/addons/CourseEnrolmentBox.php:829, includes/addons/CourseList.php:680, includes/addons/CourseList.php:924, includes/addons/CourseList.php:1096, includes/addons/CourseList.php:1612, includes/addons/CourseList.php:1916, includes/addons/CourseTags.php:115, includes/addons/CourseThumbnail.php:40
 msgid "Normal"
 msgstr ""
 
-#: includes/addons/CourseCarousel.php:671, includes/addons/CourseCarousel.php:865, includes/addons/CourseCarousel.php:990, includes/addons/CourseCarousel.php:1598, includes/addons/CourseCarousel.php:1944, includes/addons/CourseCarousel.php:2195, includes/addons/CourseCategories.php:124, includes/addons/CourseCurriculum.php:420, includes/addons/CourseCurriculum.php:626, includes/addons/CourseEnrolmentBox.php:231, includes/addons/CourseEnrolmentBox.php:404, includes/addons/CourseEnrolmentBox.php:576, includes/addons/CourseEnrolmentBox.php:748, includes/addons/CourseEnrolmentBox.php:920, includes/addons/CourseList.php:792, includes/addons/CourseList.php:971, includes/addons/CourseList.php:1143, includes/addons/CourseList.php:1657, includes/addons/CourseList.php:1987, includes/addons/CourseTags.php:220, includes/addons/CourseThumbnail.php:88
+#: includes/addons/CourseCarousel.php:671, includes/addons/CourseCarousel.php:865, includes/addons/CourseCarousel.php:990, includes/addons/CourseCarousel.php:1598, includes/addons/CourseCarousel.php:1944, includes/addons/CourseCarousel.php:2195, includes/addons/CourseCategories.php:124, includes/addons/CourseCurriculum.php:420, includes/addons/CourseCurriculum.php:626, includes/addons/CourseEnrolmentBox.php:223, includes/addons/CourseEnrolmentBox.php:396, includes/addons/CourseEnrolmentBox.php:568, includes/addons/CourseEnrolmentBox.php:740, includes/addons/CourseEnrolmentBox.php:912, includes/addons/CourseList.php:792, includes/addons/CourseList.php:971, includes/addons/CourseList.php:1143, includes/addons/CourseList.php:1657, includes/addons/CourseList.php:1987, includes/addons/CourseTags.php:220, includes/addons/CourseThumbnail.php:88
 msgid "Hover"
 msgstr ""
 
@@ -445,7 +457,7 @@ msgstr ""
 msgid "Badge"
 msgstr ""
 
-#: includes/addons/CourseCarousel.php:1078, includes/addons/CourseCarousel.php:1400, includes/addons/CourseCarousel.php:1485, includes/addons/CourseCarousel.php:1533, includes/addons/CourseCarousel.php:1604, includes/addons/CourseCurriculum.php:300, includes/addons/CourseCurriculum.php:373, includes/addons/CourseCurriculum.php:437, includes/addons/CourseCurriculum.php:553, includes/addons/CourseCurriculum.php:644, includes/addons/CourseEnrolmentBox.php:146, includes/addons/CourseEnrolmentBox.php:237, includes/addons/CourseEnrolmentBox.php:327, includes/addons/CourseEnrolmentBox.php:410, includes/addons/CourseEnrolmentBox.php:499, includes/addons/CourseEnrolmentBox.php:582, includes/addons/CourseEnrolmentBox.php:671, includes/addons/CourseEnrolmentBox.php:754, includes/addons/CourseEnrolmentBox.php:843, includes/addons/CourseEnrolmentBox.php:926, includes/addons/CourseList.php:1228, includes/addons/CourseList.php:1550, includes/addons/CourseList.php:1619, includes/addons/CourseList.php:1664, includes/addons/CourseList.php:1710, includes/addons/CourseList.php:1874, includes/addons/CourseList.php:1922, includes/addons/CourseList.php:1993, includes/addons/CourseRating.php:100, includes/addons/CourseReviews.php:113, includes/addons/CourseReviews.php:295
+#: includes/addons/CourseCarousel.php:1078, includes/addons/CourseCarousel.php:1400, includes/addons/CourseCarousel.php:1485, includes/addons/CourseCarousel.php:1533, includes/addons/CourseCarousel.php:1604, includes/addons/CourseCurriculum.php:300, includes/addons/CourseCurriculum.php:373, includes/addons/CourseCurriculum.php:437, includes/addons/CourseCurriculum.php:553, includes/addons/CourseCurriculum.php:644, includes/addons/CourseEnrolmentBox.php:146, includes/addons/CourseEnrolmentBox.php:229, includes/addons/CourseEnrolmentBox.php:319, includes/addons/CourseEnrolmentBox.php:402, includes/addons/CourseEnrolmentBox.php:491, includes/addons/CourseEnrolmentBox.php:574, includes/addons/CourseEnrolmentBox.php:663, includes/addons/CourseEnrolmentBox.php:746, includes/addons/CourseEnrolmentBox.php:835, includes/addons/CourseEnrolmentBox.php:918, includes/addons/CourseList.php:1228, includes/addons/CourseList.php:1550, includes/addons/CourseList.php:1619, includes/addons/CourseList.php:1664, includes/addons/CourseList.php:1710, includes/addons/CourseList.php:1874, includes/addons/CourseList.php:1922, includes/addons/CourseList.php:1993, includes/addons/CourseRating.php:100, includes/addons/CourseReviews.php:113, includes/addons/CourseReviews.php:295
 msgid "Text Color"
 msgstr ""
 
@@ -489,7 +501,7 @@ msgstr ""
 msgid "Text Shadow"
 msgstr ""
 
-#: includes/addons/CourseCarousel.php:1544, includes/addons/CourseCarousel.php:1615, includes/addons/CourseCurriculum.php:288, includes/addons/CourseCurriculum.php:362, includes/addons/CourseCurriculum.php:426, includes/addons/CourseCurriculum.php:541, includes/addons/CourseCurriculum.php:633, includes/addons/CourseEnrolmentBox.php:1007, includes/addons/CourseList.php:1933, includes/addons/CourseList.php:2004, includes/addons/CourseSocialShare.php:132, includes/addons/CourseSocialShare.php:279
+#: includes/addons/CourseCarousel.php:1544, includes/addons/CourseCarousel.php:1615, includes/addons/CourseCurriculum.php:288, includes/addons/CourseCurriculum.php:362, includes/addons/CourseCurriculum.php:426, includes/addons/CourseCurriculum.php:541, includes/addons/CourseCurriculum.php:633, includes/addons/CourseEnrolmentBox.php:999, includes/addons/CourseList.php:1933, includes/addons/CourseList.php:2004, includes/addons/CourseSocialShare.php:132, includes/addons/CourseSocialShare.php:279
 msgid "Icon Color"
 msgstr ""
 
@@ -525,7 +537,7 @@ msgstr ""
 msgid "Shape Size"
 msgstr ""
 
-#: includes/addons/CourseCarousel.php:1790, includes/addons/CourseCurriculum.php:226, includes/addons/CourseCurriculum.php:499, includes/addons/CourseEnrolmentBox.php:1017, includes/addons/CourseInstructors.php:389
+#: includes/addons/CourseCarousel.php:1790, includes/addons/CourseCurriculum.php:226, includes/addons/CourseCurriculum.php:499, includes/addons/CourseEnrolmentBox.php:1009, includes/addons/CourseInstructors.php:389
 msgid "Icon Size"
 msgstr ""
 
@@ -641,6 +653,10 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: includes/addons/CourseDescription.php:129
+msgid "Please enable course description from tutor settings"
+msgstr ""
+
 #: includes/addons/CourseDuration.php:41
 msgid "Course Duration:"
 msgstr ""
@@ -651,6 +667,10 @@ msgstr ""
 
 #: includes/addons/CourseDuration.php:125, includes/addons/CourseLastUpdate.php:126, includes/addons/CourseLevel.php:126, includes/addons/CourseTotalEnrolled.php:126
 msgid "Value"
+msgstr ""
+
+#: includes/addons/CourseDuration.php:155
+msgid "Please enable course duration from tutor settings"
 msgstr ""
 
 #: includes/addons/CourseEnrolmentBox.php:33
@@ -697,35 +717,35 @@ msgstr ""
 msgid "Add to Cart Button"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:481
+#: includes/addons/CourseEnrolmentBox.php:473
 msgid "Start/Continue Button"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:653
+#: includes/addons/CourseEnrolmentBox.php:645
 msgid "Complete Button"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:825
+#: includes/addons/CourseEnrolmentBox.php:817
 msgid "Gradebook Button"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:999
+#: includes/addons/CourseEnrolmentBox.php:991
 msgid "Enrolled Info"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:1037, includes/addons/CourseInstructors.php:351
+#: includes/addons/CourseEnrolmentBox.php:1029, includes/addons/CourseInstructors.php:351
 msgid "Label Color"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:1048, includes/addons/CourseInstructors.php:362
+#: includes/addons/CourseEnrolmentBox.php:1040, includes/addons/CourseInstructors.php:362
 msgid "Label Typography"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:1055
+#: includes/addons/CourseEnrolmentBox.php:1047
 msgid "Date Color"
 msgstr ""
 
-#: includes/addons/CourseEnrolmentBox.php:1066
+#: includes/addons/CourseEnrolmentBox.php:1058
 msgid "Date Typography"
 msgstr ""
 
@@ -809,11 +829,19 @@ msgstr ""
 msgid "Last Updated:"
 msgstr ""
 
+#: includes/addons/CourseLastUpdate.php:156
+msgid "Please enable course last update from tutor settings"
+msgstr ""
+
 #: includes/addons/CourseLevel.php:42
 msgid "Course level:"
 msgstr ""
 
-#: includes/addons/CourseLevel.php:158
+#: includes/addons/CourseLevel.php:156
+msgid "Please enable course level from tutor settings"
+msgstr ""
+
+#: includes/addons/CourseLevel.php:164
 msgid "All Levels"
 msgstr ""
 
@@ -909,12 +937,28 @@ msgstr ""
 msgid "Material Includes"
 msgstr ""
 
+#: includes/addons/CourseMaterials.php:294
+msgid "Please enable course materials from tutor settings"
+msgstr ""
+
+#: includes/addons/CoursePrice.php:78
+msgid "Since you are already enrolled, the price will not appear"
+msgstr ""
+
 #: includes/addons/CourseRating.php:50
 msgid "Rating Stars"
 msgstr ""
 
+#: includes/addons/CourseRating.php:137, includes/addons/CourseReviews.php:489
+msgid "Please enable course review from tutor settings"
+msgstr ""
+
 #: includes/addons/CourseRequirements.php:38
 msgid "Requirements"
+msgstr ""
+
+#: includes/addons/CourseRequirements.php:294
+msgid "Please enable course requirements from tutor settings"
 msgstr ""
 
 #: includes/addons/CourseReviews.php:37
@@ -1013,6 +1057,10 @@ msgstr ""
 msgid "Icon Hover"
 msgstr ""
 
+#: includes/addons/CourseSocialShare.php:346
+msgid "Please enable course share from tutor settings"
+msgstr ""
+
 #: includes/addons/CourseStatus.php:44
 msgid "Display Percentage"
 msgstr ""
@@ -1029,12 +1077,20 @@ msgstr ""
 msgid "Progress Text"
 msgstr ""
 
+#: includes/addons/CourseStatus.php:249
+msgid "Please enable course status from tutor settings"
+msgstr ""
+
 #: includes/addons/CourseTags.php:37, includes/addons/CourseTags.php:103
 msgid "Tags"
 msgstr ""
 
 #: includes/addons/CourseTargetAudience.php:38
 msgid "Target Audience"
+msgstr ""
+
+#: includes/addons/CourseTargetAudience.php:294
+msgid "Please enable course target audience from tutor settings"
 msgstr ""
 
 #: includes/addons/CourseTitle.php:36
@@ -1049,6 +1105,10 @@ msgstr ""
 msgid "Enrolled:"
 msgstr ""
 
+#: includes/addons/CourseTotalEnrolled.php:156
+msgid "Please enable course total enrolled from tutor settings"
+msgstr ""
+
 #: includes/addons/ETLMS_Trait.php:21
 msgid "Up"
 msgstr ""
@@ -1061,7 +1121,11 @@ msgstr ""
 msgid "Justified"
 msgstr ""
 
-#: templates/course/author.php:17, templates/course/course-carousel.php:147, templates/course/course-list.php:168
+#: templates/course/about.php:11, templates/course/benefits.php:15, templates/course/course-topics.php:182, templates/course/materials.php:15, templates/course/requirements.php:15, templates/course/tags.php:16, templates/course/target-audience.php:15
+msgid "Please add data from the course editor"
+msgstr ""
+
+#: templates/course/author.php:20, templates/course/course-carousel.php:147, templates/course/course-list.php:168
 msgid "by"
 msgstr ""
 
@@ -1069,15 +1133,15 @@ msgstr ""
 msgid "In"
 msgstr ""
 
-#: templates/course/course-topics.php:65
+#: templates/course/course-topics.php:64
 msgid " Lessons"
 msgstr ""
 
-#: templates/course/course-topics.php:155
+#: templates/course/course-topics.php:154
 msgid "Live"
 msgstr ""
 
-#: templates/course/course-topics.php:153
+#: templates/course/course-topics.php:152
 msgid "Expired"
 msgstr ""
 
@@ -1097,7 +1161,7 @@ msgstr ""
 msgid "You have been enrolled on"
 msgstr ""
 
-#: templates/course/instructors.php:71, templates/course/reviews.php:53
+#: templates/course/instructors.php:71, templates/course/reviews.php:48
 msgid "ratings"
 msgstr ""
 
@@ -1109,14 +1173,18 @@ msgstr ""
 msgid "students"
 msgstr ""
 
-#: templates/course/reviews.php:53
+#: templates/course/reviews.php:94
+msgid "Course review not found"
+msgstr ""
+
+#: templates/course/reviews.php:48
 msgid "rating"
 msgstr ""
 
-#: templates/course/reviews.php:79
+#: templates/course/reviews.php:74
 msgid "%s ago"
 msgstr ""
 
-#: templates/course/share.php:15
+#: templates/course/share.php:12
 msgid "Share:"
 msgstr ""
