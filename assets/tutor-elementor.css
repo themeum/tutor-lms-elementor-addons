@@ -3,12 +3,33 @@
 	font-size: 20px;
 	margin: 0;
 }
-
+.elementor-widget-container .etlms-lead-info {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+    flex-wrap: wrap;
+}
+.elementor-align-left .etlms-lead-info {
+	justify-content: flex-start;
+}
+.elementor-align-right .etlms-lead-info {
+	justify-content: flex-end;
+}
+.elementor-align-center .etlms-lead-info {
+	justify-content: center;
+}
+.elementor-layout-up .etlms-lead-info {
+	flex-direction: column;
+}
+.elementor-layout-up.elementor-align-left .etlms-lead-info {
+	align-items: flex-start;
+}
+.elementor-layout-up.elementor-align-right .etlms-lead-info {
+	align-items: flex-end;
+}
 .elementor-widget-container .etlms-lead-info label {
-	display: inline;
 	margin-bottom: 0;
 }
-
 .elementor-widget-container .tutor-single-course-segment {
 	margin-bottom: 0;
 	margin-top: 0;
@@ -444,6 +465,7 @@
 	justify-content: space-between;
 	align-items: center;
 	column-gap: 8px;
+	margin: 0;
 }
 
 /* Reviews */

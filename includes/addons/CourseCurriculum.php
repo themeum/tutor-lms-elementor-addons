@@ -700,8 +700,7 @@ class CourseCurriculum extends BaseAddon {
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $lesson_selector.':hover' => 'border-color: {{VALUE}}',
-                        ],
-                        'default'   => '#E1EBF0'
+                        ]
                     ]
                 );
 
