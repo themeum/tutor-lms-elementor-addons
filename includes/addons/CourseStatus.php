@@ -243,6 +243,14 @@ class CourseStatus extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $disable_option = (bool) get_tutor_option('disable_course_progress_bar');
+		if ($disable_option) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course status from tutor settings', 'tutor-elementor-addons');
+            }
+			return;
+        }
+
         $settings = $this->get_settings_for_display();
         if (\Elementor\Plugin::instance()->editor->is_edit_mode() || (is_user_logged_in() && tutils()->is_enrolled())) {
             ob_start();

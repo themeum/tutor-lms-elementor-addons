@@ -150,18 +150,23 @@ class CourseLevel extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $settings = $this->get_settings_for_display();
-        $disable_course_level = get_tutor_option('disable_course_level');
-        if (!$disable_course_level) {
-            $course = etlms_get_course();
-            if ($course) {
-                $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor-elementor-addons');
-                $markup = '<div class="etlms-lead-info etlms-course-level">';
-                $markup .= ($settings['course_level_label']) ? '<label>'.$settings['course_level_label'].'</label>' : '';
-                $markup .= '<strong>'. $level .'</strong>';
-                $markup .= '</div>';
-                echo $markup;
+        $disable_option = (bool) get_tutor_option('disable_course_level');
+		if ($disable_option) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course level from tutor settings', 'tutor-elementor-addons');
             }
+			return;
+        }
+        
+        $course = etlms_get_course();
+        $settings = $this->get_settings_for_display();
+        if ($course) {
+            $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor-elementor-addons');
+            $markup = '<div class="etlms-lead-info etlms-course-level">';
+            $markup .= ($settings['course_level_label']) ? '<label>'.$settings['course_level_label'].'</label>' : '';
+            $markup .= '<strong>'. $level .'</strong>';
+            $markup .= '</div>';
+            echo $markup;
         }
     }
 

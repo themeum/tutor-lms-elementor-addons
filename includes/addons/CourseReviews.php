@@ -483,6 +483,14 @@ class CourseReviews extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $disable = (bool) get_tutor_option('disable_course_review');
+        if ($disable) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course review from tutor settings', 'tutor-elementor-addons');
+            }
+            return;
+        }
+        
         global $wp_query;
         if (empty($wp_query->query_vars['course_subpage'])) {
             $course = etlms_get_course();

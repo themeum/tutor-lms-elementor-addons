@@ -150,18 +150,23 @@ class CourseTotalEnrolled extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $settings = $this->get_settings_for_display();
-        $disable_total_enrolled = get_tutor_option('disable_course_total_enrolled');
-        if (!$disable_total_enrolled) {
-            $course = etlms_get_course();
-            if ($course) {
-                $total_enroll = (int) tutils()->count_enrolled_users_by_course();
-                $markup = '<div class="etlms-lead-info etlms-course-total-enroll">';
-                $markup .= ($settings['course_total_enroll_label']) ? '<label>'.$settings['course_total_enroll_label'].'</label>' : '';
-                $markup .= '<strong>'. $total_enroll .'</strong>';
-                $markup .= '</div>';
-                echo $markup;
+        $disable_option = (bool) get_tutor_option('disable_course_total_enrolled');
+		if ($disable_option) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course total enrolled from tutor settings', 'tutor-elementor-addons');
             }
+			return;
+        }
+
+        $course = etlms_get_course();
+        $settings = $this->get_settings_for_display();
+        if ($course) {
+            $total_enroll = (int) tutils()->count_enrolled_users_by_course();
+            $markup = '<div class="etlms-lead-info etlms-course-total-enroll">';
+            $markup .= ($settings['course_total_enroll_label']) ? '<label>'.$settings['course_total_enroll_label'].'</label>' : '';
+            $markup .= '<strong>'. $total_enroll .'</strong>';
+            $markup .= '</div>';
+            echo $markup;
         }
     }
 }

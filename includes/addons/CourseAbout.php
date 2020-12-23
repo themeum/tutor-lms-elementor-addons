@@ -137,12 +137,21 @@ class CourseAbout extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        ob_start();
+        $disable_about = (bool) get_tutor_option('disable_course_about');
+
+        if ($disable_about) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course about from tutor settings', 'tutor-elementor-addons');
+            }
+            return;
+        }
+
         $course = etlms_get_course();
         if ($course) {
+            ob_start();
             $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/about');
+            echo ob_get_clean();
         }
-        echo ob_get_clean();
     }
 }

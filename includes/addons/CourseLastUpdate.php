@@ -150,18 +150,23 @@ class CourseLastUpdate extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $settings = $this->get_settings_for_display();
-        $disable_update_date = get_tutor_option('disable_course_update_date');
-        if (!$disable_update_date) {
-            $course = etlms_get_course();
-            if ($course) {
-                $last_update = esc_html(get_the_modified_date());
-                $markup = '<div class="etlms-lead-info etlms-course-last-update">';
-                $markup .= ($settings['course_last_update_label']) ? '<label>'.$settings['course_last_update_label'].'</label>' : '';
-                $markup .= '<strong>'. $last_update .'</strong>';
-                $markup .= '</div>';
-                echo $markup;
+        $disable_option = (bool) get_tutor_option('disable_course_update_date');
+		if ($disable_option) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course last update from tutor settings', 'tutor-elementor-addons');
             }
+			return;
+		}
+        
+        $course = etlms_get_course();
+        $settings = $this->get_settings_for_display();
+        if ($course) {
+            $last_update = esc_html(get_the_modified_date());
+            $markup = '<div class="etlms-lead-info etlms-course-last-update">';
+            $markup .= ($settings['course_last_update_label']) ? '<label>'.$settings['course_last_update_label'].'</label>' : '';
+            $markup .= '<strong>'. $last_update .'</strong>';
+            $markup .= '</div>';
+            echo $markup;
         }
     }
 }

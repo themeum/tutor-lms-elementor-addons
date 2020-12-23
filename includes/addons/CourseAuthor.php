@@ -239,12 +239,21 @@ class CourseAuthor extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        ob_start();
+        $disable_course_author = (bool) get_tutor_option('disable_course_author');
+
+        if ($disable_course_author) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course author from tutor settings', 'tutor-elementor-addons');
+            }
+            return;
+        }
+
         $course = etlms_get_course();
         if ($course) {
+            ob_start();
             $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/author');
+            echo ob_get_clean();
         }
-        echo ob_get_clean();
     }
 }

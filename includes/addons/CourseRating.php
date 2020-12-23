@@ -131,11 +131,19 @@ class CourseRating extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        ob_start();
+        $disable = (bool) get_tutor_option('disable_course_review');
+        if ($disable) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course review from tutor settings', 'tutor-elementor-addons');
+            }
+            return;
+        }
+
         $course = etlms_get_course();
         if ($course) {
+            ob_start();
             include_once etlms_get_template('course/rating');
+            echo ob_get_clean();
         }
-        echo ob_get_clean();
     }
 }

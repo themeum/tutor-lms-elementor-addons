@@ -340,6 +340,14 @@ class CourseSocialShare extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $disable_course_share = (bool) get_tutor_option('disable_course_share');
+        if ($disable_course_share) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course share from tutor settings', 'tutor-elementor-addons');
+            }
+            return;
+        }
+
         ob_start();
         $settings = $this->get_settings_for_display();
         include_once etlms_get_template('course/share');

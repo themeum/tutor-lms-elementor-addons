@@ -123,13 +123,19 @@ class CourseDescription extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        ob_start();
+        $disable_option = (bool) get_tutor_option('disable_course_description');
+		if ($disable_option) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course description from tutor settings', 'tutor-elementor-addons');
+            }
+			return;
+		}
         $course = etlms_get_course();
-        $disable_description = get_tutor_option('disable_course_description');
-        if ($course && !$disable_description) {
+        if ($course) {
+            ob_start();
             $settings = $this->get_settings_for_display();
             include_once etlms_get_template('course/description');
+            echo ob_get_clean();
         }
-        echo ob_get_clean();
     }
 }

@@ -149,19 +149,24 @@ class CourseDuration extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $settings = $this->get_settings_for_display();
-        $disable_course_duration = get_tutor_option('disable_course_duration');
-        if (!$disable_course_duration) {
-            $course = etlms_get_course();
-            if ($course) {
-                $course_duration = get_tutor_course_duration_context();
-                $course_duration = (!empty($course_duration)) ? $course_duration : 0;
-                $markup = '<div class="etlms-lead-info etlms-course-duration">';
-                $markup .= ($settings['course_duration_label']) ? '<label>'.$settings['course_duration_label'].'</label>' : '';
-                $markup .= '<strong>'. $course_duration .'</strong>';
-                $markup .= '</div>';
-                echo $markup;
+        $disable_option = (bool) get_tutor_option('disable_course_duration');
+		if ($disable_option) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course duration from tutor settings', 'tutor-elementor-addons');
             }
+			return;
+        }
+        
+        $course = etlms_get_course();
+        $settings = $this->get_settings_for_display();
+        if ($course) {
+            $course_duration = get_tutor_course_duration_context();
+            $course_duration = (!empty($course_duration)) ? $course_duration : 0;
+            $markup = '<div class="etlms-lead-info etlms-course-duration">';
+            $markup .= ($settings['course_duration_label']) ? '<label>'.$settings['course_duration_label'].'</label>' : '';
+            $markup .= '<strong>'. $course_duration .'</strong>';
+            $markup .= '</div>';
+            echo $markup;
         }
     }
 }

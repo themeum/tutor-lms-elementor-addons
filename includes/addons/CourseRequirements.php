@@ -288,6 +288,14 @@ class CourseRequirements extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $disable_option = (bool) get_tutor_option('disable_course_requirements');
+		if ($disable_option) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Please enable course requirements from tutor settings', 'tutor-elementor-addons');
+            }
+			return;
+        }
+
         $course = etlms_get_course();
         if ($course) {
             ob_start();

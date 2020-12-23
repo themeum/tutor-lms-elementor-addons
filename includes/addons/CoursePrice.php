@@ -74,16 +74,15 @@ class CoursePrice extends BaseAddon {
 
     protected function render($instance = []) {
         if (tutils()->is_enrolled()) {
+            if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
+                echo __('Since you are already enrolled, the price will not appear', 'tutor-elementor-addons');
+            }
             return;
         }
         $course = etlms_get_course();
         if ($course) {
             echo '<div class="etlms-course-price">';
-            if (\Elementor\Plugin::instance()->editor->is_edit_mode() && tutils()->is_enrolled()) {
-                echo __('Since you are already enrolled, the price will not appear', 'tutor-elementor-addons');
-            } else {
-                tutor_course_price();
-            }
+            tutor_course_price();
             echo '</div>';
         }
     }
