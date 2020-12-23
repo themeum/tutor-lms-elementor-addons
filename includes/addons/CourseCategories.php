@@ -154,14 +154,13 @@ class CourseCategories extends BaseAddon {
         if ($course) {
             $course_categories = get_tutor_course_categories();
         }
-        $total_categories = count($course_categories);
-        if (is_array($course_categories) && $total_categories) {
+        if (is_array($course_categories) && count($course_categories)) {
             $item = 1;
             $markup = '<div class="etlms-single-course-meta-categories">';
                 foreach ($course_categories as $course_category) {
                     $category_name = $course_category->name;
                     $category_link = get_term_link($course_category->term_id);
-                    $comma = ($item < $total_categories) ? ',' : '';
+                    $comma = ($item < count($course_categories)) ? ',' : '';
                     $markup .= "<a href='$category_link'>{$category_name}{$comma}</a>";
                     $item++;
                 }
