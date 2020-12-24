@@ -260,7 +260,7 @@ class CourseCurriculum extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 200,
+                        'max' => 100,
                     ],
                 ],
                 'selectors' => [
@@ -763,7 +763,7 @@ class CourseCurriculum extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 5,
-                        'max' => 200,
+                        'max' => 50,
                     ],
                 ],
                 'selectors' => [

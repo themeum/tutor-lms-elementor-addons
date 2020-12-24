@@ -58,7 +58,7 @@ class CourseCategories extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 300,
+                        'max' => 50,
                        
                     ]
                 ],

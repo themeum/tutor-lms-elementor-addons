@@ -153,7 +153,7 @@ class CourseTargetAudience extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 200,
+                        'max' => 50,
                     ],
                 ],
                 'selectors' => [
@@ -265,7 +265,7 @@ class CourseTargetAudience extends BaseAddon {
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 100,
+                        'max' => 50,
                     ],
                 ],
                 'selectors' => [
