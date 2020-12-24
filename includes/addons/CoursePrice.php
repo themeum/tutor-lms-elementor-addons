@@ -39,22 +39,25 @@ class CoursePrice extends BaseAddon {
 
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .etlms-course-price';
-        // Style
+        $regular_price = $selector.' > .amount, '. $selector.' > .price';
+        $sale_price = $selector.' del .amount';
+
+        //Section Regular
         $this->start_controls_section(
-            'course_style_section',
-            array(
-                'label' => __('Style', 'tutor-elementor-addons'),
+            'regular_price_label_section',
+            [
+                'label' => __('Regular Price', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
-            )
+            ]
         );
 
         $this->add_control(
-            'course_price_color',
+            'regular_price_color',
             [
                 'label'     => __('Color', 'tutor-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    $selector => 'color: {{VALUE}};',
+                    $regular_price => 'color: {{VALUE}};',
                 ],
                 'default'   => '#161616'
             ]
@@ -63,9 +66,41 @@ class CoursePrice extends BaseAddon {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             array(
-                'name'      => 'course_price_typography',
+                'name'      => 'regular_price_typography',
                 'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector,
+                'selector'  => $regular_price,
+            )
+        );
+
+        $this->end_controls_section();
+
+        //Section Regular
+        $this->start_controls_section(
+            'sale_price_label_section',
+            [
+                'label' => __('Sale Price', 'tutor-elementor-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'sale_price_color',
+            [
+                'label'     => __('Color', 'tutor-elementor-addons'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    $sale_price => 'color: {{VALUE}};',
+                ],
+                'default'   => '#7A7A7A'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            array(
+                'name'      => 'sale_price_typography',
+                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'selector'  => $sale_price,
             )
         );
 

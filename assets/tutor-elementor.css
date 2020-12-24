@@ -18,9 +18,14 @@
 }
 
 /* Price */
-.etlms-course-price .amount {
+.etlms-course-price > .amount, .etlms-course-price > .price {
 	font-size: 30px;
 	font-weight: bold;
+	line-height: 1;
+}
+.etlms-course-price  del .amount {
+	font-size: 16px;
+	font-weight: normal;
 }
 
 /* Author */
@@ -445,6 +450,9 @@
 }
 .etlms-review-content .individual-review-rating-wrap {
 	margin-bottom: 8px;
+}
+.etlms-course-reviews .tutor-course-enrolled-review-wrap {
+	margin-top: 25px;
 }
 
 /*course carousel and course list*/
