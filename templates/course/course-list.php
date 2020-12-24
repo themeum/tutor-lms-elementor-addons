@@ -48,8 +48,14 @@
 
             <?php while ($the_query->have_posts()) : $the_query->the_post();
             ?>
+            
                 <!-- course -wrapper -->
-                <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col">
+                <?php 
+                    if(empty($settings['course_list_image'])){
+                        $thumbnail_hide = "thumbnail-hide";
+                    }
+                ?>
+                <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col <?= $thumbnail_hide?>">
                     <?php
                         $image_size = $settings['course_list_image_size_size'];
                         $image_url = get_tutor_course_thumbnail($image_size, $url = true);
@@ -65,17 +71,20 @@
                     if("yes"== $settings['card_hover_animation']){
                         echo " hover-animation";
                     }
+
                     ?>" >
 
                         <!-- header -->
-                        <div class="tutor-course-header image-ratio-<?= $settings['course_list_image_ratio'];
-                            echo "overlayed" != $settings['course_list_skin'] ? ' '.$animation : '';
+                        
+                        <div class="tutor-course-header <?php echo "overlayed" != $settings['course_list_skin'] ? ' '.$animation : '';
                             //"yes" == $settings['course_list_masonry'] ? 'etlms-masonry-brick' : '';
                         ?>">
-
+                            <?php if("yes" == $settings['course_list_image']):?>
                             <a href="<?php the_permalink();?>">
                                 <img src="<?= $image_url?>" alt="thumbnail" >
                             </a>
+                            <?php endif;?> 
+                            
                             <div class="tutor-course-loop-header-meta">
                                 <?php
                                 $course_id = get_the_ID();
@@ -100,8 +109,10 @@
                                 ?>
                             </div>                                
                        
-                                    
-                        </div> <!--header end--> 
+                                   
+                        </div> 
+                        
+                        <!--header end--> 
    
 							<!-- start loop content wrap -->
 							<div class="etlms-carousel-course-container">

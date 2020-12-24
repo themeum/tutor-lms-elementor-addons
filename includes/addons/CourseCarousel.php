@@ -13,7 +13,7 @@ use Elementor\Group_Control_Background;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class CourseCarousel extends BaseAddon{
+class CourseCarousel extends BaseAddon{ 
 
     use ETLMS_Trait;
 
@@ -121,24 +121,7 @@ class CourseCarousel extends BaseAddon{
 			]
 		);
 
-		$this->add_control(
-			'course_carousel_image_ratio',
-			[
-				'label' => __( 'Image Ratio', 'tutor-elementor-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'one-one',
-				'options' => [
-					'one-one'  => __( '1:1', 'tutor-elementor-addons' ),
-					'four-three' => __( '4:3', 'tutor-elementor-addons' ),
-					'sixteen-nine' => __( '16:9', 'tutor-elementor-addons' ),
-					'three-two' => __( '3:2', 'tutor-elementor-addons' ),
-					
-				],
-				'condition' => [
-					'course_carousel_image' => 'yes'
-				]
-			]
-		);	
+
 
 		$this->add_control(
 			'course_carousel_meta_data',
@@ -461,17 +444,7 @@ class CourseCarousel extends BaseAddon{
 			]
 		);
 
-		$this->add_control(
-			'course_carousel_settings_pause_oninteraction',
-			[
-				'label' => __( 'Paush on Interaction', 'tutor-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-				'label_off' => __( 'No', 'tutor-elementor-addons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+
 		$this->end_controls_section();
 	}
 

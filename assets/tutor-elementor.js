@@ -45,7 +45,6 @@
 		 */
 		if (button_type == 'text_with_cart' || button_type == 'default_with_cart_icon') {
 
-
 			var length = carousel_footer.length;
 			var i = 0;
 			for (i; i < length; i++) {
@@ -55,10 +54,17 @@
 					button then add cart icon
 				*/
 				var is_add_to_cart = carousel_footer.children("a")[i].classList.contains('add_to_cart_button');
-					
+				var added_to_cart = carousel_footer.children("a")[i].innerHTML;
+				
 				if(is_add_to_cart)
 				{
 
+					var text = carousel_footer.children("a")[i].innerHTML;
+					carousel_footer.children("a")[i].innerHTML = `<i class="${cart_icon}" aria-hidden="true"></i> ${text}`;
+				}
+				
+				if(added_to_cart == "View Cart")
+				{
 					var text = carousel_footer.children("a")[i].innerHTML;
 					carousel_footer.children("a")[i].innerHTML = `<i class="${cart_icon}" aria-hidden="true"></i> ${text}`;
 				}
@@ -105,7 +111,7 @@
 			var carousel_auto_play_speed = $scope.find("#etlms_carousel_settings").attr('auto_play_speed');
 			var carousel_infinite_loop = $scope.find("#etlms_carousel_settings").attr('infinite_loop');
 			var carousel_pause_on_hover = $scope.find("#etlms_carousel_settings").attr('pause_on_hover');
-			var carousel_pause_on_interaction = $scope.find("#etlms_carousel_settings").attr('pause_on_interaction');
+		
 
 			carousel_arrows == 'yes' ? carousel_arrows = true : carousel_arrows = false;
 			carousel_dots == 'yes' ? carousel_dots = true : carousel_dots = false;
@@ -115,7 +121,6 @@
 			Number(carousel_auto_play_speed);
 			carousel_infinite_loop == 'yes' ? carousel_infinite_loop = true : carousel_infinite_loop = false;
 			carousel_pause_on_hover == 'yes' ? carousel_pause_on_hover = true : carousel_pause_on_hover = false;
-			carousel_pause_on_interaction == 'yes' ? carousel_pause_on_interaction = true : carousel_pause_on_interaction = false;
 			
 			/**
 			 * applying all settings here
@@ -130,10 +135,8 @@
 				slidesToScroll: 1,
 				speed: carousel_transition,
 				centerMode: carousel_center,
-
 				pauseOnHover: carousel_pause_on_hover,
-				// ineraction
-				pauseOnFocus: carousel_pause_on_interaction,
+
 				cssEase: smooth_scroll,
 
 				prevArrow: $scope.find('.etlms-carousel-arrow-prev'),

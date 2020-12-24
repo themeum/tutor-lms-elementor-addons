@@ -1,42 +1,9 @@
-/* tutor segment */
+/* segment title */
 .elementor-widget-container .tutor-segment-title {
 	font-size: 20px;
-	margin: 0;
 }
-.elementor-widget-container .etlms-lead-info {
-	display: flex;
-	align-items: center;
-	flex-direction: row;
-    flex-wrap: wrap;
-}
-.elementor-align-left .etlms-lead-info {
-	justify-content: flex-start;
-}
-.elementor-align-right .etlms-lead-info {
-	justify-content: flex-end;
-}
-.elementor-align-center .etlms-lead-info {
-	justify-content: center;
-}
-.elementor-layout-up .etlms-lead-info {
-	flex-direction: column;
-}
-.elementor-layout-up.elementor-align-left .etlms-lead-info {
-	align-items: flex-start;
-}
-.elementor-layout-up.elementor-align-right .etlms-lead-info {
-	align-items: flex-end;
-}
+
 .elementor-widget-container .etlms-lead-info label {
-	margin-bottom: 0;
-}
-.elementor-widget-container .tutor-single-course-segment {
-	margin-bottom: 0;
-	margin-top: 0;
-}
-.elementor-widget-container .tutor-wrap {
-	padding-top: 0;
-	margin-top: 0;
 	margin-bottom: 0;
 }
 
@@ -48,11 +15,9 @@
 .etlms-course-title h2 {
 	font-size: 30px;
 	font-weight: bold;
-	margin: 0;
 }
 
 /* Price */
-.etlms-course-price .price,
 .etlms-course-price .amount {
 	font-size: 30px;
 	font-weight: bold;
@@ -111,23 +76,18 @@
 }
 .etlms-progress-bar-wrap {
 	position: relative;
-	height: 25px;
 }
 .etlms-progress-bar {
 	width: 100%;
 	background-color: #eeeeee;
-	height: 100%;
+	height: 25px;
 	border-radius: 10px;
 }
 .etlms-progress-filled {
 	background-color: #66cd74;
-	height: 100%;
+	height: 25px;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-}
-.etlms-progress-percent h4 {
-	margin: 0;
-	font-size: 18px;
 }
 .etlms-progress-outside {
 	display: flex;
@@ -140,12 +100,11 @@
 .etlms-progress-inside .etlms-progress-percent {
 	position: absolute;
 	height: 100%;
+	top: 0;
 	left: 50%;
-	bottom: 0;
 }
 .etlms-progress-outside .etlms-progress-percent {
 	margin-left: 10px;
-	flex-basis: 8%;
 }
 .etlms-progress-ontop {
 	display: flex;
@@ -154,6 +113,7 @@
 .etlms-progress-ontop .etlms-progress-percent {
 	position: absolute;
 	right: 0;
+	top: -32px;
 }
 
 /* Thumbnail */
@@ -183,7 +143,6 @@
 	font-weight: 500;
 	margin-bottom: 13px;
 	color: #000;
-	margin: 0;
 }
 .etlms-course-specifications ul {
 	list-style: none;
@@ -192,15 +151,13 @@
 }
 .etlms-course-specifications ul li {
 	position: relative;
-	line-height: 1.6;
+	line-height: 30px;
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: flex-start;
-	margin: 0;
 }
 .etlms-course-specifications ul li i {
 	color: var(--tutor-primary-color);
-	line-height: 1.6;
 }
 .etlms-author-specifications-inline .etlms-course-specifications ul li {
 	display: inline-block;
@@ -237,16 +194,11 @@
 .etlms-course-enrolment-box .tutor-course-enrolled-wrap p {
 	display: inline-block;
 }
-.etlms-course-enrolment-box .tutor-course-enrolled-wrap p i {
-	display: contents;
-}
 .etlms-course-enrolment-box .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box .tutor-course-purchase-box,
 .etlms-course-enrolment-box .tutor-course-purchase-box form,
-.etlms-course-enrolment-box .tutor-course-enroll-wrap,
-.etlms-course-enrolment-box .generate-course-gradebook-btn-wrap,
-.etlms-course-enrolment-box .tutor-course-enrolled-wrap {
+.etlms-course-enrolment-box .tutor-course-enroll-wrap {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -254,27 +206,21 @@
 .etlms-course-enrolment-box.elementor-align-left .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box.elementor-align-left .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box.elementor-align-left .tutor-course-purchase-box .etlms-course-enrolment-box.elementor-align-left .tutor-course-purchase-box form,
-.etlms-course-enrolment-box.elementor-align-left .tutor-course-enroll-wrap,
-.etlms-course-enrolment-box.elementor-align-left .generate-course-gradebook-btn-wrap,
-.etlms-course-enrolment-box.elementor-align-left .tutor-course-enrolled-wrap {
+.etlms-course-enrolment-box.elementor-align-left .tutor-course-enroll-wrap {
 	align-items: flex-start;
 }
 .etlms-course-enrolment-box.elementor-align-right .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box.elementor-align-right .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box.elementor-align-right .tutor-course-purchase-box,
 .etlms-course-enrolment-box.elementor-align-right .tutor-course-purchase-box form,
-.etlms-course-enrolment-box.elementor-align-right .tutor-course-enroll-wrap,
-.etlms-course-enrolment-box.elementor-align-right .generate-course-gradebook-btn-wrap,
-.etlms-course-enrolment-box.elementor-align-right .tutor-course-enrolled-wrap {
+.etlms-course-enrolment-box.elementor-align-right .tutor-course-enroll-wrap {
 	align-items: flex-end;
 }
 .etlms-course-enrolment-box.elementor-align-center .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box.elementor-align-center .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box.elementor-align-center .tutor-course-purchase-box,
 .etlms-course-enrolment-box.elementor-align-center .tutor-course-purchase-box form,
-.etlms-course-enrolment-box.elementor-align-center .tutor-course-enroll-wrap,
-.etlms-course-enrolment-box.elementor-align-center .generate-course-gradebook-btn-wrap,
-.etlms-course-enrolment-box.elementor-align-center .tutor-course-enrolled-wrap {
+.etlms-course-enrolment-box.elementor-align-center .tutor-course-enroll-wrap {
 	align-items: center;
 }
 .etlms-course-enrolment-box.course-enroll-buttons-size-small button,
@@ -294,23 +240,28 @@
 }
 .etlms-course-enrolment-box.course-enroll-buttons-width-fill button,
 .etlms-course-enrolment-box.course-enroll-buttons-width-fill .tutor-button {
-	width: 100% !important;
+	width: 100%;
 	align-items: center;
 	justify-content: center;
 }
 
 /* Tag */
+.etlms-course-tags .tutor-single-course-segment {
+	margin-bottom: 0;
+}
 .etlms-course-tags .tutor-course-tags a {
 	border: 1px solid #E1EBF0;
 }
+
 
 /*layout css for: course lead info ,categories */
 .elementor-layout-up .etlms-lead-info strong,
 .elementor-layout-up .etlms-single-course-meta-categories a {
 	display: block;
 }
-
 /*course instructor*/
+
+/*flex layout instructors*/
 .etlms-single-instructor-wrap {
 	width: 100%;
 }
@@ -329,13 +280,6 @@
 .etlms-single-instructor-wrap .tutor-instructor-right .instructor-name {
 	padding-left: 0;
 	flex: 0 0 30%;
-	font-size: 18px;
-}
-.etlms-single-instructor-wrap .single-instructor-wrap .instructor-name h3 {
-	font-size: 18px;
-}
-.etlms-single-instructor-wrap .instructor-name p {
-	font-size: 16px;
 }
 .elementor-layout-left .etlms-course-instructors-wrap .tutor-instructor-right {
 	flex-direction: row;
@@ -359,21 +303,12 @@
 	justify-content: center !important;
 	column-gap: 15px;
 }
-.etlms-single-instructor-wrap .instructor-avatar span.tutor-text-avatar {
-	min-width: 10px;
-    min-height: 10px;
-	font-size: calc(48px/2);
-	border-radius: 50%;
-}
 
 /*social share*/
 .etlms-social {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-}
-.etlms-social-label {
-	margin-right: 5px;
 }
 .etlms-social-share-wrap .s_facebook {
 	color: #fff;
@@ -424,22 +359,12 @@
 .etlms-course-curriculum .etlms-course-topic {
 	border: 1px solid #E1EBF0;
 }
-.etlms-course-curriculum .tutor-course-topics-header {
-	margin-bottom: 0;
-}
+
 .etlms-course-curriculum-title {
 	cursor: pointer;
 }
-.etlms-course-curriculum .tutor-course-lessons .tutor-course-lesson h5 i {
-    height: auto;
-    width: auto;
-    line-height: 1.2;
-    margin-right: 10px;
-}
-.etlms-course-curriculum .tutor-course-lessons .tutor-course-lesson h5 i:after {
-	background: none;
-}
 
+/*course topics*/
 #topic-toggle {
 	background: #ccc;
 	color: #fff;
@@ -457,7 +382,6 @@
 	justify-content: flex-start;
 	align-items: center;
 	column-gap: 3px;
-	margin: 0;
 }
 .etlms-topic-icon-align-right .etlms-course-curriculum-title > h4 {
 	display: flex;
@@ -465,7 +389,6 @@
 	justify-content: space-between;
 	align-items: center;
 	column-gap: 8px;
-	margin: 0;
 }
 
 /* Reviews */
@@ -516,7 +439,6 @@
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 1;
-	margin: 0;
 }
 .etlms-review-individual-item .etlms-review-left .review-meta{
 	font-size: 13px;
@@ -524,30 +446,6 @@
 .etlms-review-content .individual-review-rating-wrap {
 	margin-bottom: 8px;
 }
-.etlms-course-reviews .tutor-course-enrolled-review-wrap {
-	margin-top: 25px;
-}
-
-/* reviews skillet theme css override */
-#single-course-ratings {
-	margin-top: 0;
-}
-.single-instructor-wrap {
-	border: 1px solid #e8eff1;
-}
-.single-instructor-wrap .single-instructor-top {
-	border-bottom: 1px solid #e8eff1;
-}
-.tutor-course-reviews-wrap {
-	border: 1px solid #e8eff1;
-    border-radius: 4px;
-	margin-top: 0;
-}
-.etlms-course-reviews .review-time-name p.review-meta {
-	padding-left: 0;
-    padding-top: 0;
-}
-
 
 /*course carousel and course list*/
 
@@ -562,6 +460,8 @@
 .etlms-card {
 	overflow: hidden;
 }
+
+/*
 .etlms-carousel-main-wrap
 .tutor-course-header img,
 .etlms-course-list-main-wrap
@@ -572,6 +472,7 @@
 	overflow: hidden;
 }
 
+*/
 .etlms-coursel-overlayed
 .tutor-course-header a img,
 .etlms-course-list-overlayed
@@ -616,6 +517,21 @@
 	top: -5px;
 	transition: .5s;	
 	z-index: 999;
+}
+
+/*
+	@ if thumbnail image hide 
+	@ remove flex class .etlms-card
+	@ to resolve rating overlap issue
+*/
+
+.thumbnail-hide 
+.etlms-card {
+	display: block !important;
+}
+.thumbnail-hide
+.etlms-carousel-course-container {
+	padding-top: 30px;
 }
 
 /*

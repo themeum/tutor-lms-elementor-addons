@@ -139,24 +139,7 @@ class CourseList extends BaseAddon{
         );
 
 
-        $this->add_control(
-            'course_list_image_ratio',
-            [
-                'label' => __( 'Image Ratio', 'tutor-elementor-addons' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'one-one',
-                'options' => [
-                    'one-one'  => __( '1:1', 'tutor-elementor-addons' ),
-                    'four-three' => __( '4:3', 'tutor-elementor-addons' ),
-                    'sixteen-nine' => __( '16:9', 'tutor-elementor-addons' ),
-                    'three-two' => __( '3:2', 'tutor-elementor-addons' ),
-                    
-                ],
-                'condition' => [
-                    'course_list_image' => 'yes'
-                ]
-            ]
-        );       
+     
 
         $this->add_control(
             'course_list_meta_data',
@@ -307,10 +290,10 @@ class CourseList extends BaseAddon{
             [
                 'label' => __('Pagination','tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_CONTENT,
-                'condition' => [
-                    'course_list_footer_settings' => 'yes',
+                // 'condition' => [
+                //     'course_list_footer_settings' => 'yes',
                    
-                ]              
+                // ]              
             ]
         );
 
@@ -1900,7 +1883,7 @@ class CourseList extends BaseAddon{
         $this->add_group_control(
             Group_Control_Text_Shadow::get_type(),
             [
-                'name' => $cart_text_selector,
+                'name' => 'course_list_car_button_text_shadow',
                 'label' => __( 'Text Shadow', 'tutor-elementor-addons' ),
                 'selector' => $cart_text_selector,
             ]
