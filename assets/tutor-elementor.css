@@ -94,6 +94,16 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
+.elementor-align-center .etlms-course-price  > .price > .price {
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+.elementor-align-right .etlms-course-price  > .price > .price {
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
 .etlms-course-price .price ins {
     text-decoration: none;
 }
