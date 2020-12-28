@@ -235,7 +235,7 @@
         <!-- loop end -->
 
         <!-- pagination start -->
-
+        <?php if("yes"==$settings['course_list_pagination_settings']):?>
         <?php
         /*
             *elementor pagination settings
@@ -319,6 +319,7 @@
 
         <?php endif; ?>
         </div>
+        <?php endif;?>
         <!-- pagination end -->
     <?php
 
