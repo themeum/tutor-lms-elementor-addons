@@ -25,6 +25,8 @@ if ($the_query->have_posts()) : ?>
     <?php 
         if(empty($settings['course_carousel_image'])){
             $thumbnail_hide = "thumbnail-hide";
+        }else {
+            $thumbnail_hide = "";
         }
     ?>
     <div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?> etlms-coursel-<?= $settings['course_carousel_skin'] ?> etlms-carousel-dots-<?= $settings['course_carousel_dots_position'] .' '.$thumbnail_hide ?>" id="etlms-slick-responsive">

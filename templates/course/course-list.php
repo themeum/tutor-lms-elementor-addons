@@ -53,6 +53,8 @@
                 <?php 
                     if(empty($settings['course_list_image'])){
                         $thumbnail_hide = "thumbnail-hide";
+                    }else {
+                        $thumbnail_hide = '';
                     }
                 ?>
                 <div class="tutor-course-col-<?= $course_list_column ?> etlms-course-list-col <?= $thumbnail_hide?>">
