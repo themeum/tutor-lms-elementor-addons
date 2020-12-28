@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseLevel extends BaseAddon {
 
-    use ETLMS_Trait;
+    use \TutorLMS\Elementor\AddonsTrait;
 
     private static $prefix_class_layout = "elementor-layout-";
 

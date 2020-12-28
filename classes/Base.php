@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin base file
+ * Plugin Base Class
  *
  * @category   Elementor
  * @package    TutorLMS_Addons
@@ -55,9 +55,9 @@ class Base {
     }
 
     public function load_files() {
-        include_once(ETLMS_DIR_PATH . 'includes/addons/ETLMS_Trait.php');
         include_once(ETLMS_DIR_PATH . 'includes/functions.php');
         include_once(ETLMS_DIR_PATH . 'classes/Template.php');
+        include_once(ETLMS_DIR_PATH . 'classes/AddonsTrait.php');
         include_once(ETLMS_DIR_PATH . 'classes/AssetsManager.php');
         include_once(ETLMS_DIR_PATH . 'classes/AddonsManager.php');
     }

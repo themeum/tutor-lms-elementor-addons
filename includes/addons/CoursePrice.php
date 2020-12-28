@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CoursePrice extends BaseAddon {
 
-    use ETLMS_Trait;
+    use \TutorLMS\Elementor\AddonsTrait;
 
     private static $prefix_class_alignment = "elementor-align-"; 
 
