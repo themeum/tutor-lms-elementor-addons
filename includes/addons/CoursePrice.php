@@ -39,70 +39,86 @@ class CoursePrice extends BaseAddon {
 
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .etlms-course-price';
-        $regular_price = $selector.' > .amount, '. $selector.' > .price';
-        $sale_price = $selector.' del .amount';
+        $normal_text = $selector.' > .amount, '. $selector.' > .price';
+        $strikethrough_text = $selector.' del .amount';
 
         //Section Regular
         $this->start_controls_section(
-            'regular_price_label_section',
+            'course_price_style_section',
             [
-                'label' => __('Regular Price', 'tutor-elementor-addons'),
+                'label' => __('Text', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
-        $this->add_control(
-            'regular_price_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $regular_price => 'color: {{VALUE}};',
-                ],
-                'default'   => '#161616'
-            ]
-        );
+        /* Start Tabs */
+        $this->start_controls_tabs('course_price_style_tabs');
 
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            array(
-                'name'      => 'regular_price_typography',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $regular_price,
-            )
-        );
+            /* Normal Tab */
+            $this->start_controls_tab(
+                'course_price_normal_style_tab',
+                [
+                    'label' => __( 'Normal', 'tutor-elementor-addons' ),
+                ]
+            );
 
-        $this->end_controls_section();
+            $this->add_control(
+                'normal_text_color',
+                [
+                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $normal_text => 'color: {{VALUE}};',
+                    ],
+                    'default'   => '#161616'
+                ]
+            );
+    
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                array(
+                    'name'      => 'normal_text_typography',
+                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'selector'  => $normal_text,
+                )
+            );
+                
 
-        //Section Regular
-        $this->start_controls_section(
-            'sale_price_label_section',
-            [
-                'label' => __('Sale Price', 'tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
+            $this->end_controls_tab();
 
-        $this->add_control(
-            'sale_price_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $sale_price => 'color: {{VALUE}};',
-                ],
-                'default'   => '#7A7A7A'
-            ]
-        );
+            /* Strikethrough Tab */
+            $this->start_controls_tab(
+                'course_price_strikethrough_style_tab',
+                [
+                    'label' => __( 'Strike', 'tutor-elementor-addons' ),
+                ]
+            );
 
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            array(
-                'name'      => 'sale_price_typography',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $sale_price,
-            )
-        );
+            $this->add_control(
+                'strikethrough_text_color',
+                [
+                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $strikethrough_text => 'color: {{VALUE}};',
+                    ],
+                    'default'   => '#7A7A7A'
+                ]
+            );
+    
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                array(
+                    'name'      => 'strikethrough_text_typography',
+                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'selector'  => $strikethrough_text,
+                )
+            );
+
+            $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+        /* End Tabs */
 
         $this->end_controls_section();
     }
