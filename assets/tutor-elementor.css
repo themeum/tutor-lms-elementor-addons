@@ -743,6 +743,7 @@
 
 .etlms-card {
 	overflow: hidden;
+	
 }
 
 /*
@@ -797,14 +798,65 @@
 /*
 @hover animation for all skins
 */
-.etlms-card.hover-animation:hover {
-	
+.etlms-course-list-classic
+.etlms-card.hover-animation,
+.etlms-course-list-card
+.etlms-card.hover-animation,
+.etlms-course-list-overlayed
+.etlms-card.hover-animation,
+
+.etlms-coursel-classic
+.etlms-card.hover-animation,
+.etlms-coursel-card
+.etlms-card.hover-animation,
+.etlms-coursel-overlayed
+.etlms-card.hover-animation 
+{	
 	position: relative;
-	top: -5px;
-	-webkit-transition: .5s;
-	-o-transition: .5s;
-	transition: .5s;	
+	top: 0;
+	-webkit-transition: top .5s;
+	-moz-transition: top .5s;
+	-o-transition: top .5s;
+	transition: top .5s;	
 	z-index: 999;
+}
+.etlms-course-list-classic
+.etlms-card.hover-animation:hover,
+.etlms-course-list-card
+.etlms-card.hover-animation:hover,
+.etlms-course-list-overlayed
+.etlms-card.hover-animation:hover,
+
+.etlms-coursel-classic
+.etlms-card.hover-animation:hover,
+.etlms-coursel-card
+.etlms-card.hover-animation:hover,
+.etlms-coursel-overlayed
+.etlms-card.hover-animation:hover 
+{	
+	top: -5px;
+}
+
+.etlms-course-list-stacked
+.etlms-card.hover-animation 
+.etlms-carousel-course-container, 
+.etlms-coursel-stacked
+.etlms-card.hover-animation 
+.etlms-carousel-course-container{
+	position:relative;
+	top: 0;
+	-webkit-transition: top .5s;
+	-moz-transition: top .5s;
+	-o-transition: top .5s;
+	transition: top .5s;
+
+}
+
+.etlms-course-list-stacked
+.etlms-card.hover-animation:hover .etlms-carousel-course-container, 
+.etlms-coursel-stacked
+.etlms-card.hover-animation:hover .etlms-carousel-course-container{
+	top: -5px;
 }
 
 /*
