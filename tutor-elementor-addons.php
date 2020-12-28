@@ -25,6 +25,6 @@ define('ETLMS_ASSETS', trailingslashit(ETLMS_DIR_URL . 'assets'));
  */
 add_action('plugins_loaded', 'elementor_tutor_lms_init');
 function elementor_tutor_lms_init() {
-    require ETLMS_DIR_PATH . 'base.php';
+    require ETLMS_DIR_PATH . 'classes/Base.php';
     \TutorLMS\Elementor\Base::instance();
 }

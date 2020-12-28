@@ -14,10 +14,9 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class CourseCurriculum extends BaseAddon {
 
-    use ETLMS_Trait;
+    use \TutorLMS\Elementor\AddonsTrait;
 
     private static $prefix_class_layout = "elementor-layout-";
-
     private static $prefix_class_alignment = "elementor-align-"; 
 
     public function get_title() {

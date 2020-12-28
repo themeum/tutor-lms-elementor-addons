@@ -1,8 +1,20 @@
 <?php
+/**
+ * TutorLMS Elementor Traits
+ *
+ * @category   Elementor
+ * @package    TutorLMS_Addons
+ * @author     Themeum <www.themeum.com>
+ * @copyright  2020 Themeum <www.themeum.com>
+ * @version    Release: @1.0.0
+ * @since      1.0.0
+ */
 
-namespace TutorLMS\Elementor\Addons;
+namespace TutorLMS\Elementor;
 
-trait ETLMS_Trait {
+defined('ABSPATH') || exit;
+
+trait AddonsTrait {
 	
 	/**
 	 * default_layout optional default value left 
