@@ -572,7 +572,7 @@ class CourseList extends BaseAddon{
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 10
+                    'size' => 20
                 ],
 
                 'selectors' => [
