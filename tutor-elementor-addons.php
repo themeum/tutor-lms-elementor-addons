@@ -21,15 +21,7 @@ define('ETLMS_DIR_URL', plugin_dir_url(ETLMS_FILE__));
 define('ETLMS_ASSETS', trailingslashit(ETLMS_DIR_URL . 'assets'));
 
 /**
- * Turn off template override from TutorLMS
- */
-if (!function_exists('is_plugin_active')) {
-    require_once(ABSPATH . '/wp-admin/includes/plugin.php');
-}
-
-/**
- * Now fire the plugin
- * ekhon plugin-e agun lagiye den
+ * Instantiate Base Class after plugins loaded
  */
 add_action('plugins_loaded', 'elementor_tutor_lms_init');
 function elementor_tutor_lms_init() {
