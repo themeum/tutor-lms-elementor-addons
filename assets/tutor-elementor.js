@@ -83,11 +83,11 @@
 			var expand_icon = $scope.find("#etlms-course-topic-expand-icon").val();
 			$scope.find(".etlms-course-curriculum-title").click(function (e) {
                 var $this = $(this);
-                $this.parent().toggleClass('etlms-topic-active');
+                $this.parent().toggleClass('etlms-topic-active', 300);
                 $this.find('#etlms-course-topic-icon').toggleClass(collapse_icon+' '+expand_icon);
 				$this.parent().find(".tutor-course-lessons").animate({
 					height: 'toggle'
-				}, 'slow');
+				}, 300);
 			});
 		});
 

@@ -579,7 +579,10 @@
 .etlms-course-curriculum .tutor-course-topics-header {
 	margin-bottom: 0;
 }
-.etlms-course-curriculum-title {
+.etlms-course-topic {
+	overflow: hidden;
+}
+.etlms-course-topic .etlms-course-curriculum-title {
 	cursor: pointer;
 }
 .etlms-course-curriculum .tutor-course-lessons .tutor-course-lesson h5 i {
