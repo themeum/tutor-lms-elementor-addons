@@ -80,9 +80,9 @@ class AssetsManager {
 
         wp_enqueue_style(
             'tutor-elementor-css',
-            ETLMS_ASSETS . 'tutor-elementor.css',//ETLMS_ASSETS . 'tutor-elementor.min.css',
+            ETLMS_ASSETS . 'tutor-elementor.min.css',
             null,
-            time()//ETLMS_VERSION
+            ETLMS_VERSION
         );
     }
 
