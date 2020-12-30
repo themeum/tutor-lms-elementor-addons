@@ -352,6 +352,10 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
+.etlms-course-enrolment-box .tutor-course-purchase-box a {
+	width: 100%;
+	margin-top: 0;
+}
 .etlms-course-enrolment-box.elementor-align-left .tutor-lead-info-btn-group,
 .etlms-course-enrolment-box.elementor-align-left .tutor-lead-info-btn-group form,
 .etlms-course-enrolment-box.elementor-align-left .tutor-course-purchase-box .etlms-course-enrolment-box.elementor-align-left .tutor-course-purchase-box form,
