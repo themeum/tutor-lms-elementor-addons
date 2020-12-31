@@ -42,7 +42,6 @@ class CoursePrice extends BaseAddon {
         $normal_text = $selector.' > .amount, '. $selector.' > .price';
         $strikethrough_text = $selector.' del .amount';
 
-        //Section Regular
         $this->start_controls_section(
             'course_price_style_section',
             [
@@ -82,7 +81,6 @@ class CoursePrice extends BaseAddon {
                     'selector'  => $normal_text,
                 )
             );
-                
 
             $this->end_controls_tab();
 

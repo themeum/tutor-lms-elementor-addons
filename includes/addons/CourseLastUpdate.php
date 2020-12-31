@@ -25,7 +25,7 @@ class CourseLastUpdate extends BaseAddon {
     protected function register_content_controls(){
         //layout 
         $this->start_controls_section(
-           'course_level_layout_settings',
+           'course_last_update_layout_settings',
             [
                 'label' => __( 'General Settings', 'tutor-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
@@ -44,20 +44,20 @@ class CourseLastUpdate extends BaseAddon {
 		);
 
         $this->add_responsive_control(
-            'course_level_layout',
+            'course_last_update_layout',
             //layout options
             $this->etlms_layout()
         ); 
 
         //alignment    
         $this->add_responsive_control(
-            'course_level_alignment',
+            'course_last_update_alignment',
             //alignment options
             $this->etlms_alignment()
         );
 
         $this->add_responsive_control(
-            'course_level_gap',
+            'course_last_update_gap',
             [
                 'label' => __( 'Gap', 'tutor-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
@@ -89,62 +89,80 @@ class CourseLastUpdate extends BaseAddon {
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .etlms-course-last-update';
 
-        //Section Label
         $this->start_controls_section(
-            'course_level_label_section',
+            'course_last_update_style_section',
             [
-                'label' => __('Label', 'tutor-elementor-addons'),
+                'label' => __('Text', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
-            'course_level_label_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $selector.' label' => 'color: {{VALUE}}',
-                ],
-                'default'   => '#57586E'
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_level_label_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector.' label',
-            ]
-        );
-        $this->end_controls_section();
 
-        //Section Value
-        $this->start_controls_section(
-            'course_level_value_section',
-            [
-                'label' => __('Value', 'tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control(
-            'course_level_value_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $selector.' strong' => 'color: {{VALUE}}',
-                ],
-                'default'   => '#57586E'
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_level_value_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector.' strong',
-            ]
-        );
+        /* Start Tabs */
+        $this->start_controls_tabs('course_last_update_tabs');
+
+            /* Label Tab */
+            $this->start_controls_tab(
+                'course_last_update_label_tab',
+                [
+                    'label' => __( 'Label', 'tutor-elementor-addons' ),
+                ]
+            );
+
+            $this->add_control(
+                'course_last_update_label_color',
+                [
+                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $selector.' label' => 'color: {{VALUE}}',
+                    ],
+                    'default'   => '#57586E'
+                ]
+            );
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name'      => 'course_last_update_label_typo',
+                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'selector'  => $selector.' label',
+                ]
+            );
+
+            $this->end_controls_tab();
+
+            /* Value Tab */
+            $this->start_controls_tab(
+                'course_last_update_value_tab',
+                [
+                    'label' => __( 'Value', 'tutor-elementor-addons' ),
+                ]
+            );
+
+            $this->add_control(
+                'course_last_update_value_color',
+                [
+                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $selector.' strong' => 'color: {{VALUE}}',
+                    ],
+                    'default'   => '#57586E'
+                ]
+            );
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name'      => 'course_last_update_value_typo',
+                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'selector'  => $selector.' strong',
+                ]
+            );
+
+            $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+        /* End Tabs */
+
         $this->end_controls_section();
     }
 

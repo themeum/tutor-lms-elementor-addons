@@ -89,62 +89,80 @@ class CourseTotalEnrolled extends BaseAddon {
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .etlms-course-total-enroll';
 
-        //Section Label
         $this->start_controls_section(
-            'course_level_label_section',
+            'course_total_enrolled_style_section',
             [
-                'label' => __('Label', 'tutor-elementor-addons'),
+                'label' => __('Text', 'tutor-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_control(
-            'course_level_label_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $selector.' label' => 'color: {{VALUE}}',
-                ],
-                'default'   => '#57586E'
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_level_label_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector.' label',
-            ]
-        );
-        $this->end_controls_section();
 
-        //Section Value
-        $this->start_controls_section(
-            'course_level_value_section',
-            [
-                'label' => __('Value', 'tutor-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control(
-            'course_level_value_color',
-            [
-                'label'     => __('Color', 'tutor-elementor-addons'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    $selector.' strong' => 'color: {{VALUE}}',
-                ],
-                'default'   => '#57586E'
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'      => 'course_level_value_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
-                'selector'  => $selector.' strong',
-            ]
-        );
+        /* Start Tabs */
+        $this->start_controls_tabs('course_total_enrolled_tabs');
+
+            /* Label Tab */
+            $this->start_controls_tab(
+                'course_total_enrolled_label_tab',
+                [
+                    'label' => __( 'Label', 'tutor-elementor-addons' ),
+                ]
+            );
+
+            $this->add_control(
+                'course_total_enrolled_label_color',
+                [
+                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $selector.' label' => 'color: {{VALUE}}',
+                    ],
+                    'default'   => '#57586E'
+                ]
+            );
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name'      => 'course_total_enrolled_label_typo',
+                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'selector'  => $selector.' label',
+                ]
+            );
+
+            $this->end_controls_tab();
+
+            /* Value Tab */
+            $this->start_controls_tab(
+                'course_total_enrolled_value_tab',
+                [
+                    'label' => __( 'Value', 'tutor-elementor-addons' ),
+                ]
+            );
+
+            $this->add_control(
+                'course_total_enrolled_value_color',
+                [
+                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'type'      => Controls_Manager::COLOR,
+                    'selectors' => [
+                        $selector.' strong' => 'color: {{VALUE}}',
+                    ],
+                    'default'   => '#57586E'
+                ]
+            );
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name'      => 'course_total_enrolled_value_typo',
+                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'selector'  => $selector.' strong',
+                ]
+            );
+
+            $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+        /* End Tabs */
+
         $this->end_controls_section();
     }
 
