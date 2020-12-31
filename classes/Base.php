@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Base Class
  *
@@ -37,13 +38,11 @@ class Base {
     }
 
     public function init() {
-        if (!function_exists('tutor_lms') || !did_action('elementor/loaded')) {
-            $this->admin_notice();
-            return;
-        }
 
         $this->load_files();
 
+        //Plugin row meta
+        add_filter('plugin_row_meta', [$this, 'plugin_row_meta'], 10, 2);
         // Register custom category
         add_action('elementor/elements/categories_registered', [$this, 'add_category']);
 
@@ -55,46 +54,27 @@ class Base {
     }
 
     public function load_files() {
-        include_once(ETLMS_DIR_PATH . 'includes/functions.php');
-        include_once(ETLMS_DIR_PATH . 'classes/Template.php');
-        include_once(ETLMS_DIR_PATH . 'classes/AddonsTrait.php');
-        include_once(ETLMS_DIR_PATH . 'classes/AssetsManager.php');
-        include_once(ETLMS_DIR_PATH . 'classes/AddonsManager.php');
+        require_once ETLMS_DIR_PATH . 'includes/functions.php';
+        require_once ETLMS_DIR_PATH . 'classes/Template.php';
+        require_once ETLMS_DIR_PATH . 'classes/AssetsManager.php';
+        require_once ETLMS_DIR_PATH . 'classes/AddonsTrait.php';
+        require_once ETLMS_DIR_PATH . 'classes/AddonsManager.php';
     }
 
-    public function admin_notice() {
-        if (defined('TUTOR_VERSION')) {
-            //Version Check
-            if (version_compare(TUTOR_VERSION, '1.5.2', '<')) {
-                add_action('admin_notices', array($this, 'notice_required_tutor'));
-            }
-        } else {
-            //Required Tutor Message
-            add_action('admin_notices', array($this, 'notice_required_tutor'));
+    public function plugin_row_meta($plugin_meta, $plugin_file) {
+        if ($plugin_file === ETLMS_BASENAME) {
+            $plugin_meta[] = sprintf(
+                '<a href="%s" target="_blank">%s</a>',
+                esc_url('https://docs.themeum.com/tutor-lms/integrations/elementor-page-builder/?utm_source=tutor-elementor-addons&utm_medium=plugins_installation_list&utm_campaign=plugin_docs_link'),
+                __('<strong style="color: #03bd24">Documentation</strong>', 'tutor-elementor-addons')
+            );
+            $plugin_meta[] = sprintf(
+                '<a href="%s" target="_blank">%s</a>',
+                esc_url('https://www.themeum.com/contact-us/?utm_source=tutor-elementor-addons&utm_medium=plugins_installation_list&utm_campaign=plugin_support_link'),
+                __('<strong style="color: #03bd24">Get Support</strong>', 'tutor-elementor-addons')
+            );
         }
-
-        if (!did_action('elementor/loaded')) {
-            //Required Elementor Plugin
-            add_action('admin_notices', array($this, 'notice_required_elementor'));
-        }
-    }
-
-    /**
-     * Notice for tutor lms plugin required
-     */
-    public function notice_required_tutor() {
-        $class = 'notice notice-warning';
-        $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated TutorLMS v.1.5.2', 'tutor-elementor-addons');
-        printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
-    }
-
-    /**
-     * Notice for elementor plugin required
-     */
-    public function notice_required_elementor() {
-        $class = 'notice notice-warning';
-        $message = __('In order to use Tutor LMS Elementor Integration, you must have install and activated Elementor Builder Plugin', 'tutor-elementor-addons');
-        printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
+        return $plugin_meta;
     }
 
     /**

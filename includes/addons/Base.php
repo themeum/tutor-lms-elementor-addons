@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin base file
+ * Addons Base Class
  *
  * @category   Elementor
  * @package    TutorLMS_Addons

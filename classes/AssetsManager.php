@@ -54,14 +54,14 @@ class AssetsManager {
             'font-awesome-5-all',
             ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/all.min.css',
             false,
-            '1.0.0'
+            ETLMS_VERSION
         );
 
         wp_register_style(
             'font-awesome-4-shim',
             ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/v4-shims.min.css',
             false,
-            '1.0.0'
+            ETLMS_VERSION
         );
 
         wp_enqueue_style(
