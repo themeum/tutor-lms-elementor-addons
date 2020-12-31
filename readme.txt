@@ -13,20 +13,20 @@ Design the course pages of Tutor LMS as you want with 25 powerful Elementor widg
 
 == Description ==
 
-This plugin adds 25+ addons to Elementor page builder and allows you to create your own custom layout and styling for Tutor LMS courses. To make use of the Elementor builder to build a custom course template, you need to create your own course template first.
+This plugin adds 25+ addons to the Elementor page builder. It allows you to create your own custom layout and styling for Tutor LMS courses. To use the Elementor builder to build a custom course template, you need to create your own course template first.
 
-You can do that by heading to your WordPress admin page, and then from the dashboard panel head to Templates > Saved Templates > Add New and from the “Choose Template Type” dropdown, select page. Give the template a name and also make sure to enable ”Tutor LMS Single Course Template”. Then, from the default editing panel, click on “Edit With Elementor” to start up the Elementor Page builder interface. You will find all the necessary addons to create a single course page from the left sidebar’s Tutor LMS section.
+You can do that by heading to your WordPress admin page, and then from the dashboard panel head to Templates > Saved Templates > Add New and from the “Choose Template Type” dropdown, select page. Give the template a name and also make sure to enable ”Tutor LMS Single Course Template”. Then, from the default editing panel, click on “Edit With Elementor” to start the Elementor Page builder interface. You will find all the necessary addons to create a single course page from the left sidebar’s Tutor LMS section.
 
 = Prerequisite =
 
-To make sure everything works perfectly, here are a list of plugins you will need:
+To make sure everything works perfectly, here is a list of plugins you will need:
 1) [Tutor LMS](https://wordpress.org/plugins/tutor)
 2) [Elementor Plugin](https://wordpress.org/plugins/elementor)
-3) This add-on
+3) This addon
 
 Please make sure you are using the latest version of all these plugins.
 
-After installing and activating all of these plugins, you will be able to build single course pages with Elementor using all of its amazing features. For a more in-depth look at the integration and all it’s nitty gritty details, please visit our [documentation](https://docs.themeum.com/tutor-lms/integrations/elementor-page-builder/) on Tutor LMS - Elementor integration.
+After installing and activating all of these plugins, you will be able to build single course pages with Elementor using all of its unique features. For a more in-depth look at the integration and all it’s nitty-gritty details, please visit our [documentation](https://docs.themeum.com/tutor-lms/integrations/elementor-page-builder/) on Tutor LMS - Elementor integration.
 
 
 == Elementor Add-ons in the Tutor LMS Integration Plugin ==
@@ -55,7 +55,7 @@ After installing and activating all of these plugins, you will be able to build 
 22. Course Review
 23. Course Carousel
 24. Course List
-25. Course Description (available for global template only)
+25. Course Description (available for the global template only)
 
 == Installation ==
 
@@ -66,9 +66,9 @@ After installing and activating all of these plugins, you will be able to build 
 
 = Automatic installation =
 
-The automatic installation is the easiest way to install any plugin in WordPress. You can perform an automatic installation of Tutor LMS Elementor Addons by logging in to your WordPress dashboard, navigating to the “Plugins” menu and click on the “Add New” button.
+The automatic installation is the easiest way to install any plugin in WordPress. You can perform an automated installation of Tutor LMS Elementor Addons by logging in to your WordPress dashboard, navigating to the “Plugins” menu, and click on the “Add New” button.
 
-This will open up a page showing all the available plugins in WordPress. In the search field, type Tutor LMS Elementor Addons. The search result will show you our Tutor LMS Elementor Addons plugin, you can then see the detailed info by clicking on “More Details” and to install just click on the “Install Now” button.
+This will open up a page showing all the available plugins in WordPress. In the search field, type Tutor LMS Elementor Addons. The search result will show you our Tutor LMS Elementor Addons plugin. You can then see the detailed info by clicking on “More Details” and installing just click on the “Install Now” button.
 
 = Manual installation =
 
@@ -85,13 +85,13 @@ Yes! You can use this builder to create a different look and feel for your exist
 No, you can use this integration with the free version. Pro version of Elementor is not required.
 
 = Do I need the Pro version of Tutor LMS to use this plugin? =
-No, free version is enough to use this integration.
+No, the free version is enough to use this integration.
 
 = Can I use this with my theme? =
-We have tested the compatibility with Twenty Nineteen, Elementor Hello and Astra. If you find a conflict or problem in your theme, feel free to post on the support section of this plugin.
+We have tested the compatibility with Twenty Nineteen, Elementor Hello, and Astra. If you find a conflict or problem in your theme, please post on the support section of this plugin.
 
-= How can I request for more features? =
-You can post on the support section of this plugin or use the contact form at themeum.com
+= How can I request more features? =
+You can post on the support section of this plugin or use the contact form at themeum.com.
 
 == Screenshots ==
 
