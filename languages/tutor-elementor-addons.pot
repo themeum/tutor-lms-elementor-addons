@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Tutor Elementor Addons
+# Copyright (C) 2021 Tutor Elementor Addons
 # This file is distributed under the same license as the Tutor Elementor Addons package.
 msgid ""
 msgstr ""
@@ -145,16 +145,56 @@ msgstr ""
 msgid "Justified"
 msgstr ""
 
-#: classes/Base.php:87
-msgid "In order to use Tutor LMS Elementor Integration, you must have install and activated TutorLMS v.1.5.2"
+#: classes/Base.php:69
+msgid "<strong style=\"color: #03bd24\">Documentation</strong>"
 msgstr ""
 
-#: classes/Base.php:96
-msgid "In order to use Tutor LMS Elementor Integration, you must have install and activated Elementor Builder Plugin"
+#: classes/Base.php:74
+msgid "<strong style=\"color: #03bd24\">Get Support</strong>"
 msgstr ""
 
-#: classes/Base.php:109
+#: classes/Base.php:89
 msgid "Tutor LMS"
+msgstr ""
+
+#: classes/Installer.php:79
+msgid "Install Tutor LMS"
+msgstr ""
+
+#: classes/Installer.php:76
+msgid "Activate Tutor LMS"
+msgstr ""
+
+#: classes/Installer.php:90, classes/Installer.php:128
+msgid "Thanks for using Tutor LMS Elementor Addons"
+msgstr ""
+
+#: classes/Installer.php:91
+msgid "You must have <a href=\"%s\" target=\"_blank\">Tutor LMS</a> Free version installed and activated on this website in order to use Tutor LMS Elementor Addons."
+msgstr ""
+
+#: classes/Installer.php:92
+msgid "Learn more about Tutor"
+msgstr ""
+
+#: classes/Installer.php:117
+msgid "Install Elementor Builder"
+msgstr ""
+
+#: classes/Installer.php:114
+msgid "Activate Elementor Builder"
+msgstr ""
+
+#: classes/Installer.php:129
+msgid "You must have <a href=\"%s\" target=\"_blank\">Elementor Builder</a> Free version installed and activated on this website in order to use Tutor LMS Elementor Addons."
+msgstr ""
+
+#: classes/Installer.php:130
+msgid "Learn more about Elementor Builder"
+msgstr ""
+
+#: classes/Installer.php:187
+msgid "Unknown Plugin"
 msgstr ""
 
 #: classes/Template.php:153
