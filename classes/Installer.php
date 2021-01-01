@@ -34,7 +34,7 @@ class Installer {
     public function admin_enqueue_scripts() {
         wp_enqueue_style(
             'tutor-elementor-installer-css',
-            ETLMS_ASSETS . 'installer.css',
+            ETLMS_ASSETS . 'css/installer.css',
             null,
             ETLMS_VERSION
         );

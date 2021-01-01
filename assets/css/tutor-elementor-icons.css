@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'tutor-elementor';
-  src:  url('fonts/tutor-elementor.eot?6c3p4m');
-  src:  url('fonts/tutor-elementor.eot?6c3p4m#iefix') format('embedded-opentype'),
-    url('fonts/tutor-elementor.ttf?6c3p4m') format('truetype'),
-    url('fonts/tutor-elementor.woff?6c3p4m') format('woff'),
-    url('fonts/tutor-elementor.svg?6c3p4m#tutor-elementor') format('svg');
+  src:  url('../fonts/tutor-elementor.eot?6c3p4m');
+  src:  url('../fonts/tutor-elementor.eot?6c3p4m#iefix') format('embedded-opentype'),
+    url('../fonts/tutor-elementor.ttf?6c3p4m') format('truetype'),
+    url('../fonts/tutor-elementor.woff?6c3p4m') format('woff'),
+    url('../fonts/tutor-elementor.svg?6c3p4m#tutor-elementor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;

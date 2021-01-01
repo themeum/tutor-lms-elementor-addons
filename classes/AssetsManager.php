@@ -36,7 +36,7 @@ class AssetsManager {
     public static function enqueue_editor_scripts() {
         wp_enqueue_style(
             'tutor-elementor-icons',
-            ETLMS_ASSETS . 'tutor-elementor-icons.min.css',
+            ETLMS_ASSETS . 'css/tutor-elementor-icons.min.css',
             null,
             ETLMS_VERSION
         );
@@ -80,7 +80,7 @@ class AssetsManager {
 
         wp_enqueue_style(
             'tutor-elementor-css',
-            ETLMS_ASSETS . 'tutor-elementor.min.css',
+            ETLMS_ASSETS . 'css/tutor-elementor.min.css',
             null,
             ETLMS_VERSION
         );
@@ -105,7 +105,7 @@ class AssetsManager {
 
         wp_enqueue_script(
             'tutor-elementor-js',
-            ETLMS_ASSETS . 'tutor-elementor.js',
+            ETLMS_ASSETS . 'js/tutor-elementor.js',
             array('jquery'),
             ETLMS_VERSION
         );
