@@ -170,27 +170,27 @@ msgid "Thanks for using Tutor LMS Elementor Addons"
 msgstr ""
 
 #: classes/Installer.php:91
-msgid "You must have <a href=\"%s\" target=\"_blank\">Tutor LMS</a> Free version installed and activated on this website in order to use Tutor LMS Elementor Addons."
+msgid "To use Tutor LMS Elementor Integration, you must have <a href=\"%s\" target=\"_blank\">Tutor LMS</a> Free installed and activated"
 msgstr ""
 
 #: classes/Installer.php:92
-msgid "Learn more about Tutor"
+msgid "Learn more about Tutor LMS"
 msgstr ""
 
 #: classes/Installer.php:117
-msgid "Install Elementor Builder"
+msgid "Install Elementor"
 msgstr ""
 
 #: classes/Installer.php:114
-msgid "Activate Elementor Builder"
+msgid "Activate Elementor"
 msgstr ""
 
 #: classes/Installer.php:129
-msgid "You must have <a href=\"%s\" target=\"_blank\">Elementor Builder</a> Free version installed and activated on this website in order to use Tutor LMS Elementor Addons."
+msgid "To use Tutor LMS Elementor Integration, you must have <a href=\"%s\" target=\"_blank\">Elementor</a> Free installed and activated"
 msgstr ""
 
 #: classes/Installer.php:130
-msgid "Learn more about Elementor Builder"
+msgid "Learn more about Elementor"
 msgstr ""
 
 #: classes/Installer.php:187
