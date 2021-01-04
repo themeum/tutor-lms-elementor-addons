@@ -748,6 +748,10 @@
 	padding:0px;
 }
 
+.etlms-carousel-loop-wrap .slick-dots li {
+	margin: 0;
+}
+
 .etlms-card {
 	overflow: hidden;
 	

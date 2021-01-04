@@ -1772,7 +1772,7 @@ class CourseCarousel extends BaseAddon{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 20,
+					'size' => 28,
 				],
 				'selectors' => [
 					$arrow_icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
@@ -2052,27 +2052,6 @@ class CourseCarousel extends BaseAddon{
 			]
 		);
 
-
-
-        // $this->add_control(
-        //     'course_carousel_dots_radius',
-        //     [
-        //         'label' => __( 'Radius', 'tutor-lms-elementor-addons' ),
-        //         'type' => Controls_Manager::SLIDER,
-        //         'size_units' => [ 'px' ],
-        //         'range' => [
-        //             'px' => [
-        //                 'min' => 5,
-        //                 'max' => 200,
-        //             ],
-        //         ],
-        //         'selectors' => [
-        //             $wrapper.".slick-dots li.slick-active button:before" => 'border-radius: {{SIZE}}{{UNIT}};',
-        //             $wrapper.".slick-dots li button:before" => 'border-radius: {{SIZE}}{{UNIT}};',
-        //         ],
-        //     ]
-        // );        
-
         $this->add_control(
             'course_carousel_dots_size',
             [
@@ -2081,13 +2060,16 @@ class CourseCarousel extends BaseAddon{
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 5,
-                        'max' => 200,
+                        'min' => 3,
+                        'max' => 36,
                     ],
                 ],
                 'selectors' => [
                     $wrapper.".slick-dots li button:before" => 'font-size: {{SIZE}}{{UNIT}};',
-                ],
+				],
+				'default' => [
+					'size' => 14,
+				]
             ]
         );        
 
@@ -2117,6 +2099,27 @@ class CourseCarousel extends BaseAddon{
 				$wrapper.".slick-dots" => 'text-align: {{VALUE}};',
 			],		    				
 		]
+		);
+		
+		$this->add_control(
+            'course_carousel_dots_gap',
+            [
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 68,
+                    ],
+                ],
+                'selectors' => [
+                    $wrapper.".slick-dots"=> 'bottom: -{{SIZE}}{{UNIT}};',
+				],
+				'default' => [
+					'size' => 30,
+				]
+            ]
         );
 
         $this->add_control(
@@ -2127,13 +2130,16 @@ class CourseCarousel extends BaseAddon{
                 'size_units' => [ 'px' ],
                 'range' => [
                     'px' => [
-                        'min' => 5,
-                        'max' => 200,
+                        'min' => 0,
+                        'max' => 36,
                     ],
                 ],
                 'selectors' => [
-                    $wrapper.".slick-dots li"=> 'padding-right: {{SIZE}}{{UNIT}};',
-                ],
+                    $wrapper.".slick-dots li"=> 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+				'default' => [
+					'size' => 5,
+				]
             ]
         );
 
