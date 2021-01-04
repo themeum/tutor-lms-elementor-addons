@@ -1,8 +1,8 @@
-# Copyright (C) 2021 Tutor Elementor Addons
-# This file is distributed under the same license as the Tutor Elementor Addons package.
+# Copyright (C) 2021 Tutor LMS Elementor Addons
+# This file is distributed under the same license as the Tutor LMS Elementor Addons package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor Elementor Addons\n"
+"Project-Id-Version: Tutor LMS Elementor Addons\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
