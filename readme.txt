@@ -99,7 +99,7 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 1.0.0 - 08 April, 2020 =
+= 1.0.0 - 05 January, 2021 =
 
 * Initial Release
 
