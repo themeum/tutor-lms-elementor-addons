@@ -1745,7 +1745,7 @@ class CourseCarousel extends BaseAddon{
 				],
 				'default' => [
 					'unit' => 'px',
-					'size' => 20,
+					'size' => 28,
 				],
 				'condition' =>[
 					'course_carousel_arrow_style!'=>'default'
@@ -1958,7 +1958,7 @@ class CourseCarousel extends BaseAddon{
 					],
 					'default' => [
 						'unit' => 'px',
-						'size' => 0,
+						'size' => 1,
 					],
 					'condition' => [
 						'course_carousel_arrow_style' => 'ghost'
