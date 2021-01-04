@@ -4,7 +4,7 @@ do_action('tutor_course/single/enrolled/before/reviews');
 
 <div class="etlms-course-reviews">
     <div class="course-student-rating-title">
-        <h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
+        <h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-lms-elementor-addons'); ?></h4>
     </div>
     <div class="tutor-course-reviews-wrap">
 
@@ -45,7 +45,7 @@ do_action('tutor_course/single/enrolled/before/reviews');
                                         <div class="rating-meter-col rating-text-col">
                                             <?php
                                             echo $value . ' ';
-                                            echo $value > 1 ? __('ratings', 'tutor-elementor-addons') : __('rating', 'tutor-elementor-addons'); ?>
+                                            echo $value > 1 ? __('ratings', 'tutor-lms-elementor-addons') : __('rating', 'tutor-lms-elementor-addons'); ?>
                                         </div>
                                     </div>
                                 <?php } ?>
@@ -71,7 +71,7 @@ do_action('tutor_course/single/enrolled/before/reviews');
                                 <div class="review-time-name">
                                     <h4> <a href="<?php echo $profile_url; ?>"> <?php echo $review->display_name; ?> </a> </h4>
                                     <p class="review-meta">
-                                        <?php echo sprintf(__('%s ago', 'tutor-elementor-addons'), human_time_diff(strtotime($review->comment_date))); ?>
+                                        <?php echo sprintf(__('%s ago', 'tutor-lms-elementor-addons'), human_time_diff(strtotime($review->comment_date))); ?>
                                     </p>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ do_action('tutor_course/single/enrolled/before/reviews');
 
         <?php
         } else if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-            echo __('Course review not found', 'tutor-elementor-addons');
+            echo __('Course review not found', 'tutor-lms-elementor-addons');
         }
         ?>
 

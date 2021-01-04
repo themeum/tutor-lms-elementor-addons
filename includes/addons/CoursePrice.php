@@ -18,14 +18,14 @@ class CoursePrice extends BaseAddon {
     private static $prefix_class_alignment = "elementor-align-"; 
 
     public function get_title() {
-        return __('Course Price', 'tutor-elementor-addons');
+        return __('Course Price', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls() {
 		$this->start_controls_section(
             'course_price_content',
             [
-                'label' => __('General Settings', 'tutor-elementor-addons'),
+                'label' => __('General Settings', 'tutor-lms-elementor-addons'),
             ]
         );
         
@@ -45,7 +45,7 @@ class CoursePrice extends BaseAddon {
         $this->start_controls_section(
             'course_price_style_section',
             [
-                'label' => __('Text', 'tutor-elementor-addons'),
+                'label' => __('Text', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -57,14 +57,14 @@ class CoursePrice extends BaseAddon {
             $this->start_controls_tab(
                 'course_price_normal_style_tab',
                 [
-                    'label' => __( 'Normal', 'tutor-elementor-addons' ),
+                    'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
                 ]
             );
 
             $this->add_control(
                 'normal_text_color',
                 [
-                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $normal_text => 'color: {{VALUE}};',
@@ -77,7 +77,7 @@ class CoursePrice extends BaseAddon {
                 Group_Control_Typography::get_type(),
                 array(
                     'name'      => 'normal_text_typography',
-                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                     'selector'  => $normal_text,
                 )
             );
@@ -88,14 +88,14 @@ class CoursePrice extends BaseAddon {
             $this->start_controls_tab(
                 'course_price_strikethrough_style_tab',
                 [
-                    'label' => __( 'Strike', 'tutor-elementor-addons' ),
+                    'label' => __( 'Strike', 'tutor-lms-elementor-addons' ),
                 ]
             );
 
             $this->add_control(
                 'strikethrough_text_color',
                 [
-                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $strikethrough_text => 'color: {{VALUE}};',
@@ -108,7 +108,7 @@ class CoursePrice extends BaseAddon {
                 Group_Control_Typography::get_type(),
                 array(
                     'name'      => 'strikethrough_text_typography',
-                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                     'selector'  => $strikethrough_text,
                 )
             );
@@ -124,7 +124,7 @@ class CoursePrice extends BaseAddon {
     protected function render($instance = []) {
         if (tutils()->is_enrolled()) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Since you are already enrolled, the price will not appear', 'tutor-elementor-addons');
+                echo __('Since you are already enrolled, the price will not appear', 'tutor-lms-elementor-addons');
             }
             return;
         }

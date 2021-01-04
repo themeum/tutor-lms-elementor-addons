@@ -17,7 +17,7 @@ $target_blank = ($settings['course_author_link'] == 'new_window') ? 'target="_bl
     <?php } ?>
     <?php if ($settings['course_author_name']) { ?>
         <div class="tutor-single-course-author-name">
-            <span><?php _e('by', 'tutor-elementor-addons'); ?></span>
+            <span><?php _e('by', 'tutor-lms-elementor-addons'); ?></span>
             <?php if ($settings['course_author_link'] == 'none') { 
                 echo "<p>{$author_name}</p>";
             } else {

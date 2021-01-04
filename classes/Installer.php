@@ -73,10 +73,10 @@ class Installer {
         $action = $button_txt = $button_class = '';
         if (file_exists($source_file) && !is_plugin_active($tutor_basename)) {
             $action = 'activate_tutor_free';
-            $button_txt = __('Activate Tutor LMS', 'tutor-elementor-addons');
+            $button_txt = __('Activate Tutor LMS', 'tutor-lms-elementor-addons');
         } elseif ( !file_exists($source_file) ) {
             $action = 'install_tutor_plugin';
-            $button_txt = __('Install Tutor LMS', 'tutor-elementor-addons');
+            $button_txt = __('Install Tutor LMS', 'tutor-lms-elementor-addons');
             $button_class = 'install-etlms-dependency-plugin-button';
         }
         if($action) {
@@ -87,9 +87,9 @@ class Installer {
                         <img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
                     </div>
                     <div class="etlms-install-notice-content">
-                        <h2><?php _e('Thanks for using Tutor LMS Elementor Addons', 'tutor-elementor-addons'); ?></h2>
-                        <p><?php echo sprintf(__('To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Tutor LMS</a> Free installed and activated', 'tutor-elementor-addons'), esc_url('https://wordpress.org/plugins/tutor/')); ?></p>
-                        <a href="https://www.themeum.com/product/tutor-lms/" target="_blank"><?php _e('Learn more about Tutor LMS', 'tutor-elementor-addons'); ?></a>
+                        <h2><?php _e('Thanks for using Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons'); ?></h2>
+                        <p><?php echo sprintf(__('To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Tutor LMS</a> Free installed and activated', 'tutor-lms-elementor-addons'), esc_url('https://wordpress.org/plugins/tutor/')); ?></p>
+                        <a href="https://www.themeum.com/product/tutor-lms/" target="_blank"><?php _e('Learn more about Tutor LMS', 'tutor-lms-elementor-addons'); ?></a>
                     </div>
                     <div class="etlms-install-notice-button">
                         <a  class="button button-primary <?php echo $button_class; ?>" data-slug="tutor" href="<?php echo add_query_arg(array('action' => $action), admin_url()); ?>"><?php echo $button_txt; ?></a>
@@ -111,10 +111,10 @@ class Installer {
         $action = $button_txt = $button_class = '';
         if (file_exists($source_file) && !is_plugin_active($elementor_basename)) {
             $action = 'activate_elementor_free';
-            $button_txt = __('Activate Elementor', 'tutor-elementor-addons');
+            $button_txt = __('Activate Elementor', 'tutor-lms-elementor-addons');
         } elseif ( !file_exists($source_file) ) {
             $action = 'install_tutor_plugin';
-            $button_txt = __('Install Elementor', 'tutor-elementor-addons');
+            $button_txt = __('Install Elementor', 'tutor-lms-elementor-addons');
             $button_class = 'install-etlms-dependency-plugin-button';
         }
         if($action) {
@@ -125,9 +125,9 @@ class Installer {
                         <img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
                     </div>
                     <div class="etlms-install-notice-content">
-                        <h2><?php _e('Thanks for using Tutor LMS Elementor Addons', 'tutor-elementor-addons'); ?></h2>
-                        <p><?php echo sprintf(__('To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Elementor</a> Free installed and activated', 'tutor-elementor-addons'), esc_url('https://wordpress.org/plugins/elementor/')); ?></p>
-                        <a href="https://elementor.com/" target="_blank"><?php _e('Learn more about Elementor', 'tutor-elementor-addons'); ?></a>
+                        <h2><?php _e('Thanks for using Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons'); ?></h2>
+                        <p><?php echo sprintf(__('To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Elementor</a> Free installed and activated', 'tutor-lms-elementor-addons'), esc_url('https://wordpress.org/plugins/elementor/')); ?></p>
+                        <a href="https://elementor.com/" target="_blank"><?php _e('Learn more about Elementor', 'tutor-lms-elementor-addons'); ?></a>
                     </div>
                     <div class="etlms-install-notice-button">
                         <a  class="button button-primary <?php echo $button_class; ?>" data-slug="elementor" href="<?php echo add_query_arg(array('action' => $action), admin_url()); ?>"><?php echo $button_txt; ?></a>
@@ -184,7 +184,7 @@ class Installer {
             $upgrader = new \Plugin_Upgrader(new \Plugin_Installer_Skin(compact('title', 'url', 'nonce', 'plugin', 'api')));
             $upgrader->install($api->download_link);
         } else {
-            wp_send_json_error(__('Unknown Plugin', 'tutor-elementor-addons'));
+            wp_send_json_error(__('Unknown Plugin', 'tutor-lms-elementor-addons'));
         }
         die();
     }

@@ -21,7 +21,7 @@ class CourseList extends BaseAddon{
     private static $prefix_class_alignment = "enroll-button-align-";
 
     public function get_title() {
-        return __('Course List', 'tutor-elementor-addons');
+        return __('Course List', 'tutor-lms-elementor-addons');
     }
 
 
@@ -40,7 +40,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_list_content_section',
             [
-                'label' => __('Layout','tutor-elementor-addons'),
+                'label' => __('Layout','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -48,14 +48,14 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_skin',
             [
-                'label' => __('Skin','tutor-elementor-addons'),
+                'label' => __('Skin','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'classic',
                 'options' =>[
-                    'classic' => __('Classic','tutor-elementor-addons'),
-                    'card' => __('Card','tutor-elementor-addons'),
-                    'stacked' => __('Stacked','tutor-elementor-addons'),
-                    'overlayed' => __('Overlayed','tutor-elementor-addons')
+                    'classic' => __('Classic','tutor-lms-elementor-addons'),
+                    'card' => __('Card','tutor-lms-elementor-addons'),
+                    'stacked' => __('Stacked','tutor-lms-elementor-addons'),
+                    'overlayed' => __('Overlayed','tutor-lms-elementor-addons')
                 ],
                 
             ]
@@ -64,15 +64,15 @@ class CourseList extends BaseAddon{
         $this->add_control(
          'course_list_column',
          [
-             'label' => __( 'Columns', 'tutor-elementor-addons' ),
+             'label' => __( 'Columns', 'tutor-lms-elementor-addons' ),
              'type' =>Controls_Manager::SELECT,
              'default' => '3',
              'options' => [
-                 '1'  => __( '1', 'tutor-elementor-addons' ),
-                 '2' => __( '2', 'tutor-elementor-addons' ),
-                 '3' => __( '3', 'tutor-elementor-addons' ),
-                 '4' => __( '4', 'tutor-elementor-addons' ),
-                 '5' => __( '5', 'tutor-elementor-addons' ),
+                 '1'  => __( '1', 'tutor-lms-elementor-addons' ),
+                 '2' => __( '2', 'tutor-lms-elementor-addons' ),
+                 '3' => __( '3', 'tutor-lms-elementor-addons' ),
+                 '4' => __( '4', 'tutor-lms-elementor-addons' ),
+                 '5' => __( '5', 'tutor-lms-elementor-addons' ),
              ],
          ]
         );
@@ -80,7 +80,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_perpage',
             [
-                'label' => __( 'Post Per Page', 'tutor-elementor-addons' ),
+                'label' => __( 'Post Per Page', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 100,
@@ -92,10 +92,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'card_hover_animation',
             [
-                'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
+                'label' => __( 'Hover Animation', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Yes', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'No', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
 
                 'default' => 'yes',
@@ -104,10 +104,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_image',
             [
-                'label' => __( 'Show Image', 'tutor-elementor-addons' ),
+                'label' => __( 'Show Image', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -116,10 +116,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_masonry',
             [
-                'label' => __( 'Masonry', 'tutor-elementor-addons' ),
+                'label' => __( 'Masonry', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'tutor-elementor-addons' ),
-                'label_off' => __( 'No', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Yes', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'No', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => '',
             ]
@@ -129,7 +129,7 @@ class CourseList extends BaseAddon{
             Group_Control_Image_Size::get_type(),
             [
                 'name' => 'course_list_image_size', // Actually its `image_size`.
-                'label' => __( 'Image Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Image Size', 'tutor-lms-elementor-addons' ),
                 'default' => 'medium_large',
                 'condition'=>[
                     'course_list_image' => 'yes'
@@ -143,9 +143,9 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_meta_data',
             [
-                'label' => __( 'Meta Data', 'tutor-elementor-addons' ),
+                'label' => __( 'Meta Data', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
                 'label_off' => __( 'Hide', 'your-plugin' ),
                 'return_value' => 'yes',
                 'default' => 'no',
@@ -187,10 +187,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_rating_settings',
             [
-                'label' => __( 'Rating', 'tutor-elementor-addons' ),
+                'label' => __( 'Rating', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
                 
@@ -200,10 +200,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_avatar_settings',
             [
-                'label' => __( 'Avatar', 'tutor-elementor-addons' ),
+                'label' => __( 'Avatar', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -212,10 +212,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_author_settings',
             [
-                'label' => __( 'Author', 'tutor-elementor-addons' ),
+                'label' => __( 'Author', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -224,10 +224,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_difficulty_settings',
             [
-                'label' => __( 'Difficulty Level', 'tutor-elementor-addons' ),
+                'label' => __( 'Difficulty Level', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -236,10 +236,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_category_settings',
             [
-                'label' => __( 'Category', 'tutor-elementor-addons' ),
+                'label' => __( 'Category', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -248,10 +248,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_wishlist_settings',
             [
-                'label' => __( 'Wishlist', 'tutor-elementor-addons' ),
+                'label' => __( 'Wishlist', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -260,10 +260,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_footer_settings',
             [
-                'label' => __( 'Footer', 'tutor-elementor-addons' ),
+                'label' => __( 'Footer', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -272,10 +272,10 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_pagination_settings',
             [
-                'label' => __( 'Pagination', 'tutor-elementor-addons' ),
+                'label' => __( 'Pagination', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -287,7 +287,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_list_pagination_content_section',
             [
-                'label' => __('Pagination','tutor-elementor-addons'),
+                'label' => __('Pagination','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_CONTENT,
                 // 'condition' => [
                 //     'course_list_footer_settings' => 'yes',
@@ -299,14 +299,14 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_pagination_type',
             [
-                'label' => __('Pagination','tutor-elementor-addons'),
+                'label' => __('Pagination','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'prev_next',
 
                 'options' => [
-                    'prev_next' => __('Previous/Next', 'tutor-elementor-addons'),
-                    'number_prev_next' => __('Numbers + Previous/Next', 'tutor-elementor-addons'),
-                    'numbers' => __('Numbers', 'tutor-elementor-addons')
+                    'prev_next' => __('Previous/Next', 'tutor-lms-elementor-addons'),
+                    'number_prev_next' => __('Numbers + Previous/Next', 'tutor-lms-elementor-addons'),
+                    'numbers' => __('Numbers', 'tutor-lms-elementor-addons')
                 ]
             ]
         );       
@@ -314,7 +314,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_pagination_page_limit',
             [
-                'label' => __('Page Limit','tutor-elementor-addons'),
+                'label' => __('Page Limit','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'max' => 20,
@@ -326,37 +326,37 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_pagination_previous_label',
             [
-                'label' => __('Previous Label','tutor-elementor-addons'),
+                'label' => __('Previous Label','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::TEXT,
-                'default' => __('&laquo; Previous','tutor-elementor-addons')
+                'default' => __('&laquo; Previous','tutor-lms-elementor-addons')
             ]
         );
 
         $this->add_control(
             'course_list_pagination_next_label',
             [
-                'label' => __('Next Label','tutor-elementor-addons'),
+                'label' => __('Next Label','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::TEXT,
-                'default' => __('Next','tutor-elementor-addons')
+                'default' => __('Next','tutor-lms-elementor-addons')
             ]
         );
 
         $this->add_control(
             'course_list_pagination_alignment',
             [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
                 'type'         => \Elementor\Controls_Manager::CHOOSE,
                 'options'      => [
                     'flex-start'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'title' => __('Left', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'title' => __('Center', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'flex-end'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'title' => __('Right', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-right'
                     ]
                 ],
@@ -377,7 +377,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_coursel_enroll_section',
             [
-                'label' => __('Enroll Button','tutor-elementor-addons'),
+                'label' => __('Enroll Button','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -391,13 +391,13 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_enroll_btn_type',
             [
-                'label' => __('Button Type','tutor-elementor-addons'),
+                'label' => __('Button Type','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'default' => __('Default','tutor-elementor-addons'), 
-                    'default_with_cart_icon' => __('Default with Cart Icon','tutor-elementor-addons'), 
-                    'text_button' => __('Text Button','tutor-elementor-addons'), 
-                    'text_with_cart' => __('Text with Cart','tutor-elementor-addons'), 
+                    'default' => __('Default','tutor-lms-elementor-addons'), 
+                    'default_with_cart_icon' => __('Default with Cart Icon','tutor-lms-elementor-addons'), 
+                    'text_button' => __('Text Button','tutor-lms-elementor-addons'), 
+                    'text_with_cart' => __('Text with Cart','tutor-lms-elementor-addons'), 
                 ],
                 'default' => 'text_with_cart'
             ]
@@ -407,7 +407,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_coursel_button_icon',
             [
-                'label' => __('Icon','tutor-elementor-addons'),
+                'label' => __('Icon','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::ICON,
                 
                 'label_block' => true,
@@ -428,7 +428,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_btn_icon_spacing',
             [
-                'label' => __( 'Icon Spacing', 'tutor-elementor-addons' ),
+                'label' => __( 'Icon Spacing', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [
@@ -508,7 +508,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_columns_gap',
             [
-                'label'     => __('Columns Gap', 'tutor-elementor-addons'),
+                'label'     => __('Columns Gap', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_unit' => ['px'],
                 'range' => [
@@ -533,7 +533,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_columns_gap_masonry',
             [
-                'label'     => __('Columns Gap', 'tutor-elementor-addons'),
+                'label'     => __('Columns Gap', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_unit' => ['px'],
                 'range' => [
@@ -559,7 +559,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_rows_gap',
             [
-                'label'     => __('Rows Gap', 'tutor-elementor-addons'),
+                'label'     => __('Rows Gap', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_unit' => ['px'],
                 'range' => [
@@ -583,19 +583,19 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_cols_alignment',
             [
-                'label'        => __('Alignment', 'tutor-elementor-addons'),
+                'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
                     'flex-start'   => [
-                        'title' => __('Left', 'tutor-elementor-addons'),
+                        'title' => __('Left', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'tutor-elementor-addons'),
+                        'title' => __('Center', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-center',
                     ],
                     'flex-end'  => [
-                        'title' => __('Right', 'tutor-elementor-addons'),
+                        'title' => __('Right', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-align-right'
                     ],
 
@@ -611,7 +611,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_carousel_style_section',
             [
-                'label' => __('Card','tutor-elementor-addons'),
+                'label' => __('Card','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -619,7 +619,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_card_background_color',
             [
-                'label'     => __('Background Color', 'tutor-elementor-addons'),
+                'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'conditions' => [
                     'relation' => 'or',
@@ -641,7 +641,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_stacked_background_color',
             [
-                'label'     => __('Background Color', 'tutor-elementor-addons'),
+                'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'condition' => [
                     'course_list_skin' => 'stacked',
@@ -659,14 +659,14 @@ class CourseList extends BaseAddon{
 
             //normal tab start
             $this->start_controls_tab('course_list_card_normal_tab',[
-                'label' => __('Normal','tutor-elementor-addons')
+                'label' => __('Normal','tutor-lms-elementor-addons')
             ]);
 
                 $this->add_group_control(
                     Group_Control_Border::get_type(),
                     [
                         'name' => 'course_list_card_border',
-                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin!' => 'stacked'
                         ],
@@ -677,7 +677,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Border::get_type(),
                     [
                         'name' => 'course_list_stacked_border',
-                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin' => 'stacked'
                         ],
@@ -688,7 +688,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_card_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
@@ -707,7 +707,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_stacked_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
@@ -726,7 +726,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_overlayed_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
@@ -746,7 +746,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'carousel_card_box_shadow_control',
-                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin!' => 'stacked'
                         ],
@@ -758,7 +758,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'carousel_stacked_box_shadow_control',
-                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin' => 'stacked'
                         ],
@@ -771,14 +771,14 @@ class CourseList extends BaseAddon{
 
             //hover tab start
             $this->start_controls_tab('course_list_card_hover_tab',[
-                'label' => __('Hover','tutor-elementor-addons')
+                'label' => __('Hover','tutor-lms-elementor-addons')
             ]);
 
                 $this->add_group_control(
                     Group_Control_Border::get_type(),
                     [
                         'name' => 'course_list_card_hover_border',
-                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin!' => 'stacked'
                         ],
@@ -790,7 +790,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Border::get_type(),
                     [
                         'name' => 'course_list_stacked_hover_border',
-                        'label' => __( 'Border', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin' => 'stacked'
                         ],
@@ -801,7 +801,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_card_hover_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
@@ -820,7 +820,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_stacked_hover_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
@@ -839,7 +839,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_overlayed_hover_border_radius',
                     [
-                        'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'default' =>[
@@ -859,7 +859,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'carousel_card_hover_box_shadow_control',
-                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin!' => 'stacked'
                         ],
@@ -871,7 +871,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'carousel_stacked_hover_box_shadow_control',
-                        'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin' => 'stacked'
                         ],
@@ -888,7 +888,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_card_padding',
             [
-                'label' => __( 'Padding', 'tutor-elementor-addons' ),
+                'label' => __( 'Padding', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -903,7 +903,7 @@ class CourseList extends BaseAddon{
             $this->start_controls_tab(
                 'course_carousel_card_normal_tab',
                 [
-                    'label' => __( 'Normal', 'tutor-elementor-addons' ),
+                    'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
                 ]
             );
            
@@ -911,7 +911,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_coursel_footer_seperator_color',
                     [
-                        'label'     => __('Footer Seperator Color', 'tutor-elementor-addons'),
+                        'label'     => __('Footer Seperator Color', 'tutor-lms-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $footer_seperator_selector => 'border-color : {{VALUE}};'
@@ -922,7 +922,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_footer_width',
                     [
-                        'label' => __( 'Footer Seperator Width', 'tutor-elementor-addons' ),
+                        'label' => __( 'Footer Seperator Width', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'range' => [
@@ -950,16 +950,16 @@ class CourseList extends BaseAddon{
             $this->start_controls_tab(
                 'course_carousel_card_hover_tab',
                 [
-                    'label' => __( 'Hover', 'tutor-elementor-addons' ),
+                    'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
                 ]
             );
                 $this->add_control(
                     'course_coursel_box_hover_shadow',
                     [
-                        'label'     => __('Box Shadow', 'tutor-elementor-addons'),
+                        'label'     => __('Box Shadow', 'tutor-lms-elementor-addons'),
                         'type'      => Controls_Manager::SWITCHER,
-                        'label_on' => __('Yes','tutor-elementor-addons'),
-                        'label_off'=> __('No','tutor-elementor-addons'),
+                        'label_on' => __('Yes','tutor-lms-elementor-addons'),
+                        'label_off'=> __('No','tutor-lms-elementor-addons'),
                         'return_value' => 'yes',
                         'conditions' => [
                             'relation' => 'or',
@@ -980,7 +980,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'carousel_card_box_shadow_hover',
-                        'label' => __( 'Shadow Control', 'tutor-elementor-addons' ),
+                        'label' => __( 'Shadow Control', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin' => 'card'
                         ],
@@ -992,7 +992,7 @@ class CourseList extends BaseAddon{
                     Group_Control_Box_Shadow::get_type(),
                     [
                         'name' => 'carousel_stacked_box_shadow_hover',
-                        'label' => __( 'Shadow Control', 'tutor-elementor-addons' ),
+                        'label' => __( 'Shadow Control', 'tutor-lms-elementor-addons' ),
                         'condition' => [
                             'course_list_skin' => 'stacked'
                         ],
@@ -1003,7 +1003,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_coursel_footer_seperator_hover_color',
                     [
-                        'label'     => __('Footer Seperator Color', 'tutor-elementor-addons'),
+                        'label'     => __('Footer Seperator Color', 'tutor-lms-elementor-addons'),
                         'type'      => Controls_Manager::COLOR,
                         'selectors' => [
                             $footer_seperator_selector.":hover" => 'border-color : {{VALUE}};'
@@ -1014,7 +1014,7 @@ class CourseList extends BaseAddon{
                 $this->add_control(
                     'course_carousel_footer_hover_width',
                     [
-                        'label' => __( 'Footer Seperator Width', 'tutor-elementor-addons' ),
+                        'label' => __( 'Footer Seperator Width', 'tutor-lms-elementor-addons' ),
                         'type' => Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'range' => [
@@ -1045,7 +1045,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_carousel_image_settings',
             [
-                'label' => __('Image', 'tutor-elementor-addons'),
+                'label' => __('Image', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -1053,7 +1053,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_image_spacing',
             [
-                'label' => __('Spacing','tutor-elementor-addons'),
+                'label' => __('Spacing','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -1075,7 +1075,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_tab(
             'course_list_normal_tab',
             [
-                'label' => __('Normal','tutor-elementor-addons')
+                'label' => __('Normal','tutor-lms-elementor-addons')
             ]
         );
              
@@ -1084,7 +1084,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Background::get_type(),
                 [
                     'name' => 'course_list_overlay_classic_card_stacked_normal',
-                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'label' => __( 'Overlay', 'tutor-lms-elementor-addons' ),
                     'types' => [ 'classic', 'gradient' ],
                     'condition' => [
                         'course_list_skin!' => 'overlayed'
@@ -1098,7 +1098,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Background::get_type(),
                 [
                     'name' => 'course_list_overlay_normal',
-                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'label' => __( 'Overlay', 'tutor-lms-elementor-addons' ),
                     'types' => [ 'classic', 'gradient' ],
                     'condition' => [
                         'course_list_skin' => 'overlayed'
@@ -1110,7 +1110,7 @@ class CourseList extends BaseAddon{
             $this->add_group_control(
                 Group_Control_Css_Filter::get_type(),
                 [
-                    'label' => __('CSS Filters','tutor-elementor-addons'),
+                    'label' => __('CSS Filters','tutor-lms-elementor-addons'),
                     'name' => 'course_caroulse_image_overlayed_normal_filters',
                     'selector' => $wrapper.".tutor-course-header",
                 ]
@@ -1122,7 +1122,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_tab(
             'course_course_image_hover_tab',
             [
-                'label' => __('Hover','tutor-elementor-addons')
+                'label' => __('Hover','tutor-lms-elementor-addons')
             ]
         );
             //for classic,card,stacked
@@ -1130,7 +1130,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Background::get_type(),
                 [
                     'name' => 'course_list_overlay_classic_card_stacked_hover',
-                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'label' => __( 'Overlay', 'tutor-lms-elementor-addons' ),
                     'types' => [ 'classic', 'gradient' ],
                     'condition' => [
                         'course_list_skin!' => 'overlayed'
@@ -1144,7 +1144,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Background::get_type(),
                 [
                     'name' => 'course_list_overlay_hover',
-                    'label' => __( 'Overlay', 'tutor-elementor-addons' ),
+                    'label' => __( 'Overlay', 'tutor-lms-elementor-addons' ),
                     'types' => [ 'classic', 'gradient' ],
                     'condition' => [
                         'course_list_skin' => 'overlayed'
@@ -1157,7 +1157,7 @@ class CourseList extends BaseAddon{
             $this->add_group_control(
                 Group_Control_Css_Filter::get_type(),
                 [
-                    'label' => __('CSS Filters','tutor-elementor-addons'),
+                    'label' => __('CSS Filters','tutor-lms-elementor-addons'),
                     'name' => 'course_caroulse_image_overlayed_hover_filters',
                     'selector' => $wrapper.".etlms-card:hover .tutor-course-header",
                 ]
@@ -1167,7 +1167,7 @@ class CourseList extends BaseAddon{
                 'course_list_card_hover_animation',
                 [
                    
-                    'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
+                    'label' => __( 'Hover Animation', 'tutor-lms-elementor-addons' ),
                     'type' => Controls_Manager::HOVER_ANIMATION,
             
                 ]
@@ -1188,7 +1188,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_badge_heading',
             [
-                'label' => __('Badge','tutor-elementor-addons'),
+                'label' => __('Badge','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );      
@@ -1196,7 +1196,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_badge_background_color',
             [
-                'label'     => __('Background Color', 'tutor-elementor-addons'),
+                'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $badge_selector => 'background-color:{{VALUE}};'
@@ -1207,7 +1207,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_badge_text_color',
             [
-                'label'     => __('Text Color', 'tutor-elementor-addons'),
+                'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $badge_selector => 'color:{{VALUE}};'
@@ -1230,7 +1230,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_badge_size',
             [
-                'label' => __( 'Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1248,7 +1248,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_badge_margin',
             [
-                'label' => __( 'Margin', 'tutor-elementor-addons' ),
+                'label' => __( 'Margin', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1274,7 +1274,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_avatar_heading',
             [
-                'label' => __('Avatar','tutor-elementor-addons'),
+                'label' => __('Avatar','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );
@@ -1282,7 +1282,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_avatar_size',
             [
-                'label' => __( 'Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1301,7 +1301,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_avatar_border_radius',
             [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1329,7 +1329,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_carousel_content_styles',
             [
-                'label' => __('Content','tutor-elementor-addons'),
+                'label' => __('Content','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -1337,7 +1337,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_content_title',
             [
-                'label' => __('Title', 'tutor-elementor-addons'),
+                'label' => __('Title', 'tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );
@@ -1345,7 +1345,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_content_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $course_title_selector => "color:{{VALUE}};"
@@ -1357,7 +1357,7 @@ class CourseList extends BaseAddon{
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_carousel_content_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $course_title_selector,
             ]
         );
@@ -1365,7 +1365,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_content_spacing',
             [
-                'label' => __( 'Space', 'tutor-elementor-addons' ),
+                'label' => __( 'Space', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1384,7 +1384,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_meta_title',
             [
-                'label' => __('Meta','tutor-elementor-addons'),
+                'label' => __('Meta','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );
@@ -1392,7 +1392,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_meta_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $meta_selector => "color:{{VALUE}};"
@@ -1403,7 +1403,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_meta_separator_color',
             [
-                'label'     => __('Separator Color', 'tutor-elementor-addons'),
+                'label'     => __('Separator Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}}' => ''
@@ -1415,7 +1415,7 @@ class CourseList extends BaseAddon{
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_carousel_meta_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $meta_selector,
                 
             ]
@@ -1432,7 +1432,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_category_title',
             [
-                'label' => __('Category', 'tutor-elementor-addons'),
+                'label' => __('Category', 'tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );
@@ -1440,7 +1440,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_category_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $category_selector => 'color:{{VALUE}};'
@@ -1452,7 +1452,7 @@ class CourseList extends BaseAddon{
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_carousel_category_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $category_selector,
             ]
         );
@@ -1460,7 +1460,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_category_spacing',
             [
-                'label' => __( 'Space', 'tutor-elementor-addons' ),
+                'label' => __( 'Space', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1484,7 +1484,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_carousel_rating_styles',
             [
-                'label' => __('Rating','tutor-elementor-addons'),
+                'label' => __('Rating','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -1492,7 +1492,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_star_color',
             [
-                'label'     => __('Star Color', 'tutor-elementor-addons'),
+                'label'     => __('Star Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $star_selector => 'color: {{VALUE}};',
@@ -1502,7 +1502,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_star_size',
             [
-                'label' => __( 'Star Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Star Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1521,7 +1521,7 @@ class CourseList extends BaseAddon{
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_carouse_rating__typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $star_text_selector,
             ]
         );
@@ -1529,7 +1529,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_star_text_color',
             [
-                'label'     => __('Text Color', 'tutor-elementor-addons'),
+                'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $star_text_selector => 'color: {{VALUE}};',
@@ -1539,7 +1539,7 @@ class CourseList extends BaseAddon{
         $this->add_responsive_control(
             'course_carousel_star_gap',
             [
-                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1560,7 +1560,7 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_list_pagination_styles',
             [
-                'label' => __('Pagination','tutor-elementor-addons'),
+                'label' => __('Pagination','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
@@ -1569,7 +1569,7 @@ class CourseList extends BaseAddon{
             Group_Control_Typography::get_type(),
             [
                 'name' => 'course_list_pagination_typo',
-                'label' => __( 'Typography', 'tutor-elementor-addons' ),
+                'label' => __( 'Typography', 'tutor-lms-elementor-addons' ),
                 
                 'selector' => $pagination_selector,
             ]
@@ -1578,7 +1578,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_pagination_colors_title',
             [
-                'label' => __('Colors','tutor-elementor-addons'),
+                'label' => __('Colors','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );
@@ -1591,14 +1591,14 @@ class CourseList extends BaseAddon{
             $this->start_controls_tab(
                 'course_list_pagination_normal_tab',
                 [
-                    'label' => __('Normal','tutor-elementor-addons')
+                    'label' => __('Normal','tutor-lms-elementor-addons')
                 ]
             ); 
 
             $this->add_control(
                 'course_list_pagination_normal_text_color',
                 [
-                    'label' => __( 'Text Color', 'tutor-elementor-addons' ),
+                    'label' => __( 'Text Color', 'tutor-lms-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
@@ -1611,7 +1611,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_list_pagination_normal_background_color',
                 [
-                    'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                    'label' => __( 'Background Color', 'tutor-lms-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
@@ -1624,7 +1624,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'course_list_pagination_normal_border',
-                    'label' => __( 'Border', 'tutor-elementor-addons' ),
+                    'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
                     'selector' => ".etlms-pagination .page-numbers",
                 ]
             );   
@@ -1636,14 +1636,14 @@ class CourseList extends BaseAddon{
             $this->start_controls_tab(
                 'course_list_pagination_hover_tab',
                 [
-                    'label' => __('Hover','tutor-elementor-addons')
+                    'label' => __('Hover','tutor-lms-elementor-addons')
                 ]
             ); 
 
             $this->add_control(
                 'course_list_pagination_hover_text_color',
                 [
-                    'label' => __( 'Text Color', 'tutor-elementor-addons' ),
+                    'label' => __( 'Text Color', 'tutor-lms-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
@@ -1656,7 +1656,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_list_pagination_hover_background_color',
                 [
-                    'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                    'label' => __( 'Background Color', 'tutor-lms-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
@@ -1669,7 +1669,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'course_list_pagination_hover_border',
-                    'label' => __( 'Border', 'tutor-elementor-addons' ),
+                    'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
                     'selector' => ".etlms-pagination .page-numbers:hover",
                 ]
             ); 
@@ -1681,7 +1681,7 @@ class CourseList extends BaseAddon{
             $this->start_controls_tab(
                 'course_list_pagination_active_tab',
                 [
-                    'label' => __('Active','tutor-elementor-addons')
+                    'label' => __('Active','tutor-lms-elementor-addons')
                 ]
             ); 
 
@@ -1689,7 +1689,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_list_pagination_active_text_color',
                 [
-                    'label' => __( 'Text Color', 'tutor-elementor-addons' ),
+                    'label' => __( 'Text Color', 'tutor-lms-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
@@ -1701,7 +1701,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_list_pagination_active_background_color',
                 [
-                    'label' => __( 'Background Color', 'tutor-elementor-addons' ),
+                    'label' => __( 'Background Color', 'tutor-lms-elementor-addons' ),
                     'type' => Controls_Manager::COLOR,
 
                     'selectors' => [
@@ -1714,7 +1714,7 @@ class CourseList extends BaseAddon{
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'course_list_pagination_active_border',
-                    'label' => __( 'Border', 'tutor-elementor-addons' ),
+                    'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
                     'selector' => ".etlms-pagination .current",
                 ]
             );
@@ -1734,7 +1734,7 @@ class CourseList extends BaseAddon{
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'course_list_pagination_box_shadow',
-                'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
                 'selector' => ".etlms-pagination .page-numbers",
                 'separator' => 'before'
             ]
@@ -1743,7 +1743,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_pagination_border_radius',
             [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -1755,7 +1755,7 @@ class CourseList extends BaseAddon{
         $this->add_responsive_control(
             'course_list_pagination_padding',
             [
-                'label' => __( 'Padding', 'tutor-elementor-addons' ),
+                'label' => __( 'Padding', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
@@ -1767,7 +1767,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_list_pagination_space',
             [
-                'label' => __( 'Space Between', 'tutor-elementor-addons' ),
+                'label' => __( 'Space Between', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [
@@ -1799,14 +1799,14 @@ class CourseList extends BaseAddon{
         $this->start_controls_section(
             'course_carousel_footer_styles',
             [
-                'label' => __('Footer','tutor-elementor-addons'),
+                'label' => __('Footer','tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
         $this->add_control(
             'course_carouse_footer_background_color',
             [
-                'label'     => __('Background Color', 'tutor-elementor-addons'),
+                'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $footer_selector => 'background-color: {{VALUE}};',
@@ -1817,7 +1817,7 @@ class CourseList extends BaseAddon{
         $this->add_responsive_control(
             'course_carousel_footer_padding',
             [
-                'label' => __( 'Padding', 'tutor-elementor-addons' ),
+                'label' => __( 'Padding', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
@@ -1836,7 +1836,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_price_title',
             [
-                'label' => __('Price','tutor-elementor-addons'),
+                'label' => __('Price','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );
@@ -1845,7 +1845,7 @@ class CourseList extends BaseAddon{
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_carouse_price_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  =>$price_selector,
             ]
         );
@@ -1853,7 +1853,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_price_text_color',
             [
-                'label'     => __('Text Color', 'tutor-elementor-addons'),
+                'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $price_selector => 'color: {{VALUE}};',
@@ -1865,7 +1865,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_cart_title',
             [
-                'label' => __('Cart Button','tutor-elementor-addons'),
+                'label' => __('Cart Button','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::HEADING
             ]
         );
@@ -1874,7 +1874,7 @@ class CourseList extends BaseAddon{
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_carousel_cart_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $cart_text_selector,
             ]
         );
@@ -1883,7 +1883,7 @@ class CourseList extends BaseAddon{
             Group_Control_Text_Shadow::get_type(),
             [
                 'name' => 'course_list_car_button_text_shadow',
-                'label' => __( 'Text Shadow', 'tutor-elementor-addons' ),
+                'label' => __( 'Text Shadow', 'tutor-lms-elementor-addons' ),
                 'selector' => $cart_text_selector,
             ]
         );
@@ -1895,13 +1895,13 @@ class CourseList extends BaseAddon{
         $this->start_controls_tab(
             'course_carousel_text_normal_tab',
             [
-                'label' => __('Normal','tutor-elementor-addons')
+                'label' => __('Normal','tutor-lms-elementor-addons')
             ]
         );
             $this->add_control(
                 'course_course_text_normal_color',
                 [
-                    'label'     => __('Text Color', 'tutor-elementor-addons'),
+                    'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_text_selector => 'color: {{VALUE}} ',
@@ -1912,7 +1912,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_course_cart_icon_color',
                 [
-                    'label'     => __('Icon Color', 'tutor-elementor-addons'),
+                    'label'     => __('Icon Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_selector => 'color: {{VALUE}}',
@@ -1938,7 +1938,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_course_cart_background_color',
                 [
-                    'label'     => __('Background Color', 'tutor-elementor-addons'),
+                    'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_button_selector => 'background-color: {{VALUE}}',
@@ -1966,13 +1966,13 @@ class CourseList extends BaseAddon{
         $this->start_controls_tab(
             'course_carousel_cart_hover_tab',
             [
-                'label' => __('Hover','tutor-elementor-addons')
+                'label' => __('Hover','tutor-lms-elementor-addons')
             ]
         );
             $this->add_control(
                 'course_course_text_hover_color',
                 [
-                    'label'     => __('Text Color', 'tutor-elementor-addons'),
+                    'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_text_selector.":hover" => 'color: {{VALUE}} ',
@@ -1983,7 +1983,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_course_cart_icon_hover_color',
                 [
-                    'label'     => __('Icon Color', 'tutor-elementor-addons'),
+                    'label'     => __('Icon Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_selector.":hover" => 'color: {{VALUE}}',
@@ -2009,7 +2009,7 @@ class CourseList extends BaseAddon{
             $this->add_control(
                 'course_course_cart_background_hover_color',
                 [
-                    'label'     => __('Background Color', 'tutor-elementor-addons'),
+                    'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $cart_button_selector => 'background-color: {{VALUE}}',
@@ -2046,7 +2046,7 @@ class CourseList extends BaseAddon{
             Group_Control_Border::get_type(),
             [
                 'name' => 'course_carousel_cart_border',
-                'label' => __( 'Border Type', 'tutor-elementor-addons' ),
+                'label' => __( 'Border Type', 'tutor-lms-elementor-addons' ),
                 'selector' => $cart_button_selector,
             ]
         );
@@ -2054,7 +2054,7 @@ class CourseList extends BaseAddon{
         $this->add_control(
             'course_carousel_cart_border_radius',
             [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     $cart_button_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -2066,7 +2066,7 @@ class CourseList extends BaseAddon{
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'course_carousel_cart_box_shadow',
-                'label' => __( 'Box Shadow', 'tutor-elementor-addons' ),
+                'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
                 'selector' => $cart_button_selector,
             ]
         );
@@ -2081,7 +2081,7 @@ class CourseList extends BaseAddon{
         $this->add_responsive_control(
             'course-carousel_cart_button_padding',
             [
-                'label' => __( 'Padding', 'tutor-elementor-addons' ),
+                'label' => __( 'Padding', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [

@@ -19,20 +19,20 @@ class CourseTitle extends BaseAddon {
     private static $prefix_class_alignment = "elementor-align-"; 
 
     public function get_title() {
-        return __('Course Title', 'tutor-elementor-addons');
+        return __('Course Title', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls() {
 		$this->start_controls_section(
             'course_title_content',
             [
-                'label' => __('General Settings', 'tutor-elementor-addons'),
+                'label' => __('General Settings', 'tutor-lms-elementor-addons'),
             ]
         );
         $this->add_control(
             'course_title_html_tag',
             [
-                'label'   => __('Select Tag', 'tutor-elementor-addons'),
+                'label'   => __('Select Tag', 'tutor-lms-elementor-addons'),
                 'type'    => Controls_Manager::SELECT,
                 'options' => [
                     'h1' => 'h1', 
@@ -59,7 +59,7 @@ class CourseTitle extends BaseAddon {
         $this->start_controls_section(
             'course_style_section',
             array(
-                'label' => __('Color & Typography', 'tutor-elementor-addons'),
+                'label' => __('Color & Typography', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             )
         );
@@ -67,7 +67,7 @@ class CourseTitle extends BaseAddon {
         $this->add_control(
             'course_title_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $selector => 'color: {{VALUE}};',
@@ -80,7 +80,7 @@ class CourseTitle extends BaseAddon {
             Group_Control_Typography::get_type(),
             array(
                 'name'      => 'course_title_typography',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $selector,
             )
         );
@@ -89,7 +89,7 @@ class CourseTitle extends BaseAddon {
     }
 
     protected function render($instance = []) {
-        $title = __('Course Title', 'tutor-elementor-addons');
+        $title = __('Course Title', 'tutor-lms-elementor-addons');
         $course = etlms_get_course();
         if ($course) {
             $title = get_the_title();

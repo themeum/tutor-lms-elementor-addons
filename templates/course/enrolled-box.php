@@ -13,9 +13,9 @@ global $wp_query;
                 <a href="<?php echo $lesson_url; ?>" class="tutor-button tutor-success">
                     <?php
                     if ($completed_lessons) {
-                        _e('Continue to lesson', 'tutor-elementor-addons');
+                        _e('Continue to lesson', 'tutor-lms-elementor-addons');
                     } else {
-                        _e('Start Course', 'tutor-elementor-addons');
+                        _e('Start Course', 'tutor-lms-elementor-addons');
                     }
                     ?>
                 </a>
@@ -30,7 +30,7 @@ global $wp_query;
     <div class="tutor-single-course-segment tutor-course-enrolled-wrap">
         <p>
             <i class="tutor-icon-purchase"></i>
-            <?php _e('You have been enrolled on', 'tutor-elementor-addons'); ?>
+            <?php _e('You have been enrolled on', 'tutor-lms-elementor-addons'); ?>
             <span>
                 <?php
                 $enrolled = tutor_utils()->is_enrolled();

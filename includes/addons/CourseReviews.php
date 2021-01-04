@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseReviews extends BaseAddon {
 
     public function get_title() {
-        return __('Course Reviews', 'tutor-elementor-addons');
+        return __('Course Reviews', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls(){
@@ -32,10 +32,10 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
 			'section_title_text',
 			[
-				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'label' => __( 'Title', 'tutor-lms-elementor-addons' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Student Ratings & Reviews', 'tutor-elementor-addons' ),
-				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'default' => __( 'Student Ratings & Reviews', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
 				'rows' => 3,
 			]
         );
@@ -51,14 +51,14 @@ class CourseReviews extends BaseAddon {
         $this->start_controls_section(
             'course_reviews_title_section',
             [
-                'label' => __('Section Title', 'tutor-elementor-addons'),
+                'label' => __('Section Title', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_reviews_title_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$title_selector => 'color: {{VALUE}}',
@@ -69,14 +69,14 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_reviews_title_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $title_selector,
             ]
         );
         $this->add_responsive_control(
             'etlms_heading_gap',
             [
-                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -103,14 +103,14 @@ class CourseReviews extends BaseAddon {
         $this->start_controls_section(
             'course_rating_avg',
             [
-                'label' => __('Review Avg', 'tutor-elementor-addons'),
+                'label' => __('Review Avg', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_reviews_avg_rating_text_color',
             [
-                'label'     => __('Text Color', 'tutor-elementor-addons'),
+                'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_text_selector => 'color: {{VALUE}}',
@@ -122,14 +122,14 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_reviews_avg_rating_text_typo',
-                'label'     => __('Text Typography', 'tutor-elementor-addons'),
+                'label'     => __('Text Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $review_avg_text_selector,
             ]
         );
         $this->add_control(
             'course_reviews_avg_rating_stars_color',
             [
-                'label'     => __('Stars Color', 'tutor-elementor-addons'),
+                'label'     => __('Stars Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_stars_selector => 'color: {{VALUE}}',
@@ -140,7 +140,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'course_reviews_avg_rating_stars_size',
             [
-                'label' => __( 'Stars Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Stars Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -161,7 +161,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'course_reviews_avg_rating_total_label_color',
             [
-                'label'     => __('Total Label Color', 'tutor-elementor-addons'),
+                'label'     => __('Total Label Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_total_count_selector => 'color: {{VALUE}}',
@@ -173,14 +173,14 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_reviews_avg_rating_total_label_typo',
-                'label'     => __('Total Label Typography', 'tutor-elementor-addons'),
+                'label'     => __('Total Label Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $review_avg_total_count_selector,
             ]
         );
         $this->add_control(
             'course_reviews_avg_rating_total_count_color',
             [
-                'label'     => __('Total Count Color', 'tutor-elementor-addons'),
+                'label'     => __('Total Count Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_total_count_selector.' span' => 'color: {{VALUE}}',
@@ -191,7 +191,7 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_reviews_avg_rating_total_count_typo',
-                'label'     => __('Total Count Typography', 'tutor-elementor-addons'),
+                'label'     => __('Total Count Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $review_avg_total_count_selector.' span',
             ]
         );
@@ -205,14 +205,14 @@ class CourseReviews extends BaseAddon {
         $this->start_controls_section(
             'review_avg_right_bar_main',
             [
-                'label' => __('Right Rating Bar', 'tutor-elementor-addons'),
+                'label' => __('Right Rating Bar', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'review_avg_right_bar_main_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_right_bar_main_selector => 'background-color: {{VALUE}}',
@@ -223,7 +223,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_avg_right_bar_main_fill_color',
             [
-                'label'     => __('Fill Color', 'tutor-elementor-addons'),
+                'label'     => __('Fill Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$review_avg_right_bar_fill_selector => 'background-color: {{VALUE}}',
@@ -234,7 +234,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_avg_right_bar_main_width',
             [
-                'label' => __( 'Height', 'tutor-elementor-addons' ),
+                'label' => __( 'Height', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -257,7 +257,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_avg_right_stars_color',
             [
-                'label'     => __('Stars Color', 'tutor-elementor-addons'),
+                'label'     => __('Stars Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $review_avg_right_stars_selector => 'color: {{VALUE}}',
@@ -268,7 +268,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_avg_right_stars_size',
             [
-                'label' => __( 'Star Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Star Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -292,7 +292,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_avg_right_text_color',
             [
-                'label'     => __('Text Color', 'tutor-elementor-addons'),
+                'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $review_avg_section_count_meter.' .rating-meter-col' => 'color: {{VALUE}}',
@@ -304,7 +304,7 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'review_avg_right_text_typo',
-                'label'     => __('Text Typography', 'tutor-elementor-addons'),
+                'label'     => __('Text Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $review_avg_section_count_meter.' .rating-meter-col',
             ]
         );        
@@ -322,7 +322,7 @@ class CourseReviews extends BaseAddon {
          $this->start_controls_section(
             'review_list',
             [
-                'label' => __('Review list', 'tutor-elementor-addons'),
+                'label' => __('Review list', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -330,7 +330,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'review_list_image_width',
             [
-                'label'     => __( 'Image Size', 'tutor-elementor-addons' ),
+                'label'     => __( 'Image Size', 'tutor-lms-elementor-addons' ),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units'=> ['px'],
                 'range'     => [
@@ -352,7 +352,7 @@ class CourseReviews extends BaseAddon {
             Group_Control_Background::get_type(),
             [
                 'name' => 'course_instructor_background',
-                'label' => __( 'Background Type', 'tutor-elementor-addons' ),
+                'label' => __( 'Background Type', 'tutor-lms-elementor-addons' ),
                 'types' => [ 'classic', 'gradient'],
                 'selector' => $reviewer_image_selector.' span',
             ]
@@ -369,7 +369,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'course_instructors_avatar_border_radius',
             [
-                'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+                'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
@@ -394,7 +394,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'reviewer_name_color',
             [
-                'label'     => __('Name Color', 'tutor-elementor-addons'),
+                'label'     => __('Name Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_name_selector => 'color: {{VALUE}}',
@@ -406,14 +406,14 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'reviewer_name_typo',
-                'label'     => __('Name Typography', 'tutor-elementor-addons'),
+                'label'     => __('Name Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $reviewer_name_selector,
             ]
         );
         $this->add_control(
             'reviewer_time_color',
             [
-                'label'     => __('Time Text Color', 'tutor-elementor-addons'),
+                'label'     => __('Time Text Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_time_selector => 'color: {{VALUE}}',
@@ -425,14 +425,14 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'reviewer_time_typo',
-                'label'     => __('Time Text Typography', 'tutor-elementor-addons'),
+                'label'     => __('Time Text Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $reviewer_time_selector,
             ]
         );
         $this->add_control(
             'reviewer_stars_color',
             [
-                'label'     => __('Stars Color', 'tutor-elementor-addons'),
+                'label'     => __('Stars Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_stars_selector.' i' => 'color: {{VALUE}}',
@@ -443,7 +443,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'reviewer_stars_size',
             [
-                'label' => __( 'Stars Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Stars Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -463,7 +463,7 @@ class CourseReviews extends BaseAddon {
         $this->add_control(
             'reviewer_content_color',
             [
-                'label'     => __('Comment Color', 'tutor-elementor-addons'),
+                'label'     => __('Comment Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$reviewer_content_selector => 'color: {{VALUE}}',
@@ -475,7 +475,7 @@ class CourseReviews extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'reviewer_content_typo',
-                'label'     => __('Comment Typography', 'tutor-elementor-addons'),
+                'label'     => __('Comment Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $reviewer_content_selector,
             ]
         );
@@ -486,7 +486,7 @@ class CourseReviews extends BaseAddon {
         $disable = (bool) get_tutor_option('disable_course_review');
         if ($disable) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course review from tutor settings', 'tutor-elementor-addons');
+                echo __('Please enable course review from tutor settings', 'tutor-lms-elementor-addons');
             }
             return;
         }

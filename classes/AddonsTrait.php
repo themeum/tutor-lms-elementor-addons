@@ -22,15 +22,15 @@ trait AddonsTrait {
 	 */
 	public function etlms_layout($default_layout = 'left') {
 		return [
-			'label' => __('Layout', 'tutor-elementor-addons'),
+			'label' => __('Layout', 'tutor-lms-elementor-addons'),
 			'type' => \Elementor\Controls_Manager::CHOOSE,
 			'options' => [
 				'left' => [
-					'title' => __('Left', 'tutor-elementor-addons'),
+					'title' => __('Left', 'tutor-lms-elementor-addons'),
 					'icon' => 'eicon-h-align-left',
 				],
 				'up' => [
-					'title' => __('Up', 'tutor-elementor-addons'),
+					'title' => __('Up', 'tutor-lms-elementor-addons'),
 					'icon' => 'eicon-v-align-top'
 				]
 
@@ -48,19 +48,19 @@ trait AddonsTrait {
 	 */
 	public function etlms_alignment($default_alignment = 'left') {
 		return [
-			'label'        => __('Alignment', 'tutor-elementor-addons'),
+			'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
 			'type'         => \Elementor\Controls_Manager::CHOOSE,
 			'options'      => [
 				'left'   => [
-					'title' => __('Left', 'tutor-elementor-addons'),
+					'title' => __('Left', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-left',
 				],
 				'center' => [
-					'title' => __('Center', 'tutor-elementor-addons'),
+					'title' => __('Center', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-center',
 				],
 				'right'  => [
-					'title' => __('Right', 'tutor-elementor-addons'),
+					'title' => __('Right', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-right'
 				]
 			],
@@ -72,15 +72,15 @@ trait AddonsTrait {
 	//icon left right alignment
 	public function etlms_icon_align($prefix_class, $default_layout = 'right') {
 		return [
-			'label' => __('Icon Position', 'tutor-elementor-addons'),
+			'label' => __('Icon Position', 'tutor-lms-elementor-addons'),
 			'type' => \Elementor\Controls_Manager::CHOOSE,
 			'options' => [
 				'left' => [
-					'title' => __('Left', 'tutor-elementor-addons'),
+					'title' => __('Left', 'tutor-lms-elementor-addons'),
 					'icon' => 'eicon-h-align-left',
 				],
 				'right' => [
-					'title' => __('Right', 'tutor-elementor-addons'),
+					'title' => __('Right', 'tutor-lms-elementor-addons'),
 					'icon' => 'eicon-h-align-right'
 				]
 
@@ -94,23 +94,23 @@ trait AddonsTrait {
 
 	public function etlms_align_with_justify($default_alignment = 'left') {
 		return [
-			'label'        => __('Alignment', 'tutor-elementor-addons'),
+			'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
 			'type'         => \Elementor\Controls_Manager::CHOOSE,
 			'options'      => [
 				'left'   => [
-					'title' => __('Left', 'tutor-elementor-addons'),
+					'title' => __('Left', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-left',
 				],
 				'center' => [
-					'title' => __('Center', 'tutor-elementor-addons'),
+					'title' => __('Center', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-center',
 				],
 				'right'  => [
-					'title' => __('Right', 'tutor-elementor-addons'),
+					'title' => __('Right', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-right'
 				],
 				'justify'  => [
-					'title' => __('Justified', 'tutor-elementor-addons'),
+					'title' => __('Justified', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-justify'
 				]
 			],
@@ -121,15 +121,15 @@ trait AddonsTrait {
 
 	public function etlms_non_responsive_layout($default_layout = 'left') {
 		return [
-			'label' => __('Layout', 'tutor-elementor-addons'),
+			'label' => __('Layout', 'tutor-lms-elementor-addons'),
 			'type' => \Elementor\Controls_Manager::CHOOSE,
 			'options' => [
 				'left' => [
-					'title' => __('Left', 'tutor-elementor-addons'),
+					'title' => __('Left', 'tutor-lms-elementor-addons'),
 					'icon' => 'eicon-h-align-left',
 				],
 				'up' => [
-					'title' => __('Center', 'tutor-elementor-addons'),
+					'title' => __('Center', 'tutor-lms-elementor-addons'),
 					'icon' => 'eicon-v-align-top'
 				]
 
@@ -143,19 +143,19 @@ trait AddonsTrait {
 
 	public function etlms_non_responsive_alignment($default_alignment = 'left') {
 		return [
-			'label'        => __('Alignment', 'tutor-elementor-addons'),
+			'label'        => __('Alignment', 'tutor-lms-elementor-addons'),
 			'type'         => \Elementor\Controls_Manager::CHOOSE,
 			'options'      => [
 				'left'   => [
-					'title' => __('Left', 'tutor-elementor-addons'),
+					'title' => __('Left', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-left',
 				],
 				'center' => [
-					'title' => __('Center', 'tutor-elementor-addons'),
+					'title' => __('Center', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-center',
 				],
 				'right'  => [
-					'title' => __('Right', 'tutor-elementor-addons'),
+					'title' => __('Right', 'tutor-lms-elementor-addons'),
 					'icon'  => 'fa fa-align-right'
 				]
 			],

@@ -52,7 +52,7 @@ if (!defined('ABSPATH'))
 		<div class="tutor-course-topics-wrap">
 			<div class="tutor-course-topics-header">
 				<div class="tutor-course-topics-header-left">
-					<h4 class="tutor-segment-title"><?php _e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
+					<h4 class="tutor-segment-title"><?php _e($settings['section_title_text'], 'tutor-lms-elementor-addons'); ?></h4>
 				</div>
 				<div class="tutor-course-topics-header-right">
 					<?php
@@ -61,7 +61,7 @@ if (!defined('ABSPATH'))
 
 					if ($tutor_lesson_count) {
 						echo "<span> $tutor_lesson_count";
-						_e(' Lessons', 'tutor-elementor-addons');
+						_e(' Lessons', 'tutor-lms-elementor-addons');
 						echo "</span>";
 					}
 					if ($tutor_course_duration) {
@@ -149,9 +149,9 @@ if (!defined('ABSPATH'))
 
 														if ($countdown) {
 															if ($zoom_meeting->is_expired) {
-																$lesson_title .= '<span class="tutor-zoom-label">'.__('Expired', 'tutor-elementor-addons').'</span>';
+																$lesson_title .= '<span class="tutor-zoom-label">'.__('Expired', 'tutor-lms-elementor-addons').'</span>';
 															} else if ($zoom_meeting->is_started) {
-																$lesson_title .= '<span class="tutor-zoom-label tutor-zoom-live-label">'.__('Live', 'tutor-elementor-addons').'</span>';
+																$lesson_title .= '<span class="tutor-zoom-label tutor-zoom-live-label">'.__('Live', 'tutor-lms-elementor-addons').'</span>';
 															}
 															$lesson_title .= $countdown;
 														}
@@ -179,7 +179,7 @@ if (!defined('ABSPATH'))
 						wp_reset_postdata();
 					}
 				} else if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-					echo __('Please add data from the course editor', 'tutor-elementor-addons');
+					echo __('Please add data from the course editor', 'tutor-lms-elementor-addons');
 				}
 				?>
 			</div>

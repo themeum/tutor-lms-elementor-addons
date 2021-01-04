@@ -21,7 +21,7 @@ class CourseSocialShare extends BaseAddon {
     private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
-        return __('Course Social Share', 'tutor-elementor-addons');
+        return __('Course Social Share', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls(){
@@ -29,7 +29,7 @@ class CourseSocialShare extends BaseAddon {
         $this->start_controls_section(
             'course_share_icon_content_section',
             [
-                'label' => __('Social Icons', 'tutor-elementor-addons'),
+                'label' => __('Social Icons', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -37,10 +37,10 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_share_label_content',
             [
-                'label' => __('Label', 'tutor-elementor-addons'),
+                'label' => __('Label', 'tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Show', 'tutor-elementor-addons' ),
-                'label_off' => __( 'Hide', 'tutor-elementor-addons' ),
+                'label_on' => __( 'Show', 'tutor-lms-elementor-addons' ),
+                'label_off' => __( 'Hide', 'tutor-lms-elementor-addons' ),
                 'return_value' => 'yes',
                 'default' => 'yes',
 
@@ -50,12 +50,12 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_share_icon_shape',
             [
-                'label' => __('Shape','tutor-elementor-addons'),
+                'label' => __('Shape','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'rounded' => __( 'Rounded', 'tutor-elementor-addons' ),
-                    'square' => __( 'Square', 'tutor-elementor-addons' ),
-                    'circle' => __( 'circle', 'tutor-elementor-addons' ),
+                    'rounded' => __( 'Rounded', 'tutor-lms-elementor-addons' ),
+                    'square' => __( 'Square', 'tutor-lms-elementor-addons' ),
+                    'circle' => __( 'circle', 'tutor-lms-elementor-addons' ),
                    
                 ],  
                 'default' => 'rounded',
@@ -77,7 +77,7 @@ class CourseSocialShare extends BaseAddon {
         $this->start_controls_section(
             'course_share_label_section',
             [
-                'label' => __('Label', 'tutor-elementor-addons'),
+                'label' => __('Label', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -85,7 +85,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_share_label_content_color',
             [
-                'label' => __( 'Color', 'tutor-elementor-addons' ),
+                'label' => __( 'Color', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
 
                 'selectors' => [
@@ -97,7 +97,7 @@ class CourseSocialShare extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'content_typography',
-                'label' => __( 'Typography', 'tutor-elementor-addons' ),
+                'label' => __( 'Typography', 'tutor-lms-elementor-addons' ),
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .etlms-social-label',
             ]
@@ -108,19 +108,19 @@ class CourseSocialShare extends BaseAddon {
         $this->start_controls_section(
             'course_share_icon_section',
             [
-                'label' => __('Icon', 'tutor-elementor-addons'),
+                'label' => __('Icon', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_share_icon_color_settings',
             [
-                'label' => __( 'Color', 'tutor-elementor-addons' ),
+                'label' => __( 'Color', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
-                    'default' => __( 'Official Color', 'tutor-elementor-addons' ),
-                    'custom' => __( 'Custom', 'tutor-elementor-addons' ),
+                    'default' => __( 'Official Color', 'tutor-lms-elementor-addons' ),
+                    'custom' => __( 'Custom', 'tutor-lms-elementor-addons' ),
                 ],
             ]
         );
@@ -128,7 +128,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_share_icon_color',
             [
-                'label' => __( 'Icon Color', 'tutor-elementor-addons' ),
+                'label' => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'condition' => [
                     'course_share_icon_color_settings' => 'custom',
@@ -142,7 +142,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_icon_shape_color',
             [
-                'label' => __( 'Shape Color', 'tutor-elementor-addons' ),
+                'label' => __( 'Shape Color', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'condition' => [
                     'course_share_icon_color_settings' => 'custom',
@@ -156,7 +156,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_responsive_control(
             'course_share_icon_size',
             [
-                'label' => __( 'Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -177,7 +177,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_share_icon_padding',
             [
-                'label' => __( 'Padding', 'tutor-elementor-addons' ),
+                'label' => __( 'Padding', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px' ],
                 'selectors' => [
@@ -199,7 +199,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_responsive_control(
             'course_share_icon_spacing',
             [
-                'label' => __( 'Spacing', 'tutor-elementor-addons' ),
+                'label' => __( 'Spacing', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -226,7 +226,7 @@ class CourseSocialShare extends BaseAddon {
         );
 
         $border_radius = [
-            'label' => __( 'Border Radius', 'tutor-elementor-addons' ),
+            'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
             'type' => Controls_Manager::DIMENSIONS,
             'size_units' => [ 'px', '%' ],
             'selectors' => [
@@ -267,7 +267,7 @@ class CourseSocialShare extends BaseAddon {
         $this->start_controls_section(
             'course_share_icon_hover_section',
             [
-                'label' => __( 'Icon Hover', 'tutor-elementor-addons' ),
+                'label' => __( 'Icon Hover', 'tutor-lms-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -275,7 +275,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_icon_hover_color',
             [
-                'label' => __( 'Icon Color', 'tutor-elementor-addons' ),
+                'label' => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'condition' => [
@@ -290,7 +290,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_icon_shape_hover_color',
             [
-                'label' => __( 'Shape Color', 'tutor-elementor-addons' ),
+                'label' => __( 'Shape Color', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'condition' => [
@@ -309,7 +309,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'hover_border_color',
             [
-                'label' => __( 'Border Color', 'tutor-elementor-addons' ),
+                'label' => __( 'Border Color', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'condition' => [
@@ -324,7 +324,7 @@ class CourseSocialShare extends BaseAddon {
         $this->add_control(
             'course_share_hover_animation',
             [
-                'label' => __( 'Hover Animation', 'tutor-elementor-addons' ),
+                'label' => __( 'Hover Animation', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::HOVER_ANIMATION,
                 'condition' => [
                     'course_share_icon_shape' =>[
@@ -342,7 +342,7 @@ class CourseSocialShare extends BaseAddon {
         $disable_course_share = (bool) get_tutor_option('disable_course_share');
         if ($disable_course_share) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course share from tutor settings', 'tutor-elementor-addons');
+                echo __('Please enable course share from tutor settings', 'tutor-lms-elementor-addons');
             }
             return;
         }

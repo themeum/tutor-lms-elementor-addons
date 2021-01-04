@@ -150,7 +150,7 @@ class Template {
             <div class="elementor-form-field__checkbox__wrapper">
                 <label class="elementor-form-field__label">
                     <input type="checkbox" name="post_data[tutor_lms_single_course]" style="width: 18px; height: 18px">
-                    <?php echo __('Tutor LMS Single Course Template', 'tutor-elementor-addons'); ?>
+                    <?php echo __('Tutor LMS Single Course Template', 'tutor-lms-elementor-addons'); ?>
                 </label>
             </div>
         </div>

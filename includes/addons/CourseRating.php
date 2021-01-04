@@ -19,14 +19,14 @@ class CourseRating extends BaseAddon {
     private static $prefix_class_alignment = "elementor-align-"; 
 
     public function get_title() {
-        return __('Course Rating', 'tutor-elementor-addons');
+        return __('Course Rating', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls() {
 		$this->start_controls_section(
             'course_title_content',
             [
-                'label' => __('General Settings', 'tutor-elementor-addons'),
+                'label' => __('General Settings', 'tutor-lms-elementor-addons'),
             ]
         );
         $this->add_responsive_control(
@@ -46,7 +46,7 @@ class CourseRating extends BaseAddon {
         $this->start_controls_section(
             'course_style_section',
             array(
-                'label' => __('Rating Stars', 'tutor-elementor-addons'),
+                'label' => __('Rating Stars', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             )
         );
@@ -54,7 +54,7 @@ class CourseRating extends BaseAddon {
         $this->add_control(
             'course_rating_star_color',
             [
-                'label'     => __('Star Color', 'tutor-elementor-addons'),
+                'label'     => __('Star Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $rating_group => 'color: {{VALUE}};',
@@ -66,7 +66,7 @@ class CourseRating extends BaseAddon {
         $this->add_responsive_control(
             'course_rating_star_size',
             [
-                'label' => __( 'Star Size', 'tutor-elementor-addons' ),
+                'label' => __( 'Star Size', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -88,7 +88,7 @@ class CourseRating extends BaseAddon {
             Group_Control_Typography::get_type(),
             array(
                 'name'      => 'course_rating_typography',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $rating_count,
             )
         );
@@ -96,7 +96,7 @@ class CourseRating extends BaseAddon {
         $this->add_control(
             'course_rating_text_color',
             [
-                'label'     => __('Text Color', 'tutor-elementor-addons'),
+                'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $rating_count => 'color: {{VALUE}};',
@@ -108,7 +108,7 @@ class CourseRating extends BaseAddon {
         $this->add_responsive_control(
             'gap',
             [
-                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -133,7 +133,7 @@ class CourseRating extends BaseAddon {
         $disable = (bool) get_tutor_option('disable_course_review');
         if ($disable) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course review from tutor settings', 'tutor-elementor-addons');
+                echo __('Please enable course review from tutor settings', 'tutor-lms-elementor-addons');
             }
             return;
         }

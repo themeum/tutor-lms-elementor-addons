@@ -178,7 +178,7 @@
 										</div>
 										<?php if ("yes" == $settings['course_list_author_settings']) : ?>
 											<div class="tutor-single-course-author-name">
-												<span><?php _e('by', 'tutor-elementor-addons'); ?></span>
+												<span><?php _e('by', 'tutor-lms-elementor-addons'); ?></span>
 												<a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
 											</div>
 										<?php endif; ?>
@@ -189,7 +189,7 @@
 												$course_categories = get_tutor_course_categories();
 												if (!empty($course_categories) && is_array($course_categories) && count($course_categories)) {
 											?>
-													<span><?php esc_html_e('In', 'tutor-elementor-addons') ?></span>
+													<span><?php esc_html_e('In', 'tutor-lms-elementor-addons') ?></span>
 											<?php
 													foreach ($course_categories as $course_category) {
 														$category_name = $course_category->name;
@@ -263,8 +263,8 @@
             'current' => max(1, get_query_var('paged')),
             'end_size' => $pagination_page_limit,
             'prev_next' => $prev_next_pagination,
-            'prev_text' => __($pagination_prev_label, 'tutor-elementor-addons'),
-            'next_text' => __($pagination_next_label, 'tutor-elementor-addons'),
+            'prev_text' => __($pagination_prev_label, 'tutor-lms-elementor-addons'),
+            'next_text' => __($pagination_next_label, 'tutor-lms-elementor-addons'),
 
             'total' => $the_query->max_num_pages
         );

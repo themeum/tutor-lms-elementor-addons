@@ -2,7 +2,7 @@
 
 <div class="tutor-single-course-segment etlms-course-tag">
     <div class="course-benefits-title">
-        <h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
+        <h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-lms-elementor-addons'); ?></h4>
     </div>
     <div class="tutor-course-tags">
         <?php
@@ -13,7 +13,7 @@
                 echo "<a href='$tag_link'> $course_tag->name </a>";
             }
         } else if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-			echo '<span style="margin: 5px">'.__('Please add data from the course editor', 'tutor-elementor-addons').'</span>';
+			echo '<span style="margin: 5px">'.__('Please add data from the course editor', 'tutor-lms-elementor-addons').'</span>';
 		}
         ?>
     </div>

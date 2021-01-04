@@ -22,7 +22,7 @@ if ($instructors) {
 	do_action('tutor_course/single/enrolled/before/instructors');
 ?>
 	<div class="etlms-course-instructor-title">
-		<h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h4>
+		<h4 class="tutor-segment-title"><?php esc_html_e($settings['section_title_text'], 'tutor-lms-elementor-addons'); ?></h4>
 	</div>
 	<div class="tutor-course-instructors-wrap tutor-single-course-segment etlms-course-instructors-wrap" id="single-course-ratings">
 		<?php
@@ -68,14 +68,14 @@ if ($instructors) {
 
 						<?php
 						echo " <span class='rating-digits'>{$instructor_rating->rating_avg}</span> ";
-						echo " <span class='rating-total-meta'>({$instructor_rating->rating_count} ".__('ratings', 'tutor-elementor-addons').")</span> ";
+						echo " <span class='rating-total-meta'>({$instructor_rating->rating_count} ".__('ratings', 'tutor-lms-elementor-addons').")</span> ";
 						?>
 					</div>
 
 					<div class="courses">
 						<p>
 							<i class='tutor-icon-mortarboard'></i>
-							<?php echo tutor_utils()->get_course_count_by_instructor($instructor->ID); ?> <span class="tutor-text-mute"> <?php _e('Courses', 'tutor-elementor-addons'); ?></span>
+							<?php echo tutor_utils()->get_course_count_by_instructor($instructor->ID); ?> <span class="tutor-text-mute"> <?php _e('Courses', 'tutor-lms-elementor-addons'); ?></span>
 						</p>
 					</div>
 
@@ -86,7 +86,7 @@ if ($instructors) {
 						<p>
 							<i class='tutor-icon-user'></i>
 							<?php echo $total_students; ?>
-							<span class="tutor-text-mute">  <?php _e('students', 'tutor-elementor-addons'); ?></span>
+							<span class="tutor-text-mute">  <?php _e('students', 'tutor-lms-elementor-addons'); ?></span>
 						</p>
 					</div>
 				</div>

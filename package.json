@@ -1,5 +1,5 @@
 {
-  "name": "tutor-elementor-addons",
+  "name": "tutor-lms-elementor-addons",
   "version": "1.0.0",
   "description": "<img src=\".github/tutor-github.png\" alt=\"TutorLMS\" width=\"100%\">",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/themeum/tutor-elementor-addons.git"
+    "url": "git+https://github.com/themeum/tutor-lms-elementor-addons.git"
   },
   "keywords": [
     "lms",
@@ -19,9 +19,9 @@
   "author": "themeum",
   "license": "GPLv3",
   "bugs": {
-    "url": "https://github.com/themeum/tutor-elementor-addons/issues"
+    "url": "https://github.com/themeum/tutor-lms-elementor-addons/issues"
   },
-  "homepage": "https://github.com/themeum/tutor-elementor-addons#readme",
+  "homepage": "https://github.com/themeum/tutor-lms-elementor-addons#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",

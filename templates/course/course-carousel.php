@@ -154,7 +154,7 @@ if ($the_query->have_posts()) : ?>
                                     <?php endif; ?>
                                 </div>
                                 <div class="tutor-single-course-author-name">
-                                    <span><?php _e('by', 'tutor-elementor-addons'); ?></span>
+                                    <span><?php _e('by', 'tutor-lms-elementor-addons'); ?></span>
                                     <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
                                 </div>
 
@@ -165,7 +165,7 @@ if ($the_query->have_posts()) : ?>
                                         $course_categories = get_tutor_course_categories();
                                         if (!empty($course_categories) && is_array($course_categories) && count($course_categories)) {
                                     ?>
-                                            <span><?php esc_html_e('In', 'tutor-elementor-addons') ?></span>
+                                            <span><?php esc_html_e('In', 'tutor-lms-elementor-addons') ?></span>
                                     <?php
                                             foreach ($course_categories as $course_category) {
                                                 $category_name = $course_category->name;

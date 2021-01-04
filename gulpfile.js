@@ -22,17 +22,17 @@ gulp.task('makepot', function () {
 			errorHandler: onError
 		}))
 		.pipe(wpPot({
-			domain: 'tutor-elementor-addons',
-			package: 'Tutor Elementor Addons'
+			domain: 'tutor-lms-elementor-addons',
+			package: 'Tutor LMS Elementor Addons'
 		}))
-		.pipe(gulp.dest('languages/tutor-elementor-addons.pot'));
+		.pipe(gulp.dest('languages/tutor-lms-elementor-addons.pot'));
 });
 
 /**
  * Build
  */
 gulp.task("clean-zip", function () {
-	return gulp.src("./tutor-elementor-addons.zip", {
+	return gulp.src("./tutor-lms-elementor-addons.zip", {
 		read: false,
 		allowEmpty: true
 	}).pipe(clean());
@@ -61,11 +61,11 @@ gulp.task("copy", function () {
 			"!./package.json",
 			"!./package-lock.json",
 		])
-		.pipe(gulp.dest("build/tutor-elementor-addons/"));
+		.pipe(gulp.dest("build/tutor-lms-elementor-addons/"));
 });
 
 gulp.task("make-zip", function () {
-	return gulp.src("./build/**/*.*").pipe(zip("tutor-elementor-addons.zip")).pipe(gulp.dest("./"));
+	return gulp.src("./build/**/*.*").pipe(zip("tutor-lms-elementor-addons.zip")).pipe(gulp.dest("./"));
 });
 
 /**

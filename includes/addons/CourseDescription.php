@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseDescription extends BaseAddon {
 
     public function get_title() {
-        return __('Course Description', 'tutor-elementor-addons');
+        return __('Course Description', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls(){
@@ -30,10 +30,10 @@ class CourseDescription extends BaseAddon {
         $this->add_control(
 			'section_title_text',
 			[
-				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'label' => __( 'Title', 'tutor-lms-elementor-addons' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Description', 'tutor-elementor-addons' ),
-				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'default' => __( 'Description', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
 				'rows' => 3,
 			]
         );
@@ -49,14 +49,14 @@ class CourseDescription extends BaseAddon {
         $this->start_controls_section(
             'course_description_heading_section',
             [
-                'label' => __('Heading', 'tutor-elementor-addons'),
+                'label' => __('Heading', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_description_heading_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$heading_selector => 'color: {{VALUE}}',
@@ -67,14 +67,14 @@ class CourseDescription extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_description_heading_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $heading_selector,
             ]
         );
         $this->add_responsive_control(
             'etlms_heading_gap',
             [
-                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -97,14 +97,14 @@ class CourseDescription extends BaseAddon {
         $this->start_controls_section(
             'course_description_paragraph_section',
             [
-                'label' => __('Paragraph', 'tutor-elementor-addons'),
+                'label' => __('Paragraph', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_description_paragraph_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$paragraph_selector => 'color: {{VALUE}}',
@@ -115,7 +115,7 @@ class CourseDescription extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_description_paragraph_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $paragraph_selector,
             ]
         );
@@ -126,7 +126,7 @@ class CourseDescription extends BaseAddon {
         $disable_option = (bool) get_tutor_option('disable_course_description');
 		if ($disable_option) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course description from tutor settings', 'tutor-elementor-addons');
+                echo __('Please enable course description from tutor settings', 'tutor-lms-elementor-addons');
             }
 			return;
 		}

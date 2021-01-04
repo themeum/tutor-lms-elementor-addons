@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 class CourseStatus extends BaseAddon {
 
     public function get_title() {
-        return __('Course Status', 'tutor-elementor-addons');
+        return __('Course Status', 'tutor-lms-elementor-addons');
     }
 
     protected function register_content_controls(){
@@ -30,10 +30,10 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
 			'section_title_text',
 			[
-				'label' => __( 'Title', 'tutor-elementor-addons' ),
+				'label' => __( 'Title', 'tutor-lms-elementor-addons' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Course Status', 'tutor-elementor-addons' ),
-				'placeholder' => __( 'Type your title here', 'tutor-elementor-addons' ),
+				'default' => __( 'Course Status', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
 				'rows' => 3,
 			]
         );
@@ -41,11 +41,11 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_display_percent',
             [
-                'label' => __('Display Percentage','tutor-elementor-addons'),
+                'label' => __('Display Percentage','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'show' => __('Show','tutor-elementor-addons'),
-                    'hide' => __('Hide','tutor-elementor-addons'),
+                    'show' => __('Show','tutor-lms-elementor-addons'),
+                    'hide' => __('Hide','tutor-lms-elementor-addons'),
                 ],
                 'default'=> 'show'
             ]
@@ -54,12 +54,12 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_percent_position',
             [
-                'label' => __('Position','tutor-elementor-addons'),
+                'label' => __('Position','tutor-lms-elementor-addons'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'inside' => __('Inside','tutor-elementor-addons'),
-                    'outside' => __('Outside','tutor-elementor-addons'),
-                    'ontop' => __('On top','tutor-elementor-addons'),
+                    'inside' => __('Inside','tutor-lms-elementor-addons'),
+                    'outside' => __('Outside','tutor-lms-elementor-addons'),
+                    'ontop' => __('On top','tutor-lms-elementor-addons'),
                 ],
                 'condition'=>[
                     'course_status_display_percent'=> 'show'
@@ -83,14 +83,14 @@ class CourseStatus extends BaseAddon {
         $this->start_controls_section(
             'course_status_title_section',
             [
-                'label' => __('Section Title', 'tutor-elementor-addons'),
+                'label' => __('Section Title', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
         $this->add_control(
             'course_status_title_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     $title_selector => 'color: {{VALUE}}'
@@ -101,14 +101,14 @@ class CourseStatus extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_status_title_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $title_selector,
             ]
         );
         $this->add_responsive_control(
             'etlms_heading_gap',
             [
-                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -132,14 +132,14 @@ class CourseStatus extends BaseAddon {
         $this->start_controls_section(
             'course_status_bar_section',
             [
-                'label' => __('Progress Bar', 'tutor-elementor-addons'),
+                'label' => __('Progress Bar', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'course_status_bar_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$progress_bar_filled => 'background-color: {{VALUE}}',
@@ -150,7 +150,7 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_bar_background_color',
             [
-                'label'     => __('Background Color', 'tutor-elementor-addons'),
+                'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$progress_bar_background => 'background-color: {{VALUE}}',
@@ -161,7 +161,7 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_progress_bar_height',
             [
-                'label'     => __('Height', 'tutor-elementor-addons'),
+                'label'     => __('Height', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' =>['px'],
                 'range' =>[
@@ -184,7 +184,7 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_progress_radius',
             [
-                'label'     => __('Border Radius', 'tutor-elementor-addons'),
+                'label'     => __('Border Radius', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::SLIDER,
                 'size_units' =>['px','%'],
                 'range' =>[
@@ -213,7 +213,7 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_progress_text',
             [
-                'label' => __( 'Progress Text', 'tutor-elementor-addons' ),
+                'label' => __( 'Progress Text', 'tutor-lms-elementor-addons' ),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after'
             ]
@@ -222,7 +222,7 @@ class CourseStatus extends BaseAddon {
         $this->add_control(
             'course_status_progress_text_color',
             [
-                'label'     => __('Color', 'tutor-elementor-addons'),
+                'label'     => __('Color', 'tutor-lms-elementor-addons'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
 					$progress_percent => 'color: {{VALUE}}'
@@ -234,7 +234,7 @@ class CourseStatus extends BaseAddon {
             Group_Control_Typography::get_type(),
             [
                 'name'      => 'course_status_progress_text_typo',
-                'label'     => __('Typography', 'tutor-elementor-addons'),
+                'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $progress_percent
             ]
         );
@@ -246,7 +246,7 @@ class CourseStatus extends BaseAddon {
         $disable_option = (bool) get_tutor_option('disable_course_progress_bar');
 		if ($disable_option) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course status from tutor settings', 'tutor-elementor-addons');
+                echo __('Please enable course status from tutor settings', 'tutor-lms-elementor-addons');
             }
 			return;
         }

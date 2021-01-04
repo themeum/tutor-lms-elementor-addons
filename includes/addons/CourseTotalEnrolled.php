@@ -19,7 +19,7 @@ class CourseTotalEnrolled extends BaseAddon {
     private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
-        return __('Course Total Enrolled', 'tutor-elementor-addons');
+        return __('Course Total Enrolled', 'tutor-lms-elementor-addons');
     }
     
     protected function register_content_controls(){
@@ -27,7 +27,7 @@ class CourseTotalEnrolled extends BaseAddon {
         $this->start_controls_section(
            'course_level_layout_settings',
             [
-                'label' => __( 'General Settings', 'tutor-elementor-addons' ),
+                'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
                 
             ]
@@ -36,10 +36,10 @@ class CourseTotalEnrolled extends BaseAddon {
         $this->add_control(
 			'course_total_enroll_label',
 			[
-				'label' => __( 'Label', 'tutor-elementor-addons' ),
+				'label' => __( 'Label', 'tutor-lms-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Enrolled:', 'tutor-elementor-addons' ),
-				'placeholder' => __( 'Type your label here', 'tutor-elementor-addons' ),
+				'default' => __( 'Enrolled:', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your label here', 'tutor-lms-elementor-addons' ),
 			]
 		);
 
@@ -59,7 +59,7 @@ class CourseTotalEnrolled extends BaseAddon {
         $this->add_responsive_control(
             'course_level_gap',
             [
-                'label' => __( 'Gap', 'tutor-elementor-addons' ),
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px'],
                 'range' => [
@@ -92,7 +92,7 @@ class CourseTotalEnrolled extends BaseAddon {
         $this->start_controls_section(
             'course_total_enrolled_style_section',
             [
-                'label' => __('Text', 'tutor-elementor-addons'),
+                'label' => __('Text', 'tutor-lms-elementor-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -104,14 +104,14 @@ class CourseTotalEnrolled extends BaseAddon {
             $this->start_controls_tab(
                 'course_total_enrolled_label_tab',
                 [
-                    'label' => __( 'Label', 'tutor-elementor-addons' ),
+                    'label' => __( 'Label', 'tutor-lms-elementor-addons' ),
                 ]
             );
 
             $this->add_control(
                 'course_total_enrolled_label_color',
                 [
-                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $selector.' label' => 'color: {{VALUE}}',
@@ -123,7 +123,7 @@ class CourseTotalEnrolled extends BaseAddon {
                 Group_Control_Typography::get_type(),
                 [
                     'name'      => 'course_total_enrolled_label_typo',
-                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                     'selector'  => $selector.' label',
                 ]
             );
@@ -134,14 +134,14 @@ class CourseTotalEnrolled extends BaseAddon {
             $this->start_controls_tab(
                 'course_total_enrolled_value_tab',
                 [
-                    'label' => __( 'Value', 'tutor-elementor-addons' ),
+                    'label' => __( 'Value', 'tutor-lms-elementor-addons' ),
                 ]
             );
 
             $this->add_control(
                 'course_total_enrolled_value_color',
                 [
-                    'label'     => __('Color', 'tutor-elementor-addons'),
+                    'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
                         $selector.' strong' => 'color: {{VALUE}}',
@@ -153,7 +153,7 @@ class CourseTotalEnrolled extends BaseAddon {
                 Group_Control_Typography::get_type(),
                 [
                     'name'      => 'course_total_enrolled_value_typo',
-                    'label'     => __('Typography', 'tutor-elementor-addons'),
+                    'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                     'selector'  => $selector.' strong',
                 ]
             );
@@ -170,7 +170,7 @@ class CourseTotalEnrolled extends BaseAddon {
         $disable_option = (bool) get_tutor_option('disable_course_total_enrolled');
 		if ($disable_option) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course total enrolled from tutor settings', 'tutor-elementor-addons');
+                echo __('Please enable course total enrolled from tutor settings', 'tutor-lms-elementor-addons');
             }
 			return;
         }

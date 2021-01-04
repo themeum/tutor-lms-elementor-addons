@@ -34,7 +34,7 @@ class Base {
     }
 
     public function i18n() {
-        load_plugin_textdomain('tutor-elementor-addons');
+        load_plugin_textdomain('tutor-lms-elementor-addons');
     }
 
     public function init() {
@@ -66,12 +66,12 @@ class Base {
             $plugin_meta[] = sprintf(
                 '<a href="%s" target="_blank">%s</a>',
                 esc_url('https://docs.themeum.com/tutor-lms/integrations/elementor-page-builder/?utm_source=tutor-elementor-addons&utm_medium=plugins_installation_list&utm_campaign=plugin_docs_link'),
-                __('<strong style="color: #03bd24">Documentation</strong>', 'tutor-elementor-addons')
+                __('<strong style="color: #03bd24">Documentation</strong>', 'tutor-lms-elementor-addons')
             );
             $plugin_meta[] = sprintf(
                 '<a href="%s" target="_blank">%s</a>',
                 esc_url('https://www.themeum.com/contact-us/?utm_source=tutor-elementor-addons&utm_medium=plugins_installation_list&utm_campaign=plugin_support_link'),
-                __('<strong style="color: #03bd24">Get Support</strong>', 'tutor-elementor-addons')
+                __('<strong style="color: #03bd24">Get Support</strong>', 'tutor-lms-elementor-addons')
             );
         }
         return $plugin_meta;
@@ -86,7 +86,7 @@ class Base {
         $elements_manager->add_category(
             'tutor_addons_category',
             [
-                'title' => __('Tutor LMS', 'tutor-elementor-addons'),
+                'title' => __('Tutor LMS', 'tutor-lms-elementor-addons'),
                 'icon' => 'fa fa-smile-o',
             ]
         );

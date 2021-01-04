@@ -1,7 +1,7 @@
 <?php do_action('tutor_course/single/before/material_includes'); ?>
 
 <div class="etlms-course-specifications etlms-course-materials">
-	<h3><?php esc_html_e($settings['section_title_text'], 'tutor-elementor-addons'); ?></h3>
+	<h3><?php esc_html_e($settings['section_title_text'], 'tutor-lms-elementor-addons'); ?></h3>
 	<ul class="etlms-course-specification-items etlms-course-materials">
 		<?php
 		$materials = tutor_course_material_includes();
@@ -12,7 +12,7 @@
 				echo "<span>{$material}</span></li>";
 			}
 		} else if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-			echo __('Please add data from the course editor', 'tutor-elementor-addons');
+			echo __('Please add data from the course editor', 'tutor-lms-elementor-addons');
 		}
 		?>
 	</ul>
