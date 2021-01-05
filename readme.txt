@@ -9,7 +9,7 @@ Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Design the course pages of Tutor LMS as you want with 25 powerful Elementor widgets
+Get 24+ Tutor LMS Elementor widgets to create an entire eLearning site and design custom course pages, course carousels, listings, and more.
 
 == Description ==
 
@@ -21,7 +21,7 @@ Tutor LMS Elementor Addons helps you create gorgeous looking eLearning sites Tut
 
 * Create a course page template from scratch.
 * Customize each course page design individually.
-* 25 widgets to take care of the linear aspects of the design.
+* 24+ widgets to take care of the linear aspects of the design.
 * Insert course carousels in any page you want.
 * 4 different course carousel styles.
 
