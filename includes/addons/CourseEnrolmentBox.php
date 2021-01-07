@@ -55,7 +55,7 @@ class CourseEnrolmentBox extends BaseAddon {
 
         $this->add_responsive_control(
             'course_enroll_buttons_align',
-            $this->etlms_alignment() //alignment
+            $this->etlms_alignment('center') //alignment
         );
 
         $this->add_control(
