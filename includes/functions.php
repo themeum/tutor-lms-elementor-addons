@@ -71,3 +71,27 @@ if (!function_exists('etlms_get_course')) {
 		return false;
 	}
 }
+
+if (!function_exists('etlms_course_categories')) {
+	function etlms_course_categories() {
+		$course_categories = [];
+		$course_categories_term = tutils()->get_course_categories_term();
+		foreach ($course_categories_term as $term) {
+			$course_categories[$term->term_id] = $term->name;
+		}
+
+		return $course_categories;
+	}
+}
+
+if (!function_exists('etlms_course_authors')) {
+	function etlms_course_authors() {
+		$course_authors = [];
+		$authors = get_users(['role__in' => ['author', tutor()->instructor_role]]);
+		foreach ( $authors as $author ) {
+			$course_authors[$author->ID] = $author->display_name;
+		}
+
+		return $course_authors;
+	}
+}

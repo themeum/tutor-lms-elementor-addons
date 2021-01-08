@@ -9,6 +9,13 @@
     $course_list_perpage = $settings['course_list_perpage'];
     $course_list_column = $settings['course_list_column'];
 
+    $include_by_categories = $settings['course_list_include_by_categories'];
+    $exclude_by_categories = $settings['course_list_exclude_by_categories'];
+    $include_by_authors = $settings['course_list_include_by_authors'];
+    $exclude_by_authors = $settings['course_list_exclude_by_authors'];
+    $order_by = $settings['course_list_order_by'];
+    $order = $settings['course_list_order'];
+
     /*
     * query arguements
     */
@@ -17,14 +24,49 @@
         'post_type' => tutor()->course_post_type,
         'post_status' => 'publish',
         'posts_per_page' => $course_list_perpage,
-        'paged' => $paged
+        'paged' => $paged,
+        'tax_query'=> array(
+            'relation' => 'AND',
+        )
     ];
+
+    if (!empty($include_by_categories)) {
+        $tax_query =array(
+            'taxonomy' => 'course-category',
+            'field' => 'term_id',
+            'terms' => $include_by_categories,
+            'operator' => 'IN'
+        );
+        array_push($args['tax_query'], $tax_query);
+    }
+
+    if (!empty($exclude_by_categories)) {
+        $tax_query =array(
+            'taxonomy' => 'course-category',
+            'field' => 'term_id',
+            'terms' => $exclude_by_categories,
+            'operator' => 'NOT IN'
+        );
+        array_push($args['tax_query'], $tax_query);
+    }
+
+    if (!empty($include_by_authors)) {
+        $args['author__in'] = $include_by_authors;
+    }
+
+    if (!empty($exclude_by_authors)) {
+        $args['author__not_in'] = $exclude_by_authors;
+    }
+
+    if (!empty($order_by)) {
+        $args['orderby'] = $order_by;
+        $args['order'] = $order;
+    }
 
     // the query
     $the_query = new WP_Query($args);
 
-    //wp_reset_postdata();
-    //do_action('tutor_course/archive/before_loop');
+    do_action('tutor_elementor/before/course_list');
 
     if ($the_query->have_posts()) : ?>
 
@@ -334,7 +376,9 @@
 
     tutor_course_archive_pagination();
 
-    do_action('tutor_course/archive/after_loop');
+    do_action('tutor_elementor/after/course_list');
+
+    wp_reset_postdata();
     ?>
     <!--loading course init-->
 

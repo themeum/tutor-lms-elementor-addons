@@ -3,10 +3,58 @@
 
 <!--loading course init-->
 <?php
+$include_by_categories = $settings['course_carousel_include_by_categories'];
+$exclude_by_categories = $settings['course_carousel_exclude_by_categories'];
+$include_by_authors = $settings['course_carousel_include_by_authors'];
+$exclude_by_authors = $settings['course_carousel_exclude_by_authors'];
+$order_by = $settings['course_carousel_order_by'];
+$order = $settings['course_carousel_order'];
+$limit = $settings['course_carousel_post_limit'];
+
+/*
+* query arguements
+*/
 $args = [
     'post_type' => tutor()->course_post_type,
-    'post_status' => 'publish'
+    'post_status' => 'publish',
+    'posts_per_page' => $limit,
+    'tax_query'=> array(
+        'relation' => 'AND',
+    )
 ];
+
+if (!empty($include_by_categories)) {
+    $tax_query =array(
+        'taxonomy' => 'course-category',
+        'field' => 'term_id',
+        'terms' => $include_by_categories,
+        'operator' => 'IN'
+    );
+    array_push($args['tax_query'], $tax_query);
+}
+
+if (!empty($exclude_by_categories)) {
+    $tax_query =array(
+        'taxonomy' => 'course-category',
+        'field' => 'term_id',
+        'terms' => $exclude_by_categories,
+        'operator' => 'NOT IN'
+    );
+    array_push($args['tax_query'], $tax_query);
+}
+
+if (!empty($include_by_authors)) {
+    $args['author__in'] = $include_by_authors;
+}
+
+if (!empty($exclude_by_authors)) {
+    $args['author__not_in'] = $exclude_by_authors;
+}
+
+if (!empty($order_by)) {
+    $args['orderby'] = $order_by;
+    $args['order'] = $order;
+}
 
 // the query
 $the_query = new WP_Query($args);
