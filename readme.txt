@@ -5,7 +5,7 @@ Tags: lms, elearning, learning management system, course, education, elementor a
 Requires at least: 5.3
 Tested up to: 5.6
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,6 +138,10 @@ You can post on the support section of this plugin or use the contact form at th
 
 
 == Changelog ==
+
+= 1.0.1 - 08 January, 2021 =
+
+* New: Query Filters on the Course List and Carousel Addons
 
 = 1.0.0 - 04 January, 2021 =
 
