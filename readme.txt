@@ -15,6 +15,8 @@ Get 24+ Tutor LMS Elementor widgets to create an entire eLearning site and desig
 
 Tutor LMS Elementor Addons is a WordPress plugin that syncs Tutor LMS with Elementor page builder. It helps you to design eLearning course sites any way you want. Create your own custom layout and styling for Tutor LMS courses, bring different designs to specific courses, create course carousels and listings, and do much more.
 
+[youtube https://www.youtube.com/watch?v=9cbxl2v7gBc]
+
 =What you can do with Tutor LMS Elementor Addons:=
 
 Tutor LMS Elementor Addons helps you create gorgeous looking eLearning sites Tutor LMS and then style it with Elementor page builder. You can do a lot of things, including the following: 
