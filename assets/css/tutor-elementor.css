@@ -1448,6 +1448,33 @@
 		    -ms-flex-pack: center;
 		        justify-content: center;
 	}
+
+	/*author alignement*/
+	.elementor-align--mobileleft .etlms-author {
+		-webkit-box-align: start;
+			-ms-flex-align: start;
+				align-items: flex-start;
+		-webkit-box-pack: start;
+			-ms-flex-pack: start;
+				justify-content: flex-start;
+	}
+	.elementor-align--mobileright .etlms-author {
+		-webkit-box-align: end;
+			-ms-flex-align: end;
+				align-items: flex-end;
+		-webkit-box-pack: end;
+			-ms-flex-pack: end;
+				justify-content: flex-end;
+	}
+	.elementor-align--mobilecenter .etlms-author {
+		-webkit-box-align: center;
+			-ms-flex-align: center;
+				align-items: center;
+		-webkit-box-pack: center;
+			-ms-flex-pack: center;
+				justify-content: center;
+	}
+
 	/*course topics*/
 	.etlms-topic-icon-align--mobileleft .etlms-course-curriculum-title > h4,
 	.etlms-assignment-icon-align--mobileleft .etlms-course-assignment h5,
