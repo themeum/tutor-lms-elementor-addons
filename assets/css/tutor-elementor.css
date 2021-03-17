@@ -1393,6 +1393,15 @@
 /*mobile*/
 
 @media only screen and (max-width: 576px) {
+	.elementor-align--mobileleft {
+		text-align: left;
+	}
+	.elementor-align--mobileright {
+		text-align: right;
+	}
+	.elementor-align--mobilecenter {
+		text-align: center;
+	}
 	/*layout css for :course level,categories,duration*/
 	/*display block*/
 	.elementor-layout--mobileup .tutor-course-level > div,
@@ -1449,7 +1458,52 @@
 		        justify-content: center;
 	}
 
-	/*author alignement*/
+	/*lead info layout and alignement*/
+	.elementor-layout--mobileup .etlms-lead-info {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+				flex-direction: column;
+	}
+	.elementor-layout--mobileup.elementor-align--mobileleft .etlms-lead-info {
+		-webkit-box-align: start;
+			-ms-flex-align: start;
+				align-items: flex-start;
+	}
+	.elementor-layout--mobileup.elementor-align--mobileright .etlms-lead-info {
+		-webkit-box-align: end;
+			-ms-flex-align: end;
+				align-items: flex-end;
+	}
+
+	.elementor-align--mobileleft .etlms-lead-info {
+		-webkit-box-pack: start;
+			-ms-flex-pack: start;
+				justify-content: flex-start;
+	}
+	.elementor-align--mobileright .etlms-lead-info {
+		-webkit-box-pack: end;
+			-ms-flex-pack: end;
+				justify-content: flex-end;
+	}
+	.elementor-align--mobilecenter .etlms-lead-info {
+		-webkit-box-pack: center;
+			-ms-flex-pack: center;
+				justify-content: center;
+	}
+
+	/*author layout and alignement*/
+	.elementor-layout--mobileleft .etlms-author {
+		-webkit-box-align: center !important;
+			-ms-flex-align: center !important;
+				align-items: center !important;
+	}
+	.elementor-layout--mobileup .etlms-author {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+				flex-direction: column;
+	}
 	.elementor-align--mobileleft .etlms-author {
 		-webkit-box-align: start;
 			-ms-flex-align: start;
