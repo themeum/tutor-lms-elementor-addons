@@ -5,7 +5,7 @@ Tags: lms, elearning, learning management system, course, education, elementor a
 Requires at least: 5.3
 Tested up to: 5.6
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -140,6 +140,12 @@ You can post on the support section of this plugin or use the contact form at th
 
 
 == Changelog ==
+
+= 1.0.2 - 18 March, 2021 =
+
+* Fix: Addon layout and alignment issue on mobile view
+* Fix: Now you can add the same addon multiple times on a page
+* Fix: Course about addon duplicate echo issue
 
 = 1.0.1 - 08 January, 2021 =
 
