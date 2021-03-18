@@ -300,7 +300,7 @@ class CourseRequirements extends BaseAddon {
         if ($course) {
             ob_start();
             $settings = $this->get_settings_for_display();
-            include_once etlms_get_template('course/requirements');
+            include etlms_get_template('course/requirements');
             $output = apply_filters('tutor_course/single/requirements_html', ob_get_clean());
             echo $output;
         }

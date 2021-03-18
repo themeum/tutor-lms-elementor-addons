@@ -1078,6 +1078,6 @@ class CourseEnrolmentBox extends BaseAddon {
                 $template = 'enrolment-box';
             }
         }
-        include_once etlms_get_template('course/'.$template);
+        include etlms_get_template('course/'.$template);
     }
 }

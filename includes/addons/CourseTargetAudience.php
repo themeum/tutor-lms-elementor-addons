@@ -300,7 +300,7 @@ class CourseTargetAudience extends BaseAddon {
         if ($course) {
             ob_start();
             $settings = $this->get_settings_for_display();
-            include_once etlms_get_template('course/target-audience');
+            include etlms_get_template('course/target-audience');
             $output = apply_filters('tutor_course/single/audience_html', ob_get_clean());
             echo $output;
         }

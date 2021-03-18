@@ -485,7 +485,7 @@ class CourseInstructors extends BaseAddon {
             if($course){
                 ob_start();
                 $settings = $this->get_settings_for_display();
-                include_once etlms_get_template('course/instructors');
+                include etlms_get_template('course/instructors');
                 $output = apply_filters( 'tutor_course/single/instructors_html', ob_get_clean() );
                 echo $output;
             }

@@ -254,7 +254,7 @@ class CourseStatus extends BaseAddon {
         $settings = $this->get_settings_for_display();
         if (\Elementor\Plugin::instance()->editor->is_edit_mode() || (is_user_logged_in() && tutils()->is_enrolled())) {
             ob_start();
-            include_once etlms_get_template('course/status');
+            include etlms_get_template('course/status');
             $output = apply_filters( 'tutor_course/single/completing-progress-bar', ob_get_clean() );
             echo $output;
         }

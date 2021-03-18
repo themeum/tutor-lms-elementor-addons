@@ -2200,7 +2200,7 @@ class CourseList extends BaseAddon {
 
         $settings = $this->get_settings_for_display();
 
-        include_once etlms_get_template('course/course-list');
+        include etlms_get_template('course/course-list');
         echo ob_get_clean();
     }
 }

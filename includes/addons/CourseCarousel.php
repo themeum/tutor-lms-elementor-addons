@@ -2314,7 +2314,7 @@ class CourseCarousel extends BaseAddon {
 		ob_start();
 		$settings = $this->get_settings_for_display();
 
-		include_once etlms_get_template('course/course-carousel');
+		include etlms_get_template('course/course-carousel');
 		echo ob_get_clean();
 	}
 }

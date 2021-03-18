@@ -300,7 +300,7 @@ class CourseMaterials extends BaseAddon {
         if ($course) {
             ob_start();
             $settings = $this->get_settings_for_display();
-            include_once etlms_get_template('course/materials');
+            include etlms_get_template('course/materials');
             $output = apply_filters('tutor_course/single/materials_includes', ob_get_clean());
             echo $output;
         }

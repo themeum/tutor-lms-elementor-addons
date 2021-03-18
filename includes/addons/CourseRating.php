@@ -141,7 +141,7 @@ class CourseRating extends BaseAddon {
         $course = etlms_get_course();
         if ($course) {
             ob_start();
-            include_once etlms_get_template('course/rating');
+            include etlms_get_template('course/rating');
             echo ob_get_clean();
         }
     }

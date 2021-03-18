@@ -134,7 +134,7 @@ class CourseDescription extends BaseAddon {
         if ($course) {
             ob_start();
             $settings = $this->get_settings_for_display();
-            include_once etlms_get_template('course/description');
+            include etlms_get_template('course/description');
             echo ob_get_clean();
         }
     }

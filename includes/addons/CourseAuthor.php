@@ -251,7 +251,7 @@ class CourseAuthor extends BaseAddon {
         if ($course) {
             ob_start();
             $settings = $this->get_settings_for_display();
-            include_once etlms_get_template('course/author');
+            include etlms_get_template('course/author');
             echo ob_get_clean();
         }
     }

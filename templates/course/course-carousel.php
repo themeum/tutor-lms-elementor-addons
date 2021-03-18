@@ -15,10 +15,10 @@ $limit = $settings['course_carousel_post_limit'];
 * query arguements
 */
 $args = [
-    'post_type' => tutor()->course_post_type,
-    'post_status' => 'publish',
+    'post_type'      => tutor()->course_post_type,
+    'post_status'    => 'publish',
     'posts_per_page' => $limit,
-    'tax_query'=> array(
+    'tax_query'      => array(
         'relation' => 'AND',
     )
 ];
@@ -62,7 +62,7 @@ $the_query = new WP_Query($args);
 //wp_reset_postdata();
 //do_action('tutor_course/archive/before_loop');
 
-if ($the_query->have_posts()) : ?>
+if ( $the_query->have_posts()) : ?>
 
     <!-- loop start -->
     <?php
@@ -248,6 +248,7 @@ if ($the_query->have_posts()) : ?>
 
         <?php
         endwhile;
+        wp_reset_postdata();
         ?>
     </div>
     <!--arrow start-->
