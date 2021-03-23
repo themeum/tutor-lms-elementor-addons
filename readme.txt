@@ -141,10 +141,11 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 1.0.2 - 18 March, 2021 =
+= 1.0.2 - 23 March, 2021 =
 
 * Fix: Addon layout and alignment issue on mobile view
 * Fix: Now you can add the same addon multiple times on a page
+* Fix: Course carousel addon were not working in RTL mode
 * Fix: Course about addon duplicate echo issue
 
 = 1.0.1 - 08 January, 2021 =
