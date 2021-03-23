@@ -120,9 +120,9 @@
 	display: flex;
 }
 .elementor-layout-left .etlms-author {
-	-webkit-box-align: center !important;
-	    -ms-flex-align: center !important;
-	        align-items: center !important;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 .elementor-layout-up .etlms-author {
 	-webkit-box-orient: vertical;
@@ -1494,9 +1494,9 @@
 
 	/*author layout and alignement*/
 	.elementor-layout--mobileleft .etlms-author {
-		-webkit-box-align: center !important;
-			-ms-flex-align: center !important;
-				align-items: center !important;
+		-webkit-box-align: center;
+			-ms-flex-align: center;
+				align-items: center;
 	}
 	.elementor-layout--mobileup .etlms-author {
 		-webkit-box-orient: vertical;
