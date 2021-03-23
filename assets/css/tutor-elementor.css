@@ -1492,6 +1492,18 @@
 				justify-content: center;
 	}
 
+	/*course price*/
+	.elementor-align--mobilecenter .etlms-course-price  > .price > .price {
+		-webkit-box-pack: center;
+			-ms-flex-pack: center;
+				justify-content: center;
+	}
+	.elementor-align--mobileright .etlms-course-price  > .price > .price {
+		-webkit-box-pack: start;
+			-ms-flex-pack: start;
+				justify-content: flex-start;
+	}
+
 	/*author layout and alignement*/
 	.elementor-layout--mobileleft .etlms-author {
 		-webkit-box-align: center;
@@ -1578,6 +1590,20 @@
 		-webkit-column-gap: 10px;
 		   -moz-column-gap: 10px;
 		        column-gap: 10px;
+	}
+
+	/*instructors*/
+	.elementor-layout--mobileleft .etlms-course-instructors-wrap .tutor-instructor-right {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+				flex-direction: row;
+	}
+	.elementor-layout--mobileup .etlms-course-instructors-wrap .tutor-instructor-right {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+				flex-direction: column;
 	}
 
 	/*reviews*/
