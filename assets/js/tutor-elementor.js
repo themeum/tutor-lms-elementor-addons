@@ -142,6 +142,8 @@
 				prevArrow: $scope.find('.etlms-carousel-arrow-prev'),
 				nextArrow: $scope.find('.etlms-carousel-arrow-next'),
 
+				rtl: elementorFrontend.config.is_rtl ? true : false,
+
 				responsive: [
 					{
 						breakpoint: 1024,
