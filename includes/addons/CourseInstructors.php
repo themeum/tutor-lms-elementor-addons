@@ -8,7 +8,7 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 
@@ -360,7 +360,7 @@ class CourseInstructors extends BaseAddon {
                 'name'      => 'course_instructor_label_typography',
                 'label'     => __('Label Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $ins_info_selector.' .rating-digits,'. $ins_info_selector.' .courses,'. $ins_info_selector.' .students',
-                'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme'    => Typography::TYPOGRAPHY_1,
             )
         );
         $this->add_control(

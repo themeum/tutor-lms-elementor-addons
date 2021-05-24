@@ -8,7 +8,7 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 
@@ -231,7 +231,7 @@ class CourseAuthor extends BaseAddon {
                 'name'      => 'course_author_name_typo',
                 'label'     => __('Typography', 'tutor-lms-elementor-addons'),
                 'selector'  => $author_selector.' a',
-                'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme'    => Typography::TYPOGRAPHY_1,
             ]
         );
         $this->end_controls_section();

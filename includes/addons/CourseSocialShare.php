@@ -8,7 +8,7 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
@@ -98,7 +98,7 @@ class CourseSocialShare extends BaseAddon {
             [
                 'name' => 'content_typography',
                 'label' => __( 'Typography', 'tutor-lms-elementor-addons' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .etlms-social-label',
             ]
         );        
