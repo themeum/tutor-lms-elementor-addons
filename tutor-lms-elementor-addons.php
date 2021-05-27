@@ -14,7 +14,7 @@ Text Domain: tutor-lms-elementor-addons
 
 defined('ABSPATH') || die();
 
-define('ETLMS_VERSION', '1.0.2');
+define('ETLMS_VERSION', '1.0.3');
 define('ETLMS_FILE__', __FILE__);
 define('ETLMS_BASENAME', plugin_basename(ETLMS_FILE__));
 define('ETLMS_DIR_PATH', plugin_dir_path(ETLMS_FILE__));
