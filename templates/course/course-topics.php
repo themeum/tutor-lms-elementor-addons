@@ -21,6 +21,8 @@ if (!defined('ABSPATH'))
 					tutor_course_question_and_answer();
 				} else if ($course_subpage == 'announcements') {
 					tutor_course_announcements();
+				} else if ($course_subpage == 'overview') {
+					get_tutor_posts_attachments();
 				}
 				do_action("tutor_course/single/enrolled/{$course_subpage}", get_the_ID());
 			}
