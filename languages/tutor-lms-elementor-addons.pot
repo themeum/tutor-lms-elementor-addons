@@ -1185,7 +1185,7 @@ msgstr ""
 msgid "Please enable course total enrolled from tutor settings"
 msgstr ""
 
-#: templates/course/about.php:11, templates/course/benefits.php:15, templates/course/course-topics.php:182, templates/course/materials.php:15, templates/course/requirements.php:15, templates/course/tags.php:16, templates/course/target-audience.php:15
+#: templates/course/about.php:11, templates/course/benefits.php:15, templates/course/course-topics.php:184, templates/course/materials.php:15, templates/course/requirements.php:15, templates/course/tags.php:16, templates/course/target-audience.php:15
 msgid "Please add data from the course editor"
 msgstr ""
 
@@ -1197,15 +1197,15 @@ msgstr ""
 msgid "In"
 msgstr ""
 
-#: templates/course/course-topics.php:64
+#: templates/course/course-topics.php:66
 msgid " Lessons"
 msgstr ""
 
-#: templates/course/course-topics.php:154
+#: templates/course/course-topics.php:156
 msgid "Live"
 msgstr ""
 
-#: templates/course/course-topics.php:152
+#: templates/course/course-topics.php:154
 msgid "Expired"
 msgstr ""
 
