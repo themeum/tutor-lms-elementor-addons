@@ -143,9 +143,8 @@ You can post on the support section of this plugin or use the contact form at th
 
 = 1.0.3 - 25 May, 2021 =
 
-* Fix: 
-
-Deprecated: Elementor\Scheme_Typography is deprecated since version 2.8.0! Use Elementor\Core\Schemes\Typography instead.
+* Fix: Course attachment not showing 
+* Fix: Deprecated: Elementor\Scheme_Typography is deprecated since version 2.8.0! Use Elementor\Core\Schemes\Typography instead.
 
 = 1.0.2 - 23 March, 2021 =
 
