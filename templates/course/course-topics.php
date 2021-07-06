@@ -27,7 +27,6 @@ if (!defined('ABSPATH'))
 				do_action("tutor_course/single/enrolled/{$course_subpage}", get_the_ID());
 			}
 
-			do_action('tutor_course/single/enrolled/after/inner-wrap');
 		}
 	} 
 	
