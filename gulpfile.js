@@ -4,6 +4,7 @@ var gulp = require("gulp"),
 	wpPot = require('gulp-wp-pot'),
 	clean = require("gulp-clean"),
 	zip = require("gulp-zip");
+	package = require('./package.json'); 
 
 var onError = function (err) {
 	notify.onError({
@@ -65,7 +66,7 @@ gulp.task("copy", function () {
 });
 
 gulp.task("make-zip", function () {
-	return gulp.src("./build/**/*.*").pipe(zip("tutor-lms-elementor-addons.zip")).pipe(gulp.dest("./"));
+	return gulp.src("./build/**/*.*").pipe(zip(`tutor-lms-elementor-addons-v${package.version}.zip`)).pipe(gulp.dest("./"));
 });
 
 /**

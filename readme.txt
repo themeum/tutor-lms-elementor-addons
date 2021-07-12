@@ -141,7 +141,8 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 1.0.4 - 7 Jul, 2021
+= 1.0.4 - 12 Jul, 2021
+* Fix: Action Hook in wrong place
 
 = 1.0.3 - 27 May, 2021 =
 
