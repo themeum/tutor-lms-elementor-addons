@@ -56,6 +56,7 @@ gulp.task("copy", function () {
 			"!.github",
 			"!./gulpfile.js",
 			"!./readme.md",
+			"!./README.md",
 			"!.DS_Store",
 			"!./**/.DS_Store",
 			"!./LICENSE.txt",
@@ -77,6 +78,5 @@ exports.build = gulp.series(
 	"clean-build",
 	"makepot",
 	"copy",
-	"make-zip",
-	"clean-build"
+	"make-zip"
 );
