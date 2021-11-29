@@ -53,15 +53,15 @@ trait AddonsTrait {
 			'options'      => [
 				'left'   => [
 					'title' => __('Left', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-left',
+					'icon'  => 'eicon-text-align-left',
 				],
 				'center' => [
 					'title' => __('Center', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-center',
+					'icon'  => 'eicon-text-align-center',
 				],
 				'right'  => [
 					'title' => __('Right', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-right'
+					'icon'  => 'eicon-text-align-right'
 				]
 			],
 			'prefix_class' => self::$prefix_class_alignment . '%s',
@@ -99,15 +99,15 @@ trait AddonsTrait {
 			'options'      => [
 				'left'   => [
 					'title' => __('Left', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-left',
+					'icon'  => 'eicon-text-align-left',
 				],
 				'center' => [
 					'title' => __('Center', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-center',
+					'icon'  => 'eicon-text-align-center',
 				],
 				'right'  => [
 					'title' => __('Right', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-right'
+					'icon'  => 'eicon-text-align-right'
 				],
 				'justify'  => [
 					'title' => __('Justified', 'tutor-lms-elementor-addons'),
@@ -148,15 +148,15 @@ trait AddonsTrait {
 			'options'      => [
 				'left'   => [
 					'title' => __('Left', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-left',
+					'icon'  => 'eicon-text-align-left',
 				],
 				'center' => [
 					'title' => __('Center', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-center',
+					'icon'  => 'eicon-text-align-center',
 				],
 				'right'  => [
 					'title' => __('Right', 'tutor-lms-elementor-addons'),
-					'icon'  => 'fa fa-align-right'
+					'icon'  => 'eicon-text-align-right'
 				]
 			],
 			'prefix_class' => self::$prefix_class_alignment,
