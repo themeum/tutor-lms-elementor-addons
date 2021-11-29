@@ -146,7 +146,7 @@ class CourseDuration extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$selector . ' strong' => 'color: {{VALUE}}',
+						$selector . ' strong span' => 'color: {{VALUE}}',
 					),
 					'default'   => '#57586E',
 				)
