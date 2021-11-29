@@ -25,6 +25,7 @@ class CourseTitle extends BaseAddon {
 		return __( 'Course Title', 'tutor-lms-elementor-addons' );
 	}
 
+
 	protected function register_content_controls() {
 		$this->start_controls_section(
 			'course_title_content',
@@ -50,7 +51,7 @@ class CourseTitle extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_title_align',
-			$this->etlms_alignment() // alignment
+			$this->title_alignment_with_selectors( '{{WRAPPER}}', 'text-align: {{VALUE}};' )
 		);
 
 		$this->end_controls_section();
