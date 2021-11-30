@@ -1065,35 +1065,12 @@ class CourseEnrolmentBox extends BaseAddon {
 
 	protected function render( $instance = array() ) {
 		$settings              = $this->get_settings_for_display();
-		$is_enrolled           = tutils()->is_enrolled();
-		$is_administrator      = current_user_can( 'administrator' );
-		$is_instructor         = tutor_utils()->is_instructor_of_this_course();
-		$course_content_access = (bool) get_tutor_option( 'course_content_access_for_ia' );
-		$editor_mode           = $settings['course_enrolment_edit_mode'];
-
-		// $template              = 'course/enrolment-box';
-		// if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-		// 	$template = $editor_mode;
-		// } else {
-		// 	if ( $is_enrolled || ( $course_content_access && ( $is_administrator || $is_instructor ) ) ) {
-		// 		$template = 'enrolled-box';
-		// 	} else {
-		// 		$template = 'enrolment-box';
-		// 	}
-		// }
-	
-		if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-			$is_enrolled = 'enrolled-box' === $settings['course_enrolment_edit_mode'] ? true : false;
-			var_dump( $$settings['course_enrolment_edit_mode'] );
-			$template = $editor_mode;
-			add_filter( 'tutor_alter_enroll_status',
-				function() {
-					return $is_enrolled;
-				}
-			);
-		}
 		ob_start();
-		include tutor()->path . 'templates/single/course/course-entry-box.php';
+		if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
+			include etlms_get_template( 'course/enrollment-editor' );
+		} else {
+			include tutor()->path . 'templates/single/course/course-entry-box.php';
+		}
 		echo ob_get_clean();
 	}
 }
