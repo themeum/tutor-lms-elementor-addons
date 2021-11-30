@@ -1,5 +1,4 @@
 <?php do_action('tutor_course/single/before/material_includes'); ?>
-
 <div class="etlms-course-specifications etlms-course-materials">
 	<h3><?php esc_html_e($settings['section_title_text'], 'tutor-lms-elementor-addons'); ?></h3>
 	<ul class="etlms-course-specification-items etlms-course-materials">

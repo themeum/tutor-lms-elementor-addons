@@ -1,4 +1,6 @@
+
 /* tutor segment */
+
 .elementor-widget-container .tutor-segment-title {
 	font-size: 20px;
 	margin: 0;
@@ -388,17 +390,24 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.etlms-course-enrolment-box.course-enroll-buttons-size-small button,
-.etlms-course-enrolment-box.course-enroll-buttons-size-small .tutor-button {
+.etlms-course-enrolment-box.course-enroll-buttons-size-small .tutor-btn.tutor-btn-icon.tutor-btn-lg,
+.etlms-course-enrolment-box.course-enroll-buttons-size-small .tutor-btn:not(.tutor-is-icon-btn),
+.etlms-course-enrolment-box.course-enroll-buttons-size-small .tutor-btn:not(.tutor-btn-icon).tutor-btn-lg {
 	padding: 9px 14px;
-	line-height: 19px;
+	line-height: 19px !important;
 }
-.etlms-course-enrolment-box.course-enroll-buttons-size-large button,
-.etlms-course-enrolment-box.course-enroll-buttons-size-large .tutor-button {
+
+.etlms-course-enrolment-box.course-enroll-buttons-size-large .tutor-btn:not(.tutor-btn-icon).tutor-btn-lg {
 	font-size: 16px;
-	display: inline-block;
-	line-height: 40px;
+	display: inline-block !important;
+	line-height: 40px !important;
 }
+.etlms-course-enrolment-box.course-enroll-buttons-size-large .tutor-btn.tutor-btn-icon.tutor-btn-lg, 
+.etlms-course-enrolment-box.course-enroll-buttons-size-large .tutor-btn:not(.tutor-is-icon-btn) {
+	font-size: 16px;
+	line-height: 40px !important;
+}
+
 .etlms-course-enrolment-box.course-enroll-buttons-width-auto button,
 .etlms-course-enrolment-box.course-enroll-buttons-width-auto .tutor-button {
 	width: -webkit-fit-content !important;

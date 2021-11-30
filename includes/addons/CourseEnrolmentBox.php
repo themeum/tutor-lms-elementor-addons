@@ -58,7 +58,8 @@ class CourseEnrolmentBox extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_enroll_buttons_align',
-			$this->etlms_alignment( 'center' ) // alignment
+			//$this->etlms_alignment( 'center' ) // alignment
+			$this->title_alignment_with_selectors( '{{WRAPPER}}', 'text-align: {{VALUE}};' )
 		);
 
 		$this->add_control(
@@ -120,11 +121,10 @@ class CourseEnrolmentBox extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .tutor-course-enrollment-box';
+		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
 		/* Add to Cart Section */
-		$add_to_cart_btn_selector1 = $selector . ' .tutor-course-purchase-box button';
-		$add_to_cart_btn_selector2 = $selector . ' .tutor-course-purchase-box edd-add-to-cart';
-		$add_to_cart_btn_selector  = $add_to_cart_btn_selector1 . ', ' . $add_to_cart_btn_selector2;
+		$add_to_cart_btn_selector  = $selector . ' .tutor-btn:not(.tutor-is-outline).tutor-btn-primary.tutor-add-to-cart-button';
+
 		$this->start_controls_section(
 			'add_to_cart_btn',
 			array(
@@ -167,7 +167,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_normal_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => $add_to_cart_btn_selector,
+						'selector' => '{{WRAPPER}} .tutor-add-to-cart-button span',
 					)
 				);
 				$this->add_control(
@@ -177,7 +177,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', 'em' ),
 						'selectors'  => array(
-							$add_to_cart_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							$add_to_cart_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 						),
 					)
 				);
@@ -295,7 +295,8 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Enroll Button Section */
-		$enroll_btn_selector = $selector . ' .tutor-btn-enroll';
+		$enroll_btn_selector = $selector . '.tutor-course-sidebar-card .tutor-btn.tutor-is-outline.tutor-enroll-course-button';
+
 		$this->start_controls_section(
 			'enroll_btn',
 			array(
@@ -320,7 +321,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$enroll_btn_selector => 'color: {{VALUE}};',
+							$enroll_btn_selector => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -339,7 +340,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					array(
 						'name'     => 'enroll_btn_normal_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => $enroll_btn_selector,
+						'selector' => '{{WRAPPER}} .tutor-btn.tutor-btn-lg.tutor-enroll-course-button',
 					)
 				);
 				$this->add_control(
@@ -403,7 +404,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$enroll_btn_selector_hover => 'color: {{VALUE}};',
+							$enroll_btn_selector_hover => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -466,12 +467,12 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_tabs();
 		$this->end_controls_section();
 
-		/* Continue Button Section */
-		$start_btn_selector = $selector . ' .tutor-lead-info-btn-group .tutor-success';
+		/* Start, Continue, Retake button section */
+		$start_btn_selector = '{{WRAPPER}} .tutor-btn.tutor-is-outline.start-continue-retake-button';
 		$this->start_controls_section(
 			'start_btn',
 			array(
-				'label' => __( 'Start/Continue Button', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Start/Continue/Retake Button', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
 			)
@@ -492,7 +493,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$start_btn_selector => 'color: {{VALUE}};',
+							'{{WRAPPER}} .tutor-btn.tutor-is-outline.start-continue-retake-button' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -521,7 +522,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', 'em' ),
 						'selectors'  => array(
-							$start_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							$start_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 						),
 					)
 				);
@@ -575,7 +576,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$start_btn_selector_hover => 'color: {{VALUE}};',
+							'{{WRAPPER}} .tutor-btn.tutor-is-outline.start-continue-retake-button:hover' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -638,353 +639,9 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_tabs();
 		$this->end_controls_section();
 
-		/* Complete Button Section */
-		$complete_btn_selector = $selector . ' .tutor-lead-info-btn-group .course-complete-button';
-		$this->start_controls_section(
-			'complete_btn',
-			array(
-				'label' => __( 'Complete Button', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
-			)
-		);
-		/* Start Tabs */
-		$this->start_controls_tabs( 'complete_btn_tabs' );
-
-			/* Normal Tab */
-			$this->start_controls_tab(
-				'complete_btn_normal_style_tab',
-				array(
-					'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
-				)
-			);
-				$this->add_control(
-					'complete_btn_normal_color',
-					array(
-						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$complete_btn_selector => 'color: {{VALUE}};',
-						),
-					)
-				);
-				$this->add_control(
-					'complete_btn_normal_background_color',
-					array(
-						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$complete_btn_selector => 'background-color: {{VALUE}}',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Typography::get_type(),
-					array(
-						'name'     => 'complete_btn_normal_typography',
-						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => $complete_btn_selector,
-					)
-				);
-				$this->add_control(
-					'complete_btn_normal_padding',
-					array(
-						'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
-						'type'       => Controls_Manager::DIMENSIONS,
-						'size_units' => array( 'px', 'em' ),
-						'selectors'  => array(
-							$complete_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Border::get_type(),
-					array(
-						'name'     => 'complete_btn_normal_border',
-						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-						'selector' => $complete_btn_selector,
-					)
-				);
-				$this->add_control(
-					'complete_btn_normal_border_radius',
-					array(
-						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::DIMENSIONS,
-						'selectors' => array(
-							$complete_btn_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-						'default'   => array(
-							'top'      => 3,
-							'right'    => 3,
-							'bottom'   => 3,
-							'left'     => 3,
-							'unit'     => 'px',
-							'isLinked' => true,
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Box_Shadow::get_type(),
-					array(
-						'name'     => 'complete_btn_normal_box_shadow',
-						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-						'selector' => $complete_btn_selector,
-					)
-				);
-			$this->end_controls_tab();
-
-			/* Hover Tab */
-			$complete_btn_selector_hover = $complete_btn_selector . ':hover';
-			$this->start_controls_tab(
-				'complete_btn_hover_style_tab',
-				array(
-					'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
-				)
-			);
-				$this->add_control(
-					'complete_btn_hover_color',
-					array(
-						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$complete_btn_selector_hover => 'color: {{VALUE}};',
-						),
-					)
-				);
-				$this->add_control(
-					'complete_btn_hover_background_color',
-					array(
-						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$complete_btn_selector_hover => 'background-color: {{VALUE}}',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Typography::get_type(),
-					array(
-						'name'     => 'complete_btn_hover_typography',
-						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => $complete_btn_selector_hover,
-					)
-				);
-				$this->add_control(
-					'complete_btn_hover_padding',
-					array(
-						'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
-						'type'       => Controls_Manager::DIMENSIONS,
-						'size_units' => array( 'px', 'em' ),
-						'selectors'  => array(
-							$complete_btn_selector_hover => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Border::get_type(),
-					array(
-						'name'     => 'complete_btn_hover_border',
-						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-						'selector' => $complete_btn_selector_hover,
-					)
-				);
-				$this->add_control(
-					'complete_btn_hover_border_radius',
-					array(
-						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::DIMENSIONS,
-						'selectors' => array(
-							$complete_btn_selector_hover => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Box_Shadow::get_type(),
-					array(
-						'name'     => 'complete_btn_hover_box_shadow',
-						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-						'selector' => $complete_btn_selector_hover,
-					)
-				);
-			$this->end_controls_tab();
-		$this->end_controls_tabs();
-		$this->end_controls_section();
-
-		/* Gradebook Button Section */
-		$gradebook_btn_selector = $selector . ' .generate-course-gradebook-btn-wrap button';
-		$this->start_controls_section(
-			'gradebook_btn',
-			array(
-				'label' => __( 'Gradebook Button', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
-			)
-		);
-		/* Start Tabs */
-		$this->start_controls_tabs( 'gradebook_btn_tabs' );
-
-			/* Normal Tab */
-			$this->start_controls_tab(
-				'gradebook_btn_normal_style_tab',
-				array(
-					'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
-				)
-			);
-				$this->add_control(
-					'gradebook_btn_normal_color',
-					array(
-						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$gradebook_btn_selector => 'color: {{VALUE}};',
-						),
-					)
-				);
-				$this->add_control(
-					'gradebook_btn_normal_background_color',
-					array(
-						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$gradebook_btn_selector => 'background-color: {{VALUE}}',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Typography::get_type(),
-					array(
-						'name'     => 'gradebook_btn_normal_typography',
-						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => $gradebook_btn_selector,
-					)
-				);
-				$this->add_control(
-					'gradebook_btn_normal_padding',
-					array(
-						'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
-						'type'       => Controls_Manager::DIMENSIONS,
-						'size_units' => array( 'px', 'em' ),
-						'selectors'  => array(
-							$gradebook_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Border::get_type(),
-					array(
-						'name'     => 'gradebook_btn_normal_border',
-						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-						'selector' => $gradebook_btn_selector,
-					)
-				);
-				$this->add_control(
-					'gradebook_btn_normal_border_radius',
-					array(
-						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::DIMENSIONS,
-						'selectors' => array(
-							$gradebook_btn_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-						'default'   => array(
-							'top'      => 3,
-							'right'    => 3,
-							'bottom'   => 3,
-							'left'     => 3,
-							'unit'     => 'px',
-							'isLinked' => true,
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Box_Shadow::get_type(),
-					array(
-						'name'     => 'gradebook_btn_normal_box_shadow',
-						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-						'selector' => $gradebook_btn_selector,
-					)
-				);
-			$this->end_controls_tab();
-
-			/* Hover Tab */
-			$gradebook_btn_selector_hover = $gradebook_btn_selector . ':hover';
-			$this->start_controls_tab(
-				'gradebook_btn_hover_style_tab',
-				array(
-					'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
-				)
-			);
-				$this->add_control(
-					'gradebook_btn_hover_color',
-					array(
-						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$gradebook_btn_selector_hover => 'color: {{VALUE}};',
-						),
-					)
-				);
-				$this->add_control(
-					'gradebook_btn_hover_background_color',
-					array(
-						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::COLOR,
-						'selectors' => array(
-							$gradebook_btn_selector_hover => 'background-color: {{VALUE}}',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Typography::get_type(),
-					array(
-						'name'     => 'gradebook_btn_hover_typography',
-						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => $gradebook_btn_selector_hover,
-					)
-				);
-				$this->add_control(
-					'gradebook_btn_hover_padding',
-					array(
-						'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
-						'type'       => Controls_Manager::DIMENSIONS,
-						'size_units' => array( 'px', 'em' ),
-						'selectors'  => array(
-							$gradebook_btn_selector_hover => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Border::get_type(),
-					array(
-						'name'     => 'gradebook_btn_hover_border',
-						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-						'selector' => $gradebook_btn_selector_hover,
-					)
-				);
-				$this->add_control(
-					'gradebook_btn_hover_border_radius',
-					array(
-						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
-						'type'      => Controls_Manager::DIMENSIONS,
-						'selectors' => array(
-							$gradebook_btn_selector_hover => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->add_group_control(
-					Group_Control_Box_Shadow::get_type(),
-					array(
-						'name'     => 'gradebook_btn_hover_box_shadow',
-						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-						'selector' => $gradebook_btn_selector_hover,
-					)
-				);
-			$this->end_controls_tab();
-		$this->end_controls_tabs();
-		$this->end_controls_section();
-
 		/* Enrolled info */
-		$enrolled_info_selector      = $selector . ' .tutor-course-enrolled-wrap p';
-		$enrolled_info_icon_selector = $enrolled_info_selector . ' i';
+		$enrolled_info_selector      = '{{WRAPPER}} .text-regular-caption';
+		$enrolled_info_icon_selector = $enrolled_info_selector . ' span.ttr-purchase-filled';
 		$enrolled_info_date_selector = $enrolled_info_selector . ' span';
 		$this->start_controls_section(
 			'enrolled_info_section',
@@ -1064,13 +721,16 @@ class CourseEnrolmentBox extends BaseAddon {
 	}
 
 	protected function render( $instance = array() ) {
-		$settings              = $this->get_settings_for_display();
-		ob_start();
-		if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-			include etlms_get_template( 'course/enrollment-editor' );
-		} else {
-			include tutor()->path . 'templates/single/course/course-entry-box.php';
+		$course = etlms_get_course();
+		if ( $course ) {
+			ob_start();
+			$settings = $this->get_settings_for_display();
+			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
+				include etlms_get_template( 'course/enrollment-editor' );
+			} else {
+				include tutor()->path . 'templates/single/course/course-entry-box.php';
+			}
+			echo ob_get_clean();
 		}
-		echo ob_get_clean();
 	}
 }

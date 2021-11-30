@@ -34,6 +34,8 @@ $sidebar_meta = apply_filters(
 	),
 	get_the_ID()
 );
+$button_size  = $settings['course_enroll_buttons_size'];
+
 ?>
 
 <div class="tutor-course-sidebar-card">
@@ -44,34 +46,26 @@ $sidebar_meta = apply_filters(
 			$button_class = 'tutor-is-fullwidth tutor-btn tutor-is-outline tutor-btn-lg tutor-btn-full tutor-is-fullwidth tutor-course-retake-button tutor-mb-10';
 		?>
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
-			<a href="#" class="<?php echo esc_attr( $button_class ); ?>" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-				<?php esc_html_e( 'Retake This Course', 'tutor' ); ?>
-			</a>
-			<a href="#" class="<?php echo esc_attr( $button_class ); ?>" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-				<?php esc_html_e( 'Start Learning', 'tutor' ); ?>
-			</a>
-			<a href="#" class="<?php echo esc_attr( $button_class ); ?>" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+			<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
 				<?php esc_html_e( 'Continue Learning', 'tutor' ); ?>
 			</a>
-
-			<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
-				<?php esc_html_e( 'Complete Course', 'tutor' ); ?>
-			</button>
-			<?php else : ?>
-				<div>
-					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
-				</div>
-
-				<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
-					<?php esc_html_e( 'Enroll Course', 'tutor' ); ?>
-				</button>
-			<?php endif; ?>
 			<div class="text-regular-caption color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
 				<span class="tutor-icon-26 color-success ttr-purchase-filled tutor-mr-6"></span>
 				<?php esc_html_e( 'You enrolled this course on', 'tutor' ); ?>
 				<span class="text-bold-small color-success tutor-ml-3">
 					<?php echo esc_html( tutor_get_formated_date( get_option( 'date_format' ), date( 'Y-m-d' ) ) ); ?>
-				</span>			
+				</span>
 			</div>
+		
+			<?php else : ?>
+				<div>
+					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
+				</div>
+
+				<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
+					<?php esc_html_e( 'Enroll Course', 'tutor' ); ?>
+				</button>
+			<?php endif; ?>
+
 	</div>
 </div>
