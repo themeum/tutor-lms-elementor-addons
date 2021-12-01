@@ -14,7 +14,7 @@
 		}
 	);
 	?>
-<div class="tutor-wrap">
+<div class="tutor-wrap etlms-course-curriculum">
 		<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
 		<div class="tutor-default-tab tutor-course-details-tab tutor-tab-has-seemore tutor-mt-30">
 			<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>

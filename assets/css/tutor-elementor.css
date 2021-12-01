@@ -586,6 +586,10 @@
 }
 
 /*course curriculum */
+.etlms-course-curriculum.etlms-topic-icon-align-left .tutor-accordion-item-header::after {
+	position: inherit !important;
+	left: 10px;
+}
 .etlms-course-curriculum .etlms-course-topic {
 	border: 1px solid #E1EBF0;
 }
