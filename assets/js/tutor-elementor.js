@@ -90,7 +90,7 @@
 			// 	}, 300);
 			// });
 			const accordionItemHeaders = document.querySelectorAll('.tutor-accordion-item-header');
-			if (accordionItemHeaders && window._tutorobject.is_admin == '') {
+			if (accordionItemHeaders) {
 				console.log(window._tutorobject.is_admin)
 				accordionItemHeaders.forEach((accordionItemHeader) => {
 					accordionItemHeader.addEventListener('click', () => {

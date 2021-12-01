@@ -549,7 +549,6 @@ class CourseCurriculum extends BaseAddon {
 						'selectors' => array(
 							$lesson_selector => 'background-color: {{VALUE}};',
 						),
-						'default'   => '#ffffff',
 						'separator' => 'after',
 					)
 				);
