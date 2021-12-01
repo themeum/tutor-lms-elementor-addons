@@ -19,6 +19,8 @@ class CourseCurriculum extends BaseAddon {
     private static $prefix_class_layout = "elementor-layout-";
     private static $prefix_class_alignment = "elementor-align-"; 
 
+    protected $topic_title;
+
     public function get_title() {
         return __('Course Curriculum', 'tutor-lms-elementor-addons');
     }
@@ -778,12 +780,27 @@ class CourseCurriculum extends BaseAddon {
     }
 
     protected function render($instance = []) {
+        $settings = $this->get_settings_for_display();
+        $this->topic_title = $settings['section_title_text'];
+        // filter course topic title
+        if ( '' !== $this->topic_title ) {
+            add_filter(
+                'tutor_course_topics_title',
+                array ( $this, 'filter_topics_title' )
+            );
+        }
         ob_start();
         $course = etlms_get_course();
         if ($course) {
-            $settings = $this->get_settings_for_display();
             include etlms_get_template('course/course-topics');
             echo ob_get_clean();
         }
+    }
+
+    /**
+     * Filter topics title
+     */
+    public function filter_topics_title() {
+        return $this->topic_title;
     }
 }
