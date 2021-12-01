@@ -374,7 +374,7 @@
 
     endif;
 
-    tutor_course_archive_pagination();
+    //tutor_course_archive_pagination();
 
     do_action('tutor_elementor/after/course_list');
 

@@ -51,8 +51,10 @@ $button_size  = $settings['course_enroll_buttons_size'];
 			</a>
 			<div class="text-regular-caption color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
 				<span class="tutor-icon-26 color-success ttr-purchase-filled tutor-mr-6"></span>
-				<?php esc_html_e( 'You enrolled this course on', 'tutor' ); ?>
-				<span class="text-bold-small color-success tutor-ml-3">
+				<span class="tutor-enrolled-info-text">
+					<?php esc_html_e( 'You enrolled this course on', 'tutor' ); ?>
+				</span>
+				<span class="text-bold-small color-success tutor-ml-3 tutor-enrolled-info-date">
 					<?php echo esc_html( tutor_get_formated_date( get_option( 'date_format' ), date( 'Y-m-d' ) ) ); ?>
 				</span>
 			</div>

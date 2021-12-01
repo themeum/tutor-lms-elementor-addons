@@ -2196,6 +2196,7 @@ class CourseList extends BaseAddon {
     }
 
     protected function render() {
+      
         ob_start();
 
         $settings = $this->get_settings_for_display();

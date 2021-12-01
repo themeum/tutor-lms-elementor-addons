@@ -640,9 +640,9 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Enrolled info */
-		$enrolled_info_selector      = '{{WRAPPER}} .text-regular-caption';
-		$enrolled_info_icon_selector = $enrolled_info_selector . ' span.ttr-purchase-filled';
-		$enrolled_info_date_selector = $enrolled_info_selector . ' span';
+		$enrolled_info_selector      = '{{WRAPPER}} .tutor-enrolled-info-text';
+		$enrolled_info_icon_selector = '{{WRAPPER}} .tutor-course-sidebar-card span.ttr-purchase-filled';
+		$enrolled_info_date_selector = '{{WRAPPER}} .text-bold-small.tutor-enrolled-info-date';
 		$this->start_controls_section(
 			'enrolled_info_section',
 			array(
@@ -705,7 +705,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				'label'     => __( 'Date Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$enrolled_info_date_selector => 'color: {{VALUE}}',
+					$enrolled_info_date_selector => 'color: {{VALUE}};',
 				),
 			)
 		);
