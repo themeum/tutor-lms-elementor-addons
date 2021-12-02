@@ -674,7 +674,7 @@ class CourseCurriculum extends BaseAddon {
 		/**
 		 * Merge reviews style controls
 		 */
-		$review_selector       = '{{WRAPPER}} .etlms-course-reviews';
+		$review_selector       = '{{WRAPPER}} .tutor-ratingsreviews';
 
 		/* Review average section */
 		$review_avg_section_selector     = $review_selector . ' .course-avg-rating-wrap';
