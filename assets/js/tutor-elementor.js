@@ -79,30 +79,21 @@
 		 * @since 1.0.0
 		 */
 		elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-curriculum.default', function ($scope, $) {
-            // var collapse_icon = $scope.find("#etlms-course-topic-collapse-icon").val();
-			// var expand_icon = $scope.find("#etlms-course-topic-expand-icon").val();
-			// $scope.find(".etlms-course-curriculum-title").click(function (e) {
-            //     var $this = $(this);
-            //     $this.parent().toggleClass('etlms-topic-active', 300);
-            //     $this.find('#etlms-course-topic-icon').toggleClass(collapse_icon+' '+expand_icon);
-			// 	$this.parent().find(".tutor-course-lessons").animate({
-			// 		height: 'toggle'
-			// 	}, 300);
-			// });
-			const accordionItemHeaders = document.querySelectorAll('.tutor-accordion-item-header');
-			if (accordionItemHeaders) {
-				console.log(window._tutorobject.is_admin)
-				accordionItemHeaders.forEach((accordionItemHeader) => {
-					accordionItemHeader.addEventListener('click', () => {
-						accordionItemHeader.classList.toggle('is-active');
-						const accordionItemBody = accordionItemHeader.nextElementSibling;
-						if (accordionItemHeader.classList.contains('is-active')) {
-							accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + 'px';
-						} else {
-							accordionItemBody.style.maxHeight = 0;
-						}
+			if (etlmsUtility.is_editor_mode) {
+				const accordionItemHeaders = document.querySelectorAll('.tutor-accordion-item-header');
+				if (accordionItemHeaders) {
+					accordionItemHeaders.forEach((accordionItemHeader) => {
+						accordionItemHeader.addEventListener('click', () => {
+							accordionItemHeader.classList.toggle('is-active');
+							const accordionItemBody = accordionItemHeader.nextElementSibling;
+							if (accordionItemHeader.classList.contains('is-active')) {
+								accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + 'px';
+							} else {
+								accordionItemBody.style.maxHeight = 0;
+							}
+						});
 					});
-				});
+				}
 			}
 		});
 

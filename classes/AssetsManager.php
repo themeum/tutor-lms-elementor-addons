@@ -114,6 +114,12 @@ class AssetsManager {
 			array( 'jquery' ),
 			ETLMS_VERSION
 		);
+
+		wp_add_inline_script(
+			'tutor-elementor-js',
+			'const etlmsUtility = ' . json_encode( self::utility_data() ) . '',
+			'before'
+		);
 	}
 
 	// Add default template library
@@ -131,5 +137,16 @@ class AssetsManager {
 				update_post_meta( $postID, $meta_key, 'yes' );
 			}
 		}
+	}
+
+	/**
+	 * Get utility data
+	 *
+	 * @return array
+	 */
+	protected static function utility_data(): array {
+		return array(
+			'is_editor_mode' => \Elementor\Plugin::$instance->preview->is_preview_mode() ? true : false,
+		);
 	}
 }
