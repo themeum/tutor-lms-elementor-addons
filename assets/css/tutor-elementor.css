@@ -1629,3 +1629,49 @@
 		margin-left: 5px;
 	}
 }
+
+/* new css */
+/* enrollment button default & default with cart icon style  */
+.etlms-carousel-footer.default .tutor-bs-d-flex,
+.etlms-carousel-footer.default_with_cart_icon .tutor-bs-d-flex {
+	flex-direction: column;
+}
+.etlms-carousel-footer.default .list-item-price + .list-item-button,
+.etlms-carousel-footer.default_with_cart_icon .list-item-price + .list-item-button {
+	width: 100%;
+    text-align: center;
+    border: 1px solid #cdcfd5;
+    padding: 7px 38px;
+    border-radius: 5px;
+}
+.etlms-carousel-footer.default .list-item-price + .list-item-button:hover,
+.etlms-carousel-footer.default_with_cart_icon .list-item-price + .list-item-button:hover {
+	background-color: var(--tutor-primary-hover);
+    border-color: var(--tutor-primary-hover);
+    color: var(--tutor-white);
+}
+.etlms-carousel-footer.default .list-item-price + .list-item-button:hover a,
+.etlms-carousel-footer.default_with_cart_icon .list-item-price + .list-item-button:hover a {
+	color: var(--tutor-white) !important;
+}
+.etlms-carousel-footer.default
+.list-item-price,
+.etlms-carousel-footer.default_with_cart_icon
+.list-item-price {
+	align-self: flex-start;
+}
+/* if not cart button then hide cart */
+.etlms-carousel-footer.default span.btn-icon {
+	display: none;
+}
+
+/* text icon & text with cart icon */
+.etlms-carousel-footer.text_button .list-item-button a,
+.etlms-carousel-footer.text_with_cart .list-item-button a {
+	border: none !important;
+}
+/* if not cart text button then hide cart */
+.etlms-carousel-footer.text_button .list-item-button span.btn-icon {
+	display: none;
+}
+
