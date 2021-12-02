@@ -675,6 +675,55 @@ class CourseCurriculum extends BaseAddon {
 		 * Merge reviews style controls
 		 */
 		$review_selector       = '{{WRAPPER}} .tutor-ratingsreviews';
+		$review_title_selector = $review_selector . ' .tutor-segment-title';
+
+		/* Title Section */
+		$this->start_controls_section(
+			'course_reviews_title_section',
+			array(
+				'label' => __( 'Review Section Title', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_reviews_title_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$review_title_selector => 'color: {{VALUE}}',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_reviews_title_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $review_title_selector,
+			)
+		);
+		$this->add_responsive_control(
+			'etlms_heading_gap',
+			array(
+				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'selectors'  => array(
+					$review_title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 15,
+				),
+			)
+		);
+		$this->end_controls_section();
 
 		/* Review average section */
 		$review_avg_section_selector     = $review_selector . ' .course-avg-rating-wrap';
