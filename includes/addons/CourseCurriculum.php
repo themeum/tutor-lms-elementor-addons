@@ -458,7 +458,7 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .tutor-courses-lession-list span' => 'color: {{VALUE}};',
+							$lesson_selector . ' .tutor-courses-lession-list span.tutor-icon-24' => 'color: {{VALUE}};',
 						),
 						'default'   => '#939AA3',
 					)
@@ -470,9 +470,21 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .text-regular-body a' => 'color: {{VALUE}};',
+							$lesson_selector . ' span.text-regular-body a' => 'color: {{VALUE}} !important;',
 						),
 						'default'   => '#161616',
+					)
+				);
+
+				$this->add_control(
+					'course_lesson_normal_info_text_color',
+					array(
+						'label'     => __( 'Info Text Color', 'tutor-lms-elementor-addons' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => array(
+							$lesson_selector . ' span.color-text-hints' => 'color: {{VALUE}} !important;',
+						),
+						'default'   => '#757c8e',
 					)
 				);
 
@@ -537,7 +549,7 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .tutor-courses-lession-list span:hover' => 'color: {{VALUE}};',
+							$lesson_selector . ' .tutor-courses-lession-list span.tutor-icon-24:hover' => 'color: {{VALUE}};',
 						),
 					)
 				);
@@ -548,7 +560,18 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .text-regular-body a:hover' => 'color: {{VALUE}} !important;',
+							$lesson_selector . ' span.text-regular-body a:hover' => 'color: {{VALUE}} !important;',
+						),
+					)
+				);
+
+				$this->add_control(
+					'course_lesson_normal_info_hover_text_color',
+					array(
+						'label'     => __( 'Info Text Color', 'tutor-lms-elementor-addons' ),
+						'type'      => Controls_Manager::COLOR,
+						'selectors' => array(
+							$lesson_selector . ' span.color-text-hints:hover' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
