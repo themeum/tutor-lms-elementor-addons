@@ -230,8 +230,12 @@ if ( $the_query->have_posts()) : ?>
                         </div>
 
                         <!-- loop footer -->
+                        <?php
+                            $is_footer = $settings['course_list_footer_settings'];
+                            $enroll_btn_type = $settings['course_carousel_enroll_btn_type'];
+						?>
                         <?php if ("yes" === $settings['course_carousel_footer_settings']) : ?>
-                            <div class="tutor-loop-course-footer etlms-carousel-footer">
+                            <div class="tutor-loop-course-footer etlms-carousel-footer <?php echo esc_attr( $enroll_btn_type ); ?>">
                                 <?php
                                 tutor_course_loop_price()
                                 ?>

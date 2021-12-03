@@ -369,11 +369,6 @@ class CourseCarousel extends BaseAddon {
 			]
 		);
 
-		$this->add_responsive_control(
-			'course_carousel_enroll_btn_align',
-			$this->etlms_non_responsive_alignment('right')
-		);
-
 		$this->add_control(
 			'course_carousel_enroll_btn_type',
 			[
@@ -578,14 +573,14 @@ class CourseCarousel extends BaseAddon {
 		$course_title_selector = $wrapper . ".tutor-course-loop-title h2 a";
 		$meta_selector = $wrapper . ".tutor-course-loop-meta";
 		$category_selector = $wrapper . ".tutor-course-lising-category a";
-		$star_selector = $wrapper . ".tutor-star-rating-group";
+		$star_selector = $wrapper . '.tutor-star-rating-group,' . $wrapper . ' .tutor-star-rating-group i.tutor-icon-star-full';
 		$star_text_selector = $wrapper . ".tutor-rating-count";
 		$footer_selector = $wrapper . ".tutor-loop-course-footer";
 		$price_selector = $wrapper . ".price";
 
-		$cart_text_selector = $wrapper . ".etlms-loop-cart-btn-wrap >a";
+		$cart_text_selector = $wrapper . '.tutor-loop-course-footer .list-item-button a, ' . $wrapper . ' .tutor-loop-course-footer span.cart-text, ' . $wrapper . ' .tutor-loop-course-footer span.ttr-cart-line-filled';
 		$cart_selector = $wrapper . ".etlms-loop-cart-btn-wrap a >i";
-		$cart_button_selector = $wrapper . ".etlms-loop-cart-btn-wrap a";
+		$cart_button_selector = $wrapper . ' .tutor-loop-course-footer .list-item-button';
 
 		$arrow_icon_selector = $wrapper . ".etlms-carousel-arrow i";
 		$arrow_shape_selector = $wrapper . ".etlms-carousel-arrow >i";
@@ -1354,18 +1349,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$meta_selector => "color:{{VALUE}};"
-				],
-			]
-		);
-
-		$this->add_control(
-			'course_carousel_meta_separator_color',
-			[
-				'label'     => __('Separator Color', 'tutor-lms-elementor-addons'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}}' => ''
+					$meta_selector . ',' . $meta_selector . ' span.tutor-meta-level' . ',' . $meta_selector . ' span.tutor-meta-value' => "color:{{VALUE}};"
 				],
 			]
 		);
@@ -1375,7 +1359,7 @@ class CourseCarousel extends BaseAddon {
 			[
 				'name'      => 'course_carousel_meta_typo',
 				'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-				'selector'  => $meta_selector,
+				'selector'  => $meta_selector . ',' . $meta_selector . ' span.tutor-meta-level' . ',' . $meta_selector . ' span.tutor-meta-value',
 
 			]
 		);
@@ -1386,7 +1370,6 @@ class CourseCarousel extends BaseAddon {
 				'type' => Controls_Manager::DIVIDER
 			]
 		);
-
 
 		$this->add_control(
 			'course_carousel_category_title',
@@ -1624,7 +1607,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$cart_text_selector => 'color: {{VALUE}} ',
+					"{{WRAPPER}} .tutor-loop-course-footer a.tutor-btn" => 'color: {{VALUE}} !important;',
 				],
 			]
 		);
@@ -1635,7 +1618,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Icon Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$cart_selector => 'color: {{VALUE}}',
+					"{{WRAPPER}} .list-item-button span.ttr-cart-line-filled" => 'color: {{VALUE}} !important;',
 				],
 				'conditions' => [
 					'relation' => 'or',
@@ -1661,7 +1644,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$cart_button_selector => 'background-color: {{VALUE}}',
+					$cart_button_selector => 'background-color: {{VALUE}};',
 				],
 				'conditions' => [
 					'relation' => 'or',
@@ -1695,7 +1678,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$cart_text_selector . ":hover" => 'color: {{VALUE}} ',
+					"{{WRAPPER}} .tutor-loop-course-footer a.tutor-btn:hover" => 'color: {{VALUE}} !important;',
 				],
 			]
 		);
@@ -1706,7 +1689,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Icon Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$cart_selector . ":hover" => 'color: {{VALUE}}',
+					"{{WRAPPER}} .list-item-button span.ttr-cart-line-filled:hover" => 'color: {{VALUE}} !important;',
 				],
 				'conditions' => [
 					'relation' => 'or',
@@ -1732,7 +1715,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Background Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$cart_button_selector => 'background-color: {{VALUE}}',
+					$cart_button_selector . ':hover' => 'background-color: {{VALUE}} !important;',
 				],
 				'conditions' => [
 					'relation' => 'or',
