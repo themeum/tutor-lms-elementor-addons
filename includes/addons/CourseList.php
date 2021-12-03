@@ -482,10 +482,10 @@ class CourseList extends BaseAddon {
 			)
 		);
 
-		$this->add_responsive_control(
-			'course_carousel_enroll_btn_align',
-			$this->etlms_non_responsive_alignment( 'right' )
-		);
+		// $this->add_responsive_control(
+		// 	'course_carousel_enroll_btn_align',
+		// 	$this->etlms_non_responsive_alignment( 'right' )
+		// );
 
 		$this->add_control(
 			'course_carousel_enroll_btn_type',
@@ -502,26 +502,26 @@ class CourseList extends BaseAddon {
 			)
 		);
 
-		$this->add_control(
-			'course_coursel_button_icon',
-			array(
-				'label'       => __( 'Icon', 'tutor-lms-elementor-addons' ),
-				'type'        => Controls_Manager::ICON,
+		// $this->add_control(
+		// 	'course_coursel_button_icon',
+		// 	array(
+		// 		'label'       => __( 'Icon', 'tutor-lms-elementor-addons' ),
+		// 		'type'        => Controls_Manager::ICON,
 
-				'label_block' => true,
-				'conditions'  => array(
-					'relation' => 'or',
-					'terms'    => array(
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => 'in',
-							'value'    => array( 'default_with_cart_icon', 'text_with_cart' ),
-						),
-					),
-				),
-				'default'     => 'fa fa-shopping-cart',
-			)
-		);
+		// 		'label_block' => true,
+		// 		'conditions'  => array(
+		// 			'relation' => 'or',
+		// 			'terms'    => array(
+		// 				array(
+		// 					'name'     => 'course_carousel_enroll_btn_type',
+		// 					'operator' => 'in',
+		// 					'value'    => array( 'default_with_cart_icon', 'text_with_cart' ),
+		// 				),
+		// 			),
+		// 		),
+		// 		'default'     => 'fa fa-shopping-cart',
+		// 	)
+		// );
 
 		$this->add_control(
 			'course_carousel_btn_icon_spacing',
@@ -575,13 +575,13 @@ class CourseList extends BaseAddon {
 		$course_title_selector     = $wrapper . '.tutor-course-loop-title h2 a';
 		$meta_selector             = $wrapper . '.tutor-course-loop-meta';
 		$category_selector         = $wrapper . '.tutor-course-lising-category a';
-		$star_selector             = $wrapper . '.tutor-star-rating-group';
+		$star_selector             = $wrapper . '.tutor-star-rating-group,' . $wrapper . ' .tutor-star-rating-group i.tutor-icon-star-full';
 		$star_text_selector        = $wrapper . '.tutor-rating-count';
 		$footer_selector           = $wrapper . '.tutor-loop-course-footer';
 		$price_selector            = $wrapper . '.price';
-		$cart_text_selector        = $wrapper . '.etlms-loop-cart-btn-wrap >a';
-		$cart_selector             = $wrapper . '.etlms-loop-cart-btn-wrap a >i';
-		$cart_button_selector      = $wrapper . '.etlms-loop-cart-btn-wrap a';
+		$cart_text_selector        = $wrapper . '.tutor-loop-course-footer .list-item-button a, ' . $wrapper . ' .tutor-loop-course-footer span.cart-text, ' . $wrapper . ' .tutor-loop-course-footer span.ttr-cart-line-filled';
+		$cart_selector             = $wrapper . '.tutor-loop-course-footer .list-item-button span.ttr-cart-line-filled';
+		$cart_button_selector      = $wrapper . ' .tutor-loop-course-footer .list-item-button';
 		$row_selector              = $wrapper . '.etlms-course-list-col';
 		$column_selector           = $wrapper . '.etlms-course-list-col';
 		$pagination_selector       = $wrapper . '.etlms-course-list-pagination-wrap';
@@ -1494,18 +1494,7 @@ class CourseList extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$meta_selector => 'color:{{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_control(
-			'course_carousel_meta_separator_color',
-			array(
-				'label'     => __( 'Separator Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}}' => '',
+					$meta_selector . ',' . $meta_selector . ' span.tutor-meta-level' . ',' . $meta_selector . ' span.tutor-meta-value' => 'color:{{VALUE}} !important;',
 				),
 			)
 		);
@@ -1515,7 +1504,7 @@ class CourseList extends BaseAddon {
 			array(
 				'name'     => 'course_carousel_meta_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $meta_selector,
+				'selector' => $meta_selector . ',' . $meta_selector . ' span.tutor-meta-level' . ',' . $meta_selector . ' span.tutor-meta-value',
 
 			)
 		);
@@ -2038,7 +2027,7 @@ class CourseList extends BaseAddon {
 				'label'      => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
 				'selectors'  => array(
-					$cart_button_selector => 'background-color: {{VALUE}}',
+					$cart_button_selector => 'background-color: {{VALUE}};',
 				),
 				'conditions' => array(
 					'relation' => 'or',

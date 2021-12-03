@@ -1630,7 +1630,7 @@
 	}
 }
 
-/* new css */
+/* Tutor v2 compatible css */
 /* enrollment button default & default with cart icon style  */
 .etlms-carousel-footer.default .tutor-bs-d-flex,
 .etlms-carousel-footer.default_with_cart_icon .tutor-bs-d-flex {
@@ -1675,3 +1675,11 @@
 	display: none;
 }
 
+/* enrollment-button default radius */
+.tutor-loop-course-footer .list-item-button {
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+}
