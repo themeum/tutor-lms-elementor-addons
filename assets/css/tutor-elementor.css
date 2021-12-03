@@ -1683,3 +1683,7 @@
 	-ms-border-radius: 6px;
 	-o-border-radius: 6px;
 }
+
+.etlms-carousel-main-wrap .tutor-loop-author, .etlms-course-list-main-wrap .tutor-loop-author {
+	overflow: initial;
+}
