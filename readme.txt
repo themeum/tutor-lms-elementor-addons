@@ -3,7 +3,7 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: lms, elearning, learning management system, course, education, elementor addons for lms, elearning elementor addons, tutor lms, online courses
 Requires at least: 5.3
-Tested up to: 5.7
+Tested up to: 5.8.2
 Requires PHP: 7.0
 Stable tag: 1.0.4
 License: GPLv3
@@ -79,10 +79,9 @@ Tutor LMS Elementor Addons currently offers the following Elementor widgets to t
 19. Course Benefits
 20. Course Curriculum
 21. Course Instructor
-22. Course Review
-23. Course Carousel
-24. Course List
-25. Course Description (available for the global template only)
+22. Course Carousel
+23. Course List
+24. Course Description (available for the global template only)
 
 == Installation ==
 
@@ -141,8 +140,11 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 1.0.4 - 12 Jul, 2021
-* Fix: Action Hook in wrong place
+= 1.0.4 - 03 Dec, 2021
+* Addons compatibility support for Tutor LMS v2.0.0
+* Course Reviews addon merged with Course Curriculum
+* Course Reviews separate addon removed
+* Addon's controls optimized
 
 = 1.0.3 - 27 May, 2021 =
 
