@@ -231,7 +231,6 @@ if ( $the_query->have_posts()) : ?>
 
                         <!-- loop footer -->
                         <?php
-                            $is_footer = $settings['course_list_footer_settings'];
                             $enroll_btn_type = $settings['course_carousel_enroll_btn_type'];
 						?>
                         <?php if ("yes" === $settings['course_carousel_footer_settings']) : ?>

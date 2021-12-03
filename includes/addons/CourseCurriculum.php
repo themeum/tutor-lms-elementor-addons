@@ -903,7 +903,6 @@ class CourseCurriculum extends BaseAddon {
 		);
 
 		// right rating star
-		$review_avg_right_stars_selector = $review_avg_section_count_meter . ' .rating-meter-col i';
 		$this->add_control(
 			'review_avg_right_stars_color',
 			array(

@@ -145,7 +145,7 @@ class CourseThumbnail extends BaseAddon {
     protected function render($instance = []) {
         $course = etlms_get_course();
         if ($course) {
-            echo "<div class='tutor-course-thumbnail'>";
+            echo "<div class='tutor-course-thumbnail tutor-course-details-page'>";
             if(tutils()->has_video_in_single()){
                 tutor_course_video();
             } else{
