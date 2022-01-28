@@ -18,6 +18,7 @@ define( 'ETLMS_VERSION', '2.0.0' );
 define( 'ETLMS_FILE__', __FILE__ );
 define( 'ETLMS_BASENAME', plugin_basename( ETLMS_FILE__ ) );
 define( 'ETLMS_DIR_PATH', plugin_dir_path( ETLMS_FILE__ ) );
+define( 'ETLMS_TEMPLATE', plugin_dir_path( ETLMS_FILE__ ) . 'templates/course/' );
 define( 'ETLMS_DIR_URL', plugin_dir_url( ETLMS_FILE__ ) );
 define( 'ETLMS_ASSETS', trailingslashit( ETLMS_DIR_URL . 'assets' ) );
 

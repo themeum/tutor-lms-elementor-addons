@@ -44,8 +44,8 @@ class CourseCategories extends BaseAddon {
 	}
 
 	/**
-     * Register addon controls
-     */
+	 * Register addon controls
+	 */
 	protected function register_content_controls() {
 		// layout.
 		$this->start_controls_section(
@@ -169,27 +169,32 @@ class CourseCategories extends BaseAddon {
 		$this->end_controls_section();
 	}
 
-    /**
-     * Render addon, responsible for the editor and front end view
-     */
-	protected function render( $instance = array() ) {
+	/**
+	 * Render addon, responsible for the editor and front end view
+	 */
+	protected function render() {
 		$course            = etlms_get_course();
 		$course_categories = array();
 		if ( $course ) {
 			$course_categories = get_tutor_course_categories();
 		}
 		if ( is_array( $course_categories ) && count( $course_categories ) ) {
-			$item   = 1;
-			$markup = '<div class="etlms-single-course-meta-categories">';
-			foreach ( $course_categories as $course_category ) {
-				$category_name = $course_category->name;
-				$category_link = get_term_link( $course_category->term_id );
-				$comma         = ( $item < count( $course_categories ) ) ? ',' : '';
-				$markup       .= "<a href='$category_link'>{$category_name}{$comma}</a>";
-				$item++;
-			}
-			$markup .= '</div>';
-			echo $markup;
+			$item = 1;
+			?>
+			<div class="etlms-single-course-meta-categories">
+				<?php
+				foreach ( $course_categories as $course_category ) :
+					$category_name = $course_category->name;
+					$category_link = get_term_link( $course_category->term_id );
+					$comma         = ( $item < count( $course_categories ) ) ? ',' : '';
+					$item++;
+					?>
+					<a href="<?php echo esc_url( $category_link ); ?>">
+						<?php echo esc_html( $category_name . $comma ); ?>
+					</a>
+				<?php endforeach; ?>
+			</div>
+			<?php
 		}
 	}
 }
