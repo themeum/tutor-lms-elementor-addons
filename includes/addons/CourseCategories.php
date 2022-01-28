@@ -154,8 +154,8 @@ class CourseCategories extends BaseAddon {
 					'size' => 10,
 				),
 				'selectors'  => array(
-					'.etlms-course-categories .etlms-single-course-meta-categories' => 'column-gap: {{SIZE}}{{UNIT}};',
-					'.etlms-course-categories .etlms-single-course-meta-categories' => 'row-gap: {{SIZE}}{{UNIT}};',
+					'.elementor-layout-row .etlms-single-course-meta-categories' => 'column-gap: {{SIZE}}{{UNIT}};',
+					'.elementor-layout-column .etlms-single-course-meta-categories' => 'row-gap: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
