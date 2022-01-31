@@ -69,6 +69,50 @@ class CourseCurriculum extends BaseAddon {
 				'rows'        => 3,
 			)
 		);
+		$this->add_responsive_control(
+			'course_benefits_layout',
+			array(
+				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => array(
+					'list'   => array(
+						'title' => __( 'List', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'fa fa-list-ul',
+					),
+					'inline' => array(
+						'title' => __( 'Inline', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'fa fa-ellipsis-h',
+					),
+				),
+				'prefix_class' => 'etlms-author-specifications-%s',
+				'default'      => 'inline',
+			)
+		);
+
+		$this->add_control(
+			'course_benefits_list_icon',
+			array(
+				'label'   => __( 'List Icon', 'tutor-lms-elementor-addons' ),
+				'type'    => Controls_Manager::ICONS,
+				'default' => array(
+					'value'   => 'fas fa-check',
+					'library' => 'solid',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'course_benefits_align',
+			$this->etlms_alignment() // alignment.
+		);
+
+		$this->add_control(
+			'hr',
+			array(
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			)
+		);
+		// instructor general controls.
 		$this->add_control(
 			'about_the_instructors_title',
 			array(
@@ -79,6 +123,64 @@ class CourseCurriculum extends BaseAddon {
 				'rows'        => 3,
 				'separator'   => 'after',
 			)
+		);
+		$this->add_control(
+			'course_instructor_profile',
+			array(
+				'label'        => __( 'Profile Picture', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'separator'    => 'after',
+				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_name',
+			array(
+				'label'        => __( 'Display Name', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_designation',
+			array(
+				'label'        => __( 'Designation', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+
+		// link
+		$this->add_control(
+			'course_instructor_link',
+			array(
+				'label'       => __( 'Link', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::SELECT,
+				'description' => __( 'Link for the Author Name and Image', 'tutor-lms-elementor-addons' ),
+				'options'     => array(
+					'none'        => 'None',
+					'new_window'  => 'New Window',
+					'same_window' => 'Same Window',
+				),
+
+				'default'     => 'new_window',
+			)
+		);
+
+		$this->add_responsive_control(
+			'course_author_layout',
+			$this->etlms_layout( 'up' ) // default layout up
 		);
 		// course info controls end.
 
@@ -1188,22 +1290,6 @@ class CourseCurriculum extends BaseAddon {
 			add_filter(
 				'tutor_course_topics_title',
 				array( $this, 'filter_topics_title' )
-			);
-		}
-		if ( '' !== $settings['what_i_will_learn_title'] ) {
-			add_filter(
-				'tutor_course_benefit_title',
-				function() use ( $settings ) {
-					return esc_html( $settings['what_i_will_learn_title'] );
-				}
-			);
-		}
-		if ( '' !== $settings['about_the_instructors_title'] ) {
-			add_filter(
-				'tutor_about_the_instructor_title',
-				function() use ( $settings ) {
-					return esc_html( $settings['about_the_instructors_title'] );
-				}
 			);
 		}
 		if ( '' !== $settings['reviews_title'] ) {

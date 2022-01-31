@@ -20,8 +20,8 @@
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {
-							tutor_course_benefits_html();
-							tutor_course_instructors_html();
+							include ETLMS_TEMPLATE . 'benefits.php';
+							include ETLMS_TEMPLATE . 'instructors.php';
 						} else {
 							if ( is_string( $method ) ) {
 								$method();

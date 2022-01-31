@@ -734,12 +734,7 @@
 #single-course-ratings {
 	margin-top: 0;
 }
-.single-instructor-wrap {
-	border: 1px solid #e8eff1;
-}
-.single-instructor-wrap .single-instructor-top {
-	border-bottom: 1px solid #e8eff1;
-}
+
 .tutor-course-reviews-wrap {
 	border: 1px solid #e8eff1;
     border-radius: 4px;
