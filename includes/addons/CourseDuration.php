@@ -76,11 +76,11 @@ class CourseDuration extends BaseAddon {
 				),
 				'selectors'  => array(
 					'.elementor-layout-up .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout-left .etlms-course-duration strong' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'.elementor-layout-left .etlms-lead-info.etlms-course-duration' => 'column-gap: {{SIZE}}{{UNIT}};',
 					'.elementor-layout--tabletup .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--tabletleft .etlms-course-duration strong' => 'margin-lef: {{SIZE}}{{UNIT}};',
+					'.elementor-layout--tabletleft .etlms-lead-info.etlms-course-duration' => 'column-gap: {{SIZE}}{{UNIT}};',
 					'.elementor-layout--mobileup .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--mobileleft .etlms-course-duration strong' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'.elementor-layout--mobileleft .etlms-lead-info.etlms-course-duration' => 'column-gap: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -116,7 +116,7 @@ class CourseDuration extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$selector . ' label' => 'color: {{VALUE}}',
+						$selector . ' label' => 'color: {{VALUE}};',
 					),
 					'default'   => '#57586E',
 				)
@@ -146,7 +146,7 @@ class CourseDuration extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$selector . ' strong span' => 'color: {{VALUE}}',
+						$selector . ' strong' => 'color: {{VALUE}}',
 					),
 					'default'   => '#57586E',
 				)
@@ -180,13 +180,28 @@ class CourseDuration extends BaseAddon {
 		$course   = etlms_get_course();
 		$settings = $this->get_settings_for_display();
 		if ( $course ) {
-			$course_duration = get_tutor_course_duration_context();
+			$course_duration = get_tutor_course_duration_context( 0, true );
 			$course_duration = ( ! empty( $course_duration ) ) ? $course_duration : 0;
-			$markup          = '<div class="etlms-lead-info etlms-course-duration">';
-			$markup         .= ( $settings['course_duration_label'] ) ? '<label>' . $settings['course_duration_label'] . '</label>' : '';
-			$markup         .= '<strong>' . $course_duration . '</strong>';
-			$markup         .= '</div>';
-			echo $markup;
+			?>
+			<div class="etlms-lead-info etlms-course-duration">
+				<?php if ( '' !== $settings['course_duration_label'] ) : ?>
+					<label>
+						<?php echo esc_html( $settings['course_duration_label'] ); ?>
+					</label>
+				<?php endif; ?>
+				<strong>
+					<?php
+					echo wp_kses(
+						$course_duration,
+						array(
+							'span',
+							'label',
+						)
+					);
+					?>
+				</strong>
+			</div>
+			<?php
 		}
 	}
 }
