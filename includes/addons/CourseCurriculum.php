@@ -43,194 +43,191 @@ class CourseCurriculum extends BaseAddon {
 	}
 
 	protected function register_content_controls() {
-
+		// what i will learn section.
 		$this->start_controls_section(
-			'course_curriculum_content_topic_section',
+			'what_i_will_learn_section',
 			array(
-				'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Course Benefits', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
-		// course info controls.
-		$this->add_control(
-			'course_info_label',
-			array(
-				'label' => esc_html__( 'Course Info', 'plugin-name' ),
-				'type'  => \Elementor\Controls_Manager::HEADING,
-			)
-		);
-		$this->add_control(
-			'what_i_will_learn_title',
-			array(
-				'label'       => __( 'What I will Learn Title', 'tutor-lms-elementor-addons' ),
-				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => __( 'What I will learn?', 'tutor-lms-elementor-addons' ),
-				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
-				'rows'        => 3,
-			)
-		);
-		$this->add_responsive_control(
-			'course_benefits_layout',
-			array(
-				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
-				'type'         => Controls_Manager::CHOOSE,
-				'options'      => array(
-					'list'   => array(
-						'title' => __( 'List', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-list-ul',
+			$this->add_control(
+				'what_i_will_learn_title',
+				array(
+					'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
+					'type'        => Controls_Manager::TEXTAREA,
+					'default'     => __( 'What I will learn?', 'tutor-lms-elementor-addons' ),
+					'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+					'rows'        => 3,
+				)
+			);
+			$this->add_responsive_control(
+				'course_benefits_layout',
+				array(
+					'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::CHOOSE,
+					'options'      => array(
+						'block'   => array(
+							'title' => __( 'List', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'fa fa-list-ul',
+						),
+						'inline' => array(
+							'title' => __( 'Inline', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'fa fa-ellipsis-h',
+						),
 					),
-					'inline' => array(
-						'title' => __( 'Inline', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-ellipsis-h',
+					'default'      => 'inline',
+					'selectors'		=> array(
+						'{{WRAPPER}} .etlms-course-specification-items li'	=> 'display: {{VALUE}};'
 					),
-				),
-				'prefix_class' => 'etlms-author-specifications-%s',
-				'default'      => 'inline',
-			)
-		);
+				)
+			);
 
-		$this->add_control(
-			'course_benefits_list_icon',
-			array(
-				'label'   => __( 'List Icon', 'tutor-lms-elementor-addons' ),
-				'type'    => Controls_Manager::ICONS,
-				'default' => array(
-					'value'   => 'fas fa-check',
-					'library' => 'solid',
-				),
-			)
-		);
-
-		$this->add_responsive_control(
-			'course_benefits_align',
-			$this->etlms_alignment() // alignment.
-		);
-
-		$this->add_control(
-			'hr',
-			array(
-				'type' => \Elementor\Controls_Manager::DIVIDER,
-			)
-		);
-		// instructor general controls.
-		$this->add_control(
-			'about_the_instructors_title',
-			array(
-				'label'       => __( 'About the Instructors Title', 'tutor-lms-elementor-addons' ),
-				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => __( 'About the instructors', 'tutor-lms-elementor-addons' ),
-				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
-				'rows'        => 3,
-				'separator'   => 'after',
-			)
-		);
-		$this->add_control(
-			'course_instructor_profile',
-			array(
-				'label'        => __( 'Profile Picture', 'tutor-lms-elementor-addons' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'separator'    => 'after',
-				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-				'return_value' => 'yes',
-				'default'      => 'yes',
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_name',
-			array(
-				'label'        => __( 'Display Name', 'tutor-lms-elementor-addons' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-				'return_value' => 'yes',
-				'default'      => 'yes',
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_designation',
-			array(
-				'label'        => __( 'Designation', 'tutor-lms-elementor-addons' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-				'return_value' => 'yes',
-				'default'      => 'yes',
-			)
-		);
-
-		// link
-		$this->add_control(
-			'course_instructor_link',
-			array(
-				'label'       => __( 'Link', 'tutor-lms-elementor-addons' ),
-				'type'        => Controls_Manager::SELECT,
-				'description' => __( 'Link for the Author Name and Image', 'tutor-lms-elementor-addons' ),
-				'options'     => array(
-					'none'        => 'None',
-					'new_window'  => 'New Window',
-					'same_window' => 'Same Window',
-				),
-
-				'default'     => 'new_window',
-			)
-		);
-
-		$this->add_responsive_control(
-			'course_author_layout',
-			$this->etlms_layout( 'up' ) // default layout up
-		);
-		// course info controls end.
-
-		// course curriculum controls.
-		$this->add_control(
-			'curriculum_label',
-			array(
-				'label' => esc_html__( 'Curriculum', 'plugin-name' ),
-				'type'  => \Elementor\Controls_Manager::HEADING,
-			)
-		);
-		$this->add_control(
-			'section_title_text',
-			array(
-				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
-				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => __( 'Course Curriculum', 'tutor-lms-elementor-addons' ),
-				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
-				'rows'        => 3,
-				'separator'   => 'after',
-			)
-		);
-		// course curriculum controls end.
-
-		// course reviews.
-		$this->add_control(
-			'reviews_label',
-			array(
-				'label' => esc_html__( 'Reviews', 'plugin-name' ),
-				'type'  => \Elementor\Controls_Manager::HEADING,
-			)
-		);
-		$this->add_control(
-			'reviews_title',
-			array(
-				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
-				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => __( 'Student Ratings & Reviews', 'tutor-lms-elementor-addons' ),
-				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
-				'rows'        => 3,
-			)
-		);
-		// course reviews end.
-
-		$this->add_responsive_control(
-			'course_curriculum_topic_icon_align',
-			$this->etlms_icon_align( $prefix_class = 'etlms-topic-icon-align-' )
-		);
-
+			$this->add_control(
+				'course_benefits_list_icon',
+				array(
+					'label'   => __( 'List Icon', 'tutor-lms-elementor-addons' ),
+					'type'    => Controls_Manager::ICONS,
+					'default' => array(
+						'value'   => 'fas fa-check',
+						'library' => 'solid',
+					),
+				)
+			);
+			$benefits_alignment = $this->etlms_alignment();
+			unset( $benefits_alignment['prefix'] );
+			$benefits_alignment['selectors'] = array(
+				'.etlms-course-benefits' => 'text-align: {{VALUE}};'
+			);
+			$this->add_responsive_control(
+				'course_benefits_alignments',
+				$benefits_alignment,
+			);
 		$this->end_controls_section();
+		// what i will learn section end.
+
+		// about the instructor section.
+		$this->start_controls_section(
+			'instructor_section',
+			array(
+				'label' => __( 'About the Instructor', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			)
+		);
+			$this->add_control(
+				'about_the_instructors_title',
+				array(
+					'label'       => __( 'About the Instructors Title', 'tutor-lms-elementor-addons' ),
+					'type'        => Controls_Manager::TEXTAREA,
+					'default'     => __( 'About the instructors', 'tutor-lms-elementor-addons' ),
+					'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+					'rows'        => 3,
+					'separator'   => 'after',
+				)
+			);
+			$this->add_control(
+				'course_instructor_profile',
+				array(
+					'label'        => __( 'Profile Picture', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'separator'    => 'after',
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
+
+			$this->add_control(
+				'course_instructor_name',
+				array(
+					'label'        => __( 'Display Name', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
+
+			$this->add_control(
+				'course_instructor_designation',
+				array(
+					'label'        => __( 'Designation', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
+
+			// link.
+			$this->add_control(
+				'course_instructor_link',
+				array(
+					'label'       => __( 'Link', 'tutor-lms-elementor-addons' ),
+					'type'        => Controls_Manager::SELECT,
+					'description' => __( 'Link for the Author Name and Image', 'tutor-lms-elementor-addons' ),
+					'options'     => array(
+						'none'        => 'None',
+						'new_window'  => 'New Window',
+						'same_window' => 'Same Window',
+					),
+
+					'default'     => 'new_window',
+				)
+			);
+
+			$this->add_responsive_control(
+				'course_author_layout',
+				$this->etlms_layout( 'up' ) // default layout up.
+			);
+		$this->end_controls_section();
+		// about the instructor section end.
+
+		// course curriculum section.
+		$this->start_controls_section(
+			'reviews_curriculum_section',
+			array(
+				'label' => __( 'Curriculum', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			)
+		);
+			$this->add_control(
+				'section_title_text',
+				array(
+					'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
+					'type'        => Controls_Manager::TEXTAREA,
+					'default'     => __( 'Course Curriculum', 'tutor-lms-elementor-addons' ),
+					'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+					'rows'        => 3,
+					'separator'   => 'after',
+				)
+			);
+		$this->end_controls_section();
+		// course curriculum section end.
+
+		// reviews section.
+		$this->start_controls_section(
+			'reviews_section',
+			array(
+				'label' => __( 'Reviews', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			)
+		);
+			$this->add_control(
+				'reviews_title',
+				array(
+					'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
+					'type'        => Controls_Manager::TEXTAREA,
+					'default'     => __( 'Student Ratings & Reviews', 'tutor-lms-elementor-addons' ),
+					'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+					'rows'        => 3,
+				)
+			);
+		$this->end_controls_section();
+		// reviews section end.
 	}
 
 	protected function register_style_controls() {
