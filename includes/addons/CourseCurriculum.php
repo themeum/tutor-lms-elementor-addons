@@ -51,17 +51,77 @@ class CourseCurriculum extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
+		// course info controls.
+		$this->add_control(
+			'course_info_label',
+			array(
+				'label' => esc_html__( 'Course Info', 'plugin-name' ),
+				'type'  => \Elementor\Controls_Manager::HEADING,
+			)
+		);
+		$this->add_control(
+			'what_i_will_learn_title',
+			array(
+				'label'       => __( 'What I will Learn Title', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'What I will learn?', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+				'rows'        => 3,
+			)
+		);
+		$this->add_control(
+			'about_the_instructors_title',
+			array(
+				'label'       => __( 'About the Instructors Title', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'About the instructors', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+				'rows'        => 3,
+				'separator'   => 'after',
+			)
+		);
+		// course info controls end.
 
+		// course curriculum controls.
+		$this->add_control(
+			'curriculum_label',
+			array(
+				'label' => esc_html__( 'Curriculum', 'plugin-name' ),
+				'type'  => \Elementor\Controls_Manager::HEADING,
+			)
+		);
 		$this->add_control(
 			'section_title_text',
 			array(
 				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
 				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => __( 'Topics for this course', 'tutor-lms-elementor-addons' ),
+				'default'     => __( 'Course Curriculum', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+				'rows'        => 3,
+				'separator'   => 'after',
+			)
+		);
+		// course curriculum controls end.
+
+		// course reviews.
+		$this->add_control(
+			'reviews_label',
+			array(
+				'label' => esc_html__( 'Reviews', 'plugin-name' ),
+				'type'  => \Elementor\Controls_Manager::HEADING,
+			)
+		);
+		$this->add_control(
+			'reviews_title',
+			array(
+				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'Student Ratings & Reviews', 'tutor-lms-elementor-addons' ),
 				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
 				'rows'        => 3,
 			)
 		);
+		// course reviews end.
 
 		$this->add_responsive_control(
 			'course_curriculum_topic_icon_align',
@@ -77,7 +137,7 @@ class CourseCurriculum extends BaseAddon {
 		$course_topic                   = $selector . ' .tutor-accordion-item';
 		$course_topic_title_area        = $course_topic . ' .tutor-accordion-item-header';
 		$course_topic_active_title_area = $course_topic . ' .tutor-accordion-item-header.is-active';
-        $topic_icon                     = $course_topic . '::after';
+		$topic_icon                     = $course_topic . '::after';
 
 		/* Header Title Section */
 		$this->start_controls_section(
@@ -400,7 +460,7 @@ class CourseCurriculum extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Course Lesson Section */
-		$lesson_selector       = $selector . ' .tutor-accordion-item-body-content';
+		$lesson_selector = $selector . ' .tutor-accordion-item-body-content';
 
 		$this->start_controls_section(
 			'course_lesson_section',
@@ -423,8 +483,8 @@ class CourseCurriculum extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$lesson_selector . ' .tutor-courses-lession-list span::before'  => 'font-size: {{SIZE}}{{UNIT}};',
-					$lesson_selector . ' .zoom-icon img'                            => 'width: calc({{SIZE}}{{UNIT}} + 2px);',
+					$lesson_selector . ' .tutor-courses-lession-list span::before' => 'font-size: {{SIZE}}{{UNIT}};',
+					$lesson_selector . ' .zoom-icon img' => 'width: calc({{SIZE}}{{UNIT}} + 2px);',
 				),
 				'default'    => array(
 					'size' => 18,
@@ -850,7 +910,7 @@ class CourseCurriculum extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Review average right bar section */
-		$review_right_wrapper     = '{{WRAPPER}} .tutor-ratingsreviews-ratings-all';
+		$review_right_wrapper = '{{WRAPPER}} .tutor-ratingsreviews-ratings-all';
 
 		$this->start_controls_section(
 			'review_avg_right_bar_main',
@@ -961,7 +1021,7 @@ class CourseCurriculum extends BaseAddon {
 
 		$this->end_controls_section();
 		/* Review list section */
-		$review_list_section_selector = "{{WRAPPER}}" . ' .tutor-ratingsreviews-reviews';
+		$review_list_section_selector = '{{WRAPPER}}' . ' .tutor-ratingsreviews-reviews';
 		$this->start_controls_section(
 			'review_list',
 			array(
@@ -1128,6 +1188,30 @@ class CourseCurriculum extends BaseAddon {
 			add_filter(
 				'tutor_course_topics_title',
 				array( $this, 'filter_topics_title' )
+			);
+		}
+		if ( '' !== $settings['what_i_will_learn_title'] ) {
+			add_filter(
+				'tutor_course_benefit_title',
+				function() use ( $settings ) {
+					return esc_html( $settings['what_i_will_learn_title'] );
+				}
+			);
+		}
+		if ( '' !== $settings['about_the_instructors_title'] ) {
+			add_filter(
+				'tutor_about_the_instructor_title',
+				function() use ( $settings ) {
+					return esc_html( $settings['about_the_instructors_title'] );
+				}
+			);
+		}
+		if ( '' !== $settings['reviews_title'] ) {
+			add_filter(
+				'tutor_course_reviews_section_title',
+				function() use ( $settings ) {
+					return esc_html( $settings['reviews_title'] );
+				}
 			);
 		}
 		ob_start();
