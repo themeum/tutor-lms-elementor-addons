@@ -113,7 +113,7 @@ trait AddonsTrait {
 				),
 				'justify' => array(
 					'title' => __( 'Justified', 'tutor-lms-elementor-addons' ),
-					'icon'  => 'fa fa-align-justify',
+					'icon'  => 'eicon-text-align-justify',
 				),
 			),
 			'prefix_class' => self::$prefix_class_alignment . '%s',
