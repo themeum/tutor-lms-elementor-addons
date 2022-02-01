@@ -441,7 +441,7 @@ class CourseCurriculum extends BaseAddon {
 		// course benefit style controls end.
 
 		// course instructors style controls.
-		$course_instructor_wrap_selector = "{{WRAPPER}} .etlms-single-instructor-wrap";
+		$course_instructor_wrap_selector = '{{WRAPPER}} .etlms-single-instructor-wrap';
 		/* Title Section */
 		$this->start_controls_section(
 			'course_instructors_title_section',
@@ -491,7 +491,7 @@ class CourseCurriculum extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Instructor Section */
-		$course_instructor_wrap                 = '.etlms-single-instructor-wrap';
+		$course_instructor_wrap                 = '{{WRAPPER}} .etlms-single-instructor-wrap';
 		$course_instructor_img_selector         = $course_instructor_wrap . ' .instructor-avatar a';
 		$course_instructor_name_selector        = $course_instructor_wrap . ' .instructor-name h3 a';
 		$course_instructor_designation_selector = $course_instructor_wrap . ' .instructor-name p';
@@ -526,13 +526,13 @@ class CourseCurriculum extends BaseAddon {
 		);
 
 		// $this->add_group_control(
-		// 	Group_Control_Background::get_type(),
-		// 	array(
-		// 		'name'     => 'course_instructor_background',
-		// 		'label'    => __( 'Background Type', 'tutor-lms-elementor-addons' ),
-		// 		'types'    => array( 'classic', 'gradient' ),
-		// 		'selector' => $course_instructor_img_selector . ' span',
-		// 	)
+		// Group_Control_Background::get_type(),
+		// array(
+		// 'name'     => 'course_instructor_background',
+		// 'label'    => __( 'Background Type', 'tutor-lms-elementor-addons' ),
+		// 'types'    => array( 'classic', 'gradient' ),
+		// 'selector' => $course_instructor_img_selector . ' span',
+		// )
 		// );
 
 		$this->add_group_control(
@@ -631,7 +631,7 @@ class CourseCurriculum extends BaseAddon {
 
 		/* Instructor Rating Section */
 		$course_instructor_info_selector = $course_instructor_wrap . ' .single-instructor-bottom';
-		$ins_rating_star_selector        = $course_instructor_wrap . ' .single-instructor-bottom  .tutor-star-rating-group';
+		$ins_rating_star_selector        = $course_instroctor_wrap . ' .tutor-rating-stars span';
 
 		/* Bottom Info Section */
 		$this->start_controls_section(
@@ -666,7 +666,7 @@ class CourseCurriculum extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$ins_rating_star_selector => 'font-size: {{SIZE}}{{UNIT}};',
+				"$course_instructor_wrap .tutor-ratings .tutor-rating-stars span" => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 18,
@@ -680,7 +680,7 @@ class CourseCurriculum extends BaseAddon {
 				'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$course_instructor_info_selector . ' .rating-digits,' . $course_instructor_info_selector . ' .courses,' . $course_instructor_info_selector . ' .students' => 'color: {{VALUE}};',
+					"$course_instroctor_wrap .tutor-ins-meta-item .tutor-color-text-subsued" => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -689,7 +689,7 @@ class CourseCurriculum extends BaseAddon {
 			array(
 				'name'     => 'course_instructor_label_typography',
 				'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $course_instructor_info_selector . ' .rating-digits,' . $course_instructor_info_selector . ' .courses,' . $course_instructor_info_selector . ' .students',
+				'selector' => "$course_instroctor_wrap .tutor-ins-meta-item .tutor-color-text-subsued",
 				'scheme'   => Typography::TYPOGRAPHY_1,
 			)
 		);
@@ -699,7 +699,8 @@ class CourseCurriculum extends BaseAddon {
 				'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$course_instructor_info_selector . ' .rating-total-meta,' . $course_instructor_info_selector . ' .tutor-text-mute' => 'color: {{VALUE}} !important;',
+					"$course_instroctor_wrap .tutor-ins-meta-item .tutor-color-text-primary"
+					=> 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#525252',
 			)
@@ -709,7 +710,7 @@ class CourseCurriculum extends BaseAddon {
 			array(
 				'name'     => 'course_instructor_value_typography',
 				'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $course_instructor_info_selector . ' .ratings .rating-total-meta,' . $course_instructor_info_selector . ' .tutor-text-mute',
+				'selector' => "$course_instroctor_wrap .tutor-ins-meta-item .tutor-color-text-primary",
 			)
 		);
 		$this->add_control(
@@ -725,7 +726,7 @@ class CourseCurriculum extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$course_instructor_info_selector . ' .courses i, ' . $course_instructor_info_selector . ' .students i' => 'font-size: {{SIZE}}{{UNIT}};',
+					"$course_instroctor_wrap .tutor-ins-meta-item .tutor-icon-user-filled, $course_instroctor_wrap .tutor-ins-meta-item .tutor-icon-mortarboard-line" => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 18,
@@ -770,7 +771,7 @@ class CourseCurriculum extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					$course_instructor_info_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					"$course_instructor_wrap .tutor-instructor-info-card-footer .tutor-px-30" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
 					'top'      => 15,
@@ -797,7 +798,8 @@ class CourseCurriculum extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$course_instructor_wrap . ':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					"$course_instructor_wrap .tutor-instructor-info-card-footer" => 'margin-top: {{SIZE}}{{UNIT}};',
+					"$course_instructor_wrap .single-instructor-wrap .single-instructor-top" => 'border: none;',
 				),
 				'default'    => array(
 					'size' => 20,
