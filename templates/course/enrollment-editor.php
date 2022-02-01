@@ -45,29 +45,74 @@ $button_size  = $settings['course_enroll_buttons_size'];
 		<?php
 			$button_class = 'tutor-is-fullwidth tutor-btn tutor-is-outline tutor-btn-lg tutor-btn-full tutor-is-fullwidth tutor-course-retake-button tutor-mb-10';
 		?>
-			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
+			<?php if ( 'enrolled' === $enrollment_mode ) : ?>
+				<?php if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
+					<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
+						<span class="color-text-primary text-medium-h6">
+							<?php esc_html_e( 'Course Progress', 'tutor' ); ?>
+						</span>
+						<div class="list-item-progress tutor-mt-16">
+							<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+								<span class="progress-steps">
+									<?php echo esc_html( $course_progress['completed_count'] ); ?>/
+									<?php echo esc_html( $course_progress['total_count'] ); ?>
+								</span>
+								<span class="progress-percentage"> 
+									<?php echo esc_html( $course_progress['completed_percent'] . '%' ); ?>
+									<?php esc_html_e( 'Complete', 'tutor' ); ?>
+								</span>
+							</div>
+							<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
+								<span class="progress-value"></span>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>					
 			<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-				<?php esc_html_e( 'Continue Learning', 'tutor' ); ?>
+				<?php esc_html_e( 'Continue Learning', 'tutor-lms-divi-modules' ); ?>
 			</a>
-			<div class="text-regular-caption color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
-				<span class="tutor-icon-26 color-success ttr-purchase-filled tutor-mr-6"></span>
-				<span class="tutor-enrolled-info-text">
-					<?php esc_html_e( 'You enrolled this course on', 'tutor' ); ?>
-				</span>
-				<span class="text-bold-small color-success tutor-ml-3 tutor-enrolled-info-date">
-					<?php echo esc_html( tutor_get_formated_date( get_option( 'date_format' ), date( 'Y-m-d' ) ) ); ?>
-				</span>
-			</div>
-		
-			<?php else : ?>
+			<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
+				<?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules' ); ?>                        
+			</button>
+			<?php else : ?>			
 				<div>
 					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
 				</div>
 
-				<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
-					<?php esc_html_e( 'Enroll Course', 'tutor' ); ?>
+				<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
+					<?php esc_html_e( 'Enroll Course', 'tutor-lms-divi-modules' ); ?>
+				</button>
+				<button type="submit" name="add-to-cart" value=""  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
+					<span class="btn-icon ttr-cart-filled"></span>
+					<span><?php echo esc_html( 'Add to cart', 'tutor' ); ?></span>
 				</button>
 			<?php endif; ?>
-
 	</div>
+	<!-- Course Info -->
+	<?php if ( 'enrolled' === $enrollment_mode ) : ?>
+	<div class="tutor-course-sidebar-card-footer tutor-p-30">
+		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
+			<?php foreach ( $sidebar_meta as $meta ) : ?>
+				<?php
+				if ( ! $meta['value'] ) {
+					continue;}
+				?>
+				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+					<div class="flex-center">
+						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> color-text-primary"></span>
+						<span class="text-regular-caption color-text-hints tutor-ml-5">
+							<?php echo esc_html( $meta['label'] ); ?>
+						</span>
+					</div>
+					<div>
+						<span class="text-medium-caption color-text-primary">
+							<?php echo wp_kses_post( $meta['value'] ); ?>
+						</span>
+					</div>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>	
+	<?php endif; ?>
 </div>
+
