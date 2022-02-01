@@ -9,8 +9,9 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Background;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -64,10 +65,10 @@ class CourseCurriculum extends BaseAddon {
 			$this->add_responsive_control(
 				'course_benefits_layout',
 				array(
-					'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
-					'type'         => Controls_Manager::CHOOSE,
-					'options'      => array(
-						'block'   => array(
+					'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::CHOOSE,
+					'options'   => array(
+						'block'  => array(
 							'title' => __( 'List', 'tutor-lms-elementor-addons' ),
 							'icon'  => 'fa fa-list-ul',
 						),
@@ -76,9 +77,9 @@ class CourseCurriculum extends BaseAddon {
 							'icon'  => 'fa fa-ellipsis-h',
 						),
 					),
-					'default'      => 'inline',
-					'selectors'		=> array(
-						'{{WRAPPER}} .etlms-course-specification-items li'	=> 'display: {{VALUE}};'
+					'default'   => 'inline',
+					'selectors' => array(
+						'{{WRAPPER}} .etlms-course-specification-items li'  => 'display: {{VALUE}};',
 					),
 				)
 			);
@@ -97,7 +98,7 @@ class CourseCurriculum extends BaseAddon {
 			$benefits_alignment = $this->etlms_alignment();
 			unset( $benefits_alignment['prefix'] );
 			$benefits_alignment['selectors'] = array(
-				'.etlms-course-benefits' => 'text-align: {{VALUE}};'
+				'.etlms-course-benefits' => 'text-align: {{VALUE}};',
 			);
 			$this->add_responsive_control(
 				'course_benefits_alignments',
@@ -236,6 +237,576 @@ class CourseCurriculum extends BaseAddon {
 		$course_topic_title_area        = $course_topic . ' .tutor-accordion-item-header';
 		$course_topic_active_title_area = $course_topic . ' .tutor-accordion-item-header.is-active';
 		$topic_icon                     = $course_topic . '::after';
+
+		// course benefit style controls.
+		$course_benefit_selector       = '{{WRAPPER}} .etlms-course-benefits';
+		$course_benefit_title_selector = "$course_benefit_selector .tutor-course-details-widget-title .tutor-color-text-primary";
+		/* Title Section */
+		$this->start_controls_section(
+			'course_benefits_title_section',
+			array(
+				'label' => __( 'Course Benefit Title', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_benefits_title_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$course_benefit_title_selector => 'color: {{VALUE}}',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_benefits_title_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $course_benefit_title_selector,
+			)
+		);
+		$this->add_responsive_control(
+			'course_benefit_etlms_heading_gap',
+			array(
+				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => -50,
+						'max' => 100,
+					),
+				),
+				'selectors'  => array(
+					"$course_benefit_selector .tutor-course-details-widget-title" => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 15,
+				),
+			)
+		);
+		$this->end_controls_section();
+
+		/* List  Section */
+		$this->start_controls_section(
+			'course_benefits_list_section',
+			array(
+				'label' => __( 'Course Benefit List', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_responsive_control(
+			'course_benefits_space_between',
+			array(
+				'label'      => __( 'Space Between', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'selectors'  => array(
+					'.etlms-course-specification-items li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 15,
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'course_benefits_border',
+				'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
+				'selector' => "$course_benefit_selector .etlms-course-specification-items li",
+			)
+		);
+		$this->add_responsive_control(
+			'course_benefits_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					"$course_benefit_selector .etlms-course-specification-items li" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+		$this->add_control(
+			'course_benefits_list_padding',
+			array(
+				'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					"$course_benefit_selector .etlms-course-specification-items li" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+				'separator'  => 'before',
+			)
+		);
+		$this->end_controls_section();
+
+		 /* Icon  Section */
+		$this->start_controls_section(
+			'course_benefits_icon_section',
+			array(
+				'label' => __( 'Course Benefit Icon', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_benefits_icon_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$course_benefit_selector .etlms-course-specification-items li i" => 'color: {{VALUE}}',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'course_benefits_icon_size',
+			array(
+				'label'      => __( 'Size', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 5,
+						'max' => 100,
+					),
+				),
+				'selectors'  => array(
+					"$course_benefit_selector .etlms-course-specification-items li i" => 'font-size: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 16,
+				),
+			)
+		);
+		$this->end_controls_section();
+
+		/* Text  Section */
+		$this->start_controls_section(
+			'course_benefits_text_section',
+			array(
+				'label' => __( 'Course Benefit Text', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_benefits_text_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$course_benefit_selector .etlms-course-specification-items li span" => 'color: {{VALUE}}',
+				),
+			)
+		);
+		$this->add_responsive_control(
+			'course_benefits_text_indent',
+			array(
+				'label'      => __( 'Text Indent', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'selectors'  => array(
+					"$course_benefit_selector .etlms-course-specification-items li span" => 'padding-left: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 7,
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_benefits_text_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => "$course_benefit_selector .etlms-course-specification-items li span",
+			)
+		);
+		$this->end_controls_section();
+		// course benefit style controls end.
+
+		// course instructors style controls.
+		$course_instructor_wrap_selector = "{{WRAPPER}} .etlms-single-instructor-wrap";
+		/* Title Section */
+		$this->start_controls_section(
+			'course_instructors_title_section',
+			array(
+				'label' => __( 'Course Instructor Title', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_instructors_title_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$course_instructor_wrap_selector .etlms-course-instructor-title" => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_instructors_title_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => "$course_instructor_wrap_selector .etlms-course-instructor-title",
+			)
+		);
+		$this->add_responsive_control(
+			'etlms_instructor_heading_gap',
+			array(
+				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => -50,
+						'max' => 100,
+					),
+				),
+				'selectors'  => array(
+					"$course_instructor_wrap_selector .etlms-course-instructor-title" => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+				),
+				'default'    => array(
+					'size' => 25,
+				),
+			)
+		);
+		$this->end_controls_section();
+
+		/* Instructor Section */
+		$course_instructor_wrap                 = '.etlms-single-instructor-wrap';
+		$course_instructor_img_selector         = $course_instructor_wrap . ' .instructor-avatar a';
+		$course_instructor_name_selector        = $course_instructor_wrap . ' .instructor-name h3 a';
+		$course_instructor_designation_selector = $course_instructor_wrap . ' .instructor-name p';
+		$course_instructor_biography_selector   = $course_instructor_wrap . ' .instructor-bio';
+
+		$this->start_controls_section(
+			'course_instructor_section',
+			array(
+				'label' => __( 'Instructor Section', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_instructor_image_size',
+			array(
+				'label'      => __( 'Image Size', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 10,
+						'max' => 200,
+					),
+				),
+				'selectors'  => array(
+					$course_instructor_img_selector . ' span, ' . $course_instructor_img_selector . ' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2 - 3px)',
+				),
+				'default'    => array(
+					'size' => 48,
+				),
+			)
+		);
+
+		// $this->add_group_control(
+		// 	Group_Control_Background::get_type(),
+		// 	array(
+		// 		'name'     => 'course_instructor_background',
+		// 		'label'    => __( 'Background Type', 'tutor-lms-elementor-addons' ),
+		// 		'types'    => array( 'classic', 'gradient' ),
+		// 		'selector' => $course_instructor_img_selector . ' span',
+		// 	)
+		// );
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'course_instructor_img_border',
+				'selector' => $course_instructor_img_selector . ' span, ' . $course_instructor_img_selector . ' img',
+			)
+		);
+
+		$this->add_control(
+			'course_instructors_avatar_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .etlms-course-instructor-avatar img ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .etlms-course-instructor-avatar span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+				'selectors'  => array(
+					$course_instructor_img_selector . ' span, ' . $course_instructor_img_selector . ' img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+				'default'    => array(
+					'top'      => 50,
+					'right'    => 50,
+					'bottom'   => 50,
+					'left'     => 50,
+					'unit'     => '%',
+					'isLinked' => true,
+				),
+				'separator'  => 'after',
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_name_color',
+			array(
+				'label'     => __( 'Name Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$course_instructor_name_selector => 'color: {{VALUE}}',
+				),
+				'default'   => '#161616',
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_instructor_name_typo',
+				'label'    => __( 'Name Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $course_instructor_name_selector,
+			)
+		);
+		$this->add_control(
+			'course_instructor_designation_color',
+			array(
+				'label'     => __( 'Designation Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$course_instructor_designation_selector => 'color: {{VALUE}}',
+				),
+				'default'   => '#7A7A7A',
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_instructor_designation_typo',
+				'label'    => __( 'Designation Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $course_instructor_designation_selector,
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_bio_color',
+			array(
+				'label'     => __( 'Biography Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$course_instructor_biography_selector => 'color: {{VALUE}}',
+				),
+				'default'   => '#525252',
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_instructor_bio_typo',
+				'label'    => __( 'Biography Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $course_instructor_biography_selector,
+			)
+		);
+
+		$this->end_controls_section();
+
+		/* Instructor Rating Section */
+		$course_instructor_info_selector = $course_instructor_wrap . ' .single-instructor-bottom';
+		$ins_rating_star_selector        = $course_instructor_wrap . ' .single-instructor-bottom  .tutor-star-rating-group';
+
+		/* Bottom Info Section */
+		$this->start_controls_section(
+			'course_instructor_bottom_info_section',
+			array(
+				'label' => __( 'Instructor Bottom Info', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_rating_color',
+			array(
+				'label'     => __( 'Rating Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$ins_rating_star_selector => 'color: {{VALUE}};',
+				),
+				'default'   => '#ED9700',
+			)
+		);
+		$this->add_control(
+			'course_instructor_rating_size',
+			array(
+				'label'      => __( 'Rating Size', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 5,
+						'max' => 64,
+					),
+				),
+				'selectors'  => array(
+					$ins_rating_star_selector => 'font-size: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 18,
+				),
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_label_color',
+			array(
+				'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$course_instructor_info_selector . ' .rating-digits,' . $course_instructor_info_selector . ' .courses,' . $course_instructor_info_selector . ' .students' => 'color: {{VALUE}};',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_instructor_label_typography',
+				'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $course_instructor_info_selector . ' .rating-digits,' . $course_instructor_info_selector . ' .courses,' . $course_instructor_info_selector . ' .students',
+				'scheme'   => Typography::TYPOGRAPHY_1,
+			)
+		);
+		$this->add_control(
+			'course_instructor_value_color',
+			array(
+				'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$course_instructor_info_selector . ' .rating-total-meta,' . $course_instructor_info_selector . ' .tutor-text-mute' => 'color: {{VALUE}} !important;',
+				),
+				'default'   => '#525252',
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_instructor_value_typography',
+				'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $course_instructor_info_selector . ' .ratings .rating-total-meta,' . $course_instructor_info_selector . ' .tutor-text-mute',
+			)
+		);
+		$this->add_control(
+			'course_instructor_bottom_info_icon_size',
+			array(
+				'label'      => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 5,
+						'max' => 64,
+					),
+				),
+				'selectors'  => array(
+					$course_instructor_info_selector . ' .courses i, ' . $course_instructor_info_selector . ' .students i' => 'font-size: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 18,
+				),
+			)
+		);
+		$this->end_controls_section();
+
+		// spacing section
+		$this->start_controls_section(
+			'course_instructors_space_section',
+			array(
+				'label' => __( 'Instructor Spacing', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'course_instructors_padding',
+			array(
+				'label'      => __( 'Instructor Padding', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					$course_instructor_wrap . ' .single-instructor-top' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				),
+				'default'    => array(
+					'top'      => 20,
+					'right'    => 20,
+					'bottom'   => 20,
+					'left'     => 20,
+					'unit'     => 'px',
+					'isLinked' => true,
+				),
+				'separator'  => 'before',
+			)
+		);
+		$this->add_control(
+			'course_instructors_bottom_padding',
+			array(
+				'label'      => __( 'Bottom Info Padding', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					$course_instructor_info_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+				'default'    => array(
+					'top'      => 15,
+					'right'    => 20,
+					'bottom'   => 15,
+					'left'     => 20,
+					'unit'     => 'px',
+					'isLinked' => true,
+				),
+				'separator'  => 'before',
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_bottom_space',
+			array(
+				'label'      => __( 'Space Between', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 200,
+					),
+				),
+				'selectors'  => array(
+					$course_instructor_wrap . ':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 20,
+				),
+			)
+		);
+
+		$this->end_controls_section();
+		// course instructors style controls end.
 
 		/* Header Title Section */
 		$this->start_controls_section(

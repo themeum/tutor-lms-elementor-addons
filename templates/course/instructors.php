@@ -22,7 +22,7 @@ $border_radius        = $settings['course_instructors_avatar_border_radius'];
 if ( $instructors ) {
 	do_action( 'tutor_course/single/enrolled/before/instructors' );
 	?>
-	<div class="tutor-mt-65">
+	<div class="etlms-single-instructor-wrap tutor-mt-65">
 		<div class="etlms-course-instructor-title tutor-color-text-primary tutor-text-medium-h6 tutor-mb-25">
 			<span><?php echo esc_html( $settings['about_the_instructors_title'], 'tutor-lms-elementor-addons' ); ?></span>
 		</div>
