@@ -1,4 +1,18 @@
-<?php do_action( 'tutor_course/single/before/benefits' ); ?>
+<?php
+/**
+ * Course benefits template
+ *
+ * @package ETLMSCourseBenefits
+ */
+
+do_action( 'tutor_course/single/before/benefits' );
+$benefits = tutor_course_benefits();
+// if no benefits then return.
+if ( ! is_array( $benefits ) && ! count( $benefits ) ) {
+	return;
+}
+
+?>
 
 <div class="etlms-course-specifications etlms-course-benefits">
 	<div class="tutor-course-details-widget-title tutor-mb-16">
@@ -8,7 +22,7 @@
 	</div>
 	<ul class="etlms-course-specification-items">
 		<?php
-		$benefits = tutor_course_benefits();
+
 		if ( is_array( $benefits ) && count( $benefits ) ) {
 			foreach ( $benefits as $benefit ) :
 				?>
@@ -28,4 +42,3 @@
 </div>
 
 <?php do_action( 'tutor_course/single/after/benefits' ); ?>
-

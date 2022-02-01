@@ -122,7 +122,6 @@ class CourseCurriculum extends BaseAddon {
 					'default'     => __( 'About the instructors', 'tutor-lms-elementor-addons' ),
 					'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
 					'rows'        => 3,
-					'separator'   => 'after',
 				)
 			);
 			$this->add_control(
