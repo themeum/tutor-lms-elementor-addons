@@ -21,7 +21,7 @@ class CourseEnrolmentBox extends BaseAddon {
 	use \TutorLMS\Elementor\AddonsTrait;
 
 	private static $prefix_class_layout    = 'elementor-layout-';
-	private static $prefix_class_alignment = 'elementor-align-';
+	private static $prefix_class_alignment = 'etlms-enrollment-btn-align-';
 
 	public function get_title() {
 		return __( 'Course Enrolment Box', 'tutor-lms-elementor-addons' );
@@ -58,8 +58,73 @@ class CourseEnrolmentBox extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_enroll_buttons_align',
-			//$this->etlms_alignment( 'center' ) // alignment
-			$this->title_alignment_with_selectors( '{{WRAPPER}}', 'text-align: {{VALUE}};' )
+			array(
+				'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'left'   => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'right'  => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'prefix_class' => self::$prefix_class_alignment . '%s',
+				'default'      => 'left',
+				'condition' => [
+					'course_enrolment_edit_mode' => 'enrolled-box',
+
+				],
+				'selectors'    => array(
+					'.etlms-course-enrolment-box .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;
+					flex-direction: column;',
+					'.etlms-enrollment-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-start;',
+					'.etlms-enrollment-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: center;',
+					'.etlms-enrollment-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-end;',
+
+					'.etlms-course-enrolment-box.course-enroll-buttons-width-auto form' => 'display: flex; flex-direction: column;',
+					'.etlms-enrollment-btn-align-left form ' => 'align-items: flex-start;',
+					'.etlms-enrollment-btn-align-right form ' => 'align-items: flex-end;',
+					'.etlms-enrollment-btn-align-center form ' => 'align-items: center;',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'course_enrolment_buttons_align',
+			array(
+				'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'left'   => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'right'  => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'prefix_class' => self::$prefix_class_alignment . '%s',
+				'default'      => 'left',
+				'condition' => [
+					'course_enrolment_edit_mode' => 'enrolment-box',
+
+				],
+				'selectors'    => array(
+					'.etlms-course-enrolment-box .tutor-course-sidebar-card-body' => "text-align: {{VALUE}};"
+				),
+			)
 		);
 
 		$this->add_control(
@@ -123,7 +188,7 @@ class CourseEnrolmentBox extends BaseAddon {
 	protected function register_style_controls() {
 		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
 		/* Add to Cart Section */
-		$add_to_cart_btn_selector  = $selector . ' .tutor-btn:not(.tutor-is-outline).tutor-btn-primary.tutor-add-to-cart-button';
+		$add_to_cart_btn_selector = $selector . ' .tutor-btn:not(.tutor-is-outline).tutor-btn-primary.tutor-add-to-cart-button';
 
 		$this->start_controls_section(
 			'add_to_cart_btn',

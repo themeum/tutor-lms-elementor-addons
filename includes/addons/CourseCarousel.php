@@ -152,7 +152,7 @@ class CourseCarousel extends BaseAddon {
 					'course_carousel_meta_data' => "yes"
 				],
 				"selectors" => [
-					$meta_content_selector => "padding-right:{{SIZE}}{{UNIT}};"
+					$meta_content_selector => "padding-right: {{SIZE}}{{UNIT}};"
 				]
 			]
 		);

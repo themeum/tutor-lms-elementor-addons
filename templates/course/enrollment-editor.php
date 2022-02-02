@@ -9,6 +9,7 @@ $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $settings['course_enrolment_edit_mode'];
 $price                = apply_filters( 'get_tutor_course_price', null, get_the_ID() );
 $is_purchasable       = tutor_utils()->is_course_purchasable();
+
 $sidebar_meta         = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
@@ -47,34 +48,34 @@ $button_size          = $settings['course_enroll_buttons_size'];
 			$button_class = 'tutor-is-fullwidth tutor-btn tutor-is-outline tutor-btn-lg tutor-btn-full tutor-is-fullwidth tutor-course-retake-button tutor-mb-10';
 		?>
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
-				<?php// if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
-					<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
-						<span class="color-text-primary text-medium-h6">
-							<?php esc_html_e( 'Course Progress', 'tutor-lms-elementor-addons' ); ?>
-						</span>
-						<div class="list-item-progress tutor-mt-16">
-							<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
-								<span class="progress-steps">
-									<?php echo esc_html( $course_progress['completed_count'] ? $course_progress['completed_count'] : 5 ); ?>/
-									<?php echo esc_html( $course_progress['total_count'] ? $course_progress['total_count'] : 10 ); ?>
-								</span>
-								<span class="progress-percentage"> 
-									<?php echo esc_html( $course_progress['completed_percent'] ? $course_progress['completed_percent'] . '%' : '50%' ); ?>
-									<?php esc_html_e( 'Complete', 'tutor-lms-elementor-addons' ); ?>
-								</span>
-							</div>
-							<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ? $course_progress['completed_percent'] : 50 ); ?>%;">
-								<span class="progress-value"></span>
-							</div>
+				<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
+					<span class="color-text-primary text-medium-h6">
+						<?php esc_html_e( 'Course Progress', 'tutor-lms-elementor-addons' ); ?>
+					</span>
+					<div class="list-item-progress tutor-mt-16">
+						<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+							<span class="progress-steps">
+								<?php echo esc_html(  5 ); ?>/
+								<?php echo esc_html( 10 ); ?>
+							</span>
+							<span class="progress-percentage"> 
+								<?php echo esc_html( '50%' ); ?>
+								<?php esc_html_e( 'Complete', 'tutor-lms-elementor-addons' ); ?>
+							</span>
+						</div>
+						<div class="progress-bar tutor-mt-10" style="--progress-value: 50%;">
+							<span class="progress-value"></span>
 						</div>
 					</div>
-				<?php// endif; ?>					
-			<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-				<?php esc_html_e( 'Continue Learning', 'tutor-lms-elementor-addons' ); ?>
-			</a>
-			<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
-				<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
-			</button>
+				</div>
+				<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+						<?php esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' ); ?>
+				</a>		
+				<form>
+					<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
+						<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
+					</button>
+				</form>
 			<?php else : ?>
 
 			<?php if ( $is_purchasable && $price ) : ?>	
