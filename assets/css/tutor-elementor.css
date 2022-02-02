@@ -409,6 +409,7 @@
 }
 
 .etlms-course-enrolment-box.course-enroll-buttons-width-auto button,
+.etlms-course-enrolment-box.course-enroll-buttons-width-auto .tutor-is-fullwidth.start-continue-retake-button,
 .etlms-course-enrolment-box.course-enroll-buttons-width-auto .tutor-button {
 	width: -webkit-fit-content !important;
 	width: -moz-fit-content !important;

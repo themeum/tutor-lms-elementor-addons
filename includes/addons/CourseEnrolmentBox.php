@@ -112,7 +112,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					'course_enroll_buttons_width' => 'fixed',
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} button, {{WRAPPER}} .tutor-button' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} button, {{WRAPPER}} .tutor-button, {{WRAPPER}} .start-continue-retake-button' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
