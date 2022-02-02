@@ -28,7 +28,7 @@ class CourseEnrolmentBox extends BaseAddon {
 	}
 
 	protected function register_content_controls() {
-		// Slider Button stle
+		// enrollment button preview controls.
 		$this->start_controls_section(
 			'course_edit_mode_section',
 			array(
@@ -48,6 +48,91 @@ class CourseEnrolmentBox extends BaseAddon {
 			)
 		);
 		$this->end_controls_section();
+		// enrollment button preview controls end.
+		/**
+		 * Course price controls
+		 *
+		 * @since v2.0.0
+		 */
+		$this->start_controls_section(
+			'course_price_content',
+			array(
+				'label' => __( 'Course Price', 'tutor-lms-elementor-addons' ),
+			)
+		);
+
+		$this->add_responsive_control(
+			'course_price_align',
+			$this->title_alignment_with_selectors(
+				'left',
+				array(
+					'{{WRAPPER}} .tutor-course-sidebar-card-pricing' => 'display: block !important; text-align: {{VALUE}};',
+				)
+			)
+		);
+
+		$this->end_controls_section();
+		// course price controls end.
+
+		/**
+		 * Course progress controls
+		 *
+		 * @since v2.0.0
+		 */
+		$this->start_controls_section(
+			'course_status_content_section',
+			array(
+				'label' => 'Course Progress',
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			)
+		);
+
+		$this->add_control(
+			'course_progress_title_text',
+			array(
+				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'Course Progress', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+				'rows'        => 3,
+			)
+		);
+
+		$this->add_control(
+			'course_status_display_percent',
+			array(
+				'label'     => __( 'Display Percentage', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'block' => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'none'  => __( 'Hide', 'tutor-lms-elementor-addons' ),
+				),
+				'default'   => 'block',
+				'selectors' => array(
+					'{{WRAPPER}} .progress-percentage' => 'display: {{VALUE}};',
+				),
+			)
+		);
+
+		// $this->add_control(
+		// 'course_status_percent_position',
+		// array(
+		// 'label'     => __( 'Position', 'tutor-lms-elementor-addons' ),
+		// 'type'      => Controls_Manager::SELECT,
+		// 'options'   => array(
+		// 'inside'  => __( 'Inside', 'tutor-lms-elementor-addons' ),
+		// 'outside' => __( 'Outside', 'tutor-lms-elementor-addons' ),
+		// 'ontop'   => __( 'On top', 'tutor-lms-elementor-addons' ),
+		// ),
+		// 'condition' => array(
+		// 'course_status_display_percent' => 'show',
+		// ),
+		// 'default'   => 'inside',
+		// )
+		// );
+
+		$this->end_controls_section();
+		// course progress controls end.
 
 		$this->start_controls_section(
 			'course_enroll_button_section',
@@ -77,10 +162,10 @@ class CourseEnrolmentBox extends BaseAddon {
 				),
 				'prefix_class' => self::$prefix_class_alignment . '%s',
 				'default'      => 'left',
-				'condition' => [
+				'condition'    => array(
 					'course_enrolment_edit_mode' => 'enrolled-box',
 
-				],
+				),
 				'selectors'    => array(
 					'.etlms-course-enrolment-box.course-enroll-buttons-width-auto .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;
 					flex-direction: column;',
@@ -117,12 +202,12 @@ class CourseEnrolmentBox extends BaseAddon {
 				),
 				'prefix_class' => self::$prefix_class_alignment . '%s',
 				'default'      => 'left',
-				'condition' => [
+				'condition'    => array(
 					'course_enrolment_edit_mode' => 'enrolment-box',
 
-				],
+				),
 				'selectors'    => array(
-					'.etlms-course-enrolment-box .tutor-course-sidebar-card-body' => "text-align: {{VALUE}};"
+					'.etlms-course-enrolment-box .tutor-course-sidebar-card-body' => 'text-align: {{VALUE}};',
 				),
 			)
 		);
@@ -186,6 +271,89 @@ class CourseEnrolmentBox extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
+		/**
+		 * Course price controls
+		 *
+		 * @since v2.0.0
+		 */
+		$course_price_wrapper = "{{WRAPPER}} .tutor-course-sidebar-card-pricing";
+		$this->start_controls_section(
+			'course_price_style_section',
+			array(
+				'label' => __( 'Course Price', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		/* Start Tabs */
+		$this->start_controls_tabs( 'course_price_style_tabs' );
+
+			/* Normal Tab */
+			$this->start_controls_tab(
+				'course_price_normal_style_tab',
+				array(
+					'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
+				)
+			);
+
+			$this->add_control(
+				'course_price_normal_text_color',
+				array(
+					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						"$course_price_wrapper .text-bold-h4" => 'color: {{VALUE}};',
+					),
+					'default'   => '#212327',
+				)
+			);
+
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'course_price_normal_text_typography',
+					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+					'selector' => $normal_text,
+				)
+			);
+
+			$this->end_controls_tab();
+
+			/* Strikethrough Tab */
+			$this->start_controls_tab(
+				'course_price_strikethrough_style_tab',
+				array(
+					'label' => __( 'Strike', 'tutor-lms-elementor-addons' ),
+				)
+			);
+
+			$this->add_control(
+				'strikethrough_text_color',
+				array(
+					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						$strikethrough_text => 'color: {{VALUE}};',
+					),
+					'default'   => '#7A7A7A',
+				)
+			);
+
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'strikethrough_text_typography',
+					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+					'selector' => $strikethrough_text,
+				)
+			);
+
+			$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+		/* End Tabs */
+
+		$this->end_controls_section();
+		// course price controls end.
 		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
 		/* Add to Cart Section */
 		$add_to_cart_btn_selector = $selector . ' .tutor-btn:not(.tutor-is-outline).tutor-btn-primary.tutor-add-to-cart-button';
@@ -793,7 +961,7 @@ class CourseEnrolmentBox extends BaseAddon {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
 				include etlms_get_template( 'course/enrollment-editor' );
 			} else {
-				include tutor()->path . 'templates/single/course/course-entry-box.php';
+				include etlms_get_template( 'course/enrollment' );
 			}
 			echo ob_get_clean();
 		}

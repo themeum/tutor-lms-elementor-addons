@@ -50,7 +50,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
 				<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
 					<span class="color-text-primary text-medium-h6">
-						<?php esc_html_e( 'Course Progress', 'tutor-lms-elementor-addons' ); ?>
+						<?php echo esc_html( $settings['course_progress_title_text'], 'tutor-lms-elementor-addons' ); ?>
 					</span>
 					<div class="list-item-progress tutor-mt-16">
 						<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">

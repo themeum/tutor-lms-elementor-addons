@@ -34,7 +34,11 @@ class CourseRating extends BaseAddon {
 		);
 		$this->add_responsive_control(
 			'course_rating_align',
-			$this->title_alignment_with_selectors( '{{WRAPPER}}', 'text-align: {{VALUE}};' )
+			$this->title_alignment_with_selectors(
+				'left',
+				array(
+				'{{WRAPPER}}' => 'text-align: {{VALUE}};'
+			) )
 		);
 
 		$this->end_controls_section();

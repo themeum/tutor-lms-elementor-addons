@@ -51,7 +51,12 @@ class CourseTitle extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_title_align',
-			$this->title_alignment_with_selectors( '{{WRAPPER}}', 'text-align: {{VALUE}};' )
+			$this->title_alignment_with_selectors(
+				'left',
+				array(
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};'
+				)
+			)
 		);
 
 		$this->end_controls_section();

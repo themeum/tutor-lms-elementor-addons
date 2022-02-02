@@ -173,11 +173,9 @@ trait AddonsTrait {
 	 * @param string $value | styles.
 	 * @return array
 	 */
-	protected function title_alignment_with_selectors( string $selector, string $value ) {
-		$align              = $this->etlms_alignment();
-		$align['selectors'] = array(
-			$selector => $value,
-		);
+	protected function title_alignment_with_selectors( string $align = 'left', array $selectors ) {
+		$align              = $this->etlms_alignment( $align );
+		$align['selectors'] = $selectors;
 		return $align;
 	}
 }
