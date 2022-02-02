@@ -12,22 +12,22 @@ $sidebar_meta = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
 		array(
-			'icon_class' => 'ttr-level-line',
+			'icon_class' => 'tutor-icon-level-line',
 			'label'      => __( 'Level', 'tutor' ),
 			'value'      => get_tutor_course_level( get_the_ID() ),
 		),
 		array(
-			'icon_class' => 'ttr-student-line-1',
+			'icon_class' => 'tutor-icon-student-line-1',
 			'label'      => __( 'Total Enrolled', 'tutor' ),
 			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null,
 		),
 		array(
-			'icon_class' => 'ttr-clock-filled',
+			'icon_class' => 'tutor-icon-clock-filled',
 			'label'      => __( 'Duration', 'tutor' ),
 			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null,
 		),
 		array(
-			'icon_class' => 'ttr-refresh-l',
+			'icon_class' => 'tutor-icon-refresh-l',
 			'label'      => __( 'Last Updated', 'tutor' ),
 			'value'      => get_tutor_option( 'enable_course_update_date' ) ? tutor_get_formated_date( get_option( 'date_format' ), get_the_modified_date() ) : null,
 		),
@@ -69,10 +69,10 @@ $button_size  = $settings['course_enroll_buttons_size'];
 					</div>
 				<?php endif; ?>					
 			<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-				<?php esc_html_e( 'Continue Learning', 'tutor-lms-divi-modules' ); ?>
+				<?php esc_html_e( 'Continue Learning', 'tutor-lms-elementor-addons' ); ?>
 			</a>
 			<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
-				<?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules' ); ?>                        
+				<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
 			</button>
 			<?php else : ?>			
 				<div>
@@ -80,7 +80,7 @@ $button_size  = $settings['course_enroll_buttons_size'];
 				</div>
 
 				<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
-					<?php esc_html_e( 'Enroll Course', 'tutor-lms-divi-modules' ); ?>
+					<?php esc_html_e( 'Enroll Course', 'tutor-lms-elementor-addons' ); ?>
 				</button>
 				<button type="submit" name="add-to-cart" value=""  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
 					<span class="btn-icon ttr-cart-filled"></span>
@@ -89,7 +89,7 @@ $button_size  = $settings['course_enroll_buttons_size'];
 			<?php endif; ?>
 	</div>
 	<!-- Course Info -->
-	<?php if ( 'enrolled' === $enrollment_mode ) : ?>
+	<?php// if ( 'enrolled' === $enrollment_mode ) : ?>
 	<div class="tutor-course-sidebar-card-footer tutor-p-30">
 		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
 			<?php foreach ( $sidebar_meta as $meta ) : ?>
@@ -113,6 +113,6 @@ $button_size  = $settings['course_enroll_buttons_size'];
 			<?php endforeach; ?>
 		</ul>
 	</div>	
-	<?php endif; ?>
+	<?php// endif; ?>
 </div>
 
