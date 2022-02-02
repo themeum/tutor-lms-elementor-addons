@@ -45,7 +45,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 	<div class="tutor-course-sidebar-card-body tutor-p-30 <?php echo ! is_user_logged_in() ? 'tutor-course-entry-box-login' : ''; ?>">
 
 		<?php
-			$button_class = 'tutor-is-fullwidth tutor-btn tutor-is-outline tutor-btn-lg tutor-btn-full tutor-is-fullwidth tutor-course-retake-button tutor-mb-10';
+			$button_class = 'tutor-is-fullwidth tutor-btn  tutor-is-fullwidth tutor-pr-0 tutor-pl-0  start-continue-retake-button';
 		?>
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
 				<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">

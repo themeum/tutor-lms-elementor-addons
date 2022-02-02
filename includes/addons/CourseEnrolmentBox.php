@@ -82,7 +82,7 @@ class CourseEnrolmentBox extends BaseAddon {
 
 				],
 				'selectors'    => array(
-					'.etlms-course-enrolment-box .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;
+					'.etlms-course-enrolment-box.course-enroll-buttons-width-auto .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;
 					flex-direction: column;',
 					'.etlms-enrollment-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-start;',
 					'.etlms-enrollment-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: center;',

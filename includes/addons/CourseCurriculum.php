@@ -535,13 +535,13 @@ class CourseCurriculum extends BaseAddon {
 		// )
 		// );
 
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			array(
-				'name'     => 'course_instructor_img_border',
-				'selector' => $course_instructor_img_selector . ' span, ' . $course_instructor_img_selector . ' img',
-			)
-		);
+		// $this->add_group_control(
+		// 	Group_Control_Border::get_type(),
+		// 	array(
+		// 		'name'     => 'course_instructor_img_border',
+		// 		'selector' => $course_instructor_img_selector . ' span, ' . $course_instructor_img_selector . ' img',
+		// 	)
+		// );
 
 		$this->add_control(
 			'course_instructors_avatar_border_radius',
