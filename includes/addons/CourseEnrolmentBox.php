@@ -870,7 +870,8 @@ class CourseEnrolmentBox extends BaseAddon {
 			$this->end_controls_tab();
 		$this->end_controls_tabs();
 		$this->end_controls_section();
-		/* course complete button controls */
+
+        /* course complete button controls */
 		$complete_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .tutor-course-complete-button';
 		$this->start_controls_section(
 			'complete_btn',
@@ -881,17 +882,17 @@ class CourseEnrolmentBox extends BaseAddon {
 			)
 		);
 		/* Start Tabs */
-		$this->start_controls_tabs( 'start_btn_tabs' );
+		$this->start_controls_tabs( 'complete_btn_tabs' );
 
 			/* Normal Tab */
 			$this->start_controls_tab(
-				'start_btn_normal_style_tab',
+				'complete_btn_normal_style_tab',
 				array(
 					'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
 				)
 			);
 				$this->add_control(
-					'start_btn_normal_color',
+					'complete_btn_normal_color',
 					array(
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
@@ -901,7 +902,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					)
 				);
 				$this->add_control(
-					'start_btn_normal_background_color',
+					'complete_btn_normal_background_color',
 					array(
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
@@ -913,13 +914,13 @@ class CourseEnrolmentBox extends BaseAddon {
 				$this->add_group_control(
 					Group_Control_Typography::get_type(),
 					array(
-						'name'     => 'start_btn_normal_typography',
+						'name'     => 'complete_btn_normal_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
 						'selector' => $complete_btn_selector,
 					)
 				);
 				$this->add_control(
-					'start_btn_normal_padding',
+					'complete_btn_normal_padding',
 					array(
 						'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
 						'type'       => Controls_Manager::DIMENSIONS,
@@ -932,13 +933,13 @@ class CourseEnrolmentBox extends BaseAddon {
 				$this->add_group_control(
 					Group_Control_Border::get_type(),
 					array(
-						'name'     => 'start_btn_normal_border',
+						'name'     => 'complete_btn_normal_border',
 						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
 						'selector' => $complete_btn_selector,
 					)
 				);
 				$this->add_control(
-					'start_btn_normal_border_radius',
+					'complete_btn_normal_border_radius',
 					array(
 						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::DIMENSIONS,
@@ -958,7 +959,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				$this->add_group_control(
 					Group_Control_Box_Shadow::get_type(),
 					array(
-						'name'     => 'start_btn_normal_box_shadow',
+						'name'     => 'complete_btn_normal_box_shadow',
 						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
 						'selector' => $complete_btn_selector,
 					)
@@ -968,13 +969,13 @@ class CourseEnrolmentBox extends BaseAddon {
 			/* Hover Tab */
 			$complete_btn_selector_hover = $complete_btn_selector . ':hover';
 			$this->start_controls_tab(
-				'start_btn_hover_style_tab',
+				'complete_btn_hover_style_tab',
 				array(
 					'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
 				)
 			);
 				$this->add_control(
-					'start_btn_hover_color',
+					'complete_btn_hover_color',
 					array(
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
@@ -984,7 +985,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					)
 				);
 				$this->add_control(
-					'start_btn_hover_background_color',
+					'complete_btn_hover_background_color',
 					array(
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
@@ -996,13 +997,13 @@ class CourseEnrolmentBox extends BaseAddon {
 				$this->add_group_control(
 					Group_Control_Typography::get_type(),
 					array(
-						'name'     => 'start_btn_hover_typography',
+						'name'     => 'complete_btn_hover_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
 						'selector' => $complete_btn_selector_hover,
 					)
 				);
 				$this->add_control(
-					'start_btn_hover_padding',
+					'complete_btn_hover_padding',
 					array(
 						'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
 						'type'       => Controls_Manager::DIMENSIONS,
@@ -1015,13 +1016,13 @@ class CourseEnrolmentBox extends BaseAddon {
 				$this->add_group_control(
 					Group_Control_Border::get_type(),
 					array(
-						'name'     => 'start_btn_hover_border',
+						'name'     => 'complete_btn_hover_border',
 						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
 						'selector' => $complete_btn_selector_hover,
 					)
 				);
 				$this->add_control(
-					'start_btn_hover_border_radius',
+					'complete_btn_hover_border_radius',
 					array(
 						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::DIMENSIONS,
@@ -1033,7 +1034,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				$this->add_group_control(
 					Group_Control_Box_Shadow::get_type(),
 					array(
-						'name'     => 'start_btn_hover_box_shadow',
+						'name'     => 'complete_btn_hover_box_shadow',
 						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
 						'selector' => $complete_btn_selector_hover,
 					)
