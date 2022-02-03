@@ -71,7 +71,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 						<?php esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' ); ?>
 				</a>		
 				<form>
-					<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
+					<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full tutor-course-complete-button" name="complete_course_btn" value="complete_course">
 						<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
 					</button>
 				</form>
