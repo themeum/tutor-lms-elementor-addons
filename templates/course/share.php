@@ -11,9 +11,17 @@ if ( ! tutor_utils()->count( $tutor_social_share_icons ) ) {
 	);
 	?>
 
-<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary">
-	<span class="tutor-icon-share-filled"></span> <?php _e( 'Share', 'tutor' ); ?>
-</a>
+<div class="etlms-course-share">
+	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary">
+		<?php \Elementor\Icons_Manager::render_icon( $settings['course_share_icon'], array( 'aria-hidden' => 'true' ) ); ?>
+		<span class="share-text">
+			<?php if ( 'yes' === $settings['course_share_label_content'] ) : ?>
+				<?php esc_html_e( 'Share', 'tutor-lms-elementor-addons' ); ?>
+			<?php endif; ?>
+		</span>
+	</a>
+</div>
+
 <div id="tutor-course-share-opener" class="tutor-modal">
 	<span class="tutor-modal-overlay"></span>
 	<div class="tutor-modal-root">

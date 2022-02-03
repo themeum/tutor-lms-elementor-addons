@@ -65,10 +65,10 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->add_responsive_control(
 			'course_price_align',
 			$this->title_alignment_with_selectors(
-				'left',
 				array(
 					'{{WRAPPER}} .tutor-course-sidebar-card-pricing' => 'display: block !important; text-align: {{VALUE}};',
-				)
+				),
+				'left'
 			)
 		);
 

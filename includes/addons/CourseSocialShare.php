@@ -38,6 +38,18 @@ class CourseSocialShare extends BaseAddon {
 		);
 
 		$this->add_control(
+			'course_share_icon',
+			array(
+				'label'   => esc_html__( 'Icon', 'plugin-name' ),
+				'type'    => \Elementor\Controls_Manager::ICONS,
+				'default' => array(
+					'value'   => 'fas fa-share',
+					'library' => 'solid',
+				),
+			)
+		);
+
+		$this->add_control(
 			'course_share_label_content',
 			array(
 				'label'        => __( 'Label', 'tutor-lms-elementor-addons' ),
@@ -68,7 +80,11 @@ class CourseSocialShare extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_share_alignment',
-			$this->etlms_alignment()
+			$this->title_alignment_with_selectors(
+				array(
+					'{{WRAPPER}} .etlms-course-share' => 'text-align: {{VALUE}};',
+				)
+			)
 		);
 
 		$this->end_controls_section();
@@ -363,7 +379,7 @@ class CourseSocialShare extends BaseAddon {
 	}
 
 	protected function render( $instance = array() ) {
-		$disable_course_share = !tutor_utils()->get_option( 'enable_course_share' );
+		$disable_course_share = ! tutor_utils()->get_option( 'enable_course_share' );
 		if ( $disable_course_share ) {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
 				echo __( 'Please enable course share from tutor settings', 'tutor-lms-elementor-addons' );
