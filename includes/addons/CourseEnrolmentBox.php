@@ -273,11 +273,180 @@ class CourseEnrolmentBox extends BaseAddon {
 
 	protected function register_style_controls() {
 		/**
+		 * Course progress controls
+		 *
+		 * @since v2.0.0
+		 */
+		$progress_wrapper  = '{{WRAPPER}} .tutor-course-progress-wrapper';
+
+		/* Section Title */
+		$this->start_controls_section(
+			'course_status_title_section',
+			array(
+				'label' => __( 'Course Progress Title', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_status_title_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$progress_wrapper .text-medium-h6" => 'color: {{VALUE}};',
+				),
+				'default'	=> '#212327'
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_status_title_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => "$progress_wrapper .text-medium-h6",
+			)
+		);
+		$this->add_responsive_control(
+			'etlms_heading_gap',
+			array(
+				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => -50,
+						'max' => 100,
+					),
+				),
+				'default'	=> array(
+					'size'	=> '16',
+				),
+				'selectors'  => array(
+					"$progress_wrapper .list-item-progress" => 'margin-top: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+		$this->end_controls_section();
+
+		/* Section Bar */
+		$this->start_controls_section(
+			'course_status_bar_section',
+			array(
+				'label' => __( 'Progress Bar', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_status_bar_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$progress_wrapper .list-item-progress .progress-bar .progress-value" => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'course_status_bar_background_color',
+			array(
+				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$progress_wrapper .list-item-progress .progress-bar" => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'course_status_progress_bar_height',
+			array(
+				'label'      => __( 'Height', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 6,
+						'max'  => 64,
+						'step' => 1,
+					),
+				),
+				'default'    => array(
+					'size' => 4,
+					'unit' => 'px',
+				),
+				'selectors'  => array(
+					"$progress_wrapper .list-item-progress .progress-bar" => 'height: {{SIZE}}{{UNIT}};',
+					"$progress_wrapper .list-item-progress .progress-bar .progress-value" => 'height: 100%;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'course_status_progress_radius',
+			array(
+				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 1,
+					),
+					'%'  => array(
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 1,
+					),
+				),
+				'default'    => array(
+					'size' => 2,
+					'unit' => 'px',
+				),
+				'selectors'  => array(
+					"$progress_wrapper .list-item-progress .progress-bar" => 'border-radius: {{SIZE}}{{UNIT}};',
+					"$progress_wrapper .list-item-progress .progress-bar .progress-value"   => 'border-radius: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'course_status_progress_text',
+			array(
+				'label'     => __( 'Progress Text', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+			)
+		);
+
+		$this->add_control(
+			'course_status_progress_text_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$progress_wrapper .progress-percentage, $progress_wrapper .progress-steps" => 'color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_status_progress_text_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => "$progress_wrapper .progress-percentage, $progress_wrapper .progress-steps",
+			)
+		);
+
+		$this->end_controls_section();
+		// course progress controls end.
+		/**
 		 * Course price controls
 		 *
 		 * @since v2.0.0
 		 */
-		$course_price_wrapper = "{{WRAPPER}} .tutor-course-sidebar-card-pricing";
+		$course_price_wrapper = '{{WRAPPER}} .tutor-course-sidebar-card-pricing';
 		$this->start_controls_section(
 			'course_price_style_section',
 			array(
@@ -872,7 +1041,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_tabs();
 		$this->end_controls_section();
 
-        /* course complete button controls */
+		/* course complete button controls */
 		$complete_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .tutor-course-complete-button';
 		$this->start_controls_section(
 			'complete_btn',
@@ -1046,7 +1215,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		// course complete button end.
 
 		/* Enrolled info */
-		$enrolled_info_wrapper      = '{{WRAPPER}} .etlms-enrolled-info-wrapper';
+		$enrolled_info_wrapper = '{{WRAPPER}} .etlms-enrolled-info-wrapper';
 		$this->start_controls_section(
 			'enrolled_info_section',
 			array(
@@ -1128,7 +1297,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		 *
 		 * @since v2.0.0
 		 */
-		$enrolment_box_selector = "{{WRAPPER}} .tutor-course-sidebar-card";
+		$enrolment_box_selector = '{{WRAPPER}} .tutor-course-sidebar-card';
 		$this->start_controls_section(
 			'enrolment_meta_info_section',
 			array(
@@ -1151,8 +1320,8 @@ class CourseEnrolmentBox extends BaseAddon {
 			$this->add_group_control(
 				Group_Control_Border::get_type(),
 				array(
-					'name'      => 'enrolment_box_border',
-					'selector'  => $enrolment_box_selector,
+					'name'     => 'enrolment_box_border',
+					'selector' => $enrolment_box_selector,
 				)
 			);
 			$this->add_control(
