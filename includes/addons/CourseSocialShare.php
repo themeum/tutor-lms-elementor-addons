@@ -244,7 +244,7 @@ class CourseSocialShare extends BaseAddon {
 						'size' => 28,
 					),
 					'selectors'  => array(
-						"$share_wrapper a i" => 'width: {{SIZE}}{{UNIT}};height:{{SIZE}}{{UNIT}}',
+						"$share_wrapper a i" => 'font-size: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -443,15 +443,6 @@ class CourseSocialShare extends BaseAddon {
 				'label'     => __( 'Shape Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
-				'condition' => array(
-					'course_share_icon_color_settings' => 'custom',
-					'course_share_icon_shape'          => array(
-						'rounded',
-						'square',
-						'circle',
-					),
-
-				),
 				'selectors' => array(
 					'{{WRAPPER}} .etlms-share-btn >i:hover' => 'background-color: {{VALUE}};',
 				),
