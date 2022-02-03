@@ -62,22 +62,6 @@ class CourseSocialShare extends BaseAddon {
 			)
 		);
 
-		$this->add_control(
-			'course_share_icon_shape',
-			array(
-				'label'        => __( 'Shape', 'tutor-lms-elementor-addons' ),
-				'type'         => Controls_Manager::SELECT,
-				'options'      => array(
-					'rounded' => __( 'Rounded', 'tutor-lms-elementor-addons' ),
-					'square'  => __( 'Square', 'tutor-lms-elementor-addons' ),
-					'circle'  => __( 'circle', 'tutor-lms-elementor-addons' ),
-
-				),
-				'default'      => 'rounded',
-				'prefix_class' => 'etlms-social-icon-',
-			)
-		);
-
 		$this->add_responsive_control(
 			'course_share_alignment',
 			$this->title_alignment_with_selectors(
@@ -86,6 +70,104 @@ class CourseSocialShare extends BaseAddon {
 				)
 			)
 		);
+
+		$this->end_controls_section();
+
+		// share popup section.
+		$this->start_controls_section(
+			'course_share_popup',
+			array(
+				'label' => __( 'Share Popup', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			)
+		);
+			$this->add_control(
+				'course_share_section_title',
+				array(
+					'label'       => esc_html__( 'Section Title', 'plugin-name' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => esc_html__( 'Share Course', 'plugin-name' ),
+					'placeholder' => esc_html__( 'Type your title here', 'plugin-name' ),
+				)
+			);
+
+			$this->add_control(
+				'course_share_title',
+				array(
+					'label'       => esc_html__( 'Share Title', 'plugin-name' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => esc_html__( 'Share on social media', 'plugin-name' ),
+					'placeholder' => esc_html__( 'Type your title here', 'plugin-name' ),
+				)
+			);
+
+			$this->add_control(
+				'course_share_icon_shape',
+				array(
+					'label'        => __( 'Shape', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SELECT,
+					'options'      => array(
+						'rounded' => __( 'Rounded', 'tutor-lms-elementor-addons' ),
+						'square'  => __( 'Square', 'tutor-lms-elementor-addons' ),
+						'circle'  => __( 'circle', 'tutor-lms-elementor-addons' ),
+
+					),
+					'default'      => 'rounded',
+					'prefix_class' => 'etlms-social-icon-',
+					'selectors'    => array(
+						'.etlms-social-icon-square .tutor-social-share-wrap button'  => 'border-radius: 0px;',
+						'.etlms-social-icon-circle .tutor-social-share-wrap button'  => 'border-radius: 100%; width: 120px; height: 120px;',
+					),
+				)
+			);
+
+			$this->add_control(
+				'course_social_icon',
+				array(
+					'label'        => __( 'Show Icon', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
+
+			$this->add_control(
+				'course_social_icon_text',
+				array(
+					'label'        => __( 'Show Icon Text', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
+
+			$this->add_responsive_control(
+				'course_share_circle_size',
+				array(
+					'label'      => __( 'Circle Size', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::SLIDER,
+					'size_units' => array( 'px' ),
+					'range'      => array(
+						'px' => array(
+							'min' => 0,
+							'max' => 200,
+						),
+					),
+					'selectors'  => array(
+						'.etlms-social-icon-circle .tutor-social-share-wrap button' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+					),
+					'default'    => array(
+						'size' => 120,
+					),
+					'condition'  => array(
+						'course_share_icon_shape' => 'circle',
+					),
+				)
+			);
 
 		$this->end_controls_section();
 	}
