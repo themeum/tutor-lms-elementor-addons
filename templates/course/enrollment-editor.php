@@ -101,10 +101,12 @@ $button_size          = $settings['course_enroll_buttons_size'];
 			<?php endif; ?>
 			<!-- enrollment info -->
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
-				<div class="text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
-						You enrolled this course on						
+						<span class="text">
+						You enrolled this course on	
+						</span>					
 						<span class="text-bold-small tutor-color-success tutor-ml-3 tutor-enrolled-info-date">
 						January 31, 2022(Dummy date)					
 						</span>
