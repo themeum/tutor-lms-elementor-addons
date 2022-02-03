@@ -11,6 +11,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Core\Schemes\Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -1121,6 +1122,140 @@ class CourseEnrolmentBox extends BaseAddon {
 			)
 		);
 		$this->end_controls_section();
+
+		/**
+		 * Enrollment meta info controls
+		 *
+		 * @since v2.0.0
+		 */
+		$enrolment_box_selector = "{{WRAPPER}} .tutor-course-sidebar-card";
+		$this->start_controls_section(
+			'enrolment_meta_info_section',
+			array(
+				'label' => __( 'Enrolment Box', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
+			)
+		);
+			$this->add_control(
+				'enrolment_box_background',
+				array(
+					'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						$enrolment_box_selector => 'background-color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
+				array(
+					'name'      => 'enrolment_box_border',
+					'selector'  => $enrolment_box_selector,
+				)
+			);
+			$this->add_control(
+				'enrolment_box_border_radius',
+				array(
+					'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', '%' ),
+					'selectors'  => array(
+						$enrolment_box_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+					'default'    => array(
+						'top'      => 6,
+						'right'    => 6,
+						'bottom'   => 6,
+						'left'     => 6,
+						'unit'     => 'px',
+						'isLinked' => true,
+					),
+				)
+			);
+
+			// icon controls.
+			$this->add_control(
+				'enrolmentx_box_icon_size',
+				array(
+					'label'      => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::SLIDER,
+					'size_units' => array( 'px' ),
+					'range'      => array(
+						'px' => array(
+							'min' => 5,
+							'max' => 200,
+						),
+					),
+					'selectors'  => array(
+						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .tutor-icon-24" => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+					'default'    => array(
+						'size' => 24,
+					),
+				)
+			);
+
+			$this->add_control(
+				'enrolmentx_box_icon_color',
+				array(
+					'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .tutor-icon-24" => 'color: {{VALUE}};',
+					),
+					'default'   => '#212327',
+				)
+			);
+			// icon controls end.
+
+			// label controls.
+			$this->add_control(
+				'enrolment_meta_label_color',
+				array(
+					'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-regular-caption" => 'color: {{VALUE}};',
+					),
+					'default'   => '#757c8e',
+				)
+			);
+			$this->add_group_control(
+				Typography::get_type(),
+				array(
+					'name'     => 'enrolment_meta_label_typo',
+					'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
+					'selector' => "$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-regular-caption",
+				)
+			);
+			// label controls end.
+
+			// value controls.
+			$this->add_control(
+				'enrolment_meta_value_color',
+				array(
+					'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-medium-caption" => 'color: {{VALUE}};',
+					),
+					'default'   => '#212327',
+				)
+			);
+			$this->add_group_control(
+				Typography::get_type(),
+				array(
+					'name'     => 'enrolment_meta_value_typo',
+					'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
+					'selector' => "$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-medium-caption",
+				)
+			);
+			// value controls end.
+
+		$this->end_controls_section();
+		 // enrollment meta info controls end.
 	}
 
 	protected function render( $instance = array() ) {
