@@ -277,7 +277,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		 *
 		 * @since v2.0.0
 		 */
-		$progress_wrapper  = '{{WRAPPER}} .tutor-course-progress-wrapper';
+		$progress_wrapper = '{{WRAPPER}} .tutor-course-progress-wrapper';
 
 		/* Section Title */
 		$this->start_controls_section(
@@ -295,7 +295,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				'selectors' => array(
 					"$progress_wrapper .text-medium-h6" => 'color: {{VALUE}};',
 				),
-				'default'	=> '#212327'
+				'default'   => '#212327',
 			)
 		);
 		$this->add_group_control(
@@ -318,8 +318,8 @@ class CourseEnrolmentBox extends BaseAddon {
 						'max' => 100,
 					),
 				),
-				'default'	=> array(
-					'size'	=> '16',
+				'default'    => array(
+					'size' => '16',
 				),
 				'selectors'  => array(
 					"$progress_wrapper .list-item-progress" => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -414,8 +414,8 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->add_control(
 			'course_status_progress_text',
 			array(
-				'label'     => __( 'Progress Text', 'tutor-lms-elementor-addons' ),
-				'type'      => \Elementor\Controls_Manager::HEADING,
+				'label' => __( 'Progress Text', 'tutor-lms-elementor-addons' ),
+				'type'  => \Elementor\Controls_Manager::HEADING,
 			)
 		);
 
