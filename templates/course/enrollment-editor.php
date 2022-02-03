@@ -7,9 +7,8 @@
 
 $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $settings['course_enrolment_edit_mode'];
-$price                = apply_filters( 'get_tutor_course_price', null, get_the_ID() );
-$is_purchasable       = tutor_utils()->is_course_purchasable();
 
+$is_purchasable       = tutor_utils()->is_course_purchasable();
 $sidebar_meta         = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
@@ -77,9 +76,16 @@ $button_size          = $settings['course_enroll_buttons_size'];
 					</button>
 				</form>
 			<?php else : ?>
-
-			<?php if ( $is_purchasable && $price ) : ?>	
+			<?php if ( $is_purchasable ) : ?>	
+				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
+					<div>
+						<span class="text-bold-h4 tutor-color-text-primary course-price">
+							<?php echo wp_kses_post( tutor_course_price() ); ?>
+						</span>
+					</div>
+				</div>
 				<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
+
 			<?php else : ?>
 				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
 					<div>
@@ -91,10 +97,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 			<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
 				<?php esc_html_e( 'Enroll Course', 'tutor-lms-elementor-addons' ); ?>
 			</button>
-			<button type="submit" name="add-to-cart" value=""  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
-				<span class="btn-icon ttr-cart-filled"></span>
-				<span><?php echo esc_html( 'Add to cart', 'tutor-lms-elementor-addons' ); ?></span>
-			</button>
+
 			<?php endif; ?>
 			<!-- enrollment info -->
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>

@@ -301,7 +301,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper .text-bold-h4" => 'color: {{VALUE}};',
+						"$course_price_wrapper .text-bold-h4:not(.course-price), $course_price_wrapper ins .woocommerce-Price-amount.amount" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -312,7 +312,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				array(
 					'name'     => 'course_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => $normal_text,
+					'selector' => "$course_price_wrapper .text-bold-h4:not(.course-price), $course_price_wrapper ins .woocommerce-Price-amount.amount",
 				)
 			);
 
@@ -332,7 +332,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$strikethrough_text => 'color: {{VALUE}};',
+						"$course_price_wrapper del .woocommerce-Price-amount.amount" => 'color: {{VALUE}};',
 					),
 					'default'   => '#7A7A7A',
 				)
@@ -343,7 +343,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				array(
 					'name'     => 'strikethrough_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => $strikethrough_text,
+					'selector' => "$course_price_wrapper del .woocommerce-Price-amount.amount",
 				)
 			);
 
@@ -356,7 +356,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		// course price controls end.
 		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
 		/* Add to Cart Section */
-		$add_to_cart_btn_selector = $selector . ' .tutor-btn:not(.tutor-is-outline).tutor-btn-primary.tutor-add-to-cart-button';
+		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-btn-primary.tutor-add-to-cart-button';
 
 		$this->start_controls_section(
 			'add_to_cart_btn',
@@ -391,7 +391,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$add_to_cart_btn_selector => 'background-color: {{VALUE}}',
+							$add_to_cart_btn_selector => 'background-color: {{VALUE}};',
 						),
 					)
 				);
@@ -400,7 +400,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_normal_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => '{{WRAPPER}} .tutor-add-to-cart-button span',
+						'selector' => "$add_to_cart_btn_selector span",
 					)
 				);
 				$this->add_control(
@@ -451,7 +451,6 @@ class CourseEnrolmentBox extends BaseAddon {
 			$this->end_controls_tab();
 
 			/* Hover Tab */
-			$add_to_cart_btn_selector_hover = $add_to_cart_btn_selector . ':hover';
 			$this->start_controls_tab(
 				'add_to_cart_btn_hover_style_tab',
 				array(
@@ -464,7 +463,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$add_to_cart_btn_selector_hover => 'color: {{VALUE}};',
+							"$add_to_cart_btn_selector:hover" => 'color: {{VALUE}};',
 						),
 					)
 				);
@@ -474,7 +473,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$add_to_cart_btn_selector_hover => 'background-color: {{VALUE}}',
+							"$add_to_cart_btn_selector:hover" => 'background-color: {{VALUE}}',
 						),
 					)
 				);
@@ -483,7 +482,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_hover_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => $add_to_cart_btn_selector_hover,
+						'selector' => "$add_to_cart_btn_selector span:hover",
 					)
 				);
 				$this->add_control(
@@ -493,7 +492,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', 'em' ),
 						'selectors'  => array(
-							$add_to_cart_btn_selector_hover => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							"$add_to_cart_btn_selector:hover" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 					)
 				);
@@ -502,7 +501,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_hover_border',
 						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-						'selector' => $add_to_cart_btn_selector_hover,
+						'selector' => "$add_to_cart_btn_selector:hover",
 					)
 				);
 				$this->add_control(
@@ -511,7 +510,7 @@ class CourseEnrolmentBox extends BaseAddon {
 						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::DIMENSIONS,
 						'selectors' => array(
-							$add_to_cart_btn_selector_hover => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							"$add_to_cart_btn_selector:hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 					)
 				);
@@ -520,7 +519,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_hover_box_shadow',
 						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-						'selector' => $add_to_cart_btn_selector_hover,
+						'selector' => "$add_to_cart_btn_selector:hover",
 					)
 				);
 			$this->end_controls_tab();

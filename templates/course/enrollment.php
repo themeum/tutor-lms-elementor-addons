@@ -227,7 +227,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 						</form>
 					</div>
 					<div class="text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-text-center">
-					<?php esc_html_e( 'Free acess this course', 'tutor' ); ?>
+					<?php esc_html_e( 'Free access this course', 'tutor' ); ?>
 					</div>
 					<?php
 					echo apply_filters( 'tutor/course/single/entry-box/free', ob_get_clean(), get_the_ID() );
