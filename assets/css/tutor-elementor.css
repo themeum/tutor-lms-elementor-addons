@@ -520,70 +520,14 @@
 }
 
 /*social share*/
-.etlms-social {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-pack: start;
-	    -ms-flex-pack: start;
-	        justify-content: flex-start;
+.etlms-course-share-popup .tutor_share.s_facebook {
+	background-color: #3877EA;
 }
-.etlms-social-label {
-	margin-right: 5px;
+.etlms-course-share-popup .tutor_share.s_twitter {
+	background-color: #4CA0EB;
 }
-.etlms-social-share-wrap .s_facebook {
-	color: #fff;
-}
-.elementor-align-left .etlms-social {
-	-webkit-box-pack: start;
-	    -ms-flex-pack: start;
-	        justify-content: flex-start;
-}
-.elementor-align-center .etlms-social {
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-}
-.elementor-align-right .etlms-social {
-	-webkit-box-pack: end;
-	    -ms-flex-pack: end;
-	        justify-content: flex-end;
-}
-.etlms-social-share-wrap > button {
-	margin: 0;
-	padding: 0;
-	border: none;
-	background: transparent;
-	color: var(--tutor-light-color);
-	-webkit-transition: 300ms;
-	-o-transition: 300ms;
-	transition: 300ms;
-	cursor: pointer;
-}
-.etlms-social-share-wrap .s_facebook i {
-	color: #fff;
-	background-color: #3b5998;
-}
-.etlms-social-share-wrap .s_twitter i {
-	color: #fff;
-	background-color: #1da1f2;
-}
-.etlms-social-share-wrap .s_linkedin i {
-	color: #fff;
-	background-color: #0077b5;
-}
-.etlms-social-share-wrap .s_tumblr i {
-	color: #fff;
-	background-color: #000;
-}
-.etlms-share-btn i {
-	color: #fff;
-}
-.etlms-social-icon-none .etlms-share-btn i {
-	background-color: transparent !important;
+.etlms-course-share-popup .tutor_share.s_linkedin {
+	background-color: #3967B6;
 }
 
 /*course curriculum */

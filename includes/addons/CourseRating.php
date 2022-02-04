@@ -33,6 +33,29 @@ class CourseRating extends BaseAddon {
 			)
 		);
 		$this->add_responsive_control(
+			'course_rating_layout',
+			array(
+				'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'row'    => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-h-align-left',
+					),
+					'column' => array(
+						'title' => __( 'Up', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-v-align-top',
+					),
+				),
+				'default'   => 'row',
+				'toggle'    => false,
+				'selectors' => array(
+					'{{WRAPPER}} .etlms-rating .tutor-single-course-rating' => 'display: flex; flex-direction: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'course_rating_align',
 			$this->title_alignment_with_selectors(
 				array(

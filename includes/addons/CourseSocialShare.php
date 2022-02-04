@@ -241,7 +241,7 @@ class CourseSocialShare extends BaseAddon {
 					),
 					'default'    => array(
 						'unit' => 'px',
-						'size' => 28,
+						'size' => 16,
 					),
 					'selectors'  => array(
 						"$share_wrapper a i" => 'font-size: {{SIZE}}{{UNIT}};',
@@ -251,7 +251,7 @@ class CourseSocialShare extends BaseAddon {
 
 		$this->end_controls_section();
 
-		// social share icon controls.
+		// social icon controls.
 		$this->start_controls_section(
 			'course_social_share_icon',
 			array(
@@ -264,11 +264,8 @@ class CourseSocialShare extends BaseAddon {
 				array(
 					'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
-					'condition' => array(
-						'course_share_icon_color_settings' => 'custom',
-					),
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-share-btn >i' => 'color: {{VALUE}};',
+						"$popup_body_wrapper .social-icon" => 'color: {{VALUE}} !important;',
 					),
 				)
 			);
@@ -278,11 +275,8 @@ class CourseSocialShare extends BaseAddon {
 				array(
 					'label'     => __( 'Shape Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
-					'condition' => array(
-						'course_share_icon_color_settings' => 'custom',
-					),
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-share-btn >i' => 'background-color: {{VALUE}};',
+						"$popup_body_wrapper .tutor_share" => 'background-color: {{VALUE}} !important;',
 					),
 				)
 			);
@@ -300,10 +294,10 @@ class CourseSocialShare extends BaseAddon {
 					),
 					'default'   => array(
 						'unit' => 'px',
-						'size' => 14,
+						'size' => 24,
 					),
 					'selectors' => array(
-						$icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
+						"$popup_body_wrapper .tutor_share i" => 'font-size: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -315,7 +309,7 @@ class CourseSocialShare extends BaseAddon {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px' ),
 					'selectors'  => array(
-						$icon_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						"$popup_body_wrapper .tutor_share" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 					'default'    => array(
 						'top'      => 10,
@@ -342,7 +336,7 @@ class CourseSocialShare extends BaseAddon {
 						),
 					),
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-social-share-wrap >button:not(:last-child)' => $icon_spacing,
+						"$popup_body_wrapper .tutor-social-share-wrap" => 'column-gap: {{SIZE}}{{UNIT}};',
 					),
 					'default'   => array(
 						'size' => 5,
@@ -354,7 +348,7 @@ class CourseSocialShare extends BaseAddon {
 				Group_Control_Border::get_type(),
 				array(
 					'name'      => 'image_border', // We know this mistake - TODO: 'icon_border' (for hover control condition also)
-					'selector'  => '{{WRAPPER}} .etlms-social-share-wrap > button >i',
+					'selector'  => "$popup_body_wrapper .tutor_share",
 					'separator' => 'before',
 				)
 			);
@@ -364,7 +358,7 @@ class CourseSocialShare extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					$icon_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					"$popup_body_wrapper .tutor_share" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
 					'top'      => 0,
@@ -428,11 +422,8 @@ class CourseSocialShare extends BaseAddon {
 				'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
-				'condition' => array(
-					'course_share_icon_color_settings' => 'custom',
-				),
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-share-btn >i:hover' => 'color: {{VALUE}};',
+					'.etlms-course-share-popup .social-icon:hover' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -444,7 +435,7 @@ class CourseSocialShare extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-share-btn >i:hover' => 'background-color: {{VALUE}};',
+					'.etlms-course-share-popup .tutor_share' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -459,7 +450,7 @@ class CourseSocialShare extends BaseAddon {
 					'image_border_border!' => '',
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-share-btn >i:hover' => 'border-color: {{VALUE}};',
+					"$popup_body_wrapper .tutor_share:hover" => 'border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -467,18 +458,161 @@ class CourseSocialShare extends BaseAddon {
 		$this->add_control(
 			'course_share_hover_animation',
 			array(
-				'label'        => __( 'Hover Animation', 'tutor-lms-elementor-addons' ),
-				'type'         => Controls_Manager::HOVER_ANIMATION,
-				'condition'    => array(
+				'label'     => __( 'Hover Animation', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::HOVER_ANIMATION,
+				'condition' => array(
 					'course_share_icon_shape' => array(
 						'square',
 						'rounded',
 						'circle',
 					),
 				),
-				'prefix_class' => 'etlms-animation-',
 			)
 		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'course_share_popup_style_section',
+			array(
+				'label' => __( 'Popup', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+			$this->add_control(
+				'popup_section_title',
+				array(
+					'label'     => __( 'Section Title', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'.etlms-course-share-popup div.tutor-text-medium-h5' => 'color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_control(
+				'popup_share_title',
+				array(
+					'label'     => __( 'Share Title', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'.etlms-course-share-popup div.tutor-text-medium-h6' => 'color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_control(
+				'popup_close_icon_color',
+				array(
+					'label'     => __( 'Close Icon', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'.etlms-course-share-popup span.tutor-icon-line-cross-line' => 'color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_control(
+				'popup_page_link_color',
+				array(
+					'label'     => __( 'Page Link', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'.etlms-course-share-popup div.tutor-text-regular-caption.color-text-subsued' => 'color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_control(
+				'popup_background_color',
+				array(
+					'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'.etlms-course-share-popup' => 'background-color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
+				array(
+					'name'      => 'popup_border',
+					'selector'  => '.etlms-course-share-popup',
+					'separator' => 'before',
+				)
+			);
+
+			$this->add_control(
+				'popup_border_radius',
+				array(
+					'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', '%' ),
+					'selectors'  => array(
+						'.etlms-course-share-popup' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+					'default'    => array(
+						'top'      => 5,
+						'right'    => 5,
+						'bottom'   => 5,
+						'left'     => 5,
+						'unit'     => 'px',
+						'isLinked' => true,
+					),
+				)
+			);
+
+            // input controls styles
+			$this->add_control(
+				'popup_input_text_color',
+				array(
+					'label'     => __( 'Input Text Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'.etlms-course-share-popup input.tutor-form-control' => 'color: {{VALUE}};',
+					),
+				)
+			);
+			$this->add_control(
+				'popup_input_background_color',
+				array(
+					'label'     => __( 'Input Background Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'.etlms-course-share-popup input.tutor-form-control' => 'background-color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
+				array(
+					'name'      => 'popup_input_border',
+					'selector'  => '.etlms-course-share-popup input.tutor-form-control',
+					'separator' => 'before',
+				)
+			);
+
+			$this->add_control(
+				'popup_input_border_radius',
+				array(
+					'label'      => __( 'Input Border Radius', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', '%' ),
+					'selectors'  => array(
+						'.etlms-course-share-popup input.tutor-form-control' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+					'default'    => array(
+						'top'      => 5,
+						'right'    => 5,
+						'bottom'   => 5,
+						'left'     => 5,
+						'unit'     => 'px',
+						'isLinked' => true,
+					),
+				)
+			);
+            // input controls styles end
 
 		$this->end_controls_section();
 	}
