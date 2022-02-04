@@ -171,7 +171,7 @@
 						<!--header end--> 
    
 							<!-- start loop content wrap -->
-							<div class="etlms-carousel-course-container">
+							<div class="etlms-carousel-course-container tutor-bs-d-flex tutor-bs-flex-column tutor-bs-justify-content-between">
 								<div class="tutor-loop-course-container">
 
 									<!-- loop rating -->
