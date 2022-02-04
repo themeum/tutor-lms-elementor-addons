@@ -11,6 +11,7 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use TutorLMS\Elementor\AddonsTrait;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -19,6 +20,24 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Manage content and style controls
  */
 class CourseWishlist extends BaseAddon {
+
+	/**
+	 * Layout prefix class
+	 *
+	 * @var $prefix_class_layout
+	 */
+	private static $prefix_class_layout = 'elementor-layout-';
+
+	/**
+	 * Layout prefix class
+	 *
+	 * @var $prefix_class_layout
+	 */
+	private static $prefix_class_alignment = 'elementor-align-';
+	/**
+	 * Trait for getting common controls
+	 */
+	use AddonsTrait;
 
 	/**
 	 * Addon Title
@@ -43,36 +62,95 @@ class CourseWishlist extends BaseAddon {
 	 */
 	protected function register_content_controls() {
 		$this->start_controls_section(
-			'course_title_content',
+			'course_wishlist_content_tab',
 			array(
 				'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
 			)
 		);
-		$this->add_control(
-			'course_title_html_tag',
-			array(
-				'label'   => __( 'Select Tag', 'tutor-lms-elementor-addons' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'h1' => 'h1',
-					'h2' => 'h2',
-					'h3' => 'h3',
-					'h5' => 'h5',
-					'h6' => 'h6',
-				),
-				'default' => 'h2',
-			)
-		);
-
-		$this->add_responsive_control(
-			'course_title_align',
-			$this->title_alignment_with_selectors(
+			$this->add_control(
+				'course_wishlist_icon_show',
 				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
-				),
-				'left'
-			)
-		);
+					'label'        => __( 'Show Icon', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
+
+			$this->add_control(
+				'course_wishlist_text_show',
+				array(
+					'label'        => __( 'Show Text', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'separator'    => 'after',
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
+			$this->add_control(
+				'course_wishlist_text',
+				array(
+					'label'       => esc_html__( 'Text', 'plugin-name' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => esc_html__( 'Wishlist', 'tutor-lms-elementor-addons' ),
+					'placeholder' => esc_html__( 'Type your text here', 'tutor-lms-elementor-addons' ),
+					'condition'   => array(
+						'course_wishlist_text_show' => 'yes',
+					),
+				)
+			);
+
+			$this->add_responsive_control(
+				'course_wishlist_align',
+				array(
+					'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+					'type'         => \Elementor\Controls_Manager::CHOOSE,
+					'options'      => array(
+						'flex-start' => array(
+							'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'eicon-text-align-left',
+						),
+						'center'     => array(
+							'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'eicon-text-align-center',
+						),
+						'flex-end' => array(
+							'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'eicon-text-align-right',
+						),
+					),
+					'prefix_class' => self::$prefix_class_alignment . '%s',
+					'default'      => 'flex-start',
+					'selectors'    => array(
+						'{{WRAPPER}} .etlms-course-wishlist-wrapper a ' => 'justify-content: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_responsive_control(
+				'course_wishlist_space_between',
+				array(
+					'label'      => __( 'Space Between', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::SLIDER,
+					'size_units' => array( 'px' ),
+					'range'      => array(
+						'px' => array(
+							'min' => 0,
+							'max' => 100,
+						),
+					),
+					'selectors'  => array(
+						'{{WRAPPER}} .etlms-course-wishlist-wrapper a ' => 'column-gap: {{SIZE}}{{UNIT}};',
+					),
+					'default'    => array(
+						'size' => 2,
+					),
+				)
+			);
 
 		$this->end_controls_section();
 	}
@@ -81,34 +159,68 @@ class CourseWishlist extends BaseAddon {
 	 * Style controls for style tab
 	 */
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .course-title';
+		$wishlist_wrapper = '{{WRAPPER}} .etlms-course-wishlist-wrapper';
 		// Style.
 		$this->start_controls_section(
-			'course_style_section',
+			'course_wishlist_style_section',
 			array(
-				'label' => __( 'Color & Typography', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'General Styles', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 
 		$this->add_control(
-			'course_title_color',
+			'course_wishlist_icon_color',
 			array(
-				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Icon color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$selector => 'color: {{VALUE}};',
+					"$wishlist_wrapper a i" => 'color: {{VALUE}};',
 				),
 				'default'   => '#161616',
+			)
+		);
+
+		$this->add_responsive_control(
+			'course_wishlist_icon_size',
+			array(
+				'label'      => __( 'Icon size', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 100,
+					),
+				),
+				'selectors'  => array(
+					"$wishlist_wrapper a i" => 'font-size: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 21,
+				),
+				'separator'  => 'after',
+			)
+		);
+
+		$this->add_control(
+			'course_wishlist_text_color',
+			array(
+				'label'     => __( 'Text color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					"$wishlist_wrapper a:not(i)  " => 'color: {{VALUE}};',
+				),
+				'default'   => '#212327',
 			)
 		);
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'course_title_typography',
+				'name'     => 'course_wishlist_text_typography',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $selector,
+				'selector' => "$wishlist_wrapper a:not(i)",
 			)
 		);
 
@@ -123,11 +235,21 @@ class CourseWishlist extends BaseAddon {
 	 * @return void
 	 */
 	protected function render() {
-		$settings = $this->get_settings_for_display();
+		$settings  = $this->get_settings_for_display();
+		$is_editor = \Elementor\Plugin::instance()->editor->is_edit_mode();
 		?>
-			<a href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary tutor-course-wishlist-btn" data-course-id="<?php echo get_the_ID(); ?>">
-				<i class="tutor-icon-fav-line-filled"></i> <?php esc_html_e( 'Wishlist', 'tutor-lms-elementor-addons' ); ?>
-			</a>
+			<div class="etlms-course-wishlist-wrapper">
+				<a href="#" class="action-btn <?php echo esc_attr( ! $is_editor ? 'tutor-course-wishlist-btn' : '' ); ?> tutor-text-regular-body tutor-color-text-primary tutor-bs-d-flex tutor-bs-align-items-center" data-course-id="<?php echo get_the_ID(); ?>">
+					<?php if ( 'yes' === $settings['course_wishlist_icon_show'] ) : ?>
+						<i class="tutor-icon-fav-line-filled"></i>
+					<?php endif; ?>
+					<?php
+					if ( 'yes' === $settings['course_wishlist_text_show'] ) {
+						echo esc_html( $settings['course_wishlist_text'] );
+					}
+					?>
+				</a>
+			</div>
 		<?php
 	}
 }
