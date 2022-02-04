@@ -141,14 +141,17 @@ class AddonsManager {
 			'CourseInstructors'    => array(
 				'title' => __( 'Course Instructors', 'tutor-lms-elementor-addons' ),
 			),
-			// 'CourseReviews'        => array(
-			// 	'title' => __( 'Course Reviews', 'tutor-lms-elementor-addons' ),
-			// ),
+			'CourseReviews'        => array(
+				'title' => __( 'Course Reviews', 'tutor-lms-elementor-addons' ),
+			),
 			'CourseCarousel'       => array(
 				'title' => __( 'Course Carousel', 'tutor-lms-elementor-addons' ),
 			),
 			'CourseList'           => array(
 				'title' => __( 'Course List', 'tutor-lms-elementor-addons' ),
+			),
+			'CourseWishlist'           => array(
+				'title' => __( 'Course Wishlist', 'tutor-lms-elementor-addons' ),
 			),
 		);
 	}
