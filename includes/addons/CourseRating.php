@@ -35,9 +35,9 @@ class CourseRating extends BaseAddon {
 		$this->add_responsive_control(
 			'course_rating_layout',
 			array(
-				'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
-				'type'      => \Elementor\Controls_Manager::CHOOSE,
-				'options'   => array(
+				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
 					'row'    => array(
 						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'eicon-h-align-left',
@@ -47,9 +47,10 @@ class CourseRating extends BaseAddon {
 						'icon'  => 'eicon-v-align-top',
 					),
 				),
-				'default'   => 'row',
-				'toggle'    => false,
-				'selectors' => array(
+				'default'      => 'row',
+				'prefix_class' => 'etlms-rating-layout-',
+				'toggle'       => false,
+				'selectors'    => array(
 					'{{WRAPPER}} .etlms-rating .tutor-single-course-rating' => 'display: flex; flex-direction: {{VALUE}};',
 				),
 			)
@@ -57,12 +58,29 @@ class CourseRating extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_rating_align',
-			$this->title_alignment_with_selectors(
-				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
+			array(
+				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'flex-start' => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'     => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'flex-end'   => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
 				),
-				'left'
-			),
+				'default'   => 'flex-start',
+				'selectors' => array(
+					'.etlms-rating-layout-row .tutor-single-course-rating' => 'justify-content: {{VALUE}};',
+					'.etlms-rating-layout-column .tutor-single-course-rating' => 'align-items: {{VALUE}};',
+				),
+			)
 		);
 
 		$this->end_controls_section();
