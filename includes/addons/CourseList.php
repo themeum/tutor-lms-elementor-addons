@@ -526,7 +526,7 @@ class CourseList extends BaseAddon {
 		$this->add_control(
 			'course_carousel_btn_icon_spacing',
 			array(
-				'label'      => __( 'Icon Spacing', 'tutor-lms-elementor-addons' ),
+				'label'      => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'range'      => array(
@@ -555,7 +555,7 @@ class CourseList extends BaseAddon {
 					'size' => 0,
 				),
 				'selectors'  => array(
-					$content_selector . '.etlms-loop-cart-btn-wrap a >i' => 'padding-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1991,7 +1991,7 @@ class CourseList extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$cart_text_selector => 'color: {{VALUE}} ',
+					"{{WRAPPER}} .tutor-loop-cart-btn-wrap a span:last-child, {{WRAPPER}} .list-item-button a, {{WRAPPER}} .list-item-button .cart-text" => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -2002,7 +2002,7 @@ class CourseList extends BaseAddon {
 				'label'      => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
 				'selectors'  => array(
-					$cart_selector => 'color: {{VALUE}}',
+					"{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled, {{WRAPPER}} .list-item-button .tutor-icon-cart-line-filled" => 'color: {{VALUE}} !important;',
 				),
 				'conditions' => array(
 					'relation' => 'or',
@@ -2028,7 +2028,7 @@ class CourseList extends BaseAddon {
 				'label'      => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
 				'selectors'  => array(
-					$cart_button_selector => 'background-color: {{VALUE}};',
+					$cart_button_selector => 'background-color: {{VALUE}} !important;',
 				),
 				'conditions' => array(
 					'relation' => 'or',
@@ -2062,7 +2062,7 @@ class CourseList extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$cart_text_selector . ':hover' => 'color: {{VALUE}} ',
+					'{{WRAPPER}} .tutor-loop-cart-btn-wrap a span:hover:last-child, {{WRAPPER}} .list-item-button a:hover' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -2073,7 +2073,7 @@ class CourseList extends BaseAddon {
 				'label'      => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
 				'selectors'  => array(
-					$cart_selector . ':hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled:hover, {{WRAPPER}} .list-item-button .tutor-icon-cart-line-filled:hover' => 'color: {{VALUE}} !important;',
 				),
 				'conditions' => array(
 					'relation' => 'or',
@@ -2099,7 +2099,7 @@ class CourseList extends BaseAddon {
 				'label'      => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
 				'selectors'  => array(
-					$cart_button_selector => 'background-color: {{VALUE}}',
+					$cart_button_selector . ':hover' => 'background-color: {{VALUE}} !important;',
 				),
 				'conditions' => array(
 					'relation' => 'or',
