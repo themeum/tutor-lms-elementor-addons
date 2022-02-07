@@ -274,27 +274,12 @@
 	margin: 0;
 	padding: 0;
 }
-.etlms-course-specifications ul li {
-	position: relative;
-	line-height: 1.6;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: start;
-	    -ms-flex-align: start;
-	        align-items: flex-start;
-	-webkit-box-pack: start;
-	    -ms-flex-pack: start;
-	        justify-content: flex-start;
-	margin: 0;
-}
+
 .etlms-course-specifications ul li i {
 	color: var(--tutor-primary-color);
 	line-height: 1.6;
 }
-.etlms-author-specifications-inline .etlms-course-specifications ul li {
-	display: inline-block;
-}
+
 .etlms-course-specifications-left {
 	-webkit-box-pack: start;
 	    -ms-flex-pack: start;
@@ -1341,6 +1326,19 @@
 	.etlms-course-reviews .rating-meter-col.rating-text-col {
 		margin-left: 5px;
 	}
+}
+
+.tutor-course-tags a {
+    font-size: 16px;
+    line-height: 26px;
+    text-decoration: none;
+    padding: 7px 23px;
+    border: 1px solid var(--tutor-stroke-gray);
+    color: var(--tutor-text-subsued);
+    margin-left: 15px;
+    border-radius: 6px;
+    -webkit-transition: 200ms;
+    transition: 200ms;
 }
 /*mobile*/
 

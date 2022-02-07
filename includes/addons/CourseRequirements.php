@@ -47,7 +47,7 @@ class CourseRequirements extends BaseAddon {
                 'label'        => __('Layout', 'tutor-lms-elementor-addons'),
                 'type'         => Controls_Manager::CHOOSE,
                 'options'      => [
-                    'list'   => [
+                    ''   => [
                         'title' => __('List', 'tutor-lms-elementor-addons'),
                         'icon'  => 'fa fa-list-ul',
                     ],
@@ -56,8 +56,10 @@ class CourseRequirements extends BaseAddon {
                         'icon'  => 'fa fa-ellipsis-h',
                     ],
                 ],
-                'prefix_class' => 'etlms-author-specifications-%s',
                 'default'      => 'list',
+                'selectors' => array(
+                    '{{WRAPPER}} ul.etlms-course-specification-items li'  => 'display: {{VALUE}};'
+                )
             ]
         );
         
