@@ -128,7 +128,7 @@ class CourseCarousel extends BaseAddon {
 				'label_on' => __('Show', 'tutor-lms-elementor-addons'),
 				'label_off' => __('Hide', 'your-plugin'),
 				'return_value' => 'yes',
-				'default' => 'no',
+				'default' => '',
 			]
 		);
 
@@ -209,7 +209,7 @@ class CourseCarousel extends BaseAddon {
 				'label_on' => __('Show', 'tutor-lms-elementor-addons'),
 				'label_off' => __('Hide', 'tutor-lms-elementor-addons'),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => '',
 			]
 		);
 

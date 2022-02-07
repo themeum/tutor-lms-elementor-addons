@@ -87,10 +87,10 @@
 			$listStyle = 'tutor-courses';
 		}
 		?>
-		<div class="etlms-course-list-loop-wrap <?php echo $listStyle; ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo $settings['course_list_column']; ?> etlms-course-list-
+		<div class="etlms-course-list-loop-wrap <?php echo esc_attr(  $listStyle ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $settings['course_list_column'] ); ?> etlms-course-list-
 														   <?php
-															echo $settings['course_list_skin'];
-															echo 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '';
+															echo esc_attr( $settings['course_list_skin'] );
+															echo esc_attr( 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '' );
 															?>
 		">
 
@@ -107,7 +107,7 @@
 					$thumbnail_hide = '';
 				}
 				?>
-				<div class="tutor-course-col-<?php echo $course_list_column; ?> etlms-course-list-col <?php echo $thumbnail_hide; ?>">
+				<div class="tutor-course-col-<?php echo esc_attr( $course_list_column ); ?> etlms-course-list-col <?php echo esc_attr( $thumbnail_hide ); ?>">
 					<?php
 						$image_size = $settings['course_list_image_size_size'];
 						$image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
@@ -117,7 +117,7 @@
 					<?php
 
 					// course list style omit for overlayed skin
-					if ( $settings['course_list_column'] == 1 and $settings['course_list_skin'] != 'overlayed' ) {
+					if ( $settings['course_list_column'] == 1 && $settings['course_list_skin'] != 'overlayed' ) {
 						echo 'etlms-course-list-style'; }
 					echo 'overlayed' == $settings['course_list_skin'] ? ' ' . $animation : '';
 					if ( 'yes' == $settings['card_hover_animation'] ) {
@@ -163,9 +163,7 @@
 									echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
 								}
 								?>
-							</div>                                
-					   
-								   
+							</div>   
 						</div> 
 						
 						<!--header end--> 
