@@ -116,7 +116,7 @@ class CourseLastUpdate extends BaseAddon {
                     'selectors' => [
                         $selector.' label' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#57586E'
+                    'default'   => '#757c8e'
                 ]
             );
             $this->add_group_control(
@@ -146,7 +146,7 @@ class CourseLastUpdate extends BaseAddon {
                     'selectors' => [
                         $selector.' strong' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#57586E'
+                    'default'   => '#212327'
                 ]
             );
             $this->add_group_control(
@@ -180,8 +180,8 @@ class CourseLastUpdate extends BaseAddon {
         if ($course) {
             $last_update = esc_html(get_the_modified_date());
             $markup = '<div class="etlms-lead-info etlms-course-last-update">';
-            $markup .= ($settings['course_last_update_label']) ? '<label>'.$settings['course_last_update_label'].'</label>' : '';
-            $markup .= '<strong>'. $last_update .'</strong>';
+            $markup .= ($settings['course_last_update_label']) ? '<label class="text-regular-caption color-text-hints">'.$settings['course_last_update_label'].'</label>' : '';
+            $markup .= '<strong class="text-medium-caption color-text-primary">'. $last_update .'</strong>';
             $markup .= '</div>';
             echo $markup;
         }

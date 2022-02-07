@@ -118,7 +118,6 @@ class CourseDuration extends BaseAddon {
 					'selectors' => array(
 						$selector . ' label' => 'color: {{VALUE}};',
 					),
-					'default'   => '#57586E',
 				)
 			);
 			$this->add_group_control(
@@ -148,7 +147,7 @@ class CourseDuration extends BaseAddon {
 					'selectors' => array(
 						$selector . ' strong' => 'color: {{VALUE}}',
 					),
-					'default'   => '#57586E',
+					'default'   => '#212327',
 				)
 			);
 			$this->add_group_control(
@@ -185,11 +184,11 @@ class CourseDuration extends BaseAddon {
 			?>
 			<div class="etlms-lead-info etlms-course-duration">
 				<?php if ( '' !== $settings['course_duration_label'] ) : ?>
-					<label>
+					<label class="text-regular-caption tutor-color-text-hints">
 						<?php echo esc_html( $settings['course_duration_label'] ); ?>
 					</label>
 				<?php endif; ?>
-				<strong>
+				<strong class="text-medium-caption tutor-color-text-primary">
 					<?php
 					echo wp_kses(
 						$course_duration,

@@ -117,7 +117,7 @@ class CourseLevel extends BaseAddon {
                     'selectors' => [
                         $selector.' label' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#57586E'
+                    'default'   => '#757c8e'
                 ]
             );
             $this->add_group_control(
@@ -147,7 +147,7 @@ class CourseLevel extends BaseAddon {
                     'selectors' => [
                         $selector.' strong' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#57586E'
+                    'default'   => '#212327'
                 ]
             );
             $this->add_group_control(
@@ -181,8 +181,8 @@ class CourseLevel extends BaseAddon {
         if ($course) {
             $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor-lms-elementor-addons');
             $markup = '<div class="etlms-lead-info etlms-course-level">';
-            $markup .= ($settings['course_level_label']) ? '<label>'.$settings['course_level_label'].'</label>' : '';
-            $markup .= '<strong>'. $level .'</strong>';
+            $markup .= ($settings['course_level_label']) ? '<label class="text-regular-caption color-text-hints">'.$settings['course_level_label'].'</label>' : '';
+            $markup .= '<strong class="text-medium-caption color-text-primary">'. $level .'</strong>';
             $markup .= '</div>';
             echo $markup;
         }

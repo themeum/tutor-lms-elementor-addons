@@ -104,6 +104,6 @@ class CourseTitle extends BaseAddon {
 			$title = get_the_title();
 		}
 		$settings = $this->get_settings_for_display();
-		echo sprintf( '<%1$s class="course-title">' . $title . '</%1$s>', $settings['course_title_html_tag'] );
+		echo sprintf( '<%1$s class="tutor-course-header-h1 course-title">' . $title . '</%1$s>', $settings['course_title_html_tag'] );
 	}
 }
