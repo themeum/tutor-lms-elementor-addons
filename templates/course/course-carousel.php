@@ -185,13 +185,13 @@
 										$course_students = tutor_utils()->count_enrolled_users_by_course();
 										?>
 										<div class="tutor-single-loop-meta">
-											<i class='tutor-icon-man-user-filled'></i><span><?php echo $course_students; ?></span>
+											<i class='tutor-icon-user-filled'></i><span><?php echo $course_students; ?></span>
 										</div>
 										<?php
 										if ( ! empty( $course_duration ) ) {
 											?>
 											<div class="tutor-single-loop-meta">
-												<i class='tutor-icon-clock-fill-filled'></i> <span><?php echo $course_duration; ?></span>
+												<i class='tutor-icon-clock-filled'></i> <span><?php echo $course_duration; ?></span>
 											</div>
 										<?php } ?>
 									</div>
