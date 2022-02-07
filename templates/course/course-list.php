@@ -19,7 +19,7 @@
 	/*
 	* query arguements
 	*/
-	$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+	$paged = isset( $_GET['current_page'] ) ? sanitize_text_field( $_GET['current_page'] ) : 1;
 	$args  = array(
 		'post_type'      => tutor()->course_post_type,
 		'post_status'    => 'publish',
@@ -305,14 +305,15 @@
 			$big = 999999999; // need an unlikely integer
 
 			$pagination_link_arg = array(
-				'base'      => str_replace( $big, '%#%', esc_url( site_url( 'courses/page/' . $big ) ) ),
-				'format'    => '?paged=%#%',
-				'current'   => max( 1, get_query_var( 'paged' ) ),
+				//'base'    => str_replace( $big, '%#%', esc_url( site_url( 'courses/page/' . $big ) ) ),
+				//'base'      => str_replace( $big, '%#%', '/?paged=' . $big ),
+				//'format'    => '?paged=%#%',
+				'format'    => '?current_page=%#%',
+				'current'   => max( 1, $paged ),
 				'end_size'  => $pagination_page_limit,
 				'prev_next' => $prev_next_pagination,
 				'prev_text' => __( $pagination_prev_label, 'tutor-lms-elementor-addons' ),
 				'next_text' => __( $pagination_next_label, 'tutor-lms-elementor-addons' ),
-
 				'total'     => $the_query->max_num_pages,
 			);
 
@@ -326,11 +327,11 @@
 
 					<?php if ( $the_query->found_posts > $course_list_perpage ) : ?>
 						<?php
-						$paged     = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+						$paged     = ( get_query_var( 'current_page' ) ) ? get_query_var( 'current_page' ) : 1;
 						$prev_page = $paged - 1;
 						$next_page = $paged + 1;
-						$prev_link = esc_url( site_url( 'courses/page/' . $prev_page ) );
-						$next_link = esc_url( site_url( 'courses/page/' . $next_page ) );
+						$prev_link = '/' . $prev_page;
+						$next_link = '/' . $next_page;
 						$max_page  = $the_query->max_num_pages;
 						?>
 						<?php if ( $prev_page < 1 ) : ?>
@@ -340,7 +341,6 @@
 						<?php else : ?>
 							<a class="page-numbers" href="<?php echo $prev_link; ?>">
 								<?php echo $pagination_prev_label; ?>
-
 							</a>
 						<?php endif; ?>
 
