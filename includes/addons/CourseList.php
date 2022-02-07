@@ -237,7 +237,7 @@ class CourseList extends BaseAddon {
 				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
 				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
 				'return_value' => 'yes',
-				'default'      => 'yes',
+				'default'      => '',
 			)
 		);
 
@@ -1017,6 +1017,7 @@ class CourseList extends BaseAddon {
 				'selectors' => array(
 					$footer_seperator_selector => 'border-color : {{VALUE}};',
 				),
+				'default'	=> "#fff",
 			)
 		);
 

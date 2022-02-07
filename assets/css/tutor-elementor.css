@@ -807,8 +807,8 @@
 .etlms-coursel-stacked
 .etlms-card.hover-animation 
 .etlms-carousel-course-container {
-	position:relative;
-	top: 0;
+	position:relative !important;
+	top: 0 !important;
 	-webkit-transition: top .5s;
 	-moz-transition: top .5s;
 	-o-transition: top .5s;

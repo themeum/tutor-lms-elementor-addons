@@ -87,11 +87,7 @@
 			$listStyle = 'tutor-courses';
 		}
 		?>
-		<div class="etlms-course-list-loop-wrap <?php echo esc_attr(  $listStyle ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $settings['course_list_column'] ); ?> etlms-course-list-
-														   <?php
-															echo esc_attr( $settings['course_list_skin'] );
-															echo esc_attr( 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '' );
-															?>
+		<div class="etlms-course-list-loop-wrap <?php echo esc_attr(  $listStyle ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $settings['course_list_column'] ); ?> etlms-course-list-<?php echo esc_attr( $settings['course_list_skin'] ); echo esc_attr( 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '' ); ?>
 		">
 
 			<?php
@@ -115,8 +111,7 @@
 					?>
 					<div class="etlms-card 
 					<?php
-
-					// course list style omit for overlayed skin
+					// course list style omit for overlayed skin.
 					if ( $settings['course_list_column'] == 1 && $settings['course_list_skin'] != 'overlayed' ) {
 						echo 'etlms-course-list-style'; }
 					echo 'overlayed' == $settings['course_list_skin'] ? ' ' . $animation : '';
@@ -126,9 +121,7 @@
 
 					?>
 					" >
-
 						<!-- header -->
-						
 						<div class="tutor-course-header 
 						<?php
 						echo 'overlayed' != $settings['course_list_skin'] ? ' ' . $animation : '';
