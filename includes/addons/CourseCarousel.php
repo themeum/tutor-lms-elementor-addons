@@ -385,31 +385,31 @@ class CourseCarousel extends BaseAddon {
 
 		);
 
-		$this->add_control(
-			'course_coursel_button_icon',
-			[
-				'label' => __('Icon', 'tutor-lms-elementor-addons'),
-				'type' => Controls_Manager::ICON,
+		// $this->add_control(
+		// 	'course_coursel_button_icon',
+		// 	[
+		// 		'label' => __('Icon', 'tutor-lms-elementor-addons'),
+		// 		'type' => Controls_Manager::ICON,
 
-				'label_block' => true,
-				'conditions' => [
-					'relation' => 'or',
-					'terms' => [
-						[
-							'name' => 'course_carousel_enroll_btn_type',
-							'operator' => 'in',
-							'value' => ['default_with_cart_icon', 'text_with_cart']
-						]
-					]
-				],
-				'default' => 'fa fa-shopping-cart'
-			]
-		);
+		// 		'label_block' => true,
+		// 		'conditions' => [
+		// 			'relation' => 'or',
+		// 			'terms' => [
+		// 				[
+		// 					'name' => 'course_carousel_enroll_btn_type',
+		// 					'operator' => 'in',
+		// 					'value' => ['default_with_cart_icon', 'text_with_cart']
+		// 				]
+		// 			]
+		// 		],
+		// 		'default' => 'fa fa-shopping-cart'
+		// 	]
+		// );
 
 		$this->add_control(
 			'course_carousel_btn_icon_spacing',
 			[
-				'label' => __('Icon Spacing', 'tutor-lms-elementor-addons'),
+				'label' => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'range' => [
@@ -438,7 +438,7 @@ class CourseCarousel extends BaseAddon {
 					]
 				],
 				'selectors' => [
-					$content_selector . ".etlms-loop-cart-btn-wrap a >i" => 'padding-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled, {{WRAPPER}} .list-item-button .tutor-icon-cart-line-filled' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1607,7 +1607,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					"{{WRAPPER}} .tutor-loop-course-footer a.tutor-btn" => 'color: {{VALUE}} !important;',
+					"{{WRAPPER}} .tutor-loop-cart-btn-wrap a span:last-child, {{WRAPPER}} .list-item-button a, {{WRAPPER}} .list-item-button .cart-text" => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1618,7 +1618,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Icon Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					"{{WRAPPER}} .list-item-button span.ttr-cart-line-filled" => 'color: {{VALUE}} !important;',
+					"{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled, {{WRAPPER}} .list-item-button .tutor-icon-cart-line-filled" => 'color: {{VALUE}} !important;',
 				],
 				'conditions' => [
 					'relation' => 'or',
@@ -1678,7 +1678,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Text Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					"{{WRAPPER}} .tutor-loop-course-footer a.tutor-btn:hover" => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tutor-loop-cart-btn-wrap a span:hover:last-child, {{WRAPPER}} .list-item-button a:hover, {{WRAPPER}} .list-item-button .cart-text' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1689,7 +1689,7 @@ class CourseCarousel extends BaseAddon {
 				'label'     => __('Icon Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					"{{WRAPPER}} .list-item-button span.ttr-cart-line-filled:hover" => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled:hover, {{WRAPPER}} .list-item-button .tutor-icon-cart-line-filled:hover' => 'color: {{VALUE}} !important;',
 				],
 				'conditions' => [
 					'relation' => 'or',
