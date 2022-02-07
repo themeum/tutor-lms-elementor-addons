@@ -123,7 +123,7 @@ class CourseTags extends BaseAddon {
                         'selectors' => [
                             $tag_selector => 'color: {{VALUE}};',
                         ],
-                        'default'   => '#525252'
+                        'default'   => '#5b616f'
                     ]
                 );
 
@@ -144,7 +144,7 @@ class CourseTags extends BaseAddon {
                         'selectors' => [
                             $tag_selector => 'background-color: {{VALUE}}',
                         ],
-                        'default'   => '#F7F9FA'
+                        'default'   => '#FFF'
                     ]
                 );
 
@@ -189,14 +189,6 @@ class CourseTags extends BaseAddon {
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
                             $tag_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                        'default' => [
-                            'top' => 50,
-                            'right' => 50,
-                            'bottom' => 50,
-                            'left' => 50,
-                            'unit' => 'px',
-                            'isLinked' => true
                         ],
                     ]
                 );
