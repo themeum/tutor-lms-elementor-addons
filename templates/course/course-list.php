@@ -87,7 +87,11 @@
 			$listStyle = 'tutor-courses';
 		}
 		?>
-		<div class="etlms-course-list-loop-wrap <?php echo esc_attr(  $listStyle ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $settings['course_list_column'] ); ?> etlms-course-list-<?php echo esc_attr( $settings['course_list_skin'] ); echo esc_attr( 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '' ); ?>
+		<div class="etlms-course-list-loop-wrap <?php echo esc_attr( $listStyle ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $settings['course_list_column'] ); ?> etlms-course-list-
+														   <?php
+															echo esc_attr( $settings['course_list_skin'] );
+															echo esc_attr( 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '' );
+															?>
 		">
 
 			<?php
@@ -302,12 +306,9 @@
 			$pagination_prev_label = $settings['course_list_pagination_previous_label'];
 			$pagination_next_label = $settings['course_list_pagination_next_label'];
 
-			$big = 999999999; // need an unlikely integer
+			$big = 999999999; // need an unlikely integer.
 
 			$pagination_link_arg = array(
-				//'base'    => str_replace( $big, '%#%', esc_url( site_url( 'courses/page/' . $big ) ) ),
-				//'base'      => str_replace( $big, '%#%', '/?paged=' . $big ),
-				//'format'    => '?paged=%#%',
 				'format'    => '?current_page=%#%',
 				'current'   => max( 1, $paged ),
 				'end_size'  => $pagination_page_limit,
@@ -327,31 +328,30 @@
 
 					<?php if ( $the_query->found_posts > $course_list_perpage ) : ?>
 						<?php
-						$paged     = ( get_query_var( 'current_page' ) ) ? get_query_var( 'current_page' ) : 1;
-						$prev_page = $paged - 1;
-						$next_page = $paged + 1;
-						$prev_link = '/' . $prev_page;
-						$next_link = '/' . $next_page;
-						$max_page  = $the_query->max_num_pages;
+						$current_url = strtok( $_SERVER['REQUEST_URI'], '?' );
+						$prev_page   = $paged - 1;
+						$next_page   = $paged + 1;
+						$prev_link   = $current_url . '?current_page=' . $prev_page;
+						$next_link   = $current_url . '?current_page=' . $next_page;
+						$max_page    = $the_query->max_num_pages;
 						?>
 						<?php if ( $prev_page < 1 ) : ?>
 							<span class="page-numbers">
-								<?php echo $pagination_prev_label; ?>
+								<?php echo esc_html( $pagination_prev_label ); ?>
 							</span>
 						<?php else : ?>
-							<a class="page-numbers" href="<?php echo $prev_link; ?>">
-								<?php echo $pagination_prev_label; ?>
+							<a class="page-numbers" href="<?php echo esc_url( $prev_link ); ?>">
+								<?php echo esc_html( $pagination_prev_label ); ?>
 							</a>
 						<?php endif; ?>
 
 						<?php if ( $next_page > $max_page ) : ?>
 							<span class="page-numbers">
-								<?php echo $pagination_next_label; ?>
+								<?php echo esc_html( $pagination_next_label ); ?>
 							</span>
 						<?php else : ?>
-							<a class="page-numbers" href="<?php echo $next_link; ?>">
-								<?php echo $pagination_next_label; ?>
-
+							<a class="page-numbers" href="<?php echo esc_url( $next_link ); ?>">
+								<?php echo esc_html( $pagination_next_label ); ?>
 							</a>
 						<?php endif; ?>
 

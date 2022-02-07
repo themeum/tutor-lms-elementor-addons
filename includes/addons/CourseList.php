@@ -1017,7 +1017,7 @@ class CourseList extends BaseAddon {
 				'selectors' => array(
 					$footer_seperator_selector => 'border-color : {{VALUE}};',
 				),
-				'default'	=> "#fff",
+				'default'	=> "#EBEBEB",
 			)
 		);
 
