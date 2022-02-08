@@ -824,7 +824,7 @@ class CourseContent extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					"$course_instructor_wrap .tutor-instructor-info-card-footer .tutor-px-30" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					"$course_instructor_wrap .tutor-instructor-info-card-footer" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
 					'top'      => 15,
@@ -939,7 +939,7 @@ class CourseContent extends BaseAddon {
 					'{{WRAPPER}} .etlms-course-curriculum .tutor-accordion-item-header:after' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
-					'size' => 18,
+					'size' => 32,
 				),
 			)
 		);
@@ -1686,14 +1686,14 @@ class CourseContent extends BaseAddon {
 			)
 		);
 
-		// right rating star
+		// right rating star.
 		$this->add_control(
 			'review_avg_right_stars_color',
 			array(
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .rating-progress .tutor-rating-stars span.ttr-star-line-filled' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .rating-progress .tutor-ratings .tutor-rating-stars span' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#ED9700',
 			)
@@ -1711,17 +1711,17 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .rating-progress .tutor-rating-stars span.ttr-star-line-filled' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .rating-progress .tutor-ratings .tutor-rating-stars span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
 				),
 				'default'    => array(
-					'size' => 14,
+					'size' => 18,
 				),
 			)
 		);
 
-		// right rating star end
+		// right rating star end.
 
-		// right rating star text
+		// right rating star text.
 		$this->add_control(
 			'review_avg_right_text_color',
 			array(

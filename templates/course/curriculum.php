@@ -2,11 +2,23 @@
 /**
  * Tabs menu items
  *
- * @package Course Topics
+ * @package CourseCurriculum
  */
 
 	$course_nav_items = tutor_utils()->course_nav_items();
-
+	/**
+	 * Unset nav items that are not supposed to be here
+	 *
+	 * @since v2.0.0
+	 */
+	add_filter(
+		'tutor_default_topics_active_tab',
+		function() {
+			return 'curriculum';
+		}
+	);
+	unset( $course_nav_items['info'] );
+	unset( $course_nav_items['reviews'] );
 	?>
 <div class="tutor-wrap etlms-course-curriculum">
 		<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
@@ -16,7 +28,7 @@
 				<?php
 				foreach ( $course_nav_items as $key => $subpage ) {
 					?>
-						<div class="tab-body-item <?php echo esc_attr( 'info' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
+						<div class="tab-body-item <?php echo esc_attr( 'curriculum' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {

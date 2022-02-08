@@ -5,9 +5,9 @@
  * @package Course Topics
  */
 
-	$course_nav_items = tutor_utils()->course_nav_items();
+$course_nav_items = tutor_utils()->course_nav_items();
 
-	?>
+?>
 <div class="tutor-wrap etlms-course-curriculum">
 		<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
 		<div class="tutor-default-tab tutor-course-details-tab tutor-tab-has-seemore tutor-mt-30">

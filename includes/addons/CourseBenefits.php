@@ -3,6 +3,8 @@
  * Course Benefits
  *
  * @since 1.0.0
+ *
+ * @package CourseBenefits
  */
 
 namespace TutorLMS\Elementor\Addons;
@@ -12,19 +14,39 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
-
+/**
+ * Register controls for content and styles tab
+ */
 class CourseBenefits extends BaseAddon {
 
+	/**
+	 * Traits for layout and alignment controls
+	 */
 	use \TutorLMS\Elementor\AddonsTrait;
 
+	/**
+	 * Alignment prefix class
+	 *
+	 * @var string
+	 */
 	private static $prefix_class_alignment = 'elementor-align-';
 
+	/**
+	 * Title of this addon
+	 *
+	 * @return string
+	 */
 	public function get_title() {
 		return __( 'Course Benefits', 'tutor-lms-elementor-addons' );
 	}
 
+	/**
+	 * Register content tab controls
+	 *
+	 * @return void
+	 */
 	protected function register_content_controls() {
 		$this->start_controls_section(
 			'what_i_will_learn_section',
@@ -88,18 +110,20 @@ class CourseBenefits extends BaseAddon {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Style tab controls
+	 *
+	 * @return void
+	 */
 	protected function register_style_controls() {
-		$selector       = '.etlms-course-specifications.etlms-course-benefits';
-		$title_selector = $selector . ' h3';
-		$list_selector  = $selector . ' .etlms-course-specification-items li';
-		$icon_selector  = $list_selector . ' i';
-		$text_selector  = $list_selector . ' span';
-
+		// course benefit style controls.
+		$course_benefit_selector       = '{{WRAPPER}} .etlms-course-benefits';
+		$course_benefit_title_selector = "$course_benefit_selector .tutor-course-details-widget-title .tutor-color-text-primary";
 		/* Title Section */
 		$this->start_controls_section(
 			'course_benefits_title_section',
 			array(
-				'label' => __( 'Section Title', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Course Benefit Title', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -109,7 +133,7 @@ class CourseBenefits extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$title_selector => 'color: {{VALUE}}',
+					$course_benefit_title_selector => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -118,23 +142,23 @@ class CourseBenefits extends BaseAddon {
 			array(
 				'name'     => 'course_benefits_title_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $title_selector,
+				'selector' => $course_benefit_title_selector,
 			)
 		);
 		$this->add_responsive_control(
-			'etlms_heading_gap',
+			'course_benefit_etlms_heading_gap',
 			array(
 				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
 					'px' => array(
-						'min' => 0,
-						'max' => 50,
+						'min' => -50,
+						'max' => 100,
 					),
 				),
 				'selectors'  => array(
-					$title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					"$course_benefit_selector .tutor-course-details-widget-title" => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 15,
@@ -147,7 +171,7 @@ class CourseBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'course_benefits_list_section',
 			array(
-				'label' => __( 'List', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Course Benefit List', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -164,8 +188,8 @@ class CourseBenefits extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'.etlms-author-specifications-list ' . $list_selector . ':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-					'.etlms-author-specifications-inline ' . $list_selector . ':not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'.etlms-course-specification-items li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 15,
@@ -177,7 +201,7 @@ class CourseBenefits extends BaseAddon {
 			array(
 				'name'     => 'course_benefits_border',
 				'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-				'selector' => $list_selector,
+				'selector' => "$course_benefit_selector .etlms-course-specification-items li",
 			)
 		);
 		$this->add_responsive_control(
@@ -187,7 +211,7 @@ class CourseBenefits extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					$list_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					"$course_benefit_selector .etlms-course-specification-items li" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -198,7 +222,7 @@ class CourseBenefits extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					$list_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					"$course_benefit_selector .etlms-course-specification-items li" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'separator'  => 'before',
 			)
@@ -209,7 +233,7 @@ class CourseBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'course_benefits_icon_section',
 			array(
-				'label' => __( 'Icon', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Course Benefit Icon', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -219,7 +243,7 @@ class CourseBenefits extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$icon_selector => 'color: {{VALUE}}',
+					"$course_benefit_selector .etlms-course-specification-items li i" => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -236,7 +260,7 @@ class CourseBenefits extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
+					"$course_benefit_selector .etlms-course-specification-items li i" => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 16,
@@ -249,7 +273,7 @@ class CourseBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'course_benefits_text_section',
 			array(
-				'label' => __( 'Text', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Course Benefit Text', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -259,7 +283,7 @@ class CourseBenefits extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$text_selector => 'color: {{VALUE}}',
+					"$course_benefit_selector .etlms-course-specification-items li span" => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -276,7 +300,7 @@ class CourseBenefits extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$text_selector => 'padding-left: {{SIZE}}{{UNIT}};',
+					"$course_benefit_selector .etlms-course-specification-items li span" => 'padding-left: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 7,
@@ -288,10 +312,11 @@ class CourseBenefits extends BaseAddon {
 			array(
 				'name'     => 'course_benefits_text_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $text_selector,
+				'selector' => "$course_benefit_selector .etlms-course-specification-items li span",
 			)
 		);
 		$this->end_controls_section();
+		// course benefit style controls end.
 	}
 
 	/**
