@@ -7,11 +7,6 @@
 
 do_action( 'tutor_course/single/before/benefits' );
 $benefits = tutor_course_benefits();
-// if no benefits then return.
-if ( ! is_array( $benefits ) && ! count( $benefits ) ) {
-	return;
-}
-
 ?>
 
 <div class="etlms-course-specifications etlms-course-benefits">

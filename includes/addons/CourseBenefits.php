@@ -294,21 +294,37 @@ class CourseBenefits extends BaseAddon {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Render output data
+	 *
+	 * @param array $instance | instance of addons.
+	 *
+	 * @return void
+	 */
 	protected function render( $instance = array() ) {
-		$disable_option = (bool) get_tutor_option( 'disable_course_benefits' );
+		$disable_option = ! (bool) get_tutor_option( 'enable_course_benefits' );
 		if ( $disable_option ) {
-			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course benefits from tutor settings', 'tutor-lms-elementor-addons' );
+			if ( $this->is_elementor_editor() ) {
+				esc_html_e( 'Please enable course benefits from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}
-		$course = etlms_get_course();
-		if ( $course ) {
+
+		$course   = etlms_get_course();
+		$benefits = tutor_course_benefits();
+		if ( $course && is_array( $benefits ) && count( $benefits ) ) {
 			ob_start();
 			$settings = $this->get_settings_for_display();
 			include etlms_get_template( 'course/benefits' );
 			$output = apply_filters( 'tutor_course/single/benefits_html', ob_get_clean() );
-			echo $output;
+			// PHPCS - the variable $output holds safe data.
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		} else {
+			$op = '';
+			if ( $this->is_elementor_editor() ) {
+				$op = __( 'Please add Course Benefits from Tutor course builder', 'tutor-lms-elementor-addons' );
+			}
+			echo esc_html( $op );
 		}
 	}
 }
