@@ -308,7 +308,8 @@ class CourseRequirements extends BaseAddon {
 			$settings = $this->get_settings_for_display();
 			include etlms_get_template( 'course/requirements' );
 			$output = apply_filters( 'tutor_course/single/requirements_html', ob_get_clean() );
-			echo $output;
+			// PHPCS - the variable $output holds safe data.
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		} else {
 			$op = '';
 			if ( $this->is_elementor_editor() ) {
