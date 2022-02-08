@@ -1437,7 +1437,9 @@ class CourseEnrolmentBox extends BaseAddon {
 			} else {
 				include etlms_get_template( 'course/enrollment' );
 			}
-			echo ob_get_clean();
+			$output = ob_get_clean();
+			// PHPCS - the variable $output holds safe data.
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 }

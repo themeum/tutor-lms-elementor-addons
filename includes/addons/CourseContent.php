@@ -1936,7 +1936,7 @@ class CourseContent extends BaseAddon {
 		ob_start();
 		$course = etlms_get_course();
 		if ( $course ) {
-			include etlms_get_template( 'course/course-topics' );
+			include etlms_get_template( 'course/content' );
 			$output = ob_get_clean();
 			// PHPCS - the variable $title_html holds safe data.
 			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

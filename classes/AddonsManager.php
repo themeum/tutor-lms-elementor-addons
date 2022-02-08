@@ -114,6 +114,9 @@ class AddonsManager {
 			'CourseEnrolmentBox'   => array(
 				'title' => __( 'Course Enrolment Box', 'tutor-lms-elementor-addons' ),
 			),
+			'CoursePurchase'   => array(
+				'title' => __( 'Course Purchase', 'tutor-lms-elementor-addons' ),
+			),
 			'CourseMaterials'      => array(
 				'title' => __( 'Course Materials', 'tutor-lms-elementor-addons' ),
 			),
@@ -137,6 +140,9 @@ class AddonsManager {
 			),
 			'CourseContent'     => array(
 				'title' => __( 'Course Content', 'tutor-lms-elementor-addons' ),
+			),
+			'CourseCurriculum'     => array(
+				'title' => __( 'Course Curriculum', 'tutor-lms-elementor-addons' ),
 			),
 			'CourseInstructors'    => array(
 				'title' => __( 'Course Instructors', 'tutor-lms-elementor-addons' ),
