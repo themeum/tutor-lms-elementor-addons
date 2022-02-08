@@ -122,7 +122,7 @@ class AssetsManager {
 		);
 	}
 
-	// Add default template library
+	// Add default template library.
 	public static function set_default_template() {
 		global $post;
 		$postID   = $post->ID;
