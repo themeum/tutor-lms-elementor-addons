@@ -756,14 +756,6 @@ class CourseCurriculum extends BaseAddon {
 				array( $this, 'filter_topics_title' )
 			);
 		}
-		if ( '' !== $settings['reviews_title'] ) {
-			add_filter(
-				'tutor_course_reviews_section_title',
-				function() use ( $settings ) {
-					return esc_html( $settings['reviews_title'] );
-				}
-			);
-		}
 		ob_start();
 		$course = etlms_get_course();
 		if ( $course ) {
