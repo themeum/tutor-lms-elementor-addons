@@ -135,8 +135,8 @@ class AddonsManager {
 			'CourseBenefits'       => array(
 				'title' => __( 'Course Benefits', 'tutor-lms-elementor-addons' ),
 			),
-			'CourseCurriculum'     => array(
-				'title' => __( 'Course Curriculum', 'tutor-lms-elementor-addons' ),
+			'CourseContent'     => array(
+				'title' => __( 'Course Content', 'tutor-lms-elementor-addons' ),
 			),
 			'CourseInstructors'    => array(
 				'title' => __( 'Course Instructors', 'tutor-lms-elementor-addons' ),
