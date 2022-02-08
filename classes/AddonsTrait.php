@@ -178,4 +178,15 @@ trait AddonsTrait {
 		$align['selectors'] = $selectors;
 		return $align;
 	}
+
+	/**
+	 * Check is elementor editor mode or not
+	 *
+	 * @since v2.0.0
+	 *
+	 * return bool, true if editor otherwise false
+	 */
+	public function is_elementor_editor() {
+		return \Elementor\Plugin::instance()->editor->is_edit_mode() ? true : false;
+	}
 }
