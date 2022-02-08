@@ -47,10 +47,10 @@ class CourseTargetAudience extends BaseAddon {
 		$this->add_responsive_control(
 			'course_target_audience_layout',
 			array(
-				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
-				'type'         => Controls_Manager::CHOOSE,
-				'options'      => array(
-					''   => array(
+				'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => array(
+					''       => array(
 						'title' => __( 'List', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'fa fa-list-ul',
 					),
@@ -59,10 +59,10 @@ class CourseTargetAudience extends BaseAddon {
 						'icon'  => 'fa fa-ellipsis-h',
 					),
 				),
-				'default'      => 'list',
-                'selectors'     => array(
-                    '{{WRAPPER}} ul.etlms-course-specification-items li' => 'display: {{VALUE}};'
-                )
+				'default'   => 'list',
+				'selectors' => array(
+					'{{WRAPPER}} ul.etlms-course-specification-items li' => 'display: {{VALUE}};',
+				),
 			)
 		);
 
@@ -293,21 +293,29 @@ class CourseTargetAudience extends BaseAddon {
 	}
 
 	protected function render( $instance = array() ) {
-		$disable_option = (bool) get_tutor_option( 'disable_course_target_audience' );
+		$disable_option = ! (bool) get_tutor_option( 'enable_course_target_audience' );
 		if ( $disable_option ) {
-			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course target audience from tutor settings', 'tutor-lms-elementor-addons' );
+			if ( $this->is_elementor_editor() ) {
+				esc_html_e( 'Please enable course target audience from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}
 
-		$course = etlms_get_course();
-		if ( $course ) {
+		$course          = etlms_get_course();
+		$target_audience = tutor_course_target_audience();
+		if ( $course && is_array( $target_audience ) && count( $target_audience ) ) {
 			ob_start();
 			$settings = $this->get_settings_for_display();
 			include etlms_get_template( 'course/target-audience' );
 			$output = apply_filters( 'tutor_course/single/audience_html', ob_get_clean() );
-			echo $output;
+			// PHPCS - the variable $output holds safe data.
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		} else {
+			$op = '';
+			if ( $this->is_elementor_editor() ) {
+				$op = __( 'Please add Target Audience from Tutor course builder', 'tutor-lms-elementor-addons' );
+			}
+			echo esc_html( $op );
 		}
 	}
 }
