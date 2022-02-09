@@ -708,10 +708,10 @@ class CourseCurriculum extends BaseAddon {
 					$lesson_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
-					'top'    => 15,
-					'right'  => 20,
-					'bottom' => 15,
-					'left'   => 20,
+					'top'    => 0,
+					'right'  => 10,
+					'bottom' => 0,
+					'left'   => 10,
 					'unit'   => 'px',
 				),
 			)

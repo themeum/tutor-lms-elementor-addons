@@ -142,14 +142,36 @@ class CourseContent extends BaseAddon {
 					),
 				)
 			);
-			$benefits_alignment = $this->etlms_alignment();
-			unset( $benefits_alignment['prefix'] );
-			$benefits_alignment['selectors'] = array(
-				'.etlms-course-benefits' => 'text-align: {{VALUE}};',
-			);
+			// $benefits_alignment = $this->etlms_alignment();
+			// unset( $benefits_alignment['prefix'] );
+			// $benefits_alignment['selectors'] = array(
+			// 	'{{WRAPPER}} .etlms-course-specifications.etlms-course-benefits' => 'text-align: {{VALUE}};',
+			// );
 			$this->add_responsive_control(
-				'course_benefits_alignments',
-				$benefits_alignment,
+				'course_benefits_alignments_only',
+				array(
+					'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+					'type'         => \Elementor\Controls_Manager::CHOOSE,
+					'options'      => array(
+						'left'   => array(
+							'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'eicon-text-align-left',
+						),
+						'center' => array(
+							'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'eicon-text-align-center',
+						),
+						'right'  => array(
+							'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+							'icon'  => 'eicon-text-align-right',
+						),
+					),
+					'default'      => 'left',
+					'selectors'	=> array(
+						'{{WRAPPER}} .etlms-course-specifications.etlms-course-benefits' => 'text-align: {{VALUE}};',
+					),
+					'toggle'       => false,
+				)
 			);
 		$this->end_controls_section();
 		// what i will learn section end.
@@ -903,10 +925,10 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$topic_header => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					"{{WRAPPER}} #tutor-course-details-tab-curriculum .tutor-course-topics-header" => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
-					'size' => 20,
+					'size' => -10,
 				),
 				'separator'  => 'before',
 			)
@@ -1445,10 +1467,10 @@ class CourseContent extends BaseAddon {
 					$lesson_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
-					'top'    => 15,
-					'right'  => 20,
-					'bottom' => 15,
-					'left'   => 20,
+					'top'    => 0,
+					'right'  => 10,
+					'bottom' => 0,
+					'left'   => 10,
 					'unit'   => 'px',
 				),
 			)
@@ -1522,7 +1544,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tutor-course-topics-header-left' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #tutor-course-details-tab-reviews .tutor-course-topics-header' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 8,
