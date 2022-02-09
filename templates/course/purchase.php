@@ -197,13 +197,6 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 					<?php
 			} elseif ( $is_purchasable ) {
 				?>
-				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
-					<div>
-						<span class="text-bold-h4 tutor-color-text-primary course-price">
-							<?php echo wp_kses_post( tutor_course_price() ); ?>
-						</span>
-					</div>
-				</div>
 				<?php
 
 				if ( $tutor_course_sell_by ) {

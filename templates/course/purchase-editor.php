@@ -77,13 +77,6 @@ $button_size          = $settings['course_enroll_buttons_size'];
 				</form>
 			<?php else : ?>
 			<?php if ( $is_purchasable ) : ?>	
-				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
-					<div>
-						<span class="text-bold-h4 tutor-color-text-primary course-price">
-							<?php echo wp_kses_post( tutor_course_price() ); ?>
-						</span>
-					</div>
-				</div>
 				<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
 
 			<?php else : ?>
@@ -105,10 +98,10 @@ $button_size          = $settings['course_enroll_buttons_size'];
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
 						<span class="text">
-						You enrolled this course on	
+						<?php esc_html_e( 'You enrolled this course on', 'tutor-lms-elementor-addons' ); ?>	
 						</span>					
 						<span class="text-bold-small tutor-color-success tutor-ml-3 tutor-enrolled-info-date">
-						January 31, 2022(Dummy date)					
+						<?php esc_html_e( 'January 31, 2022(Dummy date)', 'tutor-lms-elementor-addons' ); ?>					
 						</span>
 					</span>
 				</div>
