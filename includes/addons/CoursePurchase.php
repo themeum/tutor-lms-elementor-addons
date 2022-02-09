@@ -471,7 +471,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper .tutor-text-bold-h4:not(.course-price)" => 'color: {{VALUE}};',
+						"$course_price_wrapper .tutor-text-bold-h4" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -482,7 +482,7 @@ class CoursePurchase extends BaseAddon {
 				array(
 					'name'     => 'course_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper .tutor-text-bold-h4:not(.course-price)",
+					'selector' => "$course_price_wrapper .tutor-text-bold-h4",
 				)
 			);
 

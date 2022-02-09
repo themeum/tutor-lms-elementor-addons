@@ -24,6 +24,24 @@
 				}
 			}
 		});
+		elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-content.default', function ($scope, $) {
+			if (etlmsUtility.is_editor_mode) {
+				const accordionItemHeaders = document.querySelectorAll('.tutor-accordion-item-header');
+				if (accordionItemHeaders) {
+					accordionItemHeaders.forEach((accordionItemHeader) => {
+						accordionItemHeader.addEventListener('click', () => {
+							accordionItemHeader.classList.toggle('is-active');
+							const accordionItemBody = accordionItemHeader.nextElementSibling;
+							if (accordionItemHeader.classList.contains('is-active')) {
+								accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + 'px';
+							} else {
+								accordionItemBody.style.maxHeight = 0;
+							}
+						});
+					});
+				}
+			}
+		});
 
 		/**
 		 * Course Carousel

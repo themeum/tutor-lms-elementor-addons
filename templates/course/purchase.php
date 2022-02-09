@@ -69,10 +69,10 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 	<div class="tutor-course-sidebar-card-body tutor-p-30 <?php echo $login_class; ?>" data-login_url="<?php echo $login_url; ?>">
 		<?php
 		if ( $is_enrolled ) {
-			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership
+			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership.
 			do_action( 'tutor_course/single/actions_btn_group/before' );
 
-			// Course Info
+			// Course Info.
 			$completed_lessons   = tutor_utils()->get_completed_lesson_count_by_course();
 			$completed_percent   = tutor_utils()->get_course_completed_percent();
 			$is_completed_course = tutor_utils()->is_completed_course();
