@@ -7,7 +7,8 @@
 
 $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $settings['course_enrolment_edit_mode'];
-
+$product_id           = tutor_utils()->get_course_product_id();
+$product              = wc_get_product( $product_id );
 $is_purchasable       = tutor_utils()->is_course_purchasable();
 $sidebar_meta         = apply_filters(
 	'tutor/course/single/sidebar/metadata',
@@ -47,26 +48,6 @@ $button_size          = $settings['course_enroll_buttons_size'];
 			$button_class = 'tutor-is-fullwidth tutor-btn  tutor-is-fullwidth tutor-pr-0 tutor-pl-0  start-continue-retake-button';
 		?>
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
-				<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
-					<span class="color-text-primary text-medium-h6">
-						<?php echo esc_html( $settings['course_progress_title_text'], 'tutor-lms-elementor-addons' ); ?>
-					</span>
-					<div class="list-item-progress tutor-mt-16">
-						<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
-							<span class="progress-steps">
-								<?php echo esc_html(  5 ); ?>/
-								<?php echo esc_html( 10 ); ?>
-							</span>
-							<span class="progress-percentage"> 
-								<?php echo esc_html( '50%' ); ?>
-								<?php esc_html_e( 'Complete', 'tutor-lms-elementor-addons' ); ?>
-							</span>
-						</div>
-						<div class="progress-bar tutor-mt-10" style="--progress-value: 50%;">
-							<span class="progress-value"></span>
-						</div>
-					</div>
-				</div>
 				<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
 						<?php esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' ); ?>
 				</a>		
@@ -76,15 +57,14 @@ $button_size          = $settings['course_enroll_buttons_size'];
 					</button>
 				</form>
 			<?php else : ?>
-			<?php if ( $is_purchasable ) : ?>	
-				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
-					<div>
-						<span class="text-bold-h4 tutor-color-text-primary course-price">
-							<?php echo wp_kses_post( tutor_course_price() ); ?>
-						</span>
-					</div>
-				</div>
-				<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
+				<?php if ( $is_purchasable ) : ?>	
+
+				<form action="<?php echo esc_url( apply_filters( 'tutor_course_add_to_cart_form_action', get_permalink( get_the_ID() ) ) ); ?>" method="post" enctype="multipart/form-data">
+					<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
+						<span class="btn-icon tutor-icon-cart-filled"></span>
+						<span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
+					</button>
+				</form>
 
 			<?php else : ?>
 				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">

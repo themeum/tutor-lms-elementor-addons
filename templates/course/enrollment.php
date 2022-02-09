@@ -7,7 +7,7 @@
  * @package ETLMCourseEnrollment
  */
 
-// Utillity data
+// Utillity data.
 $is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
 $lesson_url            = tutor_utils()->get_course_first_lesson();
 $is_administrator      = tutor_utils()->has_user_role( 'administrator' );
@@ -17,12 +17,13 @@ $is_privileged_user    = $course_content_access && ( $is_administrator || $is_in
 $tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
 $is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
 
-// Monetization info
+// Monetization info.
 $monetize_by              = tutor_utils()->get_option( 'monetize_by' );
 $enable_guest_course_cart = tutor_utils()->get_option( 'enable_guest_course_cart' );
+$product_id               = tutor_utils()->get_course_product_id();
+$product                  = wc_get_product( $product_id );
 $is_purchasable           = tutor_utils()->is_course_purchasable();
-
-// Get login url if
+// Get login url if.
 $is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
 $auth_url                = $is_tutor_login_disabled ? isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) : '' : '';
 
@@ -45,7 +46,7 @@ $default_meta = array(
 	),
 );
 
-// Add level if enabled
+// Add level if enabled.
 if ( tutor_utils()->get_option( 'enable_course_level', true, true ) ) {
 	array_unshift(
 		$default_meta,
@@ -81,29 +82,6 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 			$course_id           = get_the_ID();
 			$course_progress     = tutor_utils()->get_course_completed_percent( $course_id, 0, true );
 			?>
-			<!-- course progress -->
-			<?php if ( tutor_utils()->get_option( 'enable_course_progress_bar', true, true ) && is_array( $course_progress ) && count( $course_progress ) ) : ?>
-				<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
-					<span class="tutor-color-text-primary tutor-text-medium-h6">
-						<?php echo esc_html( $settings['course_progress_title_text'], 'tutor' ); ?>
-					</span>
-					<div class="list-item-progress tutor-mt-16">
-						<div class="text-regular-body tutor-color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
-							<span class="progress-steps">
-								<?php echo esc_html( $course_progress['completed_count'] ); ?>/
-								<?php echo esc_html( $course_progress['total_count'] ); ?>
-							</span>
-							<span class="progress-percentage"> 
-								<?php echo esc_html( $course_progress['completed_percent'] . '%' ); ?>
-								<?php esc_html_e( 'Complete', 'tutor' ); ?>
-							</span>
-						</div>
-						<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
-							<span class="progress-value"></span>
-						</div>
-					</div>
-				</div>
-			<?php endif; ?>
 			<?php
 			$start_content = '';
 
@@ -196,20 +174,13 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 					</div>
 					<?php
 			} elseif ( $is_purchasable ) {
-				?>
-				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
-					<div>
-						<span class="text-bold-h4 tutor-color-text-primary course-price">
-							<?php echo wp_kses_post( tutor_course_price() ); ?>
-						</span>
-					</div>
-				</div>
-				<?php
-
-				if ( $tutor_course_sell_by ) {
-					// Load template based on monetization option
+				if ( 'woocommerce' === $tutor_course_sell_by ) {
+					// load from Tutor LMS Elementor addon.
+					include ETLMS_TEMPLATE . 'add-to-cart-woocommerce.php';
+				} else {
 					tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by );
-				} elseif ( $is_public ) {
+				}
+				if ( $is_public ) {
 					// Get the first content url
 					$first_lesson_url                       = tutor_utils()->get_course_first_lesson( get_the_ID(), tutor()->lesson_post_type );
 					! $first_lesson_url ? $first_lesson_url = tutor_utils()->get_course_first_lesson( get_the_ID() ) : 0;
