@@ -293,7 +293,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .text-medium-h6" => 'color: {{VALUE}};',
+					"$progress_wrapper .tutor-text-medium-h6" => 'color: {{VALUE}};',
 				),
 				'default'   => '#212327',
 			)
@@ -303,7 +303,7 @@ class CoursePurchase extends BaseAddon {
 			array(
 				'name'     => 'course_status_title_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$progress_wrapper .text-medium-h6",
+				'selector' => "$progress_wrapper .tutor-text-medium-h6",
 			)
 		);
 		$this->add_responsive_control(
