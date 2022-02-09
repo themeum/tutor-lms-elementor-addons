@@ -16,11 +16,16 @@ $share_config  = array(
 );
 $section_title = $settings['course_share_section_title'];
 $share_title   = $settings['course_share_title'];
+
 ?>
 
 <div class="etlms-course-share">
 	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary">
-		<?php \Elementor\Icons_Manager::render_icon( $settings['course_share_icon'], array( 'aria-hidden' => 'true' ) ); ?>
+		<?php if ( isset( $settings['course_share_icon']['value'] ) && '' !== $settings['course_share_icon']['value'] ) : ?>
+			<?php \Elementor\Icons_Manager::render_icon( $settings['course_share_icon'], array( 'aria-hidden' => 'true' ) ); ?>
+		<?php else : ?>
+			<i class="tutor-icon-share-filled"></i>
+		<?php endif; ?>
 		<span class="share-text">
 			<?php if ( 'yes' === $settings['course_share_label_content'] ) : ?>
 				<?php esc_html_e( 'Share', 'tutor-lms-elementor-addons' ); ?>

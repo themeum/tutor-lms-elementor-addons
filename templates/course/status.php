@@ -5,7 +5,7 @@
  * @package ETLMSCourseProgress
  */
 
-$course_progress = tutor_utils()->get_course_completed_percent( $course_id, 0, true );
+$course_progress = tutor_utils()->get_course_completed_percent( get_the_ID(), 0, true );
 $is_editor       = \Elementor\Plugin::instance()->editor->is_edit_mode();
 
 if ( tutor_utils()->get_option( 'enable_course_progress_bar', true, true ) && is_array( $course_progress ) && count( $course_progress ) ) : ?>

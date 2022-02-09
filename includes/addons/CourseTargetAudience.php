@@ -50,7 +50,7 @@ class CourseTargetAudience extends BaseAddon {
 				'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
-					''       => array(
+					'list-item'       => array(
 						'title' => __( 'List', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'fa fa-list-ul',
 					),
@@ -59,7 +59,8 @@ class CourseTargetAudience extends BaseAddon {
 						'icon'  => 'fa fa-ellipsis-h',
 					),
 				),
-				'default'   => 'list',
+				'default'   => 'list-item',
+				'prefix_class'	=> 'etlms-target-audience-layout-%s',
 				'selectors' => array(
 					'{{WRAPPER}} ul.etlms-course-specification-items li' => 'display: {{VALUE}};',
 				),
@@ -162,8 +163,8 @@ class CourseTargetAudience extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'.etlms-author-specifications-list ' . $list_selector . ':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-					'.etlms-author-specifications-inline ' . $list_selector . ':not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'.etlms-target-audience-layout-list-item ul.etlms-course-specification-items li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'.etlms-target-audience-layout-inline ul.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 5,

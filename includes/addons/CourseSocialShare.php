@@ -43,7 +43,6 @@ class CourseSocialShare extends BaseAddon {
 				'label'   => esc_html__( 'Icon', 'plugin-name' ),
 				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => array(
-					'value'   => 'fas fa-share',
 					'library' => 'solid',
 				),
 			)
@@ -201,7 +200,7 @@ class CourseSocialShare extends BaseAddon {
 			array(
 				'name'     => 'content_typography',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				//'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => "$share_wrapper .share-text",
 			)
 		);
