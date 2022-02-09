@@ -1,39 +1,35 @@
 <?php
+/**
+ * Course progress template
+ *
+ * @package ETLMSCourseProgress
+ */
 
-$position = 'outside';
-$display = 'show';
+$course_progress = tutor_utils()->get_course_completed_percent( $course_id, 0, true );
+$is_editor       = \Elementor\Plugin::instance()->editor->is_edit_mode();
 
-if (isset($settings['course_status_percent_position'])) {
-    $position = $settings['course_status_percent_position'];
-}
-if (isset($settings['course_status_display_percent'])) {
-    $display = $settings['course_status_display_percent'];
-}
-
-//Get completed percentage for course
-$completed_count = (\Elementor\Plugin::instance()->editor->is_edit_mode()) ? 15 :tutor_utils()->get_course_completed_percent();
-
-do_action('tutor_course/single/enrolled/before/lead_info/progress_bar');
-?>
-<div class="etlms-course-enrolled-info">
-    <div class="etlms-course-status">
-        <h4 class="tutor-segment-title">
-            <?php esc_html_e($settings['section_title_text'], 'tutor-lms-elementor-addons'); ?>
-        </h4>
-        <div class="etlms-progress-bar-wrap etlms-progress-<?= $position ?>">
-            <div class="etlms-progress-bar">
-                <div class="etlms-progress-filled" style="width:<?= $completed_count . '%;' ?>">
-                </div>
-            </div>
-            <?php if ($display == 'show') : ?>
-                <div class="etlms-progress-percent">
-                    <h4><?php _e($completed_count, 'tutor-lms-elementor-addons'); ?>%</h4>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>
-
+if ( tutor_utils()->get_option( 'enable_course_progress_bar', true, true ) && is_array( $course_progress ) && count( $course_progress ) ) : ?>
+	<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
+		<span class="tutor-color-text-primary tutor-text-medium-h6">
+			<?php echo esc_html( $settings['course_progress_title_text'], 'tutor' ); ?>
+		</span>
+		<div class="list-item-progress tutor-mt-16">
+			<div class="text-regular-body tutor-color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+				<span class="progress-steps">
+					<?php echo esc_html( $is_editor ? 5 : $course_progress['completed_count'] ); ?>/
+					<?php echo esc_html( $is_editor ? 10 : $course_progress['total_count'] ); ?>
+				</span>
+				<span class="progress-percentage"> 
+					<?php echo esc_html( $is_editor ? '50%' : $course_progress['completed_percent'] . '%' ); ?>
+					<?php esc_html_e( 'Complete', 'tutor' ); ?>
+				</span>
+			</div>
+			<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $is_editor ? '50' : $course_progress['completed_percent'] ); ?>%;">
+				<span class="progress-value"></span>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>
 <?php
-do_action('tutor_course/single/enrolled/after/lead_info/progress_bar');
+do_action( 'tutor_course/single/enrolled/after/lead_info/progress_bar' );
 ?>
