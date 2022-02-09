@@ -307,6 +307,10 @@ class CourseCategories extends BaseAddon {
 				</div>
 			</div>
 			<?php
+		} else {
+			if ( $this->is_elementor_editor() ) {
+				esc_html_e( 'Please add category from Tutor course builder', 'tutor-lms-elementor-addons' );
+			}
 		}
 	}
 
