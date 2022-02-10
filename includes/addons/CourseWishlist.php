@@ -49,15 +49,6 @@ class CourseWishlist extends BaseAddon {
 	}
 
 	/**
-	 * Icon for the addons that will be visible on elementor panel
-	 *
-	 * @return string | icon name
-	 */
-	public function get_icon() {
-		return 'eicon-heart-o';
-	}
-
-	/**
 	 * General settings controls for content tab
 	 */
 	protected function register_content_controls() {

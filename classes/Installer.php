@@ -216,4 +216,5 @@ class Installer {
 	public function activate_elementor_free() {
 		activate_plugin( 'elementor/elementor.php' );
 	}
+
 }

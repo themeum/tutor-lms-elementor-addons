@@ -15,6 +15,7 @@ const cleanCSS = require('gulp-clean-css');
 
 var tasks = {
 	tutor_elementor_min: {src: "assets/css/tutor-elementor.css", mode: 'compressed', destination: 'tutor-elementor.min.css'},
+	tutor_elementor_icon: {src: "assets/css/tutor-elementor-icons.css", mode: 'compressed', destination: 'tutor-elementor-icons.min.css'},
 };
 
 var task_keys = Object.keys(tasks);
@@ -111,6 +112,7 @@ gulp.task('minify-css', () => {
 
 gulp.task("watch", function() {
 	watch('assets/css/tutor-elementor.css', gulp.series(...task_keys));
+	watch('assets/css/tutor-elementor-icons.css', gulp.series(...task_keys));
 });
 /**
  * Export tasks
