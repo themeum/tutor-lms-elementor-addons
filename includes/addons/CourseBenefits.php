@@ -106,7 +106,7 @@ class CourseBenefits extends BaseAddon {
 			);
 			$this->add_responsive_control(
 				'course_benefits_alignments',
-				$benefits_alignment,
+				$benefits_alignment
 			);
 		$this->end_controls_section();
 	}
