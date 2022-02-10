@@ -9,7 +9,7 @@ $requirements = tutor_course_requirements();
 do_action( 'tutor_course/single/before/requirements' );
 	?>
 	<div class="etlms-course-specifications etlms-course-requirements">
-		<h3><?php echo esc_html( $settings['section_title_text'], 'tutor-lms-elementor-addons' ); ?></h3>
+		<h3 class="tutor-color-text-primary tutor-text-medium-h6"><?php echo esc_html( $settings['section_title_text'], 'tutor-lms-elementor-addons' ); ?></h3>
 		<ul class="etlms-course-specification-items">
 			<?php
 			if ( is_array( $requirements ) && count( $requirements ) ) {

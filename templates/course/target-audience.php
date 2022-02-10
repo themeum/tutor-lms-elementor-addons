@@ -1,7 +1,7 @@
 <?php do_action( 'tutor_course/single/before/audience' ); ?>
 
 <div class="etlms-course-specifications etlms-course-target_audience">
-	<h3><?php echo esc_html( $settings['section_title_text'], 'tutor-lms-elementor-addons' ); ?></h3>
+	<h3 class="tutor-color-text-primary tutor-text-medium-h6"><?php echo esc_html( $settings['section_title_text'], 'tutor-lms-elementor-addons' ); ?></h3>
 	<ul class="etlms-course-specification-items">
 		<?php
 		$target_audience = tutor_course_target_audience();

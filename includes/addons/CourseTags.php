@@ -190,6 +190,14 @@ class CourseTags extends BaseAddon {
 						'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', '%' ),
+						'default'    => array(
+							'top'      => 6,
+							'right'    => 6,
+							'bottom'   => 6,
+							'left'     => 6,
+							'unit'     => 'px',
+							'isLinked' => true,
+						),
 						'selectors'  => array(
 							$tag_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),

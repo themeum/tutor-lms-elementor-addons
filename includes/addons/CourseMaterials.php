@@ -59,7 +59,7 @@ class CourseMaterials extends BaseAddon {
 						'icon'  => 'fa fa-ellipsis-h',
 					),
 				),
-				'default'   => 'inline',
+				'default'   => 'list-item',
 				'prefix_class'	=> 'etlms-course-materials-display-',
 				'selectors' => array(
 					'{{WRAPPER}} .etlms-course-specifications ul li'  => 'display: {{VALUE}};',
