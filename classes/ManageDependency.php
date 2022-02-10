@@ -27,20 +27,34 @@ class ManageDependency {
 	public function show_admin_notice() {
 		?>
 			<div class="notice notice-error etlms-install-notice">
-				<div class="etlms-install-notice-inner">
-					<div class="etlms-install-notice-icon">
-						<img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
-					</div>
-					<div class="etlms-install-notice-content">
-						<h2><?php esc_html_e( 'Thanks for using Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?></h2>
-						<p><?php echo sprintf( __( 'To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Tutor LMS</a> Free installed and activated', 'tutor-lms-elementor-addons' ), esc_url( 'https://wordpress.org/plugins/tutor/' ) ); ?></p>
-						<a href="https://www.themeum.com/product/tutor-lms/" target="_blank"><?php esc_html_e( 'Learn more about Tutor LMS', 'tutor-lms-elementor-addons' ); ?></a>
+				<div class="etlms-install-notice-inner tutor-bs-d-flex justify-content-between align-items-center tutor-p-10">
+					<div>
+						<div class="tutor-bs-d-flex align-items-center" style="column-gap: 10px;">
+							<div class="etlms-install-notice-icon">
+								<img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
+							</div>
+							<div class="etlms-install-notice-content">
+								<h2 class="tutor-mb-5">
+									<i class="tutor-icon-warning-f" style="color:#ffb200;"></i> <?php esc_html_e( 'WARNING: YOU NEED TO INSTALL THE REQUIRED TUTOR LMS VERSION', 'tutor-lms-elementor-addons' ); ?></h2>
+								<p class="tutor-mb-5">
+								<?php
+									esc_html_e(
+										'It seems you have installed the wrong version Of Tutor LMS. For a smoother Tutor LMS experience, you need to install this ' . ETLMS_TUTOR_CORE_REQ_VERSION . ' version.
+                                    ',
+										'tutor-lms-elementor-addons'
+									);
+								?>
+								</p>
+								<p style="color: #757C8E;">
+									<?php esc_html_e( 'Note: Tutor LMS Elementor Add-on will be installed but you will not be able to avail any of its’ features as well specific Tutor LMS add-ons.', 'tutor-lms-elementor-addons' ); ?>
+								</p>
+							</div>
+						</div>
 					</div>
 					<div class="etlms-install-notice-button">
-						<a  class="button button-primary install-etlms-dependency-plugin-button" data-slug="tutor" href=""><?php esc_html_e( 'Upgrade Tutor LMS' ); ?></a>
+						<a  class="button button-primary install-etlms-dependency-plugin-button" data-slug="tutor" href="https://github.com/themeum/tutor/releases/tag/v2.0.0-beta" target="_blank"><?php esc_html_e( 'Upgrade Tutor LMS' ); ?></a>
 					</div>
 				</div>
-				<div id="etlms_install_dependency_msg"></div>
 			</div>
 		<?php
 	}
