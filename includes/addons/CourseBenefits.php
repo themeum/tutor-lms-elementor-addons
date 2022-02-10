@@ -71,7 +71,7 @@ class CourseBenefits extends BaseAddon {
 					'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::CHOOSE,
 					'options'   => array(
-						'block'  => array(
+						'list-item'  => array(
 							'title' => __( 'List', 'tutor-lms-elementor-addons' ),
 							'icon'  => 'fa fa-list-ul',
 						),
@@ -80,9 +80,10 @@ class CourseBenefits extends BaseAddon {
 							'icon'  => 'fa fa-ellipsis-h',
 						),
 					),
-					'default'   => 'inline',
+					'default'   => 'list-item',
+					'prefix_class'	=> 'etlms-course-benefits-display-',
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-course-specification-items li'  => 'display: {{VALUE}};',
+						'{{WRAPPER}} .etlms-course-benefits ul.etlms-course-specification-items li'  => 'display: {{VALUE}};',
 					),
 				)
 			);
@@ -188,8 +189,8 @@ class CourseBenefits extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'.etlms-course-specification-items li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-					'.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.etlms-course-benefits-display-list-item ul.etlms-course-specification-items li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.etlms-course-benefits-display-inline ul.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 15,
