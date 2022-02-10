@@ -115,7 +115,7 @@ class CourseContent extends BaseAddon {
 					'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::CHOOSE,
 					'options'   => array(
-						'block'  => array(
+						'list-item'  => array(
 							'title' => __( 'List', 'tutor-lms-elementor-addons' ),
 							'icon'  => 'fa fa-list-ul',
 						),
@@ -124,7 +124,8 @@ class CourseContent extends BaseAddon {
 							'icon'  => 'fa fa-ellipsis-h',
 						),
 					),
-					'default'   => 'inline',
+					'default'   => 'list-item',
+					'prefix_class'	=> 'etlms-course-content-benefits-display-',
 					'selectors' => array(
 						'{{WRAPPER}} .etlms-course-specification-items li'  => 'display: {{VALUE}};',
 					),
@@ -384,8 +385,8 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'.etlms-course-specification-items li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-					'.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'.etlms-course-content-benefits-display-list-item ul.etlms-course-specification-items li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'.etlms-course-content-benefits-display-inline ul.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 15,
