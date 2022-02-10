@@ -95,6 +95,8 @@ gulp.task("copy", function () {
 			"!./LICENSE.txt",
 			"!./package.json",
 			"!./package-lock.json",
+			"!./assets/css/tutor-elementor.css",
+			"!./assets/css/tutor-elementor-icons.css",
 		])
 		.pipe(gulp.dest("build/tutor-lms-elementor-addons/"));
 });

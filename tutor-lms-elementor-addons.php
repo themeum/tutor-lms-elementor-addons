@@ -12,8 +12,6 @@ License: GPLv2 or later
 Text Domain: tutor-lms-elementor-addons
 */
 
-use TutorLMS\Elementor\ManageDependency;
-
 defined( 'ABSPATH' ) || die();
 
 define( 'ETLMS_VERSION', '2.0.0' );
@@ -53,12 +51,4 @@ function elementor_tutor_lms_init() {
 		require_once ETLMS_DIR_PATH . 'classes/Base.php';
 		\TutorLMS\Elementor\Base::instance();
 	}
-
-	// if ( ! function_exists( 'tutor_lms' ) || ! did_action( 'elementor/loaded' ) ) {
-	// require_once ETLMS_DIR_PATH . 'classes/Installer.php';
-	// new \TutorLMS\Elementor\Installer();
-	// } else {
-	// require_once ETLMS_DIR_PATH . 'classes/Base.php';
-	// \TutorLMS\Elementor\Base::instance();
-	// }
 }
