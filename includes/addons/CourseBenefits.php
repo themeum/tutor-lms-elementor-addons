@@ -193,7 +193,7 @@ class CourseBenefits extends BaseAddon {
 					'{{WRAPPER}}.etlms-course-benefits-display-inline ul.etlms-course-specification-items li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
-					'size' => 15,
+					'size' => 10,
 				),
 			)
 		);
