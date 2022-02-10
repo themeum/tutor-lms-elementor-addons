@@ -33,7 +33,6 @@ abstract class BaseAddon extends Widget_Base {
 	 * @since 1.0.0
 	 */
 	public function get_icon() {
-		echo 'icon-' . $this->__class_name();
 		return 'icon-' . $this->__class_name();
 	}
 

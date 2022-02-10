@@ -112,7 +112,6 @@ gulp.task('minify-css', () => {
 
 gulp.task("watch", function() {
 	watch('assets/css/tutor-elementor.css', gulp.series(...task_keys));
-	watch('assets/css/tutor-elementor-icons.css', gulp.series(...task_keys));
 });
 /**
  * Export tasks

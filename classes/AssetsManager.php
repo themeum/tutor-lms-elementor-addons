@@ -41,7 +41,7 @@ class AssetsManager {
 			'tutor-elementor-icons',
 			ETLMS_ASSETS . 'css/tutor-elementor-icons.min.css',
 			null,
-			time()
+			ETLMS_VERSION
 		);
 
 		// Set default template before enqueue
