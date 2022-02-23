@@ -336,5 +336,5 @@
 
 	</div>
 	<input type="hidden" id="etlms_enroll_btn_type" value="<?php echo $settings['course_carousel_enroll_btn_type']; ?>">
-	<input type="hidden" id="etlms_enroll_btn_cart" value="<?php echo $settings['course_coursel_button_icon']; ?>">
+	<input type="hidden" id="etlms_enroll_btn_cart" value="">
 </div>

@@ -1555,10 +1555,10 @@ class CourseContent extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Review average section */
-		$review_avg_section_selector     = $review_selector . ' .tutor-ratingsreviews-ratings-avg';
-		$review_avg_text_selector        = $review_avg_section_selector . ' .tutor-rating-text-part';
-		$review_avg_stars_selector       = $review_avg_section_selector . ' .tutor-rating-stars span';
-		$review_avg_total_count_selector = $review_avg_section_selector . ' .tutor-rating-count-part';
+		// $review_avg_section_selector     = $review_selector . ' .tutor-ratingsreviews-ratings-avg';
+		// $review_avg_text_selector        = $review_avg_section_selector . ' .tutor-rating-text-part';
+		// $review_avg_stars_selector       = $review_avg_section_selector . ' .tutor-rating-stars span';
+		// $review_avg_total_count_selector = $review_avg_section_selector . ' .tutor-rating-count-part';
 		$this->start_controls_section(
 			'course_rating_avg',
 			array(
