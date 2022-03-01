@@ -37,16 +37,22 @@ define( 'ETLMS_ASSETS', trailingslashit( ETLMS_DIR_URL . 'assets' ) );
  * Instantiate Base Class after plugins loaded.
  */
 add_action( 'plugins_loaded', 'elementor_tutor_lms_init' );
+
+/**
+ * Check dependency before load Addons
+ *
+ * @return void
+ */
 function elementor_tutor_lms_init() {
 	require_once ETLMS_DIR_PATH . 'classes/ManageDependency.php';
 	$dependency = new \TutorLMS\Elementor\ManageDependency();
 
 	// all three conditions are required to run Tutor LMS Elementor addons v2.0.0.
-	if ( ! $dependency->is_tutor_core_has_req_verion() ) {
-		add_action( 'admin_notices', array( $dependency, 'show_admin_notice' ) );
-	} elseif ( ! function_exists( 'tutor_lms' ) || ! did_action( 'elementor/loaded' ) ) {
+	if ( ! function_exists( 'tutor_lms' ) || ! did_action( 'elementor/loaded' ) ) {
 		require_once ETLMS_DIR_PATH . 'classes/Installer.php';
 		new \TutorLMS\Elementor\Installer();
+	} elseif ( function_exists( 'tutor_lms' ) && ! $dependency->is_tutor_core_has_req_verion() ) {
+		add_action( 'admin_notices', array( $dependency, 'show_admin_notice' ) );
 	} else {
 		require_once ETLMS_DIR_PATH . 'classes/Base.php';
 		\TutorLMS\Elementor\Base::instance();
