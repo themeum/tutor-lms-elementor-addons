@@ -55,8 +55,9 @@ class CourseAbout extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$paragraph_selector = '{{WRAPPER}} .tutor-course-excerpt';
-		$heading_selector   = '{{WRAPPER}} .tutor-segment-title';
+		$paragraph_selector  = '{{WRAPPER}} .showmore-text';
+		$short_text_selector = '{{WRAPPER}} .showmore-short-text';
+		$heading_selector    = '{{WRAPPER}} .tutor-showmore-content .text-medium-h6';
 
 		/* Heading Section */
 		$this->start_controls_section(
@@ -109,11 +110,39 @@ class CourseAbout extends BaseAddon {
 
 		$this->end_controls_section();
 
+		// short text controls start.
+		$this->start_controls_section(
+			'course_about_short_text_section',
+			array(
+				'label' => __( 'Short Text', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_about_short_text_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$short_text_selector => 'color: {{VALUE}}',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_about_short_text_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $short_text_selector,
+			)
+		);
+		$this->end_controls_section();
+		// short text controls end.
 		/* Paragraph  Section */
 		$this->start_controls_section(
 			'course_about_paragraph_section',
 			array(
-				'label' => __( 'Paragraph', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Full Text', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
