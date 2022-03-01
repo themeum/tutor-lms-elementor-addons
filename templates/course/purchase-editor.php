@@ -8,8 +8,8 @@
 $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $settings['course_enrolment_edit_mode'];
 
-$is_purchasable       = tutor_utils()->is_course_purchasable();
-$sidebar_meta         = apply_filters(
+$is_purchasable = tutor_utils()->is_course_purchasable();
+$sidebar_meta   = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
 		array(
@@ -35,7 +35,7 @@ $sidebar_meta         = apply_filters(
 	),
 	get_the_ID()
 );
-$button_size          = $settings['course_enroll_buttons_size'];
+$button_size    = $settings['course_enroll_buttons_size'];
 
 ?>
 
@@ -54,7 +54,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 					<div class="list-item-progress tutor-mt-16">
 						<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
 							<span class="progress-steps">
-								<?php echo esc_html(  5 ); ?>/
+								<?php echo esc_html( 5 ); ?>/
 								<?php echo esc_html( 10 ); ?>
 							</span>
 							<span class="progress-percentage"> 
@@ -75,9 +75,12 @@ $button_size          = $settings['course_enroll_buttons_size'];
 						<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
 					</button>
 				</form>
+				<a href="http://localhost/tutor-v2?cert_hash=de57e7493295963c&amp;regenerate=1" class="tutor-btn tutor-mt-5 tutor-mb-5 tutor-is-fullwidth" style="margin-top:10px;">
+					<?php esc_html_e( 'View Certificate', 'tutor-lms-elementor-addons' ); ?>
+				</a>
 			<?php else : ?>
-			<?php if ( $is_purchasable ) : ?>	
-				<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
+				<?php if ( $is_purchasable ) : ?>	
+					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
 
 			<?php else : ?>
 				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
