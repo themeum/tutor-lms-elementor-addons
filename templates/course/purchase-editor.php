@@ -108,7 +108,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 			<?php endif; ?>
 	</div>
 	<!-- Course Info -->
-	<?php// if ( 'enrolled' === $enrollment_mode ) : ?>
+
 	<div class="tutor-course-sidebar-card-footer tutor-p-30">
 		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
 			<?php foreach ( $sidebar_meta as $meta ) : ?>
@@ -131,7 +131,6 @@ $button_size          = $settings['course_enroll_buttons_size'];
 				</li>
 			<?php endforeach; ?>
 		</ul>
-	</div>	
-	<?php// endif; ?>
+	</div>
 </div>
 
