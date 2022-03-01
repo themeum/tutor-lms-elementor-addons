@@ -443,8 +443,8 @@
 .etlms-single-instructor-wrap .tutor-instructor-right .instructor-name {
 	padding-left: 0;
 	-webkit-box-flex: 0;
-	    -ms-flex: 0 0 30%;
-	        flex: 0 0 30%;
+	    -ms-flex: 0 0 35%;
+	        flex: 0 0 35%;
 	font-size: 18px;
 }
 .etlms-single-instructor-wrap .single-instructor-wrap .instructor-name h3 {
