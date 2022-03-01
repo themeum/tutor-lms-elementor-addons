@@ -66,7 +66,7 @@ gulp.task('makepot', function () {
  * Build
  */
 gulp.task("clean-zip", function () {
-	return gulp.src("./tutor-lms-elementor-addons.zip", {
+	return gulp.src("./*.zip", {
 		read: false,
 		allowEmpty: true
 	}).pipe(clean());
