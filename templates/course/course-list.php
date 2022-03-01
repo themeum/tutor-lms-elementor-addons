@@ -87,11 +87,7 @@
 			$listStyle = 'tutor-courses';
 		}
 		?>
-		<div class="etlms-course-list-loop-wrap <?php echo esc_attr( $listStyle ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $settings['course_list_column'] ); ?> etlms-course-list-
-														   <?php
-															echo esc_attr( $settings['course_list_skin'] );
-															echo esc_attr( 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '' );
-															?>
+		<div class="etlms-course-list-loop-wrap <?php echo esc_attr( $listStyle ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $settings['course_list_column'] ); ?> etlms-course-list-<?php echo esc_attr( $settings['course_list_skin'] ); echo esc_attr( 'yes' == $settings['course_list_masonry'] ? ' etlms-masonry' : '' ); ?>
 		">
 
 			<?php
