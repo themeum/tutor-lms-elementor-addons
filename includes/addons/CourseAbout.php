@@ -36,7 +36,7 @@ class CourseAbout extends BaseAddon {
 		);
 
 		$this->add_control(
-			'section_title_text',
+			'about_section_title_text',
 			array(
 				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
 				'type'        => Controls_Manager::TEXTAREA,

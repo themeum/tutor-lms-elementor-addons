@@ -114,7 +114,7 @@ if ( strlen( $string ) > $limit ) {
 <?php
 if ( ! empty( $excerpt ) && $is_enabled ) {
 	?>
-	<div class='tab-item-content <?php echo $has_readmore ? 'tutor-has-showmore' : ''; ?> etlms-course-summery'>
+	<div class='etlms-course-about tutor-mb-50 tab-item-content <?php echo $has_readmore ? 'tutor-has-showmore' : ''; ?> etlms-course-summery'>
 		<?php
 		if ( \Elementor\Plugin::instance()->editor->is_edit_mode() && empty( $excerpt ) ) {
 			   echo '<span style="margin: 5px">' . esc_html__( 'Please add data from the course editor', 'tutor-lms-elementor-addons' ) . '</span>';
@@ -123,7 +123,7 @@ if ( ! empty( $excerpt ) && $is_enabled ) {
 		?>
 		<div class='tutor-showmore-content'>
 			<div class="text-medium-h6 tutor-color-text-primary">
-				<?php echo esc_html( $settings['section_title_text'], 'tutor-lms-elementor-addons' ); ?>
+				<?php echo esc_html( $settings['about_section_title_text'], 'tutor-lms-elementor-addons' ); ?>
 			</div>
 			<div class="text-regular-body tutor-color-text-subsued tutor-mt-12">
 				<?php

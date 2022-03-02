@@ -91,6 +91,59 @@ class CourseContent extends BaseAddon {
 	 * @return void
 	 */
 	protected function register_content_controls() {
+		// about course section start.
+		$this->start_controls_section(
+			'course_about_content_section',
+			array(
+				'label' => __( 'About Course', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_CONTENT,
+			)
+		);
+
+		$this->add_control(
+			'about_section_title_text',
+			array(
+				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'About Course', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+				'rows'        => 3,
+			)
+		);
+
+		$this->add_responsive_control(
+			'course_about_align',
+			array(
+				'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'left'    => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'  => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'right'   => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+					'justify' => array(
+						'title' => __( 'Justified', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-justify',
+					),
+				),
+				'selectors'		=> array(
+					'{{WRAPPER}} .etlms-course-about.etlms-course-summery' => 'text-align: {{VALUE}};'
+				),
+				'default'      => 'left',
+			)
+		);
+
+		$this->end_controls_section();
+		// about course section end.
+
 		// what i will learn section.
 		$this->start_controls_section(
 			'what_i_will_learn_section',
@@ -312,6 +365,119 @@ class CourseContent extends BaseAddon {
 		$course_topic_title_area        = $course_topic . ' .tutor-accordion-item-header';
 		$course_topic_active_title_area = $course_topic . ' .tutor-accordion-item-header.is-active';
 		$topic_icon                     = $course_topic . '::after';
+
+		// about course style controls.
+		$paragraph_selector  = '{{WRAPPER}} .showmore-text';
+		$short_text_selector = '{{WRAPPER}} .showmore-short-text';
+		$heading_selector    = '{{WRAPPER}} .tutor-showmore-content .text-medium-h6';
+
+		/* Heading Section */
+		$this->start_controls_section(
+			'course_about_heading_section',
+			array(
+				'label' => __( 'About Course Title', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_about_heading_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$heading_selector => 'color: {{VALUE}};',
+				),
+				'default'   => '#161616',
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_about_heading_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $heading_selector,
+			)
+		);
+
+		$this->add_responsive_control(
+			'etlms_about_heading_gap',
+			array(
+				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'selectors'  => array(
+					$heading_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				),
+				'default'    => array(
+					'size' => 10,
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
+		// short text controls start.
+		$this->start_controls_section(
+			'course_about_short_text_section',
+			array(
+				'label' => __( 'About Course Short Text', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_about_short_text_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$short_text_selector => 'color: {{VALUE}}',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_about_short_text_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $short_text_selector,
+			)
+		);
+		$this->end_controls_section();
+		// short text controls end.
+		/* Paragraph  Section */
+		$this->start_controls_section(
+			'course_about_paragraph_section',
+			array(
+				'label' => __( 'About Course Full Text', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'course_about_paragraph_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$paragraph_selector => 'color: {{VALUE}}',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_about_paragraph_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $paragraph_selector,
+			)
+		);
+		$this->end_controls_section();
+		// about course style controls end.
 
 		// course benefit style controls.
 		$course_benefit_selector       = '{{WRAPPER}} .etlms-course-benefits';

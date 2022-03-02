@@ -20,6 +20,7 @@ $course_nav_items = tutor_utils()->course_nav_items();
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {
+							include ETLMS_TEMPLATE . 'about.php';
 							include ETLMS_TEMPLATE . 'benefits.php';
 							include ETLMS_TEMPLATE . 'instructors.php';
 						} else {
