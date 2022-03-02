@@ -63,13 +63,29 @@ class CourseSocialShare extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_share_alignment',
-			$this->title_alignment_with_selectors(
-				array(
-					'{{WRAPPER}} .etlms-course-share' => 'text-align: {{VALUE}};',
-				)
+			array(
+				'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'flex-start'   => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'flex-end'  => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'selectors'		=> array(
+					'{{WRAPPER}} .etlms-course-share a' => 'justify-content: {{VALUE}};',
+				),
+				'default'      => 'flex-end',
 			)
 		);
-
 		$this->end_controls_section();
 
 		// share popup section.
