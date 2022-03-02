@@ -1085,6 +1085,7 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	align-items: flex-end;
 }
 .etlms-carousel-main-wrap .etlms-loop-cart-btn-wrap,
 .etlms-course-list-main-wrap .etlms-loop-cart-btn-wrap {
@@ -1623,4 +1624,31 @@
 
 .etlms-carousel-main-wrap .tutor-loop-author, .etlms-course-list-main-wrap .tutor-loop-author {
 	overflow: initial;
+}
+
+button.product_type_external {
+	display: flex;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 16px;
+    color: #161616 !important;
+    font-weight: 500;
+}
+button.product_type_external span.btn-icon {
+	font-size: 25px !important;
+}
+button.product_type_external span.cart-text {
+	font-size: 15px !important;
+}
+.etlms-course-list-main-wrap .list-item-button .tutor-btn:hover, 
+.etlms-carousel-main-wrap .list-item-button .tutor-btn:hover {
+	
+}
+.etlms-course-list-main-wrap .tutor-star-rating-group i,
+.etlms-carousel-main-wrap .tutor-star-rating-group i {
+	font-size: 18px;
+	color: #ed9700;
+}
+tutor-course-listing-item-footer.default .list-item-button:hover .tutor-btn.tutor-btn-ghost .btn-icon {
+	color: #000 !important;
 }

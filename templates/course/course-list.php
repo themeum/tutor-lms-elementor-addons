@@ -257,7 +257,7 @@
 								$is_footer       = $settings['course_list_footer_settings'];
 								$enroll_btn_type = $settings['course_carousel_enroll_btn_type'];
 								?>
-								<div class="tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
+								<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
 									<?php if ( $is_footer == 'yes' ) : ?>
 										display:block;
 										<?php else : ?>
