@@ -225,7 +225,7 @@ class CourseList extends BaseAddon {
 				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
 				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
 				'return_value' => 'yes',
-				'default'      => 'yes',
+				'default'      => '',
 			)
 		);
 
@@ -237,7 +237,7 @@ class CourseList extends BaseAddon {
 				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
 				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
 				'return_value' => 'yes',
-				'default'      => '',
+				'default'      => 'yes',
 			)
 		);
 
@@ -1388,12 +1388,16 @@ class CourseList extends BaseAddon {
 				'range'      => array(
 					'px' => array(
 						'min' => 5,
-						'max' => 200,
+						'max' => 200,				
 					),
 				),
+				'default' => array(
+					'unit' => 'px',
+					'size' => 34,
+				),
 				'selectors'  => array(
-					$avatar_selector      => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
-					$avatar_span_selector => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+					$avatar_selector      => 'width: {{SIZE}}{{UNIT}} !important;height: {{SIZE}}{{UNIT}} !important; line-height: {{SIZE}}{{UNIT}} !important;',
+					$avatar_span_selector => 'width: {{SIZE}}{{UNIT}} !important;height: {{SIZE}}{{UNIT}} !important; line-height: {{SIZE}}{{UNIT}} !important;',
 				),
 			)
 		);

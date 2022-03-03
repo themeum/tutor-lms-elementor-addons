@@ -148,7 +148,7 @@
 									echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
 								}
 								if ( 'yes' === $settings['course_list_wishlist_settings'] ) {
-									echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line-filled ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+									echo '<span class="tutor-course-wishlist tutor-course-listing-item-head save-bookmark-btn"><a href="javascript:;" class="tutor-icon-fav-line-filled ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
 								}
 								?>
 							</div>   
@@ -179,7 +179,7 @@
 									<?php endif; ?>
 									<!-- loop title -->
 									<div class="tutor-course-loop-title">
-										<h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
+										<h2><a href="<?php echo get_the_permalink(); ?>" class="tutor-text-medium-h5 tutor-color-text-primary"><?php the_title(); ?></a></h2>
 									</div>
 
 									<!-- loop meta -->
@@ -211,31 +211,31 @@
 										</div>
 									<?php endif; ?>
 
-									<div class="tutor-loop-author">
-										<div class="tutor-single-course-avatar">
+									<div class="tutor-loop-author tutor-bs-d-flex">
+										<span class="tutor-single-course-avatar">
 											<?php if ( 'yes' === $settings['course_list_avatar_settings'] ) : ?>
-												<a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar( $post->post_author ); ?></a>
+												<a href="<?php echo esc_url( $profile_url ); ?>"> <?php echo tutor_utils()->get_tutor_avatar( $post->post_author ); ?></a>
 											<?php endif; ?>
-										</div>
-										<?php if ( 'yes' == $settings['course_list_author_settings'] ) : ?>
-											<div class="tutor-single-course-author-name">
-												<span><?php _e( 'by', 'tutor-lms-elementor-addons' ); ?></span>
-												<a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
-											</div>
-										<?php endif; ?>
+										</span>
 										<div class="tutor-course-lising-category">
+											<?php if ( 'yes' == $settings['course_list_author_settings'] ) : ?>
+												<span class="tutor-single-course-author-name">
+													<span class="tutor-color-text-subsued"><?php _e( 'by', 'tutor-lms-elementor-addons' ); ?></span>
+													<span class="tutor-text-medium-caption tutor-color-text-primary"><?php echo get_the_author(); ?></span>
+												</span>
+											<?php endif; ?>
 											<?php
 											if ( 'yes' === $settings['course_list_category_settings'] ) {
 
 												$course_categories = get_tutor_course_categories();
 												if ( ! empty( $course_categories ) && is_array( $course_categories ) && count( $course_categories ) ) {
 													?>
-													<span><?php esc_html_e( 'In', 'tutor-lms-elementor-addons' ); ?></span>
+													<span class="tutor-color-text-subsued"><?php esc_html_e( 'In', 'tutor-lms-elementor-addons' ); ?></span>
 													<?php
 													foreach ( $course_categories as $course_category ) {
 														$category_name = $course_category->name;
 														$category_link = get_term_link( $course_category->term_id );
-														echo "<a href='$category_link'>$category_name </a>";
+														echo "<a href='" . esc_url( $category_link ) . "'> " . esc_html( $category_name ) . " </a>";
 													}
 												}
 											}

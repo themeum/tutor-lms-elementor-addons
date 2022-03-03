@@ -1570,54 +1570,7 @@
 }
 
 /* Tutor v2 compatible css */
-/* enrollment button default & default with cart icon style  */
-.etlms-carousel-footer.default .list-item-price + .list-item-button,
-.etlms-carousel-footer.default_with_cart_icon .list-item-price + .list-item-button {
-	width: 100%;
-    text-align: center;
-    border: 1px solid #cdcfd5;
-    padding: 7px 38px;
-    border-radius: 5px;
-}
-.etlms-carousel-footer.default .list-item-price + .list-item-button:hover,
-.etlms-carousel-footer.default_with_cart_icon .list-item-price + .list-item-button:hover {
-	background-color: var(--tutor-primary-hover);
-    border-color: var(--tutor-primary-hover);
-    color: var(--tutor-white);
-}
-.etlms-carousel-footer.default .list-item-price + .list-item-button:hover a,
-.etlms-carousel-footer.default_with_cart_icon .list-item-price + .list-item-button:hover a {
-	color: var(--tutor-white) !important;
-}
-.etlms-carousel-footer.default
-.list-item-price,
-.etlms-carousel-footer.default_with_cart_icon
-.list-item-price {
-	align-self: flex-start;
-}
-/* if not cart button then hide cart */
-.etlms-carousel-footer.default span.btn-icon {
-	display: none;
-}
 
-/* text icon & text with cart icon */
-.etlms-carousel-footer.text_button .list-item-button a,
-.etlms-carousel-footer.text_with_cart .list-item-button a {
-	border: none !important;
-}
-/* if not cart text button then hide cart */
-.etlms-carousel-footer.text_button .list-item-button span.btn-icon {
-	display: none;
-}
-
-/* enrollment-button default radius */
-.tutor-loop-course-footer .list-item-button {
-	border-radius: 6px;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	-ms-border-radius: 6px;
-	-o-border-radius: 6px;
-}
 
 .etlms-carousel-main-wrap .tutor-loop-author, .etlms-course-list-main-wrap .tutor-loop-author {
 	overflow: initial;
@@ -1649,3 +1602,37 @@
 tutor-course-listing-item-footer.default .list-item-button:hover .tutor-btn.tutor-btn-ghost .btn-icon {
 	color: #000 !important;
 }
+
+/* wishlist style */
+.etlms-course-list-main-wrap .tutor-course-wishlist,
+.etlms-carousel-main-wrap .tutor-course-wishlist {
+	background: rgba(33,35,39,0.4);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+	padding: 8px;
+	margin: 1px;
+	cursor: pointer;
+}
+.etlms-course-list-main-wrap .tutor-course-wishlist:hover,
+.etlms-carousel-main-wrap .tutor-course-wishlist:hover {
+	background-color: #3e64de;
+}
+
+.etlms-course-list-main-wrap .tutor-course-wishlist a,
+.etlms-carousel-main-wrap .tutor-course-wishlist a {
+	color: #fff;
+}
+
+/* course meta style */
+.etlms-course-list-main-wrap .tutor-course-lising-category .tutor-text-medium-caption,
+.etlms-carousel-main-wrap .tutor-course-lising-category .tutor-text-medium-caption{
+	color: #212327;
+}
+.etlms-course-list-main-wrap .tutor-course-lising-category .tutor-color-text-subsued,
+.etlms-carousel-main-wrap .tutor-course-lising-category .tutor-color-text-subsued {
+    color: #5b616f;
+}
+/* course meta style end*/
