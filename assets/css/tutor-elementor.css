@@ -1085,7 +1085,8 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
+	column-gap: 7px;
 }
 .etlms-carousel-main-wrap .etlms-loop-cart-btn-wrap,
 .etlms-course-list-main-wrap .etlms-loop-cart-btn-wrap {
@@ -1570,10 +1571,6 @@
 
 /* Tutor v2 compatible css */
 /* enrollment button default & default with cart icon style  */
-.etlms-carousel-footer.default .tutor-bs-d-flex,
-.etlms-carousel-footer.default_with_cart_icon .tutor-bs-d-flex {
-	flex-direction: column;
-}
 .etlms-carousel-footer.default .list-item-price + .list-item-button,
 .etlms-carousel-footer.default_with_cart_icon .list-item-price + .list-item-button {
 	width: 100%;
@@ -1626,7 +1623,7 @@
 	overflow: initial;
 }
 
-button.product_type_external {
+.list-item-button .product_type_external {
 	display: flex;
     align-items: center;
     column-gap: 8px;
@@ -1634,10 +1631,10 @@ button.product_type_external {
     color: #161616 !important;
     font-weight: 500;
 }
-button.product_type_external span.btn-icon {
+.list-item-button .product_type_external .btn-icon {
 	font-size: 25px !important;
 }
-button.product_type_external span.cart-text {
+.list-item-button .product_type_external .cart-text {
 	font-size: 15px !important;
 }
 .etlms-course-list-main-wrap .list-item-button .tutor-btn:hover, 

@@ -109,7 +109,7 @@
 						$image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
 						$animation  = 'elementor-animation-' . $settings['course_list_card_hover_animation'];
 					?>
-					<div class="etlms-card 
+					<div class="tutor-course-listing-item etlms-card 
 					<?php
 					// course list style omit for overlayed skin.
 					if ( $settings['course_list_column'] == 1 && $settings['course_list_skin'] != 'overlayed' ) {
@@ -118,15 +118,10 @@
 					if ( 'yes' == $settings['card_hover_animation'] ) {
 						echo ' hover-animation';
 					}
-
 					?>
 					" >
 						<!-- header -->
-						<div class="tutor-course-header 
-						<?php
-						echo 'overlayed' != $settings['course_list_skin'] ? ' ' . $animation : '';
-							// "yes" == $settings['course_list_masonry'] ? 'etlms-masonry-brick' : '';
-						?>
+						<div class="tutor-course-header <?php echo 'overlayed' != $settings['course_list_skin'] ? ' ' . $animation : '';?>
 						">
 							<?php if ( 'yes' == $settings['course_list_image'] ) : ?>
 							<a href="<?php the_permalink(); ?>">

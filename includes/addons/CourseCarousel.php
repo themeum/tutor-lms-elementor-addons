@@ -380,7 +380,7 @@ class CourseCarousel extends BaseAddon {
 					'text_button' => __('Text Button', 'tutor-lms-elementor-addons'),
 					'text_with_cart' => __('Text with Cart', 'tutor-lms-elementor-addons'),
 				],
-				'default' => 'text_with_cart'
+				'default' => 'default_with_cart_icon'
 			]
 
 		);

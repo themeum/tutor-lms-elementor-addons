@@ -91,7 +91,7 @@
 					$image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
 					$animation  = 'elementor-animation-' . $settings['course_carousel_img_hover_animation'];
 					?>
-					<div class="etlms-card 
+					<div class="tutor-course-listing-item etlms-card 
 					<?php
 					echo 'overlayed' == $settings['course_carousel_skin'] ? $animation : '';
 					if ( 'yes' == $settings['card_hover_animation'] ) {
