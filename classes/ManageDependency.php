@@ -27,19 +27,19 @@ class ManageDependency {
 	public function show_admin_notice() {
 		?>
 			<div class="notice notice-error etlms-install-notice">
-				<div class="etlms-install-notice-inner tutor-bs-d-flex justify-content-between align-items-center tutor-p-10">
+				<div class="etlms-install-notice-inner" style="display:flex; justify-content: space-between; align-items:center; padding: 10px;">
 					<div>
-						<div class="tutor-bs-d-flex align-items-center" style="column-gap: 10px;">
+						<div style="column-gap: 10px; display: flex; align-items:center;">
 							<div class="etlms-install-notice-icon">
 								<img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
 							</div>
 							<div class="etlms-install-notice-content">
-								<h2 class="tutor-mb-5">
+								<h2 style="margin-bottom: 5px;">
 									<i class="tutor-icon-warning-f" style="color:#ffb200;"></i> <?php esc_html_e( 'WARNING: YOU NEED TO INSTALL THE REQUIRED TUTOR LMS VERSION', 'tutor-lms-elementor-addons' ); ?></h2>
-								<p class="tutor-mb-5">
+								<p style="margin-bottom: 5px;">
 								<?php
 									esc_html_e(
-										'It seems you have installed the wrong version Of Tutor LMS. For a smoother Tutor LMS experience, you need to install this ' . ETLMS_TUTOR_CORE_REQ_VERSION . ' version.
+										'It seems you have installed the wrong version Of Tutor LMS. For a smoother Tutor LMS experience, you need to install at least ' . ETLMS_TUTOR_CORE_REQ_VERSION . ' version.
                                     ',
 										'tutor-lms-elementor-addons'
 									);
@@ -51,9 +51,9 @@ class ManageDependency {
 							</div>
 						</div>
 					</div>
-					<div class="etlms-install-notice-button">
-						<a  class="button button-primary install-etlms-dependency-plugin-button" data-slug="tutor" href="https://github.com/themeum/tutor/releases/tag/v2.0.0-beta" target="_blank"><?php esc_html_e( 'Upgrade Tutor LMS' ); ?></a>
-					</div>
+					<!-- <div class="etlms-install-notice-button">
+						<a  class="button button-primary install-etlms-dependency-plugin-button" data-slug="tutor" href="https://github.com/themeum/tutor/releases/tag/v2.0.0-beta" target="_blank"></a>
+					</div> -->
 				</div>
 			</div>
 		<?php
