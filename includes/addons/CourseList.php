@@ -487,20 +487,20 @@ class CourseList extends BaseAddon {
 		// 	$this->etlms_non_responsive_alignment( 'right' )
 		// );
 
-		$this->add_control(
-			'course_carousel_enroll_btn_type',
-			array(
-				'label'   => __( 'Button Type', 'tutor-lms-elementor-addons' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'default'                => __( 'Default', 'tutor-lms-elementor-addons' ),
-					'default_with_cart_icon' => __( 'Default with Cart Icon', 'tutor-lms-elementor-addons' ),
-					'text_button'            => __( 'Text Button', 'tutor-lms-elementor-addons' ),
-					'text_with_cart'         => __( 'Text with Cart', 'tutor-lms-elementor-addons' ),
-				),
-				'default' => 'default_with_cart_icon',
-			)
-		);
+		// $this->add_control(
+		// 	'course_carousel_enroll_btn_type',
+		// 	array(
+		// 		'label'   => __( 'Button Type', 'tutor-lms-elementor-addons' ),
+		// 		'type'    => Controls_Manager::SELECT,
+		// 		'options' => array(
+		// 			'default'                => __( 'Default', 'tutor-lms-elementor-addons' ),
+		// 			'default_with_cart_icon' => __( 'Default with Cart Icon', 'tutor-lms-elementor-addons' ),
+		// 			'text_button'            => __( 'Text Button', 'tutor-lms-elementor-addons' ),
+		// 			'text_with_cart'         => __( 'Text with Cart', 'tutor-lms-elementor-addons' ),
+		// 		),
+		// 		'default' => 'default_with_cart_icon',
+		// 	)
+		// );
 
 		// $this->add_control(
 		// 	'course_coursel_button_icon',
@@ -540,22 +540,18 @@ class CourseList extends BaseAddon {
 						'max' => 100,
 					),
 				),
-				'conditions' => array(
-					'relation' => 'or',
-					'terms'    => array(
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => 'in',
-							'value'    => array( 'default_with_cart_icon', 'text_with_cart' ),
-						),
-					),
-				),
-				'default'    => array(
-					'unit' => 'px',
-					'size' => 0,
-				),
+				// 'conditions' => array(
+				// 	'relation' => 'or',
+				// 	'terms'    => array(
+				// 		array(
+				// 			'name'     => 'course_carousel_enroll_btn_type',
+				// 			'operator' => 'in',
+				// 			'value'    => array( 'default_with_cart_icon', 'text_with_cart' ),
+				// 		),
+				// 	),
+				// ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -581,7 +577,7 @@ class CourseList extends BaseAddon {
 		$price_selector            = $wrapper . '.price';
 		$cart_text_selector        = $wrapper . '.tutor-loop-course-footer .list-item-button a, ' . $wrapper . ' .tutor-loop-course-footer span.cart-text, ' . $wrapper . ' .tutor-loop-course-footer span.ttr-cart-line-filled';
 		$cart_selector             = $wrapper . '.tutor-loop-course-footer .list-item-button span.ttr-cart-line-filled';
-		$cart_button_selector      = $wrapper . ' .tutor-loop-course-footer .list-item-button';
+		$cart_button_selector      = "$wrapper .tutor-loop-course-footer .list-item-button a:not(.product_type_external), $wrapper .tutor-loop-course-footer .list-item-button button ";
 		$row_selector              = $wrapper . '.etlms-course-list-col';
 		$column_selector           = $wrapper . '.etlms-course-list-col';
 		$pagination_selector       = $wrapper . '.etlms-course-list-pagination-wrap';
@@ -2006,49 +2002,23 @@ class CourseList extends BaseAddon {
 				'label'      => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
 				'selectors'  => array(
-					"{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled, {{WRAPPER}} .list-item-button .tutor-icon-cart-line-filled" => 'color: {{VALUE}} !important;',
+					"{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled" => 'color: {{VALUE}} !important;',
 				),
-				'conditions' => array(
-					'relation' => 'or',
-					'terms'    => array(
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'default_with_cart_icon',
-						),
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'text_with_cart',
-						),
-					),
-				),  // condition end
-			)
-		);
-
-		$this->add_control(
-			'course_course_cart_background_color',
-			array(
-				'label'      => __( 'Background Color', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::COLOR,
-				'selectors'  => array(
-					$cart_button_selector => 'background-color: {{VALUE}} !important;',
-				),
-				'conditions' => array(
-					'relation' => 'or',
-					'terms'    => array(
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'default_with_cart_icon',
-						),
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'default',
-						),
-					),
-				),  // condition end
+				// 'conditions' => array(
+				// 	'relation' => 'or',
+				// 	'terms'    => array(
+				// 		array(
+				// 			'name'     => 'course_carousel_enroll_btn_type',
+				// 			'operator' => '==',
+				// 			'value'    => 'default_with_cart_icon',
+				// 		),
+				// 		array(
+				// 			'name'     => 'course_carousel_enroll_btn_type',
+				// 			'operator' => '==',
+				// 			'value'    => 'text_with_cart',
+				// 		),
+				// 	),
+				// ),  // condition end
 			)
 		);
 
@@ -2077,51 +2047,26 @@ class CourseList extends BaseAddon {
 				'label'      => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
 				'selectors'  => array(
-					'{{WRAPPER}} .tutor-loop-cart-btn-wrap .tutor-icon-cart-line-filled:hover, {{WRAPPER}} .list-item-button .tutor-icon-cart-line-filled:hover' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled:hover' => 'color: {{VALUE}} !important;',
 				),
-				'conditions' => array(
-					'relation' => 'or',
-					'terms'    => array(
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'default_with_cart_icon',
-						),
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'text_with_cart',
-						),
-					),
-				),
+				// 'conditions' => array(
+				// 	'relation' => 'or',
+				// 	'terms'    => array(
+				// 		array(
+				// 			'name'     => 'course_carousel_enroll_btn_type',
+				// 			'operator' => '==',
+				// 			'value'    => 'default_with_cart_icon',
+				// 		),
+				// 		array(
+				// 			'name'     => 'course_carousel_enroll_btn_type',
+				// 			'operator' => '==',
+				// 			'value'    => 'text_with_cart',
+				// 		),
+				// 	),
+				// ),
 			)
 		);
 
-		$this->add_control(
-			'course_course_cart_background_hover_color',
-			array(
-				'label'      => __( 'Background Color', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::COLOR,
-				'selectors'  => array(
-					$cart_button_selector . ':hover' => 'background-color: {{VALUE}} !important;',
-				),
-				'conditions' => array(
-					'relation' => 'or',
-					'terms'    => array(
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'default_with_cart_icon',
-						),
-						array(
-							'name'     => 'course_carousel_enroll_btn_type',
-							'operator' => '==',
-							'value'    => 'default',
-						),
-					),
-				),  // condition end
-			)
-		);
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
