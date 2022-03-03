@@ -983,7 +983,7 @@
 .etlms-card:before {
 	background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(#000000));
-	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);;
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
 	
 	position: absolute;
     content: "";
@@ -1636,3 +1636,36 @@ tutor-course-listing-item-footer.default .list-item-button:hover .tutor-btn.tuto
     color: #5b616f;
 }
 /* course meta style end*/
+
+/* overlayed skin footer text */
+.etlms-coursel-overlayed .tutor-course-listing-item-footer .list-item-button .tutor-btn.tutor-btn-ghost,
+
+.etlms-course-list-overlayed .tutor-course-listing-item-footer .list-item-button .tutor-btn.tutor-btn-ghost {
+	color: #7A7A7A;
+}
+
+.etlms-coursel-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .btn-icon,
+.etlms-coursel-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .cart-text,
+.etlms-course-list-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .btn-icon,
+.etlms-coursel-list-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .cart-text {
+	color: #7A7A7A;
+}
+.etlms-coursel-overlayed .list-item-button .product_type_external,
+.etlms-course-list-overlayed .list-item-button .product_type_external {
+	color: #7A7A7A !important;
+}
+.etlms-coursel-overlayed .tutor-loop-course-footer,
+.etlms-course-list-overlayed .tutor-loop-course-footer {
+	border-color: #ffffff3b !important;
+}
+.etlms-coursel-overlayed .tutor-course-listing-item-footer .list-item-price-with-booking .list-item-booking>*,
+.etlms-course-list-overlayed .tutor-course-listing-item-footer .list-item-price-with-booking .list-item-booking>* {
+	color: #fff !important;
+}
+.circle-progress.progress-full::before {
+	position: inherit !important;
+}
+.etlms-coursel-overlayed .tutor-course-lising-category .tutor-text-medium-caption,
+.etlms-course-list-overlayed .tutor-course-lising-category .tutor-text-medium-caption {
+    color: #fff !important;
+}

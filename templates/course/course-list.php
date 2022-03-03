@@ -109,7 +109,7 @@
 						$image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
 						$animation  = 'elementor-animation-' . $settings['course_list_card_hover_animation'];
 					?>
-					<div class="tutor-course-listing-item etlms-card 
+					<div class="<?php echo 'stacked' !== $settings['course_list_skin'] ? 'tutor-course-listing-item ' : ''; ?> etlms-card 
 					<?php
 					// course list style omit for overlayed skin.
 					if ( $settings['course_list_column'] == 1 && $settings['course_list_skin'] != 'overlayed' ) {
@@ -221,7 +221,7 @@
 											<?php if ( 'yes' == $settings['course_list_author_settings'] ) : ?>
 												<span class="tutor-single-course-author-name">
 													<span class="tutor-color-text-subsued"><?php _e( 'by', 'tutor-lms-elementor-addons' ); ?></span>
-													<span class="tutor-text-medium-caption tutor-color-text-primary"><?php echo get_the_author(); ?></span>
+													<span class="etlms-author-name tutor-text-medium-caption tutor-color-text-primary"><?php echo get_the_author(); ?></span>
 												</span>
 											<?php endif; ?>
 											<?php
