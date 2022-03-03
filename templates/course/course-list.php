@@ -114,9 +114,9 @@
 					// course list style omit for overlayed skin.
 					if ( $settings['course_list_column'] == 1 && $settings['course_list_skin'] != 'overlayed' ) {
 						echo 'etlms-course-list-style'; }
-					echo 'overlayed' == $settings['course_list_skin'] ? ' ' . $animation : '';
+					echo esc_attr( 'overlayed' == $settings['course_list_skin'] ? ' ' . $animation : '' );
 					if ( 'yes' == $settings['card_hover_animation'] ) {
-						echo ' hover-animation';
+						echo esc_attr( ' hover-animation' );
 					}
 					?>
 					" >

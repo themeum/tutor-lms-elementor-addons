@@ -1669,3 +1669,9 @@ tutor-course-listing-item-footer.default .list-item-button:hover .tutor-btn.tuto
 .etlms-course-list-overlayed .tutor-course-lising-category .tutor-text-medium-caption {
     color: #fff !important;
 }
+.etlms-carousel-main-wrap .tutor-loop-course-footer, 
+.etlms-course-list-main-wrap .tutor-loop-course-footer {
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+}

@@ -571,7 +571,7 @@ class CourseList extends BaseAddon {
 		$course_title_selector     = $wrapper . '.tutor-course-loop-title h2 a';
 		$meta_selector             = $wrapper . '.tutor-course-loop-meta';
 		$category_selector         = $wrapper . '.tutor-course-lising-category a';
-		$star_selector             = $wrapper . '.tutor-star-rating-group,' . $wrapper . ' .tutor-star-rating-group i.tutor-icon-star-full';
+		$star_selector             = $wrapper . '.tutor-star-rating-group i';
 		$star_text_selector        = $wrapper . '.tutor-rating-count';
 		$footer_selector           = $wrapper . '.tutor-loop-course-footer';
 		$price_selector            = $wrapper . '.price';
@@ -1475,7 +1475,7 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$course_title_selector => 'padding: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tutor-course-loop-title' => 'padding-top: {{SIZE}}{{UNIT}};',
 				),
 				'separator'  => 'after',
 			)
