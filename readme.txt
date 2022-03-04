@@ -9,7 +9,7 @@ Stable tag: 2.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Get 24+ Tutor LMS Elementor widgets to create an entire eLearning site and design custom course pages, course carousels, listings, and more.
+Get 27+ Tutor LMS Elementor widgets to create an entire eLearning site and design custom course pages, course carousels, listings, and more.
 
 == Description ==
 
@@ -141,10 +141,16 @@ You can post on the support section of this plugin or use the contact form at th
 == Changelog ==
 
 = 2.0.0 - 28 Jan, 2022
-* Addons compatibility support for Tutor LMS v2.0.0
-* Course Reviews addon merged with Course Curriculum
-* Course Reviews separate addon removed
-* Addon's controls optimized
+
+* New: Introducing compatibility with WordPress 5.9
+* New: Full compatibility with Tutor LMS 2.0
+* New: New Tutor LMS Elementor add-on for course content
+* New: New Tutor LMS Elementor add-on for course wishlist
+* New: New Tutor LMS Elementor add-on for course purchase
+* Update: Course requirement title doesn’t show up now without description
+* Update: Course materials title doesn’t show up now without description
+* Update: Target audience title doesn’t show up now without description
+* Fix: Pagination on course listing page redirected to course archive page issue
 
 = 1.0.3 - 27 May, 2021 =
 
