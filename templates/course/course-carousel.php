@@ -206,9 +206,15 @@
 										<?php endif; ?>
 										<?php
 										if ( 'yes' === $settings['course_carousel_category_settings'] ) {
-
 											$course_categories = get_tutor_course_categories();
-											if ( ! empty( $course_categories ) && is_array( $course_categories ) && count( $course_categories ) ) {
+											$course_categories = get_tutor_course_categories();
+											if ( is_array( $course_categories ) && count( $course_categories ) > 3 && 'overlayed' === $settings['course_carousel_skin']  ) {
+												$chunk = array_chunk( $course_categories, 3 );
+												if ( count( $chunk ) && isset( $chunk[0] ) ) {
+													$course_categories = $chunk[0];
+												}
+											}
+											if ( is_array( $course_categories ) && count( $course_categories ) ) {
 												?>
 												<span class="tutor-color-text-subsued"><?php esc_html_e( 'In', 'tutor-lms-elementor-addons' ); ?></span>
 												<?php
