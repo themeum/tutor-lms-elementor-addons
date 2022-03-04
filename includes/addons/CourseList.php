@@ -471,7 +471,7 @@ class CourseList extends BaseAddon {
 			array(
 				'label'   => __( 'Next Label', 'tutor-lms-elementor-addons' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => __( 'Next', 'tutor-lms-elementor-addons' ),
+				'default' => __( 'Next &raquo;', 'tutor-lms-elementor-addons' ),
 			)
 		);
 
@@ -483,15 +483,15 @@ class CourseList extends BaseAddon {
 				'options'   => array(
 					'flex-start' => array(
 						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					),
 					'center'     => array(
 						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					),
 					'flex-end'   => array(
 						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					),
 				),
 
