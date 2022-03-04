@@ -55,13 +55,13 @@
 .icon-course-duration:before {
   content: "\e909";
 }
-.icon-course-enrolment-Box:before {
+.icon-course-enrolment-box:before {
   content: "\e90a";
 }
 .icon-course-instructors:before {
   content: "\e90b";
 }
-.icon-course-last-Update:before {
+.icon-course-last-update:before {
   content: "\e90c";
 }
 .icon-course-level:before {
@@ -79,7 +79,7 @@
 .icon-course-requirements:before {
   content: "\e911";
 }
-.icon-course-review:before {
+.icon-course-reviews:before {
   content: "\e912";
 }
 .icon-course-social-share:before {
