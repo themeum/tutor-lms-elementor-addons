@@ -229,7 +229,7 @@
 
 							<!-- loop footer -->
 							<?php
-							$enroll_btn_type = $settings['course_carousel_enroll_btn_type'];
+							$enroll_btn_type = '';
 							?>
 							<?php if ( 'yes' === $settings['course_carousel_footer_settings'] ) : ?>
 								<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_attr( $enroll_btn_type ); ?>">
@@ -328,6 +328,6 @@
 
 
 	</div>
-	<input type="hidden" id="etlms_enroll_btn_type" value="<?php echo $settings['course_carousel_enroll_btn_type']; ?>">
+	<input type="hidden" id="etlms_enroll_btn_type" value="">
 	<input type="hidden" id="etlms_enroll_btn_cart" value="">
 </div>
