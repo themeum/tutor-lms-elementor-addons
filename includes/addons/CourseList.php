@@ -70,8 +70,8 @@ class CourseList extends BaseAddon {
 					'1' => __( '1', 'tutor-lms-elementor-addons' ),
 					'2' => __( '2', 'tutor-lms-elementor-addons' ),
 					'3' => __( '3', 'tutor-lms-elementor-addons' ),
-					'4' => __( '4', 'tutor-lms-elementor-addons' ),
-					'5' => __( '5', 'tutor-lms-elementor-addons' ),
+					// '4' => __( '4', 'tutor-lms-elementor-addons' ),
+					// '5' => __( '5', 'tutor-lms-elementor-addons' ),
 				),
 			)
 		);
@@ -247,7 +247,7 @@ class CourseList extends BaseAddon {
 				// 		),
 				// 	),
 				// ),
-				'default'      => 'yes',
+				'default'      => '',
 			)
 		);
 		// $this->add_control(
@@ -712,15 +712,15 @@ class CourseList extends BaseAddon {
 				'options'   => array(
 					'flex-start' => array(
 						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-align-left',
+						'icon'  => 'eicon-text-align-left',
 					),
 					'center'     => array(
 						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-align-center',
+						'icon'  => 'eicon-text-align-center',
 					),
 					'flex-end'   => array(
 						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
-						'icon'  => 'fa fa-align-right',
+						'icon'  => 'eicon-text-align-right',
 					),
 
 				),
@@ -1318,6 +1318,9 @@ class CourseList extends BaseAddon {
 			array(
 				'label' => __( 'Badge', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
+				'condition'	=> array(
+					'course_list_difficulty_settings'	=> 'yes'
+				),
 			)
 		);
 
@@ -1328,8 +1331,8 @@ class CourseList extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$badge_selector => 'background-color:{{VALUE}};',
-				),
-			)
+			),
+			),
 		);
 
 		$this->add_control(
@@ -1340,7 +1343,8 @@ class CourseList extends BaseAddon {
 				'selectors' => array(
 					$badge_selector => 'color:{{VALUE}};',
 				),
-			)
+			),
+
 		);
 
 		$this->add_control(
@@ -1404,6 +1408,9 @@ class CourseList extends BaseAddon {
 			array(
 				'label' => __( 'Avatar', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
+				'condition'	=> array(
+					'course_list_avatar_settings' => 'yes'
+				)
 			)
 		);
 
@@ -1559,6 +1566,9 @@ class CourseList extends BaseAddon {
 			array(
 				'label' => __( 'Category', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
+				'condition'	=> array(
+					'course_list_category_settings' => 'yes'
+				)
 			)
 		);
 

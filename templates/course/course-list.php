@@ -157,7 +157,7 @@
 						<!--header end--> 
    
 							<!-- start loop content wrap -->
-							<div class="etlms-carousel-course-container tutor-bs-d-flex tutor-bs-flex-column tutor-bs-justify-content-between">
+							<div class="etlms-carousel-course-container">
 								<div class="tutor-loop-course-container">
 
 									<!-- loop rating -->
@@ -178,7 +178,7 @@
 										</div>
 									<?php endif; ?>
 									<!-- loop title -->
-									<div class="tutor-course-loop-title">
+									<div class="tutor-course-loop-title" title="<?php the_title(); ?>">
 										<h2><a href="<?php echo get_the_permalink(); ?>" class="tutor-text-medium-h5 tutor-color-text-primary"><?php the_title(); ?></a></h2>
 									</div>
 
@@ -258,6 +258,24 @@
 								$is_footer       = $settings['course_list_footer_settings'];
 								$enroll_btn_type = '';
 								?>
+
+								<?php if ( 'stacked' === $settings['course_list_skin'] || 'overlayed' === $settings['course_list_skin'] ) : ?>
+									<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
+										<?php if ( $is_footer == 'yes' ) : ?>
+											display:block;
+											<?php else : ?>
+											display: none;
+										<?php endif; ?>    
+										">
+										<?php
+										tutor_course_loop_price();
+										?>
+									</div>
+								<?php endif; ?>
+
+							</div> <!-- etlms-course-container -->
+
+							<?php if ( 'classic' === $settings['course_list_skin'] || 'card' === $settings['course_list_skin'] ) : ?>
 								<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
 									<?php if ( $is_footer == 'yes' ) : ?>
 										display:block;
@@ -269,7 +287,7 @@
 									tutor_course_loop_price();
 									?>
 								</div>
-							</div> <!-- etlms-course-container -->
+							<?php endif; ?>
 				
 					</div>
 					
