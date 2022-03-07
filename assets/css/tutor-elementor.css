@@ -1716,3 +1716,6 @@ tutor-course-listing-item-footer.default .list-item-button:hover .tutor-btn.tuto
     display: flex;
     align-items: center;
 }
+.tutor-course-loop-header-meta {
+	z-index: 9999;
+}
