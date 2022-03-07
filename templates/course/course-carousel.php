@@ -135,7 +135,7 @@
 
 						<!--header end-->
 						<!-- start loop content wrap -->
-						<div class="etlms-carousel-course-container <?php echo esc_attr( 'overlayed' !== $settings['course_carousel_skin'] ? '  tutor-bs-d-flex tutor-bs-flex-column tutor-bs-justify-content-between' : '' ); ?>">
+						<div class="etlms-carousel-course-container">
 							<div class="tutor-loop-course-container">
 
 								<!-- loop rating -->
@@ -237,7 +237,7 @@
 							<?php
 							$enroll_btn_type = '';
 							?>
-							<?php if ( 'yes' === $settings['course_carousel_footer_settings'] ) : ?>
+							<?php if ( 'yes' === $settings['course_carousel_footer_settings'] && ( 'stacked' === $settings['course_carousel_skin'] || 'overlayed' === $settings['course_carousel_skin'] ) ) : ?>
 								<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_attr( $enroll_btn_type ); ?>">
 									<?php
 									tutor_course_loop_price()
@@ -245,6 +245,13 @@
 								</div>
 							<?php endif; ?>
 						</div> <!-- etlms-course-container -->
+						<?php if ( 'yes' === $settings['course_carousel_footer_settings'] && ( 'classic' === $settings['course_carousel_skin'] || 'card' === $settings['course_carousel_skin'] ) ) : ?>
+							<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_attr( $enroll_btn_type ); ?>">
+								<?php
+								tutor_course_loop_price()
+								?>
+							</div>
+						<?php endif; ?>
 					</div>
 					<!--card-end-->
 				</div>

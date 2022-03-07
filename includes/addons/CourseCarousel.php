@@ -67,7 +67,7 @@ class CourseCarousel extends BaseAddon {
 			]
 		);
 
-		$slides_to_show = range(1, 10);
+		$slides_to_show = range(1, 3);
 
 		$slides_to_show = array_combine($slides_to_show, $slides_to_show);
 
@@ -77,8 +77,10 @@ class CourseCarousel extends BaseAddon {
 				'label' => __('Slides to Show', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __('Default', 'tutor-lms-elementor-addons'),
-				] + $slides_to_show,
+					'1' => '1',
+					'2' => '2',
+					'3' => '3',
+				],
 				'devices' => ['desktop', 'tablet', 'mobile'],
 				'frontend_available' => true,
 			]
@@ -148,12 +150,12 @@ class CourseCarousel extends BaseAddon {
 					'size' => 0,
 					'unit' => 'px'
 				],
+				"selectors" => [
+					$meta_content_selector => "padding-right: {{SIZE}}{{UNIT}};"
+				],
 				'condition' => [
 					'course_carousel_meta_data' => "yes"
 				],
-				"selectors" => [
-					$meta_content_selector => "padding-right: {{SIZE}}{{UNIT}};"
-				]
 			]
 		);
 
@@ -208,7 +210,7 @@ class CourseCarousel extends BaseAddon {
 				'label_on' => __('Show', 'tutor-lms-elementor-addons'),
 				'label_off' => __('Hide', 'tutor-lms-elementor-addons'),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => '',
 			]
 		);
 
@@ -220,7 +222,7 @@ class CourseCarousel extends BaseAddon {
 				'label_on' => __('Show', 'tutor-lms-elementor-addons'),
 				'label_off' => __('Hide', 'tutor-lms-elementor-addons'),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => '',
 			]
 		);
 
@@ -1150,7 +1152,7 @@ class CourseCarousel extends BaseAddon {
 			'course_carousel_badge_heading',
 			[
 				'label' => __('Badge', 'tutor-lms-elementor-addons'),
-				'type' => Controls_Manager::HEADING
+				'type' => Controls_Manager::HEADING,
 			]
 		);
 
@@ -1162,6 +1164,9 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$badge_selector => 'background-color:{{VALUE}};'
 				],
+				'condition'	=> array(
+					'course_carousel_difficulty_settings' => 'yes'
+				)
 			]
 		);
 
@@ -1173,6 +1178,9 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$badge_selector => 'color:{{VALUE}};'
 				],
+				'condition'	=> array(
+					'course_carousel_difficulty_settings' => 'yes'
+				)
 			]
 		);
 
@@ -1185,6 +1193,9 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$badge_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+				'condition'	=> array(
+					'course_carousel_difficulty_settings' => 'yes'
+				)
 			]
 		);
 
@@ -1203,6 +1214,9 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$badge_selector => 'width: {{SIZE}}{{UNIT}};',
 				],
+				'condition'	=> array(
+					'course_carousel_difficulty_settings' => 'yes'
+				)
 			]
 		);
 
@@ -1221,6 +1235,9 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$badge_selector => 'margin: {{SIZE}}{{UNIT}};',
 				],
+				'condition'	=> array(
+					'course_carousel_difficulty_settings' => 'yes'
+				)
 			]
 		);
 
@@ -1236,7 +1253,10 @@ class CourseCarousel extends BaseAddon {
 			'course_carousel_avatar_heading',
 			[
 				'label' => __('Avatar', 'tutor-lms-elementor-addons'),
-				'type' => Controls_Manager::HEADING
+				'type' => Controls_Manager::HEADING,
+				'condition'	=> array(
+					'course_carousel_avatar_settings'	=> 'yes'
+				)
 			]
 		);
 
@@ -1252,6 +1272,10 @@ class CourseCarousel extends BaseAddon {
 						'max' => 200,
 					],
 				],
+				'default'    => array(
+					'unit' => 'px',
+					'size' => 34,
+				),
 				'selectors' => [
 					$avatar_selector => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}}; line-height:{{SIZE}}{{UNIT}};',
 					$avatar_span_selector => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}}; line-height:{{SIZE}}{{UNIT}};',
@@ -1387,7 +1411,7 @@ class CourseCarousel extends BaseAddon {
 			'course_carousel_category_title',
 			[
 				'label' => __('Category', 'tutor-lms-elementor-addons'),
-				'type' => Controls_Manager::HEADING
+				'type' => Controls_Manager::HEADING,
 			]
 		);
 
@@ -1399,6 +1423,9 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$category_selector => 'color:{{VALUE}};'
 				],
+				'condition'	=> array(
+					'course_carousel_category_settings'	=> 'yes'
+				)
 			]
 		);
 
@@ -1408,6 +1435,9 @@ class CourseCarousel extends BaseAddon {
 				'name'      => 'course_carousel_category_typo',
 				'label'     => __('Typography', 'tutor-lms-elementor-addons'),
 				'selector'  => $category_selector,
+				'condition'	=> array(
+					'course_carousel_category_settings'	=> 'yes'
+				)
 			]
 		);
 
@@ -1426,7 +1456,10 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$category_selector => 'padding: {{SIZE}}{{UNIT}};',
 				],
-				'separator' => 'after'
+				'separator' => 'after',
+				'condition'	=> array(
+					'course_carousel_category_settings'	=> 'yes'
+				)
 			]
 		);
 
