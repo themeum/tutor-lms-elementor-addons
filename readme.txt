@@ -82,6 +82,9 @@ Tutor LMS Elementor Addons currently offers the following Elementor widgets to t
 22. Course Carousel
 23. Course List
 24. Course Description (available for the global template only)
+25. Course Content
+26. Course Purchase
+27. Course wishlist
 
 == Installation ==
 
