@@ -1443,8 +1443,8 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'default'    => array(
-					'unit' => 'px',
-					'size' => 25,
+					'unit' => '%',
+					'size' => 50,
 				),
 				'selectors'  => array(
 					$avatar_selector      => 'border-radius: {{SIZE}}{{UNIT}};',
