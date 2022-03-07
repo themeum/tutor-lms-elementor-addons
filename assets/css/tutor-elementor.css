@@ -1719,3 +1719,9 @@ tutor-course-listing-item-footer.default .list-item-button:hover .tutor-btn.tuto
 .tutor-course-loop-header-meta {
 	z-index: 9999;
 }
+.etlms-course-list-stacked .etlms-course-list-col .etlms-card.hover-animation {
+	box-shadow: none !important;
+}
+.etlms-course-list-stacked .etlms-course-list-col .etlms-card.hover-animation:hover {
+	box-shadow: none !important;
+}
