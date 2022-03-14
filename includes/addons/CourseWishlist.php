@@ -228,11 +228,12 @@ class CourseWishlist extends BaseAddon {
 	protected function render() {
 		$settings  = $this->get_settings_for_display();
 		$is_editor = \Elementor\Plugin::instance()->editor->is_edit_mode();
+		$is_wishlisted = tutor_utils()->is_wishlisted( get_the_ID(), get_current_user_id() );
 		?>
 			<div class="etlms-course-wishlist-wrapper">
 				<a href="#" class="action-btn <?php echo esc_attr( ! $is_editor ? 'tutor-course-wishlist-btn' : '' ); ?> tutor-text-regular-body tutor-color-text-primary tutor-bs-d-flex tutor-bs-align-items-center" data-course-id="<?php echo get_the_ID(); ?>">
 					<?php if ( 'yes' === $settings['course_wishlist_icon_show'] ) : ?>
-						<i class="tutor-icon-fav-line-filled"></i>
+						<i class="<?php echo esc_attr( $is_wishlisted ? 'tutor-icon-fav-full-filled' : 'tutor-icon-fav-line-filled' ); ?> "></i>
 					<?php endif; ?>
 					<?php
 					if ( 'yes' === $settings['course_wishlist_text_show'] ) {
