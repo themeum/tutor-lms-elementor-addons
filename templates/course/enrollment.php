@@ -194,11 +194,6 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 			} else {
 				ob_start();
 				?>
-					<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
-						<div>
-							<span class="text-bold-h4 tutor-color-text-primary"><?php esc_html_e( 'Free', 'tutor' ); ?></span>
-						</div>
-					</div>
 					<div class="tutor-course-sidebar-card-btns">
 						<form class="tutor-enrol-course-form" method="post">
 						<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>

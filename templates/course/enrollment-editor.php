@@ -67,11 +67,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 				</form>
 
 			<?php else : ?>
-				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
-					<div>
-						<span class="text-bold-h4 tutor-color-text-primary"><?php esc_html_e( 'Free', 'tutor-lms-elementor-addons' ); ?></span>
-					</div>
-				</div>
+
 			<?php endif; ?>
 
 			<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
