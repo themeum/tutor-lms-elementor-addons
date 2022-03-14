@@ -8,7 +8,7 @@
 $course_progress = tutor_utils()->get_course_completed_percent( get_the_ID(), 0, true );
 $is_editor       = \Elementor\Plugin::instance()->editor->is_edit_mode();
 
-if ( tutor_utils()->get_option( 'enable_course_progress_bar', true, true ) && is_array( $course_progress ) && count( $course_progress ) ) : ?>
+if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
 	<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
 		<span class="tutor-color-text-primary tutor-text-medium-h6">
 			<?php echo esc_html( $settings['course_progress_title_text'], 'tutor' ); ?>
