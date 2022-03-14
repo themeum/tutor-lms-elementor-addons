@@ -2,6 +2,22 @@
 (function ($) {
 
 	jQuery(window).on('elementor/frontend/init', function () {
+
+		elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-thumbnail.default', function ($scope, $) {
+			// remove course play and spining class
+			if (etlmsUtility.is_editor_mode) {
+				const coursePlayers = document.querySelectorAll('.course-players');
+				if (coursePlayers.length) {
+					coursePlayers.forEach( (player) => {
+						player.setAttribute('class', '');
+						const spinner = player.querySelector('.loading-spinner');
+						if (spinner) {
+							spinner.setAttribute('class', '');
+						}
+					})	
+				}
+			}
+		});
 		/**
 		 * Course Curriculum
 		 * @since 1.0.0

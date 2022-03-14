@@ -18,6 +18,17 @@ class CourseThumbnail extends BaseAddon {
     public function get_title() {
         return __('Course Thumbnail', 'tutor-lms-elementor-addons');
     }
+
+    /**
+	 * Dependent scripts
+	 *
+	 * @return array, contains name of dependent script
+	 */
+	public function get_script_depends() {
+		return array(
+			'etlms-course-topics',
+		);
+	}
     
     protected function register_style_controls() {
         $selector = '{{WRAPPER}} .tutor-course-thumbnail';
