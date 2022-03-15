@@ -9,7 +9,7 @@ do_action( 'tutor_course/single/before/benefits' );
 $benefits = tutor_course_benefits();
 ?>
 
-<div class="etlms-course-specifications etlms-course-benefits">
+<div class="etlms-course-specifications etlms-course-benefits tutor-mt-32">
 	<div class="tutor-course-details-widget-title tutor-mb-16">
 		<span class="tutor-color-text-primary tutor-text-medium-h6">
 			<?php echo esc_html( $settings['what_i_will_learn_title'], 'tutor-lms-elementor-addons' ); ?>

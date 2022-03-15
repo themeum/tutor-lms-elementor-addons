@@ -1334,11 +1334,11 @@ msgstr ""
 msgid "View Cart"
 msgstr ""
 
-#: templates/course/author.php:20, templates/course/course-carousel.php:203, templates/course/course-list.php:223
+#: templates/course/author.php:20, templates/course/course-carousel.php:209, templates/course/course-list.php:228
 msgid "by"
 msgstr ""
 
-#: templates/course/course-carousel.php:219, templates/course/course-list.php:239
+#: templates/course/course-carousel.php:225, templates/course/course-list.php:244
 msgid "In"
 msgstr ""
 
@@ -1360,6 +1360,10 @@ msgstr ""
 
 #: templates/course/enrollment-editor.php:33, templates/course/purchase-editor.php:32
 msgid "Last Updated"
+msgstr ""
+
+#: templates/course/enrollment-editor.php:65
+msgid "Add to card"
 msgstr ""
 
 #: templates/course/enrollment-editor.php:74, templates/course/purchase-editor.php:94

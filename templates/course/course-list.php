@@ -264,7 +264,7 @@
 								$enroll_btn_type = '';
 								?>
 
-								<?php if ( 'stacked' === $settings['course_list_skin'] || 'overlayed' === $settings['course_list_skin'] || $settings['course_list_column'] < 2 ) : ?>
+								<?php if ( 'stacked' === $settings['course_list_skin'] || 'overlayed' === $settings['course_list_skin'] ) : ?>
 									<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
 										<?php if ( $is_footer == 'yes' ) : ?>
 											display:block;
@@ -280,7 +280,7 @@
 
 							</div> <!-- etlms-course-container -->
 
-							<?php if ( 'classic' === $settings['course_list_skin'] || 'card' === $settings['course_list_skin'] || $settings['course_list_column'] > 1 ) : ?>
+							<?php if ( 'classic' === $settings['course_list_skin'] || 'card' === $settings['course_list_skin'] ) : ?>
 								<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
 									<?php if ( $is_footer == 'yes' ) : ?>
 										display:block;

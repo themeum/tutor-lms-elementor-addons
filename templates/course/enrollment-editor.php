@@ -42,7 +42,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 
 <div class="tutor-course-sidebar-card">
 	<!-- Course Entry -->
-	<div class="tutor-course-sidebar-card-body tutor-p-30 <?php echo ! is_user_logged_in() ? 'tutor-course-entry-box-login' : ''; ?>">
+	<div class="tutor-course-sidebar-card-body tutor-p-32 <?php echo ! is_user_logged_in() ? 'tutor-course-entry-box-login' : ''; ?>">
 
 		<?php
 			$button_class = 'tutor-is-fullwidth tutor-btn  tutor-is-fullwidth tutor-pr-0 tutor-pl-0  start-continue-retake-button';
@@ -92,7 +92,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 	</div>
 	<!-- Course Info -->
 	<?php// if ( 'enrolled' === $enrollment_mode ) : ?>
-	<div class="tutor-course-sidebar-card-footer tutor-p-30">
+	<div class="tutor-course-sidebar-card-footer tutor-p-32">
 		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
 			<?php foreach ( $sidebar_meta as $meta ) : ?>
 				<?php
