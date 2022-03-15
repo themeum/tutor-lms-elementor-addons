@@ -24,7 +24,7 @@ if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
 					<?php esc_html_e( 'Complete', 'tutor' ); ?>
 				</span>
 			</div>
-			<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $is_editor ? '50' : $course_progress['completed_percent'] ); ?>%;">
+			<div class="progress-bar tutor-mt-12" style="--progress-value:<?php echo esc_attr( $is_editor ? '50' : $course_progress['completed_percent'] ); ?>%;">
 				<span class="progress-value"></span>
 			</div>
 		</div>

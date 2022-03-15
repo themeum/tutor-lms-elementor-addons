@@ -43,19 +43,19 @@ $share_title   = $settings['course_share_title'];
 					<span class="tutor-icon-line-cross-line"></span>
 				</button>
 				<?php if ( '' !== $section_title ) : ?>
-				<div class="tutor-text-medium-h5 color-text-primary tutor-mb-15">
+				<div class="tutor-text-medium-h5 color-text-primary tutor-mb-16">
 					<?php echo esc_html( $section_title ); ?>
 				</div>
 				<?php endif; ?>
-				<div class="tutor-text-regular-caption color-text-subsued tutor-mb-10">
+				<div class="tutor-text-regular-caption color-text-subsued tutor-mb-12">
 					<?php esc_html_e( 'Page Link', 'tutor-lms-elementor-addons' ); ?>
 				</div>
-				<div class="tutor-mb-30">
+				<div class="tutor-mb-32">
 					<input class="tutor-form-control" value="<?php echo get_permalink( get_the_ID() ); ?>" />
 				</div>
 				<div>
 					<?php if ( '' !== $share_title ) : ?>
-						<div class="color-text-primary tutor-text-medium-h6 tutor-mb-15">
+						<div class="color-text-primary tutor-text-medium-h6 tutor-mb-16">
 							<?php echo esc_html( $share_title ); ?>
 						</div>
 					<?php endif; ?>
