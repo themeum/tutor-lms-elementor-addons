@@ -286,7 +286,7 @@ class CourseCategories extends BaseAddon {
 		if ( is_array( $course_categories ) && count( $course_categories ) ) {
 			$item = 1;
 			?>
-			<div class="etlms-single-course-meta-categories tutor-bs-d-flex">
+			<div class="etlms-single-course-meta-categories tutor-d-flex">
 				<div>
 					<span class="text-regular-body tutor-color-text-hints">
 						<?php esc_html_e( 'Categories:' ); ?>

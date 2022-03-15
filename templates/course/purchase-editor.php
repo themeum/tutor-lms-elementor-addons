@@ -52,7 +52,7 @@ $button_size    = $settings['course_enroll_buttons_size'];
 						<?php echo esc_html( $settings['course_progress_title_text'], 'tutor-lms-elementor-addons' ); ?>
 					</span>
 					<div class="list-item-progress tutor-mt-16">
-						<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+						<div class="text-regular-body color-text-subsued tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 							<span class="progress-steps">
 								<?php echo esc_html( 5 ); ?>/
 								<?php echo esc_html( 10 ); ?>
@@ -83,7 +83,7 @@ $button_size    = $settings['course_enroll_buttons_size'];
 					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
 
 			<?php else : ?>
-				<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
+				<div class="tutor-course-sidebar-card-pricing tutor-d-flex align-items-end tutor-justify-content-between">
 					<div>
 						<span class="text-bold-h4 tutor-color-text-primary"><?php esc_html_e( 'Free', 'tutor-lms-elementor-addons' ); ?></span>
 					</div>
@@ -97,7 +97,7 @@ $button_size    = $settings['course_enroll_buttons_size'];
 			<?php endif; ?>
 			<!-- enrollment info -->
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
-				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-d-flex tutor-justify-content-center tutor-align-items-center">
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
 						<span class="text">
@@ -119,7 +119,7 @@ $button_size    = $settings['course_enroll_buttons_size'];
 				if ( ! $meta['value'] ) {
 					continue;}
 				?>
-				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+				<li class="tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 					<div class="flex-center">
 						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> color-text-primary"></span>
 						<span class="text-regular-caption color-text-hints tutor-ml-5">

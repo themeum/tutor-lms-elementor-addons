@@ -8,7 +8,7 @@
 $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $settings['course_enrolment_edit_mode'];
 $product_id           = tutor_utils()->get_course_product_id();
-$product              = wc_get_product( $product_id );
+$product              = function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : $product_id;
 $is_purchasable       = tutor_utils()->is_course_purchasable();
 $sidebar_meta         = apply_filters(
 	'tutor/course/single/sidebar/metadata',
@@ -60,9 +60,9 @@ $button_size          = $settings['course_enroll_buttons_size'];
 				<?php if ( $is_purchasable ) : ?>	
 
 				<form action="<?php echo esc_url( apply_filters( 'tutor_course_add_to_cart_form_action', get_permalink( get_the_ID() ) ) ); ?>" method="post" enctype="multipart/form-data">
-					<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
+					<button type="submit" name="add-to-cart" value=""  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
 						<span class="btn-icon tutor-icon-cart-filled"></span>
-						<span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
+						<span><?php echo esc_html( is_object( $product ) ? $product->single_add_to_cart_text() : __( 'Add to card', 'tutor-lms-elementor-addons' ) ); ?></span>
 					</button>
 				</form>
 
@@ -77,7 +77,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 			<?php endif; ?>
 			<!-- enrollment info -->
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
-				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-d-flex tutor-justify-content-center tutor-align-items-center">
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
 						<span class="text">
@@ -99,7 +99,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 				if ( ! $meta['value'] ) {
 					continue;}
 				?>
-				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+				<li class="tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 					<div class="flex-center">
 						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> color-text-primary"></span>
 						<span class="text-regular-caption color-text-hints tutor-ml-5">

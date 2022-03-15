@@ -20,7 +20,7 @@ $share_title   = $settings['course_share_title'];
 ?>
 
 <div class="etlms-course-share">
-	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary tutor-bs-d-flex align-items-center">
+	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary tutor-d-flex align-items-center">
 		<?php if ( isset( $settings['course_share_icon']['value'] ) && '' !== $settings['course_share_icon']['value'] ) : ?>
 			<?php \Elementor\Icons_Manager::render_icon( $settings['course_share_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 		<?php else : ?>
@@ -59,7 +59,7 @@ $share_title   = $settings['course_share_title'];
 							<?php echo esc_html( $share_title ); ?>
 						</div>
 					<?php endif; ?>
-					<div class="tutor-social-share-wrap tutor-bs-d-flex" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
+					<div class="tutor-social-share-wrap tutor-d-flex" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
 						<?php foreach ( $tutor_social_share_icons as $icon ) : ?>
 							<button class="tutor_share <?php echo esc_attr( $icon['share_class'] . ' elementor-animation-' . $settings['course_share_hover_animation'] ); ?>">
 								<span class="social-icon">

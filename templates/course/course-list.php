@@ -162,7 +162,7 @@
 
 									<!-- loop rating -->
 									<?php if ( 'yes' === $settings['course_list_rating_settings'] ) : ?>
-										<div class="tutor-loop-rating-wrap tutor-bs-d-flex">
+										<div class="tutor-loop-rating-wrap tutor-d-flex">
 											<?php
 											$course_rating = tutor_utils()->get_course_rating();
 											tutor_utils()->star_rating_generator( $course_rating->rating_avg );
@@ -211,7 +211,7 @@
 										</div>
 									<?php endif; ?>
 
-									<div class="tutor-loop-author tutor-bs-d-flex">
+									<div class="tutor-loop-author tutor-d-flex">
 										<span class="tutor-single-course-avatar">
 											<?php if ( 'yes' === $settings['course_list_avatar_settings'] ) : ?>
 												<a href="<?php echo esc_url( $profile_url ); ?>"> <?php echo tutor_utils()->get_tutor_avatar( $post->post_author ); ?></a>
@@ -259,7 +259,7 @@
 								$enroll_btn_type = '';
 								?>
 
-								<?php if ( 'stacked' === $settings['course_list_skin'] || 'overlayed' === $settings['course_list_skin'] ) : ?>
+								<?php if ( 'stacked' === $settings['course_list_skin'] || 'overlayed' === $settings['course_list_skin'] || $settings['course_list_column'] < 2 ) : ?>
 									<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
 										<?php if ( $is_footer == 'yes' ) : ?>
 											display:block;
@@ -275,7 +275,7 @@
 
 							</div> <!-- etlms-course-container -->
 
-							<?php if ( 'classic' === $settings['course_list_skin'] || 'card' === $settings['course_list_skin'] ) : ?>
+							<?php if ( 'classic' === $settings['course_list_skin'] || 'card' === $settings['course_list_skin'] || $settings['course_list_column'] > 1 ) : ?>
 								<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer etlms-carousel-footer <?php echo esc_html( $enroll_btn_type ); ?>" style="
 									<?php if ( $is_footer == 'yes' ) : ?>
 										display:block;

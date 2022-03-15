@@ -5,7 +5,7 @@
  * @package CourseCurriculum
  */
 
-	$course_nav_items = tutor_utils()->course_nav_items();
+	$course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils()->course_nav_items(), get_the_ID() );
 	/**
 	 * Unset nav items that are not supposed to be here
 	 *

@@ -140,7 +140,7 @@
 
 								<!-- loop rating -->
 								<?php if ( 'yes' === $settings['course_carousel_rating_settings'] ) : ?>
-									<div class="tutor-loop-rating-wrap tutor-bs-d-flex">
+									<div class="tutor-loop-rating-wrap tutor-d-flex">
 										<?php
 										$course_rating = tutor_utils()->get_course_rating();
 										tutor_utils()->star_rating_generator( $course_rating->rating_avg );
@@ -191,7 +191,7 @@
 								<?php endif; ?>
 
 								<!-- update loop author -->
-								<div class="tutor-loop-author tutor-bs-d-flex">
+								<div class="tutor-loop-author tutor-d-flex">
 									<span class="tutor-single-course-avatar">
 										<?php if ( 'yes' === $settings['course_carousel_avatar_settings'] ) : ?>
 											<a href="<?php echo esc_url( $profile_url ); ?>"> <?php echo tutor_utils()->get_tutor_avatar( $post->post_author ); ?></a>

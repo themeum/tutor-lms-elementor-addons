@@ -19,9 +19,10 @@ $is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course',
 
 // Monetization info.
 $monetize_by              = tutor_utils()->get_option( 'monetize_by' );
+
 $enable_guest_course_cart = tutor_utils()->get_option( 'enable_guest_course_cart' );
 $product_id               = tutor_utils()->get_course_product_id();
-$product                  = wc_get_product( $product_id );
+$product                  = 'wc' === $monetize_by ? wc_get_product( $product_id ) : $product_id;
 $is_purchasable           = tutor_utils()->is_course_purchasable();
 // Get login url if.
 $is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
@@ -132,7 +133,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 			}
 
 			?>
-				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-d-flex tutor-justify-content-center tutor-align-items-center">
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
 						<span class="text">
@@ -222,7 +223,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 				if ( ! $meta['value'] ) {
 					continue;}
 				?>
-				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+				<li class="tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 					<div class="flex-center">
 						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> tutor-color-text-primary"></span>
 						<span class="text-regular-caption tutor-color-text-hints tutor-ml-5">

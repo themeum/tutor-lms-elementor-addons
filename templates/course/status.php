@@ -14,7 +14,7 @@ if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
 			<?php echo esc_html( $settings['course_progress_title_text'], 'tutor' ); ?>
 		</span>
 		<div class="list-item-progress tutor-mt-16">
-			<div class="text-regular-body tutor-color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+			<div class="text-regular-body tutor-color-text-subsued tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 				<span class="progress-steps">
 					<?php echo esc_html( $is_editor ? 5 : $course_progress['completed_count'] ); ?>/
 					<?php echo esc_html( $is_editor ? 10 : $course_progress['total_count'] ); ?>
