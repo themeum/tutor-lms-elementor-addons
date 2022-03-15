@@ -115,6 +115,10 @@
 								if ( $is_wishlisted ) {
 									$has_wish_list = 'has-wish-listed';
 								}
+								$icon_class = 'tutor-icon-fav-line-filled';
+								if ( $is_wishlisted ) {
+									$icon_class = 'tutor-icon-fav-full-filled';
+								}
 
 								$action_class = '';
 								if ( is_user_logged_in() ) {
@@ -126,7 +130,9 @@
 									echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
 								}
 								if ( 'yes' === $settings['course_carousel_wishlist_settings'] ) {
-									echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line-filled ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+									?>
+									<span class="tutor-course-wishlist tutor-course-listing-item-head save-bookmark-btn"><a href="javascript:;" class="<?php echo esc_attr( $icon_class . ' ' . $action_class . ' ' .  $has_wish_list );?>" data-course-id="<?php echo esc_attr( $course_id );?>"></a> </span>
+									<?php
 								}
 								?>
 							</div>

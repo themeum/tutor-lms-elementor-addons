@@ -83,7 +83,7 @@ class CourseSocialShare extends BaseAddon {
 				'selectors'		=> array(
 					'{{WRAPPER}} .etlms-course-share a' => 'justify-content: {{VALUE}};',
 				),
-				'default'      => 'flex-end',
+				'default'      => 'flex-start',
 			)
 		);
 		$this->end_controls_section();
