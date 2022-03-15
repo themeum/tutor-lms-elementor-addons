@@ -122,7 +122,7 @@ $button_size    = $settings['course_enroll_buttons_size'];
 				<li class="tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 					<div class="flex-center">
 						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> color-text-primary"></span>
-						<span class="text-regular-caption color-text-hints tutor-ml-5">
+						<span class="text-regular-caption color-text-hints tutor-ml-4">
 							<?php echo esc_html( $meta['label'] ); ?>
 						</span>
 					</div>
