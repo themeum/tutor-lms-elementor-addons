@@ -471,7 +471,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper .tutor-text-bold-h4" => 'color: {{VALUE}};',
+						"$course_price_wrapper div > span" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -480,9 +480,9 @@ class CoursePurchase extends BaseAddon {
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
-					'name'     => 'course_price_normal_text_typography',
+					'name'     => 'course_purchase_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper .tutor-text-bold-h4",
+					'selector' => "$course_price_wrapper div > span, {{WRAPPER}} .tutor-fs-4",
 				)
 			);
 
@@ -502,7 +502,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper del" => 'color: {{VALUE}};',
+						"$course_price_wrapper div > del, {{WRAPPER}} .tutor-fs-7" => 'color: {{VALUE}};',
 					),
 					'default'   => '#7A7A7A',
 				)
@@ -513,7 +513,7 @@ class CoursePurchase extends BaseAddon {
 				array(
 					'name'     => 'strikethrough_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper del",
+					'selector' => "$course_price_wrapper div > del, {{WRAPPER}} .tutor-fs-7",
 				)
 			);
 
