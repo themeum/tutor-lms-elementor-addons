@@ -711,9 +711,9 @@
 .tutor-course-header a img,
 .etlms-course-list-overlayed
 .tutor-course-header a img {
-	height: auto;
-	min-height: 300px;
-	
+	min-height: 280px;
+    object-fit: cover;
+    object-position: center;
 }
 
 /*for carousel height to be equal*/
@@ -966,8 +966,8 @@
 	background-repeat: no-repeat;
 	border-radius: 20px;
 	position: relative;
-	height: 300px;
-
+	min-height: 300px;
+	height: auto;
 }
 .etlms-course-list-overlayed
 .etlms-card:hover,
@@ -1002,7 +1002,6 @@
 .etlms-course-list-overlayed
 .tutor-course-header
 {
-	z-index: 2;
 	height: 100%;
 }
 .etlms-coursel-overlayed
