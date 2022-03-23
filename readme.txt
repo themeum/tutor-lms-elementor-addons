@@ -5,7 +5,7 @@ Tags: lms, elearning, learning management system, course, education, elementor a
 Requires at least: 5.3
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -142,6 +142,8 @@ You can post on the support section of this plugin or use the contact form at th
 
 
 == Changelog ==
+
+= 2.0.1 - 23 March, 2022
 
 = 2.0.0 - 15 March, 2022
 
