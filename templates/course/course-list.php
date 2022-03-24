@@ -103,14 +103,19 @@
 					$thumbnail_hide = '';
 				}
 				?>
+				<?php
+					$dynamic_style = '';
+					if ( ( 'yes' === $settings['course_list_meta_data'] || 'yes' === $settings['course_list_category_settings'] ) && 'overlayed' === $settings['course_list_skin'] ) {
+						$dynamic_style = 'min-height: 360px;';
+					}
+				?>
 				<div class="tutor-course-col-<?php echo esc_attr( $course_list_column ); ?> etlms-course-list-col <?php echo esc_attr( $thumbnail_hide ); ?>">
 					<?php
 						$image_size = $settings['course_list_image_size_size'];
 						$image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
 						$animation  = 'elementor-animation-' . $settings['course_list_card_hover_animation'];
 					?>
-					<div class="<?php echo 'stacked' !== $settings['course_list_skin'] ? 'tutor-course-listing-item ' : ''; ?> etlms-card 
-					<?php
+					<div class="<?php echo 'stacked' !== $settings['course_list_skin'] ? 'tutor-course-listing-item ' : ''; ?> etlms-card <?php
 					// course list style omit for overlayed skin.
 					if ( $settings['course_list_column'] == 1 && $settings['course_list_skin'] != 'overlayed' ) {
 						echo 'etlms-course-list-style'; }
@@ -119,13 +124,13 @@
 						echo esc_attr( ' hover-animation' );
 					}
 					?>
-					" >
+					" style="<?php echo esc_attr( $dynamic_style ); ?>">
 						<!-- header -->
 						<div class="tutor-course-header <?php echo 'overlayed' != $settings['course_list_skin'] ? ' ' . $animation : '';?>
 						">
 							<?php if ( 'yes' == $settings['course_list_image'] ) : ?>
 							<a href="<?php the_permalink(); ?>">
-								<img src="<?php echo $image_url; ?>" alt="thumbnail" >
+								<img src="<?php echo $image_url; ?>" alt="thumbnail" style="<?php echo esc_attr( $dynamic_style ); ?>">
 							</a>
 							<?php endif; ?> 
 							
@@ -152,7 +157,10 @@
 								}
 								if ( 'yes' === $settings['course_list_wishlist_settings'] ) {
 									?>
-									<span class="tutor-course-wishlist tutor-course-listing-item-head save-bookmark-btn"><a href="javascript:;" class="<?php echo esc_attr( $icon_class . ' ' . $action_class . ' ' .  $has_wish_list );?>" data-course-id="<?php echo esc_attr( $course_id );?>"></a> </span>
+									<a href="javascript:" class="tutor-course-wishlist tutor-course-listing-item-head save-bookmark-btn <?php echo esc_attr( $action_class ); ?>" data-course-id="<?php echo esc_attr( $course_id );?>">
+										<i class="<?php echo esc_attr( $icon_class . ' ' . $has_wish_list );?>">
+										</i>
+									</a>
 									<?php
 								}
 								?>

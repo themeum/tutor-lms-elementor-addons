@@ -711,7 +711,7 @@
 .tutor-course-header a img,
 .etlms-course-list-overlayed
 .tutor-course-header a img {
-	min-height: 280px;
+	min-height: 300px;
     object-fit: cover;
     object-position: center;
 }
@@ -1723,4 +1723,13 @@ tutor-course-listing-item-footer.default .list-item-button:hover .tutor-btn.tuto
 }
 .etlms-course-list-stacked .etlms-course-list-col .etlms-card.hover-animation:hover {
 	box-shadow: none !important;
+}
+.etlms-card .tutor-course-wishlist {
+	width: 38px;
+	height: 38px;
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
 }
