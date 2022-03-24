@@ -1066,7 +1066,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Title Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-course-curriculum .tutor-course-topics-header .tutor-color-text-primary' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .etlms-course-curriculum #tutor-course-details-tab-curriculum h3' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
