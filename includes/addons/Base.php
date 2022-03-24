@@ -82,7 +82,7 @@ abstract class BaseAddon extends Widget_Base {
 	/**
 	 * Register addon controls
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		do_action( 'tutor_start_register_controls', $this );
 
 		$this->register_content_controls();
