@@ -90,6 +90,11 @@
 					$image_size = $settings['course_carousel_image_size_size'];
 					$image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
 					$animation  = 'elementor-animation-' . $settings['course_carousel_img_hover_animation'];
+					// dynamic css for overlayed skin.
+					$dynamic_style = '';
+					if ( ( 'yes' === $settings['course_carousel_meta_data'] || 'yes' === $settings['course_carousel_category_settings'] ) && 'overlayed' === $settings['course_carousel_skin'] ) {
+						$dynamic_style = 'min-height: 360px;';
+					}
 					?>
 					<div class="<?php echo 'stacked' !== $settings['course_carousel_skin'] ? 'tutor-course-listing-item ' : ''; ?> etlms-card 
 					<?php
@@ -98,13 +103,13 @@
 						echo ' hover-animation';
 					}
 					?>
-					">
+					" style="<?php echo esc_attr( $dynamic_style ); ?>">
 
 						<!-- header -->
 						<div class="tutor-course-header <?php echo esc_attr( 'overlayed' !== $settings['course_carousel_skin'] ? ' ' . $animation : '' ); ?>">
 							<?php if ( 'yes' == $settings['course_carousel_image'] ) : ?>
 								<a href="<?php the_permalink(); ?>">
-									<img src="<?php echo esc_url( $image_url ); ?>" alt="">
+									<img src="<?php echo esc_url( $image_url ); ?>" alt="" style="<?php echo esc_attr( $dynamic_style ); ?>">
 								</a>
 							<?php endif; ?>
 							<div class="tutor-course-loop-header-meta">
@@ -274,10 +279,10 @@
 		</div>
 		<!--arrow start-->
 		<?php if ( 'yes' == $settings['course_carousel_settings_arrows'] ) : ?>
-			<div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?php echo $settings['course_carousel_arrow_style']; ?> etlms-carousel-arrow-position-<?php echo $settings['course_carousel_arrows_position']; ?> ">
+			<div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?php echo $settings['course_carousel_arrow_style']; ?> etlms-carousel-arrow-position-<?php echo esc_attr( $settings['course_carousel_arrows_position'] ); ?> ">
 				<i class="fa fa-angle-left" aria-hidden="true"></i>
 			</div>
-			<div class="etlms-carousel-arrow etlms-carousel-arrow-next arrow-<?php echo $settings['course_carousel_arrow_style']; ?> etlms-carousel-arrow-position-<?php echo $settings['course_carousel_arrows_position']; ?>">
+			<div class="etlms-carousel-arrow etlms-carousel-arrow-next arrow-<?php echo $settings['course_carousel_arrow_style']; ?> etlms-carousel-arrow-position-<?php echo esc_attr( $settings['course_carousel_arrows_position'] ); ?>">
 				<i class="fa fa-angle-right" aria-hidden="true"></i>
 			</div>
 		<?php endif; ?>
