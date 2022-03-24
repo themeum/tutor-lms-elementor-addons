@@ -131,7 +131,10 @@
 								}
 								if ( 'yes' === $settings['course_carousel_wishlist_settings'] ) {
 									?>
-									<span class="tutor-course-wishlist tutor-course-listing-item-head save-bookmark-btn"><a href="javascript:;" class="<?php echo esc_attr( $icon_class . ' ' . $action_class . ' ' .  $has_wish_list );?>" data-course-id="<?php echo esc_attr( $course_id );?>"></a> </span>
+									<a href="javascript:" class="tutor-course-wishlist tutor-course-listing-item-head save-bookmark-btn <?php echo esc_attr( $action_class ); ?>" data-course-id="<?php echo esc_attr( $course_id );?>">
+										<i class="<?php echo esc_attr( $icon_class . ' ' . $has_wish_list );?>">
+										</i>
+									</a>
 									<?php
 								}
 								?>
