@@ -150,7 +150,7 @@ class CourseCurriculum extends BaseAddon {
 			array(
 				'name'     => 'course_topics_header_title_typo',
 				'label'    => __( 'Title Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $topic_header . ' div.text-medium-h6 span',
+				'selector' => $curriculum_header_selector,
 			)
 		);
 
@@ -518,7 +518,7 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' span.text-regular-body a' => 'color: {{VALUE}} !important;',
+							$lesson_selector . ' .lesson-preview-title' => 'color: {{VALUE}} !important;',
 						),
 						'default'   => '#161616',
 					)
@@ -530,7 +530,7 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Info Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} .etlms-course-curriculum .tutor-courses-lession-list li .tutor-color-text-hints' => 'color: {{VALUE}} !important;',
+							'{{WRAPPER}} .etlms-course-curriculum .tutor-courses-lession-list li .tutor-color-muted' => 'color: {{VALUE}} !important;',
 						),
 						'default'   => '#757c8e',
 					)
@@ -608,7 +608,7 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' span.text-regular-body a:hover' => 'color: {{VALUE}} !important;',
+							$lesson_selector . ' .lesson-preview-title' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -619,7 +619,7 @@ class CourseCurriculum extends BaseAddon {
 						'label'     => __( 'Info Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} .etlms-course-curriculum .tutor-courses-lession-list li .tutor-color-text-hints:hover' => 'color: {{VALUE}} !important;',
+							'{{WRAPPER}} .etlms-course-curriculum .tutor-courses-lession-list li .tutor-color-muted:hover' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
