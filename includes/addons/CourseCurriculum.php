@@ -127,6 +127,7 @@ class CourseCurriculum extends BaseAddon {
 		$topic_icon                     = $course_topic . '::after';
 
 		/* Header Title Section */
+		$curriculum_header_selector = '{{WRAPPER}} .etlms-course-curriculum #tutor-course-details-tab-curriculum h3';
 		$this->start_controls_section(
 			'course_topics_header_section',
 			array(
@@ -140,7 +141,7 @@ class CourseCurriculum extends BaseAddon {
 				'label'     => __( 'Title Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-course-curriculum .tutor-course-topics-header .tutor-color-text-primary' => 'color: {{VALUE}} !important;',
+					$curriculum_header_selector => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -166,7 +167,7 @@ class CourseCurriculum extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$topic_header => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					$curriculum_header_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 20,
