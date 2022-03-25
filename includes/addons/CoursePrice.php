@@ -70,7 +70,7 @@ class CoursePrice extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper .tutor-text-bold-h4:not(.course-price)" => 'color: {{VALUE}};',
+						"$course_price_wrapper ins .woocommerce-Price-amount, {{WRAPPER}} .tutor-course-sidebar-card-pricing .edd_price" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -81,7 +81,7 @@ class CoursePrice extends BaseAddon {
 				array(
 					'name'     => 'course_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper .tutor-text-bold-h4:not(.course-price)",
+					'selector' => "$course_price_wrapper ins .woocommerce-Price-amount, {{WRAPPER}} .tutor-course-sidebar-card-pricing .edd_price",
 				)
 			);
 
@@ -101,7 +101,7 @@ class CoursePrice extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper del" => 'color: {{VALUE}};',
+						"$course_price_wrapper del .woocommerce-Price-amount" => 'color: {{VALUE}};',
 					),
 					'default'   => '#7A7A7A',
 				)
@@ -112,7 +112,7 @@ class CoursePrice extends BaseAddon {
 				array(
 					'name'     => 'strikethrough_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper del",
+					'selector' => "$course_price_wrapper del .woocommerce-Price-amount",
 				)
 			);
 
@@ -130,28 +130,17 @@ class CoursePrice extends BaseAddon {
 			}
 			return;
 		}
-		$course         = etlms_get_course();
-		$is_purchasable = tutor_utils()->is_course_purchasable();
-		$product_id     = tutor_utils()->get_course_product_id();
-		$product        = wc_get_product( $product_id );
+		$course	= etlms_get_course();
+		$price 	= tutor_utils()->get_course_price( get_the_ID() );
 		if ( $course ) {
 			?>
 			<?php
-			if ( $product && $is_purchasable ) :
-				$sale_price    = $product->get_sale_price();
-				$regular_price = $product->get_regular_price();
-				$symbol        = get_woocommerce_currency_symbol();
+			if ( null != $price ) :
+
 				?>
 				<div class="tutor-course-sidebar-card-pricing tutor-d-flex align-items-end tutor-justify-content-between">
 					<div>
-						<span class="tutor-text-bold-h4 tutor-color-text-primary">
-							<?php echo esc_html( $symbol . ( $sale_price ? $sale_price : $regular_price ) ); ?>
-						</span>
-						<?php if ( $regular_price && $sale_price && $sale_price != $regular_price ) : ?>
-							<del class="tutor-text-regular-caption tutor-color-text-hints tutor-ml-7">
-								<?php echo esc_html( $symbol . $regular_price ); ?>
-							</del>
-						<?php endif; ?>
+						<?php echo tutor_kses_html( $price ); ?>
 					</div>
 				</div>
 			<?php else : ?>
