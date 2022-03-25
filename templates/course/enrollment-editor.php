@@ -52,7 +52,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 						<?php esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' ); ?>
 				</a>		
 				<form>
-					<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full tutor-course-complete-button" name="complete_course_btn" value="complete_course">
+					<button type="submit" class="tutor-mt-20 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full tutor-course-complete-button" name="complete_course_btn" value="complete_course">
 						<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
 					</button>
 				</form>
@@ -62,7 +62,7 @@ $button_size          = $settings['course_enroll_buttons_size'];
 				<form action="<?php echo esc_url( apply_filters( 'tutor_course_add_to_cart_form_action', get_permalink( get_the_ID() ) ) ); ?>" method="post" enctype="multipart/form-data">
 					<button type="submit" name="add-to-cart" value=""  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
 						<span class="btn-icon tutor-icon-cart-filled"></span>
-						<span><?php echo esc_html( is_object( $product ) ? $product->single_add_to_cart_text() : __( 'Add to card', 'tutor-lms-elementor-addons' ) ); ?></span>
+						<span><?php echo esc_html( is_object( $product ) ? $product->single_add_to_cart_text() : __( 'Add to cart', 'tutor-lms-elementor-addons' ) ); ?></span>
 					</button>
 				</form>
 
