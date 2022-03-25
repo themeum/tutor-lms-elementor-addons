@@ -571,7 +571,7 @@ class CoursePurchase extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$add_to_cart_btn_selector => 'color: {{VALUE}};',
+							$add_to_cart_btn_selector . ', {{WRAPPER}} .edd-submit.button' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -581,7 +581,7 @@ class CoursePurchase extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$add_to_cart_btn_selector => 'background-color: {{VALUE}};',
+							$add_to_cart_btn_selector . ', {{WRAPPER}} .edd-submit.button.white' => 'background-color: {{VALUE}};',
 						),
 					)
 				);
@@ -590,7 +590,7 @@ class CoursePurchase extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_normal_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => "$add_to_cart_btn_selector span",
+						'selector' => "$add_to_cart_btn_selector span, {{WRAPPER}} .edd-submit.button",
 					)
 				);
 				$this->add_control(
@@ -600,7 +600,7 @@ class CoursePurchase extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', 'em' ),
 						'selectors'  => array(
-							$add_to_cart_btn_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+							$add_to_cart_btn_selector . ', {{WRAPPER}} [type=submit].edd-submit'=> 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
 						),
 					)
 				);
@@ -609,7 +609,7 @@ class CoursePurchase extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_normal_border',
 						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-						'selector' => $add_to_cart_btn_selector,
+						'selector' => $add_to_cart_btn_selector . ', {{WRAPPER}} [type=submit].edd-submit',
 					)
 				);
 				$this->add_control(
@@ -618,7 +618,7 @@ class CoursePurchase extends BaseAddon {
 						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::DIMENSIONS,
 						'selectors' => array(
-							$add_to_cart_btn_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							$add_to_cart_btn_selector . ', {{WRAPPER}} [type=submit].edd-submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 						'default'   => array(
 							'top'      => 3,
@@ -635,7 +635,7 @@ class CoursePurchase extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_normal_box_shadow',
 						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-						'selector' => $add_to_cart_btn_selector,
+						'selector' => $add_to_cart_btn_selector . ', {{WRAPPER}} [type=submit].edd-submit',
 					)
 				);
 			$this->end_controls_tab();
@@ -653,7 +653,7 @@ class CoursePurchase extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							"$add_to_cart_btn_selector:hover" => 'color: {{VALUE}};',
+							"$add_to_cart_btn_selector:hover,  {{WRAPPER}} input.edd-add-to-cart:hover" => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -663,7 +663,7 @@ class CoursePurchase extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							"$add_to_cart_btn_selector:hover" => 'background-color: {{VALUE}}',
+							"$add_to_cart_btn_selector:hover, {{WRAPPER}} .edd-submit.button.white:hover" => 'background-color: {{VALUE}}',
 						),
 					)
 				);
@@ -672,7 +672,7 @@ class CoursePurchase extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_hover_typography',
 						'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-						'selector' => "$add_to_cart_btn_selector span:hover",
+						'selector' => "$add_to_cart_btn_selector span:hover, {{WRAPPER}} [type=submit].edd-submit:hover",
 					)
 				);
 				$this->add_control(
@@ -682,7 +682,7 @@ class CoursePurchase extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', 'em' ),
 						'selectors'  => array(
-							"$add_to_cart_btn_selector:hover" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							"$add_to_cart_btn_selector:hover, {{WRAPPER}} [type=submit].edd-submit:hover" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 					)
 				);
@@ -691,7 +691,7 @@ class CoursePurchase extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_hover_border',
 						'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-						'selector' => "$add_to_cart_btn_selector:hover",
+						'selector' => "$add_to_cart_btn_selector:hover, {{WRAPPER}} [type=submit].edd-submit:hover",
 					)
 				);
 				$this->add_control(
@@ -700,7 +700,7 @@ class CoursePurchase extends BaseAddon {
 						'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::DIMENSIONS,
 						'selectors' => array(
-							"$add_to_cart_btn_selector:hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							"$add_to_cart_btn_selector:hover, {{WRAPPER}} [type=submit].edd-submit:hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 					)
 				);
@@ -709,7 +709,7 @@ class CoursePurchase extends BaseAddon {
 					array(
 						'name'     => 'add_to_cart_btn_hover_box_shadow',
 						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-						'selector' => "$add_to_cart_btn_selector:hover",
+						'selector' => "$add_to_cart_btn_selector:hover, {{WRAPPER}} [type=submit].edd-submit:hover",
 					)
 				);
 			$this->end_controls_tab();
