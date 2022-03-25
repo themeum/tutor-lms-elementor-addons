@@ -75,7 +75,7 @@ $button_size    = $settings['course_enroll_buttons_size'];
 						<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
 					</button>
 				</form>
-				<a href="http://localhost/tutor-v2?cert_hash=de57e7493295963c&amp;regenerate=1" class="tutor-btn tutor-mt-20 tutor-is-fullwidth" style="margin-top:10px;">
+				<a href="http://localhost/tutor-v2?cert_hash=de57e7493295963c&amp;regenerate=1" class="tutor-view-certificate tutor-btn tutor-mt-20 tutor-is-fullwidth" style="margin-top:10px;">
 					<?php esc_html_e( 'View Certificate', 'tutor-lms-elementor-addons' ); ?>
 				</a>
 			<?php else : ?>

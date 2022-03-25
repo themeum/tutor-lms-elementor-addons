@@ -234,7 +234,12 @@ class CoursePurchase extends BaseAddon {
 				'selectors' => array(
 					'.course-enroll-buttons-size-small button, .course-enroll-buttons-size-small .tutor-btn, .course-enroll-buttons-size-small .tutor-button, .course-enroll-buttons-size-small .start-continue-retake-button' => 'padding: 9px 14px;
 					line-height: 19px !important;',
-					'.course-enroll-buttons-size-large button, .course-enroll-buttons-size-large .tutor-btn, .course-enroll-buttons-size-large .tutor-button, .course-enroll-buttons-size-large .start-continue-retake-button' => 'font-size: 16px; line-height: 40px !important;'
+					'.course-enroll-buttons-size-large button, .course-enroll-buttons-size-large .tutor-btn, .course-enroll-buttons-size-large .tutor-button, .course-enroll-buttons-size-large .start-continue-retake-button' => 'padding: 16px; line-height: 40px !important;',
+					'.course-enroll-buttons-size-medium [type=submit].edd-submit' => 'padding: 12px 14px;
+					line-height: 19px !important;',
+					'.course-enroll-buttons-size-small [type=submit].edd-submit' => 'padding: 12px; line-height: 10px;',
+					'.course-enroll-buttons-size-large [type=submit].edd-submit' => 'padding: 13px; line-height: 26px !important;'
+
 				)
 			)
 		);
@@ -254,7 +259,7 @@ class CoursePurchase extends BaseAddon {
 				'selectors' => array(
 					'.course-enroll-buttons-width-auto button, .course-enroll-buttons-width-auto .tutor-btn, .course-enroll-buttons-width-auto .tutor-button, .course-enroll-buttons-width-auto .start-continue-retake-button' => '	width: -webkit-fit-content !important;
 					width: -moz-fit-content !important; width: fit-content !important;',
-					'.course-enroll-buttons-width-fill form' => 'width: 100%;' 
+					'.course-enroll-buttons-width-fill form, .course-enroll-buttons-width-fill .edd-add-to-cart.button' => 'width: 100%;',
 				)
 			)
 		);
@@ -279,7 +284,7 @@ class CoursePurchase extends BaseAddon {
 					'course_enroll_buttons_width' => 'fixed',
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} button, {{WRAPPER}} .tutor-btn, {{WRAPPER}} .tutor-button, {{WRAPPER}} .start-continue-retake-button' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} button, {{WRAPPER}} .tutor-btn, {{WRAPPER}} .tutor-button, {{WRAPPER}} .start-continue-retake-button, {{WRAPPER}} .edd-add-to-cart.button' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -309,7 +314,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .tutor-text-medium-h6" => 'color: {{VALUE}};',
+					"$progress_wrapper > span" => 'color: {{VALUE}};',
 				),
 				'default'   => '#212327',
 			)
@@ -319,7 +324,7 @@ class CoursePurchase extends BaseAddon {
 			array(
 				'name'     => 'course_status_title_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$progress_wrapper .tutor-text-medium-h6",
+				'selector' => "$progress_wrapper > span",
 			)
 		);
 		$this->add_responsive_control(
@@ -1403,7 +1408,7 @@ class CoursePurchase extends BaseAddon {
 		// view cart button end.
 
         // view certificate button start.
-		$view_certificate_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body a.tutor-btn.tutor-mt-5.tutor-mb-5.tutor-is-fullwidth';
+		$view_certificate_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .tutor-view-certificate';
 		$this->start_controls_section(
 			'view_certificate_btn',
 			array(
