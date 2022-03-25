@@ -39,7 +39,7 @@ $button_size    = $settings['course_enroll_buttons_size'];
 
 ?>
 
-<div class="tutor-course-sidebar-card">
+<div class="tutor-course-sidebar-card etlms-course-sidebar-wrapper">
 	<!-- Course Entry -->
 	<div class="tutor-course-sidebar-card-body tutor-p-32 <?php echo ! is_user_logged_in() ? 'tutor-course-entry-box-login' : ''; ?>">
 
@@ -67,15 +67,15 @@ $button_size    = $settings['course_enroll_buttons_size'];
 						</div>
 					</div>
 				</div>
-				<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+				<a href="#" class="tutor-mt-20 <?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
 						<?php esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' ); ?>
 				</a>		
 				<form>
-					<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full tutor-course-complete-button" name="complete_course_btn" value="complete_course">
+					<button type="submit" class="tutor-mt-20 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full tutor-course-complete-button" name="complete_course_btn" value="complete_course">
 						<?php esc_html_e( ' Complete Course', 'tutor-lms-elementor-addons' ); ?>                        
 					</button>
 				</form>
-				<a href="http://localhost/tutor-v2?cert_hash=de57e7493295963c&amp;regenerate=1" class="tutor-btn tutor-mt-5 tutor-mb-5 tutor-is-fullwidth" style="margin-top:10px;">
+				<a href="http://localhost/tutor-v2?cert_hash=de57e7493295963c&amp;regenerate=1" class="tutor-btn tutor-mt-20 tutor-is-fullwidth" style="margin-top:10px;">
 					<?php esc_html_e( 'View Certificate', 'tutor-lms-elementor-addons' ); ?>
 				</a>
 			<?php else : ?>
@@ -90,14 +90,15 @@ $button_size    = $settings['course_enroll_buttons_size'];
 				</div>
 			<?php endif; ?>
 
-			<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
-				<?php esc_html_e( 'Enroll Course', 'tutor-lms-elementor-addons' ); ?>
-			</button>
-
+			<form action="">
+				<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-20 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
+					<?php esc_html_e( 'Enroll Course', 'tutor-lms-elementor-addons' ); ?>
+				</button>
+			</form>
 			<?php endif; ?>
 			<!-- enrollment info -->
 			<?php if ( 'enrolled-box' === $enrollment_mode ) : ?>
-				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-d-flex tutor-justify-content-center tutor-align-items-center">
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-20 tutor-d-flex tutor-justify-content-center tutor-align-items-center">
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
 						<span class="text">

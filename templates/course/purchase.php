@@ -64,7 +64,7 @@ $login_class = ! is_user_logged_in() ? 'tutor-course-entry-box-login' : '';
 $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
 ?>
 
-<div class="tutor-course-sidebar-card">
+<div class="tutor-course-sidebar-card etlms-course-sidebar-wrapper">
 	<!-- Course Entry -->
 	<div class="tutor-course-sidebar-card-body tutor-p-32 <?php echo $login_class; ?>" data-login_url="<?php echo $login_url; ?>">
 		<?php

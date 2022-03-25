@@ -168,8 +168,7 @@ class CoursePurchase extends BaseAddon {
 
 				),
 				'selectors'    => array(
-					'.etlms-course-enrolment-box.course-enroll-buttons-width-auto .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;
-					flex-direction: column;',
+					'{{WRAPPER}} .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;flex-direction: column;',
 					'.etlms-enrollment-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-start;',
 					'.etlms-enrollment-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: center;',
 					'.etlms-enrollment-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-end;',
@@ -205,10 +204,17 @@ class CoursePurchase extends BaseAddon {
 				'default'      => 'left',
 				'condition'    => array(
 					'course_enrolment_edit_mode' => 'enrolment-box',
-
 				),
 				'selectors'    => array(
-					'.etlms-course-enrolment-box .tutor-course-sidebar-card-body' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;flex-direction: column;',
+					'.etlms-enrollment-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-start;',
+					'.etlms-enrollment-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: center;',
+					'.etlms-enrollment-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-end;',
+
+					'.etlms-course-enrolment-box.course-enroll-buttons-width-auto form' => 'display: flex; flex-direction: column;',
+					'.etlms-enrollment-btn-align-left form ' => 'align-items: flex-start;',
+					'.etlms-enrollment-btn-align-right form ' => 'align-items: flex-end;',
+					'.etlms-enrollment-btn-align-center form ' => 'align-items: center;',
 				),
 			)
 		);
@@ -225,6 +231,11 @@ class CoursePurchase extends BaseAddon {
 				),
 				'prefix_class' => 'course-enroll-buttons-size-',
 				'default'      => 'medium',
+				'selectors' => array(
+					'.course-enroll-buttons-size-small button, .course-enroll-buttons-size-small .tutor-btn, .course-enroll-buttons-size-small .tutor-button, .course-enroll-buttons-size-small .start-continue-retake-button' => 'padding: 9px 14px;
+					line-height: 19px !important;',
+					'.course-enroll-buttons-size-large button, .course-enroll-buttons-size-large .tutor-btn, .course-enroll-buttons-size-large .tutor-button, .course-enroll-buttons-size-large .start-continue-retake-button' => 'font-size: 16px; line-height: 40px !important;'
+				)
 			)
 		);
 
@@ -240,6 +251,11 @@ class CoursePurchase extends BaseAddon {
 				),
 				'prefix_class' => 'course-enroll-buttons-width-',
 				'default'      => 'fill',
+				'selectors' => array(
+					'.course-enroll-buttons-width-auto button, .course-enroll-buttons-width-auto .tutor-btn, .course-enroll-buttons-width-auto .tutor-button, .course-enroll-buttons-width-auto .start-continue-retake-button' => '	width: -webkit-fit-content !important;
+					width: -moz-fit-content !important; width: fit-content !important;',
+					'.course-enroll-buttons-width-fill form' => 'width: 100%;' 
+				)
 			)
 		);
 
@@ -263,7 +279,7 @@ class CoursePurchase extends BaseAddon {
 					'course_enroll_buttons_width' => 'fixed',
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} button, {{WRAPPER}} .tutor-button, {{WRAPPER}} .start-continue-retake-button' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} button, {{WRAPPER}} .tutor-btn, {{WRAPPER}} .tutor-button, {{WRAPPER}} .start-continue-retake-button' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
