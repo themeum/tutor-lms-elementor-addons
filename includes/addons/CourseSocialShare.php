@@ -64,26 +64,26 @@ class CourseSocialShare extends BaseAddon {
 		$this->add_responsive_control(
 			'course_share_alignment',
 			array(
-				'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
-				'type'         => \Elementor\Controls_Manager::CHOOSE,
-				'options'      => array(
-					'flex-start'   => array(
+				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'flex-start' => array(
 						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'eicon-text-align-left',
 					),
-					'center' => array(
+					'center'     => array(
 						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'eicon-text-align-center',
 					),
-					'flex-end'  => array(
+					'flex-end'   => array(
 						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'eicon-text-align-right',
 					),
 				),
-				'selectors'		=> array(
+				'selectors' => array(
 					'{{WRAPPER}} .etlms-course-share a' => 'justify-content: {{VALUE}};',
 				),
-				'default'      => 'flex-start',
+				'default'   => 'flex-start',
 			)
 		);
 		$this->end_controls_section();
@@ -131,6 +131,7 @@ class CourseSocialShare extends BaseAddon {
 					'prefix_class' => 'etlms-social-icon-',
 					'selectors'    => array(
 						'.etlms-social-icon-square .tutor-social-share-wrap button'  => 'border-radius: 0px;',
+						'.etlms-social-icon-rounded .tutor-social-share-wrap button'  => 'border-radius: 10px;',
 						'.etlms-social-icon-circle .tutor-social-share-wrap button'  => 'border-radius: 100%; width: 120px; height: 120px;',
 					),
 				)
@@ -216,7 +217,7 @@ class CourseSocialShare extends BaseAddon {
 			array(
 				'name'     => 'content_typography',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				//'scheme'   => Typography::TYPOGRAPHY_1,
+				// 'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => "$share_wrapper .share-text",
 			)
 		);
@@ -291,7 +292,7 @@ class CourseSocialShare extends BaseAddon {
 					'label'     => __( 'Shape Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$popup_body_wrapper .tutor_share" => 'background-color: {{VALUE}} !important;',
+						'.etlms-course-share-popup .tutor_share.s_facebook, .etlms-course-share-popup .tutor_share.s_twitter, .etlms-course-share-popup .tutor_share.s_linkedin' => 'background-color: {{VALUE}} !important;',
 					),
 				)
 			);
@@ -450,7 +451,7 @@ class CourseSocialShare extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => array(
-					'.etlms-course-share-popup .tutor_share' => 'background-color: {{VALUE}};',
+					'.etlms-course-share-popup .tutor_share.s_facebook:hover, .etlms-course-share-popup .tutor_share.s_twitter:hover, .etlms-course-share-popup .tutor_share.s_linkedin:hover' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -577,7 +578,7 @@ class CourseSocialShare extends BaseAddon {
 				)
 			);
 
-            // input controls styles
+			// input controls styles
 			$this->add_control(
 				'popup_input_text_color',
 				array(
@@ -627,7 +628,7 @@ class CourseSocialShare extends BaseAddon {
 					),
 				)
 			);
-            // input controls styles end
+			// input controls styles end
 
 		$this->end_controls_section();
 	}
