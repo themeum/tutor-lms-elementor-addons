@@ -284,6 +284,17 @@ class CourseContent extends BaseAddon {
 					'default'      => 'yes',
 				)
 			);
+			$this->add_control(
+				'course_instructor_bio',
+				array(
+					'label'        => __( 'Bio', 'tutor-lms-elementor-addons' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'return_value' => 'yes',
+					'default'      => 'yes',
+				)
+			);
 
 			// link.
 			$this->add_control(

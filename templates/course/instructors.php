@@ -47,14 +47,19 @@ if ( $instructors ) {
 								<?php if ( $display_name == 'yes' ) : ?>
 									<h3><a href="<?php echo $profile_url; ?>"><?php echo $instructor->display_name; ?></a> </h3>
 								<?php endif; ?>
+
 								<?php
-								if ( $designation == 'yes' && ! empty( $instructor->tutor_profile_job_title ) ) {
-									echo "<p>{$instructor->tutor_profile_job_title}</p>";
-								}
-								?>
+								if ( 'yes' === $designation && ! empty( $instructor->tutor_profile_job_title ) ) :
+									?>
+									<p>
+										<?php echo esc_html( $instructor->tutor_profile_job_title ); ?>
+									</p> 
+								<?php endif; ?>
 							</div>
 							<div class="instructor-bio">
-								<?php echo $instructor->tutor_profile_bio; ?>
+								<?php if ( 'yes' === $settings['course_instructor_bio'] ) : ?>
+									<?php echo wp_kses_post( $instructor->tutor_profile_bio ); ?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
