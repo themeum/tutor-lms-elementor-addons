@@ -16,7 +16,7 @@ $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils(
 				<?php
 				foreach ( $course_nav_items as $key => $subpage ) {
 					?>
-						<div class="tab-body-item <?php echo esc_attr( 'info' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
+						<div id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>" class="tutor-tab-item <?php echo esc_attr( 'info' === $key ? 'is-active' : '' ); ?>">
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {

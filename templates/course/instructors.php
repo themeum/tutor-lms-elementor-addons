@@ -63,7 +63,7 @@ if ( $instructors ) {
 					$instructor_rating = tutor_utils()->get_instructor_ratings( $instructor->ID );
 					?>
 					<!-- new single instructor bottom info  -->
-					<div class="tutor-instructor-info-card-footer tutor-d-sm-flex tutor-align-items-center tutor-justify-content-between tutor-px-30 tutor-py-15">
+					<div class="tutor-instructor-info-card-footer tutor-d-sm-flex tutor-align-items-center tutor-justify-between tutor-px-32 tutor-py-16">
 						<?php
 							$instructor_rating = tutor_utils()->get_instructor_ratings( $instructor->ID );
 							tutor_utils()->star_rating_generator_v2( $instructor_rating->rating_avg, $instructor_rating->rating_count, true );
