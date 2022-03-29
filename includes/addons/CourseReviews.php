@@ -137,7 +137,7 @@ class CourseReviews extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-ratingsreviews-ratings-avg .text-medium-h1' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tutor-avg-rating' => 'color: {{VALUE}};',
 				),
 				'default'   => '#161616',
 			)
@@ -147,7 +147,7 @@ class CourseReviews extends BaseAddon {
 			array(
 				'name'     => 'course_reviews_avg_rating_text_typo',
 				'label'    => __( 'Text Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .tutor-ratingsreviews-ratings-avg .text-medium-h1',
+				'selector' => '{{WRAPPER}} .tutor-avg-rating',
 			)
 		);
 		$this->add_control(
@@ -402,7 +402,7 @@ class CourseReviews extends BaseAddon {
 				'label'     => __( 'Name Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$review_list_section_selector . '.tutor-reviewer-name' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tutor-reviewer-name' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#212327',
 			)
@@ -451,7 +451,7 @@ class CourseReviews extends BaseAddon {
 				'label'     => __( 'Rating Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$review_list_section_selector . ' .tutor-ratings .tutor-rating-text.tutor-color-text-subsued' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tutor-ratings .tutor-rating-text' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#ED9700',
 			)
