@@ -28,7 +28,7 @@
 				<?php
 				foreach ( $course_nav_items as $key => $subpage ) {
 					?>
-						<div class="tab-body-item <?php echo esc_attr( 'curriculum' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
+						<div class="tutor-tab-item <?php echo esc_attr( 'curriculum' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {

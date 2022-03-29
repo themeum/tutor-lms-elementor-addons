@@ -329,7 +329,7 @@ class CourseInstructors extends BaseAddon {
 				'label'     => __( 'Biography Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$course_instructor_biography_selector => 'color: {{VALUE}}',
+					'{{WRAPPER}} .instructor-bio span, {{WRAPPER}} .instructor-bio p, {{WRAPPER}} .instructor-bio b, {{WRAPPER}} .instructor-bio span strong, {{WRAPPER}} .instructor-bio p strong' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#525252',
 			)
