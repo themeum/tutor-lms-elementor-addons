@@ -65,7 +65,7 @@ class CourseTitle extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .course-title';
+		$selector = '{{WRAPPER}} .tutor-course-details-title';
 		// Style
 		$this->start_controls_section(
 			'course_style_section',
@@ -99,13 +99,18 @@ class CourseTitle extends BaseAddon {
 		$this->end_controls_section();
 	}
 
-	protected function render( $instance = array() ) {
+	/**
+	 * Render content
+	 *
+	 * @return void
+	 */
+	protected function render( ) {
 		$title  = __( 'Course Title', 'tutor-lms-elementor-addons' );
 		$course = etlms_get_course();
 		if ( $course ) {
 			$title = get_the_title();
 		}
 		$settings = $this->get_settings_for_display();
-		echo sprintf( '<%1$s class="tutor-course-header-h1 course-title">' . $title . '</%1$s>', $settings['course_title_html_tag'] );
+		echo sprintf( '<%1$s class="tutor-course-details-title tutor-fs-4 tutor-fw-bold tutor-color-black tutor-mt-12 tutor-mb-0"> <span>' . esc_html( $title ) . '</span></%1$s>', $settings['course_title_html_tag'] );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
