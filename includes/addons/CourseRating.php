@@ -87,9 +87,8 @@ class CourseRating extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector     = '{{WRAPPER}} .tutor-single-course-rating';
-		$rating_group = $selector . ' .tutor-star-rating-group';
-		$rating_count = $selector . ' .tutor-single-rating-count';
+		$rating_group = '{{WRAPPER}} .tutor-ratings-stars';
+		$rating_count = '{{WRAPPER}} .tutor-single-rating-count';
 
 		// Style
 		$this->start_controls_section(
