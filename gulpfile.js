@@ -13,10 +13,9 @@ var gulp = require("gulp"),
 const cleanCSS = require('gulp-clean-css');
 
 var tasks = {
-    addonCSSExtended: {src: "assets/scss/tutor-elementor.scss", mode: 'expanded', destination: 'tutor-elementor.css'},
-    addonCSSCompressed: {src: "assets/scss/tutor-elementor.scss", mode: 'compressed', destination: 'tutor-elementor.min.css'},
-    addonIconsExtended: {src: "assets/scss/tutor-elementor-icons.scss", mode: 'expanded', destination: 'tutor-elementor-icons.css'},
-    addonIconsCompressed: {src: "assets/scss/tutor-elementor-icons.scss", mode: 'compressed', destination: 'tutor-elementor-icons.min.css'},
+    addonCSSMin: {src: "assets/scss/tutor-elementor.scss", mode: 'compressed', destination: 'tutor-elementor.min.css'},
+    iconsCSSMin: {src: "assets/scss/tutor-elementor-icons.scss", mode: 'compressed', destination: 'tutor-elementor-icons.min.css'},
+    noticeCSSMin: {src: "assets/scss/tutor-elementor-installer.scss", mode: 'compressed', destination: 'installer.min.css'},
 };
 
 var task_keys = Object.keys(tasks);
@@ -96,8 +95,10 @@ gulp.task("copy", function () {
 			"!./LICENSE.txt",
 			"!./package.json",
 			"!./package-lock.json",
+			"!./assets/css/installer.css",
 			"!./assets/css/tutor-elementor.css",
 			"!./assets/css/tutor-elementor-icons.css",
+			"!./assets/scss/**",
 		])
 		.pipe(gulp.dest("build/tutor-lms-elementor-addons/"));
 });
@@ -114,6 +115,7 @@ gulp.task('minify-css', () => {
 });
 
 gulp.task("watch", function () {
+	"minify-css";
 	gulp.watch("assets/scss/**/*.scss", gulp.series(...task_keys));
 });
 
