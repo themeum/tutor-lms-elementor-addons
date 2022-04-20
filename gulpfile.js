@@ -10,12 +10,13 @@ var gulp = require("gulp"),
 
 	package = require('./package.json'); 
 
-const { watch } = require('gulp');
 const cleanCSS = require('gulp-clean-css');
 
 var tasks = {
-	tutor_elementor_min: {src: "assets/css/tutor-elementor.css", mode: 'compressed', destination: 'tutor-elementor.min.css'},
-	tutor_elementor_icon: {src: "assets/css/tutor-elementor-icons.css", mode: 'compressed', destination: 'tutor-elementor-icons.min.css'},
+    addonCSSExtended: {src: "assets/scss/tutor-elementor.scss", mode: 'expanded', destination: 'tutor-elementor.css'},
+    addonCSSCompressed: {src: "assets/scss/tutor-elementor.scss", mode: 'compressed', destination: 'tutor-elementor.min.css'},
+    addonIconsExtended: {src: "assets/scss/tutor-elementor-icons.scss", mode: 'expanded', destination: 'tutor-elementor-icons.css'},
+    addonIconsCompressed: {src: "assets/scss/tutor-elementor-icons.scss", mode: 'compressed', destination: 'tutor-elementor-icons.min.css'},
 };
 
 var task_keys = Object.keys(tasks);
@@ -112,10 +113,10 @@ gulp.task('minify-css', () => {
 	.pipe(gulp.dest('assets/css'));
 });
 
-gulp.task("watch", function() {
-	watch('assets/css/tutor-elementor.css', gulp.series(...task_keys));
-	watch('assets/css/tutor-elementor-icons.css', gulp.series(...task_keys));
+gulp.task("watch", function () {
+	gulp.watch("assets/scss/**/*.scss", gulp.series(...task_keys));
 });
+
 /**
  * Export tasks
  */
