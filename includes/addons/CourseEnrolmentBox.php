@@ -117,14 +117,16 @@ class CourseEnrolmentBox extends BaseAddon {
 						'icon'  => 'eicon-text-align-right',
 					),
 				),
-				'prefix_class' => self::$prefix_class_alignment . '%s',
+				'prefix_class' => 'etlms-enrollment-btn-align-',
 				'default'      => 'left',
 				'condition'    => array(
 					'course_enrolment_edit_mode' => 'enrolment-box',
-
 				),
 				'selectors'    => array(
-					'.etlms-course-enrolment-box .tutor-course-sidebar-card-body' => 'text-align: {{VALUE}};',
+					'.etlms-enrollment-btn-align-left .tutor-card-body' => 'text-align: left !important;',
+					'.etlms-enrollment-btn-align-center .tutor-card-body' => 'text-align: center !important;',
+					'.etlms-enrollment-btn-align-right .tutor-card-body' => 'text-align: right !important;',
+					'.etlms-enrollment-btn-align-center .etlms-course-enroll-date, .etlms-enrollment-btn-align-right .etlms-course-enroll-date' => 'text-align: left !important;',
 				),
 			)
 		);
@@ -139,8 +141,12 @@ class CourseEnrolmentBox extends BaseAddon {
 					'medium' => __( 'Medium', 'tutor-lms-elementor-addons' ),
 					'large'  => __( 'Large', 'tutor-lms-elementor-addons' ),
 				),
-				'prefix_class' => 'course-enroll-buttons-size-',
+				'prefix_class' => 'etlms-course-enroll-buttons-size-',
 				'default'      => 'medium',
+				'selectors'	   => array(
+					'.etlms-course-enroll-buttons-size-large .tutor-btn' => 'font-size: 18px; padding: 10px 20px;',
+					'.etlms-course-enroll-buttons-size-small .tutor-btn' => 'font-size: 14px; padding: 5px 12px;'
+				)
 			)
 		);
 
@@ -154,8 +160,11 @@ class CourseEnrolmentBox extends BaseAddon {
 					'fill'  => __( 'Fill', 'tutor-lms-elementor-addons' ),
 					'fixed' => __( 'Fixed', 'tutor-lms-elementor-addons' ),
 				),
-				'prefix_class' => 'course-enroll-buttons-width-',
+				'prefix_class' => 'etlms-course-enroll-buttons-width-',
 				'default'      => 'fill',
+				'selectors'	   => array(
+					'.etlms-course-enroll-buttons-width-auto .tutor-btn' => 'width: auto !important; display: inline-flex !important;',
+				)
 			)
 		);
 
@@ -361,7 +370,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Enroll Button Section */
-		$enroll_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .tutor-enroll-course-button';
+		$enroll_btn_selector = '{{WRAPPER}} .tutor-card-body .tutor-enroll-course-button';
 
 		$this->start_controls_section(
 			'enroll_btn',
@@ -534,7 +543,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Start, Continue, Retake button section */
-		$start_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .start-continue-retake-button';
+		$start_btn_selector = '{{WRAPPER}} .tutor-card-body .start-continue-retake-button';
 		$this->start_controls_section(
 			'start_btn',
 			array(
@@ -706,7 +715,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_section();
 
 		/* course complete button controls */
-		$complete_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .tutor-course-complete-button';
+		$complete_btn_selector = '{{WRAPPER}} .tutor-card-body [name=complete_course_btn]';
 		$this->start_controls_section(
 			'complete_btn',
 			array(
@@ -879,7 +888,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		// course complete button end.
 
 		/* Enrolled info */
-		$enrolled_info_wrapper = '{{WRAPPER}} .etlms-enrolled-info-wrapper';
+		$enrolled_info_wrapper = '{{WRAPPER}} .etlms-course-enroll-info-wrapper';
 		$this->start_controls_section(
 			'enrolled_info_section',
 			array(
@@ -894,7 +903,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$enrolled_info_wrapper .tutor-icon-purchase-filled" => 'color: {{VALUE}};',
+					"$enrolled_info_wrapper .tutor-icon-purchase-mark" => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -911,7 +920,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					"$enrolled_info_wrapper .tutor-icon-purchase-filled" => 'font-size: {{SIZE}}{{UNIT}};',
+					"$enrolled_info_wrapper .tutor-icon-purchase-mark" => 'font-size: {{SIZE}}{{UNIT}} !important;',
 				),
 				'default'    => array(
 					'size' => 16,
@@ -924,7 +933,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$enrolled_info_wrapper span.text" => 'color: {{VALUE}}',
+					"$enrolled_info_wrapper .tutor-enrolled-info-text" => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -933,7 +942,7 @@ class CourseEnrolmentBox extends BaseAddon {
 			array(
 				'name'     => 'enrolled_info_label_typo',
 				'label'    => __( 'Text Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$enrolled_info_wrapper span.text",
+				'selector' => "$enrolled_info_wrapper .tutor-enrolled-info-text",
 			)
 		);
 		$this->add_control(
@@ -942,7 +951,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				'label'     => __( 'Date Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$enrolled_info_wrapper span.tutor-enrolled-info-date" => 'color: {{VALUE}};',
+					"$enrolled_info_wrapper .tutor-enrolled-info-date" => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -951,7 +960,7 @@ class CourseEnrolmentBox extends BaseAddon {
 			array(
 				'name'     => 'enrolled_info_date_typo',
 				'label'    => __( 'Date Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$enrolled_info_wrapper span.tutor-enrolled-info-date",
+				'selector' => "$enrolled_info_wrapper .tutor-enrolled-info-date",
 			)
 		);
 		$this->end_controls_section();
@@ -961,7 +970,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		 *
 		 * @since v2.0.0
 		 */
-		$enrolment_box_selector = '{{WRAPPER}} .tutor-course-sidebar-card';
+		$enrolment_box_selector = '{{WRAPPER}} .tutor-card-footer';
 		$this->start_controls_section(
 			'enrolment_meta_info_section',
 			array(
@@ -1022,10 +1031,10 @@ class CourseEnrolmentBox extends BaseAddon {
 						),
 					),
 					'selectors'  => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .tutor-icon-24" => 'font-size: {{SIZE}}{{UNIT}};',
+						"$enrolment_box_selector .etlms-enrolled-icon" => 'font-size: {{SIZE}}{{UNIT}};',
 					),
 					'default'    => array(
-						'size' => 24,
+						'size' => 15,
 					),
 				)
 			);
@@ -1036,7 +1045,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .tutor-icon-24" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .etlms-enrolled-icon" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -1050,7 +1059,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-regular-caption" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .etlms-enrolled-level" => 'color: {{VALUE}};',
 					),
 					'default'   => '#757c8e',
 				)
@@ -1060,7 +1069,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				array(
 					'name'     => 'enrolment_meta_label_typo',
 					'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-regular-caption",
+					'selector' => "$enrolment_box_selector .etlms-enrolled-level",
 				)
 			);
 			// label controls end.
@@ -1072,7 +1081,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-medium-caption" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .etlms-enrolled-level-value" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -1082,7 +1091,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				array(
 					'name'     => 'enrolment_meta_value_typo',
 					'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-medium-caption",
+					'selector' => "$enrolment_box_selector .etlms-enrolled-level-value",
 				)
 			);
 			// value controls end.
