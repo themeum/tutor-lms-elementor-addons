@@ -5,26 +5,29 @@ $profile_url  = tutils()->profile_url( $post->post_author );
 $author_name  = get_the_author_meta( 'display_name', $post->post_author );
 $target_blank = ( $settings['course_author_link'] == 'new_window' ) ? 'target="_blank"' : '';
 ?>
-<div class="etlms-author">
-	<?php if ( $settings['course_author_picture'] ) { ?>
+<?php if ( $settings['course_author_picture'] || $settings['course_author_name'] ) : ?>
+<div class="etlms-author tutor-meta">
+	<?php if ( $settings['course_author_picture'] ) : ?>
 		<div class="tutor-single-course-avatar">
-			<?php if ( $settings['course_author_link'] == 'none' ) { ?>
-				<a><?php echo tutils()->get_tutor_avatar( $post->post_author ); ?></a>
-			<?php } else { ?>
-				<a href="<?php echo $profile_url; ?>" <?php echo $target_blank; ?>> <?php echo tutils()->get_tutor_avatar( $post->post_author ); ?></a>
-			<?php } ?>
+			<?php if ( $settings['course_author_link'] == 'none' ) : ?>
+				<?php echo tutils()->get_tutor_avatar( $post->post_author ); ?>
+			<?php else : ?>
+				<a href="<?php echo $profile_url; ?>" <?php echo $target_blank; ?>>
+					<?php echo tutils()->get_tutor_avatar( $post->post_author ); ?>
+				</a>
+			<?php endif; ?>
 		</div>
-	<?php } ?>
-	<?php if ( $settings['course_author_name'] ) { ?>
+	<?php endif; ?>
+
+	<?php if ( $settings['course_author_name'] ) : ?>
 		<div class="tutor-single-course-author-name">
-			<span class="text-regular-caption tutor-color-text-hints"><?php _e( 'by', 'tutor-lms-elementor-addons' ); ?></span>
-			<?php
-			if ( $settings['course_author_link'] == 'none' ) {
-				echo "<p class='text-medium-caption color-text-primary'>{$author_name}</p>";
-			} else {
-				echo '<a class="text-medium-caption color-text-primary" href="' . $profile_url . '" ' . $target_blank . '>' . $author_name . '</a>';
-			}
-			?>
+			<span><?php _e( 'by', 'tutor-lms-elementor-addons' ); ?></span>
+			<?php if ( $settings['course_author_link'] == 'none' ) : ?>
+				<span class='tutor-meta-value'><?php echo $author_name; ?></span>
+			<?php else: ?>
+				<a href="<?php echo $profile_url; ?>" <?php echo $target_blank; ?>><?php echo $author_name; ?></a>
+			<?php endif; ?>
 		</div>
-	<?php } ?>
+	<?php endif; ?>
 </div>
+<?php endif; ?>

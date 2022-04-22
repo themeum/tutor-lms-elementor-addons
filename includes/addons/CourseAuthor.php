@@ -93,7 +93,8 @@ class CourseAuthor extends BaseAddon {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $img_selector = '.etlms-author .tutor-single-course-avatar a';
+        $avatar_selector = '.etlms-author .tutor-single-course-avatar .tutor-avatar';
+        $meta_selector = '.etlms-author.tutor-meta';
         $this->add_responsive_control(
             'image_size',
             [
@@ -107,7 +108,7 @@ class CourseAuthor extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    $img_selector.' span, '.$img_selector.' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
+                    $avatar_selector => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
                 ],
                 'default' => [
 					'size' => 26,
@@ -128,11 +129,10 @@ class CourseAuthor extends BaseAddon {
                     ],
                 ],
                 'selectors' => [
-                    '.elementor-layout-left '. $img_selector.' span, .elementor-layout-left '.$img_selector.' img' => 'margin-right: {{SIZE}}{{UNIT}};',
-                    '.elementor-layout-up '. $img_selector.' span, .elementor-layout-up '.$img_selector.' img' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    $meta_selector => 'gap: {{SIZE}}{{UNIT}};'
                 ],
                 'default' => [
-					'size' => 5,
+					'size' => 16,
 				],
             ]
         );
@@ -142,7 +142,7 @@ class CourseAuthor extends BaseAddon {
 			[
 				'name' => 'border',
 				'label' => __( 'Border', 'tutor-lms-elementor-addons' ),
-				'selector' => $img_selector.' span, '.$img_selector.' img',
+				'selector' => $avatar_selector,
 			]
         );
 
@@ -153,7 +153,7 @@ class CourseAuthor extends BaseAddon {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ '%', 'px' ],
                 'selectors' => [
-                    $img_selector.' span, '.$img_selector.' img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    $avatar_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'default' => [
                     'top' => 50,
@@ -171,7 +171,7 @@ class CourseAuthor extends BaseAddon {
             [
                 'name' => 'add_to_cart_btn_normal_box_shadow',
                 'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-                'selector' => $img_selector.' span, '.$img_selector.' img',
+                'selector' => $avatar_selector,
             ]
         );
 

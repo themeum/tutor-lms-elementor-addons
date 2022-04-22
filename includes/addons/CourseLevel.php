@@ -16,14 +16,14 @@ class CourseLevel extends BaseAddon {
     use \TutorLMS\Elementor\AddonsTrait;
 
     private static $prefix_class_layout = "elementor-layout-";
-
     private static $prefix_class_alignment = "elementor-align-";    
 
     public function get_title() {
         return __('Course Level', 'tutor-lms-elementor-addons');
     }
     
-    protected function register_content_controls(){
+    protected function register_content_controls() {
+        $selector = '{{WRAPPER}} .etlms-course-level';
         //layout 
         $this->start_controls_section(
            'course_level_layout_settings',
@@ -44,18 +44,58 @@ class CourseLevel extends BaseAddon {
 			]
 		);
 
+        // layout
         $this->add_responsive_control(
-            'course_level_layout',
-            //layout options
-            $this->etlms_layout()
-        ); 
+			'course_level_layout',
+			array(
+				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'row'    => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-h-align-left',
+					),
+					'column' => array(
+						'title' => __( 'Up', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-v-align-top',
+					),
+				),
+				'default'      => 'row',
+                'prefix_class' => 'etlms-layout-',
+				'toggle'       => false,
+				'selectors'    => array(
+					'{{WRAPPER}} .etlms-course-level' => 'flex-direction: {{VALUE}};',
+				),
+			)
+		);
 
-        //alignment    
+        //alignment
         $this->add_responsive_control(
-            'course_level_alignment',
-            //alignment options
-            $this->etlms_alignment()
-        );
+			'course_level_alignment',
+			array(
+				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'flex-start' => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'     => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'flex-end'   => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'default'   => 'flex-start',
+				'selectors' => array(
+					'{{WRAPPER}}.etlms-layout-row .etlms-course-level' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}}.etlms-layout-column .etlms-course-level' => 'align-items: {{VALUE}};',
+				),
+			)
+		);
 
         $this->add_responsive_control(
             'course_level_gap',
@@ -71,15 +111,10 @@ class CourseLevel extends BaseAddon {
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 5,
+                    'size' => 16,
                 ],
                 'selectors' => [
-                    '.elementor-layout-up .etlms-course-level strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout-left .etlms-course-level strong' => 'margin-left: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--tabletup .etlms-course-level strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--tabletleft .etlms-course-level strong' => 'margin-lef: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--mobileup .etlms-course-level strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--mobileleft .etlms-course-level strong' => 'margin-left: {{SIZE}}{{UNIT}};'
+                    $selector => 'gap: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -115,7 +150,7 @@ class CourseLevel extends BaseAddon {
                     'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        $selector.' label' => 'color: {{VALUE}}',
+                        $selector.' .tutor-meta-key' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#757c8e'
                 ]
@@ -125,7 +160,7 @@ class CourseLevel extends BaseAddon {
                 [
                     'name'      => 'course_level_label_typo',
                     'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                    'selector'  => $selector.' label',
+                    'selector'  => $selector.' .tutor-meta-key',
                 ]
             );
 
@@ -145,7 +180,7 @@ class CourseLevel extends BaseAddon {
                     'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        $selector.' strong' => 'color: {{VALUE}}',
+                        $selector.' .tutor-meta-value' => 'color: {{VALUE}}',
                     ],
                     'default'   => '#212327'
                 ]
@@ -155,7 +190,7 @@ class CourseLevel extends BaseAddon {
                 [
                     'name'      => 'course_level_value_typo',
                     'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                    'selector'  => $selector.' strong',
+                    'selector'  => $selector.' .tutor-meta-value',
                 ]
             );
 
@@ -180,9 +215,9 @@ class CourseLevel extends BaseAddon {
         $settings = $this->get_settings_for_display();
         if ($course) {
             $level = (get_tutor_course_level()) ? get_tutor_course_level() : __('All Levels', 'tutor-lms-elementor-addons');
-            $markup = '<div class="etlms-lead-info etlms-course-level">';
-            $markup .= ($settings['course_level_label']) ? '<label class="text-regular-caption color-text-hints">'.$settings['course_level_label'].'</label>' : '';
-            $markup .= '<strong class="text-medium-caption color-text-primary">'. $level .'</strong>';
+            $markup = '<div class="etlms-course-level tutor-meta">';
+            $markup .= ($settings['course_level_label']) ? '<span class="tutor-meta-key">'.$settings['course_level_label'].'</span>' : '';
+            $markup .= '<span class="tutor-meta-value">'. $level .'</span>';
             $markup .= '</div>';
             echo $markup;
         }

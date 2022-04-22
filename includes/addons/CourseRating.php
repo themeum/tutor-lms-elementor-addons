@@ -51,7 +51,7 @@ class CourseRating extends BaseAddon {
 				'prefix_class' => 'etlms-rating-layout-',
 				'toggle'       => false,
 				'selectors'    => array(
-					'{{WRAPPER}} .etlms-rating .tutor-single-course-rating' => 'display: flex; flex-direction: {{VALUE}};',
+					'{{WRAPPER}} .etlms-rating .tutor-ratings' => 'display: flex; flex-direction: {{VALUE}};',
 				),
 			)
 		);
@@ -77,8 +77,8 @@ class CourseRating extends BaseAddon {
 				),
 				'default'   => 'flex-start',
 				'selectors' => array(
-					'.etlms-rating-layout-row .tutor-single-course-rating' => 'justify-content: {{VALUE}};',
-					'.etlms-rating-layout-column .tutor-single-course-rating' => 'align-items: {{VALUE}};',
+					'{{WRAPPER}}.etlms-rating-layout-row .tutor-ratings' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}}.etlms-rating-layout-column .tutor-ratings' => 'align-items: {{VALUE}};',
 				),
 			)
 		);
@@ -88,7 +88,7 @@ class CourseRating extends BaseAddon {
 
 	protected function register_style_controls() {
 		$rating_group = '{{WRAPPER}} .tutor-ratings-stars';
-		$rating_count = '{{WRAPPER}} .tutor-single-rating-count';
+		$rating_count = '{{WRAPPER}} .tutor-ratings-count';
 
 		// Style
 		$this->start_controls_section(

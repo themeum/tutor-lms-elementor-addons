@@ -35,7 +35,7 @@ class CourseList extends BaseAddon {
 	protected function register_content_controls() {
 		$content_selector = '{{WRAPPER}} .etlms-course-list-main-wrap ';
 
-		$meta_content_selector = $content_selector . '.tutor-single-loop-meta';
+		$meta_content_selector = $content_selector . '.tutor-meta';
 		$this->start_controls_section(
 			'course_list_content_section',
 			array(
@@ -70,8 +70,6 @@ class CourseList extends BaseAddon {
 					'1' => __( '1', 'tutor-lms-elementor-addons' ),
 					'2' => __( '2', 'tutor-lms-elementor-addons' ),
 					'3' => __( '3', 'tutor-lms-elementor-addons' ),
-					// '4' => __( '4', 'tutor-lms-elementor-addons' ),
-					// '5' => __( '5', 'tutor-lms-elementor-addons' ),
 				),
 			)
 		);
@@ -161,14 +159,14 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'default'    => array(
-					'size' => 0,
+					'size' => 16,
 					'unit' => 'px',
 				),
 				'condition'  => array(
 					'course_list_meta_data' => 'yes',
 				),
 				'selectors'  => array(
-					$meta_content_selector => 'padding-right:{{SIZE}}{{UNIT}};',
+					$meta_content_selector => 'gap: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -610,7 +608,7 @@ class CourseList extends BaseAddon {
 		$cart_text_selector        = $wrapper . '.tutor-loop-course-footer .list-item-button a, ' . $wrapper . ' .tutor-loop-course-footer span.cart-text, ' . $wrapper . ' .tutor-loop-course-footer span.ttr-cart-line-filled';
 		$cart_selector             = $wrapper . '.tutor-loop-course-footer .list-item-button span.ttr-cart-line-filled';
 		$cart_button_selector      = "$wrapper .tutor-loop-course-footer .list-item-button a:not(.product_type_external), $wrapper .tutor-loop-course-footer .list-item-button button ";
-		$row_selector              = $wrapper . '.etlms-course-list-col';
+		$row_selector              = $wrapper . '.tutor-course-list';
 		$column_selector           = $wrapper . '.etlms-course-list-col';
 		$pagination_selector       = $wrapper . '.etlms-course-list-pagination-wrap';
 		$card_selector             = $wrapper . '.etlms-card';
@@ -644,13 +642,13 @@ class CourseList extends BaseAddon {
 				),
 				'default'   => array(
 					'unit' => 'px',
-					'size' => 15,
+					'size' => 32,
 				),
 				'condition' => array(
 					'course_list_masonry!' => 'yes',
 				),
 				'selectors' => array(
-					$column_selector => 'padding: 0 {{SIZE}}{{UNIT}};',
+					$row_selector => 'column-gap: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -695,11 +693,11 @@ class CourseList extends BaseAddon {
 				),
 				'default'   => array(
 					'unit' => 'px',
-					'size' => 30,
+					'size' => 32,
 				),
 
 				'selectors' => array(
-					$row_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					$row_selector => 'row-gap: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1282,6 +1280,7 @@ class CourseList extends BaseAddon {
 			)
 		);
 
+		// @todo: not in use
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),
 			array(
@@ -2051,21 +2050,6 @@ class CourseList extends BaseAddon {
 				'selectors' => array(
 					'{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled' => 'color: {{VALUE}} !important;',
 				),
-				// 'conditions' => array(
-				// 'relation' => 'or',
-				// 'terms'    => array(
-				// array(
-				// 'name'     => 'course_carousel_enroll_btn_type',
-				// 'operator' => '==',
-				// 'value'    => 'default_with_cart_icon',
-				// ),
-				// array(
-				// 'name'     => 'course_carousel_enroll_btn_type',
-				// 'operator' => '==',
-				// 'value'    => 'text_with_cart',
-				// ),
-				// ),
-				// ),  // condition end
 			)
 		);
 
@@ -2096,21 +2080,6 @@ class CourseList extends BaseAddon {
 				'selectors' => array(
 					'{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled:hover' => 'color: {{VALUE}} !important;',
 				),
-				// 'conditions' => array(
-				// 'relation' => 'or',
-				// 'terms'    => array(
-				// array(
-				// 'name'     => 'course_carousel_enroll_btn_type',
-				// 'operator' => '==',
-				// 'value'    => 'default_with_cart_icon',
-				// ),
-				// array(
-				// 'name'     => 'course_carousel_enroll_btn_type',
-				// 'operator' => '==',
-				// 'value'    => 'text_with_cart',
-				// ),
-				// ),
-				// ),
 			)
 		);
 
