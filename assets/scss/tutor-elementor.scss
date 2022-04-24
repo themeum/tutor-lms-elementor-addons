@@ -351,17 +351,6 @@
 		column-gap: 15px;
 	}
 }
-.etlms-course-share-popup {
-	.tutor_share.s_facebook {
-		background-color: #3877EA;
-	}
-	.tutor_share.s_twitter {
-		background-color: #4CA0EB;
-	}
-	.tutor_share.s_linkedin {
-		background-color: #3967B6;
-	}
-}
 .etlms-course-curriculum.etlms-topic-icon-align-left {
 	.tutor-accordion-item-header {
 		&::after {
@@ -537,9 +526,6 @@
 		align-items: center;
 		column-gap: 7px;
 	}
-	.etlms-loop-cart-btn-wrap {
-		margin-left: 10px;
-	}
 	.tutor-loop-author {
 		overflow: initial;
 	}
@@ -586,9 +572,6 @@
 		display: flex;
 		align-items: center;
 		column-gap: 7px;
-	}
-	.etlms-loop-cart-btn-wrap {
-		margin-left: 10px;
 	}
 	.tutor-loop-author {
 		overflow: initial;
@@ -713,11 +696,6 @@
 			}
 		}
 	}
-	.etlms-loop-cart-btn-wrap {
-		a {
-			color: #fff;
-		}
-	}
 	.price {
 		color: #fff;
 	}
@@ -824,11 +802,6 @@
 			a {
 				color: #fff;
 			}
-		}
-	}
-	.etlms-loop-cart-btn-wrap {
-		a {
-			color: #fff;
 		}
 	}
 	.price {
@@ -1161,22 +1134,6 @@
 		color: #fff;
 	}
 }
-.enroll-button-align-left {
-	.etlms-loop-cart-btn-wrap {
-		margin-right: auto;
-	}
-}
-.enroll-button-align-center {
-	.etlms-loop-cart-btn-wrap {
-		margin-left: auto;
-		margin-right: auto;
-	}
-}
-.enroll-button-align-right {
-	.etlms-loop-cart-btn-wrap {
-		margin-left: auto;
-	}
-}
 .etlms-masonry.tutor-courses-layout-2 {
 	column-count: 2;
 	column-gap: 10px;
@@ -1405,7 +1362,7 @@ tutor-course-listing-item-footer.default {
 		.etmls-single-course-meta-duration {
 			text-align: left;
 		}
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: left;
 		}
 		.etlms-social {
@@ -1422,7 +1379,7 @@ tutor-course-listing-item-footer.default {
 		.etmls-single-course-meta-duration {
 			text-align: right;
 		}
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: right;
 		}
 		.etlms-social {
@@ -1439,7 +1396,7 @@ tutor-course-listing-item-footer.default {
 		.etmls-single-course-meta-duration {
 			text-align: center;
 		}
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: center;
 		}
 		.etlms-social {
@@ -1447,7 +1404,7 @@ tutor-course-listing-item-footer.default {
 		}
 	}
 	.elementor-align--tabletjustify {
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: justify;
 		}
 	}
@@ -1542,7 +1499,7 @@ tutor-course-listing-item-footer.default {
 		.etmls-single-course-meta-duration {
 			text-align: left;
 		}
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: left;
 		}
 		.etlms-social {
@@ -1567,7 +1524,7 @@ tutor-course-listing-item-footer.default {
 		.etmls-single-course-meta-duration {
 			text-align: right;
 		}
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: right;
 		}
 		.etlms-social {
@@ -1599,7 +1556,7 @@ tutor-course-listing-item-footer.default {
 		.etmls-single-course-meta-duration {
 			text-align: center;
 		}
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: center;
 		}
 		.etlms-social {
@@ -1674,7 +1631,7 @@ tutor-course-listing-item-footer.default {
 		}
 	}
 	.elementor-align--mobilejustify {
-		.etlms-course-summery {
+		.etlms-course-summary {
 			text-align: justify;
 		}
 	}

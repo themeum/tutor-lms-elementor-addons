@@ -135,7 +135,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'		=> array(
-					'{{WRAPPER}} .etlms-course-about.etlms-course-summery' => 'text-align: {{VALUE}};'
+					'{{WRAPPER}} .etlms-course-about.etlms-course-summary' => 'text-align: {{VALUE}};'
 				),
 				'default'      => 'left',
 			)

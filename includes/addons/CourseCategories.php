@@ -59,7 +59,6 @@ class CourseCategories extends BaseAddon {
 
 		$this->add_responsive_control(
 			'course_category_layout',
-			// layout options.
 			array(
 				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
 				'type'         => \Elementor\Controls_Manager::CHOOSE,
@@ -73,15 +72,15 @@ class CourseCategories extends BaseAddon {
 						'icon'  => 'eicon-v-align-top',
 					),
 				),
-				'prefix_class' => self::$prefix_class_layout . '%s',
 				'default'      => 'row',
+                'prefix_class' => self::$prefix_class_layout . '%s',
 				'toggle'       => false,
 				'selectors'    => array(
-					'{{WRAPPER}} .etlms-single-course-meta-categories' => 'flex-direction: {{VALUE}};',
+					'{{WRAPPER}} .etlms-course-categories' => 'flex-direction: {{VALUE}};',
 				),
-				'return_value' => 'yes',
 			)
 		);
+
 		$this->add_responsive_control(
 			'course_category_alignment',
 			// alignment.
@@ -105,35 +104,14 @@ class CourseCategories extends BaseAddon {
 				'prefix_class' => self::$prefix_class_alignment . '%s',
 				'default'      => 'flex-start',
 				'selectors'    => array(
-					'.elementor-layout-row .etlms-single-course-meta-categories' => 'justify-content: {{VALUE}};',
-					'.elementor-layout-column .etlms-single-course-meta-categories' => 'align-items: {{VALUE}};',
+					'{{WRAPPER}}.elementor-layout-row .etlms-course-categories' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}}.elementor-layout-column .etlms-course-categories' => 'align-items: {{VALUE}};',
 				),
 			)
 		);
 
 		$this->add_responsive_control(
 			'course_category_gap',
-			// array(
-			// 'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
-			// 'type'       => Controls_Manager::SLIDER,
-			// 'size_units' => array( 'px' ),
-			// 'range'      => array(
-			// 'px' => array(
-			// 'min' => 0,
-			// 'max' => 50,
-
-			// ),
-			// ),
-			// 'prefix_class' => 'etlms-course-category-gap-',
-			// 'default'    => array(
-			// 'unit' => 'px',
-			// 'size' => 10,
-			// ),
-			// 'selectors'  => array(
-			// '.elementor-layout-row .etlms-single-course-meta-categories' => 'column-gap: {{VALUE}}{{UNIT}};',
-			// '.elementor-layout-column .etlms-single-course-meta-categories' => 'row-gap: {{VALUE}}{{UNIT}};',
-			// ),
-			// )
 			array(
 				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
@@ -149,13 +127,8 @@ class CourseCategories extends BaseAddon {
 						'max' => 100,
 					),
 				),
-				'default'    => array(
-					'unit' => 'px',
-					'size' => 10,
-				),
 				'selectors'  => array(
-					'.elementor-layout-row .etlms-single-course-meta-categories' => 'column-gap: {{SIZE}}{{UNIT}};',
-					'.elementor-layout-column .etlms-single-course-meta-categories' => 'row-gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .etlms-course-categories' => 'gap: {{SIZE}}{{UNIT}};'
 				),
 			)
 		);
@@ -163,8 +136,8 @@ class CourseCategories extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector       = '{{WRAPPER}} .etlms-single-course-meta-categories a';
-		$label_selector = '{{WRAPPER}} .etlms-single-course-meta-categories span';
+		$selector       = '{{WRAPPER}} .etlms-course-categories a';
+		$label_selector = '{{WRAPPER}} .etlms-course-categories .tutor-meta-key';
 		$this->start_controls_section(
 			'course_categories_style_section',
 			array(
@@ -280,38 +253,31 @@ class CourseCategories extends BaseAddon {
 		$course            = etlms_get_course();
 		$settings          = $this->get_settings_for_display();
 		$course_categories = array();
+
 		if ( $course ) {
 			$course_categories = get_tutor_course_categories();
 		}
-		if ( is_array( $course_categories ) && count( $course_categories ) ) {
-			$item = 1;
-			?>
-			<div class="etlms-single-course-meta-categories tutor-fs-6 tutor-fw-medium tutor-color-black tutor-d-flex">
-				<div>
-					<span class="etlms-course-category-label tutor-fs-6 tutor-color-muted">
-						<?php esc_html_e( 'Categories:' ); ?>
-					</span>
-				</div>
-				<div>
-				<?php
-				foreach ( $course_categories as $course_category ) :
-					$category_name = $course_category->name;
-					$category_link = get_term_link( $course_category->term_id );
-					$comma         = ( $item < count( $course_categories ) ) ? ',' : '';
-					$item++;
+
+		if ( is_array( $course_categories ) && count( $course_categories ) ) : $item = 1; ?>
+			<div class="etlms-course-categories tutor-meta">
+				<span class="tutor-meta-key"><?php esc_html_e('Categories', 'tutor'); ?></span>
+				<span>
+					<?php
+						$category_links = array();
+						foreach ( $course_categories as $course_category ) :
+							$category_name = $course_category->name;
+							$category_link = get_term_link($course_category->term_id);
+							$category_links[] = wp_sprintf( '<a href="%1$s">%2$s</a>', esc_url( $category_link ), esc_html( $category_name ) );
+						endforeach;
+						echo implode(', ', $category_links);
 					?>
-					<a href="<?php echo esc_url( $category_link ); ?>">
-						<?php echo esc_html( $category_name . $comma ); ?>
-					</a>
-				<?php endforeach; ?>
-				</div>
+				</span>
 			</div>
-			<?php
-		} else {
-			if ( $this->is_elementor_editor() ) {
+		<?php else : ?>
+			<?php if ( $this->is_elementor_editor() ) :
 				esc_html_e( 'Please add category from Tutor course builder', 'tutor-lms-elementor-addons' );
-			}
-		}
+			endif;
+		endif;
 	}
 
 }

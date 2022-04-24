@@ -93,8 +93,8 @@ class CourseAuthor extends BaseAddon {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        $avatar_selector = '.etlms-author .tutor-single-course-avatar .tutor-avatar';
-        $meta_selector = '.etlms-author.tutor-meta';
+        $avatar_selector = '{{WRAPPER}} .etlms-author .tutor-single-course-avatar .tutor-avatar';
+        $meta_selector = '{{WRAPPER}} .etlms-author.tutor-meta';
         $this->add_responsive_control(
             'image_size',
             [
@@ -110,9 +110,6 @@ class CourseAuthor extends BaseAddon {
                 'selectors' => [
                     $avatar_selector => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
                 ],
-                'default' => [
-					'size' => 26,
-				]
             ]
         );
 
@@ -131,9 +128,6 @@ class CourseAuthor extends BaseAddon {
                 'selectors' => [
                     $meta_selector => 'gap: {{SIZE}}{{UNIT}};'
                 ],
-                'default' => [
-					'size' => 16,
-				],
             ]
         );
 

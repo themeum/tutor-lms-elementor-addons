@@ -109,10 +109,6 @@ class CourseLevel extends BaseAddon {
                         'max' => 50,
                     ]
                 ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 16,
-                ],
                 'selectors' => [
                     $selector => 'gap: {{SIZE}}{{UNIT}};'
                 ]
