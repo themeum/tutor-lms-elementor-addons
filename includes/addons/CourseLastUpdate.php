@@ -43,20 +43,60 @@ class CourseLastUpdate extends BaseAddon {
 			]
 		);
 
-        $this->add_responsive_control(
-            'course_last_update_layout',
-            //layout options
-            $this->etlms_layout()
-        ); 
+        // layout
+		$this->add_responsive_control(
+			'course_last_update_layout',
+			array(
+				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'row'    => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-h-align-left',
+					),
+					'column' => array(
+						'title' => __( 'Up', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-v-align-top',
+					),
+				),
+				'default'      => 'row',
+                'prefix_class' => 'etlms-layout-',
+				'toggle'       => false,
+				'selectors'    => array(
+					'{{WRAPPER}} .etlms-course-last-update-meta' => 'flex-direction: {{VALUE}};',
+				),
+			)
+		);
 
-        //alignment    
+        //alignment
         $this->add_responsive_control(
-            'course_last_update_alignment',
-            //alignment options
-            $this->etlms_alignment()
-        );
+			'course_last_update_alignment',
+			array(
+				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'flex-start' => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'     => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'flex-end'   => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'default'   => 'flex-start',
+				'selectors' => array(
+					'{{WRAPPER}}.etlms-layout-row .etlms-course-last-update-meta' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}}.etlms-layout-column .etlms-course-last-update-meta' => 'align-items: {{VALUE}};',
+				),
+			)
+		);
 
-        $this->add_responsive_control(
+		$this->add_responsive_control(
             'course_last_update_gap',
             [
                 'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
@@ -68,17 +108,8 @@ class CourseLastUpdate extends BaseAddon {
                         'max' => 50,
                     ]
                 ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 5,
-                ],
                 'selectors' => [
-                    '.elementor-layout-up .etlms-course-last-update strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout-left .etlms-course-last-update strong' => 'margin-left: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--tabletup .etlms-course-last-update strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--tabletleft .etlms-course-last-update strong' => 'margin-lef: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--mobileup .etlms-course-last-update strong' => 'margin-top: {{SIZE}}{{UNIT}};',                    
-                    '.elementor-layout--mobileleft .etlms-course-last-update strong' => 'margin-left: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .etlms-course-last-update-meta' => 'gap: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -114,9 +145,8 @@ class CourseLastUpdate extends BaseAddon {
                     'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        $selector.' label' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .etlms-course-last-update-meta .tutor-meta-key' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#757c8e'
                 ]
             );
             $this->add_group_control(
@@ -124,7 +154,7 @@ class CourseLastUpdate extends BaseAddon {
                 [
                     'name'      => 'course_last_update_label_typo',
                     'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                    'selector'  => $selector.' label',
+                    'selector'  => '{{WRAPPER}} .etlms-course-last-update-meta .tutor-meta-key',
                 ]
             );
 
@@ -144,9 +174,8 @@ class CourseLastUpdate extends BaseAddon {
                     'label'     => __('Color', 'tutor-lms-elementor-addons'),
                     'type'      => Controls_Manager::COLOR,
                     'selectors' => [
-                        $selector.' strong' => 'color: {{VALUE}}',
+                        '{{WRAPPER}} .etlms-course-last-update-meta .tutor-meta-value' => 'color: {{VALUE}}',
                     ],
-                    'default'   => '#212327'
                 ]
             );
             $this->add_group_control(
@@ -154,7 +183,7 @@ class CourseLastUpdate extends BaseAddon {
                 [
                     'name'      => 'course_last_update_value_typo',
                     'label'     => __('Typography', 'tutor-lms-elementor-addons'),
-                    'selector'  => $selector.' strong',
+                    'selector'  => '{{WRAPPER}} .etlms-course-last-update-meta .tutor-meta-value',
                 ]
             );
 
@@ -179,9 +208,9 @@ class CourseLastUpdate extends BaseAddon {
         $settings = $this->get_settings_for_display();
         if ($course) {
             $last_update = esc_html(get_the_modified_date());
-            $markup = '<div class="etlms-lead-info etlms-course-last-update">';
-            $markup .= ($settings['course_last_update_label']) ? '<label class="text-regular-caption color-text-hints">'.$settings['course_last_update_label'].'</label>' : '';
-            $markup .= '<strong class="text-medium-caption color-text-primary">'. $last_update .'</strong>';
+            $markup = '<div class="tutor-meta etlms-course-last-update-meta">';
+            $markup .= ($settings['course_last_update_label']) ? '<span class="tutor-meta-key">'.$settings['course_last_update_label'].'</span>' : '';
+            $markup .= '<span class="tutor-meta-value">'. $last_update .'</span>';
             $markup .= '</div>';
             echo $markup;
         }

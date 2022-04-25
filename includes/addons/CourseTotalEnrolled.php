@@ -46,51 +46,82 @@ class CourseTotalEnrolled extends BaseAddon {
 			)
 		);
 
+		// layout
 		$this->add_responsive_control(
-			'course_level_layout',
-			// layout options
-			$this->etlms_layout()
-		);
-
-		// alignment
-		$this->add_responsive_control(
-			'course_level_alignment',
-			// alignment options
-			$this->etlms_alignment()
-		);
-
-		$this->add_responsive_control(
-			'course_level_gap',
+			'course_enrolled_layout',
 			array(
-				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 0,
-						'max' => 50,
+				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'row'    => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-h-align-left',
+					),
+					'column' => array(
+						'title' => __( 'Up', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-v-align-top',
 					),
 				),
-				'default'    => array(
-					'unit' => 'px',
-					'size' => 5,
-				),
-				'selectors'  => array(
-					'.elementor-layout-up .etlms-course-total-enroll strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout-left .etlms-course-total-enroll strong' => 'margin-left: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--tabletup .etlms-course-total-enroll strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--tabletleft .etlms-course-total-enroll strong' => 'margin-lef: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--mobileup .etlms-course-total-enroll strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--mobileleft .etlms-course-total-enroll strong' => 'margin-left: {{SIZE}}{{UNIT}};',
+				'default'      => 'row',
+                'prefix_class' => 'etlms-layout-',
+				'toggle'       => false,
+				'selectors'    => array(
+					'{{WRAPPER}} .etlms-course-enrolled-count-meta' => 'flex-direction: {{VALUE}};',
 				),
 			)
 		);
+
+        //alignment
+        $this->add_responsive_control(
+			'course_enrolled_alignment',
+			array(
+				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'flex-start' => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'     => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'flex-end'   => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'default'   => 'flex-start',
+				'selectors' => array(
+					'{{WRAPPER}}.etlms-layout-row .etlms-course-enrolled-count-meta' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}}.etlms-layout-column .etlms-course-enrolled-count-meta' => 'align-items: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+            'course_enrolled_gap',
+            [
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .etlms-course-enrolled-count-meta' => 'gap: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
 
 		$this->end_controls_section();
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .etlms-course-total-enroll';
+		$selector = '{{WRAPPER}} .etlms-course-enrolled-count-meta';
 
 		$this->start_controls_section(
 			'course_total_enrolled_style_section',
@@ -117,7 +148,7 @@ class CourseTotalEnrolled extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$selector . ' label' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .etlms-course-enrolled-count-meta .tutor-meta-key' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -126,7 +157,7 @@ class CourseTotalEnrolled extends BaseAddon {
 				array(
 					'name'     => 'course_total_enrolled_label_typo',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => $selector . ' label',
+					'selector' => '{{WRAPPER}} .etlms-course-enrolled-count-meta .tutor-meta-key',
 				)
 			);
 
@@ -146,9 +177,8 @@ class CourseTotalEnrolled extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$selector . ' strong' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .etlms-course-enrolled-count-meta .tutor-meta-value' => 'color: {{VALUE}}',
 					),
-					'default'   => '#212327',
 				)
 			);
 			$this->add_group_control(
@@ -156,7 +186,7 @@ class CourseTotalEnrolled extends BaseAddon {
 				array(
 					'name'     => 'course_total_enrolled_value_typo',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => $selector . ' strong',
+					'selector' => '{{WRAPPER}} .etlms-course-enrolled-count-meta .tutor-meta-value',
 				)
 			);
 
@@ -181,9 +211,9 @@ class CourseTotalEnrolled extends BaseAddon {
 		$settings = $this->get_settings_for_display();
 		if ( $course ) {
 			$total_enroll = (int) tutils()->count_enrolled_users_by_course();
-			$markup       = '<div class="etlms-lead-info etlms-course-total-enroll">';
-			$markup      .= ( $settings['course_total_enroll_label'] ) ? '<label class="text-regular-caption tutor-color-text-hints">' . $settings['course_total_enroll_label'] . '</label>' : '';
-			$markup      .= '<strong>' . $total_enroll . '</strong>';
+			$markup       = '<div class="tutor-meta etlms-course-enrolled-count-meta">';
+			$markup      .= ( $settings['course_total_enroll_label'] ) ? '<span class="tutor-meta-key">' . $settings['course_total_enroll_label'] . '</span>' : '';
+			$markup      .= '<span class="tutor-meta-value">' . $total_enroll . '</span>';
 			$markup      .= '</div>';
 			echo $markup;
 		}

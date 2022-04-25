@@ -67,27 +67,10 @@ class CourseStatus extends BaseAddon {
 				),
 				'default'   => 'block',
 				'selectors' => array(
-					'{{WRAPPER}} .progress-percentage' => 'display: {{VALUE}};',
+					'{{WRAPPER}} .etlms-course-progress-percent' => 'display: {{VALUE}};',
 				),
 			)
 		);
-
-		// $this->add_control(
-		// 'course_status_percent_position',
-		// array(
-		// 'label'     => __( 'Position', 'tutor-lms-elementor-addons' ),
-		// 'type'      => Controls_Manager::SELECT,
-		// 'options'   => array(
-		// 'inside'  => __( 'Inside', 'tutor-lms-elementor-addons' ),
-		// 'outside' => __( 'Outside', 'tutor-lms-elementor-addons' ),
-		// 'ontop'   => __( 'On top', 'tutor-lms-elementor-addons' ),
-		// ),
-		// 'condition' => array(
-		// 'course_status_display_percent' => 'show',
-		// ),
-		// 'default'   => 'inside',
-		// )
-		// );
 
 		$this->end_controls_section();
 	}
@@ -98,8 +81,6 @@ class CourseStatus extends BaseAddon {
 	 * @return void
 	 */
 	protected function register_style_controls() {
-		$progress_wrapper = '{{WRAPPER}} .tutor-course-progress-wrapper';
-		/* Section Title */
 		$this->start_controls_section(
 			'course_status_title_section',
 			array(
@@ -113,9 +94,8 @@ class CourseStatus extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .tutor-text-medium-h6" => 'color: {{VALUE}};',
+					'{{WRAPPER}} .etlms-course-progress-title' => 'color: {{VALUE}};',
 				),
-				'default'   => '#212327',
 			)
 		);
 		$this->add_group_control(
@@ -123,7 +103,7 @@ class CourseStatus extends BaseAddon {
 			array(
 				'name'     => 'course_status_title_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$progress_wrapper .tutor-text-medium-h6",
+				'selector' => '{{WRAPPER}} .etlms-course-progress-title',
 			)
 		);
 		$this->add_responsive_control(
@@ -138,11 +118,8 @@ class CourseStatus extends BaseAddon {
 						'max' => 100,
 					),
 				),
-				'default'    => array(
-					'size' => '16',
-				),
 				'selectors'  => array(
-					"$progress_wrapper .list-item-progress" => 'margin-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .etlms-course-progress-info' => 'margin-top: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -162,7 +139,7 @@ class CourseStatus extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .list-item-progress .progress-bar .progress-value" => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .etlms-course-progress-bar' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -173,7 +150,7 @@ class CourseStatus extends BaseAddon {
 				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .list-item-progress .progress-bar" => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .tutor-progress-value' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -196,8 +173,8 @@ class CourseStatus extends BaseAddon {
 					'unit' => 'px',
 				),
 				'selectors'  => array(
-					"$progress_wrapper .list-item-progress .progress-bar" => 'height: {{SIZE}}{{UNIT}};',
-					"$progress_wrapper .list-item-progress .progress-bar .progress-value" => 'height: 100%;',
+					'{{WRAPPER}} .etlms-course-progress-bar' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .etlms-course-progress-bar .tutor-progress-value' => 'height: 100%;',
 				),
 			)
 		);
@@ -225,8 +202,8 @@ class CourseStatus extends BaseAddon {
 					'unit' => 'px',
 				),
 				'selectors'  => array(
-					"$progress_wrapper .list-item-progress .progress-bar" => 'border-radius: {{SIZE}}{{UNIT}};',
-					"$progress_wrapper .list-item-progress .progress-bar .progress-value"   => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .etlms-course-progress-bar' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .etlms-course-progress-bar .tutor-progress-value'   => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -245,17 +222,17 @@ class CourseStatus extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .progress-percentage, $progress_wrapper .progress-steps" => 'color: {{VALUE}};',
+					'{{WRAPPER}} .etlms-course-progress-info' => 'color: {{VALUE}};',
 				),
 			)
 		);
-
+		
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'course_status_progress_text_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$progress_wrapper .progress-percentage, $progress_wrapper .progress-steps",
+				'selector' => '{{WRAPPER}} .etlms-course-progress-info',
 			)
 		);
 

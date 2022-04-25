@@ -45,51 +45,81 @@ class CourseDuration extends BaseAddon {
 			)
 		);
 
+		// layout
 		$this->add_responsive_control(
 			'course_duration_layout',
-			// layout options
-			$this->etlms_layout()
-		);
-
-		// alignment
-		$this->add_responsive_control(
-			'course_duration_alignment',
-			// alignment options
-			$this->etlms_alignment()
-		);
-
-		$this->add_responsive_control(
-			'course_duration_gap',
 			array(
-				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 0,
-						'max' => 50,
+				'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'row'    => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-h-align-left',
+					),
+					'column' => array(
+						'title' => __( 'Up', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-v-align-top',
 					),
 				),
-				'default'    => array(
-					'unit' => 'px',
-					'size' => 5,
-				),
-				'selectors'  => array(
-					'.elementor-layout-up .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout-left .etlms-lead-info.etlms-course-duration' => 'column-gap: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--tabletup .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--tabletleft .etlms-lead-info.etlms-course-duration' => 'column-gap: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--mobileup .etlms-course-duration strong' => 'margin-top: {{SIZE}}{{UNIT}};',
-					'.elementor-layout--mobileleft .etlms-lead-info.etlms-course-duration' => 'column-gap: {{SIZE}}{{UNIT}};',
+				'default'      => 'row',
+                'prefix_class' => 'etlms-layout-',
+				'toggle'       => false,
+				'selectors'    => array(
+					'{{WRAPPER}} .etlms-course-duration-meta' => 'flex-direction: {{VALUE}};',
 				),
 			)
 		);
+
+        //alignment
+        $this->add_responsive_control(
+			'course_duration_alignment',
+			array(
+				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'flex-start' => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'     => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'flex-end'   => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'default'   => 'flex-start',
+				'selectors' => array(
+					'{{WRAPPER}}.etlms-layout-row .etlms-course-duration-meta' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}}.etlms-layout-column .etlms-course-duration-meta' => 'align-items: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+            'course_duration_gap',
+            [
+                'label' => __( 'Gap', 'tutor-lms-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .etlms-course-duration-meta' => 'gap: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
 
 		$this->end_controls_section();
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .etlms-course-duration';
 
 		$this->start_controls_section(
 			'course_duration_style_section',
@@ -116,7 +146,7 @@ class CourseDuration extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$selector . ' label' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .etlms-course-duration-meta .tutor-meta-key' => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -125,7 +155,7 @@ class CourseDuration extends BaseAddon {
 				array(
 					'name'     => 'course_duration_label_typo',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => $selector . ' label',
+					'selector' => '{{WRAPPER}} .etlms-course-duration-meta .tutor-meta-key',
 				)
 			);
 
@@ -145,9 +175,8 @@ class CourseDuration extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$selector . ' strong' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .etlms-course-duration-meta .tutor-meta-value' => 'color: {{VALUE}}',
 					),
-					'default'   => '#212327',
 				)
 			);
 			$this->add_group_control(
@@ -155,7 +184,7 @@ class CourseDuration extends BaseAddon {
 				array(
 					'name'     => 'course_duration_value_typo',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => $selector . ' strong',
+					'selector' => '{{WRAPPER}} .etlms-course-duration-meta .tutor-meta-value',
 				)
 			);
 
@@ -182,13 +211,11 @@ class CourseDuration extends BaseAddon {
 			$course_duration = get_tutor_course_duration_context( 0, true );
 			$course_duration = ( ! empty( $course_duration ) ) ? $course_duration : 0;
 			?>
-			<div class="etlms-lead-info etlms-course-duration">
+			<div class="tutor-meta etlms-course-duration-meta">
 				<?php if ( '' !== $settings['course_duration_label'] ) : ?>
-					<label class="text-regular-caption tutor-color-text-hints">
-						<?php echo esc_html( $settings['course_duration_label'] ); ?>
-					</label>
+					<span class="tutor-meta-key"><?php echo esc_html( $settings['course_duration_label'] ); ?></span>
 				<?php endif; ?>
-				<strong class="text-medium-caption tutor-color-text-primary">
+				<span class="tutor-meta-value">
 					<?php
 					echo wp_kses(
 						$course_duration,
@@ -198,7 +225,7 @@ class CourseDuration extends BaseAddon {
 						)
 					);
 					?>
-				</strong>
+				</span>
 			</div>
 			<?php
 		}
