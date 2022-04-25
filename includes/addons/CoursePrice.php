@@ -130,14 +130,11 @@ class CoursePrice extends BaseAddon {
 			}
 			return;
 		}
+		
 		$course	= etlms_get_course();
 		$price 	= tutor_utils()->get_course_price( get_the_ID() );
 		if ( $course ) {
-			?>
-			<?php
-			if ( null != $price ) :
-
-				?>
+			if ( null != $price ) : ?>
 				<div class="tutor-course-sidebar-card-pricing tutor-d-flex align-items-end tutor-justify-content-between">
 					<div>
 						<?php echo tutor_kses_html( $price ); ?>
@@ -146,11 +143,12 @@ class CoursePrice extends BaseAddon {
 			<?php else : ?>
 				<div class="tutor-course-sidebar-card-pricing tutor-d-flex align-items-end tutor-justify-content-between">
 					<div>
-						<span class="text-bold-h4 tutor-color-text-primary"><?php echo esc_html_x( 'Free', 'course price', 'tutor-lms-elementor-addons' ); ?></span>
+						<span class="tutor-fs-4 tutor-fw-bold tutor-color-black">
+							<?php echo esc_html_x( 'Free', 'course price', 'tutor-lms-elementor-addons' ); ?>
+						</span>
 					</div>
 				</div>
-			<?php endif; ?>
-			<?php
+			<?php endif;
 		}
 	}
 }

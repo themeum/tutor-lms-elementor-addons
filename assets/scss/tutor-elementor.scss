@@ -57,10 +57,6 @@
 			justify-content: flex-end;
 		}
 	}
-	.etlms-single-instructor-bottom {
-		justify-content: flex-end;
-		column-gap: 15px;
-	}
 }
 .elementor-align-center {
 	.etlms-lead-info {
@@ -81,10 +77,6 @@
 		li {
 			justify-content: center;
 		}
-	}
-	.etlms-single-instructor-bottom {
-		justify-content: center !important;
-		column-gap: 15px;
 	}
 }
 .elementor-layout-up {
@@ -303,54 +295,7 @@
 		}
 	}
 }
-.etlms-single-instructor-wrap {
-	width: 100%;
-	margin-bottom: 0;
-	p {
-		margin-bottom: 15px;
-	}
-	.tutor-instructor-left {
-		padding-right: 15px;
-	}
-	.tutor-instructor-right {
-		display: flex;
-		.instructor-name {
-			padding-left: 0;
-			flex: 0 0 35%;
-			font-size: 18px;
-		}
-	}
-	.single-instructor-wrap {
-		.instructor-name {
-			h3 {
-				font-size: 18px;
-			}
-		}
-	}
-	.instructor-name {
-		p {
-			font-size: 16px;
-		}
-	}
-	.instructor-avatar {
-		span.tutor-text-avatar {
-			min-width: 10px;
-			min-height: 10px;
-			font-size: calc(48px/2);
-			border-radius: 50%;
-		}
-	}
-}
-.etlms-single-instructor-bottom {
-	display: flex;
-	column-gap: 15px;
-}
-.elemntor-align-left {
-	.etlms-single-instructor-bottom {
-		justify-content: flex-start;
-		column-gap: 15px;
-	}
-}
+
 .etlms-course-curriculum.etlms-topic-icon-align-left {
 	.tutor-accordion-item-header {
 		&::after {
