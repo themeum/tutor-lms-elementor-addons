@@ -62,7 +62,7 @@ class CourseMaterials extends BaseAddon {
 				'default'   => 'list-item',
 				'prefix_class'	=> 'etlms-course-materials-display-',
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-course-specifications ul li'  => 'display: {{VALUE}};',
+					'{{WRAPPER}}.etlms-course-materials-display-list-item .etlms-course-widget-list-items'  => 'flex-direction: column;',
 				),
 			)
 		);
@@ -79,20 +79,41 @@ class CourseMaterials extends BaseAddon {
 			)
 		);
 
+		// Alignment
 		$this->add_responsive_control(
 			'course_materials_align',
-			$this->etlms_alignment() // alignment
+			array(
+				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
+				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'options'   => array(
+					'flex-start' => array(
+						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'     => array(
+						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'flex-end'   => array(
+						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+				),
+				'default'   => 'flex-start',
+				'selectors' => array(
+					'{{WRAPPER}} .etlms-course-widget-title' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .etlms-course-widget-list-items' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .etlms-course-widget-list-item' => 'justify-content: {{VALUE}};'
+				),
+			)
 		);
 
 		$this->end_controls_section();
 	}
 
 	protected function register_style_controls() {
-		$selector       = '.etlms-course-specifications.etlms-course-materials';
-		$title_selector = $selector . ' h3';
-		$list_selector  = $selector . ' .etlms-course-specification-items li';
-		$icon_selector  = $list_selector . ' i';
-		$text_selector  = $list_selector . ' span';
+		$title_selector = '{{WRAPPER}} .etlms-course-widget-title';
+		$list_selector  = '{{WRAPPER}} .etlms-course-widget-list-items';
 
 		/* Title Section */
 		$this->start_controls_section(
@@ -102,6 +123,7 @@ class CourseMaterials extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+
 		$this->add_control(
 			'course_materials_title_color',
 			array(
@@ -112,6 +134,7 @@ class CourseMaterials extends BaseAddon {
 				),
 			)
 		);
+
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
@@ -120,6 +143,7 @@ class CourseMaterials extends BaseAddon {
 				'selector' => $title_selector,
 			)
 		);
+
 		$this->add_responsive_control(
 			'etlms_heading_gap',
 			array(
@@ -133,11 +157,8 @@ class CourseMaterials extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};',
-				),
-				'default'    => array(
-					'size' => 15,
-				),
+					$title_selector => 'margin-bottom: {{SIZE}}{{UNIT}};'
+				)
 			)
 		);
 		$this->end_controls_section();
@@ -163,22 +184,20 @@ class CourseMaterials extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}.etlms-course-materials-display-list-item ul.etlms-course-materials li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}}.etlms-course-materials-display-inline ul.etlms-course-materials li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
-				),
-				'default'    => array(
-					'size' => 10,
-				),
+					$list_selector => 'gap: {{SIZE}}{{UNIT}};'
+				)
 			)
 		);
+
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'course_materials_border',
 				'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-				'selector' => $list_selector,
+				'selector' => $list_selector . ' li',
 			)
 		);
+
 		$this->add_responsive_control(
 			'course_materials_border_radius',
 			array(
@@ -186,10 +205,11 @@ class CourseMaterials extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					$list_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$list_selector . ' li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				),
 			)
 		);
+
 		$this->add_control(
 			'course_materials_list_padding',
 			array(
@@ -197,11 +217,12 @@ class CourseMaterials extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					$list_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$list_selector . ' li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				),
 				'separator'  => 'before',
 			)
 		);
+
 		$this->end_controls_section();
 
 		 /* Icon  Section */
@@ -212,16 +233,18 @@ class CourseMaterials extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+
 		$this->add_control(
 			'course_materials_icon_color',
 			array(
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$icon_selector => 'color: {{VALUE}}',
+					$list_selector . ' li .tutor-list-icon' => 'color: {{VALUE}}'
 				),
 			)
 		);
+
 		$this->add_responsive_control(
 			'course_materials_icon_size',
 			array(
@@ -235,10 +258,7 @@ class CourseMaterials extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$icon_selector => 'font-size: {{SIZE}}{{UNIT}};',
-				),
-				'default'    => array(
-					'size' => 16,
+					$list_selector . ' li .tutor-list-icon' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -252,16 +272,18 @@ class CourseMaterials extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+		
 		$this->add_control(
 			'course_materials_text_color',
 			array(
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$text_selector => 'color: {{VALUE}}',
+					$list_selector . ' li .tutor-list-label' => 'color: {{VALUE}}'
 				),
 			)
 		);
+
 		$this->add_responsive_control(
 			'course_materials_text_indent',
 			array(
@@ -275,19 +297,17 @@ class CourseMaterials extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$text_selector => 'padding-left: {{SIZE}}{{UNIT}};',
-				),
-				'default'    => array(
-					'size' => 7,
+					$list_selector . ' li .tutor-list-icon' => 'margin-right: {{SIZE}}{{UNIT}};'
 				),
 			)
 		);
+
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'course_materials_text_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $text_selector,
+				'selector' => $list_selector . ' li .tutor-list-label',
 			)
 		);
 		$this->end_controls_section();

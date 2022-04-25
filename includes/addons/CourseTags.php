@@ -47,9 +47,9 @@ class CourseTags extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector       = '{{WRAPPER}} .etlms-course-tag';
-		$title_selector = $selector . ' .course-benefits-title h4';
-		$tag_selector   = $selector . ' .tutor-course-tags a';
+		$selector       = '{{WRAPPER}} .etlms-course-tags';
+		$title_selector = $selector . ' .etlms-course-widget-title';
+		$tag_selector   = $selector . ' .etlms-course-tag-list a';
 
 		/* Title Section */
 		$this->start_controls_section(

@@ -117,7 +117,7 @@ class CourseWishlist extends BaseAddon {
 					'prefix_class' => self::$prefix_class_alignment . '%s',
 					'default'      => 'flex-start',
 					'selectors'    => array(
-						'{{WRAPPER}} .etlms-course-wishlist-wrapper a ' => 'justify-content: {{VALUE}};',
+						'{{WRAPPER}} .etlms-course-bookmark a' => 'display: flex; justify-content: {{VALUE}};',
 					),
 				)
 			);
@@ -135,11 +135,8 @@ class CourseWishlist extends BaseAddon {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .etlms-course-wishlist-wrapper a ' => 'column-gap: {{SIZE}}{{UNIT}};',
-					),
-					'default'    => array(
-						'size' => 2,
-					),
+						'{{WRAPPER}} .etlms-course-bookmark a' => 'column-gap: {{SIZE}}{{UNIT}};',
+					)
 				)
 			);
 
@@ -150,7 +147,7 @@ class CourseWishlist extends BaseAddon {
 	 * Style controls for style tab
 	 */
 	protected function register_style_controls() {
-		$wishlist_wrapper = '{{WRAPPER}} .etlms-course-wishlist-wrapper';
+		$wishlist_wrapper = '{{WRAPPER}} .etlms-course-bookmark';
 		// Style.
 		$this->start_controls_section(
 			'course_wishlist_style_section',
@@ -168,7 +165,6 @@ class CourseWishlist extends BaseAddon {
 				'selectors' => array(
 					"$wishlist_wrapper a i" => 'color: {{VALUE}};',
 				),
-				'default'   => '#161616',
 			)
 		);
 
@@ -187,9 +183,6 @@ class CourseWishlist extends BaseAddon {
 				'selectors'  => array(
 					"$wishlist_wrapper a i" => 'font-size: {{SIZE}}{{UNIT}};',
 				),
-				'default'    => array(
-					'size' => 21,
-				),
 				'separator'  => 'after',
 			)
 		);
@@ -200,9 +193,8 @@ class CourseWishlist extends BaseAddon {
 				'label'     => __( 'Text color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$wishlist_wrapper a:not(i)  " => 'color: {{VALUE}};',
+					"$wishlist_wrapper a:not(i)" => 'color: {{VALUE}};',
 				),
-				'default'   => '#212327',
 			)
 		);
 
@@ -226,20 +218,19 @@ class CourseWishlist extends BaseAddon {
 	 * @return void
 	 */
 	protected function render() {
-		$settings  = $this->get_settings_for_display();
-		$is_editor = \Elementor\Plugin::instance()->editor->is_edit_mode();
-		$is_wishlisted = tutor_utils()->is_wishlisted( get_the_ID(), get_current_user_id() );
+		$settings  		= $this->get_settings_for_display();
+		$is_editor 		= \Elementor\Plugin::instance()->editor->is_edit_mode();
+		$is_wishlisted 	= tutor_utils()->is_wishlisted( get_the_ID(), get_current_user_id() );
 		?>
-			<div class="etlms-course-wishlist-wrapper">
-				<a href="#" class="action-btn <?php echo esc_attr( ! $is_editor ? 'tutor-course-wishlist-btn' : '' ); ?> tutor-text-regular-body tutor-color-text-primary tutor-d-flex tutor-align-items-center" data-course-id="<?php echo get_the_ID(); ?>">
+			<div class="etlms-course-bookmark">
+				<a href="javascript:;" class="<?php echo esc_attr( ! $is_editor ? 'tutor-course-wishlist-btn ' : '' ); ?>tutor-btn tutor-btn-ghost tutor-course-wishlist-btn" data-course-id="<?php echo get_the_ID(); ?>">
 					<?php if ( 'yes' === $settings['course_wishlist_icon_show'] ) : ?>
-						<i class="<?php echo esc_attr( $is_wishlisted ? 'tutor-icon-fav-full-filled' : 'tutor-icon-fav-line-filled' ); ?> "></i>
+						<i class="tutor-icon-bookmark-<?php echo esc_attr( $is_wishlisted ? 'bold' : 'line' ); ?> tutor-mr-8" area-hidden="true"></i>
 					<?php endif; ?>
-					<?php
-					if ( 'yes' === $settings['course_wishlist_text_show'] ) {
-						echo esc_html( $settings['course_wishlist_text'] );
-					}
-					?>
+
+					<?php if ( 'yes' === $settings['course_wishlist_text_show'] ) : ?>
+						<?php echo esc_html( $settings['course_wishlist_text'] ); ?>
+					<?php endif; ?>
 				</a>
 			</div>
 		<?php
