@@ -66,7 +66,7 @@ class CoursePurchase extends BaseAddon {
 			'course_price_align',
 			$this->title_alignment_with_selectors(
 				array(
-					'{{WRAPPER}} .tutor-course-sidebar-card-pricing' => 'display: block !important; text-align: {{VALUE}};',
+					'{{WRAPPER}} .tutor-course-single-pricing' => 'text-align: {{VALUE}};',
 				),
 				'left'
 			)
@@ -105,32 +105,12 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Display Percentage', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					'block' => __( 'Show', 'tutor-lms-elementor-addons' ),
-					'none'  => __( 'Hide', 'tutor-lms-elementor-addons' ),
+					'show' => __( 'Show', 'tutor-lms-elementor-addons' ),
+					'hide'  => __( 'Hide', 'tutor-lms-elementor-addons' ),
 				),
-				'default'   => 'block',
-				'selectors' => array(
-					'{{WRAPPER}} .progress-percentage' => 'display: {{VALUE}};',
-				),
+				'default'   => 'show',
 			)
 		);
-
-		// $this->add_control(
-		// 'course_status_percent_position',
-		// array(
-		// 'label'     => __( 'Position', 'tutor-lms-elementor-addons' ),
-		// 'type'      => Controls_Manager::SELECT,
-		// 'options'   => array(
-		// 'inside'  => __( 'Inside', 'tutor-lms-elementor-addons' ),
-		// 'outside' => __( 'Outside', 'tutor-lms-elementor-addons' ),
-		// 'ontop'   => __( 'On top', 'tutor-lms-elementor-addons' ),
-		// ),
-		// 'condition' => array(
-		// 'course_status_display_percent' => 'show',
-		// ),
-		// 'default'   => 'inside',
-		// )
-		// );
 
 		$this->end_controls_section();
 		// course progress controls end.
@@ -161,22 +141,17 @@ class CoursePurchase extends BaseAddon {
 						'icon'  => 'eicon-text-align-right',
 					),
 				),
-				'prefix_class' => self::$prefix_class_alignment . '%s',
+				'prefix_class' => 'etlms-enrollment-btn-align-',
 				'default'      => 'left',
 				'condition'    => array(
 					'course_enrolment_edit_mode' => 'enrolled-box',
-
 				),
 				'selectors'    => array(
-					'{{WRAPPER}} .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;flex-direction: column;',
-					'.etlms-enrollment-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-start;',
-					'.etlms-enrollment-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: center;',
-					'.etlms-enrollment-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-end;',
-
-					'.etlms-course-enrolment-box.course-enroll-buttons-width-auto form' => 'display: flex; flex-direction: column;',
-					'.etlms-enrollment-btn-align-left form ' => 'align-items: flex-start;',
-					'.etlms-enrollment-btn-align-right form ' => 'align-items: flex-end;',
-					'.etlms-enrollment-btn-align-center form ' => 'align-items: center;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-left' => 'text-align: left !important;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-center' => 'text-align: center !important;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-right .tutor-card-body' => 'text-align: right !important;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-center .etlms-course-enroll-date, .etlms-enrollment-btn-align-right .etlms-course-enroll-date' => 'text-align: left !important;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-center .tutor-card-body .tutor-course-progress-wrapper, {{WRAPPER}}.etlms-enrollment-btn-align-right .tutor-card-body .tutor-course-progress-wrapper' => 'text-align: left;'
 				),
 			)
 		);
@@ -206,15 +181,10 @@ class CoursePurchase extends BaseAddon {
 					'course_enrolment_edit_mode' => 'enrolment-box',
 				),
 				'selectors'    => array(
-					'{{WRAPPER}} .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'display: flex;flex-direction: column;',
-					'.etlms-enrollment-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-start;',
-					'.etlms-enrollment-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: center;',
-					'.etlms-enrollment-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)' => 'align-items: flex-end;',
-
-					'.etlms-course-enrolment-box.course-enroll-buttons-width-auto form' => 'display: flex; flex-direction: column;',
-					'.etlms-enrollment-btn-align-left form ' => 'align-items: flex-start;',
-					'.etlms-enrollment-btn-align-right form ' => 'align-items: flex-end;',
-					'.etlms-enrollment-btn-align-center form ' => 'align-items: center;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-left .tutor-card-body' => 'text-align: left !important;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-center .tutor-card-body' => 'text-align: center !important;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-right .tutor-card-body' => 'text-align: right !important;',
+					'{{WRAPPER}}.etlms-enrollment-btn-align-center .etlms-course-enroll-date, .etlms-enrollment-btn-align-right .etlms-course-enroll-date' => 'text-align: left !important;',
 				),
 			)
 		);
@@ -229,17 +199,11 @@ class CoursePurchase extends BaseAddon {
 					'medium' => __( 'Medium', 'tutor-lms-elementor-addons' ),
 					'large'  => __( 'Large', 'tutor-lms-elementor-addons' ),
 				),
-				'prefix_class' => 'course-enroll-buttons-size-',
+				'prefix_class' => 'etlms-course-enroll-buttons-size-large-',
 				'default'      => 'medium',
-				'selectors' => array(
-					'.course-enroll-buttons-size-small button, .course-enroll-buttons-size-small .tutor-btn, .course-enroll-buttons-size-small .tutor-button, .course-enroll-buttons-size-small .start-continue-retake-button' => 'padding: 9px 14px;
-					line-height: 19px !important;',
-					'.course-enroll-buttons-size-large button, .course-enroll-buttons-size-large .tutor-btn, .course-enroll-buttons-size-large .tutor-button, .course-enroll-buttons-size-large .start-continue-retake-button' => 'padding: 16px; line-height: 40px !important;',
-					'.course-enroll-buttons-size-medium [type=submit].edd-submit' => 'padding: 12px 14px;
-					line-height: 19px !important;',
-					'.course-enroll-buttons-size-small [type=submit].edd-submit' => 'padding: 12px; line-height: 10px;',
-					'.course-enroll-buttons-size-large [type=submit].edd-submit' => 'padding: 13px; line-height: 26px !important;'
-
+				'selectors'	   => array(
+					'{{WRAPPER}}.etlms-course-enroll-buttons-size-large .tutor-btn' => 'font-size: 18px; padding: 10px 20px;',
+					'.etlms-course-enroll-buttons-size-small .tutor-btn' => 'font-size: 14px; padding: 5px 12px;'
 				)
 			)
 		);
@@ -254,12 +218,10 @@ class CoursePurchase extends BaseAddon {
 					'fill'  => __( 'Fill', 'tutor-lms-elementor-addons' ),
 					'fixed' => __( 'Fixed', 'tutor-lms-elementor-addons' ),
 				),
-				'prefix_class' => 'course-enroll-buttons-width-',
+				'prefix_class' => 'etlms-course-enroll-buttons-width-',
 				'default'      => 'fill',
 				'selectors' => array(
-					'.course-enroll-buttons-width-auto button, .course-enroll-buttons-width-auto .tutor-btn, .course-enroll-buttons-width-auto .tutor-button, .course-enroll-buttons-width-auto .start-continue-retake-button' => '	width: -webkit-fit-content !important;
-					width: -moz-fit-content !important; width: fit-content !important;',
-					'.course-enroll-buttons-width-fill form, .course-enroll-buttons-width-fill .edd-add-to-cart.button' => 'width: 100%;',
+					'{{WRAPPER}}.etlms-course-enroll-buttons-width-auto .tutor-btn' => 'width: auto !important; display: inline-flex !important;',
 				)
 			)
 		);
@@ -314,7 +276,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper > span" => 'color: {{VALUE}};',
+					"$progress_wrapper > h3" => 'color: {{VALUE}};',
 				),
 				'default'   => '#212327',
 			)
@@ -324,7 +286,7 @@ class CoursePurchase extends BaseAddon {
 			array(
 				'name'     => 'course_status_title_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$progress_wrapper > span",
+				'selector' => "$progress_wrapper > h3",
 			)
 		);
 		$this->add_responsive_control(
@@ -363,7 +325,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .list-item-progress .progress-bar .progress-value" => 'background-color: {{VALUE}};',
+					"$progress_wrapper .list-item-progress .tutor-progress-value" => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -374,7 +336,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$progress_wrapper .list-item-progress .progress-bar" => 'background-color: {{VALUE}};',
+					"$progress_wrapper .list-item-progress .tutor-progress-bar" => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -397,8 +359,8 @@ class CoursePurchase extends BaseAddon {
 					'unit' => 'px',
 				),
 				'selectors'  => array(
-					"$progress_wrapper .list-item-progress .progress-bar" => 'height: {{SIZE}}{{UNIT}};',
-					"$progress_wrapper .list-item-progress .progress-bar .progress-value" => 'height: 100%;',
+					"$progress_wrapper .list-item-progress .tutor-progress-bar" => 'height: {{SIZE}}{{UNIT}};',
+					"$progress_wrapper .list-item-progress .tutor-progress-bar .tutor-progress-value" => 'height: 100%;',
 				),
 			)
 		);
@@ -426,8 +388,8 @@ class CoursePurchase extends BaseAddon {
 					'unit' => 'px',
 				),
 				'selectors'  => array(
-					"$progress_wrapper .list-item-progress .progress-bar" => 'border-radius: {{SIZE}}{{UNIT}};',
-					"$progress_wrapper .list-item-progress .progress-bar .progress-value"   => 'border-radius: {{SIZE}}{{UNIT}};',
+					"$progress_wrapper .list-item-progress .tutor-progress-bar" => 'border-radius: {{SIZE}}{{UNIT}};',
+					"$progress_wrapper .list-item-progress .tutor-progress-bar .tutor-progress-value"   => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -523,7 +485,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper div > del, {{WRAPPER}} .tutor-fs-7" => 'color: {{VALUE}};',
+						"$course_price_wrapper div > del" => 'color: {{VALUE}};',
 					),
 					'default'   => '#7A7A7A',
 				)
@@ -534,7 +496,7 @@ class CoursePurchase extends BaseAddon {
 				array(
 					'name'     => 'strikethrough_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper div > del, {{WRAPPER}} .tutor-fs-7",
+					'selector' => "$course_price_wrapper div > del",
 				)
 			);
 
@@ -890,7 +852,7 @@ class CoursePurchase extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Start, Continue, Retake button section */
-		$start_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .start-continue-retake-button';
+		$start_btn_selector = '{{WRAPPER}} .tutor-card .start-continue-retake-button';
 		$this->start_controls_section(
 			'start_btn',
 			array(
@@ -1062,7 +1024,7 @@ class CoursePurchase extends BaseAddon {
 		$this->end_controls_section();
 
 		/* course complete button controls */
-		$complete_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .tutor-course-complete-button';
+		$complete_btn_selector = '{{WRAPPER}} .tutor-card [name=complete_course_btn]';
 		$this->start_controls_section(
 			'complete_btn',
 			array(
@@ -1235,7 +1197,7 @@ class CoursePurchase extends BaseAddon {
 		// course complete button end.
 
 		// view cart button start.
-		$view_cart_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body a.tutor-btn-tertiary';
+		$view_cart_btn_selector = '{{WRAPPER}} .tutor-card .tutor-woocommerce-view-cart';
 		$this->start_controls_section(
 			'view_cart_btn',
 			array(
@@ -1408,7 +1370,7 @@ class CoursePurchase extends BaseAddon {
 		// view cart button end.
 
         // view certificate button start.
-		$view_certificate_btn_selector = '{{WRAPPER}} .tutor-course-sidebar-card-body .tutor-view-certificate';
+		$view_certificate_btn_selector = '{{WRAPPER}} .tutor-card .tutor-btn-view-certificate';
 		$this->start_controls_section(
 			'view_certificate_btn',
 			array(
@@ -1596,7 +1558,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$enrolled_info_wrapper .tutor-icon-purchase-filled" => 'color: {{VALUE}};',
+					"$enrolled_info_wrapper .tutor-icon-purchase-mark" => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -1613,7 +1575,7 @@ class CoursePurchase extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					"$enrolled_info_wrapper .tutor-icon-purchase-filled" => 'font-size: {{SIZE}}{{UNIT}};',
+					"$enrolled_info_wrapper .tutor-icon-purchase-mark" => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 16,
@@ -1626,7 +1588,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$enrolled_info_wrapper span.text" => 'color: {{VALUE}}',
+					"$enrolled_info_wrapper .tutor-enrolled-info-text" => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -1635,7 +1597,7 @@ class CoursePurchase extends BaseAddon {
 			array(
 				'name'     => 'enrolled_info_label_typo',
 				'label'    => __( 'Text Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$enrolled_info_wrapper span.text",
+				'selector' => "$enrolled_info_wrapper .tutor-enrolled-info-text",
 			)
 		);
 		$this->add_control(
@@ -1644,7 +1606,7 @@ class CoursePurchase extends BaseAddon {
 				'label'     => __( 'Date Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$enrolled_info_wrapper span.tutor-enrolled-info-date" => 'color: {{VALUE}};',
+					"$enrolled_info_wrapper .tutor-enrolled-info-date" => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -1663,7 +1625,7 @@ class CoursePurchase extends BaseAddon {
 		 *
 		 * @since v2.0.0
 		 */
-		$enrolment_box_selector = '{{WRAPPER}} .tutor-course-sidebar-card';
+		$enrolment_box_selector = '{{WRAPPER}} .tutor-card';
 		$this->start_controls_section(
 			'enrolment_meta_info_section',
 			array(
@@ -1724,10 +1686,10 @@ class CoursePurchase extends BaseAddon {
 						),
 					),
 					'selectors'  => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .tutor-icon-24" => 'font-size: {{SIZE}}{{UNIT}};',
+						"$enrolment_box_selector .tutor-card-footer .etlms-enrolled-icon" => 'font-size: {{SIZE}}{{UNIT}};',
 					),
 					'default'    => array(
-						'size' => 24,
+						'size' => 15,
 					),
 				)
 			);
@@ -1738,7 +1700,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .tutor-icon-24" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .tutor-card-footer .etlms-enrolled-icon" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -1752,7 +1714,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-regular-caption" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .tutor-card-footer .etlms-enrolled-label" => 'color: {{VALUE}};',
 					),
 					'default'   => '#757c8e',
 				)
@@ -1762,7 +1724,7 @@ class CoursePurchase extends BaseAddon {
 				array(
 					'name'     => 'enrolment_meta_label_typo',
 					'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-regular-caption",
+					'selector' => "$enrolment_box_selector .tutor-card-footer .etlms-enrolled-label",
 				)
 			);
 			// label controls end.
@@ -1774,7 +1736,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-medium-caption" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .tutor-card-footer .etlms-enrolled-label-value, $enrolment_box_selector .tutor-card-footer .etlms-enrolled-label-value .tutor-color-secondary" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -1784,7 +1746,7 @@ class CoursePurchase extends BaseAddon {
 				array(
 					'name'     => 'enrolment_meta_value_typo',
 					'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$enrolment_box_selector .tutor-course-sidebar-card-meta-list .text-medium-caption",
+					'selector' => "$enrolment_box_selector .tutor-card-footer .etlms-enrolled-label-value, $enrolment_box_selector .tutor-card-footer .etlms-enrolled-label-value .tutor-color-secondary",
 				)
 			);
 			// value controls end.
