@@ -644,7 +644,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$course_benefit_list_selector . ' li .tutor-list-icon' => 'margin-right: {{SIZE}}{{UNIT}};'
+					$course_benefit_list_selector . ' li .tutor-list-icon' => 'padding-right: {{SIZE}}{{UNIT}};'
 				),
 			)
 		);
