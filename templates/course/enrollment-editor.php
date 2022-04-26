@@ -203,6 +203,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 	</div>
 
 	<!-- Course Info -->
+	<?php if ( 'yes' === $settings['course_enrolment_box']) : ?>
 	<div class="tutor-card-footer">
 		<ul class="tutor-ul">
 			<?php foreach ( $sidebar_meta as $key => $meta ) : ?>
@@ -227,6 +228,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 			<?php endforeach; ?>
 		</ul>
 	</div>
+	<?php endif; ?>
 </div>
 
 <?php

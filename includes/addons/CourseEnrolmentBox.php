@@ -29,6 +29,30 @@ class CourseEnrolmentBox extends BaseAddon {
 	}
 
 	protected function register_content_controls() {
+		/**
+		 * Enrolment box control
+		 *
+		 * @since v2.0.1
+		 */
+		$this->start_controls_section(
+			'course_enrolment_box_settings',
+			array(
+				'label' => __( 'Enrolment Box', 'tutor-lms-elementor-addons' ),
+			)
+		);
+		$this->add_control(
+			'course_enrolment_box',
+			array(
+				'label'        => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Yes', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'No', 'tutor-lms-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+		$this->end_controls_section();
+		
 		// enrollment button preview controls.
 		$this->start_controls_section(
 			'course_edit_mode_section',
