@@ -223,7 +223,7 @@ class CourseWishlist extends BaseAddon {
 		$is_wishlisted 	= tutor_utils()->is_wishlisted( get_the_ID(), get_current_user_id() );
 		?>
 			<div class="etlms-course-bookmark">
-				<a href="javascript:;" class="<?php echo esc_attr( ! $is_editor ? 'tutor-course-wishlist-btn ' : '' ); ?>tutor-btn tutor-btn-ghost tutor-course-wishlist-btn" data-course-id="<?php echo get_the_ID(); ?>">
+				<a href="javascript:;" class="<?php echo esc_attr( ! $is_editor ? 'tutor-course-wishlist-btn ' : '' ); ?>tutor-btn tutor-btn-ghost tutor-course-wishlist-btn tutor-mr-16" data-course-id="<?php echo get_the_ID(); ?>">
 					<?php if ( 'yes' === $settings['course_wishlist_icon_show'] ) : ?>
 						<i class="tutor-icon-bookmark-<?php echo esc_attr( $is_wishlisted ? 'bold' : 'line' ); ?> tutor-mr-8" area-hidden="true"></i>
 					<?php endif; ?>
