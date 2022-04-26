@@ -8,21 +8,23 @@
 $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils()->course_nav_items(), get_the_ID() );
 
 ?>
-<div class="tutor-wrap etlms-course-curriculum">
+<div class="etlms-course-content">
 	<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
-	<div class="tutor-default-tab tutor-course-details-tab tutor-tab-has-seemore tutor-mt-30">
-		<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>
-		<div class="tab-body">
-			<?php
-			foreach ( $course_nav_items as $key => $subpage ) {
-				?>
-					<div id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>" class="tutor-tab-item <?php echo esc_attr( 'info' === $key ? 'is-active' : '' ); ?>">
-					<?php
-						$method = $subpage['method'];
+
+	<div class="tutor-default-tab tutor-course-details-tab">
+		<div class="tutor-is-sticky">
+			<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>
+		</div>
+
+		<div class="tutor-tab tutor-pt-24">
+			<?php foreach ( $course_nav_items as $key => $subpage ) : ?>
+				<?php $method = $subpage['method']; ?>
+				<div id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>" class="tutor-tab-item<?php echo esc_attr( 'info' === $key ? ' is-active' : '' ); ?>">
+				<?php
 					if ( 'info' === $key ) {
-						include ETLMS_TEMPLATE . 'about.php';
-						include ETLMS_TEMPLATE . 'benefits.php';
-						include ETLMS_TEMPLATE . 'instructors.php';
+						include etlms_get_template( 'course/about' );
+						include etlms_get_template( 'course/benefits' );
+						include etlms_get_template( 'course/instructors' );
 					} else {
 						if ( is_string( $method ) ) {
 							$method();
@@ -32,11 +34,9 @@ $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils(
 							$_object->$_method( get_the_ID() );
 						}
 					}
-					?>
-					</div>
-					<?php
-			}
-			?>
+				?>
+				</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 	<?php do_action( 'tutor_course/single/after/inner-wrap' ); ?>
