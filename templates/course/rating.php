@@ -7,7 +7,7 @@
         <span class="tutor-ratings-count">
             <?php
             echo $course_rating->rating_avg;
-            echo '<i>(' . $course_rating->rating_count .' '. __('Ratings') . ')</i>';
+            echo '(' . $course_rating->rating_count .' '. __('Ratings') . ')';
             ?>
         </span>
     </span>

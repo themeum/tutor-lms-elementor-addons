@@ -166,7 +166,11 @@
 			} elseif ( $is_purchasable && $price && $tutor_course_sell_by ) {
 				// Load template based on monetization option
 				ob_start();
-				etlms_get_template( 'course.course.add-to-cart-' . $tutor_course_sell_by );
+				if ( file_exists( ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
+					include ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php';
+				} else {
+					esc_html_e( $tutor_course_sell_by . ' template not found' );
+				}
 				echo apply_filters( 'tutor/course/single/entry-box/purchasable', ob_get_clean(), get_the_ID() );
 			} else {
 				ob_start();
@@ -201,6 +205,7 @@
 	</div>
 
 	<!-- Course Info -->
+	<?php if ( 'yes' === $settings['course_enrolment_box']) : ?>
 	<div class="tutor-card-footer">
 		<ul class="tutor-ul">
 			<?php foreach ( $sidebar_meta as $key => $meta ) : ?>
@@ -225,6 +230,7 @@
 			<?php endforeach; ?>
 		</ul>
 	</div>
+	<?php endif; ?>
 </div>
 
 <?php

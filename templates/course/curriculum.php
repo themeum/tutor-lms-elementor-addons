@@ -23,18 +23,16 @@
 <div class="tutor-wrap etlms-course-curriculum">
 		<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
 		<div class="tutor-default-tab tutor-course-details-tab tutor-tab-has-seemore tutor-mt-30">
-			<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>
-			<div class="tab-body">
+			<div class="tutor-is-sticky">
+				<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>
+			</div>
+			<div class="tutor-tab tutor-pt-24">
 				<?php
 				foreach ( $course_nav_items as $key => $subpage ) {
 					?>
 						<div class="tutor-tab-item <?php echo esc_attr( 'curriculum' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
 						<?php
 							$method = $subpage['method'];
-						if ( 'info' === $key ) {
-							include ETLMS_TEMPLATE . 'benefits.php';
-							include ETLMS_TEMPLATE . 'instructors.php';
-						} else {
 							if ( is_string( $method ) ) {
 								$method();
 							} else {
@@ -42,7 +40,6 @@
 								$_method = $method[1];
 								$_object->$_method( get_the_ID() );
 							}
-						}
 						?>
 						</div>
 						<?php
