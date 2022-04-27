@@ -908,7 +908,7 @@ class CourseList extends BaseAddon {
 		$this->start_controls_tabs( 'course_list_card_tabs' );
 		/* Normal Tab */
 		$this->start_controls_tab(
-			'course_list_card_normal_tab_footer',
+			'course_list_card_normal_tab',
 			array(
 				'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
 			)
@@ -953,7 +953,7 @@ class CourseList extends BaseAddon {
 
 		/* Hovered Tab */
 		$this->start_controls_tab(
-			'course_list_card_hover_tab_card_stacked',
+			'course_list_card_hover_tab',
 			array(
 				'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
 			)
