@@ -760,6 +760,20 @@
 
 
 .tutor-course-card {
+	.tutor-course-thumbnail {
+		border-radius: 5px 5px 0px 0px;
+		position: relative;
+		&:after {
+			content: " ";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			pointer-events: none;
+		}
+	}
+
 	// classic
 	&.etlms-course-card-classic {
 		border: 0;
@@ -778,12 +792,15 @@
 			margin: -80px 30px 0px 30px;
 			border: 0;
 			box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
-			// .tutor-course-thumbnail {
-			// 	.tutor-card-image-top {
-			// 		border-radius: 6px !important;
-			// 	}
-			// }
+		}
+	}
 
+	&.etlms-course-grid-stacked {
+		.tutor-card {
+			margin: 30px 0px 30px -80px;
+			// @todo: need responsive fix
+			border: 0;
+			box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
 		}
 	}
 
@@ -795,7 +812,11 @@
 			top: 0;
 			right: 0;
 			height: 100%;
-			background-color: transparent;
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
+		}
+
+		.tutor-course-thumbnail {
+			border-radius: 0;
 		}
 	}
 
@@ -809,9 +830,6 @@
 		}
 	}
 }
-
-
-
 
 .etlms-coursel-classic {
 	.etlms-card.hover-animation {
@@ -881,61 +899,6 @@
 	}
 }
 
-//@todo: to be removed
-.etlms-course-list-stacked-bak {
-	.etlms-card.hover-animation {
-		.etlms-carousel-course-container {
-			position: relative !important;
-			top: 0 !important;
-			transition: top .5s;
-		}
-		&:hover {
-			.etlms-carousel-course-container {
-				top: -5px;
-			}
-		}
-	}
-	.tutor-course-header {
-		border-radius: 10px;
-		overflow: hidden;
-		&:before {
-			content: "";
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			z-index: 2;
-		}
-	}
-	.etlms-card {
-		.tutor-course-header {
-			z-index: 1;
-		}
-		overflow: visible !important;
-	}
-	.etlms-carousel-course-container {
-		z-index: 99;
-		margin-top: -80px;
-		background: white;
-		width: 80%;
-		margin-left: auto;
-		margin-right: auto;
-		position: relative;
-		border-radius: 10px;
-		box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
-		&:hover {
-			box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
-		}
-	}
-	.etlms-course-list-col {
-		.etlms-card.hover-animation {
-			box-shadow: none !important;
-			&:hover {
-				box-shadow: none !important;
-			}
-		}
-	}
-}
-
 .etlms-coursel-stacked {
 	.etlms-card.hover-animation {
 		.etlms-carousel-course-container {
@@ -981,6 +944,7 @@
 		}
 	}
 }
+
 .thumbnail-hide {
 	.etlms-card {
 		display: block !important;
@@ -989,6 +953,7 @@
 		padding-top: 30px;
 	}
 }
+
 .etlms-carousel-arrow-prev {
 	font-size: 0;
 	line-height: 0;

@@ -172,7 +172,7 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_meta_divider',
+			'course_list_meta_divider',
 			array(
 				'type' => Controls_Manager::DIVIDER,
 			)
@@ -222,7 +222,9 @@ class CourseList extends BaseAddon {
 				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
 				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
 				'return_value' => 'yes',
-				'default'      => '',
+				'condition' => array(
+					'course_list_skin!' => 'overlayed'
+				),
 			)
 		);
 
@@ -233,43 +235,9 @@ class CourseList extends BaseAddon {
 				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
 				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-				'return_value' => 'yes',
-				// 'conditions'   => array(
-				// 	'relation'	=> 'and',
-				// 	'terms'	=> array(
-				// 		'name'		=> 'course_list_skin',
-				// 		'operator'	=> 'in',
-				// 		'value'		=> array(
-				// 			'stacked',
-				// 			'overlayed'
-				// 		),
-				// 	),
-				// ),
-				'default'      => '',
+				'return_value' => 'yes'
 			)
 		);
-		// $this->add_control(
-		// 	'course_list_category_settingsss',
-		// 	array(
-		// 		'label'        => __( 'Category', 'tutor-lms-elementor-addons' ),
-		// 		'type'         => Controls_Manager::SWITCHER,
-		// 		'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-		// 		'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-		// 		'return_value' => 'yes',
-		// 		'conditions'   => array(
-		// 			'relation'	=> 'and',
-		// 			'terms'	=> array(
-		// 				'name'		=> 'course_list_skin',
-		// 				'operator'	=> 'in',
-		// 				'value'		=> array(
-		// 					'stacked',
-		// 					'overlayed'
-		// 				),
-		// 			),
-		// 		),
-		// 		'default'      => '',
-		// 	)
-		// );
 
 		$this->add_control(
 			'course_list_wishlist_settings',
@@ -280,6 +248,9 @@ class CourseList extends BaseAddon {
 				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
+				'condition' => array(
+					'course_list_skin!' => 'overlayed'
+				),
 			)
 		);
 
@@ -501,123 +472,31 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->end_controls_section();
-
-		// enroll button
-
-		$this->start_controls_section(
-			'course_coursel_enroll_section',
-			array(
-				'label' => __( 'Enroll Button', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_CONTENT,
-			)
-		);
-
-		// $this->add_responsive_control(
-		// 'course_carousel_enroll_btn_align',
-		// $this->etlms_non_responsive_alignment( 'right' )
-		// );
-
-		// $this->add_control(
-		// 'course_carousel_enroll_btn_type',
-		// array(
-		// 'label'   => __( 'Button Type', 'tutor-lms-elementor-addons' ),
-		// 'type'    => Controls_Manager::SELECT,
-		// 'options' => array(
-		// 'default'                => __( 'Default', 'tutor-lms-elementor-addons' ),
-		// 'default_with_cart_icon' => __( 'Default with Cart Icon', 'tutor-lms-elementor-addons' ),
-		// 'text_button'            => __( 'Text Button', 'tutor-lms-elementor-addons' ),
-		// 'text_with_cart'         => __( 'Text with Cart', 'tutor-lms-elementor-addons' ),
-		// ),
-		// 'default' => 'default_with_cart_icon',
-		// )
-		// );
-
-		// $this->add_control(
-		// 'course_coursel_button_icon',
-		// array(
-		// 'label'       => __( 'Icon', 'tutor-lms-elementor-addons' ),
-		// 'type'        => Controls_Manager::ICON,
-
-		// 'label_block' => true,
-		// 'conditions'  => array(
-		// 'relation' => 'or',
-		// 'terms'    => array(
-		// array(
-		// 'name'     => 'course_carousel_enroll_btn_type',
-		// 'operator' => 'in',
-		// 'value'    => array( 'default_with_cart_icon', 'text_with_cart' ),
-		// ),
-		// ),
-		// ),
-		// 'default'     => 'fa fa-shopping-cart',
-		// )
-		// );
-
-		$this->add_control(
-			'course_carousel_btn_icon_spacing',
-			array(
-				'label'      => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', '%' ),
-				'range'      => array(
-					'px' => array(
-						'min'  => 0,
-						'max'  => 100,
-						'step' => 1,
-					),
-					'%'  => array(
-						'min' => 0,
-						'max' => 100,
-					),
-				),
-				// 'conditions' => array(
-				// 'relation' => 'or',
-				// 'terms'    => array(
-				// array(
-				// 'name'     => 'course_carousel_enroll_btn_type',
-				// 'operator' => 'in',
-				// 'value'    => array( 'default_with_cart_icon', 'text_with_cart' ),
-				// ),
-				// ),
-				// ),
-				'selectors'  => array(
-					'{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled' => 'font-size: {{SIZE}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->end_controls_section();
 	}
 
 	protected function register_style_controls() {
 
-		$wrapper = '{{WRAPPER}} .etlms-course-list-main-wrap ';
+		$wrapper 					= '{{WRAPPER}} .etlms-course-list-main-wrap ';
+		$card 					   	= $wrapper . '.tutor-course-card';
 
-		$footer_seperator_selector = $wrapper . '.tutor-loop-course-footer';
-		$image_selector            = $wrapper . '.tutor-course-header img';
-		$badge_selector            = $wrapper . '.tutor-course-loop-header-meta span:first-child';
-		$avatar_selector           = $wrapper . '.tutor-single-course-avatar a >img';
-		$avatar_span_selector      = $wrapper . '.tutor-single-course-avatar a >span';
-		$course_title_selector     = $wrapper . '.tutor-course-loop-title h2 a';
-		$meta_selector             = $wrapper . '.tutor-course-loop-meta';
-		$category_selector         = $wrapper . '.tutor-course-lising-category a';
-		$star_selector             = $wrapper . '.tutor-star-rating-group i';
-		$star_text_selector        = $wrapper . '.tutor-rating-count';
-		$footer_selector           = $wrapper . '.tutor-loop-course-footer';
-		$price_selector            = $wrapper . '.price';
-		$cart_text_selector        = $wrapper . '.tutor-loop-course-footer .list-item-button a, ' . $wrapper . ' .tutor-loop-course-footer span.cart-text, ' . $wrapper . ' .tutor-loop-course-footer span.ttr-cart-line-filled';
-		$cart_selector             = $wrapper . '.tutor-loop-course-footer .list-item-button span.ttr-cart-line-filled';
-		$cart_button_selector      = "$wrapper .tutor-loop-course-footer .list-item-button a:not(.product_type_external), $wrapper .tutor-loop-course-footer .list-item-button button ";
-		$row_selector              = $wrapper . '.tutor-course-list';
-		$column_selector           = $wrapper . '.etlms-course-list-col';
-		$pagination_selector       = $wrapper . '.etlms-course-list-pagination-wrap';
-		$card_selector             = $wrapper . '.etlms-card';
-		$stacked_selector          = $wrapper . '.etlms-carousel-course-container';
+		$footer_separator 			= $wrapper . '.tutor-loop-course-footer';
+		$badge            			= $wrapper . '.tutor-course-difficulty-level';
+
+		$avatar           		   	= $card . ' .tutor-avatar';
+		$course_title     			= $card . ' .tutor-course-name';
+		$meta             			= $card . ' .etlms-course-duration-meta';
+		$author         			= $card . ' .etlms-course-author-meta';
+		$category         			= $card . ' .etlms-course-category-meta';
+		$ratings             		= $card . ' .tutor-ratings';
+		$footer           			= $card . ' .tutor-card-footer';
+		$price            			= $card . ' .tutor-course-price';
+		$cart_button      			= $card . ' .tutor-card-footer .tutor-btn-outline-primary';
+		$row_selector              	= $wrapper . '.tutor-course-list';
+		$column_selector           	= $wrapper . '.etlms-course-list-col';
+		$pagination_selector       	= $wrapper . '.etlms-course-list-pagination-wrap';
 		/*
 		@card selector change as per skin style
 		*/
-
-		$card_selector = $wrapper . '.etlms-carousel-course-container';
 
 		$this->start_controls_section(
 			'course_list_layout_style',
@@ -731,7 +610,7 @@ class CourseList extends BaseAddon {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'course_carousel_style_section',
+			'course_list_style_section',
 			array(
 				'label' => __( 'Card', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
@@ -739,7 +618,7 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_card_background_color',
+			'course_list_card_background_color',
 			array(
 				'label'      => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::COLOR,
@@ -753,15 +632,14 @@ class CourseList extends BaseAddon {
 						),
 					),
 				),
-				'default'    => '#fff',
 				'selectors'  => array(
-					$wrapper . '.etlms-card' => 'background-color: {{VALUE}};',
+					$card => 'background-color: {{VALUE}};',
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_stacked_background_color',
+			'course_list_stacked_background_color',
 			array(
 				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
@@ -769,9 +647,8 @@ class CourseList extends BaseAddon {
 					'course_list_skin' => 'stacked',
 
 				),
-				'default'   => '#fff',
 				'selectors' => array(
-					$wrapper . '.etlms-carousel-course-container' => 'background-color: {{VALUE}};',
+					$card . ' .etlms-course-card-inner' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -795,7 +672,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin!' => 'stacked',
 				),
-				'selector'  => $wrapper . '.etlms-card',
+				'selector'  => $card,
 			)
 		);
 		$this->add_group_control(
@@ -806,12 +683,12 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin' => 'stacked',
 				),
-				'selector'  => $stacked_selector,
+				'selector'  => $card . ' .etlms-course-card-inner',
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_card_border_radius',
+			'course_list_card_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -825,12 +702,12 @@ class CourseList extends BaseAddon {
 
 				),
 				'selectors'  => array(
-					$wrapper . '.etlms-card' => 'border-radius: {{SIZE}}{{UNIT}} ;',
+					$card => 'border-radius: {{SIZE}}{{UNIT}} ;',
 				),
 			)
 		);
 		$this->add_control(
-			'course_carousel_stacked_border_radius',
+			'course_list_stacked_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -844,12 +721,13 @@ class CourseList extends BaseAddon {
 
 				),
 				'selectors'  => array(
-					$stacked_selector => 'border-radius: {{SIZE}}{{UNIT}} ;',
+					$card . ' .etlms-course-card-inner' => 'border-radius: {{SIZE}}{{UNIT}} ;',
 				),
 			)
 		);
+
 		$this->add_control(
-			'course_carousel_overlayed_border_radius',
+			'course_list_overlayed_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -863,10 +741,11 @@ class CourseList extends BaseAddon {
 
 				),
 				'selectors'  => array(
-					$stacked_selector => 'border-radius: {{SIZE}}{{UNIT}} ;',
+					$card . ' .etlms-course-card-inner' => 'border-radius: {{SIZE}}{{UNIT}} ;',
 				),
 			)
 		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(
@@ -875,7 +754,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin!' => 'stacked',
 				),
-				'selector'  => $wrapper . '.etlms-card',
+				'selector'  => $card,
 			)
 		);
 
@@ -887,7 +766,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin' => 'stacked',
 				),
-				'selector'  => $stacked_selector,
+				'selector'  => $card . ' .etlms-course-card-inner',
 			)
 		);
 
@@ -910,7 +789,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin!' => 'stacked',
 				),
-				'selector'  => $wrapper . '.etlms-card:hover',
+				'selector'  => $card . ':hover',
 			)
 		);
 
@@ -922,12 +801,12 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin' => 'stacked',
 				),
-				'selector'  => $stacked_selector . ':hover',
+				'selector'  => $card . ':hover .etlms-course-card-inner',
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_card_hover_border_radius',
+			'course_list_card_hover_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -941,12 +820,12 @@ class CourseList extends BaseAddon {
 
 				),
 				'selectors'  => array(
-					$wrapper . '.etlms-card:hover' => 'border-radius: {{SIZE}}{{UNIT}} ;',
+					$card . ':hover' => 'border-radius: {{SIZE}}{{UNIT}} ;',
 				),
 			)
 		);
 		$this->add_control(
-			'course_carousel_stacked_hover_border_radius',
+			'course_list_stacked_hover_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -960,12 +839,12 @@ class CourseList extends BaseAddon {
 
 				),
 				'selectors'  => array(
-					$stacked_selector . ':hover' => 'border-radius: {{SIZE}}{{UNIT}} ;',
+					$card . ':hover .etlms-course-card-inner' => 'border-radius: {{SIZE}}{{UNIT}} ;',
 				),
 			)
 		);
 		$this->add_control(
-			'course_carousel_overlayed_hover_border_radius',
+			'course_list_overlayed_hover_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -979,7 +858,7 @@ class CourseList extends BaseAddon {
 
 				),
 				'selectors'  => array(
-					$stacked_selector . ':hover' => 'border-radius: {{SIZE}}{{UNIT}} ;',
+					$card . ':hover .etlms-course-card-inner' => 'border-radius: {{SIZE}}{{UNIT}} ;',
 				),
 			)
 		);
@@ -991,7 +870,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin!' => 'stacked',
 				),
-				'selector'  => $wrapper . '.etlms-card:hover',
+				'selector'  => $card . ':hover',
 			)
 		);
 
@@ -1003,7 +882,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin' => 'stacked',
 				),
-				'selector'  => $stacked_selector . ':hover',
+				'selector'  => $card . ':hover .etlms-course-card-inner',
 			)
 		);
 
@@ -1014,43 +893,42 @@ class CourseList extends BaseAddon {
 		// border tabs end
 
 		$this->add_control(
-			'course_carousel_card_padding',
+			'course_list_card_padding',
 			array(
 				'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					$card_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$card . ' .tutor-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
 
 		/* Start Tabs */
-		$this->start_controls_tabs( 'course_carousel_card_tabs' );
+		$this->start_controls_tabs( 'course_list_card_tabs' );
 		/* Normal Tab */
 		$this->start_controls_tab(
-			'course_carousel_card_normal_tab',
+			'course_list_card_normal_tab',
 			array(
 				'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
 			)
 		);
 
 		$this->add_control(
-			'course_coursel_footer_seperator_color',
+			'course_footer_separator_color',
 			array(
-				'label'     => __( 'Footer Seperator Color', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Footer Separator Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$footer_seperator_selector => 'border-color : {{VALUE}};',
-				),
-				'default'   => '#EBEBEB',
+					$card . ' .tutor-card-footer' => 'border-top-color : {{VALUE}};',
+				)
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_footer_width',
+			'course_list_footer_width',
 			array(
-				'label'      => __( 'Footer Seperator Width', 'tutor-lms-elementor-addons' ),
+				'label'      => __( 'Footer Separator Width', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'range'      => array(
@@ -1066,7 +944,7 @@ class CourseList extends BaseAddon {
 				),
 
 				'selectors'  => array(
-					$footer_seperator_selector => 'border-width: {{SIZE}}{{UNIT}};',
+					$card . ' .tutor-card-footer' => 'border-top-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1075,13 +953,13 @@ class CourseList extends BaseAddon {
 
 		/* Hovered Tab */
 		$this->start_controls_tab(
-			'course_carousel_card_hover_tab',
+			'course_list_card_hover_tab',
 			array(
 				'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
 			)
 		);
 		$this->add_control(
-			'course_coursel_box_hover_shadow',
+			'course_box_hover_shadow',
 			array(
 				'label'        => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
 				'type'         => Controls_Manager::SWITCHER,
@@ -1128,20 +1006,20 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_coursel_footer_seperator_hover_color',
+			'course_footer_separator_hover_color',
 			array(
-				'label'     => __( 'Footer Seperator Color', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Footer Separator Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$footer_seperator_selector . ':hover' => 'border-color : {{VALUE}};',
+					$footer_separator . ':hover' => 'border-color : {{VALUE}};',
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_footer_hover_width',
+			'course_list_footer_hover_width',
 			array(
-				'label'      => __( 'Footer Seperator Width', 'tutor-lms-elementor-addons' ),
+				'label'      => __( 'Footer Separator Width', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'range'      => array(
@@ -1157,7 +1035,7 @@ class CourseList extends BaseAddon {
 				),
 
 				'selectors'  => array(
-					$footer_seperator_selector . ':hover' => 'border-width: {{SIZE}}{{UNIT}};',
+					$footer_separator . ':hover' => 'border-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1170,27 +1048,10 @@ class CourseList extends BaseAddon {
 
 		// image section start
 		$this->start_controls_section(
-			'course_carousel_image_settings',
+			'course_list_image_settings',
 			array(
 				'label' => __( 'Image', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'course_carousel_image_spacing',
-			array(
-				'label'      => __( 'Spacing', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'min'  => 0,
-					'max'  => 100,
-					'step' => 1,
-				),
-				'selectors'  => array(
-					$image_selector => 'padding:{{SIZE}}{{UNIT}}',
-				),
 			)
 		);
 
@@ -1216,7 +1077,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin!' => 'overlayed',
 				),
-				'selector'  => $wrapper . '.tutor-course-header:before',
+				'selector'  => $card . ' .tutor-course-thumbnail:after',
 			)
 		);
 
@@ -1230,7 +1091,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin' => 'overlayed',
 				),
-				'selector'  => $wrapper . '.etlms-card:before',
+				'selector'  => $card . ' .tutor-course-thumbnail:after',
 			)
 		);
 
@@ -1238,8 +1099,8 @@ class CourseList extends BaseAddon {
 			Group_Control_Css_Filter::get_type(),
 			array(
 				'label'    => __( 'CSS Filters', 'tutor-lms-elementor-addons' ),
-				'name'     => 'course_caroulse_image_overlayed_normal_filters',
-				'selector' => $wrapper . '.tutor-course-header',
+				'name'     => 'course_list_image_overlayed_normal_filters',
+				'selector' => $card . ' .tutor-course-thumbnail',
 			)
 		);
 
@@ -1262,7 +1123,7 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin!' => 'overlayed',
 				),
-				'selector'  => $wrapper . '.etlms-card:hover .tutor-course-header:before',
+				'selector'  => $card . ':hover .tutor-course-thumbnail:after',
 			)
 		);
 
@@ -1276,17 +1137,16 @@ class CourseList extends BaseAddon {
 				'condition' => array(
 					'course_list_skin' => 'overlayed',
 				),
-				'selector'  => $wrapper . '.etlms-card:hover:before',
+				'selector'  => $card . ':hover .tutor-course-thumbnail:after',
 			)
 		);
 
-		// @todo: not in use
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),
 			array(
 				'label'    => __( 'CSS Filters', 'tutor-lms-elementor-addons' ),
-				'name'     => 'course_caroulse_image_overlayed_hover_filters',
-				'selector' => $wrapper . '.etlms-card:hover .tutor-course-header',
+				'name'     => 'course_list_image_overlayed_hover_filters',
+				'selector' => $card . ':hover .tutor-course-thumbnail',
 			)
 		);
 
@@ -1305,7 +1165,7 @@ class CourseList extends BaseAddon {
 		$this->end_controls_tabs();
 
 		$this->add_control(
-			'course_carousel_image_seperator',
+			'course_list_image_separator',
 			array(
 				'type' => Controls_Manager::DIVIDER,
 			)
@@ -1313,53 +1173,110 @@ class CourseList extends BaseAddon {
 
 		// badge
 		$this->add_control(
-			'course_carousel_badge_heading',
+			'course_list_badge_heading',
 			array(
 				'label' => __( 'Badge', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
-				'condition'	=> array(
-					'course_list_difficulty_settings'	=> 'yes'
+				'conditions' => array(
+					'relation' => 'and',
+					'terms' => array(
+						array(
+							'name' => 'course_list_skin',
+							'operator' => '!=',
+							'value' => 'overlayed'
+						),
+						array(
+							'name' => 'course_list_difficulty_settings',
+							'operator' => '==',
+							'value' => 'yes'
+						)
+					)
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_badge_background_color',
+			'course_list_badge_background_color',
 			array(
 				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$badge_selector => 'background-color:{{VALUE}};',
-			),
+					$badge => 'background-color:{{VALUE}};',
+				),
+				'conditions' => array(
+					'relation' => 'and',
+					'terms' => array(
+						array(
+							'name' => 'course_list_skin',
+							'operator' => '!=',
+							'value' => 'overlayed'
+						),
+						array(
+							'name' => 'course_list_difficulty_settings',
+							'operator' => '==',
+							'value' => 'yes'
+						)
+					)
+				),
 			),
 		);
 
 		$this->add_control(
-			'course_carousel_badge_text_color',
+			'course_list_badge_text_color',
 			array(
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$badge_selector => 'color:{{VALUE}};',
+					$badge => 'color:{{VALUE}};',
+				),
+				'conditions' => array(
+					'relation' => 'and',
+					'terms' => array(
+						array(
+							'name' => 'course_list_skin',
+							'operator' => '!=',
+							'value' => 'overlayed'
+						),
+						array(
+							'name' => 'course_list_difficulty_settings',
+							'operator' => '==',
+							'value' => 'yes'
+						)
+					)
 				),
 			),
-
 		);
 
 		$this->add_control(
-			'course_carousel_border_radius',
+			'course_list_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					$badge_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$badge => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+
+				'conditions' => array(
+					'relation' => 'and',
+					'terms' => array(
+						array(
+							'name' => 'course_list_skin',
+							'operator' => '!=',
+							'value' => 'overlayed'
+						),
+						array(
+							'name' => 'course_list_difficulty_settings',
+							'operator' => '==',
+							'value' => 'yes'
+						)
+					)
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_badge_size',
+			'course_list_badge_size',
 			array(
 				'label'      => __( 'Size', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -1371,13 +1288,28 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$badge_selector => 'width: {{SIZE}}{{UNIT}};',
+					$badge => 'width: {{SIZE}}{{UNIT}};',
+				),
+				'conditions' => array(
+					'relation' => 'and',
+					'terms' => array(
+						array(
+							'name' => 'course_list_skin',
+							'operator' => '!=',
+							'value' => 'overlayed'
+						),
+						array(
+							'name' => 'course_list_difficulty_settings',
+							'operator' => '==',
+							'value' => 'yes'
+						)
+					)
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_badge_margin',
+			'course_list_badge_margin',
 			array(
 				'label'      => __( 'Margin', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -1389,21 +1321,51 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$badge_selector => 'margin: {{SIZE}}{{UNIT}};',
+					$badge => 'margin: {{SIZE}}{{UNIT}};',
+				),
+				'conditions' => array(
+					'relation' => 'and',
+					'terms' => array(
+						array(
+							'name' => 'course_list_skin',
+							'operator' => '!=',
+							'value' => 'overlayed'
+						),
+						array(
+							'name' => 'course_list_difficulty_settings',
+							'operator' => '==',
+							'value' => 'yes'
+						)
+					)
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_badge_seperator',
+			'course_list_badge_separator',
 			array(
 				'type' => Controls_Manager::DIVIDER,
-			)
+				'conditions' => array(
+					'relation' => 'and',
+					'terms' => array(
+						array(
+							'name' => 'course_list_skin',
+							'operator' => '!=',
+							'value' => 'overlayed'
+						),
+						array(
+							'name' => 'course_list_difficulty_settings',
+							'operator' => '==',
+							'value' => 'yes'
+						)
+					)
+				),
+			),
 		);
 
 		// avatar
 		$this->add_control(
-			'course_carousel_avatar_heading',
+			'course_list_avatar_heading',
 			array(
 				'label' => __( 'Avatar', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
@@ -1414,7 +1376,7 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_avatar_size',
+			'course_list_avatar_size',
 			array(
 				'label'      => __( 'Size', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -1425,19 +1387,14 @@ class CourseList extends BaseAddon {
 						'max' => 200,
 					),
 				),
-				'default'    => array(
-					'unit' => 'px',
-					'size' => 34,
-				),
 				'selectors'  => array(
-					$avatar_selector      => 'width: {{SIZE}}{{UNIT}} !important;height: {{SIZE}}{{UNIT}} !important; line-height: {{SIZE}}{{UNIT}} !important;',
-					$avatar_span_selector => 'width: {{SIZE}}{{UNIT}} !important;height: {{SIZE}}{{UNIT}} !important; line-height: {{SIZE}}{{UNIT}} !important;',
+					$avatar      => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;'
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_avatar_border_radius',
+			'course_list_avatar_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -1448,13 +1405,8 @@ class CourseList extends BaseAddon {
 						'max' => 200,
 					),
 				),
-				'default'    => array(
-					'unit' => '%',
-					'size' => 50,
-				),
 				'selectors'  => array(
-					$avatar_selector      => 'border-radius: {{SIZE}}{{UNIT}};',
-					$avatar_span_selector => 'border-radius: {{SIZE}}{{UNIT}};',
+					$avatar      => 'border-radius: {{SIZE}}{{UNIT}};'
 				),
 			)
 		);
@@ -1465,7 +1417,7 @@ class CourseList extends BaseAddon {
 		// content section start
 
 		$this->start_controls_section(
-			'course_carousel_content_styles',
+			'course_list_content_styles',
 			array(
 				'label' => __( 'Content', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
@@ -1473,7 +1425,7 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_content_title',
+			'course_list_content_title',
 			array(
 				'label' => __( 'Title', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
@@ -1481,12 +1433,12 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_content_color',
+			'course_list_content_color',
 			array(
 				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$course_title_selector => 'color:{{VALUE}};',
+					$course_title . ', ' . $course_title . ' a' => 'color:{{VALUE}};',
 				),
 			)
 		);
@@ -1494,14 +1446,14 @@ class CourseList extends BaseAddon {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'course_carousel_content_typo',
+				'name'     => 'course_list_content_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $course_title_selector,
+				'selector' => $course_title,
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_content_spacing',
+			'course_list_content_spacing',
 			array(
 				'label'      => __( 'Space', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -1513,14 +1465,14 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tutor-course-loop-title' => 'padding-top: {{SIZE}}{{UNIT}};',
+					$course_title => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'separator'  => 'after',
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_meta_title',
+			'course_list_meta_title',
 			array(
 				'label' => __( 'Meta', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
@@ -1528,12 +1480,26 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_meta_color',
+			'course_list_meta_key_color',
 			array(
-				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Key Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$meta_selector . ',' . $meta_selector . ' span.tutor-meta-level' . ',' . $meta_selector . ' span.tutor-meta-value' => 'color:{{VALUE}} !important;',
+					$meta . ' .tutor-meta-key, ' . $meta . ' .tutor-meta-icon' => 'color:{{VALUE}} !important;',
+				),
+				'condition' => array(
+					'course_list_meta_data'	=> 'yes'
+				)
+			)
+		);
+
+		$this->add_control(
+			'course_list_meta_color',
+			array(
+				'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$meta . '>*, ' . $meta . ' .tutor-meta-value, ' . $meta . ' a' => 'color:{{VALUE}} !important;',
 				),
 				'condition' => array(
 					'course_list_meta_data'	=> 'yes'
@@ -1544,24 +1510,75 @@ class CourseList extends BaseAddon {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'course_carousel_meta_typo',
+				'name'     => 'course_list_meta_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .tutor-single-loop-meta i,{{WRAPPER}} .tutor-single-loop-meta span',
+				'selector' => $meta,
 				'condition' => array(
 					'course_list_meta_data'	=> 'yes'
 				)
 			)
 		);
 
+		// Author
 		$this->add_control(
-			'course_carousel_meta_divier',
+			'course_list_author_meta_divier',
 			array(
 				'type' => Controls_Manager::DIVIDER,
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_category_title',
+			'course_list_author_title',
+			array(
+				'label' => __( 'Author', 'tutor-lms-elementor-addons' ),
+				'type'  => Controls_Manager::HEADING,
+				'condition'	=> array(
+					'course_list_author_settings' => 'yes'
+				)
+			)
+		);
+
+		$this->add_control(
+			'course_list_author_key_color',
+			array(
+				'label'     => __( 'Key Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$author . '.tutor-meta-key' => 'color:{{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'course_list_author_color',
+			array(
+				'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$author . '.tutor-meta-value' => 'color:{{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'course_list_author_typo',
+				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $author,
+			)
+		);
+
+		// Category
+		$this->add_control(
+			'course_list_meta_divier',
+			array(
+				'type' => Controls_Manager::DIVIDER,
+			)
+		);
+
+		$this->add_control(
+			'course_list_category_title',
 			array(
 				'label' => __( 'Category', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
@@ -1572,12 +1589,23 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_category_color',
+			'course_list_category_key_color',
 			array(
-				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Key Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$category_selector => 'color:{{VALUE}};',
+					$category . '.tutor-meta-key' => 'color:{{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'course_list_category_color',
+			array(
+				'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$category . '.tutor-meta-value' => 'color:{{VALUE}};',
 				),
 			)
 		);
@@ -1585,28 +1613,9 @@ class CourseList extends BaseAddon {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'course_carousel_category_typo',
+				'name'     => 'course_list_category_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $category_selector,
-			)
-		);
-
-		$this->add_control(
-			'course_carousel_category_spacing',
-			array(
-				'label'      => __( 'Space', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 0,
-						'max' => 300,
-					),
-				),
-				'selectors'  => array(
-					$category_selector => 'padding: {{SIZE}}{{UNIT}};',
-				),
-				'separator'  => 'after',
+				'selector' => $category,
 			)
 		);
 
@@ -1616,7 +1625,7 @@ class CourseList extends BaseAddon {
 
 		// rating section start
 		$this->start_controls_section(
-			'course_carousel_rating_styles',
+			'course_list_rating_styles',
 			array(
 				'label' => __( 'Rating', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
@@ -1624,17 +1633,17 @@ class CourseList extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_star_color',
+			'course_list_star_color',
 			array(
 				'label'     => __( 'Star Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$star_selector => 'color: {{VALUE}};',
+					$ratings . ' .tutor-ratings-stars' => 'color: {{VALUE}};',
 				),
 			)
 		);
 		$this->add_control(
-			'course_carousel_star_size',
+			'course_list_star_size',
 			array(
 				'label'      => __( 'Star Size', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -1646,7 +1655,7 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$star_selector => 'font-size: {{SIZE}}{{UNIT}};',
+					$ratings . ' .tutor-ratings-stars' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1656,22 +1665,22 @@ class CourseList extends BaseAddon {
 			array(
 				'name'     => 'course_carouse_rating__typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $star_text_selector,
+				'selector' => $ratings . ' .tutor-ratings-average, '. $ratings . ' .tutor-ratings-count',
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_star_text_color',
+			'course_list_star_text_color',
 			array(
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$star_text_selector => 'color: {{VALUE}};',
+					$ratings . ' .tutor-ratings-average, '. $ratings . ' .tutor-ratings-count' => 'color: {{VALUE}};',
 				),
 			)
 		);
 		$this->add_responsive_control(
-			'course_carousel_star_gap',
+			'course_list_star_gap',
 			array(
 				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -1683,7 +1692,7 @@ class CourseList extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$star_text_selector => 'padding-left: {{SIZE}}{{UNIT}};',
+					$ratings . ' .tutor-ratings-average' => 'margin-left: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1716,6 +1725,7 @@ class CourseList extends BaseAddon {
 				'type'  => Controls_Manager::HEADING,
 			)
 		);
+
 		// tabs start
 		$this->start_controls_tabs(
 			'course_list_pagination_style_tabs'
@@ -1736,8 +1746,7 @@ class CourseList extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 
 				'selectors' => array(
-					'.etlms-pagination .page-numbers' => 'color: {{VALUE}}',
-
+					$pagination_selector . ' .etlms-pagination .page-numbers' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -1749,7 +1758,7 @@ class CourseList extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 
 				'selectors' => array(
-					'.etlms-pagination .page-numbers' => 'background-color: {{VALUE}}',
+					$pagination_selector . ' .etlms-pagination .page-numbers' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1759,7 +1768,7 @@ class CourseList extends BaseAddon {
 			array(
 				'name'     => 'course_list_pagination_normal_border',
 				'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-				'selector' => '.etlms-pagination .page-numbers',
+				'selector' => $pagination_selector . ' .etlms-pagination .page-numbers',
 			)
 		);
 
@@ -1781,8 +1790,7 @@ class CourseList extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 
 				'selectors' => array(
-					'.etlms-pagination .page-numbers:hover' => 'color: {{VALUE}}',
-
+					$pagination_selector . ' .etlms-pagination .page-numbers:hover' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -1794,7 +1802,7 @@ class CourseList extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 
 				'selectors' => array(
-					'.etlms-pagination .page-numbers:hover' => 'background-color: {{VALUE}}',
+					$pagination_selector . ' .etlms-pagination .page-numbers:hover' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1804,7 +1812,7 @@ class CourseList extends BaseAddon {
 			array(
 				'name'     => 'course_list_pagination_hover_border',
 				'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-				'selector' => '.etlms-pagination .page-numbers:hover',
+				'selector' => $pagination_selector . ' .etlms-pagination .page-numbers:hover',
 			)
 		);
 
@@ -1826,7 +1834,7 @@ class CourseList extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 
 				'selectors' => array(
-					'.etlms-pagination .current' => 'color: {{VALUE}}',
+					$pagination_selector . ' .etlms-pagination .current' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -1838,7 +1846,7 @@ class CourseList extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 
 				'selectors' => array(
-					'.etlms-pagination .current' => 'background-color: {{VALUE}}',
+					$pagination_selector . ' .etlms-pagination .current' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1848,7 +1856,7 @@ class CourseList extends BaseAddon {
 			array(
 				'name'     => 'course_list_pagination_active_border',
 				'label'    => __( 'Border', 'tutor-lms-elementor-addons' ),
-				'selector' => '.etlms-pagination .current',
+				'selector' => $pagination_selector . ' .etlms-pagination .current',
 			)
 		);
 
@@ -1920,7 +1928,6 @@ class CourseList extends BaseAddon {
 				),
 				'selectors'  => array(
 					'.etlms-pagination' => 'gap: {{SIZE}}{{UNIT}}',
-
 				),
 			)
 		);
@@ -1930,7 +1937,7 @@ class CourseList extends BaseAddon {
 
 		// footer section start
 		$this->start_controls_section(
-			'course_carousel_footer_styles',
+			'course_list_footer_styles',
 			array(
 				'label' => __( 'Footer', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
@@ -1942,32 +1949,32 @@ class CourseList extends BaseAddon {
 				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$footer_selector => 'background-color: {{VALUE}};',
+					$footer => 'background-color: {{VALUE}};',
 				),
 			)
 		);
 
 		$this->add_responsive_control(
-			'course_carousel_footer_padding',
+			'course_list_footer_padding',
 			array(
 				'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					$footer_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$footer => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_footer_padding_divider',
+			'course_list_footer_padding_divider',
 			array(
 				'type' => Controls_Manager::DIVIDER,
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_price_title',
+			'course_list_price_title',
 			array(
 				'label' => __( 'Price', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
@@ -1979,24 +1986,24 @@ class CourseList extends BaseAddon {
 			array(
 				'name'     => 'course_carouse_price_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $price_selector,
+				'selector' => $price,
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_price_text_color',
+			'course_list_price_text_color',
 			array(
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$price_selector => 'color: {{VALUE}};',
+					$price => 'color: {{VALUE}};',
 				),
-				'seperator' => 'after',
+				'separator' => 'after',
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_cart_title',
+			'course_list_cart_title',
 			array(
 				'label' => __( 'Cart Button', 'tutor-lms-elementor-addons' ),
 				'type'  => Controls_Manager::HEADING,
@@ -2006,9 +2013,9 @@ class CourseList extends BaseAddon {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'course_carousel_cart_typo',
+				'name'     => 'course_list_cart_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $cart_text_selector,
+				'selector' => $cart_button,
 			)
 		);
 
@@ -2017,27 +2024,39 @@ class CourseList extends BaseAddon {
 			array(
 				'name'     => 'course_list_car_button_text_shadow',
 				'label'    => __( 'Text Shadow', 'tutor-lms-elementor-addons' ),
-				'selector' => $cart_text_selector,
+				'selector' => $cart_button,
 			)
 		);
 
 		$this->start_controls_tabs(
-			'course_carousel_cart_tabs'
+			'course_list_cart_tabs'
 		);
 		// normal tab
 		$this->start_controls_tab(
-			'course_carousel_text_normal_tab',
+			'course_list_text_normal_tab',
 			array(
 				'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
 			)
 		);
+
+		$this->add_control(
+			'course_course_cart_bg_color',
+			array(
+				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$cart_button => 'border-color: {{VALUE}};',
+				),
+			)
+		);
+
 		$this->add_control(
 			'course_course_text_normal_color',
 			array(
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-loop-cart-btn-wrap a span:last-child, {{WRAPPER}} .list-item-button a, {{WRAPPER}} .list-item-button .cart-text' => 'color: {{VALUE}};',
+					$cart_button => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -2048,7 +2067,7 @@ class CourseList extends BaseAddon {
 				'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled' => 'color: {{VALUE}} !important;',
+					$cart_button . ' [class^="tutor-icon-"]' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2056,18 +2075,30 @@ class CourseList extends BaseAddon {
 		$this->end_controls_tab();
 		// hover tab
 		$this->start_controls_tab(
-			'course_carousel_cart_hover_tab',
+			'course_list_cart_hover_tab',
 			array(
 				'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
 			)
 		);
+
+		$this->add_control(
+			'course_course_cart_bg_color_hover',
+			array(
+				'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$cart_button . ':hover' => 'border-color: {{VALUE}}; background-color: {{VALUE}};',
+				),
+			)
+		);
+		
 		$this->add_control(
 			'course_course_text_hover_color',
 			array(
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-loop-cart-btn-wrap a span:hover:last-child, {{WRAPPER}} .list-item-button a:hover' => 'color: {{VALUE}};',
+					$cart_button . ':hover' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -2078,7 +2109,7 @@ class CourseList extends BaseAddon {
 				'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .list-item-button .btn-icon.tutor-icon-cart-line-filled:hover' => 'color: {{VALUE}} !important;',
+					$cart_button . ':hover [class^="tutor-icon-"]' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2088,7 +2119,7 @@ class CourseList extends BaseAddon {
 		$this->end_controls_tabs();
 
 		$this->add_control(
-			'course_carousel_footer_tab_divider',
+			'course_list_footer_tab_divider',
 			array(
 				'type' => Controls_Manager::DIVIDER,
 			)
@@ -2097,19 +2128,19 @@ class CourseList extends BaseAddon {
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			array(
-				'name'     => 'course_carousel_cart_border',
+				'name'     => 'course_list_cart_border',
 				'label'    => __( 'Border Type', 'tutor-lms-elementor-addons' ),
-				'selector' => $cart_button_selector,
+				'selector' => $cart_button,
 			)
 		);
 
 		$this->add_control(
-			'course_carousel_cart_border_radius',
+			'course_list_cart_border_radius',
 			array(
 				'label'     => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::DIMENSIONS,
 				'selectors' => array(
-					$cart_button_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$cart_button => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2117,28 +2148,9 @@ class CourseList extends BaseAddon {
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(
-				'name'     => 'course_carousel_cart_box_shadow',
+				'name'     => 'course_list_cart_box_shadow',
 				'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-				'selector' => $cart_button_selector,
-			)
-		);
-
-		$this->add_control(
-			'course_carousel_cart_border_divider',
-			array(
-				'type' => Controls_Manager::DIVIDER,
-			)
-		);
-
-		$this->add_responsive_control(
-			'course-carousel_cart_button_padding',
-			array(
-				'label'      => __( 'Padding', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em' ),
-				'selectors'  => array(
-					$cart_button_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
+				'selector' => $cart_button,
 			)
 		);
 

@@ -542,11 +542,11 @@ msgid "Overlay"
 msgstr ""
 
 #: includes/addons/CourseCarousel.php:921, includes/addons/CourseCarousel.php:968, includes/addons/CourseList.php:1041, includes/addons/CourseList.php:1133
-msgid "Footer Seperator Color"
+msgid "Footer Separator Color"
 msgstr ""
 
 #: includes/addons/CourseCarousel.php:932, includes/addons/CourseCarousel.php:979, includes/addons/CourseList.php:1053, includes/addons/CourseList.php:1144
-msgid "Footer Seperator Width"
+msgid "Footer Separator Width"
 msgstr ""
 
 #: includes/addons/CourseCarousel.php:1018, includes/addons/CourseContent.php:1616, includes/addons/CourseCurriculum.php:679, includes/addons/CourseList.php:1183, includes/addons/CourseSocialShare.php:347
