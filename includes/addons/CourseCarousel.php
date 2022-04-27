@@ -574,7 +574,7 @@ class CourseCarousel extends BaseAddon {
 
 		$wrapper = "{{WRAPPER}} .etlms-carousel-main-wrap ";
 		$card_selector = $wrapper . ".etlms-carousel-course-container";
-		$footer_seperator_selector =  $wrapper . ".tutor-loop-course-footer";
+		$footer_separator_selector =  $wrapper . ".tutor-loop-course-footer";
 		$image_selector = $wrapper . ".tutor-course-header a >img";
 		$badge_selector = $wrapper . ".tutor-course-loop-header-meta span:first-child";
 		$avatar_selector = $wrapper . ".tutor-single-course-avatar a >img";
@@ -916,12 +916,12 @@ class CourseCarousel extends BaseAddon {
 
 
 		$this->add_control(
-			'course_coursel_footer_seperator_color',
+			'course_coursel_footer_separator_color',
 			[
-				'label'     => __('Footer Seperator Color', 'tutor-lms-elementor-addons'),
+				'label'     => __('Footer Separator Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$footer_seperator_selector => 'border-color : {{VALUE}};'
+					$footer_separator_selector => 'border-color : {{VALUE}};'
 				],
 			]
 		);
@@ -929,7 +929,7 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_footer_width',
 			[
-				'label' => __('Footer Seperator Width', 'tutor-lms-elementor-addons'),
+				'label' => __('Footer Separator Width', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'range' => [
@@ -945,7 +945,7 @@ class CourseCarousel extends BaseAddon {
 				],
 
 				'selectors' => [
-					$footer_seperator_selector => 'border-width: {{SIZE}}{{UNIT}};',
+					$footer_separator_selector => 'border-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -963,12 +963,12 @@ class CourseCarousel extends BaseAddon {
 
 
 		$this->add_control(
-			'course_coursel_footer_seperator_hover_color',
+			'course_coursel_footer_separator_hover_color',
 			[
-				'label'     => __('Footer Seperator Color', 'tutor-lms-elementor-addons'),
+				'label'     => __('Footer Separator Color', 'tutor-lms-elementor-addons'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					$footer_seperator_selector . ":hover" => 'border-color : {{VALUE}};'
+					$footer_separator_selector . ":hover" => 'border-color : {{VALUE}};'
 				],
 			]
 		);
@@ -976,7 +976,7 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_footer_hover_width',
 			[
-				'label' => __('Footer Seperator Width', 'tutor-lms-elementor-addons'),
+				'label' => __('Footer Separator Width', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'range' => [
@@ -992,7 +992,7 @@ class CourseCarousel extends BaseAddon {
 				],
 
 				'selectors' => [
-					$footer_seperator_selector . ":hover" => 'border-width: {{SIZE}}{{UNIT}};',
+					$footer_separator_selector . ":hover" => 'border-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1141,7 +1141,7 @@ class CourseCarousel extends BaseAddon {
 		$this->end_controls_tabs();
 
 		$this->add_control(
-			'course_carousel_image_seperator',
+			'course_carousel_image_separator',
 			[
 				'type' => Controls_Manager::DIVIDER
 			]
@@ -1242,7 +1242,7 @@ class CourseCarousel extends BaseAddon {
 		);
 
 		$this->add_control(
-			'course_carousel_badge_seperator',
+			'course_carousel_badge_separator',
 			[
 				'type' => Controls_Manager::DIVIDER
 			]
@@ -1606,7 +1606,7 @@ class CourseCarousel extends BaseAddon {
 				'selectors' => [
 					$price_selector => 'color: {{VALUE}};',
 				],
-				'seperator' => 'after'
+				'separator' => 'after'
 			]
 		);
 

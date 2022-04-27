@@ -1,6 +1,4 @@
 <div class="<?php tutor_container_classes(); ?> etlms-course-list-main-wrap">
-
-	<!--loading course init-->
 	<?php
 
 	/*
@@ -17,7 +15,7 @@
 	$order                 = $settings['course_list_order'];
 
 	/*
-	* query arguements
+	* query arguments
 	*/
 	$paged = isset( $_GET['current_page'] ) ? sanitize_text_field( $_GET['current_page'] ) : 1;
 	$args  = array(
@@ -71,8 +69,7 @@
 	if ( $the_query->have_posts() ) :
 		?>
 		<?php
-			$shortcode_arg = isset( $GLOBALS['tutor_shortcode_arg'] ) ? $GLOBALS['tutor_shortcode_arg']['column_per_row'] : null;
-			$courseColumns    = $shortcode_arg === null ? tutor_utils()->get_option( 'courses_col_per_row', 4 ) : $shortcode_arg;
+			$courseColumns    = (isset($settings['course_list_column']) && $settings['course_list_column']) ? (int) $settings['course_list_column'] : 3;
 			
 			$listStyle = '';
 			if ( 'yes' == $settings['course_list_masonry'] ) {
@@ -82,33 +79,22 @@
 			}
 
 			$layout = isset($settings['course_list_skin']) ? $settings['course_list_skin'] : 'card';
+			$path = $courseColumns > 1 ? 'list' : 'list/grid';
 		?>
 		<div class="etlms-course-list-loop-wrap tutor-course-list tutor-grid tutor-grid-<?php echo esc_attr( $courseColumns ); ?>">
 			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 				<div class="etlms-course-list-col">
-					<?php include etlms_get_template( 'course/list/' . $layout ); ?>
+					<?php include etlms_get_template( 'course/' . $path . '/' . $layout ); ?>
 				</div>
 			<?php endwhile; ?>
 		</div>
 
-
-
-
-
-
-		<!-- pagination start -->
 		<?php if ( 'yes' == $settings['course_list_pagination_settings'] ) : ?>
 			<?php
-			/*
-			*elementor pagination settings
-			*pagination type
-			*pagination label
-			*/
 			$prev_next_pagination = true;
 			$pagination_type      = $settings['course_list_pagination_type'];
 
 			// setting pagination type
-
 			if ( $pagination_type == 'numbers' ) {
 				$prev_next_pagination = false;
 			}
@@ -130,9 +116,8 @@
 			);
 
 			$pagination_links = paginate_links( $pagination_link_arg );
-
 			?>
-		<div class="etlms-course-list-pagination-wrap">
+		<div class="etlms-course-list-pagination-wrap tutor-mt-32">
 			<div class="etlms-pagination prev-next">
 				<?php if ( $pagination_type == 'prev_next' ) : ?>
 
@@ -176,7 +161,6 @@
 		<?php endif; ?>
 		</div>
 		<?php endif; ?>
-		<!-- pagination end -->
 		<?php
 	else :
 		/**
@@ -185,9 +169,7 @@
 		tutor_load_template( 'course-none' );
 	endif;
 
-	// tutor_course_archive_pagination();
 	do_action( 'tutor_elementor/after/course_list' );
 	wp_reset_postdata();
 	?>
-	<!--loading course init-->
 </div>

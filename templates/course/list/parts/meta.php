@@ -3,7 +3,7 @@
     $course_students = tutor_utils()->count_enrolled_users_by_course();
 ?>
 <?php if ( 'yes' === $settings['course_list_meta_data'] && ( !empty( $course_students ) || !empty( $course_duration ) )) : ?>
-<div class="tutor-meta tutor-course-duration-meta tutor-mb-20">
+<div class="tutor-meta etlms-course-duration-meta tutor-mb-20">
     <?php if( !empty( $course_students ) ) : ?>
         <div>
             <span class="tutor-meta-icon tutor-icon-user-line" area-hidden="true"></span>
