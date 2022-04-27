@@ -1,6 +1,6 @@
 <?php if ( 'yes' == $settings['course_list_image'] ) : ?>
     <?php
-        $image_size = $settings['course_list_image_size'];
+        $image_size = isset($settings['course_list_image_size']) ? $settings['course_list_image_size'] : 'medium_large';
         $image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
     ?>
     <div class="tutor-course-thumbnail">
