@@ -10,7 +10,7 @@
 		<?php foreach ($materials as $material): ?>
 			<li class="etlms-course-widget-list-item">
 				<span class="tutor-mr-12 tutor-list-icon tutor-color-primary"><?php Elementor\Icons_Manager::render_icon( $settings['course_materials_list_icon'], array( 'aria-hidden' => 'true' ) ); ?></span>
-				<span class="tutor-flex-shrink-0 tutor-list-label"><?php echo esc_html( $material ); ?></span>
+				<span class="tutor-list-label"><?php echo esc_html( $material ); ?></span>
 			</li>
 		<?php endforeach; ?>
 		<?php endif; ?>

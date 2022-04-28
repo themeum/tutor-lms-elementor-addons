@@ -16,7 +16,7 @@ $requirements = tutor_course_requirements();
 		<?php foreach ($requirements as $requirement): ?>
 			<li class="etlms-course-widget-list-item">
 				<span class="tutor-mr-12 tutor-list-icon tutor-color-primary"><?php Elementor\Icons_Manager::render_icon( $settings['course_requirements_list_icon'], array( 'aria-hidden' => 'true' ) ); ?></span>
-				<span class="tutor-flex-shrink-0 tutor-list-label"><?php echo esc_html( $requirement ); ?></span>
+				<span class="tutor-list-label"><?php echo esc_html( $requirement ); ?></span>
 			</li>
 		<?php endforeach; ?>
 		<?php elseif ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) : ?>

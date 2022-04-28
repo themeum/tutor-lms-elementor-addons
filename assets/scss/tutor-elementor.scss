@@ -1305,7 +1305,9 @@
 
 		&-item {
 			display: flex;
-			align-items: center;
+			.tutor-list-icon {
+				margin-top: 2px;
+			}
 		}
 	}
 }
