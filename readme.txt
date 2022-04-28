@@ -143,7 +143,30 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 2.0.1 - 23 March, 2022
+= 2.0.1 - 28 April, 2022
+
+* New: Course enrolment add-on now comes with a new toggle button to show/hide the enrolment box
+* New: Course purchase add-on now comes with a new toggle button to show/hide the purchase box
+* New: Instructor Bio show/hide control is added on the Course Content & Course Instructor add-ons
+* New: Button style support is added for the "Add to Cart" button of the EDD Plugin
+* Update: Price compatibility is added for EDD and WooCommerce plugin
+* Update: Course Curriculum add-on is now compatible with Tutor 2.0
+* Update: Course Content styling control is now compatible with Tutor 2.0
+* Update: Class Selector updated, tab-body-item to tutor-tab-item
+* Update: Add to Cart selector is updated
+* Update: Course List Addon design is improved
+* Update: Course Carousel Addon design improved
+* Fix: Social Share icon style was showing up in the wrong style
+* Fix: Text was showing wrong for Add to Cart
+* Fix: The course Purchase button style was not appearing properly
+* Fix: Course Carousel style had a design issue
+* Fix: On the Course Carousel, the Wishlist icon had a design issue
+* Fix: The course Details Page Wishlist icon had a design issue
+* Fix: _register_controls was showing a deprecated warning
+* Fix: The course Curriculum header title style was not working
+* Fix: About Course content style was not working
+* Fix: Wishlist was not clickable on overlay Skin
+* Fix: Guest checkout was not working
 
 = 2.0.0 - 15 March, 2022
 
