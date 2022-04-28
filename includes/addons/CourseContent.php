@@ -196,11 +196,7 @@ class CourseContent extends BaseAddon {
 					),
 				)
 			);
-			// $benefits_alignment = $this->etlms_alignment();
-			// unset( $benefits_alignment['prefix'] );
-			// $benefits_alignment['selectors'] = array(
-			// 	'{{WRAPPER}} .etlms-course-specifications.etlms-course-benefits' => 'text-align: {{VALUE}};',
-			// );
+
 			$this->add_responsive_control(
 				'course_benefits_alignments_only',
 				array(

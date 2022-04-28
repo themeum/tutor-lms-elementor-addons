@@ -124,12 +124,6 @@ class CoursePrice extends BaseAddon {
 	}
 
 	protected function render( $instance = array() ) {
-		if ( tutils()->is_enrolled() ) {
-			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				esc_html_e( 'Since you are already enrolled, the price will not appear', 'tutor-lms-elementor-addons' );
-			}
-			return;
-		}
 		
 		$course	= etlms_get_course();
 		$price 	= tutor_utils()->get_course_price( get_the_ID() );

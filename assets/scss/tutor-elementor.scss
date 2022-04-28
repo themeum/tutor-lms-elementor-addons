@@ -471,27 +471,11 @@
 		align-items: center;
 		column-gap: 7px;
 	}
-	.tutor-loop-author {
-		overflow: initial;
-	}
 	.tutor-star-rating-group {
 		i {
 			font-size: 18px;
 			color: #ed9700;
 		}
-	}
-	.tutor-course-lising-category {
-		.tutor-text-medium-caption {
-			color: #212327;
-		}
-		.tutor-color-text-subsued {
-			color: #5b616f;
-		}
-	}
-	.tutor-loop-course-footer {
-		border-left: none;
-		border-right: none;
-		border-bottom: none;
 	}
 }
 .etlms-course-list-main-wrap {
@@ -501,28 +485,11 @@
 		align-items: center;
 		column-gap: 7px;
 	}
-	.tutor-loop-author {
-		overflow: initial;
-	}
 	.tutor-star-rating-group {
 		i {
 			font-size: 18px;
 			color: #ed9700;
 		}
-	}
-
-	.tutor-course-lising-category {
-		.tutor-text-medium-caption {
-			color: #212327;
-		}
-		.tutor-color-text-subsued {
-			color: #5b616f;
-		}
-	}
-	.tutor-loop-course-footer {
-		border-left: none;
-		border-right: none;
-		border-bottom: none;
 	}
 }
 .etlms-carousel-loop-wrap {
@@ -533,16 +500,6 @@
 	}
 }
 .etlms-coursel-overlayed {
-	.tutor-course-header {
-		a {
-			img {
-				min-height: 300px;
-				object-fit: cover;
-				object-position: center;
-			}
-		}
-		height: 100%;
-	}
 	.etlms-card.hover-animation {
 		position: relative;
 		top: 0;
@@ -580,76 +537,11 @@
 		width: 100%;
 		bottom: 0 !important;
 	}
-	.tutor-rating-count {
-		color: #fff;
-	}
-	.tutor-course-loop-title {
-		h2 {
-			a {
-				color: #fff;
-			}
-		}
-	}
-	.tutor-course-loop-meta {
-		color: #fff;
-	}
-	.tutor-loop-author {
-		>div {
-			a {
-				color: #fff;
-			}
-		}
-	}
 	.price {
 		color: #fff;
-	}
-	.tutor-course-listing-item-footer {
-		.list-item-button {
-			.tutor-btn.tutor-btn-ghost {
-				color: #7A7A7A;
-			}
-			.product_type_external {
-				.btn-icon {
-					color: #7A7A7A;
-				}
-				.cart-text {
-					color: #7A7A7A;
-				}
-			}
-		}
-		.list-item-price-with-booking {
-			.list-item-booking {
-				>* {
-					color: #fff !important;
-				}
-			}
-		}
-	}
-	.list-item-button {
-		.product_type_external {
-			color: #7A7A7A !important;
-		}
-	}
-	.tutor-loop-course-footer {
-		border-color: #ffffff3b !important;
-	}
-	.tutor-course-lising-category {
-		.tutor-text-medium-caption {
-			color: #fff !important;
-		}
 	}
 }
 .etlms-course-list-overlayed {
-	.tutor-course-header {
-		a {
-			img {
-				min-height: 300px;
-				object-fit: cover;
-				object-position: center;
-			}
-		}
-		height: 100%;
-	}
 	.etlms-card.hover-animation {
 		position: relative;
 		top: 0;
@@ -667,7 +559,6 @@
 		min-height: 300px;
 		height: auto;
 		&:hover {
-			-webkit-box-shadow: 0px 8px 28px 0px #d0d0d0;
 			box-shadow: 0px 8px 28px 0px #d0d0d0;
 		}
 		&:before {
@@ -688,60 +579,8 @@
 		width: 100%;
 		bottom: 0 !important;
 	}
-	.tutor-rating-count {
-		color: #fff;
-	}
-	.tutor-course-loop-title {
-		h2 {
-			a {
-				color: #fff;
-			}
-		}
-	}
-	.tutor-course-loop-meta {
-		color: #fff;
-	}
-	.tutor-loop-author {
-		>div {
-			a {
-				color: #fff;
-			}
-		}
-	}
 	.price {
 		color: #fff;
-	}
-	.tutor-course-listing-item-footer {
-		.list-item-button {
-			.tutor-btn.tutor-btn-ghost {
-				color: #7A7A7A;
-			}
-			.product_type_external {
-				.btn-icon {
-					color: #7A7A7A;
-				}
-			}
-		}
-		.list-item-price-with-booking {
-			.list-item-booking {
-				>* {
-					color: #fff !important;
-				}
-			}
-		}
-	}
-	.list-item-button {
-		.product_type_external {
-			color: #7A7A7A !important;
-		}
-	}
-	.tutor-loop-course-footer {
-		border-color: #ffffff3b !important;
-	}
-	.tutor-course-lising-category {
-		.tutor-text-medium-caption {
-			color: #fff !important;
-		}
 	}
 }
 .etlms-course-list {
@@ -856,15 +695,6 @@
 			box-shadow: 0px 5px 2px #ebebeb;
 		}
 	}
-	.tutor-course-header {
-		&:before {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			content: "";
-			z-index: 2;
-		}
-	}
 }
 .etlms-coursel-card {
 	.etlms-card.hover-animation {
@@ -888,15 +718,6 @@
 			box-shadow: 0px 24px 34px -5px rgba(0, 0, 0, 0.1);
 		}
 	}
-	.tutor-course-header {
-		&:before {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			content: "";
-			z-index: 2;
-		}
-	}
 }
 
 .etlms-coursel-stacked {
@@ -912,21 +733,7 @@
 			}
 		}
 	}
-	.tutor-course-header {
-		border-radius: 10px;
-		overflow: hidden;
-		&:before {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			content: "";
-			z-index: 2;
-		}
-	}
 	.etlms-card {
-		.tutor-course-header {
-			z-index: 1;
-		}
 		overflow: visible !important;
 	}
 	.etlms-carousel-course-container {
@@ -1059,132 +866,18 @@
 		transition: 200ms;
 	}
 }
-.list-item-button {
-	.product_type_external {
-		display: flex;
-		align-items: center;
-		column-gap: 8px;
-		font-size: 16px;
-		color: #161616 !important;
-		font-weight: 500;
-		.btn-icon {
-			font-size: 25px !important;
-		}
-		.cart-text {
-			font-size: 15px !important;
-		}
-	}
-}
-tutor-course-listing-item-footer.default {
-	.list-item-button {
-		&:hover {
-			.tutor-btn.tutor-btn-ghost {
-				.btn-icon {
-					color: #000 !important;
-				}
-			}
-		}
-	}
-}
-.etlms-coursel-list-overlayed {
-	.tutor-course-listing-item-footer {
-		.list-item-button {
-			.product_type_external {
-				.cart-text {
-					color: #7A7A7A;
-				}
-			}
-		}
-	}
-}
-.circle-progress.progress-full {
-	&::before {
-		position: inherit !important;
-	}
-}
-.tutor-course-header {
-	a {
-		display: block;
-	}
-}
-.tutor-course-col-2 {
-	.tutor-course-header {
-		img {
-			height: 200px;
-			width: 100%;
-			object-fit: cover;
-			display: block;
-		}
-	}
-	.tutor-loop-author {
-		display: flex;
-		align-items: center;
-	}
-}
-.tutor-course-col-3 {
-	.tutor-course-header {
-		img {
-			height: 200px;
-			width: 100%;
-			object-fit: cover;
-			display: block;
-		}
-	}
-}
-.tutor-course-loop-title {
-	>* {
-		>a {
-			display: block !important;
-			display: -webkit-box !important;
-			-webkit-line-clamp: 2;
-			-webkit-box-orient: vertical;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: normal;
-		}
-	}
-}
+
 .etlms-carousel-course-container {
 	display: grid;
 }
+
 .tutor-loop-course-container {
 	display: flex;
 	flex-direction: column;
 }
-.tutor-loop-author {
-	margin-top: auto;
-}
+
 .tutor-course-loop-header-meta {
 	z-index: 9999;
-}
-@media only screen and (min-width: 768px) {
-	.etlms-course-list-style {
-		display: flex !important;
-		flex-direction: row !important;
-		flex-wrap: nowrap !important;
-		height: 255px;
-		.tutor-course-header {
-			max-width: 40%;
-			flex: 0 0 40% !important;
-			height: 255px;
-		}
-		.etlms-carousel-course-container {
-			max-width: 60%;
-			flex: 0 0 60% !important;
-			display: flex;
-			flex-direction: column;
-		}
-		.etlms-carousel-footer {
-			margin-top: auto;
-		}
-	}
-	.etlms-course-list-stacked {
-		.etlms-course-list-style {
-			.etlms-carousel-course-container {
-				margin: auto 0 auto -42px;
-			}
-		}
-	}
 }
 @media only screen and (max-width: 768px) {
 	.elementor-layout--tabletup {
