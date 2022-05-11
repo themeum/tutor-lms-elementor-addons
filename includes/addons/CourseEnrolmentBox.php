@@ -53,7 +53,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		);
 		$this->end_controls_section();
 		
-		// enrollment button preview controls.
+		// enrolment button preview controls.
 		$this->start_controls_section(
 			'course_edit_mode_section',
 			array(
@@ -73,7 +73,7 @@ class CourseEnrolmentBox extends BaseAddon {
 			)
 		);
 		$this->end_controls_section();
-		// enrollment button preview controls end.
+		// enrolment button preview controls end.
 
 		$this->start_controls_section(
 			'course_enroll_button_section',
@@ -990,7 +990,7 @@ class CourseEnrolmentBox extends BaseAddon {
 		$this->end_controls_section();
 
 		/**
-		 * Enrollment meta info controls
+		 * Enrolment meta info controls
 		 *
 		 * @since v2.0.0
 		 */
@@ -1121,7 +1121,7 @@ class CourseEnrolmentBox extends BaseAddon {
 			// value controls end.
 
 		$this->end_controls_section();
-		 // enrollment meta info controls end.
+		 // enrolment meta info controls end.
 	}
 
 	protected function render( $instance = array() ) {

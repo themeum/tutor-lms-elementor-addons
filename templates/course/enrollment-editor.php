@@ -1,6 +1,6 @@
 <?php
 /**
- * Enrollment editor template
+ * Enrolment editor template
  *
  * @package ETLMS\EnrollmentBox
  */

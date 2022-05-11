@@ -1,6 +1,6 @@
 <?php
 /**
- * Course Enrollment template
+ * Course Enrolment template
  *
  * @since v2.0.0
  *

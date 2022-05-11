@@ -1,10 +1,10 @@
 <?php
 /**
- * Course Enrollment template
+ * Course Enrolment template
  *
  * @since v2.0.0
  *
- * @package ETLMCourseEnrollment
+ * @package ETLMCourseEnrolment
  */
 // Utility data
 $is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
