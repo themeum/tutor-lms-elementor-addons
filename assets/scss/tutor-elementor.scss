@@ -386,19 +386,6 @@
 		text-align: center;
 		padding-right: 40px;
 	}
-	.course-rating-meter {
-		-webkit-box-align: center;
-		-ms-flex-align: center;
-		align-items: center;
-		.rating-meter-bar {
-			margin-top: 0;
-		}
-	}
-	.rating-meter-bar-wrap {
-		-webkit-box-flex: 0;
-		-ms-flex: 0 0 70%;
-		flex: 0 0 70%;
-	}
 	.rating-meter-col.rating-text-col {
 		margin-left: 25px;
 	}
@@ -1041,9 +1028,6 @@
 		column-gap: 10px;
 	}
 	.etlms-course-reviews {
-		.rating-meter-bar-wrap {
-			flex: 0 0 50%;
-		}
 		.rating-meter-col.rating-text-col {
 			margin-left: 5px;
 		}
@@ -1278,9 +1262,6 @@
 		column-gap: 10px;
 	}
 	.etlms-course-reviews {
-		.rating-meter-bar-wrap {
-			flex: 0 0 60%;
-		}
 		.rating-meter-col.rating-text-col {
 			margin-left: 5px;
 		}
