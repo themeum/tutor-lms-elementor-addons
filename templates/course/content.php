@@ -24,7 +24,7 @@ $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils(
 					if ( 'info' === $key ) {
 						include etlms_get_template( 'course/about' );
 						include etlms_get_template( 'course/benefits' );
-						include etlms_get_template( 'course/instructors' );
+						tutor_course_topics();
 					} else {
 						if ( is_string( $method ) ) {
 							$method();

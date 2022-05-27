@@ -135,7 +135,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'		=> array(
-					'{{WRAPPER}} .etlms-course-about.etlms-course-summary' => 'text-align: {{VALUE}};'
+					'{{WRAPPER}} .tutor-course-details-content' => 'text-align: {{VALUE}};'
 				),
 				'default'      => 'left',
 			)
@@ -180,7 +180,7 @@ class CourseContent extends BaseAddon {
 					'default'   => 'list-item',
 					'prefix_class'	=> 'etlms-course-content-benefits-display-',
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-course-specification-items li'  => 'display: {{VALUE}};',
+						'{{WRAPPER}} .etlms-course-widget-list-items li'  => 'display: {{VALUE}};',
 					),
 				)
 			);
@@ -225,96 +225,6 @@ class CourseContent extends BaseAddon {
 			);
 		$this->end_controls_section();
 		// what i will learn section end.
-
-		// about the instructor section.
-		$this->start_controls_section(
-			'instructor_section',
-			array(
-				'label' => __( 'About the Instructor', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_CONTENT,
-			)
-		);
-			$this->add_control(
-				'about_the_instructors_title',
-				array(
-					'label'       => __( 'About the Instructors Title', 'tutor-lms-elementor-addons' ),
-					'type'        => Controls_Manager::TEXTAREA,
-					'default'     => __( 'About the instructors', 'tutor-lms-elementor-addons' ),
-					'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
-					'rows'        => 3,
-				)
-			);
-			$this->add_control(
-				'course_instructor_profile',
-				array(
-					'label'        => __( 'Profile Picture', 'tutor-lms-elementor-addons' ),
-					'type'         => Controls_Manager::SWITCHER,
-					'separator'    => 'after',
-					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-					'return_value' => 'yes',
-					'default'      => 'yes',
-				)
-			);
-
-			$this->add_control(
-				'course_instructor_name',
-				array(
-					'label'        => __( 'Display Name', 'tutor-lms-elementor-addons' ),
-					'type'         => Controls_Manager::SWITCHER,
-					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-					'return_value' => 'yes',
-					'default'      => 'yes',
-				)
-			);
-
-			$this->add_control(
-				'course_instructor_designation',
-				array(
-					'label'        => __( 'Designation', 'tutor-lms-elementor-addons' ),
-					'type'         => Controls_Manager::SWITCHER,
-					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-					'return_value' => 'yes',
-					'default'      => 'yes',
-				)
-			);
-			$this->add_control(
-				'course_instructor_bio',
-				array(
-					'label'        => __( 'Bio', 'tutor-lms-elementor-addons' ),
-					'type'         => Controls_Manager::SWITCHER,
-					'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-					'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
-					'return_value' => 'yes',
-					'default'      => 'yes',
-				)
-			);
-
-			// link.
-			$this->add_control(
-				'course_instructor_link',
-				array(
-					'label'       => __( 'Link', 'tutor-lms-elementor-addons' ),
-					'type'        => Controls_Manager::SELECT,
-					'description' => __( 'Link for the Author Name and Image', 'tutor-lms-elementor-addons' ),
-					'options'     => array(
-						'none'        => 'None',
-						'new_window'  => 'New Window',
-						'same_window' => 'Same Window',
-					),
-
-					'default'     => 'new_window',
-				)
-			);
-
-			$this->add_responsive_control(
-				'course_author_layout',
-				$this->etlms_layout( 'up' ) // default layout up.
-			);
-		$this->end_controls_section();
-		// about the instructor section end.
 
 		// course curriculum section.
 		$this->start_controls_section(
@@ -367,11 +277,12 @@ class CourseContent extends BaseAddon {
 	 */
 	protected function register_style_controls() {
 		$selector                       = '{{WRAPPER}} #tutor-course-details-tab-curriculum';
-		$topic_header                   = $selector . ' .tutor-course-topics-header';
 		$course_topic                   = $selector . ' .tutor-accordion-item';
 		$course_topic_title_area        = $course_topic . ' .tutor-accordion-item-header';
 		$course_topic_active_title_area = $course_topic . ' .tutor-accordion-item-header.is-active';
-		$topic_icon                     = $course_topic . '::after';
+
+		$topic_header       = '{{WRAPPER}} .tutor-accordion-item-header';
+		$topic_header_icon  = '{{WRAPPER}} .tutor-accordion-item-header:after';
 
 		// about course style controls.
 		$paragraph_selector  = '{{WRAPPER}} .tutor-course-details-content';
@@ -500,7 +411,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					"$course_benefit_selector .tutor-course-details-widget-title" => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					"$course_benefit_selector .etlms-course-widget-title" => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 15,
@@ -530,7 +441,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$course_benefit_list_selector => 'gap: {{SIZE}}{{UNIT}};'
+					$course_benefit_list_selector .' li' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;'
 				)
 			)
 		);
@@ -656,299 +567,8 @@ class CourseContent extends BaseAddon {
 		$this->end_controls_section();
 		// course benefit style controls end.
 
-		// course instructors style controls.
-		$instructor_wrapper = '{{WRAPPER}} .etlms-course-instructors';
-
-		/* Title Section */
-		$this->start_controls_section(
-			'course_instructors_title_section',
-			array(
-				'label' => __( 'Course Instructor Title', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'course_instructors_title_color',
-			array(
-				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					"$instructor_wrapper .etlms-course-instructor-title" => 'color: {{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'course_instructors_title_typo',
-				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$instructor_wrapper .etlms-course-instructor-title",
-			)
-		);
-
-		$this->add_responsive_control(
-			'etlms_instructor_heading_gap',
-			array(
-				'label'      => __( 'Gap', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => -50,
-						'max' => 100,
-					),
-				),
-				'selectors'  => array(
-					"$instructor_wrapper .etlms-course-instructor-title" => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
-				)
-			)
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'course_instructor_section',
-			array(
-				'label' => __( 'Instructor Section', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_image_size',
-			array(
-				'label'      => __( 'Image Size', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 10,
-						'max' => 200,
-					),
-				),
-				'selectors'  => array(
-					$instructor_wrapper . ' .tutor-avatar' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}',
-				)
-			)
-		);
-
-		$this->add_control(
-			'course_instructors_avatar_border_radius',
-			array(
-				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%' ),
-				'selectors'  => array(
-					$instructor_wrapper . ' .tutor-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-				'separator'  => 'after',
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_name_color',
-			array(
-				'label'     => __( 'Name Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					$instructor_wrapper . ' .etlms-instructor-name', $instructor_wrapper . ' .etlms-instructor-name a' => 'color: {{VALUE}}',
-				)
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'course_instructor_name_typo',
-				'label'    => __( 'Name Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $instructor_wrapper . ' .etlms-instructor-name',
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_designation_color',
-			array(
-				'label'     => __( 'Designation Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					$instructor_wrapper . ' .etlms-instructor-designation' => 'color: {{VALUE}}',
-				)
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'course_instructor_designation_typo',
-				'label'    => __( 'Designation Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $instructor_wrapper . ' .etlms-instructor-designation',
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_bio_color',
-			array(
-				'label'     => __( 'Biography Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					$instructor_wrapper . ' .etlms-instructor-bio' => 'color: {{VALUE}} !important;',
-				)
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'course_instructor_bio_typo',
-				'label'    => __( 'Biography Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $instructor_wrapper . ' .etlms-instructor-bio',
-			)
-		);
-
-		$this->end_controls_section();
-
-		/* Bottom Info Section */
-		$this->start_controls_section(
-			'course_instructor_bottom_info_section',
-			array(
-				'label' => __( 'Instructor Bottom Info', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_rating_color',
-			array(
-				'label'     => __( 'Rating Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					$instructor_wrapper . ' .tutor-ratings-stars' => 'color: {{VALUE}};'
-				)
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_rating_size',
-			array(
-				'label'      => __( 'Rating Size', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 5,
-						'max' => 64,
-					),
-				),
-				'selectors'  => array(
-					$instructor_wrapper . ' .tutor-ratings-stars' => 'font-size: {{SIZE}}{{UNIT}};'
-				)
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_label_color',
-			array(
-				'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					$instructor_wrapper . ' .tutor-ratings-average' => 'color: {{VALUE}};',
-					$instructor_wrapper . ' .tutor-meta-value' => 'color: {{VALUE}};'
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'course_instructor_label_typography',
-				'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$instructor_wrapper .tutor-ratings-average, $instructor_wrapper .tutor-meta-value",
-				'scheme'   => Typography::TYPOGRAPHY_1,
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_value_color',
-			array(
-				'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					$instructor_wrapper . ' .tutor-ratings-count' => 'color: {{VALUE}} !important;',
-					$instructor_wrapper . ' .tutor-meta-key' => 'color: {{VALUE}} !important;'
-				)
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'course_instructor_value_typography',
-				'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$instructor_wrapper .tutor-ratings-average, $instructor_wrapper .tutor-meta-value",
-			)
-		);
-
-		$this->add_control(
-			'course_instructor_bottom_info_icon_size',
-			array(
-				'label'      => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 5,
-						'max' => 64,
-					),
-				),
-				'selectors'  => array(
-					$instructor_wrapper . ' .etlms-meta-icon' => 'font-size: {{SIZE}}{{UNIT}};',
-				)
-			)
-		);
-
-		$this->end_controls_section();
-
-		// spacing section.
-		$this->start_controls_section(
-			'course_instructors_space_section',
-			array(
-				'label' => __( 'Instructor Spacing', 'tutor-lms-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_control(
-			'course_instructors_padding',
-			array(
-				'label'      => __( 'Instructor Padding', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array(
-					$instructor_wrapper . ' .tutor-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-				),
-				'separator'  => 'before',
-			)
-		);
-
-		$this->add_control(
-			'course_instructors_bottom_padding',
-			array(
-				'label'      => __( 'Bottom Info Padding', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array(
-					"$instructor_wrapper .tutor-card-footer" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-				'separator'  => 'before',
-			)
-		);
-		$this->end_controls_section();
-		// course instructors style controls end.
-
 		/* Header Title Section */
-		$curriculum_header_selector = '{{WRAPPER}} .etlms-course-curriculum #tutor-course-details-tab-curriculum h3';
+		$curriculum_header_selector = '{{WRAPPER}} #tutor-course-details-tab-info .tutor-course-content-title';
 		$this->start_controls_section(
 			'course_topics_header_section',
 			array(
@@ -1021,7 +641,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .etlms-course-curriculum .tutor-accordion-item-header:after' => 'font-size: {{SIZE}}{{UNIT}};',
+					$topic_header_icon => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 16,
@@ -1034,29 +654,7 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'course_topics_title_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .etlms-course-curriculum .tutor-accordion-item-header',
-			)
-		);
-
-		// Text indent.
-		$this->add_control(
-			'course_topics_title_indent',
-			array(
-				'label'      => __( 'Text Indent', 'tutor-lms-elementor-addons' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'range'      => array(
-					'px' => array(
-						'min' => -100,
-						'max' => 100,
-					),
-				),
-				'selectors'  => array(
-					"{{WRAPPER}} #tutor-course-details-tab-curriculum .tutor-accordion-item-header" => 'padding-left: {{SIZE}}{{UNIT}};',
-				),
-				'default'    => array(
-					'size' => 5,
-				),
+				'selector' => $topic_header,
 			)
 		);
 
@@ -1076,7 +674,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} .etlms-course-curriculum .tutor-accordion-item-header:after' => 'color: {{VALUE}};',
+							$topic_header_icon => 'color: {{VALUE}};',
 						),
 						'default'   => '#3e64de',
 					)
@@ -1088,7 +686,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$course_topic_title_area => 'color: {{VALUE}} !important;',
+							$topic_header => 'color: {{VALUE}} !important;',
 						),
 						'default'   => '#41454f',
 					)
@@ -1100,7 +698,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$course_topic_title_area => 'background-color: {{VALUE}};',
+							$topic_header => 'background-color: {{VALUE}};',
 						),
 					)
 				);
@@ -1109,7 +707,7 @@ class CourseContent extends BaseAddon {
 					Group_Control_Border::get_type(),
 					array(
 						'name'      => 'course_topic_normal_border_type',
-						'selector'  => $course_topic,
+						'selector'  => $topic_header,
 						'separator' => 'before',
 					)
 				);
@@ -1121,7 +719,7 @@ class CourseContent extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', '%' ),
 						'selectors'  => array(
-							$course_topic => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							$topic_header => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 						'default'    => array(
 							'top'      => 5,
@@ -1149,7 +747,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} .etlms-course-curriculum .tutor-accordion-item-header.is-active:after' => 'color: {{VALUE}};',
+							'{{WRAPPER}} .tutor-accordion-item-header.is-active:after' => 'color: {{VALUE}};',
 						),
 					)
 				);
@@ -1160,7 +758,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$course_topic_active_title_area => 'color: {{VALUE}} !important;',
+							'{{WRAPPER}} .tutor-accordion-item-header.is-active' => 'color: {{VALUE}} !important;',
 						),
 						'default'   => '#175CFF',
 					)
@@ -1172,7 +770,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$course_topic_active_title_area => 'background-color: {{VALUE}} !important;',
+							'{WRAPPER}} .tutor-accordion-item-header.is-active' => 'background-color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -1181,7 +779,7 @@ class CourseContent extends BaseAddon {
 					Group_Control_Border::get_type(),
 					array(
 						'name'      => 'course_topic_active_border_type',
-						'selector'  => $selector . ' .tutor-accordion-item-header.is-active ',
+						'selector'  => '{WRAPPER}} .tutor-accordion-item-header.is-active',
 						'separator' => 'before',
 					)
 				);
@@ -1193,7 +791,7 @@ class CourseContent extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', '%' ),
 						'selectors'  => array(
-							$selector . ' .tutor-accordion-item-header.is-active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							'{WRAPPER}} .tutor-accordion-item-header.is-active' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 					)
 				);
@@ -1213,7 +811,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} .etlms-course-curriculum .tutor-accordion-item-header:hover:after' => 'color: {{VALUE}} !important;',
+							'{{WRAPPER}} .tutor-accordion-item-header:hover:after' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -1224,7 +822,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$course_topic_title_area . ':hover' => 'color: {{VALUE}} !important;',
+							$topic_header . ':hover' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -1235,7 +833,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$course_topic_title_area . ':hover' => 'background-color: {{VALUE}};',
+							$topic_header . ':hover' => 'background-color: {{VALUE}};',
 						),
 					)
 				);
@@ -1244,8 +842,7 @@ class CourseContent extends BaseAddon {
 					Group_Control_Border::get_type(),
 					array(
 						'name'      => 'course_topic_hover_border_type',
-
-						'selector'  => $course_topic . ':hover',
+						'selector'  => $topic_header . ':hover',
 						'separator' => 'before',
 					)
 				);
@@ -1257,7 +854,7 @@ class CourseContent extends BaseAddon {
 						'type'       => Controls_Manager::DIMENSIONS,
 						'size_units' => array( 'px', '%' ),
 						'selectors'  => array(
-							$course_topic . ':hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+							$topic_header . ':hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						),
 					)
 				);
@@ -1269,7 +866,10 @@ class CourseContent extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Course Lesson Section */
-		$lesson_selector = '#tutor-course-details-tab-curriculum .tutor-accordion-item-body-content';
+		$lesson_content = '{{WRAPPER}} .tutor-course-content-list li.tutor-course-content-list-item';
+		$lesson_icon 	= '{{WRAPPER}} .tutor-accordion-item-body-content .tutor-course-content-list-item-icon';
+		$lesson_title 	= '{{WRAPPER}} .tutor-accordion-item-body-content .tutor-course-content-list-item-title';
+		$lesson_info 	= '{{WRAPPER}} .tutor-course-content-list-item div .tutor-color-muted';
 
 		$this->start_controls_section(
 			'course_lesson_section',
@@ -1292,8 +892,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$lesson_selector . ' .tutor-courses-lesson-list-single-item span::before' => 'font-size: {{SIZE}}{{UNIT}};',
-					$lesson_selector . ' .zoom-icon img' => 'width: calc({{SIZE}}{{UNIT}} + 2px);',
+					$lesson_icon => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 18,
@@ -1306,12 +905,11 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'course_lesson_title_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .etlms-course-curriculum .lesson-preview-title',
+				'selector' => $lesson_title,
 			)
 		);
 
-		// title normal/hover tabs
-		// * Start Tabs */
+		// title normal/hover tabs.
 		$this->start_controls_tabs( 'course_lesson_style_tabs' );
 			/* Normal Tab */
 			$this->start_controls_tab(
@@ -1327,7 +925,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .tutor-courses-lesson-list-single-item span::before' => 'color: {{VALUE}};',
+							$lesson_icon => 'color: {{VALUE}};',
 						),
 						'default'   => '#939AA3',
 					)
@@ -1339,7 +937,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .lesson-preview-title' => 'color: {{VALUE}} !important;',
+							$lesson_title => 'color: {{VALUE}} !important;',
 						),
 						'default'   => '#161616',
 					)
@@ -1351,7 +949,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Info Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} #tutor-course-details-tab-curriculum li .tutor-color-muted' => 'color: {{VALUE}} !important;',
+							$lesson_info => 'color: {{VALUE}} !important;',
 						),
 						'default'   => '#757c8e',
 					)
@@ -1363,7 +961,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector => 'background-color: {{VALUE}};',
+							$lesson_content => 'background-color: {{VALUE}};',
 						),
 						'separator' => 'after',
 					)
@@ -1382,7 +980,7 @@ class CourseContent extends BaseAddon {
 							),
 						),
 						'selectors'  => array(
-							'{{WRAPPER}} #tutor-course-details-tab-curriculum .tutor-courses-lesson-list li:not(:first-child)' => 'border-top-width: {{SIZE}}{{UNIT}};',
+							$lesson_content => 'border-top-width: {{SIZE}}{{UNIT}};',
 						),
 						'default'    => array(
 							'size' => 1,
@@ -1396,7 +994,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Border Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} #tutor-course-details-tab-curriculum .tutor-courses-lesson-list li:not(:first-child)' => 'border-color: {{VALUE}};',
+							$lesson_content => 'border-color: {{VALUE}};',
 						),
 						'default'   => '#E1EBF0',
 					)
@@ -1418,7 +1016,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .tutor-courses-lesson-list-single-item span:hover::before' => 'color: {{VALUE}};',
+							$lesson_icon . ':hover' => 'color: {{VALUE}};',
 						),
 					)
 				);
@@ -1429,7 +1027,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ' .lesson-preview-title:hover' => 'color: {{VALUE}} !important;',
+							$lesson_title . ':hover' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -1440,7 +1038,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Info Text Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} #tutor-course-details-tab-curriculum li .tutor-color-muted:hover' => 'color: {{VALUE}} !important;',
+							$lesson_info . ':hover' => 'color: {{VALUE}} !important;',
 						),
 					)
 				);
@@ -1451,7 +1049,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							$lesson_selector . ':hover' => 'background-color: {{VALUE}};',
+							$lesson_content . ':hover' => 'background-color: {{VALUE}};',
 						),
 						'separator' => 'after',
 					)
@@ -1470,7 +1068,7 @@ class CourseContent extends BaseAddon {
 							),
 						),
 						'selectors'  => array(
-							'{{WRAPPER}} #tutor-course-details-tab-curriculum .tutor-courses-lesson-list li:not(:first-child):hover' => 'border-top-width: {{SIZE}}{{UNIT}};',
+							$lesson_content => 'border-top-width: {{SIZE}}{{UNIT}};',
 						),
 						'default'    => array(
 							'size' => 1,
@@ -1484,7 +1082,7 @@ class CourseContent extends BaseAddon {
 						'label'     => __( 'Border Color', 'tutor-lms-elementor-addons' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
-							'{{WRAPPER}} #tutor-course-details-tab-curriculum .tutor-courses-lesson-list li:not(:first-child):hover' => 'border-color: {{VALUE}};',
+							$lesson_content => 'border-color: {{VALUE}};',
 						),
 					)
 				);
@@ -1508,7 +1106,7 @@ class CourseContent extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					$course_topic_title_area => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$topic_header => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
 					'top'    => 15,
@@ -1527,7 +1125,7 @@ class CourseContent extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					$lesson_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$lesson_content => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
 					'top'    => 0,
@@ -1552,7 +1150,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$course_topic . ':not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tutor-accordion-item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 20,
@@ -1629,7 +1227,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$review_selector .tutor-ratingsreviews-ratings-avg tutor-fs-1" => 'color: {{VALUE}};',
+					"$review_selector .tutor-review-summary-average-rating" => 'color: {{VALUE}};',
 				),
 				'default'   => '#161616',
 			)
@@ -1639,7 +1237,7 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'course_reviews_avg_rating_text_typo',
 				'label'    => __( 'Text Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$review_selector .tutor-ratingsreviews-ratings-avg tutor-fs-1"
+				'selector' => "$review_selector .tutor-review-summary-average-rating"
 			)
 		);
 		$this->add_control(
@@ -1648,7 +1246,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$review_selector .tutor-ratingsreviews-ratings-avg tutor-fs-1 .tutor-ratings-stars span"  => 'color: {{VALUE}};',
+					"$review_selector .tutor-ratings-stars span"  => 'color: {{VALUE}};',
 				),
 				'default'   => '#ED9700',
 			)
@@ -1666,7 +1264,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					"$review_selector .tutor-ratingsreviews-ratings-avg tutor-fs-1 .tutor-ratings-stars span"  => 'color: {{VALUE}};',
+					"$review_selector .tutor-ratings-stars span" => 'color: {{VALUE}};',
 				),
 				'default'    => array(
 					'size' => 18,
@@ -1680,7 +1278,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Total Label Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$review_selector .tutor-total-ratings-text span:nth-child(1), $review_selector .tutor-total-ratings-text span:nth-child(3)" => 'color: {{VALUE}}',
+					"$review_selector .tutor-total-rating-count" => 'color: {{VALUE}}',
 				),
 				'default'   => '#525252',
 			)
@@ -1690,31 +1288,14 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'course_reviews_avg_rating_total_label_typo',
 				'label'    => __( 'Total Label Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$review_selector .tutor-total-ratings-text span:nth-child(2)",
+				'selector' => "$review_selector .tutor-total-rating-count",
 			)
 		);
-		$this->add_control(
-			'course_reviews_avg_rating_total_count_color',
-			array(
-				'label'     => __( 'Total Count Color', 'tutor-lms-elementor-addons' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					"$review_selector .tutor-total-ratings-text span:nth-child(2)" => 'color: {{VALUE}} !important;',
-				),
-			)
-		);
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'course_reviews_avg_rating_total_count_typo',
-				'label'    => __( 'Total Count Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => "$review_selector .tutor-total-ratings-text span:nth-child(2)"
-			)
-		);
+
 		$this->end_controls_section();
 
 		/* Review average right bar section */
-		$review_right_wrapper = "$review_selector .tutor-ratingsreviews-ratings-all";
+		$review_right_wrapper = "{{WRAPPER}} .tutor-review-summary-ratings";
 
 		$this->start_controls_section(
 			'review_avg_right_bar_main',
@@ -1825,7 +1406,7 @@ class CourseContent extends BaseAddon {
 
 		$this->end_controls_section();
 		/* Review list section */
-		$review_list_section_selector = '{{WRAPPER}}' . ' .tutor-ratingsreviews-reviews';
+		$review_list_section_selector = '{{WRAPPER}}' . ' .tutor-reviews.tutor-card-list';
 		$this->start_controls_section(
 			'review_list',
 			array(
@@ -1847,7 +1428,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$review_list_section_selector . ' img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
+					$review_list_section_selector . ' .tutor-avatar' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}}/2)',
 				),
 				'default'    => array(
 					'size' => 50,
@@ -1859,7 +1440,7 @@ class CourseContent extends BaseAddon {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'course_instructor_img_border',
-				'selector' => $review_list_section_selector . ' img',
+				'selector' => $review_list_section_selector . ' .tutor-avatar',
 			)
 		);
 
@@ -1870,11 +1451,11 @@ class CourseContent extends BaseAddon {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .etlms-course-instructor-avatar img ' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .etlms-course-instructor-avatar span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$review_list_section_selector . ' .tutor-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$review_list_section_selector . ' .tutor-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'selectors'  => array(
-					$review_list_section_selector . ' img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					$review_list_section_selector . ' .tutor-avatar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
 					'top'      => 50,
@@ -1913,7 +1494,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Time Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$review_list_section_selector . ' .tutor-review-time' => 'color: {{VALUE}};',
+					$review_list_section_selector . ' .tutor-reviewed-on' => 'color: {{VALUE}};',
 				),
 				'default'   => '#757C8E',
 			)
@@ -1923,7 +1504,7 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'reviewer_time_typo',
 				'label'    => __( 'Time Text Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $review_list_section_selector . ' .tutor-review-time',
+				'selector' => $review_list_section_selector . ' .tutor-reviewed-on',
 			)
 		);
 		$this->add_control(
@@ -1932,7 +1513,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-ratingsreviews-reviews .tutor-ratings-stars span' => 'color: {{VALUE}} !important;',
+					$review_list_section_selector . ' .tutor-ratings-stars span' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#ED9700',
 			)
@@ -1943,7 +1524,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Rating Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-ratingsreviews-reviews .tutor-review-comment' => 'color: {{VALUE}} !important;',
+					$review_list_section_selector . '.tutor-review-comment' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#ED9700',
 			)
@@ -1961,7 +1542,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tutor-ratingsreviews-reviews .tutor-ratings-stars span' => 'font-size: {{SIZE}}{{UNIT}};',
+					$review_list_section_selector . ' .tutor-ratings-stars span' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 14,
@@ -1974,7 +1555,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Comment Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-ratingsreviews-reviews .tutor-review-comment' => 'color: {{VALUE}}',
+					$review_list_section_selector . ' .tutor-review-comment' => 'color: {{VALUE}}',
 				),
 				'default'   => '#5B616F',
 			)
@@ -1984,7 +1565,7 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'reviewer_content_typo',
 				'label'    => __( 'Comment Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .tutor-ratingsreviews-reviews .tutor-review-comment',
+				'selector' => $review_list_section_selector . ' .tutor-review-comment'
 			)
 		);
 		$this->end_controls_section();
