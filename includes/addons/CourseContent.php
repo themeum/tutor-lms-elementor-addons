@@ -1128,10 +1128,10 @@ class CourseContent extends BaseAddon {
 					$lesson_content => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
-					'top'    => 0,
-					'right'  => 10,
-					'bottom' => 0,
-					'left'   => 10,
+					'top'    => 8,
+					'right'  => 16,
+					'bottom' => 8,
+					'left'   => 16,
 					'unit'   => 'px',
 				),
 			)
