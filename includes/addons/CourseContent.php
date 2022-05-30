@@ -1339,7 +1339,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$review_right_wrapper . ' .tutor-progress-bar' => 'height: {{SIZE}}{{UNIT}};',
+					$review_right_wrapper . ' .tutor-ratings-progress-bar' => 'height: {{SIZE}}{{UNIT}} !important;',
 				),
 				'default'    => array(
 					'size' => 8,
@@ -1354,7 +1354,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .rating-progress .tutor-ratings .tutor-rating-stars span' => 'color: {{VALUE}} !important;',
+					$review_right_wrapper . ' .tutor-ratings-stars span' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#1a1b1e',
 			)
@@ -1372,7 +1372,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .rating-progress .tutor-ratings .tutor-rating-stars span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+					$review_right_wrapper . ' .tutor-ratings-stars span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
 				),
 				'default'    => array(
 					'size' => 15,
@@ -1389,7 +1389,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-ratingsreviews-ratings-all .rating-numbers .rating-num' => 'color: {{VALUE}};',
+					$review_right_wrapper . ' .tutor-individual-star-rating' => 'color: {{VALUE}};',
 				),
 				'default'   => '#525252',
 			)
@@ -1399,7 +1399,7 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'review_avg_right_text_typo',
 				'label'    => __( 'Text Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .tutor-ratingsreviews-ratings-all .rating-numbers .rating-num',
+				'selector' => $review_right_wrapper . ' .tutor-individual-star-rating',
 			)
 		);
 		// right rating star text end.
