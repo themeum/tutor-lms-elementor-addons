@@ -1083,7 +1083,7 @@ class CourseEnrolmentBox extends BaseAddon {
 					'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .etlms-enrolled-level" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .etlms-enrolled-level" => 'color: {{VALUE}} !important;',
 					),
 					'default'   => '#757c8e',
 				)
@@ -1093,7 +1093,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				array(
 					'name'     => 'enrolment_meta_label_typo',
 					'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$enrolment_box_selector .etlms-enrolled-level",
+					'selector' => "$enrolment_box_selector .tutor-meta-value",
 				)
 			);
 			// label controls end.
@@ -1105,9 +1105,8 @@ class CourseEnrolmentBox extends BaseAddon {
 					'label'     => __( 'Value Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$enrolment_box_selector .etlms-enrolled-level-value" => 'color: {{VALUE}};',
+						"$enrolment_box_selector .etlms-enrolled-value, $enrolment_box_selector .etlms-enrolled-value .tutor-meta-level, $enrolment_box_selector .etlms-enrolled-value .tutor-meta-value" => 'color: {{VALUE}} !important;',
 					),
-					'default'   => '#212327',
 				)
 			);
 			$this->add_group_control(
@@ -1115,7 +1114,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				array(
 					'name'     => 'enrolment_meta_value_typo',
 					'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$enrolment_box_selector .etlms-enrolled-level-value",
+					'selector' => "$enrolment_box_selector .etlms-enrolled-value, $enrolment_box_selector .etlms-enrolled-value .tutor-meta-level, $enrolment_box_selector .etlms-enrolled-value .tutor-meta-value",
 				)
 			);
 			// value controls end.

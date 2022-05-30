@@ -222,7 +222,7 @@
 						</span>
 					</div>
 					<div class="tutor-col-6">
-						<span class="tutor-fs-7 tutor-fw-medium tutor-color-black etlms-enrolled-level-value">
+						<span class="tutor-fs-7 tutor-fw-medium tutor-color-black etlms-enrolled-value">
 							<?php echo wp_kses_post( $meta['value'] ); ?>
 						</span>
 					</div>
