@@ -62,7 +62,7 @@ class CourseTargetAudience extends BaseAddon {
 				'default'   => 'list-item',
 				'prefix_class'	=> 'etlms-target-audience-layout-%s',
 				'selectors' => array(
-					'{{WRAPPER}}.etlms-target-audience-layout-list-item .etlms-course-widget-list-items'  => 'flex-direction: column;',
+					'{{WRAPPER}} .etlms-course-widget-list-items li'  => 'display: {{VALUE}};',
 				),
 			)
 		);
@@ -101,9 +101,7 @@ class CourseTargetAudience extends BaseAddon {
 				),
 				'default'   => 'flex-start',
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-course-widget-title' => 'justify-content: {{VALUE}};',
-					'{{WRAPPER}} .etlms-course-widget-list-items' => 'justify-content: {{VALUE}};',
-					'{{WRAPPER}} .etlms-course-widget-list-item' => 'justify-content: {{VALUE}};'
+					'{{WRAPPER}} .etlms-course-widget-list-items li' => 'text-align: {{VALUE}};',
 				),
 			)
 		);
@@ -187,7 +185,7 @@ class CourseTargetAudience extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$list_selector => 'gap: {{SIZE}}{{UNIT}};'
+					$list_selector . ' li:not(last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				)
 			)
 		);

@@ -84,7 +84,7 @@ class CourseBenefits extends BaseAddon {
 					'default'   => 'list-item',
 					'prefix_class'	=> 'etlms-course-benefits-display-',
 					'selectors' => array(
-						'{{WRAPPER}}.etlms-course-benefits-display-list-item .etlms-course-widget-list-items'  => 'flex-direction: column;',
+						'{{WRAPPER}} .etlms-course-widget-list-items li'  => 'display: {{VALUE}};',
 					),
 				)
 			);
@@ -123,9 +123,7 @@ class CourseBenefits extends BaseAddon {
 					),
 					'default'   => 'flex-start',
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-course-widget-title' => 'justify-content: {{VALUE}};',
-						'{{WRAPPER}} .etlms-course-widget-list-items' => 'justify-content: {{VALUE}};',
-						'{{WRAPPER}} .etlms-course-widget-list-item' => 'justify-content: {{VALUE}};'
+						'{{WRAPPER}}.etlms-course-benefits-display-list-item' => 'text-align: {{VALUE}};',
 					),
 				)
 			);
@@ -210,7 +208,7 @@ class CourseBenefits extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$list_selector => 'gap: {{SIZE}}{{UNIT}};'
+					$list_selector . ' li:not(last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				)
 			)
 		);
