@@ -1264,7 +1264,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					"$review_selector .tutor-ratings-stars span" => 'color: {{VALUE}};',
+					"$review_selector .tutor-ratings-stars span" => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 18,
