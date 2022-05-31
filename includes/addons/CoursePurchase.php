@@ -1658,13 +1658,25 @@ class CoursePurchase extends BaseAddon {
 			)
 		);
 			$this->add_control(
-				'enrolment_box_background',
+				'enrolment_content_background',
 				array(
-					'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
+					'label'     => __( 'Content Background', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$enrolment_box_selector => 'background-color: {{VALUE}};',
+						$enrolment_box_selector . ' .tutor-card-body' => 'background-color: {{VALUE}};',
 					),
+					'default' 	=> '#F4F6F9',
+				)
+			);
+			$this->add_control(
+				'enrolment_meta_info_background',
+				array(
+					'label'     => __( 'Meta Info Background', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						$enrolment_box_selector . ' .tutor-card-footer' => 'background-color: {{VALUE}};',
+					),
+					'default' 	=> '#fff',
 				)
 			);
 
