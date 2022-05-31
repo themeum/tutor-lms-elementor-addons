@@ -1323,7 +1323,6 @@ class CourseContent extends BaseAddon {
 				'selectors' => array(
 					$review_right_wrapper . ' .tutor-progress-value' => 'background-color: {{VALUE}}',
 				),
-				'default'   => '#3e64de',
 			)
 		);
 		$this->add_control(
@@ -1356,7 +1355,7 @@ class CourseContent extends BaseAddon {
 				'selectors' => array(
 					$review_right_wrapper . ' .tutor-ratings-stars span' => 'color: {{VALUE}} !important;',
 				),
-				'default'   => '#1a1b1e',
+				'default'   => '#ED9700',
 			)
 		);
 		$this->add_control(
