@@ -448,10 +448,14 @@
 	.slick-track {
 		display: flex !important;
 		position: relative !important;
-		top: 5px !important;
+		padding-top: 5px !important;
 	}
 	.slick-slide {
 		height: inherit !important;
+		margin: 0 10px;
+	}
+	.slick-list {
+		margin: 0 -10px;
 	}
 	.price {
 		display: flex;
