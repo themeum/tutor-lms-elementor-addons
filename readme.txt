@@ -140,12 +140,16 @@ You can post on the support section of this plugin or use the contact form at th
 9. Different Card Designs For Instructors
 10. Intelligent Preview Modes
 
-
 == Changelog ==
 
-= 2.0.2 - 31 May, 2022
+= 2.0.2 - 02 June, 2022
 
-Coming soon...
+* Update: “Course Curriculum” widget has been re-designed and improved for the Single Course page
+* Update: Instructor” widget has been redesigned and improved for the Single Course page
+* Update: Elementor Compatibility is brought for the “Purchase” button of the EDD plugin
+* Fix: In the “Course List” widget the Login Modal was not appearing for Visitors while the Guest Mode is disabled
+* Fix: The color of “hours” and “minutes” text of “Duration” in the “Enrollment” widget could not be changed
+* Fix: The “Prerequisite” section was not appearing while editing a Course with Elementor
 
 = 2.0.1 - 28 April, 2022
 
