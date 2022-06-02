@@ -244,13 +244,13 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 				?>
 				<li class="tutor-row tutor-align-items-center<?php echo $key > 0 ? ' tutor-mt-12' : ''; ?>">
 					<div class="tutor-col-6">
-						<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black"></span>
-						<span class="tutor-fs-7 tutor-color-muted tutor-ml-8">
+						<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black etlms-enrolled-icon"></span>
+						<span class="tutor-fs-7 tutor-color-muted tutor-ml-8 etlms-enrolled-label">
 							<?php echo esc_html( $meta['label'] ); ?>
 						</span>
 					</div>
 					<div class="tutor-col-6">
-						<span class="tutor-fs-7 tutor-fw-medium tutor-color-black">
+						<span class="tutor-fs-7 tutor-fw-medium tutor-color-black etlms-enrolled-label-value">
 							<?php echo wp_kses_post( $meta['value'] ); ?>
 						</span>
 					</div>
