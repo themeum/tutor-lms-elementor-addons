@@ -1218,7 +1218,7 @@ class CourseList extends BaseAddon {
 						)
 					)
 				),
-			),
+			)
 		);
 
 		$this->add_control(
@@ -1244,7 +1244,7 @@ class CourseList extends BaseAddon {
 						)
 					)
 				),
-			),
+			)
 		);
 
 		$this->add_control(
@@ -1360,7 +1360,7 @@ class CourseList extends BaseAddon {
 						)
 					)
 				),
-			),
+			)
 		);
 
 		// avatar
