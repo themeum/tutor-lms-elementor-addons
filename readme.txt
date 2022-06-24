@@ -144,7 +144,8 @@ You can post on the support section of this plugin or use the contact form at th
 
 = 2.0.3 - 24 June, 2022
 
-* Fix: Sidebar not showing when Course Curriculum add-on is active
+* Fix: Sidebar not showing while using Course Curriculum Add-on
+* Fix: Course prerequisite not showing while using Course Curriculum Add-on
 
 = 2.0.2 - 02 June, 2022
 
