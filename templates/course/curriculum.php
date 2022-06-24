@@ -14,6 +14,10 @@ $index       = 0;
 do_action( 'tutor_course/single/before/topics' );
 ?>
 <div class="etlms-course-curriculum">
+	<?php
+		// ?Do action to show course prerequisite @since v2.0.3.
+		do_action( 'tutor_course/single/tab/info/before' );
+	?>
 	<div class="tutor-mt-40">
 		<h3 class="tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-24 tutor-course-content-title">
 			<?php
