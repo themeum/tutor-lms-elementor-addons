@@ -43,4 +43,3 @@ $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils(
 	</div>
 	<?php do_action( 'tutor_course/single/after/inner-wrap' ); ?>
 </div>
-
