@@ -124,7 +124,8 @@ if ( strlen( $string ) > $limit ) {
 			</h2>
 
 			<div class="tutor-course-details-content tutor-fs-6 tutor-color-secondary">
-				<?php echo esc_textarea( $string ); ?>
+				<?php the_content(); 
+				//echo esc_textarea( $string ); ?>
 			</div>
 		</div>
 		<?php if ( $has_show_more ) : ?>
