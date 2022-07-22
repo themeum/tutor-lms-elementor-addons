@@ -7,7 +7,7 @@
 
 global $post;
 do_action( 'tutor_course/single/before/content' );
-$excerpt      	= tutor_get_the_excerpt();
+$excerpt      	= tutor_get_the_excerpt( get_the_ID());
 $string       	= $excerpt;
 $about_title = $settings['about_section_title_text'];
 if ( tutor_utils()->get_option( 'enable_course_about', true, true ) ) {
@@ -23,11 +23,11 @@ if ( tutor_utils()->get_option( 'enable_course_about', true, true ) ) {
 	?>
 	<?php if ( ! empty( $string ) ) : ?>
 	<div class="tutor-course-details-content<?php echo $has_show_more ? ' tutor-toggle-more-content tutor-toggle-more-collapsed' : ''; ?>"<?php echo $has_show_more ? ' data-tutor-toggle-more-content data-toggle-height="200" style="height: 200px;"' : ''; ?>>
-		<h2 class="tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-12">
+		<h2 class="tutor-course-details-content-heading tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-12">
 			<?php echo esc_html( apply_filters( 'tutor_course_about_title', $about_title ) ); ?>
 		</h2>
 		
-		<div class="tutor-fs-6 tutor-color-secondary">
+		<div class="tutor-course-details-content-body tutor-fs-6 tutor-color-secondary">
 			<?php echo wp_kses_post( apply_filters( 'the_content', $string ) ); ?>
 		</div>
 	</div>
