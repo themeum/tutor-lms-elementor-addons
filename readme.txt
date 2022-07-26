@@ -142,9 +142,15 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 2.0.4 - 21 July, 2022
+= 2.0.4 - 28 July, 2022
 
-Coming soon...
+* Fix: The Resources tab on the Course Details page was not showing any content if the Page is edited with Elementor
+* Fix: On the Lesson page the Attachment tab was not showing any content if the Course Details Page is edited with Elementor
+* Fix: The Review widget was not appearing on the Front-site when editing the Course Details page with Elementor
+* Fix: The Author Add-on was showing the wrong URL for Instructor Profile
+* Fix: From the Design settings the Author section is disabled but still, it was appearing in the Front-site
+* Fix: From the Design settings the Course Benefits section is disabled but still, it was appearing in the Front-site
+* Fix: The "Benefits" section (What Will You Learn?) on the Course Details page was not matching with the present design of Tutor LMS
 
 = 2.0.3 - 24 June, 2022
 
