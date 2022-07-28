@@ -6,7 +6,7 @@ $author_name  = get_the_author_meta( 'display_name', $post->post_author );
 $show_author        = tutor_utils()->get_option( 'enable_course_author' );
 $target_blank = ( $settings['course_author_link'] == 'new_window' ) ? 'target="_blank"' : '';
 ?>
-<?php if ( $show_author ) { ?>
+<?php if ( $show_author ) : ?>
 <div class="etlms-author tutor-meta">
 	<?php if ( $settings['course_author_picture'] ) : ?>
 		<div class="tutor-single-course-avatar">
@@ -31,10 +31,4 @@ $target_blank = ( $settings['course_author_link'] == 'new_window' ) ? 'target="_
 		</div>
 	<?php endif; ?>
 </div>
-<?php 
-
-} else{
-	_e('Please enable Author from Tutor settings', 'tutor-lms-elementor-addons');
-} 
-
-?>
+<?php endif; ?>

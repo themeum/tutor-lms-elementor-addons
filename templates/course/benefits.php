@@ -9,7 +9,7 @@ do_action( 'tutor_course/single/before/benefits' );
 $benefits = tutor_course_benefits();
 $show_benefits = tutor_utils()->get_option( 'enable_course_benefits' );
 ?>
-<?php if ( $show_benefits ) { ?>
+<?php if ( $show_benefits ) : ?>
 <?php if (is_array($benefits) && count($benefits)): ?>
 	<div class="etlms-course-widget etlms-course-benefits tutor-course-details-widget tutor-course-details-widget-col-2 tutor-mt-lg-50 tutor-mt-32 tutor-mb-32">
 		<h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16 etlms-course-widget-title">
@@ -28,12 +28,7 @@ $show_benefits = tutor_utils()->get_option( 'enable_course_benefits' );
 		<?php endif; ?>
 		</ul>
 	</div>
-<?php endif; ?>
 <?php 
-
-} else{
-	_e('Please enable Benefits from Tutor settings', 'tutor-lms-elementor-addons');
-} 
+endif;
+endif;
 do_action( 'tutor_course/single/after/benefits' ); 
-
-?>
