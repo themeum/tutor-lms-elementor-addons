@@ -344,11 +344,10 @@ class CourseBenefits extends BaseAddon {
 	 * @return void
 	 */
 	protected function render( $instance = array() ) {
-		$disable_option = ! (bool) get_tutor_option( 'enable_course_benefits' );
-		if ( $disable_option ) {
-			if ( $this->is_elementor_editor() ) {
-				esc_html_e( 'Please enable course benefits from tutor settings', 'tutor-lms-elementor-addons' );
-			}
+		$is_enabled = (bool) get_tutor_option( 'enable_course_benefits' );
+		$is_editor  = \Elementor\Plugin::instance()->editor->is_edit_mode();
+		if ( ! $is_enabled && $is_editor ) {
+			esc_html_e( 'Please enable course benefits from tutor settings', 'tutor-lms-elementor-addons' );
 			return;
 		}
 

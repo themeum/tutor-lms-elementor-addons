@@ -22,10 +22,7 @@ $instructors 			= tutor_utils()->get_instructors_by_course();
 do_action( 'tutor_course/single/enrolled/before/instructors' );
 
 $instructors = tutor_utils()->get_instructors_by_course();
-$is_enabled  = tutor_utils()->get_option( 'display_course_instructors' );
-if ( ! $is_enabled ) {
-	return esc_html_e( 'Please enable Instructor Info from Tutor settings ', 'tutor-lms-elementor-addons' );
-}
+
 ?>
 
 <?php if ( $instructors && count( $instructors ) ) : ?>

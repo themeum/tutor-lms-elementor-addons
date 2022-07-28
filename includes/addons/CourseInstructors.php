@@ -124,8 +124,8 @@ class CourseInstructors extends BaseAddon {
 				'type'        => Controls_Manager::SELECT,
 				'description' => __( 'Link for the Author Name and Image', 'tutor-lms-elementor-addons' ),
 				'options'     => array(
-					'_blank'  => 'New Window',
-					'' => 'Same Window',
+					'_blank' => 'New Window',
+					''       => 'Same Window',
 				),
 
 				'default'     => '_blank',
@@ -186,7 +186,7 @@ class CourseInstructors extends BaseAddon {
 				),
 				'selectors'  => array(
 					"$selector h3" => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
-				)
+				),
 			)
 		);
 
@@ -214,7 +214,7 @@ class CourseInstructors extends BaseAddon {
 				),
 				'selectors'  => array(
 					$selector . ' .tutor-avatar' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}',
-				)
+				),
 			)
 		);
 
@@ -230,7 +230,7 @@ class CourseInstructors extends BaseAddon {
 				'separator'  => 'after',
 			)
 		);
-	
+
 		$this->add_control(
 			'course_instructor_name_color',
 			array(
@@ -238,7 +238,7 @@ class CourseInstructors extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$selector . ' .tutor-instructor-name' => 'color: {{VALUE}}',
-				)
+				),
 			)
 		);
 
@@ -247,7 +247,7 @@ class CourseInstructors extends BaseAddon {
 			array(
 				'name'     => 'course_instructor_name_typo',
 				'label'    => __( 'Name Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $selector . ' .tutor-instructor-name'
+				'selector' => $selector . ' .tutor-instructor-name',
 			)
 		);
 
@@ -258,7 +258,7 @@ class CourseInstructors extends BaseAddon {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$selector . ' .tutor-instructor-designation' => 'color: {{VALUE}};',
-				)
+				),
 			)
 		);
 
@@ -267,7 +267,7 @@ class CourseInstructors extends BaseAddon {
 			array(
 				'name'     => 'course_instructor_designation_typo',
 				'label'    => __( 'Designation Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $selector . ' .tutor-instructor-designation'
+				'selector' => $selector . ' .tutor-instructor-designation',
 			)
 		);
 
@@ -282,7 +282,12 @@ class CourseInstructors extends BaseAddon {
 	 * @return void
 	 */
 	protected function render( $instance = array() ) {
-		$course = etlms_get_course();
+		$course     = etlms_get_course();
+		$is_enabled = tutor_utils()->get_option( 'display_course_instructors' );
+		$is_editor  = \Elementor\Plugin::instance()->editor->is_edit_mode();
+		if ( ! $is_enabled && $is_editor ) {
+			return esc_html_e( 'Please enable Instructor Info from Tutor settings ', 'tutor-lms-elementor-addons' );
+		}
 		if ( $course ) {
 			ob_start();
 			$settings = $this->get_settings_for_display();
