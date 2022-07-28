@@ -4,7 +4,6 @@
  *
  * @package Course Topics
  */
-the_post();
 $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils()->course_nav_items(), get_the_ID() );
 
 ?>
