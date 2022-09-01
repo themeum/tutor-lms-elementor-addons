@@ -142,7 +142,7 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 2.0.5 - 31 August, 2022
+= 2.0.5 - 1 September, 2022
 
 * Update: More security improvement is introduced
 
