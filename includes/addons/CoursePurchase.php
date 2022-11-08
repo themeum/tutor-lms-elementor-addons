@@ -447,7 +447,7 @@ class CoursePurchase extends BaseAddon {
 
 		$this->end_controls_section();
 		// course progress controls end.
-		
+
 		/**
 		 * Course price controls
 		 *
@@ -461,6 +461,7 @@ class CoursePurchase extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+		
 		/* Start Tabs */
 		$this->start_controls_tabs( 'course_price_style_tabs' );
 
