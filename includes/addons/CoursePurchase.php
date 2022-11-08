@@ -452,7 +452,7 @@ class CoursePurchase extends BaseAddon {
 		 *
 		 * @since v2.0.0
 		 */
-		$course_price_wrapper = '{{WRAPPER}} .tutor-course-sidebar-card-pricing';
+		$course_price_wrapper = '{{WRAPPER}} .tutor-sidebar-card';
 		$this->start_controls_section(
 			'course_price_style_section',
 			array(
@@ -477,7 +477,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper div > span" => 'color: {{VALUE}};',
+						"$course_price_wrapper .tutor-course-single-pricing span" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -488,7 +488,7 @@ class CoursePurchase extends BaseAddon {
 				array(
 					'name'     => 'course_purchase_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper div > span, {{WRAPPER}} .tutor-fs-4",
+					'selector' => "$course_price_wrapper .tutor-course-single-pricing span, {{WRAPPER}} .tutor-fs-4",
 				)
 			);
 
