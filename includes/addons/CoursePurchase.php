@@ -278,7 +278,7 @@ class CoursePurchase extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		
+
 		/**
 		 * Course progress controls
 		 *
@@ -353,7 +353,6 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
-
 		$this->add_control(
 			'course_status_bar_background_color',
 			array(
@@ -364,7 +363,6 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
-
 		$this->add_control(
 			'course_status_progress_bar_height',
 			array(
@@ -388,7 +386,6 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
-
 		$this->add_control(
 			'course_status_progress_radius',
 			array(
@@ -417,7 +414,6 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
-
 		$this->add_control(
 			'course_status_progress_text',
 			array(
@@ -425,7 +421,6 @@ class CoursePurchase extends BaseAddon {
 				'type'  => \Elementor\Controls_Manager::HEADING,
 			)
 		);
-
 		$this->add_control(
 			'course_status_progress_text_color',
 			array(
@@ -436,7 +431,6 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
-
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
