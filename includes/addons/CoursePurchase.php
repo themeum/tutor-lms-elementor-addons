@@ -467,7 +467,6 @@ class CoursePurchase extends BaseAddon {
 					'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
 				)
 			);
-
 			$this->add_control(
 				'course_price_normal_text_color',
 				array(
@@ -479,7 +478,6 @@ class CoursePurchase extends BaseAddon {
 					'default'   => '#212327',
 				)
 			);
-
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
@@ -498,7 +496,6 @@ class CoursePurchase extends BaseAddon {
 					'label' => __( 'Strike', 'tutor-lms-elementor-addons' ),
 				)
 			);
-
 			$this->add_control(
 				'strikethrough_text_color',
 				array(
@@ -510,7 +507,6 @@ class CoursePurchase extends BaseAddon {
 					'default'   => '#7A7A7A',
 				)
 			);
-
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
@@ -524,9 +520,12 @@ class CoursePurchase extends BaseAddon {
 
 		$this->end_controls_tabs();
 		/* End Tabs */
+
 		$this->end_controls_section();
 		// course price controls end.
+
 		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
+
 		/* Add to Cart Section */
 		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-btn-primary.tutor-add-to-cart-button';
 
@@ -709,6 +708,7 @@ class CoursePurchase extends BaseAddon {
 				// 'condition' => ['course_enrolment_edit_mode' => 'enrolment_box'],
 			)
 		);
+		
 		/* Start Tabs */
 		$this->start_controls_tabs( 'enroll_btn_tabs' );
 
