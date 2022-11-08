@@ -14,7 +14,7 @@ Text Domain: tutor-lms-elementor-addons
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ETLMS_VERSION', '2.0.5' );
+define( 'ETLMS_VERSION', '2.0.6' );
 
 /**
  * Tutor LMS Elementor addons v2.0.0 dependency on Tutor core
