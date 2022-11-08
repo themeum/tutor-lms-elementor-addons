@@ -447,6 +447,7 @@ class CoursePurchase extends BaseAddon {
 
 		$this->end_controls_section();
 		// course progress controls end.
+		
 		/**
 		 * Course price controls
 		 *
