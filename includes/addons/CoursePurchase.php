@@ -531,7 +531,7 @@ class CoursePurchase extends BaseAddon {
 		// course price controls end.
 		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
 		/* Add to Cart Section */
-		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-btn-primary.tutor-add-to-cart-button';
+		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-enrol-course-form .tutor-enroll-course-button';
 
 		$this->start_controls_section(
 			'add_to_cart_btn',
