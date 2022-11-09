@@ -42,6 +42,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 
 <div class="etlms-course-widget etlms-course-reviews tutor-pagination-wrapper-replaceable">
 	<h3 class="etlms-course-widget-title tutor-fs-5 tutor-color-black tutor-fw-bold tutor-mb-16">
+	<h3 class="etlms-course-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-24">
 		<?php
 			$review_title = apply_filters( 'tutor_course_reviews_section_title', 'Student Ratings & Reviews' );
 			echo esc_html( $review_title, 'tutor-lms-elementor-addons' );
