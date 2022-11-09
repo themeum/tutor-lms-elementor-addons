@@ -172,6 +172,32 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 			</form>
 		</div>
 	</div>
+	<div class="tutor-course-enrolled-review-wrap tutor-pt-16">
+		<div class="tutor-write-review-form" style="display: none;">
+			<form method="post">
+				<div class="tutor-star-rating-container">
+					<input type="hidden" name="course_id" value="<?php echo $course_id; ?>"/>
+					<input type="hidden" name="review_id" value="<?php echo $my_rating ? $my_rating->comment_ID : ''; ?>"/>
+					<input type="hidden" name="action" value="tutor_place_rating"/>
+					<div class="tutor-form-group">
+						<div class="tutor-ratings tutor-ratings-lg tutor-ratings-selectable" tutor-ratings-selectable>
+							<?php
+								tutor_utils()->star_rating_generator( tutor_utils()->get_rating_value( $my_rating ? $my_rating->rating : 0 ) );
+							?>
+						</div>
+					</div>
+					<div class="tutor-form-group">
+						<textarea name="review" placeholder="<?php _e( 'write a review', 'tutor' ); ?>"><?php echo stripslashes( $my_rating ? $my_rating->comment_content : '' ); ?></textarea>
+					</div>
+					<div class="tutor-form-group">
+						<button type="submit" class="tutor_submit_review_btn tutor-btn tutor-btn-primary">
+							<?php _e( 'Submit Review', 'tutor' ); ?>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 <?php endif; ?>
 
 <?php do_action( 'tutor_course/single/enrolled/after/reviews' ); ?>
