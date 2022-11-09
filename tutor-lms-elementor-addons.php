@@ -24,7 +24,7 @@ define( 'ETLMS_VERSION', '2.0.6' );
  *
  * @since v2.0.0
  */
-define( 'ETLMS_TUTOR_CORE_REQ_VERSION', '2.0.0' );
+define( 'ETLMS_TUTOR_CORE_REQ_VERSION', '2.1.0' );
 
 define( 'ETLMS_FILE__', __FILE__ );
 define( 'ETLMS_BASENAME', plugin_basename( ETLMS_FILE__ ) );
