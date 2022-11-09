@@ -166,7 +166,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 					'paged'       => $current_page,
 					'layout'      => array(
 						'type'           => 'load_more',
-						'load_more_text' => __( 'Load More', 'tutor' ),
+						'load_more_text' => __( 'Load More', 'tutor-lms-elementor-addons' ),
 					),
 					'ajax'        => array(
 						'action'    => 'tutor_single_course_reviews_load_more',
