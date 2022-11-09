@@ -51,7 +51,6 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 	<?php if ( ! is_array( $reviews ) || ! count( $reviews ) ) : ?>
 		<?php tutor_utils()->tutor_empty_state( __( 'No Review Yet', 'tutor-lms-elementor-addons' ) ); ?>
 	<?php else : ?>
-		
 		<div class="tutor-card tutor-review-card">
 			<div class="tutor-review-summary tutor-p-24 tutor-p-lg-40">
 				<div class="tutor-row tutor-gx-xl-5 tutor-align-center">
