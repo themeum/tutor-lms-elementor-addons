@@ -47,7 +47,7 @@ function elementor_tutor_lms_init() {
 	require_once ETLMS_DIR_PATH . 'classes/ManageDependency.php';
 	$dependency = new \TutorLMS\Elementor\ManageDependency();
 
-	// all three conditions are required to run Tutor LMS Elementor addons v2.0.0.
+	// all three conditions are required to run Tutor LMS Elementor addons v2.1.0.
 	if ( ! function_exists( 'tutor_lms' ) || ! did_action( 'elementor/loaded' ) ) {
 		require_once ETLMS_DIR_PATH . 'classes/Installer.php';
 		new \TutorLMS\Elementor\Installer();
