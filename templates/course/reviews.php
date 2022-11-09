@@ -191,7 +191,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 					</div>
 					<div class="tutor-form-group">
 						<button type="submit" class="tutor_submit_review_btn tutor-btn tutor-btn-primary">
-							<?php _e( 'Submit Review', 'tutor' ); ?>
+							<?php _e( 'Submit Review', 'tutor-lms-elementor-addons' ); ?>
 						</button>
 					</div>
 				</div>
