@@ -125,7 +125,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 						</div>
 
 						<div class="tutor-fs-6 tutor-color-secondary tutor-mt-12 tutor-total-rating-count">
-							<?php esc_html_e( 'Total ', 'tutor' ); ?>
+							<?php esc_html_e( 'Total ', 'tutor-lms-elementor-addons' ); ?>
 							<?php echo $reviews_total; ?>
 							<?php echo esc_html( _n( ' Rating', ' Ratings', count( $reviews ), 'tutor' ) ); ?>
 						</div>
