@@ -41,7 +41,6 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 ?>
 
 <div class="etlms-course-widget etlms-course-reviews tutor-pagination-wrapper-replaceable">
-	<h3 class="etlms-course-widget-title tutor-fs-5 tutor-color-black tutor-fw-bold tutor-mb-16">
 	<h3 class="etlms-course-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-24">
 		<?php
 			$review_title = apply_filters( 'tutor_course_reviews_section_title', 'Student Ratings & Reviews' );
@@ -109,6 +108,65 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 			
 			<div class="tutor-reviews tutor-card-list tutor-pagination-content-appendable">
 				<?php tutor_load_template('single.course.reviews-loop', array('reviews' => $reviews)); ?>
+			</div>
+		</div>
+		<div class="tutor-card tutor-review-card">
+			<div class="tutor-review-summary tutor-p-24 tutor-p-lg-40">
+				<div class="tutor-row tutor-gx-xl-5 tutor-align-center">
+					<div class="tutor-col-lg-auto tutor-text-center tutor-mb-16 tutor-mb-lg-0">
+						<div class="tutor-review-summary-average-rating tutor-mb-20">
+							<?php echo number_format( $rating->rating_avg, 1 ); ?>
+						</div>
+
+						<div>
+							<div class="tutor-d-inline-block">
+								<?php tutor_utils()->star_rating_generator_v2( $rating->rating_avg, null, false, '', 'lg' ); ?>
+							</div>
+						</div>
+
+						<div class="tutor-fs-6 tutor-color-secondary tutor-mt-12 tutor-total-rating-count">
+							<?php esc_html_e( 'Total ', 'tutor' ); ?>
+							<?php echo $reviews_total; ?>
+							<?php echo esc_html( _n( ' Rating', ' Ratings', count( $reviews ), 'tutor' ) ); ?>
+						</div>
+					</div>
+
+					<div class="tutor-col-lg">
+						<div class="tutor-review-summary-ratings">
+							<?php foreach ( $rating->count_by_value as $key => $value ) : ?>
+								<?php $rating_count_percent = ( $value > 0 ) ? ( $value * 100 ) / $rating->rating_count : 0; ?>
+								<div class="tutor-row tutor-align-center tutor-review-summary-rating">
+									<div class="tutor-col-auto">
+										<div class="tutor-ratings">
+											<div class="tutor-ratings-stars">
+												<span class="tutor-icon-star-line" area-hidden="true"></span>
+											</div>
+											<div class="tutor-ratings-average">
+												<?php echo esc_html( $key ); ?>
+											</div>
+										</div>
+									</div>
+
+									<div class="tutor-col">
+										<div class="tutor-progress-bar tutor-ratings-progress-bar" style="--tutor-progress-value: <?php echo esc_attr( $rating_count_percent ); ?>%">
+											<span class="tutor-progress-value" area-hidden="true"></span>
+										</div>
+									</div>
+
+									<div class="tutor-col-4 tutor-col-lg-3">
+										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating"><?php printf( _n( '%s Rating', '%s Ratings', $value == 0 ? 1 : $value, 'tutor' ), number_format_i18n( $value ) ); ?></span>
+									</div>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tutor-hr" area-hidden="true"></div>
+			
+			<div class="tutor-reviews tutor-card-list tutor-pagination-content-appendable">
+				<?php tutor_load_template( 'single.course.reviews-loop', array( 'reviews' => $reviews ) ); ?>
 			</div>
 		</div>
 	<?php endif; ?>
