@@ -4,7 +4,7 @@ Donate link: https://www.themeum.com
 Tags: lms, elearning, learning management system, course, education, elementor addons for lms, elearning elementor addons, tutor lms, online courses
 Requires at least: 5.3
 Tested up to: 6.1
-Requires PHP: 7.0
+Requires PHP: 7.4
 Stable tag: 2.0.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
