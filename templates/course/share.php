@@ -5,14 +5,14 @@
  * @package ETLMSCourseShare
  */
 $tutor_social_share_icons = tutor_utils()->tutor_social_share_icons();
-if ( ! tutor_utils()->count( $tutor_social_share_icons ) ) {
+if(!tutor_utils()->count($tutor_social_share_icons)) {
 	return;
 }
 
-$share_config  = array(
+$share_config = array(
 	'title' => get_the_title(),
 	'text'  => get_the_excerpt(),
-	'image' => get_tutor_course_thumbnail( 'post-thumbnail', true ),
+	'image' => get_tutor_course_thumbnail('post-thumbnail', true),
 );
 $section_title = $settings['course_share_section_title'];
 $share_title   = $settings['course_share_title'];
@@ -20,7 +20,7 @@ $share_title   = $settings['course_share_title'];
 ?>
 
 <div class="etlms-course-share">
-	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="tutor-btn tutor-btn-ghost etlms-course-share-btn">
+	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="tutor-btn tutor-btn-ghost tutor-course-share-btn etlms-course-share-btn">
 		<?php if ( isset( $settings['course_share_icon']['value'] ) && '' !== $settings['course_share_icon']['value'] ) : ?>
 			<span class="etlms-course-share-icon">
 				<?php \Elementor\Icons_Manager::render_icon( $settings['course_share_icon'], array( 'aria-hidden' => 'true' ) ); ?>
@@ -64,16 +64,13 @@ $share_title   = $settings['course_share_title'];
 						</div>
 					<?php endif; ?>
                     <div class="tutor-social-share-wrap" data-social-share-config="<?php echo esc_attr(wp_json_encode($share_config)); ?>">
-                        <?php foreach ($tutor_social_share_icons as $icon) : ?>
-                                <button class="tutor-social-share-button <?php echo esc_html( $icon['share_class'] ); ?> ' elementor-animation-<?php echo esc_html( $settings['course_share_hover_animation'] ); ?>" style="background: <?php echo esc_html( $icon['color'] ); ?>">
-									<?php if ( 'yes' === $settings['course_social_icon'] ) : ?>
-										<?php echo $icon['icon_html']; ?>
-									<?php endif; ?>
-									<?php if ( 'yes' === $settings['course_social_icon_text'] ) : ?>
-										&nbsp;<?php echo esc_html( $icon['text'] ); ?>
-									<?php endif; ?>
-                                </button>
-						<?php endforeach; ?>
+                        <?php
+                            foreach ($tutor_social_share_icons as $icon){
+                                echo '<button class="tutor_share ' . $icon['share_class'] . '" style="background:'.$icon['color'].'">'. 
+                                        $icon['icon_html'] . ' <span>' . $icon['text'] . '</span>
+                                    </button>';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
