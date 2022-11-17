@@ -64,13 +64,16 @@ $share_title   = $settings['course_share_title'];
 						</div>
 					<?php endif; ?>
                     <div class="tutor-social-share-wrap" data-social-share-config="<?php echo esc_attr(wp_json_encode($share_config)); ?>">
-                        <?php
-                            foreach ($tutor_social_share_icons as $icon){
-                                echo '<button class="tutor_share ' . $icon['share_class'] . '" style="background:'.$icon['color'].'">'. 
-                                        $icon['icon_html'] . ' <span>' . $icon['text'] . '</span>
-                                    </button>';
-                            }
-                        ?>
+                        <?php foreach ($tutor_social_share_icons as $icon) : ?>
+                            <button class="tutor-social-share-button <?php echo esc_html( $icon['share_class'] ); ?> ' elementor-animation-<?php echo esc_html( $settings['course_share_hover_animation'] ); ?>" style="background: <?php echo esc_html( $icon['color'] ); ?>">
+                                <?php if ( 'yes' === $settings['course_social_icon'] ) : ?>
+                                    <?php echo $icon['icon_html']; ?>
+                                <?php endif; ?>
+                                <?php if ( 'yes' === $settings['course_social_icon_text'] ) : ?>
+                                    &nbsp;<?php echo esc_html( $icon['text'] ); ?>
+                                <?php endif; ?>
+                            </button>
+						<?php endforeach; ?>
                     </div>
                 </div>
             </div>
