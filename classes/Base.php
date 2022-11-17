@@ -65,12 +65,12 @@ class Base {
 		if ( $plugin_file === ETLMS_BASENAME ) {
 			$plugin_meta[] = sprintf(
 				'<a href="%s" target="_blank">%s</a>',
-				esc_url( 'https://docs.themeum.com/tutor-lms/integrations/elementor-page-builder/?utm_source=tutor-lms-elementor-addons&utm_medium=plugins_installation_list&utm_campaign=plugin_docs_link' ),
+				esc_url( 'https://docs.themeum.com/tutor-lms/elementor-integration/' ),
 				__( '<strong style="color: #03bd24">Documentation</strong>', 'tutor-lms-elementor-addons' )
 			);
 			$plugin_meta[] = sprintf(
 				'<a href="%s" target="_blank">%s</a>',
-				esc_url( 'https://www.themeum.com/contact-us/?utm_source=tutor-lms-elementor-addons&utm_medium=plugins_installation_list&utm_campaign=plugin_support_link' ),
+				esc_url( 'https://www.themeum.com/support/' ),
 				__( '<strong style="color: #03bd24">Get Support</strong>', 'tutor-lms-elementor-addons' )
 			);
 		}
