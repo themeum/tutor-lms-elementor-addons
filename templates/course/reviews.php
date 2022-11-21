@@ -112,6 +112,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 		</div>
 	<?php endif; ?>
 
+	
 	<div class="tutor-row tutor-mt-40 tutor-mb-20">
 		<div class="tutor-col">
 			<?php if ( $is_enrolled ) : ?>
