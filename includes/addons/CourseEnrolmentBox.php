@@ -221,9 +221,7 @@ class CourseEnrolmentBox extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		
 		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
-
 		/* Add to Cart Section */
 		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-btn-primary.tutor-add-to-cart-button';
 
