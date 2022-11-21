@@ -4,17 +4,17 @@ Plugin Name: Tutor LMS Elementor Addons
 Plugin URI: https://www.themeum.com/product/tutor-lms/
 Description: Elementor Addons Integration - Tutor LMS plugin lets you design course pages with Elementor.
 Author: Themeum
-Version: 2.0.5
+Version: 2.0.6
 Author URI: http://themeum.com
 Requires at least: 5.3
-Tested up to: 6.0.2
+Tested up to: 6.1
 License: GPLv2 or later
 Text Domain: tutor-lms-elementor-addons
 */
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ETLMS_VERSION', '2.0.5' );
+define( 'ETLMS_VERSION', '2.0.6' );
 
 /**
  * Tutor LMS Elementor addons v2.0.0 dependency on Tutor core
@@ -24,7 +24,7 @@ define( 'ETLMS_VERSION', '2.0.5' );
  *
  * @since v2.0.0
  */
-define( 'ETLMS_TUTOR_CORE_REQ_VERSION', '2.0.0' );
+define( 'ETLMS_TUTOR_CORE_REQ_VERSION', '2.1.0' );
 
 define( 'ETLMS_FILE__', __FILE__ );
 define( 'ETLMS_BASENAME', plugin_basename( ETLMS_FILE__ ) );
@@ -47,7 +47,7 @@ function elementor_tutor_lms_init() {
 	require_once ETLMS_DIR_PATH . 'classes/ManageDependency.php';
 	$dependency = new \TutorLMS\Elementor\ManageDependency();
 
-	// all three conditions are required to run Tutor LMS Elementor addons v2.0.0.
+	// all three conditions are required to run Tutor LMS Elementor addons v2.1.0.
 	if ( ! function_exists( 'tutor_lms' ) || ! did_action( 'elementor/loaded' ) ) {
 		require_once ETLMS_DIR_PATH . 'classes/Installer.php';
 		new \TutorLMS\Elementor\Installer();
