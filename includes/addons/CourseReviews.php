@@ -68,7 +68,7 @@ class CourseReviews extends BaseAddon {
 		/**
 		 * Merge reviews style controls
 		 */
-		$selector       = '{{WRAPPER}} .etlms-tutor-review-summary-review';
+		$selector       = '{{WRAPPER}} .tutor-review-summary';
 		$selector_title = "{{WRAPPER}} .etlms-course-widget-title";
 
 		/* Title Section */
@@ -134,7 +134,7 @@ class CourseReviews extends BaseAddon {
 				'label'     => __( 'Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-tutor-review-summary-reviews .tutor-review-summary-average-rating' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tutor-review-summary-average .tutor-review-summary-average-rating' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -144,7 +144,7 @@ class CourseReviews extends BaseAddon {
 			array(
 				'name'     => 'course_reviews_avg_rating_text_typo',
 				'label'    => __( 'Text Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .etlms-tutor-review-summary-reviews .tutor-review-summary-average-rating',
+				'selector' => '{{WRAPPER}} .tutor-review-summary-average .tutor-review-summary-average-rating',
 			)
 		);
 
@@ -154,7 +154,7 @@ class CourseReviews extends BaseAddon {
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .etlms-tutor-review-summary-reviews .tutor-review-summary .tutor-ratings-stars span' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tutor-review-summary-average .tutor-ratings-stars' => 'color: {{VALUE}};',
 				)
 			)
 		);
@@ -183,7 +183,7 @@ class CourseReviews extends BaseAddon {
 				'label'     => __( 'Total Label Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-total-rating-count' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .tutor-review-summary-average .tutor-review-summary-average-label' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -192,7 +192,7 @@ class CourseReviews extends BaseAddon {
 			array(
 				'name'     => 'course_reviews_avg_rating_total_label_typo',
 				'label'    => __( 'Total Label Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .tutor-total-rating-count',
+				'selector' => '{{WRAPPER}} .tutor-review-summary-average .tutor-review-summary-average-label',
 			)
 		);
 		
