@@ -64,6 +64,7 @@ $share_title   = $settings['course_share_title'];
 						</div>
 					<?php endif; ?>
                     <div class="tutor-social-share-wrap" data-social-share-config="<?php echo esc_attr(wp_json_encode($share_config)); ?>">
+<<<<<<< HEAD
                         <?php foreach ($tutor_social_share_icons as $icon) : ?>
                             <button class="tutor_share <?php echo esc_html( $icon['share_class'] ); ?> ' elementor-animation-<?php echo esc_html( $settings['course_share_hover_animation'] ); ?>" style="background: <?php echo esc_html( $icon['color'] ); ?>">
                                 <?php if ( 'yes' === $settings['course_social_icon'] ) : ?>
