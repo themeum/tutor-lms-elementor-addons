@@ -1229,7 +1229,6 @@ class CoursePurchase extends BaseAddon {
 				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
 			)
 		);
-		
 		/* Start Tabs */
 		$this->start_controls_tabs( 'view_cart_btn_tabs' );
 
