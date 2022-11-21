@@ -278,7 +278,6 @@ class CoursePurchase extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-
 		/**
 		 * Course progress controls
 		 *
@@ -353,6 +352,7 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
+
 		$this->add_control(
 			'course_status_bar_background_color',
 			array(
@@ -363,6 +363,7 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
+
 		$this->add_control(
 			'course_status_progress_bar_height',
 			array(
@@ -386,6 +387,7 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
+
 		$this->add_control(
 			'course_status_progress_radius',
 			array(
@@ -414,6 +416,7 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
+
 		$this->add_control(
 			'course_status_progress_text',
 			array(
@@ -421,6 +424,7 @@ class CoursePurchase extends BaseAddon {
 				'type'  => \Elementor\Controls_Manager::HEADING,
 			)
 		);
+
 		$this->add_control(
 			'course_status_progress_text_color',
 			array(
@@ -431,6 +435,7 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
+
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
@@ -442,13 +447,12 @@ class CoursePurchase extends BaseAddon {
 
 		$this->end_controls_section();
 		// course progress controls end.
-
 		/**
 		 * Course price controls
 		 *
 		 * @since v2.0.0
 		 */
-		$course_price_wrapper = '{{WRAPPER}} .tutor-sidebar-card';
+		$course_price_wrapper = '{{WRAPPER}} .tutor-course-sidebar-card-pricing';
 		$this->start_controls_section(
 			'course_price_style_section',
 			array(
@@ -456,7 +460,6 @@ class CoursePurchase extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
-
 		/* Start Tabs */
 		$this->start_controls_tabs( 'course_price_style_tabs' );
 
@@ -467,23 +470,25 @@ class CoursePurchase extends BaseAddon {
 					'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
 				)
 			);
+
 			$this->add_control(
 				'course_price_normal_text_color',
 				array(
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper .tutor-course-single-pricing span" => 'color: {{VALUE}};',
+						"$course_price_wrapper div > span" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
 			);
+
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'course_purchase_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper .tutor-course-single-pricing span, {{WRAPPER}} .tutor-fs-4",
+					'selector' => "$course_price_wrapper div > span, {{WRAPPER}} .tutor-fs-4",
 				)
 			);
 
@@ -496,6 +501,7 @@ class CoursePurchase extends BaseAddon {
 					'label' => __( 'Strike', 'tutor-lms-elementor-addons' ),
 				)
 			);
+
 			$this->add_control(
 				'strikethrough_text_color',
 				array(
@@ -507,6 +513,7 @@ class CoursePurchase extends BaseAddon {
 					'default'   => '#7A7A7A',
 				)
 			);
+
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
@@ -520,14 +527,11 @@ class CoursePurchase extends BaseAddon {
 
 		$this->end_controls_tabs();
 		/* End Tabs */
-
 		$this->end_controls_section();
 		// course price controls end.
-
 		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
-
 		/* Add to Cart Section */
-		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-btn-primary.tutor-add-to-cart-button';
+		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-enrol-course-form .tutor-enroll-course-button';
 
 		$this->start_controls_section(
 			'add_to_cart_btn',
@@ -708,7 +712,6 @@ class CoursePurchase extends BaseAddon {
 				// 'condition' => ['course_enrolment_edit_mode' => 'enrolment_box'],
 			)
 		);
-
 		/* Start Tabs */
 		$this->start_controls_tabs( 'enroll_btn_tabs' );
 
@@ -1053,7 +1056,6 @@ class CoursePurchase extends BaseAddon {
 				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
 			)
 		);
-		
 		/* Start Tabs */
 		$this->start_controls_tabs( 'complete_btn_tabs' );
 
@@ -1227,6 +1229,7 @@ class CoursePurchase extends BaseAddon {
 				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
 			)
 		);
+		
 		/* Start Tabs */
 		$this->start_controls_tabs( 'view_cart_btn_tabs' );
 
