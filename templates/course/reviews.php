@@ -152,8 +152,8 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 		<div class="tutor-write-review-form" style="display: none;">
 			<form method="post">
 				<div class="tutor-star-rating-container">
-					<input type="hidden" name="course_id" value="<?php echo $course_id; ?>"/>
-					<input type="hidden" name="review_id" value="<?php echo $my_rating ? $my_rating->comment_ID : ''; ?>"/>
+					<input type="hidden" name="course_id" value="<?php echo esc_attr($course_id); ?>"/>
+					<input type="hidden" name="review_id" value="<?php echo esc_attr( $my_rating ? $my_rating->comment_ID : '' ); ?>"/>
 					<input type="hidden" name="action" value="tutor_place_rating"/>
 					<div class="tutor-form-group">
 						<div class="tutor-ratings tutor-ratings-lg tutor-ratings-selectable" tutor-ratings-selectable>
@@ -163,7 +163,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 						</div>
 					</div>
 					<div class="tutor-form-group">
-						<textarea name="review" placeholder="<?php _e( 'write a review', 'tutor-lms-elementor-addons' ); ?>"><?php echo stripslashes( $my_rating ? $my_rating->comment_content : '' ); ?></textarea>
+						<textarea name="review" placeholder="<?php esc_html_e( 'write a review', 'tutor-lms-elementor-addons' ); ?>"><?php echo esc_textarea( $my_rating ? $my_rating->comment_content : '' ); ?></textarea>
 					</div>
 					<div class="tutor-form-group">
 						<button type="submit" class="tutor_submit_review_btn tutor-btn tutor-btn-primary">
