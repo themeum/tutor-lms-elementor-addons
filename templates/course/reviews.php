@@ -154,7 +154,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 									</div>
 
 									<div class="tutor-col-4 tutor-col-lg-3">
-										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating"><?php printf( _n( '%s Rating', '%s Ratings', $value == 0 ? 1 : $value, 'tutor-lms-elementor-addons' ), number_format_i18n( $value ) ); ?></span>
+										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating"><?php printf( _n( '%s Rating', '%s Ratings', $value == 0 ? 1 : $value, 'tutor' ), number_format_i18n( $value ) ); ?></span>
 									</div>
 								</div>
 							<?php endforeach; ?>
