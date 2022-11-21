@@ -145,39 +145,6 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 				?>
 		</div>
 	</div>
-	<div class="tutor-row tutor-mt-40 tutor-mb-20">
-		<div class="tutor-col">
-			<?php if ( $is_enrolled ) : ?>
-				<button class="tutor-btn tutor-btn-primary write-course-review-link-btn">
-					<i class="tutor-icon-star-line tutor-mr-8"></i>
-					<?php
-						$is_new = ! $my_rating || empty( $my_rating->rating ) || empty( $my_rating->comment_content );
-						$is_new ? _e( 'Write a review', 'tutor' ) : _e( 'Edit review', 'tutor' );
-					?>
-				</button>
-			<?php endif; ?>
-		</div>
-
-		<div class="tutor-col-auto">
-			<?php
-				$pagination_data              = array(
-					'total_items' => $reviews_total,
-					'per_page'    => $per_page,
-					'paged'       => $current_page,
-					'layout'      => array(
-						'type'           => 'load_more',
-						'load_more_text' => __( 'Load More', 'tutor' ),
-					),
-					'ajax'        => array(
-						'action'    => 'tutor_single_course_reviews_load_more',
-						'course_id' => $course_id,
-					),
-				);
-				$pagination_template_frontend = tutor()->path . 'templates/dashboard/elements/pagination.php';
-				tutor_load_template_from_custom_path( $pagination_template_frontend, $pagination_data );
-				?>
-		</div>
-	</div>
 </div>
 
 <?php if ( $is_enrolled ) : ?>
