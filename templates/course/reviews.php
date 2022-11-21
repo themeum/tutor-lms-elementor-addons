@@ -152,7 +152,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 					<i class="tutor-icon-star-line tutor-mr-8"></i>
 					<?php
 						$is_new = ! $my_rating || empty( $my_rating->rating ) || empty( $my_rating->comment_content );
-						$is_new ? _e( 'Write a review', 'tutor-lms-elementor-addons' ) : _e( 'Edit review', 'tutor-lms-elementor-addons' );
+						$is_new ? _e( 'Write a review', 'tutor-lms-elementor-addons' ) : _e( 'Edit review', 'tutor' );
 					?>
 				</button>
 			<?php endif; ?>
