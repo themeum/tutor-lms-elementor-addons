@@ -274,6 +274,15 @@ class CourseCarousel extends BaseAddon {
             );
 
             $this->add_control(
+                'course_carousel_include_by_ids',
+                [
+                    'label' => __( 'ID', 'tutor-lms-elementor-addons' ),
+                    'type' => Controls_Manager::TEXT,
+                    'default' => ''
+                ]
+            );
+
+            $this->add_control(
                 'course_carousel_include_by_categories',
                 [
                     'label' => __( 'Categories', 'tutor-lms-elementor-addons' ),
@@ -302,6 +311,15 @@ class CourseCarousel extends BaseAddon {
                 'course_carousel_query_tab_exclude',
                 [
                     'label' => __( 'Exclude', 'tutor-lms-elementor-addons' ),
+                ]
+            );
+
+            $this->add_control(
+                'course_carousel_exclude_by_ids',
+                [
+                    'label' => __( 'ID', 'tutor-lms-elementor-addons' ),
+                    'type' => Controls_Manager::TEXT,
+                    'default' => ''
                 ]
             );
 
@@ -340,6 +358,7 @@ class CourseCarousel extends BaseAddon {
                 'options' => [
                     'post_date' => __( 'Date', 'tutor-lms-elementor-addons' ),
                     'post_title' => __( 'Title', 'tutor-lms-elementor-addons' ),
+                    'post__in' => __( 'ID', 'tutor-lms-elementor-addons' ),
                 ],
                 'default' => 'post_date'
             ]

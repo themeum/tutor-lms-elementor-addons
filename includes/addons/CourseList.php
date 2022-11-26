@@ -304,6 +304,15 @@ class CourseList extends BaseAddon {
 			);
 
 			$this->add_control(
+				'course_list_include_by_ids',
+				array(
+					'label'    => __( 'ID', 'tutor-lms-elementor-addons' ),
+					'type'     => Controls_Manager::TEXT,
+					'default'  => '',
+				)
+			);
+
+			$this->add_control(
 				'course_list_include_by_categories',
 				array(
 					'label'    => __( 'Categories', 'tutor-lms-elementor-addons' ),
@@ -332,6 +341,15 @@ class CourseList extends BaseAddon {
 				'course_list_query_tab_exclude',
 				array(
 					'label' => __( 'Exclude', 'tutor-lms-elementor-addons' ),
+				)
+			);
+
+			$this->add_control(
+				'course_list_exclude_by_ids',
+				array(
+					'label'    => __( 'ID', 'tutor-lms-elementor-addons' ),
+					'type'     => Controls_Manager::TEXT,
+					'default'  => '',
 				)
 			);
 
@@ -370,6 +388,7 @@ class CourseList extends BaseAddon {
 				'options' => array(
 					'post_date'  => __( 'Date', 'tutor-lms-elementor-addons' ),
 					'post_title' => __( 'Title', 'tutor-lms-elementor-addons' ),
+					'post__in' => __( 'ID', 'tutor-lms-elementor-addons' ),
 				),
 				'default' => 'post_date',
 			)

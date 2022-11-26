@@ -1,5 +1,7 @@
 <div class="<?php tutor_container_classes(); ?> etlms-carousel-main-wrap">
 	<?php
+	$include_by_ids        	= $settings['course_carousel_include_by_ids'];
+	$exclude_by_ids        	= $settings['course_carousel_exclude_by_ids'];
 	$include_by_categories 	= $settings['course_carousel_include_by_categories'];
 	$exclude_by_categories 	= $settings['course_carousel_exclude_by_categories'];
 	$include_by_authors    	= $settings['course_carousel_include_by_authors'];
@@ -19,6 +21,14 @@
 			'relation' => 'AND',
 		),
 	);
+
+	if ( ! empty( $include_by_ids ) ) {
+		$args['post__in'] = (array) explode( ',', $include_by_ids );
+	}
+
+	if ( ! empty( $exclude_by_ids ) ) {
+		$args['post__not_in'] = (array) explode( ',', $exclude_by_ids );
+	}
 
 	if ( ! empty( $include_by_categories ) ) {
 		$tax_query = array(
