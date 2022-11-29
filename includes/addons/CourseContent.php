@@ -168,7 +168,7 @@ class CourseContent extends BaseAddon {
 					'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::CHOOSE,
 					'options'   => array(
-						'list-item'  => array(
+						'flex'  => array(
 							'title' => __( 'List', 'tutor-lms-elementor-addons' ),
 							'icon'  => 'fa fa-list-ul',
 						),
@@ -177,10 +177,10 @@ class CourseContent extends BaseAddon {
 							'icon'  => 'fa fa-ellipsis-h',
 						),
 					),
-					'default'   => 'list-item',
+					'default'   => 'flex',
 					'prefix_class'	=> 'etlms-course-content-benefits-display-',
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-course-widget-list-items li'  => 'display: {{VALUE}};',
+						'{{WRAPPER}} .tutor-course-details-widget-col-2 ul'  => 'display: {{VALUE}} !important;',
 					),
 				)
 			);
