@@ -352,7 +352,6 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
-
 		$this->add_control(
 			'course_status_bar_background_color',
 			array(
