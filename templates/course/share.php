@@ -5,14 +5,14 @@
  * @package ETLMSCourseShare
  */
 $tutor_social_share_icons = tutor_utils()->tutor_social_share_icons();
-if(!tutor_utils()->count($tutor_social_share_icons)) {
+if ( ! tutor_utils()->count( $tutor_social_share_icons ) ) {
 	return;
 }
 
-$share_config = array(
+$share_config  = array(
 	'title' => get_the_title(),
 	'text'  => get_the_excerpt(),
-	'image' => get_tutor_course_thumbnail('post-thumbnail', true),
+	'image' => get_tutor_course_thumbnail( 'post-thumbnail', true ),
 );
 $section_title = $settings['course_share_section_title'];
 $share_title   = $settings['course_share_title'];
@@ -20,7 +20,7 @@ $share_title   = $settings['course_share_title'];
 ?>
 
 <div class="etlms-course-share">
-	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="tutor-btn tutor-btn-ghost tutor-course-share-btn etlms-course-share-btn">
+	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="tutor-btn tutor-btn-ghost etlms-course-share-btn">
 		<?php if ( isset( $settings['course_share_icon']['value'] ) && '' !== $settings['course_share_icon']['value'] ) : ?>
 			<span class="etlms-course-share-icon">
 				<?php \Elementor\Icons_Manager::render_icon( $settings['course_share_icon'], array( 'aria-hidden' => 'true' ) ); ?>
