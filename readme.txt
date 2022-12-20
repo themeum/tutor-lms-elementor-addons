@@ -142,6 +142,18 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
+= 2.0.6 - 20 December, 2022
+
+* Fix: Course Price style update was not working
+* Fix: The Documentation & Support Link was wrong on the Plugin's List page
+* Fix: Social Share was not working on the Course Details page
+* Fix: The Course Benefit section Layout Settings was not working in Editor Mode
+* Fix: The review section style was not working on the Course Details page
+* Fix: Course Progress was not appearing on the Course Details page
+* Fix: Course Enrollment Box style was not working
+* Fix: Course Enrolled Box style was not working
+* Fix: Course Review Widget Stars were not selectable on the Course Details page when it is used as a Widget
+
 = 2.0.5 - 1 September, 2022
 
 * Update: More security improvement is introduced
