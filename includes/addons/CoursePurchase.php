@@ -77,7 +77,6 @@ class CoursePurchase extends BaseAddon {
 		 * Course price controls
 		 *
 		 * @since v2.0.0
-		 */
 		$this->start_controls_section(
 			'course_price_content',
 			array(
@@ -89,13 +88,14 @@ class CoursePurchase extends BaseAddon {
 			'course_price_align',
 			$this->title_alignment_with_selectors(
 				array(
-					'{{WRAPPER}} .tutor-course-single-pricing' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .tutor-course-sidebar-card-pricing' => 'align-items: {{VALUE}};',
 				),
 				'left'
 			)
 		);
 
 		$this->end_controls_section();
+		*/
 		// course price controls end.
 
 		/**
@@ -352,7 +352,6 @@ class CoursePurchase extends BaseAddon {
 				),
 			)
 		);
-
 		$this->add_control(
 			'course_status_bar_background_color',
 			array(
@@ -477,7 +476,7 @@ class CoursePurchase extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper div > span" => 'color: {{VALUE}};',
+						"$course_price_wrapper span" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -488,7 +487,7 @@ class CoursePurchase extends BaseAddon {
 				array(
 					'name'     => 'course_purchase_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper div > span, {{WRAPPER}} .tutor-fs-4",
+					'selector' => "$course_price_wrapper span, {{WRAPPER}} .tutor-fs-4",
 				)
 			);
 
@@ -529,7 +528,7 @@ class CoursePurchase extends BaseAddon {
 		/* End Tabs */
 		$this->end_controls_section();
 		// course price controls end.
-		$selector = '{{WRAPPER}} .tutor-course-sidebar-card';
+		$selector = '{{WRAPPER}} .tutor-sidebar-card';
 		/* Add to Cart Section */
 		$add_to_cart_btn_selector = '{{WRAPPER}} .tutor-enrol-course-form .tutor-enroll-course-button';
 

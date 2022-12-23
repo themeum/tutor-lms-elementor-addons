@@ -70,7 +70,7 @@ class CoursePrice extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper ins .woocommerce-Price-amount, {{WRAPPER}} .tutor-course-sidebar-card-pricing .edd_price" => 'color: {{VALUE}};',
+						"$course_price_wrapper span" => 'color: {{VALUE}};',
 					),
 					'default'   => '#212327',
 				)
@@ -79,9 +79,9 @@ class CoursePrice extends BaseAddon {
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
-					'name'     => 'course_price_normal_text_typography',
+					'name'     => 'course_purchase_price_normal_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper ins .woocommerce-Price-amount, {{WRAPPER}} .tutor-course-sidebar-card-pricing .edd_price",
+					'selector' => "$course_price_wrapper span, {{WRAPPER}} .tutor-fs-4",
 				)
 			);
 
@@ -101,7 +101,7 @@ class CoursePrice extends BaseAddon {
 					'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						"$course_price_wrapper del .woocommerce-Price-amount" => 'color: {{VALUE}};',
+						"$course_price_wrapper div > del" => 'color: {{VALUE}};',
 					),
 					'default'   => '#7A7A7A',
 				)
@@ -112,7 +112,7 @@ class CoursePrice extends BaseAddon {
 				array(
 					'name'     => 'strikethrough_text_typography',
 					'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-					'selector' => "$course_price_wrapper del .woocommerce-Price-amount",
+					'selector' => "$course_price_wrapper div > del",
 				)
 			);
 

@@ -3,9 +3,9 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: lms, elearning, learning management system, course, education, elementor addons for lms, elearning elementor addons, tutor lms, online courses
 Requires at least: 5.3
-Tested up to: 6.0.2
-Requires PHP: 7.0
-Stable tag: 2.0.5
+Tested up to: 6.1
+Requires PHP: 7.4
+Stable tag: 2.0.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -141,6 +141,18 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
+
+= 2.0.6 - 20 December, 2022
+
+* Fix: Course Price style update was not working
+* Fix: The Documentation & Support Link was wrong on the Plugin's List page
+* Fix: Social Share was not working on the Course Details page
+* Fix: The Course Benefit section Layout Settings was not working in Editor Mode
+* Fix: The review section style was not working on the Course Details page
+* Fix: Course Progress was not appearing on the Course Details page
+* Fix: Course Enrollment Box style was not working
+* Fix: Course Enrolled Box style was not working
+* Fix: Course Review Widget Stars were not selectable on the Course Details page when it is used as a Widget
 
 = 2.0.5 - 1 September, 2022
 

@@ -168,7 +168,7 @@ class CourseContent extends BaseAddon {
 					'label'     => __( 'Layout', 'tutor-lms-elementor-addons' ),
 					'type'      => Controls_Manager::CHOOSE,
 					'options'   => array(
-						'list-item'  => array(
+						'flex'  => array(
 							'title' => __( 'List', 'tutor-lms-elementor-addons' ),
 							'icon'  => 'fa fa-list-ul',
 						),
@@ -177,10 +177,10 @@ class CourseContent extends BaseAddon {
 							'icon'  => 'fa fa-ellipsis-h',
 						),
 					),
-					'default'   => 'list-item',
+					'default'   => 'flex',
 					'prefix_class'	=> 'etlms-course-content-benefits-display-',
 					'selectors' => array(
-						'{{WRAPPER}} .etlms-course-widget-list-items li'  => 'display: {{VALUE}};',
+						'{{WRAPPER}} .tutor-course-details-widget-col-2 ul'  => 'display: {{VALUE}} !important;',
 					),
 				)
 			);
@@ -1246,7 +1246,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					"$review_selector .tutor-ratings-stars span"  => 'color: {{VALUE}};',
+					"{{WRAPPER}} .tutor-review-summary .tutor-ratings-stars span"  => 'color: {{VALUE}};',
 				),
 				'default'   => '#ED9700',
 			)
@@ -1264,7 +1264,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					"$review_selector .tutor-ratings-stars span" => 'font-size: {{SIZE}}{{UNIT}};',
+					"{{WRAPPER}} .tutor-review-summary .tutor-ratings-stars span" => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 18,
@@ -1295,7 +1295,7 @@ class CourseContent extends BaseAddon {
 		$this->end_controls_section();
 
 		/* Review average right bar section */
-		$review_right_wrapper = "{{WRAPPER}} .tutor-review-summary-ratings";
+		$review_right_wrapper = "{{WRAPPER}} .tutor-review-summary";
 
 		$this->start_controls_section(
 			'review_avg_right_bar_main',
@@ -1353,7 +1353,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$review_right_wrapper . ' .tutor-ratings-stars span' => 'color: {{VALUE}} !important;',
+					$review_right_wrapper . ' .tutor-ratings-stars' => 'color: {{VALUE}};',
 				),
 				'default'   => '#ED9700',
 			)
@@ -1371,7 +1371,7 @@ class CourseContent extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					$review_right_wrapper . ' .tutor-ratings-stars span' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+					$review_right_wrapper . ' .tutor-ratings-stars' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 15,
@@ -1474,7 +1474,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Name Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} a.tutor-reviewer-name' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tutor-reviewer-name a' => 'color: {{VALUE}} !important;',
 				),
 				'default'   => '#212327',
 			)
@@ -1484,7 +1484,7 @@ class CourseContent extends BaseAddon {
 			array(
 				'name'     => 'reviewer_name_typo',
 				'label'    => __( 'Name Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => '{{WRAPPER}} a.tutor-reviewer-name',
+				'selector' => '{{WRAPPER}} .tutor-reviewer-name a',
 			)
 		);
 		$this->add_control(
@@ -1512,7 +1512,7 @@ class CourseContent extends BaseAddon {
 				'label'     => __( 'Stars Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$review_list_section_selector . ' .tutor-ratings-stars span' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tutor-card-list-item .tutor-ratings-stars span' => 'color: {{VALUE}};',
 				),
 				'default'   => '#ED9700',
 			)
@@ -1540,8 +1540,8 @@ class CourseContent extends BaseAddon {
 						'max' => 64,
 					),
 				),
-				'selectors'  => array(
-					$review_list_section_selector . ' .tutor-ratings-stars span' => 'font-size: {{SIZE}}{{UNIT}};',
+				'selectors' => array(
+					'{{WRAPPER}} .tutor-card-list-item .tutor-ratings-stars span' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 				'default'    => array(
 					'size' => 14,
