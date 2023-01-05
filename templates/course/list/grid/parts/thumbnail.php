@@ -1,7 +1,6 @@
 <?php if ( 'yes' == $settings['course_list_image'] ) : ?>
     <?php
-        $image_size = $settings['course_list_image_size'];
-        $image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
+        $image_url  = get_tutor_course_thumbnail( $url = true );
     ?>
     <div class="tutor-course-thumbnail">
         <a href="<?php the_permalink(); ?>" class="tutor-d-block">
