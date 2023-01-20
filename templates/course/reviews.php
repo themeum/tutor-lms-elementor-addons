@@ -47,7 +47,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 	</h3>
 
 	<?php if ( ! is_array( $reviews ) || ! count( $reviews ) ) : ?>
-		<?php tutor_utils()->tutor_empty_state( __( 'No Review Yet', 'tutor' ) ); ?>
+		<?php tutor_utils()->tutor_empty_state( __( 'No Review Yet', 'tutor-lms-elementor-addons' ) ); ?>
 	<?php else : ?>
 		<div class="tutor-card tutor-review-card">
 			<div class="tutor-review-summary tutor-p-24 tutor-p-lg-40">
@@ -66,7 +66,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 						<div class="tutor-fs-6 tutor-color-secondary tutor-mt-12 tutor-total-rating-count">
 							<?php esc_html_e( 'Total ', 'tutor' ); ?>
 							<?php echo esc_html( $reviews_total ); ?>
-							<?php echo esc_html( _n( ' Rating', ' Ratings', count( $reviews ), 'tutor' ) ); ?>
+							<?php echo esc_html( _n( ' Rating', ' Ratings', count( $reviews ), 'tutor-lms-elementor-addons' ) ); ?>
 						</div>
 					</div>
 
@@ -93,7 +93,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 									</div>
 
 									<div class="tutor-col-4 tutor-col-lg-3">
-										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating"><?php printf( esc_html( _n( '%s Rating', '%s Ratings', 0 == $value ? 1 : $value, 'tutor' ) ), number_format_i18n( $value ) ); ?></span>
+										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating"><?php printf( esc_html( _n( '%s Rating', '%s Ratings', 0 == $value ? 1 : $value, 'tutor-lms-elementor-addons' ) ), number_format_i18n( $value ) ); ?></span>
 									</div>
 								</div>
 							<?php endforeach; ?>
@@ -117,7 +117,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 					<i class="tutor-icon-star-line tutor-mr-8"></i>
 					<?php
 						$is_new = ! $my_rating || empty( $my_rating->rating ) || empty( $my_rating->comment_content );
-						$is_new ? esc_html_e( 'Write a review', 'tutor' ) : esc_html_e( 'Edit review', 'tutor' );
+						$is_new ? esc_html_e( 'Write a review', 'tutor' ) : esc_html_e( 'Edit review', 'tutor-lms-elementor-addons' );
 					?>
 				</button>
 			<?php endif; ?>
@@ -131,7 +131,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 					'paged'       => $current_page,
 					'layout'      => array(
 						'type'           => 'load_more',
-						'load_more_text' => __( 'Load More', 'tutor' ),
+						'load_more_text' => __( 'Load More', 'tutor-lms-elementor-addons' ),
 					),
 					'ajax'        => array(
 						'action'    => 'tutor_single_course_reviews_load_more',
@@ -161,11 +161,11 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 						</div>
 					</div>
 					<div class="tutor-form-group">
-						<textarea name="review" placeholder="<?php esc_html_e( 'write a review', 'tutor' ); ?>"><?php echo stripslashes( $my_rating ? $my_rating->comment_content : '' ); //phpcs:ignore ?></textarea>
+						<textarea name="review" placeholder="<?php esc_html_e( 'write a review', 'tutor-lms-elementor-addons' ); ?>"><?php echo stripslashes( $my_rating ? $my_rating->comment_content : '' ); //phpcs:ignore ?></textarea>
 					</div>
 					<div class="tutor-form-group">
 						<button type="submit" class="tutor_submit_review_btn tutor-btn tutor-btn-primary">
-							<?php esc_html_e( 'Submit Review', 'tutor' ); ?>
+							<?php esc_html_e( 'Submit Review', 'tutor-lms-elementor-addons' ); ?>
 						</button>
 					</div>
 				</div>
