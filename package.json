@@ -1,6 +1,6 @@
 {
   "name": "tutor-lms-elementor-addons",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "<img src=\".github/tutor-github.png\" alt=\"TutorLMS\" width=\"100%\">",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/themeum/tutor-lms-elementor-addons#readme",
   "devDependencies": {
-    "gulp": "^4.0.2",
+    "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-cssnano": "^2.1.3",

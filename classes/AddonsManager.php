@@ -23,7 +23,7 @@ class AddonsManager {
 	 * @since 1.0.0
 	 */
 	public static function init() {
-		add_action( 'elementor/widgets/widgets_registered', array( __CLASS__, 'register' ) );
+		add_action( 'elementor/widgets/register', array( __CLASS__, 'register' ) );
 	}
 
 	/**
@@ -63,7 +63,7 @@ class AddonsManager {
 			include_once $addon_file;
 			$addon_instance = '\TutorLMS\Elementor\Addons\\' . $key;
 			if ( class_exists( $addon_instance ) ) {
-				$elementor->widgets_manager->register_widget_type( new $addon_instance() );
+				$elementor->widgets_manager->register( new $addon_instance() );
 			}
 		}
 	}
