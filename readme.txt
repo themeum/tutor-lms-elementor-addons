@@ -142,6 +142,11 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
+= 2.0.7 - 25 January, 2023
+
+* Update: Compatibility with the latest Elementor is introduced
+* Fix: Reviews were appearing twice on the Review widget
+
 = 2.0.6 - 20 December, 2022
 
 * Fix: Course Price style update was not working
