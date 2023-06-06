@@ -64,7 +64,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 						</div>
 
 						<div class="tutor-fs-6 tutor-color-secondary tutor-mt-12 tutor-total-rating-count">
-							<?php esc_html_e( 'Total ', 'tutor' ); ?>
+							<?php esc_html_e( 'Total ', 'tutor-lms-elementor-addons' ); ?>
 							<?php echo esc_html( $reviews_total ); ?>
 							<?php echo esc_html( _n( ' Rating', ' Ratings', count( $reviews ), 'tutor-lms-elementor-addons' ) ); ?>
 						</div>
@@ -117,7 +117,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 					<i class="tutor-icon-star-line tutor-mr-8"></i>
 					<?php
 						$is_new = ! $my_rating || empty( $my_rating->rating ) || empty( $my_rating->comment_content );
-						$is_new ? esc_html_e( 'Write a review', 'tutor' ) : esc_html_e( 'Edit review', 'tutor-lms-elementor-addons' );
+						$is_new ? esc_html_e( 'Write a review', 'tutor-lms-elementor-addons' ) : esc_html_e( 'Edit review', 'tutor-lms-elementor-addons' );
 					?>
 				</button>
 			<?php endif; ?>

@@ -73,7 +73,7 @@ class CourseCategories extends BaseAddon {
 					),
 				),
 				'default'      => 'row',
-                'prefix_class' => self::$prefix_class_layout . '%s',
+				'prefix_class' => self::$prefix_class_layout . '%s',
 				'toggle'       => false,
 				'selectors'    => array(
 					'{{WRAPPER}} .etlms-course-categories' => 'flex-direction: {{VALUE}};',
@@ -128,7 +128,7 @@ class CourseCategories extends BaseAddon {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .etlms-course-categories' => 'gap: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .etlms-course-categories' => 'gap: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -258,23 +258,25 @@ class CourseCategories extends BaseAddon {
 			$course_categories = get_tutor_course_categories();
 		}
 
-		if ( is_array( $course_categories ) && count( $course_categories ) ) : $item = 1; ?>
+		if ( is_array( $course_categories ) && count( $course_categories ) ) :
+			$item = 1; ?>
 			<div class="etlms-course-categories tutor-meta">
-				<span class="tutor-meta-key"><?php esc_html_e('Categories', 'tutor'); ?></span>
+				<span class="tutor-meta-key"><?php esc_html_e( 'Categories', 'tutor-lms-elementor-addons' ); ?></span>
 				<span>
 					<?php
 						$category_links = array();
-						foreach ( $course_categories as $course_category ) :
-							$category_name = $course_category->name;
-							$category_link = get_term_link($course_category->term_id);
-							$category_links[] = wp_sprintf( '<a href="%1$s">%2$s</a>', esc_url( $category_link ), esc_html( $category_name ) );
+					foreach ( $course_categories as $course_category ) :
+						$category_name    = $course_category->name;
+						$category_link    = get_term_link( $course_category->term_id );
+						$category_links[] = wp_sprintf( '<a href="%1$s">%2$s</a>', esc_url( $category_link ), esc_html( $category_name ) );
 						endforeach;
-						echo implode(', ', $category_links);
+						echo implode( ', ', $category_links );
 					?>
 				</span>
 			</div>
 		<?php else : ?>
-			<?php if ( $this->is_elementor_editor() ) :
+			<?php
+			if ( $this->is_elementor_editor() ) :
 				esc_html_e( 'Please add category from Tutor course builder', 'tutor-lms-elementor-addons' );
 			endif;
 		endif;

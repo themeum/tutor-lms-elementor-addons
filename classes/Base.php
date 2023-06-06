@@ -14,6 +14,7 @@
 namespace TutorLMS\Elementor;
 
 use Elementor\Elements_Manager;
+use TUTOR\User;
 
 defined( 'ABSPATH' ) || die();
 
@@ -37,14 +38,28 @@ class Base {
 		load_plugin_textdomain( 'tutor-lms-elementor-addons' );
 	}
 
+
 	public function init() {
 
 		$this->load_files();
 
-		// Plugin row meta
+		// Plugin row meta.
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
-		// Register custom category
+		// Register custom category.
 		add_action( 'elementor/elements/categories_registered', array( $this, 'add_category' ) );
+
+		add_filter(
+			'tutor_has_lesson_content',
+			function( $bool ) {
+				// Check if user is privileged.
+				$roles = array( User::ADMIN, User::INSTRUCTOR );
+				if ( ! User::has_any_role( $roles ) ) {
+					return $bool;
+				} else {
+					return true;
+				}
+			}
+		);
 
 		AddonsManager::init();
 		AssetsManager::init();
