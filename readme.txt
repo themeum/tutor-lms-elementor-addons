@@ -3,9 +3,9 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: lms, elearning, learning management system, course, education, elementor addons for lms, elearning elementor addons, tutor lms, online courses
 Requires at least: 5.3
-Tested up to: 6.1
+Tested up to: 6.2.2
 Requires PHP: 7.4
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -141,6 +141,12 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
+= 2.0.8 - 6 June, 2023
+
+*Fix: Fixed Lesson edit issue, ensuring smooth editing functionality.
+*Fix: Resolved Add to Cart issue.
+*Fix: Addressed WPML conflicting issue.
+*Fix: Resolved language Translation issue.
 
 = 2.0.7 - 25 January, 2023
 
