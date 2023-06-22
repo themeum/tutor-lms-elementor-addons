@@ -98,11 +98,11 @@ if ( ! function_exists( 'truncate' ) ) {
 	}
 }
 
-$excerpt      	= tutor_get_the_excerpt();
-$is_enabled   	= get_tutor_option( 'enable_course_about' );
-$string       	= $excerpt;
-$limit        	= 100;
-$has_show_more  = false;
+$excerpt       = tutor_get_the_excerpt();
+$is_enabled    = get_tutor_option( 'enable_course_about' );
+$string        = $excerpt;
+$limit         = 100;
+$has_show_more = false;
 
 if ( strlen( $string ) > $limit ) {
 	$has_show_more = true;
@@ -111,7 +111,7 @@ if ( strlen( $string ) > $limit ) {
 
 <?php if ( ! empty( $excerpt ) && $is_enabled ) : ?>
 	<div class='etlms-course-about tutor-mb-48'>
-		<div class='<?php echo $has_show_more ? "tutor-toggle-more-content tutor-toggle-more-collapsed" : "" ?>' <?php echo $has_show_more ? "data-tutor-toggle-more-content data-toggle-height='200' style='height: 200px;'" : "" ?>>
+		<div class='<?php echo $has_show_more ? 'tutor-toggle-more-content tutor-toggle-more-collapsed' : ''; ?>' <?php echo $has_show_more ? "data-tutor-toggle-more-content data-toggle-height='200' style='height: 200px;'" : ''; ?>>
 			<?php
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() && empty( $excerpt ) ) {
 				echo '<span style="margin: 5px">' . esc_html__( 'Please add data from the course editor', 'tutor-lms-elementor-addons' ) . '</span>';
@@ -130,7 +130,7 @@ if ( strlen( $string ) > $limit ) {
 		<?php if ( $has_show_more ) : ?>
 			<a href="#" class="tutor-btn-show-more tutor-btn tutor-btn-ghost tutor-mt-32" data-tutor-toggle-more=".tutor-toggle-more-content">
 				<span class="tutor-toggle-btn-icon tutor-icon tutor-icon-plus tutor-mr-8" area-hidden="true"></span>
-				<span class="tutor-toggle-btn-text"><?php esc_html_e( 'Show More', 'tutor' ); ?></span>
+				<span class="tutor-toggle-btn-text"><?php esc_html_e( 'Show More', 'tutor-lms-elementor-addons' ); ?></span>
 			</a>
 		<?php endif; ?>
 	</div>
