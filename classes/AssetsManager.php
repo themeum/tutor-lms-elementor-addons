@@ -129,7 +129,7 @@ class AssetsManager {
 				$elementorData = file_get_contents( ETLMS_DIR_PATH . '/assets/layout/default.json' );
 				$elementorData = json_decode( $elementorData, true );
 				update_post_meta( $postID, '_elementor_controls_usage', $elementorData['controls'] );
-				update_post_meta( $postID, '_elementor_data', $elementorData['layout'] );
+				update_post_meta( $postID, '_elementor_data', json_encode( $elementorData['layout'] ) );
 				update_post_meta( $postID, $meta_key, 'yes' );
 			}
 		}

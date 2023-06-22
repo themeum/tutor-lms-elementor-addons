@@ -10,49 +10,52 @@
 	$is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
 
 	// Monetization info
-	$monetize_by              = tutor_utils()->get_option( 'monetize_by' );
-	$is_purchasable           = tutor_utils()->is_course_purchasable();
+	$monetize_by    = tutor_utils()->get_option( 'monetize_by' );
+	$is_purchasable = tutor_utils()->is_course_purchasable();
 
 	// Get login url if
 	$is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
 	$auth_url                = $is_tutor_login_disabled ? ( isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) : '' ) : '';
-	$default_meta = array(
+	$default_meta            = array(
 		array(
 			'icon_class' => 'tutor-icon-mortarboard',
-			'label'      => __( 'Total Enrolled', 'tutor' ),
+			'label'      => __( 'Total Enrolled', 'tutor-lms-elementor-addons' ),
 			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null,
 		),
 		array(
 			'icon_class' => 'tutor-icon-clock-line',
-			'label'      => __( 'Duration', 'tutor' ),
+			'label'      => __( 'Duration', 'tutor-lms-elementor-addons' ),
 			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null,
 		),
 		array(
 			'icon_class' => 'tutor-icon-refresh-o',
-			'label'      => __( 'Last Updated', 'tutor' ),
+			'label'      => __( 'Last Updated', 'tutor-lms-elementor-addons' ),
 			'value'      => get_tutor_option( 'enable_course_update_date' ) ? date_i18n( get_option( 'date_format' ), strtotime( get_the_modified_date() ) ) : null,
 		),
 	);
 
 	// Add level if enabled
-	if(tutor_utils()->get_option('enable_course_level', true, true)) {
-		array_unshift($default_meta, array(
-			'icon_class' => 'tutor-icon-level',
-			'label'      => __( 'Level', 'tutor' ),
-			'value'      => get_tutor_course_level( get_the_ID() ),
-		));
+	if ( tutor_utils()->get_option( 'enable_course_level', true, true ) ) {
+		array_unshift(
+			$default_meta,
+			array(
+				'icon_class' => 'tutor-icon-level',
+				'label'      => __( 'Level', 'tutor-lms-elementor-addons' ),
+				'value'      => get_tutor_course_level( get_the_ID() ),
+			)
+		);
 	}
 
 	// Right sidebar meta data
-	$sidebar_meta = apply_filters('tutor/course/single/sidebar/metadata', $default_meta, get_the_ID() );
-	$login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
-?>
+	$sidebar_meta = apply_filters( 'tutor/course/single/sidebar/metadata', $default_meta, get_the_ID() );
+	$login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
+	?>
 
 <div class="tutor-card tutor-card-md tutor-sidebar-card">
 	<!-- Course Entry -->
 	<div class="tutor-card-body">
 		<?php
-		if ( $is_enrolled || $is_privileged_user) {
+		if ( $is_enrolled || $is_privileged_user ) {
 			ob_start();
 
 			// Course Info
@@ -83,11 +86,11 @@
 					<<?php echo $tag; ?> <?php echo $retake_course ? 'disabled="disabled"' : ''; ?> href="<?php echo esc_url( $lesson_url ); ?>" class="<?php echo esc_attr( $button_class . ' ' . $button_identifier ); ?>" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
 					<?php
 					if ( $retake_course ) {
-						esc_html_e( 'Retake This Course', 'tutor' );
+						esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' );
 					} elseif ( $completed_percent <= 0 ) {
-						esc_html_e( 'Start Learning', 'tutor' );
+						esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' );
 					} else {
-						esc_html_e( 'Continue Learning', 'tutor' );
+						esc_html_e( 'Continue Learning', 'tutor-lms-elementor-addons' );
 					}
 					?>
 					</<?php echo $tag; ?>>
@@ -107,7 +110,7 @@
 					<input type="hidden" value="tutor_complete_course" name="tutor_action"/>
 
 					<button type="submit" class="tutor-btn tutor-btn-outline-primary tutor-btn-block" name="complete_course_btn" value="complete_course">
-						<?php esc_html_e( 'Complete Course', 'tutor' ); ?>
+						<?php esc_html_e( 'Complete Course', 'tutor-lms-elementor-addons' ); ?>
 					</button>
 				</form>
 				<?php
@@ -118,16 +121,16 @@
 				<?php
 					// check if has enrolled date.
 					$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
-					if ( '' !== $post_date ) :
+				if ( '' !== $post_date ) :
 					?>
 					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex  etlms-course-enroll-info-wrapper">
 						<span class="tutor-fs-5 tutor-color-success tutor-icon-purchase-mark tutor-mr-8"></span>
 						<span class="tutor-enrolled-info-text">
-							<?php esc_html_e( 'You enrolled in this course on', 'tutor' ); ?>
+						<?php esc_html_e( 'You enrolled in this course on', 'tutor-lms-elementor-addons' ); ?>
 							<span class="tutor-fs-7 tutor-fw-bold tutor-color-success tutor-ml-4 tutor-enrolled-info-date">
-								<?php
-									echo esc_html( tutor_get_formated_date( get_option( 'date_format' ), $post_date ) );
-								?>
+							<?php
+								echo esc_html( tutor_get_formated_date( get_option( 'date_format' ), $post_date ) );
+							?>
 							</span>
 						</span>
 					</div>
@@ -135,14 +138,14 @@
 			<?php
 			do_action( 'tutor_course/single/actions_btn_group/after' );
 			echo apply_filters( 'tutor/course/single/entry-box/is_enrolled', ob_get_clean(), get_the_ID() );
-		} else if ( $is_public ) {
+		} elseif ( $is_public ) {
 			// Get the first content url
-			$first_lesson_url = tutor_utils()->get_course_first_lesson( get_the_ID(), tutor()->lesson_post_type );
-			!$first_lesson_url ? $first_lesson_url = tutor_utils()->get_course_first_lesson( get_the_ID() ) : 0;
+			$first_lesson_url                       = tutor_utils()->get_course_first_lesson( get_the_ID(), tutor()->lesson_post_type );
+			! $first_lesson_url ? $first_lesson_url = tutor_utils()->get_course_first_lesson( get_the_ID() ) : 0;
 			ob_start();
 			?>
 				<a href="<?php echo esc_url( $first_lesson_url ); ?>" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-block">
-					<?php esc_html_e( 'Start Learning', 'tutor' ); ?>
+					<?php esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' ); ?>
 				</a>
 			<?php
 			echo apply_filters( 'tutor/course/single/entry-box/is_public', ob_get_clean(), get_the_ID() );
@@ -157,7 +160,7 @@
 						<div class="tutor-alert-text">
 							<span class="tutor-icon-circle-info tutor-alert-icon tutor-mr-12" area-hidden="true"></span>
 							<span>
-								<?php esc_html_e( 'This course is full right now. We limit the number of students to create an optimized and productive group dynamic.', 'tutor' ); ?>
+								<?php esc_html_e( 'This course is full right now. We limit the number of students to create an optimized and productive group dynamic.', 'tutor-lms-elementor-addons' ); ?>
 							</span>
 						</div>
 					</div>
@@ -177,7 +180,7 @@
 				?>
 					<div class="tutor-course-single-pricing">
 						<span class="tutor-fs-4 tutor-fw-bold tutor-color-black">
-							<?php esc_html_e( 'Free', 'tutor' ); ?>
+							<?php esc_html_e( 'Free', 'tutor-lms-elementor-addons' ); ?>
 						</span>
 					</div>
 
@@ -187,25 +190,25 @@
 							<input type="hidden" name="tutor_course_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
 							<input type="hidden" name="tutor_course_action" value="_tutor_course_enroll_now">
 							<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-block tutor-mt-24 tutor-enroll-course-button">
-								<?php esc_html_e( 'Enroll now', 'tutor' ); ?>
+								<?php esc_html_e( 'Enroll now', 'tutor-lms-elementor-addons' ); ?>
 							</button>
 						</form>
 					</div>
 
 					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-text-center">
-						<?php esc_html_e( 'Free access this course', 'tutor' ); ?>
+						<?php esc_html_e( 'Free access this course', 'tutor-lms-elementor-addons' ); ?>
 					</div>
 				<?php
 				echo apply_filters( 'tutor/course/single/entry-box/free', ob_get_clean(), get_the_ID() );
 			}
 		}
 
-		do_action('tutor_course/single/entry/after', get_the_ID());
+		do_action( 'tutor_course/single/entry/after', get_the_ID() );
 		?>
 	</div>
 
 	<!-- Course Info -->
-	<?php if ( 'yes' === $settings['course_enrolment_box']) : ?>
+	<?php if ( 'yes' === $settings['course_enrolment_box'] ) : ?>
 	<div class="tutor-card-footer">
 		<ul class="tutor-ul">
 			<?php foreach ( $sidebar_meta as $key => $meta ) : ?>
