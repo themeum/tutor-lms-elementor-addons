@@ -165,6 +165,15 @@ class AddonsManager {
 			'BundleThumbnail'          => array(
 				'title' => __( 'Bundle Thumbnail', 'tutor-lms-elementor-addons' ),
 			),
+			'BundleCategories'          => array(
+				'title' => __( 'Bundle Categories', 'tutor-lms-elementor-addons' ),
+			),
+			'BundleOverview'          => array(
+				'title' => __( 'Bundle Overview', 'tutor-lms-elementor-addons' ),
+			),
+			'BundleTags'          => array(
+				'title' => __( 'Bundle Tags', 'tutor-lms-elementor-addons' ),
+			),
 		);
 	}
 }
