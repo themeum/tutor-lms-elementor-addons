@@ -77,6 +77,41 @@ class Template {
 		return (int) $post_id;
 	}
 
+	public function single_bundle_template($template){
+		global $wp_query, $post;
+		if(!post_type_supports('course-bundle','elementor')){
+			return $template;
+		}
+		if ( $wp_query->is_single && ! empty( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] === 'course-bundle' ) {
+
+			$document             = Plugin::$instance->documents->get( $post->ID );
+			$built_with_elementor = $document && $document->is_built_with_elementor();
+			$template_id          = $this->template_id;
+
+			/**
+			 * If not exists any specific template tutor single page or not elementor document, then return default System Template
+			 *
+			 * @since v.1.0.0
+			 */
+			if ( ! $template_id && ! $built_with_elementor ) {
+				return $template;
+			}
+
+			$student_must_login_to_view_course = tutor_utils()->get_option( 'student_must_login_to_view_course' );
+			if ( $student_must_login_to_view_course ) {
+				if ( ! is_user_logged_in() ) {
+					return tutor_get_template( 'login' );
+				}
+			}
+
+			$template      = etlms_get_template( 'single-course-bundle' );
+			
+
+			return $template;
+		}
+		return $template;
+	}
+
 	/**
 	 * Load Single Course Elementor Template
 	 *

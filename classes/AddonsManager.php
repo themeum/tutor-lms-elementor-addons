@@ -159,6 +159,12 @@ class AddonsManager {
 			'CourseWishlist'           => array(
 				'title' => __( 'Course Wishlist', 'tutor-lms-elementor-addons' ),
 			),
+			'BundleTitle'          => array(
+				'title' => __( 'Bundle Title', 'tutor-lms-elementor-addons' ),
+			),
+			'BundleThumbnail'          => array(
+				'title' => __( 'Bundle Thumbnail', 'tutor-lms-elementor-addons' ),
+			),
 		);
 	}
 }

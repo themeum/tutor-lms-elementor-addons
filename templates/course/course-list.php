@@ -1,6 +1,5 @@
 <div class="<?php tutor_container_classes(); ?> etlms-course-list-main-wrap">
 	<?php
-use \TutorPro\CourseBundle ;
 	/*
 	* get settings from elementor
 	*/
