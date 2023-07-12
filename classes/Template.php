@@ -31,6 +31,7 @@ class Template {
 
 	public function __construct() {
 		add_filter( 'template_include', array( $this, 'single_course_template' ), 100 );
+		add_filter( 'template_include', array( $this, 'single_bundle_template' ), 100 );
 		add_action( 'tutor_elementor_single_course_content', array( $this, 'single_course_content' ), 5 );
 
 		add_action( 'elementor/template-library/create_new_dialog_fields', array( $this, 'tutor_course_template' ) );
@@ -158,12 +159,32 @@ class Template {
 		return $template;
 	}
 
+/**
+ * sigle bundle load
+ */
+
+ public function single_bundle_content($post){
+	$document = Plugin::$instance->documents->get( $post->ID );
+
+		if ( $document && $document->is_built_with_elementor() ) {
+			echo the_content();
+			return;
+		}
+
+		$template_id = $this->template_id;
+		if ( $template_id ) {
+			echo Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
+		} else {
+			echo '<h1>Mark a page/template as Tutor Single course from Elementor Page Settings</h1>';
+		}
+ }
 	/**
 	 * Load Single Course Elementor Content
 	 *
 	 * @param $post
 	 * @since v.1.0.0
 	 */
+	
 	public function single_course_content( $post ) {
 		$document = Plugin::$instance->documents->get( $post->ID );
 
