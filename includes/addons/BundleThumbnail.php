@@ -10,7 +10,9 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
-
+use TutorPro\CourseBundle\CustomPosts\ManagePostMeta;
+use TutorPro\CourseBundle\MetaBoxes\BundlePrice;
+use TutorPro\CourseBundle\Models\BundleModel;
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class BundleThumbnail extends BaseAddon {
@@ -155,14 +157,26 @@ class BundleThumbnail extends BaseAddon {
 
     protected function render($instance = []) {
         $course = etlms_get_bundle();
-        if ($course) {
-            echo "<div class='tutor-course-thumbnail tutor-course-details-page'>";
-            if(tutils()->has_video_in_single()){
-                tutor_course_video();
-            } else{
-                get_tutor_course_thumbnail();
-            }
-            echo '</div>';
-        }
+        $course_id         = get_the_ID();
+        $thumb_url = get_tutor_course_thumbnail_src( 'post-thumbnail', $course_id );
+        if ($course) {?>
+
+                <div class="tutor-course-thumbnail">
+					<img src="<?php echo esc_url( $thumb_url ); ?>" />
+					<?php
+					$bundle_course_ids = BundleModel::get_bundle_course_ids( $course_id );
+					$ribbon_type       = ManagePostMeta::get_ribbon_type( $course_id );
+					$bundle_sale_price = BundlePrice::get_bundle_sale_price( $course_id );
+					?>
+						<!-- Show bundle discount badge -->
+						<?php if ( BundleModel::RIBBON_NONE !== $ribbon_type && $bundle_sale_price > 0 ) : ?>
+						<div class="tutor-bundle-discount-info">
+							<div class="tutor-bundle-save-text"><?php esc_html_e( 'SAVE', 'tutor-pro' ); ?></div>
+							<div class="tutor-bundle-save-amount"><?php echo esc_html( BundlePrice::get_bundle_discount_by_ribbon( $course_id, $ribbon_type ) ); ?></div>
+						</div>
+						<?php endif; ?>
+				</div>
+           
+       <?php }
     }
 }

@@ -128,7 +128,25 @@ class AssetsManager {
 			if ( ! $elementor_data_used ) {
 				$elementorData = file_get_contents( ETLMS_DIR_PATH . '/assets/layout/default.json' );
 				$elementorData = json_decode( $elementorData, true );
+			
+				
 				update_post_meta( $postID, '_elementor_controls_usage', $elementorData['controls'] );
+				update_post_meta( $postID, '_elementor_data', json_encode( $elementorData['layout'] ) );
+				update_post_meta( $postID, $meta_key, 'yes' );
+			}
+		}
+		if ( get_post_type( $post ) === 'course-bundle' ) {
+
+
+			$elementor_data_used = get_post_meta( $postID, $meta_key, true );
+
+
+
+			if ( ! $elementor_data_used ) {
+				$elementorData = file_get_contents( ETLMS_DIR_PATH . '/assets/layout/default1.json' );
+				$elementorData = json_decode( $elementorData, true );
+				
+				update_post_meta( $postID, '_elementor_controls_usage', $elementorData );
 				update_post_meta( $postID, '_elementor_data', json_encode( $elementorData['layout'] ) );
 				update_post_meta( $postID, $meta_key, 'yes' );
 			}
