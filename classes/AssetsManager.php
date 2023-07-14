@@ -143,7 +143,7 @@ class AssetsManager {
 
 
 			if ( ! $elementor_data_used ) {
-				$elementorData = file_get_contents( ETLMS_DIR_PATH . '/assets/layout/default.json' );
+				$elementorData = file_get_contents( ETLMS_DIR_PATH . '/assets/layout/default1.json' );
 				$elementorData = json_decode( $elementorData, true );
 				
 				update_post_meta( $postID, '_elementor_controls_usage', $elementorData );

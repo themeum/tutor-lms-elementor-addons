@@ -263,7 +263,7 @@ class BundleCategories extends BaseAddon {
 		if ( is_array( $bundle_categories ) && count( $bundle_categories ) ) :
 			$item = 1; ?>
 			<div class="etlms-course-categories tutor-meta">
-				<span class="tutor-meta-key"><?php esc_html_e( 'Categories', 'tutor-lms-elementor-addons' ); ?></span>
+				<span class="tutor-meta-key"><?php esc_html_e( 'Categories:', 'tutor-lms-elementor-addons' ); ?></span>
 				<span>
 					<?php
 						$category_links = array();
