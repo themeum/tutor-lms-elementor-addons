@@ -116,6 +116,14 @@ class AssetsManager {
 			'const etlmsUtility = ' . json_encode( self::utility_data() ) . '',
 			'before'
 		);
+
+		wp_localize_script(
+			'tutor-elementor-js',
+			'tutorElementorData',
+			array(
+				'is_sidebar_sticky' => tutor_utils()->get_option( 'enable_sticky_sidebar', false, true, true ),
+			)
+		);
 	}
 
 	// Add default template library.
