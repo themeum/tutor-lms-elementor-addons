@@ -2,7 +2,6 @@
 (function ($) {
 
 	jQuery(window).on('elementor/frontend/init', function () {
-
 		elementorFrontend.hooks.addAction('frontend/element_ready/etlms-course-thumbnail.default', function ($scope, $) {
 			// remove course play and spining class
 			if (etlmsUtility.is_editor_mode) {
@@ -133,6 +132,45 @@
 			});
 
 		});
+
+		// Sticky Sidebar In Course Details Page and Bundle Details Page of Elementor
+
+		const isSidebarSticky = window?.tutorElementorData?.is_sidebar_sticky ?? false;
+		let isSticky = false;
+		
+		if (isSidebarSticky) {
+			const courseSidebar = document.querySelector('.tutor-single-course-sidebar');
+			if (courseSidebar) {
+				const header = document.getElementsByTagName('header')[0];
+				const headerHeight = `${header.offsetHeight}px`;
+				const isHeaderSticky = header.classList.value.includes('sticky');
+
+				function handleScroll() {
+					const scrollFromTop = window.scrollY;
+					const SPACE_FROM_TOP = 200;
+					const isValidToStick = scrollFromTop >= SPACE_FROM_TOP;
+					const isValidDevice = window.innerWidth >= 1200;
+
+					if (isValidDevice) {
+						if (isValidToStick) {
+							if (!isSticky) {
+								courseSidebar.classList.add('tutor-elementor-sidebar-sticky');
+								const style = `max-height: 80vh; overflow-y: scroll; top: ${isHeaderSticky ? headerHeight : ''}`;
+								courseSidebar.setAttribute('style', style);
+								courseSidebar.scrollTop = 0;
+								isSticky = true;
+							}
+						} else {
+							courseSidebar.classList.remove('tutor-elementor-sidebar-sticky');
+							courseSidebar.removeAttribute('style');
+							isSticky = false;
+						}
+					}
+				}
+
+				window.addEventListener('scroll', handleScroll);
+			}
+		}
 
 	});
 })(jQuery);
