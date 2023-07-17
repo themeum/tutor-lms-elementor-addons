@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-07-13 11:42+0000\n"
+"POT-Creation-Date: 2023-07-17 05:58+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -126,35 +126,35 @@ msgstr ""
 msgid "Course Wishlist"
 msgstr ""
 
-#: classes/AddonsManager.php:163, includes/addons/BundleOverview.php:108, includes/addons/BundleTitle.php:27, includes/addons/BundleTitle.php:108
+#: classes/AddonsManager.php:164, includes/addons/BundleOverview.php:108, includes/addons/BundleTitle.php:27, includes/addons/BundleTitle.php:108
 msgid "Bundle Title"
 msgstr ""
 
-#: classes/AddonsManager.php:166, includes/addons/BundleThumbnail.php:21
+#: classes/AddonsManager.php:167, includes/addons/BundleThumbnail.php:21
 msgid "Bundle Thumbnail"
 msgstr ""
 
-#: classes/AddonsManager.php:169, includes/addons/BundleCategories.php:43
+#: classes/AddonsManager.php:170, includes/addons/BundleCategories.php:43
 msgid "Bundle Categories"
 msgstr ""
 
-#: classes/AddonsManager.php:172, includes/addons/BundleOverview.php:27, includes/addons/BundleOverview.php:111
+#: classes/AddonsManager.php:173, includes/addons/BundleOverview.php:27, includes/addons/BundleOverview.php:111
 msgid "Bundle Overview"
 msgstr ""
 
-#: classes/AddonsManager.php:175, includes/addons/BundleTags.php:27, includes/addons/BundleTags.php:108
+#: classes/AddonsManager.php:176, includes/addons/BundleTags.php:27, includes/addons/BundleTags.php:108
 msgid "Bundle Tags"
 msgstr ""
 
-#: classes/AddonsManager.php:178, includes/addons/BundleAuthor.php:27, includes/addons/BundleAuthor.php:108
+#: classes/AddonsManager.php:179, includes/addons/BundleAuthor.php:27, includes/addons/BundleAuthor.php:108
 msgid "Bundle Author"
 msgstr ""
 
-#: classes/AddonsManager.php:181, includes/addons/BundleCourses.php:27, includes/addons/BundleCourses.php:108
+#: classes/AddonsManager.php:182, includes/addons/BundleCourses.php:27, includes/addons/BundleCourses.php:108
 msgid "Bundle Courses"
 msgstr ""
 
-#: classes/AddonsManager.php:184, includes/addons/BundleBenefits.php:42
+#: classes/AddonsManager.php:185, includes/addons/BundleBenefits.php:42
 msgid "Bundle Benefits"
 msgstr ""
 
@@ -386,8 +386,8 @@ msgstr ""
 msgid "Please add category from Tutor course builder"
 msgstr ""
 
-#: includes/addons/BundleCategories.php:266, includes/addons/CourseCarousel.php:279, includes/addons/CourseCarousel.php:311, includes/addons/CourseCategories.php:264, includes/addons/CourseList.php:309, includes/addons/CourseList.php:341
-msgid "Categories"
+#: includes/addons/BundleCategories.php:266
+msgid "Categories:"
 msgstr ""
 
 #: includes/addons/BundleThumbnail.php:59, includes/addons/BundleThumbnail.php:116, includes/addons/CourseCarousel.php:967, includes/addons/CourseCarousel.php:1015, includes/addons/CourseList.php:1101, includes/addons/CourseList.php:1147, includes/addons/CourseThumbnail.php:57, includes/addons/CourseThumbnail.php:114
@@ -532,6 +532,10 @@ msgstr ""
 
 #: includes/addons/CourseCarousel.php:272, includes/addons/CourseList.php:302
 msgid "Include"
+msgstr ""
+
+#: includes/addons/CourseCarousel.php:279, includes/addons/CourseCarousel.php:311, includes/addons/CourseCategories.php:264, includes/addons/CourseList.php:309, includes/addons/CourseList.php:341
+msgid "Categories"
 msgstr ""
 
 #: includes/addons/CourseCarousel.php:290, includes/addons/CourseCarousel.php:322, includes/addons/CourseList.php:320, includes/addons/CourseList.php:352

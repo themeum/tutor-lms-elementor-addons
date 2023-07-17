@@ -184,7 +184,6 @@ class AddonsManager {
 			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleBenefits' : '' )   => array(
 				'title' => __( 'Bundle Benefits', 'tutor-lms-elementor-addons' ),
 			),
-
 		);
 	}
 }

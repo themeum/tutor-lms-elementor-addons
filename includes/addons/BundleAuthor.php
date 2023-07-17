@@ -55,7 +55,7 @@ class BundleAuthor extends BaseAddon {
 			'bundle_title_align',
 			$this->title_alignment_with_selectors(
 				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};'
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				),
 				'left'
 			)
@@ -104,24 +104,24 @@ class BundleAuthor extends BaseAddon {
 	 *
 	 * @return void
 	 */
-	protected function render( ) {
-		$title  = __( 'Bundle Author', 'tutor-lms-elementor-addons' );
-		$course = etlms_get_bundle();
-        $course_id         = get_the_ID();
+	protected function render() {
+		$title     = __( 'Bundle Author', 'tutor-lms-elementor-addons' );
+		$course    = etlms_get_bundle();
+		$course_id = get_the_ID();
 		if ( $course ) {
 			$title = get_the_title();
 		}
 		$settings = $this->get_settings_for_display();
-        if ( $course ) { ?>
-           <div class="tutor-bundle-author-list tutor-card tutor-card-md tutor-sidebar-card tutor-mt-24 tutor-py-24 tutor-px-32">
+		if ( $course ) { ?>
+		   <div class="tutor-bundle-author-list tutor-card tutor-card-md tutor-sidebar-card tutor-mt-24 tutor-py-24 tutor-px-32">
 						<?php
 							tutor_load_template_from_custom_path(
 								\TutorPro\CourseBundle\Utils::template_path( 'single/bundle-authors.php' ),
 								array( 'bundle_id' => $course_id )
 							);
 						?>
-		    </div>
-            <?php
-            }
+			</div>
+			<?php
+		}
 	}
 }

@@ -250,14 +250,14 @@ class BundleCategories extends BaseAddon {
 	 * Render addon, responsible for the editor and front end view
 	 */
 	protected function render() {
-        global $post;
+		global $post;
 		$bundle            = etlms_get_bundle();
 		$settings          = $this->get_settings_for_display();
 		$bundle_categories = array();
 
 		if ( $bundle ) {
 			$bundle_categories = BundleModel::get_bundle_course_categories( $post->ID );
-           
+
 		}
 
 		if ( is_array( $bundle_categories ) && count( $bundle_categories ) ) :
@@ -268,10 +268,10 @@ class BundleCategories extends BaseAddon {
 					<?php
 						$category_links = array();
 					foreach ( $bundle_categories as $bundle_category ) :
-						$category_name    = $bundle_category->name;
-						
-                        $category_link    = get_term_link( (int) $bundle_category->term_id );
-                     
+						$category_name = $bundle_category->name;
+
+						$category_link = get_term_link( (int) $bundle_category->term_id );
+
 						$category_links[] = wp_sprintf( '<a href="%1$s">%2$s</a>', esc_url( $category_link ), esc_html( $category_name ) );
 						endforeach;
 						echo implode( ', ', $category_links );

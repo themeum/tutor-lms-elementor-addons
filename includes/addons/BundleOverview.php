@@ -55,7 +55,7 @@ class BundleOverview extends BaseAddon {
 			'bundle_title_align',
 			$this->title_alignment_with_selectors(
 				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};'
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				),
 				'left'
 			)
@@ -104,13 +104,14 @@ class BundleOverview extends BaseAddon {
 	 *
 	 * @return void
 	 */
-	protected function render( ) {
-		$title  = __( 'Bundle Title', 'tutor-lms-elementor-addons' );
+	protected function render() {
+		$title  = __( 'Bundle Overview', 'tutor-lms-elementor-addons' );
 		$course = etlms_get_bundle();
 		if ( $course ) { ?>
-            <h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16"><?php esc_html_e( 'Bundle Overview', 'tutor-lms-elementor-addons' ); ?></h3>
+			<h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16"><?php esc_html_e( 'Bundle Overview', 'tutor-lms-elementor-addons' ); ?></h3>
 			
-            <?php tutor_load_template( 'single.course.course-entry-box' );
+			<?php
+			tutor_load_template( 'single.course.course-entry-box' );
 		}
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 /**
  * Bundle Thumbnail
+ *
  * @since 1.0.0
  */
 
@@ -13,15 +14,17 @@ use Elementor\Group_Control_Css_Filter;
 use TutorPro\CourseBundle\CustomPosts\ManagePostMeta;
 use TutorPro\CourseBundle\MetaBoxes\BundlePrice;
 use TutorPro\CourseBundle\Models\BundleModel;
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class BundleThumbnail extends BaseAddon {
 
-    public function get_title() {
-        return __('Bundle Thumbnail', 'tutor-lms-elementor-addons');
-    }
+	public function get_title() {
+		return __( 'Bundle Thumbnail', 'tutor-lms-elementor-addons' );
+	}
 
-    /**
+	/**
 	 * Dependent scripts
 	 *
 	 * @return array, contains name of dependent script
@@ -31,137 +34,137 @@ class BundleThumbnail extends BaseAddon {
 			'etlms-course-topics',
 		);
 	}
-    
-    protected function register_style_controls() {
-        $selector = '{{WRAPPER}} .tutor-course-thumbnail';
 
-        /* Style */
-        $this->start_controls_section(
-            'bundle_thumbnail_style_section',
-            [
-                'label' => __('Style', 'tutor-lms-elementor-addons'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
+	protected function register_style_controls() {
+		$selector = '{{WRAPPER}} .tutor-course-thumbnail';
 
-        /* Start Tabs */
-        $this->start_controls_tabs('bundle_thumbnail_style_tabs');
-            /* Normal Tab */
-            $this->start_controls_tab(
-                'bundle_tags_normal_style_tab',
-                [
-                    'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
-                ]
-            );
-                $this->add_group_control(
-                    Group_Control_Css_Filter::get_type(),
-                    [
-                        'label' => __('CSS Filters','tutor-lms-elementor-addons'),
-                        'name' => 'bundle_normal_thumbnail_filter',
-                        'selector' => $selector,
-                    ]
-                );
+		/* Style */
+		$this->start_controls_section(
+			'bundle_thumbnail_style_section',
+			array(
+				'label' => __( 'Style', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
 
-                $this->add_group_control(
-                    Group_Control_Border::get_type(),
-                    [
-                        'name' => 'bundle_normal_thumbnail_border',
-                        'selector' => $selector
-                    ]
-                );
+		/* Start Tabs */
+		$this->start_controls_tabs( 'bundle_thumbnail_style_tabs' );
+			/* Normal Tab */
+			$this->start_controls_tab(
+				'bundle_tags_normal_style_tab',
+				array(
+					'label' => __( 'Normal', 'tutor-lms-elementor-addons' ),
+				)
+			);
+				$this->add_group_control(
+					Group_Control_Css_Filter::get_type(),
+					array(
+						'label'    => __( 'CSS Filters', 'tutor-lms-elementor-addons' ),
+						'name'     => 'bundle_normal_thumbnail_filter',
+						'selector' => $selector,
+					)
+				);
 
-                $this->add_responsive_control(
-                    'bundle_normal_thumbnail_border_radius',
-                    [
-                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'selectors' => [
-                            $selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ],
-                        'default' => [
-                            'top' => 8,
-                            'right' => 8,
-                            'bottom' => 8,
-                            'left' => 8,
-                            'unit' => 'px',
-                            'isLinked' => true
-                        ],
-                    ]
-                );
+				$this->add_group_control(
+					Group_Control_Border::get_type(),
+					array(
+						'name'     => 'bundle_normal_thumbnail_border',
+						'selector' => $selector,
+					)
+				);
 
-                $this->add_group_control(
-                    Group_Control_Box_Shadow::get_type(),
-                    [
-                        'name' => 'bundle_normal_thumbnail_box_shadow',
-                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-                        'selector' => $selector,
-                    ]
-                );
+				$this->add_responsive_control(
+					'bundle_normal_thumbnail_border_radius',
+					array(
+						'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+						'type'       => Controls_Manager::DIMENSIONS,
+						'size_units' => array( 'px', '%' ),
+						'selectors'  => array(
+							$selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						),
+						'default'    => array(
+							'top'      => 8,
+							'right'    => 8,
+							'bottom'   => 8,
+							'left'     => 8,
+							'unit'     => 'px',
+							'isLinked' => true,
+						),
+					)
+				);
 
-            $this->end_controls_tab();
+				$this->add_group_control(
+					Group_Control_Box_Shadow::get_type(),
+					array(
+						'name'     => 'bundle_normal_thumbnail_box_shadow',
+						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
+						'selector' => $selector,
+					)
+				);
 
-            /* Hovered Thumbnails */
-            $hover_selector = $selector.':hover';
-            $this->start_controls_tab(
-                'bundle_hovered_thumbnail_style_tab',
-                [
-                    'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
-                ]
-            );
+			$this->end_controls_tab();
 
-                $this->add_group_control(
-                    Group_Control_Css_Filter::get_type(),
-                    [
-                        'label' => __('CSS Filters','tutor-lms-elementor-addons'),
-                        'name' => 'bundle_hover_thumbnail_filter',
-                        'selector' => $selector.':hover',
-                    ]
-                );
-                
-                $this->add_group_control(
-                    Group_Control_Border::get_type(),
-                    [
-                        'name' => 'bundle_hovered_thumbnail_border',
-                        'selector' => $hover_selector
-                    ]
-                );
+			/* Hovered Thumbnails */
+			$hover_selector = $selector . ':hover';
+			$this->start_controls_tab(
+				'bundle_hovered_thumbnail_style_tab',
+				array(
+					'label' => __( 'Hover', 'tutor-lms-elementor-addons' ),
+				)
+			);
 
-                $this->add_responsive_control(
-                    'bundle_hovered_thumbnail_border_radius',
-                    [
-                        'label' => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
-                        'type' => Controls_Manager::DIMENSIONS,
-                        'size_units' => [ 'px', '%' ],
-                        'selectors' => [
-                            $hover_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                        ]
-                    ]
-                );
+				$this->add_group_control(
+					Group_Control_Css_Filter::get_type(),
+					array(
+						'label'    => __( 'CSS Filters', 'tutor-lms-elementor-addons' ),
+						'name'     => 'bundle_hover_thumbnail_filter',
+						'selector' => $selector . ':hover',
+					)
+				);
 
-                $this->add_group_control(
-                    Group_Control_Box_Shadow::get_type(),
-                    [
-                        'name' => 'bundle_hovered_thumbnail_box_shadow',
-                        'label' => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
-                        'selector' => $hover_selector,
-                    ]
-                );
-            $this->end_controls_tab();
+				$this->add_group_control(
+					Group_Control_Border::get_type(),
+					array(
+						'name'     => 'bundle_hovered_thumbnail_border',
+						'selector' => $hover_selector,
+					)
+				);
 
-        $this->end_controls_tabs();
-        /* End Tabs */
+				$this->add_responsive_control(
+					'bundle_hovered_thumbnail_border_radius',
+					array(
+						'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+						'type'       => Controls_Manager::DIMENSIONS,
+						'size_units' => array( 'px', '%' ),
+						'selectors'  => array(
+							$hover_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						),
+					)
+				);
 
-        $this->end_controls_section();
-    }
+				$this->add_group_control(
+					Group_Control_Box_Shadow::get_type(),
+					array(
+						'name'     => 'bundle_hovered_thumbnail_box_shadow',
+						'label'    => __( 'Box Shadow', 'tutor-lms-elementor-addons' ),
+						'selector' => $hover_selector,
+					)
+				);
+			$this->end_controls_tab();
 
-    protected function render($instance = []) {
-        $course = etlms_get_bundle();
-        $course_id         = get_the_ID();
-        $thumb_url = get_tutor_course_thumbnail_src( 'post-thumbnail', $course_id );
-        if ($course) {?>
+		$this->end_controls_tabs();
+		/* End Tabs */
 
-                <div class="tutor-course-thumbnail">
+		$this->end_controls_section();
+	}
+
+	protected function render( $instance = array() ) {
+		$course    = etlms_get_bundle();
+		$course_id = get_the_ID();
+		$thumb_url = get_tutor_course_thumbnail_src( 'post-thumbnail', $course_id );
+		if ( $course ) {?>
+
+				<div class="tutor-course-thumbnail">
 					<img src="<?php echo esc_url( $thumb_url ); ?>" />
 					<?php
 					$bundle_course_ids = BundleModel::get_bundle_course_ids( $course_id );
@@ -176,7 +179,8 @@ class BundleThumbnail extends BaseAddon {
 						</div>
 						<?php endif; ?>
 				</div>
-           
-       <?php }
-    }
+		   
+			<?php
+		}
+	}
 }

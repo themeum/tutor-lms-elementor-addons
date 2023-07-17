@@ -55,7 +55,7 @@ class BundleCourses extends BaseAddon {
 			'bundle_title_align',
 			$this->title_alignment_with_selectors(
 				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};'
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				),
 				'left'
 			)
@@ -104,20 +104,20 @@ class BundleCourses extends BaseAddon {
 	 *
 	 * @return void
 	 */
-	protected function render( ) {
-		$title  = __( 'Bundle Courses', 'tutor-lms-elementor-addons' );
-		$course = etlms_get_bundle();
-        $course_id         = get_the_ID();
+	protected function render() {
+		$title     = __( 'Bundle Courses', 'tutor-lms-elementor-addons' );
+		$course    = etlms_get_bundle();
+		$course_id = get_the_ID();
 		if ( $course ) {
 			$title = get_the_title();
 		}
 		$settings = $this->get_settings_for_display();
-        if ( $course ) { ?>
+		if ( $course ) { ?>
 
-                <div class="tutor-mt-32">
+				<div class="tutor-mt-32">
 					<?php require_once \TutorPro\CourseBundle\Utils::template_path( 'single/bundle-courses.php' ); ?>
 				</div>
-            <?php
-            }
+			<?php
+		}
 	}
 }

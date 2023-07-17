@@ -55,7 +55,7 @@ class BundleTitle extends BaseAddon {
 			'bundle_title_align',
 			$this->title_alignment_with_selectors(
 				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};'
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				),
 				'left'
 			)
@@ -104,7 +104,7 @@ class BundleTitle extends BaseAddon {
 	 *
 	 * @return void
 	 */
-	protected function render( ) {
+	protected function render() {
 		$title  = __( 'Bundle Title', 'tutor-lms-elementor-addons' );
 		$course = etlms_get_bundle();
 		if ( $course ) {
