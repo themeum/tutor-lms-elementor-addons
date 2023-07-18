@@ -170,7 +170,7 @@ class CourseList extends BaseAddon {
 				),
 			)
 		);
-
+		
 		$this->add_control(
 			'course_list_meta_divider',
 			array(
