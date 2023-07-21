@@ -169,7 +169,7 @@ class BundleCategories extends BaseAddon {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'course_categories_label_typo',
-						'label'    => __( 'Label ypography', 'tutor-lms-elementor-addons' ),
+						'label'    => __( 'Label typography', 'tutor-lms-elementor-addons' ),
 						'selector' => $label_selector,
 					)
 				);

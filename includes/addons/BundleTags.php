@@ -65,7 +65,7 @@ class BundleTags extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .tutor-course-details-title';
+		$selector = '{{WRAPPER}} .tutor-single-course-sidebar-more';
 		// Style
 		$this->start_controls_section(
 			'bundle_style_section',

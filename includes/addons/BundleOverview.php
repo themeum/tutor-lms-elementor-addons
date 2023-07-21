@@ -65,7 +65,7 @@ class BundleOverview extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .tutor-course-details-title';
+		$selector = '{{WRAPPER}} .tutor-bundle-overview-widget-title';
 		// Style
 		$this->start_controls_section(
 			'bundle_style_section',
@@ -108,7 +108,7 @@ class BundleOverview extends BaseAddon {
 		$title  = __( 'Bundle Overview', 'tutor-lms-elementor-addons' );
 		$course = etlms_get_bundle();
 		if ( $course ) { ?>
-			<h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16"><?php esc_html_e( 'Bundle Overview', 'tutor-lms-elementor-addons' ); ?></h3>
+			<h3 class="tutor-bundle-overview-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16"><?php esc_html_e( 'Bundle Overview', 'tutor-lms-elementor-addons' ); ?></h3>
 			
 			<?php
 			tutor_load_template( 'single.course.course-entry-box' );

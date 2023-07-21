@@ -58,3 +58,17 @@ function elementor_tutor_lms_init() {
 		\TutorLMS\Elementor\Base::instance();
 	}
 }
+
+/**
+ * TODO remove in next release. Handle it by bundle addon.
+ */
+add_action(
+	'save_post_course-bundle',
+	function( int $post_id, WP_Post $post ) {
+		if ( wp_doing_ajax() && isset( $_POST['action'] ) && 'elementor_ajax' === sanitize_text_field( wp_unslash( $_POST['action'] ) ) ) {
+			remove_all_actions( 'save_post_course-bundle' );
+		}
+	},
+	9,
+	2
+);
