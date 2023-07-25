@@ -65,7 +65,7 @@ class BundleTags extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .tutor-single-course-sidebar-more';
+		$selector = '{{WRAPPER}} .tutor-course-details-widget-title';
 		// Style
 		$this->start_controls_section(
 			'bundle_style_section',
@@ -108,7 +108,7 @@ class BundleTags extends BaseAddon {
 		$title  = __( 'Bundle Tags', 'tutor-lms-elementor-addons' );
 		$course = etlms_get_bundle();
 		if ( $course ) { ?>
-							<div class="tutor-single-course-sidebar-more tutor-mt-24">
+					<div class="tutor-single-course-sidebar-more tutor-mt-24">
 						<?php tutor_course_tags_html(); ?>
 					</div>
 			<?php

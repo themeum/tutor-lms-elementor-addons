@@ -51,21 +51,11 @@ class BundleCourses extends BaseAddon {
 			)
 		);
 
-		$this->add_responsive_control(
-			'bundle_courses_title_align',
-			$this->title_alignment_with_selectors(
-				array(
-					'{{WRAPPER}} .tutor-fs-5 .tutor-fw-bold .tutor-color-black .tutor-mb-12' => 'text-align: {{VALUE}};',
-				),
-				'left'
-			)
-		);
-
 		$this->end_controls_section();
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .tutor-fs-5 .tutor-fw-bold .tutor-color-black .tutor-mb-12';
+		$selector = '{{WRAPPER}} .elm-bundle-courses h2.tutor-fs-5.tutor-fw-bold.tutor-color-black.tutor-mb-12';
 		// Style
 		$this->start_controls_section(
 			'bundle_course_style_section',
@@ -114,7 +104,7 @@ class BundleCourses extends BaseAddon {
 		$settings = $this->get_settings_for_display();
 		if ( $course ) { ?>
 
-				<div class="tutor-mt-32">
+				<div class="tutor-mt-32 elm-bundle-courses">
 					<?php require_once \TutorPro\CourseBundle\Utils::template_path( 'single/bundle-courses.php' ); ?>
 				</div>
 			<?php

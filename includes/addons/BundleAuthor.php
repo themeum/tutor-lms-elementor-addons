@@ -51,21 +51,11 @@ class BundleAuthor extends BaseAddon {
 			)
 		);
 
-		$this->add_responsive_control(
-			'bundle_title_align',
-			$this->title_alignment_with_selectors(
-				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
-				),
-				'left'
-			)
-		);
-
 		$this->end_controls_section();
 	}
 
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .tutor-course-details-title';
+		$selector = '{{WRAPPER}} h2.tutor-fs-5.tutor-fw-bold.tutor-color-black.tutor-mb-12';
 		// Style
 		$this->start_controls_section(
 			'bundle_style_section',
