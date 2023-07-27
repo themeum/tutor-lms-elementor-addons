@@ -70,6 +70,7 @@ class CourseList extends BaseAddon {
 					'1' => __( '1', 'tutor-lms-elementor-addons' ),
 					'2' => __( '2', 'tutor-lms-elementor-addons' ),
 					'3' => __( '3', 'tutor-lms-elementor-addons' ),
+					'4' => __( '4', 'tutor-lms-elementor-addons' ),
 				),
 			)
 		);
