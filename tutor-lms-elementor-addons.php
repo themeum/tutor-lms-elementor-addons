@@ -72,3 +72,14 @@ add_action(
 	9,
 	2
 );
+
+
+function log_saved_elementor_data( $post_id) {
+
+	// Interact with your activity log plugin
+	$postcontent = get_post($post_id);
+	$output =  apply_filters( 'the_content', $postcontent->post_content );
+	update_post_meta ( $post_id, 'elem_tutor_content_', $output );
+
+}
+add_action( 'elementor/editor/after_save', 'log_saved_elementor_data' );

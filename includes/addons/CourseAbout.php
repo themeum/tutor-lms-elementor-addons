@@ -150,7 +150,9 @@ class CourseAbout extends BaseAddon {
 		if ( $course ) {
 			ob_start();
 			$settings = $this->get_settings_for_display();
-			include etlms_get_template( 'course/about' );
+			
+			 include etlms_get_template( 'course/about' );
+			
 			echo ob_get_clean();
 		}
 	}
