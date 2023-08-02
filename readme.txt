@@ -5,7 +5,7 @@ Tags: lms, elearning, learning management system, course, education, elementor a
 Requires at least: 5.3
 Tested up to: 6.2.2
 Requires PHP: 7.4
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,6 +139,10 @@ You can post on the support section of this plugin or use the contact form at th
 8. Display Ratings Stylishly
 9. Different Card Designs For Instructors
 10. Intelligent Preview Modes
+
+== Changelog ==
+= 2.0.9 - 2 August, 2023
+* Update: Compatibility with the latest Elementor is introduced
 
 == Changelog ==
 = 2.0.8 - 6 June, 2023
