@@ -1089,7 +1089,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				)
 			);
 			$this->add_group_control(
-				Typography::get_type(),
+				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'enrolment_meta_label_typo',
 					'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
@@ -1110,7 +1110,7 @@ class CourseEnrolmentBox extends BaseAddon {
 				)
 			);
 			$this->add_group_control(
-				Typography::get_type(),
+				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'enrolment_meta_value_typo',
 					'label'    => __( 'Value Typography', 'tutor-lms-elementor-addons' ),
