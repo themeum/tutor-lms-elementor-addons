@@ -8,6 +8,7 @@
 namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
@@ -228,7 +229,7 @@ class CourseAuthor extends BaseAddon {
 				'name'     => 'course_author_name_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
 				'selector' => $author_selector . ' a',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				//'scheme'   => Global_Typography::TYPOGRAPHY_ACCENT
 			)
 		);
 		$this->end_controls_section();
