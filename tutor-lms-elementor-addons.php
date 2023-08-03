@@ -72,14 +72,32 @@ add_action(
 	9,
 	2
 );
+/**
+ * edit with elmentor course description data missing.
+ * 
+ */
+// function editor_initialize($post_id){
+// 	$postcontent = get_post($post_id);
+// 	$content =$postcontent->post_content;
+// 	$id = $postcontent->ID;
+// 	update_post_meta ( $id, 'elem_tutor_content', sanitize_text_field($content) );
+// 	 remove_action('elementor/editor/init','editor_initialize');
+// 	 remove_action('elementor/editor/before_enqueue_styles','editor_initialize');
+// 	$custom_save = get_post_custom($post_id);
+// 	$toexcerpt = $custom_save ["elem_tutor_content"][0];
+// 	wp_update_post( array(
+// 		'ID'                => $id, 
+// 		'post_excerpt'		=> $toexcerpt,
+// 	) );
+// }
+// add_action('elementor/editor/before_enqueue_styles','editor_initialize');
 
+// function course_desc_saved_elementor_data( $post_id) {
 
-function log_saved_elementor_data( $post_id) {
+// 	
+	
 
-	// Interact with your activity log plugin
-	$postcontent = get_post($post_id);
-	$output =  apply_filters( 'the_content', $postcontent->post_content );
-	update_post_meta ( $post_id, 'elem_tutor_content_', $output );
-
-}
-add_action( 'elementor/editor/after_save', 'log_saved_elementor_data' );
+	
+	
+// }
+// add_action( 'elementor/document/before_save', 'course_desc_saved_elementor_data' );
