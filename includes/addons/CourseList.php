@@ -78,7 +78,7 @@ class CourseList extends BaseAddon {
 		$this->add_control(
 			'course_list_perpage',
 			array(
-				'label'   => __( 'Course Per Page', 'tutor-lms-elementor-addons' ),
+				'label'   => __( 'Courses Per Page', 'tutor-lms-elementor-addons' ),
 				'type'    => Controls_Manager::NUMBER,
 				'min'     => 1,
 				'max'     => 100,
@@ -172,6 +172,33 @@ class CourseList extends BaseAddon {
 			)
 		);
 		
+		$this->add_control(
+			'course_list_current_user_progress',
+			array(
+				'label'        => __( 'Current User\'s Progress', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'Hide', 'your-plugin' ),
+				'return_value' => 'yes',
+				'default'      => 'no',
+			)
+		);
+
+		$this->add_control(
+			'course_progress_title_text',
+			array(
+				'label'       => __( 'Current User\'s Progress Title', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'Course Progress', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type the title for the User\'s progress here', 'tutor-lms-elementor-addons' ),
+				'rows'        => 1,
+				'condition'   => array(
+					'course_list_current_user_progress' => 'yes',
+				),
+			)
+		);
+
+
 		$this->add_control(
 			'course_list_meta_divider',
 			array(
