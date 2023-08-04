@@ -11,6 +11,7 @@ namespace TutorLMS\Elementor\Addons;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -60,7 +61,47 @@ class BundleOverview extends BaseAddon {
 				'left'
 			)
 		);
-
+		$this->end_controls_section();
+		$this->start_controls_section(
+			'course_enrolment_box_settings',
+			array(
+				'label' => __( 'Enrolment Box', 'tutor-lms-elementor-addons' ),
+			)
+		);
+		$this->add_control(
+			'course_enrolment_box',
+			array(
+				'label'        => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Yes', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'No', 'tutor-lms-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+		
+		$this->end_controls_section();
+				// enrolment button preview controls.
+				$this->start_controls_section(
+					'course_edit_mode_section',
+					array(
+						'label' => __( 'Preview Mode', 'tutor-lms-elementor-addons' ),
+					)
+				);
+				$this->add_control(
+					'course_enrolment_edit_mode',
+					array(
+						'label'   => __( 'Select Mode', 'tutor-lms-elementor-addons' ),
+						'type'    => Controls_Manager::SELECT,
+						'options' => array(
+							'enrolment-box' => 'Enrolment Box',
+							'enrolled-box'  => 'Enrolled Box',
+						),
+						'default' => 'enrolment-box',
+					)
+				);
+				
+				// enrolment button preview controls end.
 		$this->end_controls_section();
 	}
 
@@ -95,8 +136,120 @@ class BundleOverview extends BaseAddon {
 				'selector' => $selector,
 			)
 		);
+		
+		$this->end_controls_section();
+				/**
+		 * Enrolment meta info controls
+		 *
+		 * @since v2.0.0
+		 */
+		$bundle_enrolment_box_selector = '{{WRAPPER}} .tutor-card-footer';
+		$this->start_controls_section(
+			'bundle_enrolment_meta_info_section',
+			array(
+				'label' => __( 'Overview Box', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+				// 'condition' => ['course_enrolment_edit_mode' => 'enrolled_box'],
+			)
+		);
+			$this->add_control(
+				'bundle_enrolment_box_background',
+				array(
+					'label'     => __( 'Background Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						$bundle_enrolment_box_selector => 'background-color: {{VALUE}};',
+					),
+				)
+			);
+
+			$this->add_group_control(
+				Group_Control_Border::get_type(),
+				array(
+					'name'     => 'bundle_enrolment_box_border',
+					'selector' => $bundle_enrolment_box_selector,
+				)
+			);
+			$this->add_control(
+				'bundle_enrolment_box_border_radius',
+				array(
+					'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', '%' ),
+					'selectors'  => array(
+						$bundle_enrolment_box_selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+					'default'    => array(
+						'top'      => 6,
+						'right'    => 6,
+						'bottom'   => 6,
+						'left'     => 6,
+						'unit'     => 'px',
+						'isLinked' => true,
+					),
+				)
+			);
+
+			// icon controls.
+			$this->add_control(
+				'bundle_enrolmentx_box_icon_size',
+				array(
+					'label'      => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
+					'type'       => Controls_Manager::SLIDER,
+					'size_units' => array( 'px' ),
+					'range'      => array(
+						'px' => array(
+							'min' => 5,
+							'max' => 200,
+						),
+					),
+					'selectors'  => array(
+						"$bundle_enrolment_box_selector ul li span[class^='tutor-icon-']" => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+					'default'    => array(
+						'size' => 15,
+					),
+				)
+			);
+
+			$this->add_control(
+				'bundle_enrolmentx_box_icon_color',
+				array(
+					'label'     => __( 'Icon Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						"$bundle_enrolment_box_selector ul li span[class^='tutor-icon-']" => 'color: {{VALUE}};',
+					),
+					'default'   => '#212327',
+				)
+			);
+			// icon controls end.
+
+			// label controls.
+			$this->add_control(
+				'bundle_enrolment_meta_label_color',
+				array(
+					'label'     => __( 'Label Color', 'tutor-lms-elementor-addons' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						"$bundle_enrolment_box_selector ul li span:nth-child(2)" => 'color: {{VALUE}} !important;',
+					),
+					'default'   => '#757c8e',
+				)
+			);
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'bundle_enrolment_meta_label_typo',
+					'label'    => __( 'Label Typography', 'tutor-lms-elementor-addons' ),
+					'selector' => "$bundle_enrolment_box_selector ul li span:nth-child(2)",
+				)
+			);
+			// label controls end.
+			// value controls end.
 
 		$this->end_controls_section();
+		 // enrolment meta info controls end.
 	}
 
 	/**
@@ -107,11 +260,17 @@ class BundleOverview extends BaseAddon {
 	protected function render() {
 		$title  = __( 'Bundle Overview', 'tutor-lms-elementor-addons' );
 		$course = etlms_get_bundle();
-		if ( $course ) { ?>
-			<h3 class="tutor-bundle-overview-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16"><?php esc_html_e( 'Bundle Overview', 'tutor-lms-elementor-addons' ); ?></h3>
-			
-			<?php
-			tutor_load_template( 'single.course.course-entry-box' );
+		if ( $course ) { 
+				ob_start();
+			$settings = $this->get_settings_for_display();
+			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
+				include etlms_get_template( 'course/enrollment-editor' );
+			} else {
+				include etlms_get_template( 'course/enrollment' );
+			}
+			$output = ob_get_clean();
+			// PHPCS - the variable $output holds safe data.
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 }
