@@ -29,28 +29,50 @@ class BundleAuthor extends BaseAddon {
 
 
 	protected function register_content_controls() {
+
 		$this->start_controls_section(
-			'bundle_title_content',
+			'instructor_section',
 			array(
-				'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
-			)
-		);
-		$this->add_control(
-			'bundle_title_html_tag',
-			array(
-				'label'   => __( 'Select Tag', 'tutor-lms-elementor-addons' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'h1' => 'h1',
-					'h2' => 'h2',
-					'h3' => 'h3',
-					'h5' => 'h5',
-					'h6' => 'h6',
-				),
-				'default' => 'h2',
+				'label' => __( 'About the Instructor', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
 
+		$this->add_control(
+			'about_the_instructors_title',
+			array(
+				'label'       => __( 'Title', 'tutor-lms-elementor-addons' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => __( 'Instructors', 'tutor-lms-elementor-addons' ),
+				'placeholder' => __( 'Type your title here', 'tutor-lms-elementor-addons' ),
+				'rows'        => 3,
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_profile',
+			array(
+				'label'        => __( 'Profile Picture', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'separator'    => 'after',
+				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'course_instructor_name',
+			array(
+				'label'        => __( 'Display Name', 'tutor-lms-elementor-addons' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
+				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			)
+		);
 		$this->end_controls_section();
 	}
 
@@ -105,10 +127,8 @@ class BundleAuthor extends BaseAddon {
 		if ( $course ) { ?>
 		   <div class="tutor-bundle-author-list tutor-card tutor-card-md tutor-sidebar-card tutor-mt-24 tutor-py-24 tutor-px-32">
 						<?php
-							tutor_load_template_from_custom_path(
-								\TutorPro\CourseBundle\Utils::template_path( 'single/bundle-authors.php' ),
-								array( 'bundle_id' => $course_id )
-							);
+						include etlms_get_template( 'course/bundle-authors' );
+						
 						?>
 			</div>
 			<?php

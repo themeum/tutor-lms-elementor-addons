@@ -15,7 +15,7 @@ use TutorPro\CourseBundle\CustomPosts\ManagePostMeta;
 use TutorPro\CourseBundle\MetaBoxes\BundlePrice;
 use TutorPro\CourseBundle\Models\BundleModel;
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 class BundleThumbnail extends BaseAddon {
@@ -37,6 +37,7 @@ class BundleThumbnail extends BaseAddon {
 
 	protected function register_style_controls() {
 		$selector = '{{WRAPPER}} .tutor-course-thumbnail';
+		$bundle_thumb_dis_info_background = '{{WRAPPER}} .tutor-bundle-discount-info';
 
 		/* Style */
 		$this->start_controls_section(
@@ -44,6 +45,16 @@ class BundleThumbnail extends BaseAddon {
 			array(
 				'label' => __( 'Style', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_control(
+			'bundle_thumb_dis_info_background',
+			array(
+				'label'     => __( 'Discount info Background', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$bundle_thumb_dis_info_background => 'background: {{VALUE}};',
+				),
 			)
 		);
 

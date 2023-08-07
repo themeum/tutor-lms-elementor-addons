@@ -1,16 +1,18 @@
 <?php
-/*
-Plugin Name: Tutor LMS Elementor Addons
-Plugin URI: https://www.themeum.com/product/tutor-lms/
-Description: Elementor Addons Integration - Tutor LMS plugin lets you design course pages with Elementor.
-Author: Themeum
-Version: 2.0.9
-Author URI: http://themeum.com
-Requires at least: 5.3
-Tested up to: 6.2.2
-License: GPLv2 or later
-Text Domain: tutor-lms-elementor-addons
-*/
+/**
+ * Plugin Name: Tutor LMS Elementor Addons
+ * Plugin URI: https://www.themeum.com/product/tutor-lms/
+ * Description: Elementor Addons Integration - Tutor LMS plugin lets you design course pages with Elementor.
+ * Author: Themeum
+ * Version: 2.1.0
+ * Author URI: http://themeum.com
+ * Requires at least: 5.3
+ * Tested up to: 6.2.2
+ * License: GPLv2 or later
+ * Text Domain: tutor-lms-elementor-addons
+ *
+ * @package Tutor Elementor
+ */
 
 defined( 'ABSPATH' ) || die();
 
@@ -72,32 +74,4 @@ add_action(
 	9,
 	2
 );
-/**
- * edit with elmentor course description data missing.
- * 
- */
-// function editor_initialize($post_id){
-// 	$postcontent = get_post($post_id);
-// 	$content =$postcontent->post_content;
-// 	$id = $postcontent->ID;
-// 	update_post_meta ( $id, 'elem_tutor_content', sanitize_text_field($content) );
-// 	 remove_action('elementor/editor/init','editor_initialize');
-// 	 remove_action('elementor/editor/before_enqueue_styles','editor_initialize');
-// 	$custom_save = get_post_custom($post_id);
-// 	$toexcerpt = $custom_save ["elem_tutor_content"][0];
-// 	wp_update_post( array(
-// 		'ID'                => $id, 
-// 		'post_excerpt'		=> $toexcerpt,
-// 	) );
-// }
-// add_action('elementor/editor/before_enqueue_styles','editor_initialize');
 
-// function course_desc_saved_elementor_data( $post_id) {
-
-// 	
-	
-
-	
-	
-// }
-// add_action( 'elementor/document/before_save', 'course_desc_saved_elementor_data' );

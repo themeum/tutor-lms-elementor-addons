@@ -1,6 +1,6 @@
 <?php
 /**
- * bundle benefits Addon
+ * Bundle benefits Addon.
  *
  * @since 1.0.0
  *
@@ -51,7 +51,7 @@ class BundleBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'what_i_will_learn_section',
 			array(
-				'label' => __( 'Course Benefits', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Bundle Benefits', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -101,33 +101,6 @@ class BundleBenefits extends BaseAddon {
 				)
 			);
 
-			// Alignment
-			$this->add_responsive_control(
-				'course_benefits_alignments',
-				array(
-					'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
-					'type'      => \Elementor\Controls_Manager::CHOOSE,
-					'options'   => array(
-						'flex-start' => array(
-							'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
-							'icon'  => 'eicon-text-align-left',
-						),
-						'center'     => array(
-							'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
-							'icon'  => 'eicon-text-align-center',
-						),
-						'flex-end'   => array(
-							'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
-							'icon'  => 'eicon-text-align-right',
-						),
-					),
-					'default'   => 'flex-start',
-					'selectors' => array(
-						'{{WRAPPER}}.etlms-course-benefits-display-list-item' => 'text-align: {{VALUE}};',
-					),
-				)
-			);
-
 		$this->end_controls_section();
 	}
 
@@ -143,7 +116,7 @@ class BundleBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'course_benefits_title_section',
 			array(
-				'label' => __( 'Course Benefit Title', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Bundle Benefit Title', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -190,7 +163,7 @@ class BundleBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'course_benefits_list_section',
 			array(
-				'label' => __( 'Course Benefit List', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Bundle Benefit List', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -253,7 +226,7 @@ class BundleBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'course_benefits_icon_section',
 			array(
-				'label' => __( 'Course Benefit Icon', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Bundle Benefit Icon', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -292,7 +265,7 @@ class BundleBenefits extends BaseAddon {
 		$this->start_controls_section(
 			'course_benefits_text_section',
 			array(
-				'label' => __( 'Course Benefit Text', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Bundle Benefit Text', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -363,7 +336,7 @@ class BundleBenefits extends BaseAddon {
 		} else {
 			$op = '';
 			if ( $this->is_elementor_editor() ) {
-				$op = __( 'Please add Course Benefits from Tutor course builder', 'tutor-lms-elementor-addons' );
+				$op = __( 'Please add Bundle Benefits from Tutor course builder', 'tutor-lms-elementor-addons' );
 			}
 			echo esc_html( $op );
 		}

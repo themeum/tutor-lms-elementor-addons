@@ -36,22 +36,6 @@ class BundleOverview extends BaseAddon {
 				'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
 			)
 		);
-		$this->add_control(
-			'bundle_title_html_tag',
-			array(
-				'label'   => __( 'Select Tag', 'tutor-lms-elementor-addons' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'h1' => 'h1',
-					'h2' => 'h2',
-					'h3' => 'h3',
-					'h5' => 'h5',
-					'h6' => 'h6',
-				),
-				'default' => 'h2',
-			)
-		);
-
 		$this->add_responsive_control(
 			'bundle_title_align',
 			$this->title_alignment_with_selectors(
@@ -104,14 +88,19 @@ class BundleOverview extends BaseAddon {
 				// enrolment button preview controls end.
 		$this->end_controls_section();
 	}
-
+	/**
+	 * Registering control .
+	 *
+	 * @return void
+	 */
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .tutor-bundle-overview-widget-title';
-		// Style
+		$priceselector = '{{WRAPPER}} .woocommerce-Price-amount.amount';
+		$cartselector  = '{{WRAPPER}} .tutor-btn-primary';
+		// Style.
 		$this->start_controls_section(
 			'bundle_style_section',
 			array(
-				'label' => __( 'Color & Typography', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Price & cart button', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -119,10 +108,10 @@ class BundleOverview extends BaseAddon {
 		$this->add_control(
 			'bundle_title_color',
 			array(
-				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Price Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					$selector => 'color: {{VALUE}};',
+					$priceselector => 'color: {{VALUE}};',
 				),
 				'default'   => '#161616',
 			)
@@ -132,8 +121,50 @@ class BundleOverview extends BaseAddon {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'bundle_title_typography',
-				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
-				'selector' => $selector,
+				'label'    => __( 'Price Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $priceselector,
+			)
+		);
+		$this->add_control(
+			'bundle_carttitle_color',
+			array(
+				'label'     => __( 'Cart Text', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$cartselector => 'color: {{VALUE}};',
+				),
+				'default'   => '#fff',
+			)
+		);
+		$this->add_control(
+			'bundle_cartbg_color',
+			array(
+				'label'     => __( 'Cart Background', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$cartselector => 'background-color: {{VALUE}};',
+				),
+				'default'   => '#3e64de',
+			)
+		);
+		$this->add_control(
+			'bundle_cartborder_color',
+			array(
+				'label'     => __( 'Cart Border', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$cartselector => 'border-color: {{VALUE}};',
+				),
+				'default'   => '#3e64de',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'bundle_carttitle_typography',
+				'label'    => __( 'Cart Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $cartselector,
 			)
 		);
 		

@@ -27,40 +27,15 @@ class BundleCourses extends BaseAddon {
 		return __( 'Bundle Courses', 'tutor-lms-elementor-addons' );
 	}
 
-
-	protected function register_content_controls() {
-		$this->start_controls_section(
-			'bundle_courses_title_content',
-			array(
-				'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
-			)
-		);
-		$this->add_control(
-			'bundle_courses_title_html_tag',
-			array(
-				'label'   => __( 'Select Tag', 'tutor-lms-elementor-addons' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'h1' => 'h1',
-					'h2' => 'h2',
-					'h3' => 'h3',
-					'h5' => 'h5',
-					'h6' => 'h6',
-				),
-				'default' => 'h2',
-			)
-		);
-
-		$this->end_controls_section();
-	}
-
 	protected function register_style_controls() {
-		$selector = '{{WRAPPER}} .elm-bundle-courses h2.tutor-fs-5.tutor-fw-bold.tutor-color-black.tutor-mb-12';
-		// Style
+		$selector = '{{WRAPPER}} .elm-bundle-courses .tutor-fs-5.tutor-fw-bold.tutor-color-black.tutor-mb-12';
+		$courses_title_selector = '{{WRAPPER}} .tutor-bundle-course-title';
+		$courses_author_selector = '{{WRAPPER}} .tutor-bundle-course-list-desc p a';
+		// Style.
 		$this->start_controls_section(
 			'bundle_course_style_section',
 			array(
-				'label' => __( 'Color & Typography', 'tutor-lms-elementor-addons' ),
+				'label' => __( 'Title Color & Typography', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -68,7 +43,7 @@ class BundleCourses extends BaseAddon {
 		$this->add_control(
 			'bundle_courses_title_color',
 			array(
-				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Title Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$selector => 'color: {{VALUE}};',
@@ -81,8 +56,59 @@ class BundleCourses extends BaseAddon {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'bundle_courses_title_typography',
-				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
+				'label'    => __( 'Title Typography', 'tutor-lms-elementor-addons' ),
 				'selector' => $selector,
+			)
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'bundle_courselist_style_section',
+			array(
+				'label' => __( 'Courses List', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'bundle_courseslist_title_color',
+			array(
+				'label'     => __( 'Title Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$courses_title_selector => 'color: {{VALUE}};',
+				),
+				'default'   => '#161616',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'bundle_courseslist_title_typography',
+				'label'    => __( 'Title Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $courses_title_selector,
+			)
+		);
+		$this->add_control(
+			'bundle_coursesauthor_title_color',
+			array(
+				'label'     => __( 'Author Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					$courses_author_selector => 'color: {{VALUE}};',
+				),
+				'default'   => '#161616',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'bundle_coursesauthor_title_typography',
+				'label'    => __( 'Author Typography', 'tutor-lms-elementor-addons' ),
+				'selector' => $courses_author_selector,
 			)
 		);
 
