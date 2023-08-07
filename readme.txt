@@ -142,6 +142,17 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 = 2.1.0 - 7 August, 2023
+*New: The Course Bundle page is customizable by Elementor
+*New: Added Bundle Title Elementor widget
+*New: Added Bundle Thumbnail Elementor widget
+*New: Added Bundle Categories Elementor widget
+*New: Added Bundle Overview Elementor widget
+*New: Added Bundle Tags Elementor widget
+*New: Added Bundle Courses Elementor widget
+*New: Added Bundle Author Elementor widget
+*New: Added Bundle Benefits Elementor widget
+*New: Added option to make the sidebar sticky on the course bundle and course details page
+*Fix: Bundled courses weren't showing on the default course archive page
 
 = 2.0.9 - 2 August, 2023
 
