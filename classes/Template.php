@@ -31,6 +31,7 @@ class Template {
 
 	public function __construct() {
 		add_filter( 'template_include', array( $this, 'single_course_template' ), 100 );
+		add_filter( 'template_include', array( $this, 'single_bundle_template' ), 100 );
 		add_action( 'tutor_elementor_single_course_content', array( $this, 'single_course_content' ), 5 );
 
 		add_action( 'elementor/template-library/create_new_dialog_fields', array( $this, 'tutor_course_template' ) );
@@ -75,6 +76,39 @@ class Template {
             "
 		);
 		return (int) $post_id;
+	}
+
+	public function single_bundle_template($template){
+		global $wp_query, $post;
+		if ( ! post_type_supports( 'course-bundle', 'elementor' ) ) {
+			return $template;
+		}
+
+		if ( $wp_query->is_single && ! empty( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] === 'course-bundle' ) {
+
+			$document             = Plugin::$instance->documents->get( $post->ID );
+			$built_with_elementor = $document && $document->is_built_with_elementor();
+			$template_id          = $this->template_id;
+
+			/**
+			 * If not exists any specific template tutor single page or not elementor document, then return default System Template
+			 *
+			 * @since v.1.0.0
+			 */
+			if ( ! $template_id && ! $built_with_elementor ) {
+				return $template;
+			}
+
+			$student_must_login_to_view_course = tutor_utils()->get_option( 'student_must_login_to_view_course' );
+			if ( $student_must_login_to_view_course ) {
+				if ( ! is_user_logged_in() ) {
+					return tutor_get_template( 'login' );
+				}
+			}
+			$template      = etlms_get_template( 'single-course-bundle' );
+			return $template;
+		}
+		return $template;
 	}
 
 	/**
@@ -124,26 +158,51 @@ class Template {
 	}
 
 	/**
-	 * Load Single Course Elementor Content
-	 *
-	 * @param $post
-	 * @since v.1.0.0
+	 * sigle bundle load
 	 */
-	public function single_course_content( $post ) {
+
+	public function single_bundle_content( $post ) {
 		$document = Plugin::$instance->documents->get( $post->ID );
 
 		if ( $document && $document->is_built_with_elementor() ) {
-			echo the_content();
+			the_content();
 			return;
 		}
 
 		$template_id = $this->template_id;
 		if ( $template_id ) {
 			echo Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
-		} else {
-			echo '<h1>Mark a page/template as Tutor Single course from Elementor Page Settings</h1>';
-		}
+		} else { ?>
+			<h1><?php esc_html_e( 'Mark a page/template as Tutor Single course from Elementor Page Settings', 'tutor-lms-elementor-addons' ); ?></h1>
+			
+		<?php }
 	}
+
+
+	/**
+	 * Load Single Course Elementor Content
+	 *
+	 * @param $post
+	 * @since v.1.0.0
+	 */
+	
+	public function single_course_content( $post ) {
+		$document = Plugin::$instance->documents->get( $post->ID );
+
+		if ( $document && $document->is_built_with_elementor() ) {
+			 the_content();
+			return;
+		}
+
+		$template_id = $this->template_id;
+		if ( $template_id ) {
+			echo Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
+		} else { ?>
+			<h1><?php esc_html_e( 'Mark a page/template as Tutor Single course from Elementor Page Settings', 'tutor-lms-elementor-addons' ); ?></h1>
+			
+		<?php }
+	}
+
 
 	/**
 	 * Load Single Course Elementor Template
@@ -198,4 +257,5 @@ class Template {
 		$wpdb->delete( $wpdb->postmeta, array( 'meta_key' => '_tutor_lms_elementor_template_id' ) );
 		update_post_meta( $post_ID, '_tutor_lms_elementor_template_id', time() );
 	}
+
 }

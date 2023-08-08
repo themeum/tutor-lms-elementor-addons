@@ -55,8 +55,8 @@ class CourseAbout extends BaseAddon {
 	}
 
 	protected function register_style_controls() {
-		$paragraph_selector  = '{{WRAPPER}} .tutor-course-details-content';
-		$heading_selector    = '{{WRAPPER}} h2';
+		$paragraph_selector = '{{WRAPPER}} .tutor-course-details-content';
+		$heading_selector   = '{{WRAPPER}} h2';
 
 		/* Heading Section */
 		$this->start_controls_section(
@@ -150,8 +150,11 @@ class CourseAbout extends BaseAddon {
 		if ( $course ) {
 			ob_start();
 			$settings = $this->get_settings_for_display();
-			include etlms_get_template( 'course/about' );
+
+			 include etlms_get_template( 'course/about' );
+
 			echo ob_get_clean();
 		}
 	}
+
 }

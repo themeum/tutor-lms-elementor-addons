@@ -5,7 +5,7 @@ Tags: lms, elearning, learning management system, course, education, elementor a
 Requires at least: 5.3
 Tested up to: 6.2.2
 Requires PHP: 7.4
-Stable tag: 2.0.8
+Stable tag: 2.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -141,6 +141,23 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
+= 2.1.0 - 7 August, 2023
+*New: The Course Bundle page is customizable by Elementor
+*New: Added Bundle Title Elementor widget
+*New: Added Bundle Thumbnail Elementor widget
+*New: Added Bundle Categories Elementor widget
+*New: Added Bundle Overview Elementor widget
+*New: Added Bundle Tags Elementor widget
+*New: Added Bundle Courses Elementor widget
+*New: Added Bundle Author Elementor widget
+*New: Added Bundle Benefits Elementor widget
+*New: Added option to make the sidebar sticky on the course bundle and course details page
+*Fix: Bundled courses weren't showing on the default course archive page
+
+= 2.0.9 - 2 August, 2023
+
+*Update: Compatibility with the latest Elementor is introduced
+
 = 2.0.8 - 6 June, 2023
 
 *Fix: Fixed Lesson edit issue, ensuring smooth editing functionality.
