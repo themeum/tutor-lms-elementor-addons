@@ -74,7 +74,7 @@ class AddonsManager {
 	 * @return array
 	 */
 	public static function get_all_addons() {
-		return array(
+		$defaultaddon = array(
 			'CourseRating'         => array(
 				'title' => __( 'Course Rating', 'tutor-lms-elementor-addons' ),
 			),
@@ -114,7 +114,7 @@ class AddonsManager {
 			'CourseEnrolmentBox'   => array(
 				'title' => __( 'Course Enrolment Box', 'tutor-lms-elementor-addons' ),
 			),
-			'CoursePurchase'   => array(
+			'CoursePurchase'       => array(
 				'title' => __( 'Course Purchase', 'tutor-lms-elementor-addons' ),
 			),
 			'CourseMaterials'      => array(
@@ -138,7 +138,7 @@ class AddonsManager {
 			'CourseBenefits'       => array(
 				'title' => __( 'Course Benefits', 'tutor-lms-elementor-addons' ),
 			),
-			'CourseContent'     => array(
+			'CourseContent'        => array(
 				'title' => __( 'Course Content', 'tutor-lms-elementor-addons' ),
 			),
 			'CourseCurriculum'     => array(
@@ -156,34 +156,44 @@ class AddonsManager {
 			'CourseList'           => array(
 				'title' => __( 'Course List', 'tutor-lms-elementor-addons' ),
 			),
-			'CourseWishlist'           => array(
+			'CourseWishlist'       => array(
 				'title' => __( 'Course Wishlist', 'tutor-lms-elementor-addons' ),
 			),
+		);
 
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleTitle' : '' )  => array(
+		$proaddon = array(
+			'BundleTitle'      => array(
 				'title' => __( 'Bundle Title', 'tutor-lms-elementor-addons' ),
 			),
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleThumbnail' : '' ) => array(
+			'BundleThumbnail'  => array(
 				'title' => __( 'Bundle Thumbnail', 'tutor-lms-elementor-addons' ),
 			),
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleCategories' : '' ) => array(
+			'BundleCategories' => array(
 				'title' => __( 'Bundle Categories', 'tutor-lms-elementor-addons' ),
 			),
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleOverview' : '' )  => array(
+			'BundleOverview'   => array(
 				'title' => __( 'Bundle Overview', 'tutor-lms-elementor-addons' ),
 			),
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleTags' : '' )   => array(
+			'BundleTags'       => array(
 				'title' => __( 'Bundle Tags', 'tutor-lms-elementor-addons' ),
 			),
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleAuthor' : '' )   => array(
+			'BundleAuthor'     => array(
 				'title' => __( 'Bundle Author', 'tutor-lms-elementor-addons' ),
 			),
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleCourses' : '' )      => array(
+			'BundleCourses'    => array(
 				'title' => __( 'Bundle Courses', 'tutor-lms-elementor-addons' ),
 			),
-			( ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) ? 'BundleBenefits' : '' )   => array(
+			'BundleBenefits'   => array(
 				'title' => __( 'Bundle Benefits', 'tutor-lms-elementor-addons' ),
 			),
+
 		);
+		$alladdons = array_merge( $defaultaddon, $proaddon );
+		if ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) {
+			return $alladdons;
+		} else {
+			return $defaultaddon;
+		}
+
 	}
 }

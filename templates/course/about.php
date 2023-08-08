@@ -1,5 +1,4 @@
 <?php
-
 if ( ! function_exists( 'truncate' ) ) {
 	/**
 	 * Truncate content
@@ -99,13 +98,13 @@ if ( ! function_exists( 'truncate' ) ) {
 	}
 }
 
-$body_content  = get_the_content();
-$is_enabled    = get_tutor_option( 'enable_course_about' );
 $excerpt       = tutor_get_the_excerpt();
+$is_enabled    = get_tutor_option( 'enable_course_about' );
+$string        = $excerpt;
 $limit         = 100;
 $has_show_more = false;
 
-if ( strlen( $excerpt ) > $limit ) {
+if ( strlen( $string ) > $limit ) {
 	$has_show_more = true;
 }
 ?>
@@ -118,18 +117,15 @@ if ( strlen( $excerpt ) > $limit ) {
 				echo '<span style="margin: 5px">' . esc_html__( 'Please add data from the course editor', 'tutor-lms-elementor-addons' ) . '</span>';
 				return;
 			}
-			
 			?>
-		
 
 			<h2 class="tutor-course-details-heading tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-12">
 				<?php echo esc_html( $settings['about_section_title_text'], 'tutor-lms-elementor-addons' ); ?>
 			</h2>
-			<?php if( ! empty( $excerpt ) ) { ?>
+
 			<div class="tutor-course-details-content tutor-fs-6 tutor-color-secondary">
-				<?php echo esc_textarea( $excerpt ); ?>
+				<?php echo esc_textarea( $string ); ?>
 			</div>
-			<?php } ?>
 		</div>
 		<?php if ( $has_show_more ) : ?>
 			<a href="#" class="tutor-btn-show-more tutor-btn tutor-btn-ghost tutor-mt-32" data-tutor-toggle-more=".tutor-toggle-more-content">
