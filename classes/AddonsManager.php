@@ -74,7 +74,7 @@ class AddonsManager {
 	 * @return array
 	 */
 	public static function get_all_addons() {
-		$defaultaddon = array(
+		$default_addon = array(
 			'CourseRating'         => array(
 				'title' => __( 'Course Rating', 'tutor-lms-elementor-addons' ),
 			),
@@ -161,7 +161,7 @@ class AddonsManager {
 			),
 		);
 
-		$proaddon = array(
+		$pro_addon = array(
 			'BundleTitle'      => array(
 				'title' => __( 'Bundle Title', 'tutor-lms-elementor-addons' ),
 			),
@@ -188,11 +188,10 @@ class AddonsManager {
 			),
 
 		);
-		$alladdons = array_merge( $defaultaddon, $proaddon );
 		if ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) {
-			return $alladdons;
+			return array_merge( $default_addon, $pro_addon );
 		} else {
-			return $defaultaddon;
+			return $default_addon;
 		}
 
 	}

@@ -128,7 +128,6 @@ class BundleAuthor extends BaseAddon {
 		   <div class="tutor-bundle-author-list tutor-card tutor-card-md tutor-sidebar-card tutor-mt-24 tutor-py-24 tutor-px-32">
 						<?php
 						include etlms_get_template( 'course/bundle-authors' );
-						
 						?>
 			</div>
 			<?php
