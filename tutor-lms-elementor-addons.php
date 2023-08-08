@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ETLMS_VERSION', '2.0.6' );
+define( 'ETLMS_VERSION', '2.1.0' );
 
 /**
  * Tutor LMS Elementor addons v2.0.0 dependency on Tutor core
