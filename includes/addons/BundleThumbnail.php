@@ -73,6 +73,9 @@ class BundleThumbnail extends BaseAddon {
 						'label'    => __( 'CSS Filters', 'tutor-lms-elementor-addons' ),
 						'name'     => 'bundle_normal_thumbnail_filter',
 						'selector' => $selector,
+						'default' => [
+							'size' => 0,
+						],
 					)
 				);
 
