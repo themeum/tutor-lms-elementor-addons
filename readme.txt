@@ -3,7 +3,7 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: lms, elearning, learning management system, course, education, elementor addons for lms, elearning elementor addons, tutor lms, online courses
 Requires at least: 5.3
-Tested up to: 6.2.2
+Tested up to: 6.3
 Requires PHP: 7.4
 Stable tag: 2.1.0
 License: GPLv3
@@ -141,7 +141,7 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
-= 2.1.0 - 7 August, 2023
+= 2.1.0 - 9 August, 2023
 *New: The Course Bundle page is customizable by Elementor
 *New: Added Bundle Title Elementor widget
 *New: Added Bundle Thumbnail Elementor widget
@@ -152,9 +152,10 @@ You can post on the support section of this plugin or use the contact form at th
 *New: Added Bundle Author Elementor widget
 *New: Added Bundle Benefits Elementor widget
 *New: Added option to make the sidebar sticky on the course bundle and course details page
-*Fix: Bundled courses weren't showing on the default course archive page
+*New: Introducing compatibility with WordPress 6.3
+*Fix: Bundled courses weren't showing on the default course list page
 
-= 2.0.9 - 2 August, 2023
+= 2.0.9 - 2 August, 2023 
 
 *Update: Compatibility with the latest Elementor is introduced
 

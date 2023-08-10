@@ -14,7 +14,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 class BundleOverview extends BaseAddon {
@@ -104,7 +104,17 @@ class BundleOverview extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
-
+		$this->add_control(
+			'bundle_section_bg_color',
+			array(
+				'label'     => __( 'Section Background', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'.tutor-single-course-sidebar .tutor-sidebar-card .tutor-card-body' => 'background-color: {{VALUE}};',
+				),
+				'default'   => '#fff',
+			)
+		);
 		$this->add_control(
 			'bundle_title_color',
 			array(
@@ -128,7 +138,7 @@ class BundleOverview extends BaseAddon {
 		$this->add_control(
 			'bundle_carttitle_color',
 			array(
-				'label'     => __( 'Cart Text', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Cart Button Text', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$cartselector => 'color: {{VALUE}};',
@@ -139,7 +149,7 @@ class BundleOverview extends BaseAddon {
 		$this->add_control(
 			'bundle_cartbg_color',
 			array(
-				'label'     => __( 'Cart Background', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Cart Button Background', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$cartselector => 'background-color: {{VALUE}};',
@@ -150,7 +160,7 @@ class BundleOverview extends BaseAddon {
 		$this->add_control(
 			'bundle_cartborder_color',
 			array(
-				'label'     => __( 'Cart Border', 'tutor-lms-elementor-addons' ),
+				'label'     => __( 'Cart Button Border', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					$cartselector => 'border-color: {{VALUE}};',
@@ -163,7 +173,7 @@ class BundleOverview extends BaseAddon {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'bundle_carttitle_typography',
-				'label'    => __( 'Cart Typography', 'tutor-lms-elementor-addons' ),
+				'label'    => __( 'Cart Button Typography', 'tutor-lms-elementor-addons' ),
 				'selector' => $cartselector,
 			)
 		);

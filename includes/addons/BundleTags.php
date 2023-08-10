@@ -97,6 +97,28 @@ class BundleTags extends BaseAddon {
 		);
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'bundle_bg_style_section',
+			array(
+				'label' => __( 'Background', 'tutor-lms-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'bundle_tag_bg_color',
+			array(
+				'label'     => __( 'Color', 'tutor-lms-elementor-addons' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'.tutor-single-course-sidebar-more>div' => 'background-color: {{VALUE}};',
+				),
+				'default'   => '#fcfcfd',
+			)
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
