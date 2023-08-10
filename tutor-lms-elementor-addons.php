@@ -1,20 +1,22 @@
 <?php
-/*
-Plugin Name: Tutor LMS Elementor Addons
-Plugin URI: https://www.themeum.com/product/tutor-lms/
-Description: Elementor Addons Integration - Tutor LMS plugin lets you design course pages with Elementor.
-Author: Themeum
-Version: 2.0.9
-Author URI: http://themeum.com
-Requires at least: 5.3
-Tested up to: 6.2.2
-License: GPLv2 or later
-Text Domain: tutor-lms-elementor-addons
-*/
+/**
+ * Plugin Name: Tutor LMS Elementor Addons
+ * Plugin URI: https://www.themeum.com/product/tutor-lms/
+ * Description: Elementor Addons Integration - Tutor LMS plugin lets you design course pages with Elementor.
+ * Author: Themeum
+ * Version: 2.1.0
+ * Author URI: http://themeum.com
+ * Requires at least: 5.3
+ * Tested up to: 6.3
+ * License: GPLv2 or later
+ * Text Domain: tutor-lms-elementor-addons
+ *
+ * @package Tutor Elementor
+ */
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ETLMS_VERSION', '2.0.9' );
+define( 'ETLMS_VERSION', '2.1.0' );
 
 /**
  * Tutor LMS Elementor addons v2.0.0 dependency on Tutor core
@@ -58,3 +60,17 @@ function elementor_tutor_lms_init() {
 		\TutorLMS\Elementor\Base::instance();
 	}
 }
+
+/**
+ * TODO remove in next release. Handle it by bundle addon.
+ */
+add_action(
+	'save_post_course-bundle',
+	function( int $post_id, WP_Post $post ) {
+		if ( wp_doing_ajax() && isset( $_POST['action'] ) && 'elementor_ajax' === sanitize_text_field( wp_unslash( $_POST['action'] ) ) ) {
+			remove_all_actions( 'save_post_course-bundle' );
+		}
+	},
+	9,
+	2
+);
