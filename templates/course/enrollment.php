@@ -68,17 +68,17 @@
 			<?php
 			$start_content = '';
 
-			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership
+			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership.
 			do_action( 'tutor_course/single/actions_btn_group/before' );
 
-			// Show Start/Continue/Retake Button
+			// Show Start/Continue/Retake Button.
 			if ( $lesson_url ) {
 				$button_class = 'tutor-btn ' .
 								( $retake_course ? 'tutor-btn-outline-primary' : 'tutor-btn-primary' ) .
 								' tutor-btn-block' .
 								( $retake_course ? ' tutor-course-retake-button' : '' );
 
-				// Button identifier class
+				// Button identifier class.
 				$button_identifier = 'start-continue-retake-button';
 				$tag               = $retake_course ? 'button' : 'a';
 				ob_start();
@@ -167,7 +167,7 @@
 				<?php
 				echo apply_filters( 'tutor/course/single/entry-box/fully_booked', ob_get_clean(), get_the_ID() );
 			} elseif ( $is_purchasable && $price && $tutor_course_sell_by ) {
-				// Load template based on monetization option
+				// Load template based on monetization option.
 				ob_start();
 				if ( file_exists( ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
 					include ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php';

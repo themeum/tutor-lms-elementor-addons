@@ -42,6 +42,49 @@ if ( ! function_exists( 'setup_course_data' ) ) {
 	}
 }
 
+if( ! function_exists( 'setup_bundle_data' )){
+	function setup_bundle_data(){
+		global $wpdb,$post;
+		$bundle_author = get_current_user_id();
+		$bundle_id	= $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts where post_status ='publish' and post_type = %s and post_author = %d",'course-bundle',$bundle_author));
+		if($bundle_id){
+			$get_bundle = get_post($bundle_id);
+			setup_postdata($get_bundle);
+			return true;
+		}
+		return false;
+	}
+}
+
+if(!function_exists('etlms_get_bundle')){
+	function etlms_get_bundle(){
+		global $post;
+		$bundle_id        = $post->ID;
+		$bundle_post_type = 'course-bundle';
+
+		if ( is_single() && $post->post_type == $bundle_post_type ) {
+			return true;
+		}
+
+		if ( $post->post_type == 'elementor_library' ) {
+			$is_tutor_template = get_post_meta( $post->ID, '_tutor_lms_elementor_template_id', true );
+			if ( $is_tutor_template ) {
+				return setup_bundle_data();
+			}
+		}
+
+		if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
+			$elementor_bundle_id = \Elementor\Plugin::instance()->editor->get_post_id();
+			if ( $post->post_type == $bundle_post_type && $course_id === $elementor_bundle_id ) {
+				return true;
+			}
+			return setup_bundle_data();
+		}
+
+		return false;
+	}
+}
+
 if ( ! function_exists( 'etlms_get_course' ) ) {
 	function etlms_get_course() {
 		global $post;

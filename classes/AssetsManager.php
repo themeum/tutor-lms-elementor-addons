@@ -116,6 +116,14 @@ class AssetsManager {
 			'const etlmsUtility = ' . json_encode( self::utility_data() ) . '',
 			'before'
 		);
+
+		wp_localize_script(
+			'tutor-elementor-js',
+			'tutorElementorData',
+			array(
+				'is_sidebar_sticky' => tutor_utils()->get_option( 'enable_sticky_sidebar', false, true, true ),
+			)
+		);
 	}
 
 	// Add default template library.
@@ -129,6 +137,16 @@ class AssetsManager {
 				$elementorData = file_get_contents( ETLMS_DIR_PATH . '/assets/layout/default.json' );
 				$elementorData = json_decode( $elementorData, true );
 				update_post_meta( $postID, '_elementor_controls_usage', $elementorData['controls'] );
+				update_post_meta( $postID, '_elementor_data', json_encode( $elementorData['layout'] ) );
+				update_post_meta( $postID, $meta_key, 'yes' );
+			}
+		}
+		if ( get_post_type( $post ) === 'course-bundle' ) {
+			$elementor_data_used = get_post_meta( $postID, $meta_key, true );
+			if ( ! $elementor_data_used ) {
+				$elementorData = file_get_contents( ETLMS_DIR_PATH . '/assets/layout/bundle.json' );
+				$elementorData = json_decode( $elementorData, true );
+				update_post_meta( $postID, '_elementor_controls_usage', $elementorData );
 				update_post_meta( $postID, '_elementor_data', json_encode( $elementorData['layout'] ) );
 				update_post_meta( $postID, $meta_key, 'yes' );
 			}

@@ -7,6 +7,7 @@
 
 $course_progress = tutor_utils()->get_course_completed_percent( get_the_ID(), 0, true );
 $is_editor       = \Elementor\Plugin::instance()->editor->is_edit_mode();
+$settings = $this->get_settings_for_display();
 
 if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
 	<div class="etlms-course-progress tutor-course-progress">
