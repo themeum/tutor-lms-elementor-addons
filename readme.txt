@@ -141,6 +141,10 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
+= 2.1.1 - 17 August, 2023
+Fix: Resolved issue with multiple Course List on a single page
+Fix: Course Bundle not displaying correctly within the Course Carousel addon
+
 = 2.1.0 - 9 August, 2023
 *New: The Course Bundle page is customizable by Elementor
 *New: Added Bundle Title Elementor widget
