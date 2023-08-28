@@ -18,11 +18,14 @@
 	*/
 	$paged = isset( $_GET['current_page'] ) ? sanitize_text_field( $_GET['current_page'] ) : 1;
 	// check for plugin using tutor pro
-	function is_bundle_enabled() {
-		$basename   = plugin_basename( TUTOR_COURSE_BUNDLE_FILE );
-		$is_enabled = tutor_utils()->is_addon_enabled( $basename );
-		return $is_enabled;
+	if ( ! function_exists( 'is_bundle_enabled' ) ) {
+		function is_bundle_enabled() {
+			$basename   = plugin_basename( TUTOR_COURSE_BUNDLE_FILE );
+			$is_enabled = tutor_utils()->is_addon_enabled( $basename );
+			return $is_enabled;
+		}
 	}
+
 	if(in_array('tutor-pro/tutor-pro.php', apply_filters('active_plugins', get_option('active_plugins'))) && is_bundle_enabled() ){ 
 		//plugin is activated
 		$listing_postype = ['courses','course-bundle'];
