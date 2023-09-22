@@ -28,14 +28,14 @@
 	}
 
 	if(in_array('tutor-pro/tutor-pro.php', apply_filters('active_plugins', get_option('active_plugins'))) && is_bundle_enabled() ){ 
-		//plugin is activated
-		$listing_postype = ['courses','course-bundle'];
+		// tutor-pro plugin is activated and course-bundle feature is enabled
+		$listed_post_types = [ tutor()->course_post_type, 'course-bundle' ];
 	}
 	else{
-		$listing_postype = tutor()->course_post_type;
+		$listed_post_types = tutor()->course_post_type;
 	}
 	$args  = array(
-		'post_type'      => $listing_postype,
+		'post_type'      => $listed_post_types,
 		'post_status'    => 'publish',
 		'posts_per_page' => $course_list_perpage,
 		'paged'          => $paged,
