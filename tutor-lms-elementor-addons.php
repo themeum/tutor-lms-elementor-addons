@@ -7,7 +7,8 @@
  * Version: 2.1.1
  * Author URI: http://themeum.com
  * Requires at least: 5.3
- * Tested up to: 6.3
+ * Tested up to: 6.3.1
+ * Elementor tested up to: 3.16.4
  * License: GPLv2 or later
  * Text Domain: tutor-lms-elementor-addons
  *
