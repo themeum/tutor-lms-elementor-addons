@@ -332,6 +332,21 @@ class CourseList extends BaseAddon {
 			);
 
 			$this->add_control(
+				'course_list_select_by_user_course_state',
+				array(
+					'label'   => __( 'When logged in, show', 'tutor-lms-elementor-addons' ),
+					'type'    => Controls_Manager::SELECT,
+					'default' => 'any',
+					'options' => array(
+						'any'                    => __( 'published Courses',    'tutor-lms-elementor-addons' ),
+						'enrolled_or_completed'  => __( 'enrolled, completed', 'tutor-lms-elementor-addons' ),
+						'enrolled_not_completed' => __( 'enrolled(active)',    'tutor-lms-elementor-addons' ),
+						'only_completed'         => __( 'completed(finished)', 'tutor-lms-elementor-addons' ),
+					),
+				)
+			);
+
+			$this->add_control(
 				'course_list_include_by_categories',
 				array(
 					'label'    => __( 'Categories', 'tutor-lms-elementor-addons' ),

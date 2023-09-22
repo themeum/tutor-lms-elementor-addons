@@ -6,6 +6,7 @@
 	$course_list_perpage = $settings['course_list_perpage'];
 	$course_list_column  = $settings['course_list_column'];
 
+	$select_by_user_state  = $settings['course_list_select_by_user_course_state'];
 	$include_by_categories = $settings['course_list_include_by_categories'];
 	$exclude_by_categories = $settings['course_list_exclude_by_categories'];
 	$include_by_authors    = $settings['course_list_include_by_authors'];
@@ -42,6 +43,17 @@
 			'relation' => 'AND',
 		),
 	);
+	if ( $select_by_user_state != 'any' ) {
+		if ( $select_by_user_state == 'enrolled_or_completed' ) {
+			$args['post__in'] = tutor_utils()->get_enrolled_courses_ids_by_user( );
+		} elseif ( $select_by_user_state == 'only_completed' ) {
+			$args['post__in'] = tutor_utils()->get_completed_courses_ids_by_user( );
+		} elseif ( $select_by_user_state == 'enrolled_not_completed' ) {
+			$enrolled_ids = tutor_utils()->get_enrolled_courses_ids_by_user( );
+			$completed_ids = tutor_utils()->get_completed_courses_ids_by_user( );
+			$args['post__in'] = array_diff( $enrolled_ids, $completed_ids );
+		}
+	}
 
 	if ( ! empty( $include_by_categories ) ) {
 		$tax_query = array(
