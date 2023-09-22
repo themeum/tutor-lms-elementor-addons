@@ -141,8 +141,9 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
-= 2.1.2 - 25 August, 2023 
-*Update: Compatibility with the latest Elementor is introduced
+= 2.1.2 - 22 September, 2023 
+*Update: Added compatibility with the latest version of Elementor
+*Fix: Resolved toggle settings issue for course list hover animations
 
 = 2.1.1 - 17 August, 2023
 Fix: Resolved issue with multiple Course List on a single page
