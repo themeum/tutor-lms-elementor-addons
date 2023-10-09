@@ -1,5 +1,9 @@
 <?php
 	// Utility data
+
+use Tutor\Models\CourseModel;
+	$user_id   = get_current_user_id();
+	$course_id = get_the_ID();
 	$is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
 	$lesson_url            = tutor_utils()->get_course_first_lesson();
 	$is_administrator      = tutor_utils()->has_user_role( 'administrator' );
@@ -8,7 +12,7 @@
 	$is_privileged_user    = $course_content_access && ( $is_administrator || $is_instructor );
 	$tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
 	$is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
-
+	$can_complete_course   = CourseModel::can_complete_course( $course_id, $user_id );
 	// Monetization info
 	$monetize_by    = tutor_utils()->get_option( 'monetize_by' );
 	$is_purchasable = tutor_utils()->is_course_purchasable();
@@ -89,6 +93,12 @@
 						esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' );
 					} elseif ( $completed_percent <= 0 ) {
 						esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' );
+					} elseif ( 0 === (int) $completed_percent ) {
+						esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' );
+					} elseif ( $completed_percent > 0 && $completed_percent < 100 ) {
+						esc_html_e( 'Continue Learning', 'tutor-lms-elementor-addons' );
+					} elseif ( 100 === (int) $completed_percent && false === $can_complete_course ) {
+						esc_html_e( 'Review Progress', 'tutor-lms-elementor-addons' );
 					} else {
 						esc_html_e( 'Continue Learning', 'tutor-lms-elementor-addons' );
 					}
