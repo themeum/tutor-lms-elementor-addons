@@ -7,7 +7,7 @@
         <span class="tutor-ratings-count">
             <?php
             echo $course_rating->rating_avg;
-            echo '(' . $course_rating->rating_count .' '. __('Ratings') . ')';
+            echo '(' . $course_rating->rating_count .' '. __( 'Ratings', 'tutor-lms-elementor-addons' ) . ')';
             ?>
         </span>
     </span>
