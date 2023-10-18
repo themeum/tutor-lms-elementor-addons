@@ -10,8 +10,8 @@
 use Tutor\Models\CourseModel;
 
 // Utility data.
-$user_id   = get_current_user_id();
-$course_id = get_the_ID();
+$user_id               = get_current_user_id();
+$course_id             = get_the_ID();
 $is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
 $lesson_url            = tutor_utils()->get_course_first_lesson();
 $is_administrator      = tutor_utils()->has_user_role( 'administrator' );
@@ -21,7 +21,7 @@ $is_privileged_user    = $course_content_access && ( $is_administrator || $is_in
 $tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
 $is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
 $can_complete_course   = CourseModel::can_complete_course( $course_id, $user_id );
-
+$completion_mode       = tutor_utils()->get_option( 'course_completion_process' );
 // Monetization info
 $monetize_by    = tutor_utils()->get_option( 'monetize_by' );
 $is_purchasable = tutor_utils()->is_course_purchasable();
@@ -104,43 +104,71 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 				</div>
 			<?php endif; ?>
 			<?php
-			$start_content = '';
-
-			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership
-			do_action( 'tutor_course/single/actions_btn_group/before' );
-
-			// Show Start/Continue/Retake Button
+				$start_content = '';
 			if ( $lesson_url ) {
-				$button_class = 'tutor-btn ' .
-								( $retake_course ? 'tutor-btn-outline-primary' : 'tutor-btn-primary' ) .
-								' tutor-btn-block' .
-								( $retake_course ? ' tutor-course-retake-button' : '' );
-
-				// Button identifier class
-				$button_identifier = 'start-continue-retake-button';
-				$tag               = $retake_course ? 'button' : 'a';
-				ob_start();
-				?>
-					<<?php echo $tag; ?> <?php echo $retake_course ? 'disabled="disabled"' : ''; ?> href="<?php echo esc_url( $lesson_url ); ?>" class="<?php echo esc_attr( $button_class . ' ' . $button_identifier ); ?>" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-					<?php
-					if ( $retake_course ) {
-						esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' );
-					} elseif ( $completed_percent <= 0 ) {
-						esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' );
-					} elseif ( 0 === (int) $completed_percent ) {
-						esc_html_e( 'Start Learning', 'tutor-lms-elementor-addons' );
-					} elseif ( $completed_percent > 0 && $completed_percent < 100 ) {
-						esc_html_e( 'Continue Learning', 'tutor-lms-elementor-addons' );
-					} elseif ( 100 === (int) $completed_percent && false === $can_complete_course ) {
-						esc_html_e( 'Review Progress', 'tutor-lms-elementor-addons' );
-					} else {
-						esc_html_e( 'Continue Learning', 'tutor-lms-elementor-addons' );
-					}
+						$start_content = ob_start();
+						/**
+					 * Course retake button.
+					 *
+					 * Todo: `href` attribute is exist for backward compatibility.
+					 *       we need to make it `data-link` attribute and update the js code at course-landing.js
+					 *
+					 * @since 1.0.0
+					 * @since 2.4.0 refactored and hide it when strict mode enabled and course not completed.
+					 */
+				if ( $retake_course && ( CourseModel::MODE_FLEXIBLE === $completion_mode || $is_completed_course ) ) {
 					?>
-					</<?php echo $tag; ?>>
-					<?php
-					$start_content = ob_get_clean();
+							<button type="button" 
+									class="tutor-btn tutor-btn-block tutor-btn-outline-primary start-continue-retake-button tutor-course-retake-button" 
+									href="<?php echo esc_url( $lesson_url ); ?>"
+									data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+						<?php esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' ); ?>
+							</button>
+						<?php
+				}
+
+
+						/**
+						 * Start/Continue learning button
+						 *
+						 * @since 1.0.0
+						 * @since 2.4.0 refactored for enhance readibility.
+						 */
+						$link_text = '';
+				if ( ! $is_completed_course ) {
+					if ( 0 === (int) $completed_percent ) {
+						$link_text = __( 'Start Learning', 'tutor-lms-elementor-addons' );
+					}
+					if ( $completed_percent > 0 && $completed_percent < 100 ) {
+						$link_text = __( 'Continue Learning', 'tutor-lms-elementor-addons' );
+					}
+
+					/**
+					 * `Review Progress` link text shown when
+					 * - strict mode enabled
+					 * - course progress 100%
+					 * - in course progress any quiz or assignemnt result is not passed.
+					 *
+					 * @since 2.4.0
+					 */
+					if ( 100 === (int) $completed_percent && false === CourseModel::can_complete_course( $course_id, $user_id ) ) {
+						$lesson_url = CourseModel::get_review_progress_link( $course_id, $user_id );
+						$link_text  = __( 'Review Progress', 'tutor-lms-elementor-addons' );
+					}
+				}
+
+				if ( strlen( $link_text ) > 0 ) {
+					?>
+							<a 	href="<?php echo esc_url( $lesson_url ); ?>" 
+								class="tutor-btn tutor-btn-block tutor-btn-primary tutor-mt-20">
+							<?php echo esc_html( $link_text ); ?>
+							</a>
+						<?php
+				}
+						$start_content = ob_get_clean();
 			}
+
+
 			echo apply_filters( 'tutor_course/single/start/button', $start_content, get_the_ID() );
 
 			// Show Course Completion Button.
