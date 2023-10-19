@@ -105,6 +105,7 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 			<?php endif; ?>
 			<?php
 				$start_content = '';
+				do_action( 'tutor_course/single/actions_btn_group/before' );
 			if ( $lesson_url ) {
 						$start_content = ob_start();
 						/**
