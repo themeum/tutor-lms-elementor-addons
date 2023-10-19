@@ -72,8 +72,7 @@ use Tutor\Models\CourseModel;
 			?>
 			<?php
 			$start_content = '';
-
-			$start_content = '';
+			
 			do_action( 'tutor_course/single/actions_btn_group/before' );
 			if ( $lesson_url ) {
 					$start_content = ob_start();
