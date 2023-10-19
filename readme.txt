@@ -141,10 +141,10 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
-= 2.1.3 - 16 October, 2023 
-*Update: Added compatibility with the latest version of Tutor LMS
-*Fix: course carousel arrows aren't showing on the front end
-*Fix: Some translation issue
+= 2.1.3 - 18 October, 2023 
+Update: Added compatibility with the latest version of Tutor LMS
+Fix: Course Carousel arrows weren’t visible on the frontend
+Fix: Addressed certain translation issues
 
 = 2.1.2 - 22 September, 2023 
 *Update: Added compatibility with the latest version of Elementor
