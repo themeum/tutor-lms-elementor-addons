@@ -188,10 +188,15 @@ class AddonsManager {
 			),
 
 		);
-		if ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) {
-			return array_merge( $default_addon, $pro_addon );
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
 		} else {
-			return $default_addon;
+
+			if ( is_plugin_active( 'tutor-pro/tutor-pro.php' ) ) {
+				return array_merge( $default_addon, $pro_addon );
+			} else {
+				return $default_addon;
+			}
 		}
 
 	}
