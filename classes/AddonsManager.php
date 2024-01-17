@@ -40,7 +40,7 @@ class AddonsManager {
 		/**
 		 * If single course and built with elementor then remove description addon for avoiding the_content overlap
 		 */
-		if ( $post->post_type && $post->post_type == tutor()->course_post_type ) {
+		if ( isset( $post->post_type ) && tutor()->course_post_type === $post->post_type ) {
 			$document = Plugin::$instance->documents->get( $post->ID );
 			if ( $document && $document->is_built_with_elementor() ) {
 				unset( $all_addons['CourseDescription'] );
