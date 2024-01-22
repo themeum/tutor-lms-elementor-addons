@@ -64,9 +64,13 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 						</div>
 
 						<div class="tutor-fs-6 tutor-color-secondary tutor-mt-12 tutor-total-rating-count">
-							<?php esc_html_e( 'Total ', 'tutor-lms-elementor-addons' ); ?>
-							<?php echo esc_html( $reviews_total ); ?>
-							<?php echo esc_html( _n( ' Rating', ' Ratings', count( $reviews ), 'tutor-lms-elementor-addons' ) ); ?>
+							<?php
+							printf(
+								// translators: %d: complete percent value.
+								esc_html( _n( 'Total %d Rating', 'Total %d Ratings', (int) $reviews_total, 'tutor-lms-elementor-addons' ) ),
+								(int) $reviews_total,
+							);
+							?>
 						</div>
 					</div>
 
@@ -93,7 +97,15 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 									</div>
 
 									<div class="tutor-col-4 tutor-col-lg-3">
-										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating"><?php printf( esc_html( _n( '%s Rating', '%s Ratings', 0 == $value ? 1 : $value, 'tutor-lms-elementor-addons' ) ), number_format_i18n( $value ) ); ?></span>
+										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating">
+											<?php
+											printf(
+												// translators: %d: number of ratings.
+												esc_html( _n( '%s Rating', '%s Ratings', $value, 'tutor-lms-elementor-addons' ) ),
+												esc_html( number_format_i18n( $value ) )
+											);
+											?>
+										</span>
 									</div>
 								</div>
 							<?php endforeach; ?>
