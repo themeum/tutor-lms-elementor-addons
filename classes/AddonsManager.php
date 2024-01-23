@@ -16,6 +16,9 @@ defined( 'ABSPATH' ) || exit;
 
 use Elementor\Plugin;
 
+/**
+ * Class AddonsManager
+ */
 class AddonsManager {
 	/**
 	 * Init manager
@@ -55,6 +58,11 @@ class AddonsManager {
 	 * Register addons
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $key key.
+	 * @param mixed  $props props.
+	 *
+	 * @return void
 	 */
 	protected static function register_addon( $key, $props ) {
 		$elementor  = \Elementor\Plugin::instance();
