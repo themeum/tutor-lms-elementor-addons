@@ -6,7 +6,6 @@ Thumbs.db
 .npm
 .idea/
 .vscode/
-package-lock.json
 yarn.lock
 .sass-cache
 .prettierignore
