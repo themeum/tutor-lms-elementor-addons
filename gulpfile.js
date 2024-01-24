@@ -6,11 +6,18 @@ var gulp = require("gulp"),
 	clean = require("gulp-clean"),
 	rename = require("gulp-rename"),
 	sourcemaps = require("gulp-sourcemaps"),
-	zip = require("gulp-zip");
+	zip = require("gulp-zip"),
+	fs = require('fs'),
+	versionNumber = '';
 
 	package = require('./package.json'); 
 
 const cleanCSS = require('gulp-clean-css');
+
+try {
+	const data = fs.readFileSync('tutor-lms-elementor-addons.php', 'utf8');
+	versionNumber = data.match(/Version:\s*([\d.]+)/i)?.[1] || '';
+} catch (err) {}
 
 var tasks = {
     addonCSSMin: {src: "assets/scss/tutor-elementor.scss", mode: 'compressed', destination: 'tutor-elementor.min.css'},
@@ -104,7 +111,7 @@ gulp.task("copy", function () {
 });
 
 gulp.task("make-zip", function () {
-	return gulp.src("./build/**/*.*").pipe(zip(`tutor-lms-elementor-addons-v${package.version}.zip`)).pipe(gulp.dest("./"));
+	return gulp.src("./build/**/*.*").pipe(zip(`tutor-lms-elementor-addons-v${versionNumber}.zip`)).pipe(gulp.dest("./"));
 });
 
 gulp.task('minify-css', () => {
