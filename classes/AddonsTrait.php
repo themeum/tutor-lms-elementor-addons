@@ -17,9 +17,11 @@ defined( 'ABSPATH' ) || exit;
 trait AddonsTrait {
 
 	/**
-	 * default_layout optional default value left
+	 * Layout for Tutor LMS Elementor.
 	 *
-	 * @return return layout options for left,up
+	 * @param string $default_layout default value left (optional).
+	 *
+	 * @return array layout options for left,up
 	 */
 	public function etlms_layout( $default_layout = 'left' ) {
 		return array(
@@ -44,9 +46,11 @@ trait AddonsTrait {
 	}
 
 	/**
-	 * default_layout optional default value left
+	 * Alignment.
 	 *
-	 * @return layout options for left,right,center
+	 * @param string $default_alignment default value left (optional).
+	 *
+	 * @return array layout options for left,right,center
 	 */
 	public function etlms_alignment( $default_alignment = 'left' ) {
 		return array(
@@ -71,7 +75,14 @@ trait AddonsTrait {
 		);
 	}
 
-	// icon left right alignment
+	/**
+	 * Icon alignment.
+	 *
+	 * @param string $prefix_class prefix class.
+	 * @param string $default_layout default layout.
+	 *
+	 * @return array
+	 */
 	public function etlms_icon_align( $prefix_class, $default_layout = 'right' ) {
 		return array(
 			'label'        => __( 'Icon Position', 'tutor-lms-elementor-addons' ),
@@ -94,6 +105,13 @@ trait AddonsTrait {
 		);
 	}
 
+	/**
+	 * Align with justify.
+	 *
+	 * @param string $default_alignment default alignment.
+	 *
+	 * @return array
+	 */
 	public function etlms_align_with_justify( $default_alignment = 'left' ) {
 		return array(
 			'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
@@ -121,6 +139,13 @@ trait AddonsTrait {
 		);
 	}
 
+	/**
+	 * Non responsive layout.
+	 *
+	 * @param string $default_layout default layout.
+	 *
+	 * @return array
+	 */
 	public function etlms_non_responsive_layout( $default_layout = 'left' ) {
 		return array(
 			'label'        => __( 'Layout', 'tutor-lms-elementor-addons' ),
@@ -143,6 +168,13 @@ trait AddonsTrait {
 		);
 	}
 
+	/**
+	 * Non responsive alignment.
+	 *
+	 * @param string $default_alignment default alignment.
+	 *
+	 * @return array
+	 */
 	public function etlms_non_responsive_alignment( $default_alignment = 'left' ) {
 		return array(
 			'label'        => __( 'Alignment', 'tutor-lms-elementor-addons' ),
@@ -169,8 +201,9 @@ trait AddonsTrait {
 	/**
 	 * Get alignments with default selectors
 	 *
-	 * @param string $selector | CSS selectors.
-	 * @param string $value | styles.
+	 * @param array  $selectors CSS selectors.
+	 * @param string $align alignment.
+	 *
 	 * @return array
 	 */
 	protected function title_alignment_with_selectors( array $selectors, string $align = 'left' ) {
