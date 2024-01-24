@@ -12,3 +12,4 @@ yarn.lock
 .DS_Store
 *.zip
 *.map
+languages/*
