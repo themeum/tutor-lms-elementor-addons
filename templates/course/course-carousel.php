@@ -19,14 +19,14 @@
 		}
 	}
 	if(in_array('tutor-pro/tutor-pro.php', apply_filters('active_plugins', get_option('active_plugins'))) && is_bundle_enabled() ){ 
-		//plugin is activated
-		$carosel_postype = ['courses','course-bundle'];
+		// tutor-pro plugin is activated and course-bundle feature is enabled
+		$carousel_post_types = [ tutor()->course_post_type, 'course-bundle' ];
 	}
 	else{
-		$carosel_postype = tutor()->course_post_type;
+		$carousel_post_types = tutor()->course_post_type;
 	}
 	$args = array(
-		'post_type'      => $carosel_postype,
+		'post_type'      => $carousel_post_types,
 		'post_status'    => 'publish',
 		'posts_per_page' => $limit,
 		'tax_query'      => array(

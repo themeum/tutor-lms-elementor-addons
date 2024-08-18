@@ -12,6 +12,9 @@
 			require etlms_get_template( 'course/list/parts/title' );
 			require etlms_get_template( 'course/list/parts/meta' );
 			require etlms_get_template( 'course/list/parts/info' );
+			if ( 'yes' === $settings['course_list_current_user_progress'] ) {
+				include etlms_get_template( 'course/status' );
+			}
 		?>
 	</div>
 

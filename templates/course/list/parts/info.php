@@ -1,6 +1,6 @@
 <?php
 global $post, $authordata;
-$profile_url       = tutor_utils()->profile_url( $authordata->ID, true );
+$profile_url       = is_array($authordata) ? tutor_utils()->profile_url( $authordata->ID, true ) : '';
 $course_categories = get_tutor_course_categories();
 $show_avatar       = $settings['course_list_avatar_settings'];
 $show_author       = $settings['course_list_author_settings'];
