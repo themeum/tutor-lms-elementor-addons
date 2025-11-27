@@ -1,5 +1,5 @@
 <?php $animation_class  = 'elementor-animation-' . $settings['course_list_card_hover_animation'] . $settings['card_hover_animation'] ? ' etlms-has-hover-animation' : ''; ?>
-<div class="tutor-course-card etlms-course-card-overlay <?php echo $animation_class; ?>">
+<div class="tutor-course-card etlms-course-card-overlay <?php echo esc_html( $animation_class ); ?>">
     <?php
         include etlms_get_template( 'course/list/parts/thumbnail' );
     ?>

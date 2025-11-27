@@ -10,12 +10,11 @@ namespace TutorLMS\Elementor\Addons;
 use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 class CourseAuthor extends BaseAddon {
@@ -229,7 +228,7 @@ class CourseAuthor extends BaseAddon {
 				'name'     => 'course_author_name_typo',
 				'label'    => __( 'Typography', 'tutor-lms-elementor-addons' ),
 				'selector' => $author_selector . ' a',
-				//'scheme'   => Global_Typography::TYPOGRAPHY_ACCENT
+				//'scheme'   => Global_Typography::TYPOGRAPHY_PRIMARY
 			)
 		);
 		$this->end_controls_section();

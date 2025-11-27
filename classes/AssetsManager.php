@@ -61,10 +61,10 @@ class AssetsManager {
 			ETLMS_VERSION
 		);
 
-		wp_register_style(
+		wp_enqueue_style(
 			'font-awesome-4-shim',
-			ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/v4-shims.min.css',
-			false,
+			ETLMS_ASSETS . 'css/font-awesome.min.css',
+			null,
 			ETLMS_VERSION
 		);
 
