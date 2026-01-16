@@ -26,14 +26,13 @@
 		}
 	}
 
-	if(in_array('tutor-pro/tutor-pro.php', apply_filters('active_plugins', get_option('active_plugins'))) && is_bundle_enabled() ){ 
-		//plugin is activated
-		$listing_postype = ['courses','course-bundle'];
-	}
-	else{
+	if ( in_array( 'tutor-pro/tutor-pro.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) && is_bundle_enabled() ) {
+		// plugin is activated
+		$listing_postype = array( 'courses', 'course-bundle' );
+	} else {
 		$listing_postype = tutor()->course_post_type;
 	}
-	$args  = array(
+	$args = array(
 		'post_type'      => $listing_postype,
 		'post_status'    => 'publish',
 		'posts_per_page' => $course_list_perpage,
@@ -77,27 +76,30 @@
 	}
 
 	// the query
-	$the_query = new WP_Query( $args );
+	$the_query = new WP_Query( apply_filters( 'tutor_course_filter_args', $args ) );
 
 	do_action( 'tutor_elementor/before/course_list' );
 
 	if ( $the_query->have_posts() ) :
 		?>
 		<?php
-			$courseColumns    = (isset($settings['course_list_column']) && $settings['course_list_column']) ? (int) $settings['course_list_column'] : 3;
-			
-			$listStyle = '';
-			if ( 'yes' == $settings['course_list_masonry'] ) {
-				$listStyle = 'masonry';
-			} else {
-				$listStyle = 'tutor-courses';
-			}
+			$course_columns = ( isset( $settings['course_list_column'] ) && $settings['course_list_column'] ) ? (int) $settings['course_list_column'] : 3;
 
-			$layout = isset($settings['course_list_skin']) ? $settings['course_list_skin'] : 'card';
-			$path = $courseColumns > 1 ? 'list' : 'list/grid';
+			$list_style = '';
+		if ( 'yes' === $settings['course_list_masonry'] ) {
+			$list_style = 'masonry';
+		} else {
+			$list_style = 'tutor-courses';
+		}
+
+			$layout = isset( $settings['course_list_skin'] ) ? $settings['course_list_skin'] : 'card';
+			$path   = $course_columns > 1 ? 'list' : 'list/grid';
 		?>
-		<div class="etlms-course-list-loop-wrap tutor-course-list tutor-grid tutor-grid-<?php echo esc_attr( $courseColumns ); ?>">
-			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<div class="etlms-course-list-loop-wrap tutor-course-list tutor-grid tutor-grid-<?php echo esc_attr( $course_columns ); ?>">
+			<?php
+			while ( $the_query->have_posts() ) :
+				$the_query->the_post();
+				?>
 				<div class="etlms-course-list-col">
 					<?php include etlms_get_template( 'course/' . $path . '/' . $layout ); ?>
 				</div>
@@ -110,7 +112,7 @@
 			$pagination_type      = $settings['course_list_pagination_type'];
 
 			// setting pagination type
-			if ( $pagination_type == 'numbers' ) {
+			if ( 'numbers' === $pagination_type ) {
 				$prev_next_pagination = false;
 			}
 
@@ -125,8 +127,8 @@
 				'current'   => max( 1, $paged ),
 				'end_size'  => $pagination_page_limit,
 				'prev_next' => $prev_next_pagination,
-				'prev_text' => __( $pagination_prev_label, 'tutor-lms-elementor-addons' ),
-				'next_text' => __( $pagination_next_label, 'tutor-lms-elementor-addons' ),
+				'prev_text' => $pagination_prev_label,
+				'next_text' => $pagination_next_label,
 				'total'     => $the_query->max_num_pages,
 			);
 
@@ -134,7 +136,7 @@
 			?>
 		<div class="etlms-course-list-pagination-wrap tutor-mt-32">
 			<div class="etlms-pagination prev-next">
-				<?php if ( $pagination_type == 'prev_next' ) : ?>
+				<?php if ( 'prev_next' === $pagination_type ) : ?>
 
 					<?php if ( $the_query->found_posts > $course_list_perpage ) : ?>
 						<?php
@@ -171,7 +173,7 @@
 			</div>
 
 			<div class="etlms-pagination pagination-numbers-prev-next">
-				<?php echo $pagination_links; ?>
+					<?php echo $pagination_links; ?>
 			</div>
 		<?php endif; ?>
 		</div>
