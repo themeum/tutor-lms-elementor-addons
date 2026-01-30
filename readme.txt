@@ -3,9 +3,9 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: lms, elearning, learning management system, course, education, elementor addons for lms, elearning elementor addons, tutor lms, online courses
 Requires at least: 5.3
-Tested up to: 6.7
+Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -141,6 +141,14 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
+
+= 3.0.1 - 29 January, 2025
+Update: Updated social share popup settings and styles to align with the new popup design.
+Fix: Fixed an issue where the course card displayed duration and enrolled students even when it’s disabled.
+Fix: Resolved "template not found" error for paid courses.
+Fix: Resolved the issue where bundle categories were not displayed.
+Fix: Fixed icon rendering issue in the Course Bundle benefit list.
+Fix: Resolved the sale price ribbon error.
 
 = 3.0.0 - 20 November, 2024
 Update: Introduced compatibility with Tutor LMS 3.0
