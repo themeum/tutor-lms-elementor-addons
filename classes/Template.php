@@ -262,19 +262,19 @@ class Template {
 		$elementor_data     = json_decode( $elementor_data, true ) ?? array();
 		$lesson_description = get_post( $lesson_id )->post_content ?? '';
 
-		if ( ! count( $elementor_data ) ) {
+		if ( ! tutor_utils()->count( $elementor_data ) ) {
 			return;
 		}
 
 		$elements = $elementor_data[0]['elements'] ?? array();
 
-		if ( ! count( $elements ) ) {
+		if ( ! tutor_utils()->count( $elements ) ) {
 			return;
 		}
 
 		$settings = $elements[0]['settings'] ?? array();
 
-		if ( ! count( $settings ) || ! isset( $settings['editor'] ) ) {
+		if ( ! tutor_utils()->count( $settings ) || ! isset( $settings['editor'] ) ) {
 			return;
 		}
 
