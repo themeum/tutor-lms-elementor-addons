@@ -3,9 +3,9 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: lms, elearning, learning management system, course, education, elementor addons for lms, elearning elementor addons, tutor lms, online courses
 Requires at least: 5.3
-Tested up to: 6.7.1
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -141,6 +141,11 @@ You can post on the support section of this plugin or use the contact form at th
 10. Intelligent Preview Modes
 
 == Changelog ==
+
+= 3.0.2 - 06 Feb January, 2026
+Update: Added WordPress 6.9 compatibility.
+Fix: Resolved issue where lesson content could not be updated from the course builder after being edited in Elementor.
+Fix: Resolved incompatibility with the Course List add-on.
 
 = 3.0.1 - 29 January, 2025
 Update: Updated social share popup settings and styles to align with the new popup design.
