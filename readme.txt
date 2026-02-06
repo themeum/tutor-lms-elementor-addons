@@ -142,10 +142,10 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 3.0.2 - 06 Feb January, 2026
+= 3.0.2 - 09 Feb January, 2026
 Update: Added WordPress 6.9 compatibility.
-Fix: Resolved issue where lesson content could not be updated from the course builder after being edited in Elementor.
-Fix: Resolved incompatibility with the Course List add-on.
+Fix: Resolved the issue where lesson content could not be updated from the course builder after being edited in Elementor.
+Fix: Scheduled courses are not appearing in the course list & carousel add-on.
 
 = 3.0.1 - 29 January, 2025
 Update: Updated social share popup settings and styles to align with the new popup design.
