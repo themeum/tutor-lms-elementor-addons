@@ -266,20 +266,16 @@ class Template {
 			return;
 		}
 
-		$elements = $elementor_data[0]['elements'] ?? array();
+		array_walk_recursive(
+			$elementor_data,
+			function ( &$value, $key ) use ( $lesson_description ) {
+				if ( 'editor' === $key ) {
+					$value = $lesson_description;
+				}
+			}
+		);
 
-		if ( ! tutor_utils()->count( $elements ) ) {
-			return;
-		}
-
-		$settings = $elements[0]['settings'] ?? array();
-
-		if ( ! tutor_utils()->count( $settings ) || ! isset( $settings['editor'] ) ) {
-			return;
-		}
-
-		$elementor_data[0]['elements'][0]['settings']['editor'] = $lesson_description;
-		$updated_elementor_data                                 = json_encode( $elementor_data );
+		$updated_elementor_data = json_encode( $elementor_data );
 
 		update_post_meta( $lesson_id, '_elementor_data', $updated_elementor_data );
 		delete_post_meta( $lesson_id, '_elementor_css' );
