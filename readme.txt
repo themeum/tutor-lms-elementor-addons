@@ -166,7 +166,7 @@ You can post on the support section of this plugin or use the [contact form on o
 
 == Changelog ==
 
-= 3.0.2 - 19 February, 2026
+= 3.0.2 - 24 February, 2026
 Update: Added compatibility with WordPress 6.9.
 Fix: Fixed the scheduled course display issue in the course list and carousel addon.
 Fix: Fixed lesson content not updating from the course builder after editing in Elementor.
