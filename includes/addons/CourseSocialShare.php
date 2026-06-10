@@ -67,15 +67,15 @@ class CourseSocialShare extends BaseAddon {
 				'label'     => __( 'Alignment', 'tutor-lms-elementor-addons' ),
 				'type'      => \Elementor\Controls_Manager::CHOOSE,
 				'options'   => array(
-					'left' => array(
+					'left'   => array(
 						'title' => __( 'Left', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'eicon-text-align-left',
 					),
-					'center'     => array(
+					'center' => array(
 						'title' => __( 'Center', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'eicon-text-align-center',
 					),
-					'right'   => array(
+					'right'  => array(
 						'title' => __( 'Right', 'tutor-lms-elementor-addons' ),
 						'icon'  => 'eicon-text-align-right',
 					),
@@ -96,7 +96,7 @@ class CourseSocialShare extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
-		
+
 		$this->add_control(
 			'course_share_section_title',
 			array(
@@ -132,7 +132,7 @@ class CourseSocialShare extends BaseAddon {
 				'prefix_class' => 'etlms-social-icon-',
 				'selectors'    => array(
 					'{{WRAPPER}}.etlms-social-icon-square .tutor-social-share-button'  => 'border-radius: 0px;',
-					'{{WRAPPER}}.etlms-social-icon-rounded .tutor-social-share-button'  => 'border-radius: 10px;',
+					'{{WRAPPER}}.etlms-social-icon-rounded .tutor-social-share-button'  => 'border-radius: 6px;',
 					'{{WRAPPER}}.etlms-social-icon-circle .tutor-social-share-button'  => 'border-radius: 100%; width: 120px; height: 120px;',
 				),
 			)
@@ -149,7 +149,6 @@ class CourseSocialShare extends BaseAddon {
 				'default'      => 'yes',
 			)
 		);
-
 
 		$this->add_responsive_control(
 			'course_share_circle_size',
@@ -229,9 +228,9 @@ class CourseSocialShare extends BaseAddon {
 				),
 			)
 		);
-		
+
 		$this->add_control(
-			'course_sahre_icon_size',
+			'course_share_icon_size',
 			array(
 				'label'      => __( 'Icon Size', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -264,7 +263,7 @@ class CourseSocialShare extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
-		
+
 		$this->add_control(
 			'course_social_share_icon_color',
 			array(
@@ -300,7 +299,7 @@ class CourseSocialShare extends BaseAddon {
 				),
 				'default'   => array(
 					'unit' => 'px',
-					'size' => 24,
+					'size' => 16,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .tutor-social-share-button' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -318,12 +317,11 @@ class CourseSocialShare extends BaseAddon {
 					'{{WRAPPER}} .tutor-social-share-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
-					'top'      => 10,
-					'right'    => 10,
-					'bottom'   => 10,
-					'left'     => 10,
-					'unit'     => 'px',
-					'isLinked' => true,
+					'top'    => 8,
+					'right'  => 15,
+					'bottom' => 8,
+					'left'   => 15,
+					'unit'   => 'px',
 				),
 			)
 		);
@@ -387,10 +385,10 @@ class CourseSocialShare extends BaseAddon {
 		// for rounded shape
 		$border_radius['condition'] = array( 'course_share_icon_shape' => array( 'rounded' ) );
 		$border_radius['default']   = array(
-			'top'      => 5,
-			'right'    => 5,
-			'bottom'   => 5,
-			'left'     => 5,
+			'top'      => 6,
+			'right'    => 6,
+			'bottom'   => 6,
+			'left'     => 6,
 			'unit'     => 'px',
 			'isLinked' => true,
 		);
@@ -414,7 +412,7 @@ class CourseSocialShare extends BaseAddon {
 			$border_radius
 		);
 		$this->end_controls_section();
-	
+
 		// hover section start
 		$this->start_controls_section(
 			'course_share_icon_hover_section',
@@ -472,7 +470,7 @@ class CourseSocialShare extends BaseAddon {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
-		
+
 		$this->add_control(
 			'popup_section_title',
 			array(
@@ -547,10 +545,10 @@ class CourseSocialShare extends BaseAddon {
 					'{{WRAPPER}} .tutor-modal-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'default'    => array(
-					'top'      => 5,
-					'right'    => 5,
-					'bottom'   => 5,
-					'left'     => 5,
+					'top'      => 16,
+					'right'    => 16,
+					'bottom'   => 16,
+					'left'     => 16,
 					'unit'     => 'px',
 					'isLinked' => true,
 				),
@@ -563,8 +561,9 @@ class CourseSocialShare extends BaseAddon {
 			array(
 				'label'     => __( 'Input Text Color', 'tutor-lms-elementor-addons' ),
 				'type'      => Controls_Manager::COLOR,
+				'default'   => '#000000',
 				'selectors' => array(
-					'{{WRAPPER}} .tutor-modal-content .tutor-form-control' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tutor-modal-content .tutor-form-control' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
