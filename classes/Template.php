@@ -125,7 +125,7 @@ class Template {
 			return $template;
 		}
 
-		if ( $wp_query->is_single && ! empty( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] === tutor()->course_post_type ) {
+		if ( is_single() && ! tutor_utils()->is_learning_area() && get_query_var( 'post_type' ) === tutor()->course_post_type ) {
 
 			$document             = Plugin::$instance->documents->get( $post->ID );
 			$built_with_elementor = $document && $document->is_built_with_elementor();
