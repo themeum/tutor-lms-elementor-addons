@@ -13,8 +13,8 @@
 	*/
 	if ( ! function_exists( 'is_bundle_enabled' ) ) {
 		function is_bundle_enabled() {
-			$basename   = plugin_basename( TUTOR_COURSE_BUNDLE_FILE );
-			$is_enabled = tutor_utils()->is_addon_enabled( $basename );
+			$basename   = defined( 'TUTOR_COURSE_BUNDLE_FILE' ) ? plugin_basename( TUTOR_COURSE_BUNDLE_FILE ) : '';
+			$is_enabled = $basename ? tutor_utils()->is_addon_enabled( $basename ) : false;
 			return $is_enabled;
 		}
 	}
