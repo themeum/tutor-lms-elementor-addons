@@ -3,7 +3,7 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: LMS, eLearning, Elementor, learning management system, Elementor addons for LMS
 Requires at least: 5.3
-Tested up to: 7.0.0
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 4.0.0
 License: GPLv3
