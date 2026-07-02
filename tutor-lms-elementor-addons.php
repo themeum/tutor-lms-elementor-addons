@@ -19,10 +19,10 @@ defined( 'ABSPATH' ) || die();
 define( 'ETLMS_VERSION', '4.0.0' );
 
 /**
- * Tutor LMS Elementor addons v2.0.0 dependency on Tutor core
+ * Tutor LMS Elementor addons dependency on Tutor core
  *
  * Define Tutor core version on that TutorLMSElementorAddons is dependent to run,
- * without require version v2.0.0 will just show admin notice to install require core version.
+ * without require version, it will show admin notice to install require core version.
  *
  * @since v2.0.0
  */
