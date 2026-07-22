@@ -211,7 +211,11 @@ class Installer {
 	 * @since 1.0.0
 	 */
 	public function activate_tutor_free() {
-		activate_plugin( 'tutor/tutor.php' );
+		if ( current_user_can( 'manage_options' ) ) {
+			activate_plugin( 'tutor/tutor.php' );
+		} else {
+			wp_die( esc_html__( 'You are not allowed to perform this action', 'tutor-lms-elementor-addons' ) );
+		}
 	}
 
 	/**
@@ -220,7 +224,11 @@ class Installer {
 	 * @since 1.0.0
 	 */
 	public function activate_elementor_free() {
-		activate_plugin( 'elementor/elementor.php' );
+		if ( current_user_can( 'manage_options' ) ) {
+			activate_plugin( 'elementor/elementor.php' );
+		} else {
+			wp_die( esc_html__( 'You are not allowed to perform this action', 'tutor-lms-elementor-addons' ) );
+		}
 	}
 
 }
