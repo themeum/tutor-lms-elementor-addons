@@ -54,14 +54,14 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_skin',
 			[
-				'label' => __('Skin', 'tutor-lms-elementor-addons'),
+				'label' => esc_attr__('Skin', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'classic',
 				'options' => [
-					'classic' => __('Classic', 'tutor-lms-elementor-addons'),
-					'card' => __('Card', 'tutor-lms-elementor-addons'),
-					'stacked' => __('Stacked', 'tutor-lms-elementor-addons'),
-					'overlayed' => __('Overlayed', 'tutor-lms-elementor-addons')
+					'classic' => esc_attr__('Classic', 'tutor-lms-elementor-addons'),
+					'card' => esc_attr__('Card', 'tutor-lms-elementor-addons'),
+					'stacked' => esc_attr__('Stacked', 'tutor-lms-elementor-addons'),
+					'overlayed' => esc_attr__('Overlayed', 'tutor-lms-elementor-addons')
 				],
 
 			]
@@ -1722,13 +1722,13 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_arrow_style',
 			[
-				'label' => __('Arrow Style', 'tutor-lms-elementor-addons'),
+				'label' => esc_attr__('Arrow Style', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => [
-					'default' => __('Default', 'tutor-lms-elementor-addons'),
-					'ghost' => __('Ghost / Outlined', 'tutor-lms-elementor-addons'),
-					'fill' => __('Fill', 'tutor-lms-elementor-addons')
+					'default' => esc_attr__('Default', 'tutor-lms-elementor-addons'),
+					'ghost' => esc_attr__('Ghost / Outlined', 'tutor-lms-elementor-addons'),
+					'fill' => esc_attr__('Fill', 'tutor-lms-elementor-addons')
 				]
 			]
 		);
@@ -1736,12 +1736,12 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_arrows_position',
 			[
-				'label' => __('Position', 'tutor-lms-elementor-addons'),
+				'label' => esc_attr__('Position', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'outside',
 				'options' => [
-					'inside' => __('Inside', 'tutor-lms-elementor-addons'),
-					'outside' => __('Outside', 'tutor-lms-elementor-addons'),
+					'inside' => esc_attr__('Inside', 'tutor-lms-elementor-addons'),
+					'outside' => esc_attr__('Outside', 'tutor-lms-elementor-addons'),
 				]
 			]
 		);
@@ -2057,12 +2057,12 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_dots_position',
 			[
-				'label' => __('Position', 'tutor-lms-elementor-addons'),
+				'label' => esc_attr__('Position', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'outside',
 				'options' => [
-					'inside' => __('Inside', 'tutor-lms-elementor-addons'),
-					'outside' => __('Outside', 'tutor-lms-elementor-addons'),
+					'inside' => esc_attr__('Inside', 'tutor-lms-elementor-addons'),
+					'outside' => esc_attr__('Outside', 'tutor-lms-elementor-addons'),
 				],
 
 			]

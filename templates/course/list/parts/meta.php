@@ -1,6 +1,7 @@
 <?php
-    $course_duration = get_tutor_course_duration_context();
-    $course_students = tutor_utils()->count_enrolled_users_by_course();
+    $course_duration = tutor_utils()->get_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null;
+    $course_students = tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null;
+    
 ?>
 <?php if ( 'yes' === $settings['course_list_meta_data'] && ( !empty( $course_students ) || !empty( $course_duration ) )) : ?>
 <div class="tutor-meta etlms-course-duration-meta tutor-mb-20">

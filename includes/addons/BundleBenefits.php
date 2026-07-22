@@ -34,6 +34,15 @@ class BundleBenefits extends BaseAddon {
 	private static $prefix_class_alignment = 'elementor-align-';
 
 	/**
+	 * Dependent style
+	 *
+	 * @return array
+	 */
+	public function get_style_depends() {
+		return array( 'font-awesome-5-all' );
+	}
+
+	/**
 	 * Title of this addon
 	 *
 	 * @return string

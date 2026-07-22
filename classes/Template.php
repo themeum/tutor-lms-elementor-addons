@@ -39,6 +39,7 @@ class Template {
 		add_action( 'save_post', array( $this, 'elementor_template_new_post' ), 99, 2 );
 
 		add_action( 'template_redirect', array( $this, 'is_tutor_single_page' ) );
+		add_action( 'tutor/lesson_update/after', array( $this, 'update_tutor_lesson_content' ) );
 	}
 
 	/**
@@ -78,7 +79,7 @@ class Template {
 		return (int) $post_id;
 	}
 
-	public function single_bundle_template($template){
+	public function single_bundle_template( $template ) {
 		global $wp_query, $post;
 		if ( ! post_type_supports( 'course-bundle', 'elementor' ) ) {
 			return $template;
@@ -105,7 +106,7 @@ class Template {
 					return tutor_get_template( 'login' );
 				}
 			}
-			$template      = etlms_get_template( 'single-course-bundle' );
+			$template = etlms_get_template( 'single-course-bundle' );
 			return $template;
 		}
 		return $template;
@@ -124,7 +125,7 @@ class Template {
 			return $template;
 		}
 
-		if ( $wp_query->is_single && ! empty( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] === tutor()->course_post_type ) {
+		if ( is_single() && ! tutor_utils()->is_learning_area() && get_query_var( 'post_type' ) === tutor()->course_post_type ) {
 
 			$document             = Plugin::$instance->documents->get( $post->ID );
 			$built_with_elementor = $document && $document->is_built_with_elementor();
@@ -160,7 +161,6 @@ class Template {
 	/**
 	 * sigle bundle load
 	 */
-
 	public function single_bundle_content( $post ) {
 		$document = Plugin::$instance->documents->get( $post->ID );
 
@@ -175,7 +175,8 @@ class Template {
 		} else { ?>
 			<h1><?php esc_html_e( 'Mark a page/template as Tutor Single course from Elementor Page Settings', 'tutor-lms-elementor-addons' ); ?></h1>
 			
-		<?php }
+			<?php
+		}
 	}
 
 
@@ -185,22 +186,23 @@ class Template {
 	 * @param $post
 	 * @since v.1.0.0
 	 */
-	
 	public function single_course_content( $post ) {
 		$document = Plugin::$instance->documents->get( $post->ID );
 
 		if ( $document && $document->is_built_with_elementor() ) {
-			 the_content();
+			the_content();
 			return;
 		}
 
 		$template_id = $this->template_id;
 		if ( $template_id ) {
 			echo Plugin::instance()->frontend->get_builder_content_for_display( $template_id );
-		} else { ?>
+		} else {
+			?>
 			<h1><?php esc_html_e( 'Mark a page/template as Tutor Single course from Elementor Page Settings', 'tutor-lms-elementor-addons' ); ?></h1>
 			
-		<?php }
+			<?php
+		}
 	}
 
 
@@ -247,6 +249,40 @@ class Template {
 	}
 
 	/**
+	 * Update lesson content after being edited by elementor.
+	 *
+	 * @since 3.0.2
+	 *
+	 * @param int $lesson_id the lesson id.
+	 *
+	 * @return void
+	 */
+	public function update_tutor_lesson_content( int $lesson_id = 0 ) {
+		$elementor_data     = get_post_meta( $lesson_id, '_elementor_data', true );
+		$elementor_data     = json_decode( $elementor_data, true ) ?? array();
+		$lesson_description = get_post( $lesson_id )->post_content ?? '';
+
+		if ( ! tutor_utils()->count( $elementor_data ) ) {
+			return;
+		}
+
+		array_walk_recursive(
+			$elementor_data,
+			function ( &$value, $key ) use ( $lesson_description ) {
+				if ( 'editor' === $key ) {
+					$value = $lesson_description;
+				}
+			}
+		);
+
+		$updated_elementor_data = json_encode( $elementor_data );
+
+		update_post_meta( $lesson_id, '_elementor_data', $updated_elementor_data );
+		delete_post_meta( $lesson_id, '_elementor_css' );
+		delete_post_meta( $lesson_id, '_elementor_element_cache' );
+	}
+
+	/**
 	 * Update template_id for single course
 	 *
 	 * @param $post_ID
@@ -257,5 +293,4 @@ class Template {
 		$wpdb->delete( $wpdb->postmeta, array( 'meta_key' => '_tutor_lms_elementor_template_id' ) );
 		update_post_meta( $post_ID, '_tutor_lms_elementor_template_id', time() );
 	}
-
 }

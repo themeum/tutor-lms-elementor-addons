@@ -15,7 +15,16 @@ $requirements = tutor_course_requirements();
 		<?php if ( is_array( $requirements ) && count( $requirements ) ) : ?>
 		<?php foreach ($requirements as $requirement): ?>
 			<li class="etlms-course-widget-list-item">
-				<span class="tutor-mr-12 tutor-list-icon tutor-color-primary"><?php Elementor\Icons_Manager::render_icon( $settings['course_requirements_list_icon'], array( 'aria-hidden' => 'true' ) ); ?></span>
+				<span class="tutor-mr-12 tutor-list-icon tutor-color-primary">
+					<?php if ( isset( $settings['course_requirements_list_icon']['library'] ) && 'svg' === $settings['course_requirements_list_icon']['library'] ) {
+							\Elementor\Icons_Manager::render_icon( $settings['course_requirements_list_icon'], array( 'aria-hidden' => 'true' ) );
+						} else {
+							?>
+								<i aria-hidden="true" class="<?php echo esc_attr( $settings['course_requirements_list_icon']['value'] ); ?>"></i>
+							<?php
+						}
+					?>
+				</span>
 				<span class="tutor-list-label"><?php echo esc_html( $requirement ); ?></span>
 			</li>
 		<?php endforeach; ?>

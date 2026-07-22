@@ -13,21 +13,44 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit;
 }
 
+/**
+ * Class CourseTitle
+ */
 class CourseTitle extends BaseAddon {
 
 	use \TutorLMS\Elementor\AddonsTrait;
 
-	private static $prefix_class_layout    = 'elementor-layout-';
+	/**
+	 * Prefix class layout
+	 *
+	 * @var string
+	 */
+	private static $prefix_class_layout = 'elementor-layout-';
+
+	/**
+	 * Prefix class alignment
+	 *
+	 * @var string
+	 */
 	private static $prefix_class_alignment = 'elementor-align-';
 
+	/**
+	 * Get title label
+	 *
+	 * @return string
+	 */
 	public function get_title() {
 		return __( 'Course Title', 'tutor-lms-elementor-addons' );
 	}
 
-
+	/**
+	 * Register content controls
+	 *
+	 * @return void
+	 */
 	protected function register_content_controls() {
 		$this->start_controls_section(
 			'course_title_content',
@@ -38,14 +61,15 @@ class CourseTitle extends BaseAddon {
 		$this->add_control(
 			'course_title_html_tag',
 			array(
-				'label'   => __( 'Select Tag', 'tutor-lms-elementor-addons' ),
+				'label'   => esc_html__( 'Select Tag', 'tutor-lms-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'h1' => 'h1',
-					'h2' => 'h2',
-					'h3' => 'h3',
-					'h5' => 'h5',
-					'h6' => 'h6',
+					'h1' => esc_html( 'h1' ),
+					'h2' => esc_html( 'h2' ),
+					'h3' => esc_html( 'h3' ),
+					'h4' => esc_html( 'h4' ),
+					'h5' => esc_html( 'h5' ),
+					'h6' => esc_html( 'h6' ),
 				),
 				'default' => 'h2',
 			)
@@ -55,7 +79,7 @@ class CourseTitle extends BaseAddon {
 			'course_title_align',
 			$this->title_alignment_with_selectors(
 				array(
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};'
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
 				),
 				'left'
 			)
@@ -64,9 +88,14 @@ class CourseTitle extends BaseAddon {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Register style controls
+	 *
+	 * @return void
+	 */
 	protected function register_style_controls() {
 		$selector = '{{WRAPPER}} .tutor-course-details-title';
-		// Style
+
 		$this->start_controls_section(
 			'course_style_section',
 			array(
@@ -104,13 +133,28 @@ class CourseTitle extends BaseAddon {
 	 *
 	 * @return void
 	 */
-	protected function render( ) {
+	protected function render() {
 		$title  = __( 'Course Title', 'tutor-lms-elementor-addons' );
 		$course = etlms_get_course();
 		if ( $course ) {
 			$title = get_the_title();
 		}
-		$settings = $this->get_settings_for_display();
-		echo sprintf( '<%1$s class="tutor-course-details-title tutor-fs-4 tutor-fw-bold tutor-color-black tutor-mt-12 tutor-mb-0"> <span>' . esc_html( $title ) . '</span></%1$s>', $settings['course_title_html_tag'] );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+		$settings  = $this->get_settings_for_display();
+		$saved_tag = $settings['course_title_html_tag'];
+
+		$tag_name = 'h2';
+		$options  = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+		if ( in_array( $saved_tag, $options, true ) ) {
+			$tag_name = $saved_tag;
+		}
+
+		echo sprintf(
+			'<%1$s class="tutor-course-details-title tutor-fs-4 tutor-fw-bold tutor-color-black tutor-mt-12 tutor-mb-0"> 
+					<span>' . esc_html( $title ) . '</span>
+			</%1$s>',
+			esc_attr( $tag_name )
+		);
+
 	}
 }

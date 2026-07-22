@@ -110,7 +110,17 @@ class BundleTitle extends BaseAddon {
 		if ( $course ) {
 			$title = get_the_title();
 		}
-		$settings = $this->get_settings_for_display();
-		echo sprintf( '<%1$s class="tutor-course-details-title tutor-fs-4 tutor-fw-bold tutor-color-black tutor-mt-12 tutor-mb-0"> <span>' . esc_html( $title ) . '</span></%1$s>', $settings['bundle_title_html_tag'] );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$settings  = $this->get_settings_for_display();
+		$saved_tag = $settings['bundle_title_html_tag'];
+
+		$tag_name = 'h2';
+		$options  = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+		if ( in_array( $saved_tag, $options, true ) ) {
+			$tag_name = $saved_tag;
+		}
+		printf(
+			'<%1$s class="tutor-course-details-title tutor-fs-4 tutor-fw-bold tutor-color-black tutor-mt-12 tutor-mb-0"> <span>' . esc_html( $title ) . '</span></%1$s>',
+			esc_attr( $tag_name )
+		);
 	}
 }
