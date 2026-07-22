@@ -5,7 +5,7 @@ Tags: LMS, eLearning, Elementor, learning management system, Elementor addons fo
 Requires at least: 5.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -165,6 +165,10 @@ You can post on the support section of this plugin or use the [contact form on o
 10. Intelligent Preview Modes
 
 == Changelog ==
+
+= 4.0.1 - 08 July, 2026 =
+
+Fix: Patched a security vulnerability related to required plugin installation.
 
 = 4.0.0 - 08 July, 2026 =
 
