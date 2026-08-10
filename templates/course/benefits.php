@@ -19,7 +19,16 @@ $show_benefits = tutor_utils()->get_option( 'enable_course_benefits' );
 			<?php if ( is_array( $benefits ) && count( $benefits ) ) : ?>
 			<?php foreach ($benefits as $benefit): ?>
 				<li class="etlms-course-widget-list-item tutor-d-flex tutor-mb-12">
-				<span class="tutor-mr-12 tutor-list-icon tutor-color-primary"><?php Elementor\Icons_Manager::render_icon( $settings['course_benefits_list_icon'], array( 'aria-hidden' => 'true' ) ); ?></span>
+				<span class="tutor-mr-12 tutor-list-icon tutor-color-primary">
+					<?php if ( isset( $settings['course_benefits_list_icon']['library'] ) && 'svg' === $settings['course_benefits_list_icon']['library'] ) {
+							\Elementor\Icons_Manager::render_icon( $settings['course_benefits_list_icon'], array( 'aria-hidden' => 'true' ) );
+						} else {
+							?>
+								<i aria-hidden="true" class="<?php echo esc_attr( $settings['course_benefits_list_icon']['value'] ); ?>"></i>
+							<?php
+						}
+					?>
+				</span>
 					<span class="tutor-list-label"><?php echo $benefit; ?></span>
 				</li>
 			<?php endforeach; ?>

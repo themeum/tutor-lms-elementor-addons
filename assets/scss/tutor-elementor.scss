@@ -7,30 +7,6 @@ $background-color_1: #eee;
 $background-color_2: #66cd74;
 $background-color_3: #424242;
 
-.elementor-widget-container {
-	.tutor-segment-title {
-		font-size: 20px;
-		margin: 0;
-	}
-	.etlms-lead-info {
-		display: flex;
-		align-items: center;
-		flex-direction: row;
-		flex-wrap: wrap;
-		label {
-			margin-bottom: 0;
-		}
-	}
-	.tutor-single-course-segment {
-		margin-bottom: 0;
-		margin-top: 0;
-	}
-	.tutor-wrap {
-		padding-top: 0;
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-}
 .elementor-align-left {
 	.etlms-lead-info {
 		justify-content: flex-start;

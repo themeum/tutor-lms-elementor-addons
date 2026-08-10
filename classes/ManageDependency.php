@@ -67,13 +67,14 @@ class ManageDependency {
 	 * @since v2.0.0
 	 */
 	public function is_tutor_core_has_req_verion(): bool {
-		$file_path              = WP_PLUGIN_DIR . '/tutor/tutor.php';
-		$plugin_data            = get_file_data(
+		$file_path   = WP_PLUGIN_DIR . '/tutor/tutor.php';
+		$plugin_data = get_file_data(
 			$file_path,
 			array(
 				'Version' => 'Version',
 			)
 		);
+
 		$tutor_version          = $plugin_data['Version'];
 		$tutor_core_req_version = ETLMS_TUTOR_CORE_REQ_VERSION;
 		$is_compatible          = version_compare( $tutor_version, $tutor_core_req_version, '>=' );

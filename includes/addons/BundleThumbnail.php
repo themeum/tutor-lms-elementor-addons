@@ -180,13 +180,13 @@ class BundleThumbnail extends BaseAddon {
 					<?php
 					$bundle_course_ids = BundleModel::get_bundle_course_ids( $course_id );
 					$ribbon_type       = ManagePostMeta::get_ribbon_type( $course_id );
-					$bundle_sale_price = BundlePrice::get_bundle_sale_price( $course_id );
+					$bundle_sale_price = BundleModel::get_bundle_sale_price( $course_id );
 					?>
 						<!-- Show bundle discount badge -->
 						<?php if ( BundleModel::RIBBON_NONE !== $ribbon_type && $bundle_sale_price > 0 ) : ?>
 						<div class="tutor-bundle-discount-info">
 							<div class="tutor-bundle-save-text"><?php esc_html_e( 'SAVE', 'tutor-pro' ); ?></div>
-							<div class="tutor-bundle-save-amount"><?php echo esc_html( BundlePrice::get_bundle_discount_by_ribbon( $course_id, $ribbon_type ) ); ?></div>
+							<div class="tutor-bundle-save-amount"><?php echo esc_html( BundleModel::get_bundle_discount_by_ribbon( $course_id, $ribbon_type ) ); ?></div>
 						</div>
 						<?php endif; ?>
 				</div>

@@ -13,18 +13,10 @@
 	/*
 	* query arguments
 	*/
-	if ( ! function_exists( 'is_bundle_enabled' ) ) {
-		function is_bundle_enabled() {
-			$basename   = plugin_basename( TUTOR_COURSE_BUNDLE_FILE );
-			$is_enabled = tutor_utils()->is_addon_enabled( $basename );
-			return $is_enabled;
-		}
-	}
-	if(in_array('tutor-pro/tutor-pro.php', apply_filters('active_plugins', get_option('active_plugins'))) && is_bundle_enabled() ){ 
-		//plugin is activated
-		$carosel_postype = ['courses','course-bundle'];
-	}
-	else{
+	if ( tutor_utils()->is_addon_enabled( 'course-bundle' ) ) {
+		// plugin is activated
+		$carosel_postype = array( 'courses', 'course-bundle' );
+	} else {
 		$carosel_postype = tutor()->course_post_type;
 	}
 	$args = array(
@@ -78,29 +70,37 @@
 	}
 
 	// the query
-	$the_query = new WP_Query( $args );
+	$the_query = new WP_Query( apply_filters( 'tutor_course_filter_args', $args ) );
 
 	if ( $the_query->have_posts() ) :
 		?>
 
 		<?php
-			$courseCols    	= (isset($settings['etlms_course_carousel_column']) && $settings['etlms_course_carousel_column']) ? (int) $settings['etlms_course_carousel_column'] : 3;
-			$layout 		= isset($settings['course_carousel_skin']) ? $settings['course_carousel_skin'] : 'card';
+			$courseCols = ( isset( $settings['etlms_course_carousel_column'] ) && $settings['etlms_course_carousel_column'] ) ? (int) $settings['etlms_course_carousel_column'] : 3;
+			$layout     = esc_attr( $settings['course_carousel_skin'] );
+			$in_array   = in_array( $layout, array( 'classic', 'card', 'stacked', 'overlayed' ), true );
+			$layout     = isset( $layout ) && $in_array ? $layout : 'card';
 		?>
 
-		<div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?> etlms-coursel-<?php echo $settings['course_carousel_skin']; ?> etlms-carousel-dots-<?php echo $settings['course_carousel_dots_position']; ?>" id="etlms-slick-responsive">
-			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<div class="etlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?> etlms-coursel-<?php echo $layout; ?> etlms-carousel-dots-<?php echo esc_attr( $settings['course_carousel_dots_position'] ); ?>" id="etlms-slick-responsive">
+			<?php
+			while ( $the_query->have_posts() ) :
+				$the_query->the_post();
+				?>
 				<div class="<?php tutor_course_loop_col_classes(); ?>">
 					<?php include etlms_get_template( 'course/carousel/' . $layout ); ?>
 				</div>
-			<?php endwhile; wp_reset_postdata(); ?>
+				<?php
+			endwhile;
+			wp_reset_postdata();
+			?>
 		</div>
 
 		<?php if ( 'yes' == $settings['course_carousel_settings_arrows'] ) : ?>
-			<div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?php echo $settings['course_carousel_arrow_style']; ?> etlms-carousel-arrow-position-<?php echo esc_attr( $settings['course_carousel_arrows_position'] ); ?> ">
+			<div class="etlms-carousel-arrow etlms-carousel-arrow-prev arrow-<?php echo esc_attr( $settings['course_carousel_arrow_style'] ); ?> etlms-carousel-arrow-position-<?php echo esc_attr( $settings['course_carousel_arrows_position'] ); ?> ">
 				<i class="fa fa-angle-left" aria-hidden="true"></i>
 			</div>
-			<div class="etlms-carousel-arrow etlms-carousel-arrow-next arrow-<?php echo $settings['course_carousel_arrow_style']; ?> etlms-carousel-arrow-position-<?php echo esc_attr( $settings['course_carousel_arrows_position'] ); ?>">
+			<div class="etlms-carousel-arrow etlms-carousel-arrow-next arrow-<?php echo esc_attr( $settings['course_carousel_arrow_style'] ); ?> etlms-carousel-arrow-position-<?php echo esc_attr( $settings['course_carousel_arrows_position'] ); ?>">
 				<i class="fa fa-angle-right" aria-hidden="true"></i>
 			</div>
 		<?php endif; ?>
@@ -129,22 +129,22 @@
 	$carousel_pause_on_hover = 'yes';
 
 	if ( isset( $settings ) ) {
-		$settings['etlms_course_carousel_column'] != '' ? $carousel_column = $settings['etlms_course_carousel_column'] : '';
+		$settings['etlms_course_carousel_column'] != '' ? $carousel_column               = $settings['etlms_course_carousel_column'] : '';
 		$settings['etlms_course_carousel_column_tablet'] != '' ? $carousel_column_tablet = $settings['etlms_course_carousel_column_tablet'] : '';
 		$settings['etlms_course_carousel_column_mobile'] != '' ? $carousel_column_mobile = $settings['etlms_course_carousel_column_mobile'] : '';
-		isset( $settings['course_carousel_column_mobile'] ) ? $carousel_column_mobile = $settings['course_carousel_column_mobile'] : '';
-		$settings['course_carousel_settings_arrows'] == 'yes' ? '' : $carousel_arrows = 'no';
-		$settings['course_carousel_settings_dots'] == 'yes' ? '' : $carousel_dots = 'no';
+		isset( $settings['course_carousel_column_mobile'] ) ? $carousel_column_mobile    = $settings['course_carousel_column_mobile'] : '';
+		$settings['course_carousel_settings_arrows'] == 'yes' ? '' : $carousel_arrows    = 'no';
+		$settings['course_carousel_settings_dots'] == 'yes' ? '' : $carousel_dots        = 'no';
 		$carousel_transition = $settings['course_carousel_settings_transition'];
 		$settings['course_carousel_settings_center_slides'] == 'yes' ? '' : $carousel_center = 'no';
-		$settings['course_carousel_settings_scroll'] == 'yes' ? $carousel_smooth_scroll = 'linear' : $carousel_smooth_scroll = 'ease';
-		$settings['course_carousel_settings_autoplay'] == 'yes' ? '' : $carousel_autoplay = 'no';
+		$settings['course_carousel_settings_scroll'] == 'yes' ? $carousel_smooth_scroll      = 'linear' : $carousel_smooth_scroll = 'ease';
+		$settings['course_carousel_settings_autoplay'] == 'yes' ? '' : $carousel_autoplay    = 'no';
 		$carousel_autoplay_speed = $settings['course_carousel_settings_autoplay_speed'];
-		$settings['course_carousel_settings_infinite_loop'] == 'yes' ? '' : $carousel_infinite_loop = 'no';
+		$settings['course_carousel_settings_infinite_loop'] == 'yes' ? '' : $carousel_infinite_loop  = 'no';
 		$settings['course_carousel_settings_pause_onhover'] == 'yes' ? '' : $carousel_pause_on_hover = 'no';
 	}
 	?>
-	<div id="etlms_carousel_settings" arrows="<?php echo $carousel_arrows; ?>" dots="<?php echo $carousel_dots; ?>" transition="<?php echo $carousel_transition; ?>" center="<?php echo $carousel_center; ?>" smoth_scroll="<?php echo $carousel_smooth_scroll; ?>" auto_play="<?php echo $carousel_autoplay; ?>" auto_play_speed="<?php echo $carousel_autoplay_speed; ?>" infinite_loop="<?php echo $carousel_infinite_loop; ?>" pause_on_hover="<?php echo $carousel_pause_on_hover; ?>" desktop="<?php echo $carousel_column; ?>" medium="<?php echo $carousel_column_tablet; ?>" mobile="<?php echo $carousel_column_mobile; ?>">
+	<div id="etlms_carousel_settings" arrows="<?php echo esc_attr( $carousel_arrows ); ?>" dots="<?php echo esc_attr( $carousel_dots ); ?>" transition="<?php echo esc_attr( $carousel_transition ); ?>" center="<?php echo esc_attr( $carousel_center ); ?>" smoth_scroll="<?php echo esc_attr( $carousel_smooth_scroll ); ?>" auto_play="<?php echo esc_attr( $carousel_autoplay ); ?>" auto_play_speed="<?php echo esc_attr( $carousel_autoplay_speed ); ?>" infinite_loop="<?php echo esc_attr( $carousel_infinite_loop ); ?>" pause_on_hover="<?php echo esc_attr( $carousel_pause_on_hover ); ?>" desktop="<?php echo $carousel_column; ?>" medium="<?php echo esc_attr( $carousel_column_tablet ); ?>" mobile="<?php echo esc_attr( $carousel_column_mobile ); ?>">
 
 	</div>
 	<input type="hidden" id="etlms_enroll_btn_type" value="">

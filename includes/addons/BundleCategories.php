@@ -268,6 +268,7 @@ class BundleCategories extends BaseAddon {
 					<?php
 						$category_links = array();
 					foreach ( $bundle_categories as $bundle_category ) :
+					    $bundle_category = (object) $bundle_category ;
 						$category_name = $bundle_category->name;
 
 						$category_link = get_term_link( (int) $bundle_category->term_id );

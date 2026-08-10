@@ -16,7 +16,7 @@ $display_name         	= $settings['course_instructor_name'];
 $designation          	= $settings['course_instructor_designation'];
 $profile_link         	= $settings['course_instructor_link'];
 $target_blank         	= ( $settings['course_instructor_link'] == 'new_window' ) ? 'target="_blank"' : '';
-$border_radius        	= $settings['course_instructors_avatar_border_radius'];
+$border_radius        	= isset( $settings['course_instructors_avatar_border_radius'] ) ? $settings['course_instructors_avatar_border_radius'] : '';
 $instructors 			= tutor_utils()->get_instructors_by_course();
 $is_enabled = tutor_utils()->get_option( 'display_course_instructors' );
 do_action( 'tutor_course/single/enrolled/before/instructors' );

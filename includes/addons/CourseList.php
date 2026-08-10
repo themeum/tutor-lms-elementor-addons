@@ -126,7 +126,7 @@ class CourseList extends BaseAddon {
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			array(
-				'name'      => 'course_list_image_size', // Actually its `image_size`.
+				'name'      => 'course_list_image_resolution', // Actually its `image_size`.
 				'label'     => __( 'Image Size', 'tutor-lms-elementor-addons' ),
 				'default'   => 'medium_large',
 				'condition' => array(

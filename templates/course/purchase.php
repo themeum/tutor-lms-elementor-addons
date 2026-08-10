@@ -87,13 +87,24 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 					<div class="list-item-progress">
 						<div class="tutor-fs-6 tutor-color-secondary tutor-d-flex tutor-align-items-center tutor-justify-between">
 							<span class="progress-steps">
-								<?php echo esc_html( $course_progress['completed_count'] ); ?>/
-								<?php echo esc_html( $course_progress['total_count'] ); ?>
+								<?php
+								printf(
+									// translators: 1: completed lessons, 2: total lessons.
+									esc_html__( '%1$d/%2$d', 'tutor-lms-elementor-addons' ),
+									(int) $course_progress['completed_count'],
+									(int) $course_progress['total_count']
+								);
+								?>
 							</span>
 							<?php if ( 'show' === $settings['course_status_display_percent'] ) : ?>
 								<span class="progress-percentage">
-									<?php echo esc_html( $course_progress['completed_percent'] . '%' ); ?>
-									<?php esc_html_e( 'Complete', 'tutor-lms-elementor-addons' ); ?>
+									<?php
+									printf(
+										// translators: %d: complete percent value.
+										esc_html__( '%d%% Complete', 'tutor-lms-elementor-addons' ),
+										(int) $course_progress['completed_percent'],
+									);
+									?>
 								</span>
 							<?php endif; ?>
 						</div>
