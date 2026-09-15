@@ -1,5 +1,4 @@
 <?php
-
 /**
  * TutorLMS Installer Class
  *
@@ -15,14 +14,27 @@ namespace TutorLMS\Elementor;
 
 defined( 'ABSPATH' ) || die();
 
+/**
+ * Installer class
+ *
+ * @package TutorLMS\Elementor
+ * @since 1.0.0
+ */
 class Installer {
+
+	/**
+	 * Nonce action guarding the dependency install & activate requests
+	 *
+	 * @since 4.0.2
+	 */
+	const NONCE_ACTION = 'etlms_dependency_action';
+
 	/**
 	 * Installer constructor
 	 *
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-
 		/* Enqueue styles and scripts */
 		add_action( 'admin_init', array( $this, 'check_plugin_dependency' ), 99 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 99 );
@@ -39,7 +51,7 @@ class Installer {
 	public function admin_enqueue_scripts() {
 		wp_enqueue_style(
 			'tutor-elementor-installer-css',
-			ETLMS_ASSETS . 'css/installer.css',
+			ETLMS_ASSETS . 'css/installer.min.css',
 			null,
 			ETLMS_VERSION
 		);
@@ -50,18 +62,50 @@ class Installer {
 			array( 'jquery' ),
 			ETLMS_VERSION
 		);
+
+		wp_localize_script(
+			'tutor-elementor-installer-js',
+			'_etlms_installer',
+			array(
+				'nonce'         => wp_create_nonce( self::NONCE_ACTION ),
+				'generic_error' => __( 'Installation failed. Please try again.', 'tutor-lms-elementor-addons' ),
+			)
+		);
 	}
 
+	/**
+	 * Check plugin dependency
+	 *
+	 * @since 1.0.0
+	 */
 	public function check_plugin_dependency() {
+		// Only users who can act on the notice should see it.
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
 		if ( ! defined( 'TUTOR_VERSION' ) ) {
-			// Required Tutor Message
+			// Required Tutor Message.
 			add_action( 'admin_notices', array( $this, 'notice_required_tutor' ) );
 		}
 
 		if ( ! did_action( 'elementor/loaded' ) ) {
-			// Required Elementor Plugin
+			// Required Elementor Plugin.
 			add_action( 'admin_notices', array( $this, 'notice_required_elementor' ) );
 		}
+	}
+
+	/**
+	 * Build a nonce protected admin URL for the given installer action
+	 *
+	 * @since 4.0.2
+	 *
+	 * @param string $action Installer action name.
+	 *
+	 * @return string
+	 */
+	private function get_action_url( $action ) {
+		return wp_nonce_url( add_query_arg( array( 'action' => $action ), admin_url() ), self::NONCE_ACTION );
 	}
 
 	/**
@@ -91,14 +135,14 @@ class Installer {
 					</div>
 					<div class="etlms-install-notice-content">
 						<h2><?php _e( 'Thanks for using Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?></h2>
-						<p><?php echo sprintf( __( 'To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Tutor LMS</a> Free installed and activated', 'tutor-lms-elementor-addons' ), esc_url( 'https://wordpress.org/plugins/tutor/' ) ); ?></p>
+						<p><?php printf( __( 'To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Tutor LMS</a> Free installed and activated', 'tutor-lms-elementor-addons' ), esc_url( 'https://wordpress.org/plugins/tutor/' ) ); ?></p>
 						<a href="https://www.themeum.com/product/tutor-lms/" target="_blank"><?php _e( 'Learn more about Tutor LMS', 'tutor-lms-elementor-addons' ); ?></a>
 					</div>
 					<div class="etlms-install-notice-button">
-						<a  class="button button-primary <?php echo $button_class; ?>" data-slug="tutor" href="<?php echo add_query_arg( array( 'action' => $action ), admin_url() ); ?>"><?php echo $button_txt; ?></a>
+						<a  class="button button-primary <?php echo esc_attr( $button_class ); ?>" data-slug="tutor" href="<?php echo esc_url( $this->get_action_url( $action ) ); ?>"><?php echo esc_html( $button_txt ); ?></a>
 					</div>
 				</div>
-				<div id="etlms_install_dependency_msg"></div>
+				<div class="etlms-install-notice-msg"></div>
 			</div>
 			<?php
 		}
@@ -131,14 +175,14 @@ class Installer {
 					</div>
 					<div class="etlms-install-notice-content">
 						<h2><?php _e( 'Thanks for using Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?></h2>
-						<p><?php echo sprintf( __( 'To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Elementor</a> Free installed and activated', 'tutor-lms-elementor-addons' ), esc_url( 'https://wordpress.org/plugins/elementor/' ) ); ?></p>
+						<p><?php printf( __( 'To use Tutor LMS Elementor Integration, you must have <a href="%s" target="_blank">Elementor</a> Free installed and activated', 'tutor-lms-elementor-addons' ), esc_url( 'https://wordpress.org/plugins/elementor/' ) ); ?></p>
 						<a href="https://elementor.com/" target="_blank"><?php _e( 'Learn more about Elementor', 'tutor-lms-elementor-addons' ); ?></a>
 					</div>
 					<div class="etlms-install-notice-button">
-						<a  class="button button-primary <?php echo $button_class; ?>" data-slug="elementor" href="<?php echo add_query_arg( array( 'action' => $action ), admin_url() ); ?>"><?php echo $button_txt; ?></a>
+						<a  class="button button-primary <?php echo esc_attr( $button_class ); ?>" data-slug="elementor" href="<?php echo esc_url( $this->get_action_url( $action ) ); ?>"><?php echo esc_html( $button_txt ); ?></a>
 					</div>
 				</div>
-				<div id="etlms_install_dependency_msg"></div>
+				<div class="etlms-install-notice-msg"></div>
 			</div>
 			<?php
 		}
@@ -150,10 +194,12 @@ class Installer {
 	 * @since 1.0.0
 	 */
 	public function install_etlms_dependency_plugin() {
-		tutor_utils()->checking_nonce();
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			wp_send_json_error( esc_html__( 'You are not allowed to perform this action', 'tutor-lms-elementor-addons' ), 403 );
+		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( tutor_utils()->error_message() );	
+		if ( ! check_ajax_referer( self::NONCE_ACTION, 'nonce', false ) ) {
+			wp_send_json_error( esc_html__( 'Nonce not matched. Action failed!', 'tutor-lms-elementor-addons' ), 403 );
 		}
 
 		include ABSPATH . 'wp-admin/includes/plugin-install.php';
@@ -166,7 +212,7 @@ class Installer {
 			include ABSPATH . 'wp-admin/includes/class-plugin-installer-skin.php';
 		}
 
-		$plugin = sanitize_text_field( $_POST['slug'] );
+		$plugin = isset( $_POST['slug'] ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
 		if ( $plugin == 'tutor' || $plugin == 'elementor' ) {
 			$api = plugins_api(
 				'plugin_information',
@@ -206,16 +252,38 @@ class Installer {
 	}
 
 	/**
+	 * Activate a dependency plugin on behalf of an authorized request
+	 *
+	 * @since 4.0.2
+	 *
+	 * @param string $basename Plugin basename to activate.
+	 *
+	 * @return void
+	 */
+	private function activate_dependency_plugin( $basename ) {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			wp_die(
+				esc_html__( 'You are not allowed to perform this action', 'tutor-lms-elementor-addons' ),
+				esc_html__( 'Permission Denied', 'tutor-lms-elementor-addons' ),
+				array( 'response' => 403 )
+			);
+		}
+
+		check_admin_referer( self::NONCE_ACTION );
+
+		activate_plugin( $basename );
+
+		wp_safe_redirect( admin_url() );
+		exit;
+	}
+
+	/**
 	 * Activate tutor plugin action
 	 *
 	 * @since 1.0.0
 	 */
 	public function activate_tutor_free() {
-		if ( current_user_can( 'manage_options' ) ) {
-			activate_plugin( 'tutor/tutor.php' );
-		} else {
-			wp_die( esc_html__( 'You are not allowed to perform this action', 'tutor-lms-elementor-addons' ) );
-		}
+		$this->activate_dependency_plugin( 'tutor/tutor.php' );
 	}
 
 	/**
@@ -224,11 +292,6 @@ class Installer {
 	 * @since 1.0.0
 	 */
 	public function activate_elementor_free() {
-		if ( current_user_can( 'manage_options' ) ) {
-			activate_plugin( 'elementor/elementor.php' );
-		} else {
-			wp_die( esc_html__( 'You are not allowed to perform this action', 'tutor-lms-elementor-addons' ) );
-		}
+		$this->activate_dependency_plugin( 'elementor/elementor.php' );
 	}
-
 }
