@@ -171,13 +171,13 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 
 				if ( strlen( $link_text ) > 0 ) {
 					?>
-							<a 	href="<?php echo esc_url( $lesson_url ); ?>" 
-								class="tutor-btn tutor-btn-block tutor-btn-primary tutor-mt-20">
-							<?php echo esc_html( $link_text ); ?>
-							</a>
-						<?php
+						<a 	href="<?php echo esc_url( $lesson_url ); ?>" 
+							class="tutor-btn tutor-btn-block tutor-btn-primary tutor-mt-20 start-continue-retake-button">
+						<?php echo esc_html( $link_text ); ?>
+						</a>
+					<?php
 				}
-						$start_content = ob_get_clean();
+				$start_content = ob_get_clean();
 			}
 
 

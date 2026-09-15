@@ -1,60 +1,65 @@
 <?php
-	// Utility data
+/**
+ * Enrollment template.
+ *
+ * @package TutorLMS\Elementor
+ */
 
 use Tutor\Models\CourseModel;
-	$user_id               = get_current_user_id();
-	$course_id             = get_the_ID();
-	$is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
-	$lesson_url            = tutor_utils()->get_course_first_lesson();
-	$is_administrator      = tutor_utils()->has_user_role( 'administrator' );
-	$is_instructor         = tutor_utils()->is_instructor_of_this_course();
-	$course_content_access = (bool) get_tutor_option( 'course_content_access_for_ia' );
-	$is_privileged_user    = $course_content_access && ( $is_administrator || $is_instructor );
-	$tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
-	$is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
-	$can_complete_course   = CourseModel::can_complete_course( $course_id, $user_id );
-	$completion_mode       = tutor_utils()->get_option( 'course_completion_process' );
-	// Monetization info
-	$monetize_by    = tutor_utils()->get_option( 'monetize_by' );
-	$is_purchasable = tutor_utils()->is_course_purchasable();
 
-	// Get login url if
-	$is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
-	$auth_url                = $is_tutor_login_disabled ? ( isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) : '' ) : '';
-	$default_meta            = array(
+$user_id               = get_current_user_id();
+$course_id             = get_the_ID();
+$is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
+$lesson_url            = tutor_utils()->get_course_first_lesson();
+$is_administrator      = tutor_utils()->has_user_role( 'administrator' );
+$is_instructor         = tutor_utils()->is_instructor_of_this_course();
+$course_content_access = (bool) get_tutor_option( 'course_content_access_for_ia' );
+$is_privileged_user    = $course_content_access && ( $is_administrator || $is_instructor );
+$tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
+$is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
+$can_complete_course   = CourseModel::can_complete_course( $course_id, $user_id );
+$completion_mode       = tutor_utils()->get_option( 'course_completion_process' );
+// Monetization information.
+$monetize_by    = tutor_utils()->get_option( 'monetize_by' );
+$is_purchasable = tutor_utils()->is_course_purchasable();
+
+// Get login url if.
+$is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
+$auth_url                = $is_tutor_login_disabled ? ( isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) : '' ) : '';
+$default_meta            = array(
+	array(
+		'icon_class' => 'tutor-icon-mortarboard',
+		'label'      => __( 'Total Enrolled', 'tutor-lms-elementor-addons' ),
+		'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null,
+	),
+	array(
+		'icon_class' => 'tutor-icon-clock-line',
+		'label'      => __( 'Duration', 'tutor-lms-elementor-addons' ),
+		'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null,
+	),
+	array(
+		'icon_class' => 'tutor-icon-refresh-o',
+		'label'      => __( 'Last Updated', 'tutor-lms-elementor-addons' ),
+		'value'      => get_tutor_option( 'enable_course_update_date' ) ? date_i18n( get_option( 'date_format' ), strtotime( get_the_modified_date() ) ) : null,
+	),
+);
+
+// Add level if enabled.
+if ( tutor_utils()->get_option( 'enable_course_level', true, true ) ) {
+	array_unshift(
+		$default_meta,
 		array(
-			'icon_class' => 'tutor-icon-mortarboard',
-			'label'      => __( 'Total Enrolled', 'tutor-lms-elementor-addons' ),
-			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null,
-		),
-		array(
-			'icon_class' => 'tutor-icon-clock-line',
-			'label'      => __( 'Duration', 'tutor-lms-elementor-addons' ),
-			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null,
-		),
-		array(
-			'icon_class' => 'tutor-icon-refresh-o',
-			'label'      => __( 'Last Updated', 'tutor-lms-elementor-addons' ),
-			'value'      => get_tutor_option( 'enable_course_update_date' ) ? date_i18n( get_option( 'date_format' ), strtotime( get_the_modified_date() ) ) : null,
-		),
+			'icon_class' => 'tutor-icon-level',
+			'label'      => __( 'Level', 'tutor-lms-elementor-addons' ),
+			'value'      => get_tutor_course_level( get_the_ID() ),
+		)
 	);
+}
 
-	// Add level if enabled
-	if ( tutor_utils()->get_option( 'enable_course_level', true, true ) ) {
-		array_unshift(
-			$default_meta,
-			array(
-				'icon_class' => 'tutor-icon-level',
-				'label'      => __( 'Level', 'tutor-lms-elementor-addons' ),
-				'value'      => get_tutor_course_level( get_the_ID() ),
-			)
-		);
-	}
-
-	// Right sidebar meta data
-	$sidebar_meta = apply_filters( 'tutor/course/single/sidebar/metadata', $default_meta, get_the_ID() );
-	$login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
-	?>
+// Right sidebar meta data.
+$sidebar_meta = apply_filters( 'tutor/course/single/sidebar/metadata', $default_meta, get_the_ID() );
+$login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
+?>
 
 <div class="tutor-card tutor-card-md tutor-sidebar-card">
 	<!-- Course Entry -->
@@ -63,7 +68,7 @@ use Tutor\Models\CourseModel;
 		if ( $is_enrolled || $is_privileged_user ) {
 			ob_start();
 
-			// Course Info
+			// Course information.
 			$completed_percent   = tutor_utils()->get_course_completed_percent();
 			$is_completed_course = tutor_utils()->is_completed_course();
 			$retake_course       = tutor_utils()->can_user_retake_course();
@@ -72,11 +77,11 @@ use Tutor\Models\CourseModel;
 			?>
 			<?php
 			$start_content = '';
-			
+
 			do_action( 'tutor_course/single/actions_btn_group/before' );
 			if ( $lesson_url ) {
-					$start_content = ob_start();
-					/**
+				$start_content = ob_start();
+				/**
 				 * Course retake button.
 				 *
 				 * Todo: `href` attribute is exist for backward compatibility.
@@ -88,22 +93,21 @@ use Tutor\Models\CourseModel;
 				if ( $retake_course && ( CourseModel::MODE_FLEXIBLE === $completion_mode || $is_completed_course ) ) {
 					?>
 						<button type="button" 
-								class="tutor-btn tutor-btn-block tutor-btn-outline-primary start-continue-retake-button tutor-course-retake-button" 
-								href="<?php echo esc_url( $lesson_url ); ?>"
-								data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-					<?php esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' ); ?>
+							class="tutor-btn tutor-btn-block tutor-btn-outline-primary start-continue-retake-button tutor-course-retake-button" 
+							href="<?php echo esc_url( $lesson_url ); ?>"
+							data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+							<?php esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' ); ?>
 						</button>
 					<?php
 				}
 
-
-					/**
-					 * Start/Continue learning button
-					 *
-					 * @since 1.0.0
-					 * @since 2.4.0 refactored for enhance readibility.
-					 */
-					$link_text = '';
+				/**
+				 * Start/Continue learning button.
+				 *
+				 * @since 1.0.0
+				 * @since 2.4.0 refactored for enhance readability.
+				 */
+				$link_text = '';
 				if ( ! $is_completed_course ) {
 					if ( 0 === (int) $completed_percent ) {
 						$link_text = __( 'Start Learning', 'tutor-lms-elementor-addons' );
@@ -129,7 +133,7 @@ use Tutor\Models\CourseModel;
 				if ( strlen( $link_text ) > 0 ) {
 					?>
 						<a 	href="<?php echo esc_url( $lesson_url ); ?>" 
-							class="tutor-btn tutor-btn-block tutor-btn-primary tutor-mt-20">
+							class="tutor-btn tutor-btn-block tutor-btn-primary tutor-mt-20 start-continue-retake-button">
 						<?php echo esc_html( $link_text ); ?>
 						</a>
 					<?php
@@ -158,8 +162,8 @@ use Tutor\Models\CourseModel;
 
 			?>
 				<?php
-					// check if has enrolled date.
-					$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
+				// check if has enrolled date.
+				$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
 				if ( '' !== $post_date ) :
 					?>
 					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex  etlms-course-enroll-info-wrapper">
@@ -178,7 +182,7 @@ use Tutor\Models\CourseModel;
 			do_action( 'tutor_course/single/actions_btn_group/after' );
 			echo apply_filters( 'tutor/course/single/entry-box/is_enrolled', ob_get_clean(), get_the_ID() );
 		} elseif ( $is_public ) {
-			// Get the first content url
+			// Get the first content url.
 			$first_lesson_url                       = tutor_utils()->get_course_first_lesson( get_the_ID(), tutor()->lesson_post_type );
 			! $first_lesson_url ? $first_lesson_url = tutor_utils()->get_course_first_lesson( get_the_ID() ) : 0;
 			ob_start();
@@ -189,7 +193,7 @@ use Tutor\Models\CourseModel;
 			<?php
 			echo apply_filters( 'tutor/course/single/entry-box/is_public', ob_get_clean(), get_the_ID() );
 		} else {
-			// The course enroll options like purchase or free enrolment
+			// The course enroll options like purchase or free enrolment.
 			$price = apply_filters( 'get_tutor_course_price', null, get_the_ID() );
 
 			if ( tutor_utils()->is_course_fully_booked( null ) ) {
@@ -208,9 +212,9 @@ use Tutor\Models\CourseModel;
 			} elseif ( $is_purchasable && $price && $tutor_course_sell_by ) {
 				// Load template based on monetization option.
 				ob_start();
-				if( 'tutor' === $tutor_course_sell_by ){
-					tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by );	
-				} else if ( file_exists( ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
+				if ( 'tutor' === $tutor_course_sell_by ) {
+					tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by );
+				} elseif ( file_exists( ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
 					include ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php';
 				} else {
 					esc_html_e( $tutor_course_sell_by . ' template not found' );
