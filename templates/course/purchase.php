@@ -22,11 +22,11 @@ $tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
 $is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
 $can_complete_course   = CourseModel::can_complete_course( $course_id, $user_id );
 $completion_mode       = tutor_utils()->get_option( 'course_completion_process' );
-// Monetization info
+// Monetization info.
 $monetize_by    = tutor_utils()->get_option( 'monetize_by' );
 $is_purchasable = tutor_utils()->is_course_purchasable();
 
-// Get login url if
+// Get login url if.
 $is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
 $auth_url                = $is_tutor_login_disabled ? ( isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) : '' ) : '';
 $default_meta            = array(
@@ -47,7 +47,7 @@ $default_meta            = array(
 	),
 );
 
-// Add level if enabled
+// Add level if enabled.
 if ( tutor_utils()->get_option( 'enable_course_level', true, true ) ) {
 	array_unshift(
 		$default_meta,
@@ -59,7 +59,7 @@ if ( tutor_utils()->get_option( 'enable_course_level', true, true ) ) {
 	);
 }
 
-// Right sidebar meta data
+// Right sidebar meta data.
 $sidebar_meta = apply_filters( 'tutor/course/single/sidebar/metadata', $default_meta, get_the_ID() );
 $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
 ?>
@@ -71,7 +71,7 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 		if ( $is_enrolled || $is_privileged_user ) {
 			ob_start();
 
-			// Course Info
+			// Course Info.
 			$completed_percent   = tutor_utils()->get_course_completed_percent();
 			$is_completed_course = tutor_utils()->is_completed_course();
 			$retake_course       = tutor_utils()->can_user_retake_course();
@@ -130,23 +130,23 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 					 */
 				if ( $retake_course && ( CourseModel::MODE_FLEXIBLE === $completion_mode || $is_completed_course ) ) {
 					?>
-							<button type="button" 
-									class="tutor-btn tutor-btn-block tutor-btn-outline-primary start-continue-retake-button tutor-course-retake-button" 
-									href="<?php echo esc_url( $lesson_url ); ?>"
-									data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-						<?php esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' ); ?>
-							</button>
-						<?php
+						<button type="button" 
+								class="tutor-btn tutor-btn-block tutor-btn-outline-primary start-continue-retake-button tutor-course-retake-button" 
+								href="<?php echo esc_url( $lesson_url ); ?>"
+								data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+							<?php esc_html_e( 'Retake This Course', 'tutor-lms-elementor-addons' ); ?>
+						</button>
+					<?php
 				}
 
 
-						/**
-						 * Start/Continue learning button
-						 *
-						 * @since 1.0.0
-						 * @since 2.4.0 refactored for enhance readibility.
-						 */
-						$link_text = '';
+				/**
+				 * Start/Continue learning button
+				 *
+				 * @since 1.0.0
+				 * @since 2.4.0 refactored for enhance readibility.
+				 */
+				$link_text = '';
 				if ( ! $is_completed_course ) {
 					if ( 0 === (int) $completed_percent ) {
 						$link_text = __( 'Start Learning', 'tutor-lms-elementor-addons' );
@@ -203,8 +203,8 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 
 			?>
 				<?php
-					// check if has enrolled date.
-					$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
+				// check if has enrolled date.
+				$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
 				if ( '' !== $post_date ) :
 					?>
 					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex etlms-enrolled-info-wrapper">

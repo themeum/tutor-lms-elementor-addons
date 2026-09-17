@@ -6,7 +6,7 @@
  */
 $enrollment_mode = $settings['course_enrolment_edit_mode'];
 
-// Utility data
+// Utility data.
 $is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
 $lesson_url            = tutor_utils()->get_course_first_lesson();
 $is_administrator      = tutor_utils()->has_user_role( 'administrator' );
@@ -16,11 +16,11 @@ $is_privileged_user    = $course_content_access && ( $is_administrator || $is_in
 $tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
 $is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course', true ) == 'yes';
 
-// Monetization info
+// Monetization information.
 $monetize_by              = tutor_utils()->get_option( 'monetize_by' );
 $is_purchasable           = tutor_utils()->is_course_purchasable();
 
-// Get login url if
+// Get login url if.
 $is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
 $auth_url                = $is_tutor_login_disabled ? ( isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) : '' ) : '';
 $default_meta = array(
@@ -41,7 +41,7 @@ $default_meta = array(
 	),
 );
 
-// Add level if enabled
+// Add level if enabled.
 if(tutor_utils()->get_option('enable_course_level', true, true)) {
 	array_unshift($default_meta, array(
 		'icon_class' => 'tutor-icon-level',
@@ -50,7 +50,7 @@ if(tutor_utils()->get_option('enable_course_level', true, true)) {
 	));
 }
 
-// Right sidebar meta data
+// Right sidebar meta data.
 $sidebar_meta = apply_filters('tutor/course/single/sidebar/metadata', $default_meta, get_the_ID() );
 $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
 ?>
@@ -62,7 +62,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 		if ( 'enrolled-box' === $enrollment_mode ) {
 			ob_start();
 
-			// Course Info
+			// Course information.
 			$completed_percent   = tutor_utils()->get_course_completed_percent();
 			$is_completed_course = tutor_utils()->is_completed_course();
 			$retake_course       = tutor_utils()->can_user_retake_course();
@@ -73,17 +73,17 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 			<?php
 			$start_content = '';
 
-			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership
+			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership.
 			do_action( 'tutor_course/single/actions_btn_group/before' );
 
-			// Show Start/Continue/Retake Button
+			// Show Start/Continue/Retake Button.
 			if ( $lesson_url ) {
 				$button_class = 'tutor-btn ' .
 								( $retake_course ? 'tutor-btn-outline-primary' : 'tutor-btn-primary' ) .
 								' tutor-btn-block' .
 								( $retake_course ? ' tutor-course-retake-button' : '' );
 
-				// Button identifier class
+				// Button identifier class.
 				$button_identifier = 'start-continue-retake-button';
 				$tag               = $retake_course ? 'button' : 'a';
 				ob_start();
@@ -144,7 +144,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 			do_action( 'tutor_course/single/actions_btn_group/after' );
 			echo apply_filters( 'tutor/course/single/entry-box/is_enrolled', ob_get_clean(), get_the_ID() );
 		} else {
-			// The course enroll options like purchase or free enrolment
+			// The course enroll options like purchase or free enrolment.
 			$price = apply_filters( 'get_tutor_course_price', null, get_the_ID() );
 
 			if ( tutor_utils()->is_course_fully_booked( null ) ) {
@@ -161,7 +161,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 				<?php
 				echo apply_filters( 'tutor/course/single/entry-box/fully_booked', ob_get_clean(), get_the_ID() );
 			} elseif ( $is_purchasable && $price && $tutor_course_sell_by ) {
-				// Load template based on monetization option
+				// Load template based on monetization option.
 				ob_start();
 				if( 'tutor' === $tutor_course_sell_by ){
 					tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by );	
