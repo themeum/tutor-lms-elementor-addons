@@ -1,4 +1,5 @@
 
+
 .etlms-install-notice {
 	padding: 20px;
 	display: block;
@@ -16,10 +17,40 @@
 	float: right;
 	margin-top: 14px;
 	.button {
+		display: flex;
+		align-items: center;
 		padding: 6px 30px;
+		width: max-content;
 		height: auto;
 		line-height: 20px;
 		text-transform: capitalize;
+
+		// While installing, the button is inert but should look unchanged
+		// apart from being dimmed.
+		&.updating-message {
+			opacity: 0.8;
+
+			// Core greys out aria-disabled buttons and rings the focused
+			// button after the click that started the install.
+			&[aria-disabled='true'] {
+				color: #fff !important;
+			}
+			&:focus,
+			&.focus {
+				box-shadow: none;
+				outline: none;
+			}
+
+			// Core sizes the spinner for its own 38px line box, which
+			// stretches this button. Match it to the 20px line box instead.
+			&::before {
+				font-size: 16px;
+				line-height: 20px;
+				width: 16px;
+				margin: 0 6px 0 -6px;
+				vertical-align: top;
+			}
+		}
 	}
 }
 .etlms-install-notice-icon {

@@ -97,6 +97,7 @@ gulp.task("copy", function () {
 			"!./gulpfile.js",
 			"!./readme.md",
 			"!./README.md",
+			"!./AGENTS.md",
 			"!.DS_Store",
 			"!./**/.DS_Store",
 			"!./LICENSE.txt",
