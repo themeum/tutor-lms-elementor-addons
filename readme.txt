@@ -3,7 +3,7 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: LMS, eLearning, Elementor, learning management system, Elementor addons for LMS
 Requires at least: 5.3
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 4.0.2
 License: GPLv3
@@ -166,9 +166,10 @@ You can post on the support section of this plugin or use the [contact form on o
 
 == Changelog ==
 
-= 4.0.2 - 14 September, 2026 =
+= 4.0.2 - 18 September, 2026 =
 
-Fix: Patched a missing authorization vulnerability that allowed low privileged users to activate the required plugins.
+Fix: Added nonce verification to patch a missing authorization vulnerability that allowed low privileged users to activate the required plugins.
+Fix: Fixed addons styles showing in the Elementor editor but not applying on the frontend.
 
 = 4.0.1 - 08 July, 2026 =
 
