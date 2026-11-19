@@ -40,7 +40,7 @@ class CourseStatus extends BaseAddon {
 		$this->start_controls_section(
 			'course_status_content_section',
 			array(
-				'label' => 'Course Progress',
+				'label' => __( 'Course Progress', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
