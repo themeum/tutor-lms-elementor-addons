@@ -181,7 +181,7 @@ class CourseRating extends BaseAddon {
 		$disable = (bool) get_tutor_option( 'disable_course_review' );
 		if ( $disable ) {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course review from tutor settings', 'tutor-lms-elementor-addons' );
+				esc_html_e( 'Please enable course review from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}

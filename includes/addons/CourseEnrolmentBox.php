@@ -66,8 +66,8 @@ class CourseEnrolmentBox extends BaseAddon {
 				'label'   => __( 'Select Mode', 'tutor-lms-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'enrolment-box' => 'Enrolment Box',
-					'enrolled-box'  => 'Enrolled Box',
+					'enrolment-box' => __( 'Enrolment Box', 'tutor-lms-elementor-addons' ),
+					'enrolled-box'  => __( 'Enrolled Box', 'tutor-lms-elementor-addons' ),
 				),
 				'default' => 'enrolment-box',
 			)

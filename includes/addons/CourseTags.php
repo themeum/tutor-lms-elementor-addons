@@ -27,7 +27,7 @@ class CourseTags extends BaseAddon {
 		$this->start_controls_section(
 			'course_tags_content_section',
 			array(
-				'label' => 'General Settings',
+				'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);

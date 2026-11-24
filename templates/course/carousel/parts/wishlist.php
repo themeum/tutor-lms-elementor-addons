@@ -11,8 +11,12 @@
             $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
         }
         
-        echo '<span class="'. esc_attr( $action_class ) .' save-bookmark-btn tutor-iconic-btn tutor-iconic-btn-secondary" data-course-id="'. esc_attr( $course_id ) .'" role="button">
-            <i class="' . ( $is_wish_listed ? 'tutor-icon-bookmark-bold' : 'tutor-icon-bookmark-line') . '"></i>
+        $wishlist_label = $is_wish_listed
+            ? __( 'Remove from wishlist', 'tutor-lms-elementor-addons' )
+            : __( 'Add to wishlist', 'tutor-lms-elementor-addons' );
+
+        echo '<span class="' . esc_attr( $action_class ) . ' save-bookmark-btn tutor-iconic-btn tutor-iconic-btn-secondary" data-course-id="' . esc_attr( $course_id ) . '" role="button" aria-label="' . esc_attr( $wishlist_label ) . '">
+            <i class="' . ( $is_wish_listed ? 'tutor-icon-bookmark-bold' : 'tutor-icon-bookmark-line' ) . '" aria-hidden="true"></i>
         </span>';
     ?>
 </div>

@@ -41,7 +41,7 @@ $icon_shape    = $settings['course_share_icon_shape'];
 		<?php endif; ?>
 		<?php if ( 'yes' === $settings['course_share_label_content'] ) : ?>
 			<span class="etlms-course-share-label tutor-ml-8">
-				<?php _e( 'Share', 'tutor-lms-elementor-addons' ); ?>
+				<?php esc_html_e( 'Share', 'tutor-lms-elementor-addons' ); ?>
 			</span>
 		<?php endif; ?>
 	</a>
@@ -51,7 +51,7 @@ $icon_shape    = $settings['course_share_icon_shape'];
 	<span class="tutor-modal-overlay"></span>
 	<div class="tutor-modal-window">
 		<div class="tutor-modal-content tutor-modal-content-white">
-			<button class="tutor-iconic-btn tutor-modal-close-o" data-tutor-modal-close>
+			<button class="tutor-iconic-btn tutor-modal-close-o" data-tutor-modal-close aria-label="<?php esc_attr_e( 'Close', 'tutor-lms-elementor-addons' ); ?>">
 				<span class="tutor-icon-times" area-hidden="true"></span>
 			</button>
 			<div class="tutor-modal-body">
@@ -61,11 +61,11 @@ $icon_shape    = $settings['course_share_icon_shape'];
 				</div>
 				<?php endif; ?>
 				<div class="etlms-course-share-modal-sub-title tutor-fs-7 tutor-color-secondary tutor-mb-12">
-					<?php _e( 'Page Link', 'tutor-lms-elementor-addons' ); ?>
+					<?php esc_html_e( 'Page Link', 'tutor-lms-elementor-addons' ); ?>
 				</div>
 				<div class="tutor-mb-32 tutor-position-relative">
-					<input class="tutor-form-control" value="<?php echo esc_attr( get_permalink( get_the_ID() ) ); ?>" aria-label="<?php esc_attr_e( 'Course Link', 'tutor' ); ?>" readonly />
-					<button class="tutor-btn tutor-btn-icon tutor-copy-text tutor-position-absolute tutor-bg-white" style="right: 2px; top: 2px;" data-text="<?php echo esc_attr( get_permalink( get_the_ID() ) ); ?>" aria-label="<?php esc_attr_e( 'Copy link', 'tutor' ); ?>">
+					<input class="tutor-form-control" value="<?php echo esc_attr( get_permalink( get_the_ID() ) ); ?>" aria-label="<?php esc_attr_e( 'Course Link', 'tutor-lms-elementor-addons' ); ?>" readonly />
+					<button class="tutor-btn tutor-btn-icon tutor-copy-text tutor-position-absolute tutor-bg-white" style="right: 2px; top: 2px;" data-text="<?php echo esc_attr( get_permalink( get_the_ID() ) ); ?>" aria-label="<?php esc_attr_e( 'Copy link', 'tutor-lms-elementor-addons' ); ?>">
 						<span class="icon tutor-icon-copy" aria-hidden="true"></span>
 					</button>
 				</div>

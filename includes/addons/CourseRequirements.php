@@ -317,7 +317,7 @@ class CourseRequirements extends BaseAddon {
 		$disable_option = ! (bool) get_tutor_option( 'enable_course_requirements' );
 		if ( $disable_option ) {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course requirements from tutor settings', 'tutor-lms-elementor-addons' );
+				esc_html_e( 'Please enable course requirements from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}

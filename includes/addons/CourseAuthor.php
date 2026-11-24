@@ -66,9 +66,9 @@ class CourseAuthor extends BaseAddon {
 				'label'   => __( 'Link', 'tutor-lms-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'none'        => 'None',
-					'new_window'  => 'New Window',
-					'same_window' => 'Same Window',
+					'none'        => __( 'None', 'tutor-lms-elementor-addons' ),
+					'new_window'  => __( 'New Window', 'tutor-lms-elementor-addons' ),
+					'same_window' => __( 'Same Window', 'tutor-lms-elementor-addons' ),
 				),
 				'default' => 'new_window',
 			)
@@ -245,7 +245,7 @@ class CourseAuthor extends BaseAddon {
 		$is_enabled = (bool) get_tutor_option( 'enable_course_author' );
 		$is_editor  = \Elementor\Plugin::instance()->editor->is_edit_mode();
 		if ( ! $is_enabled && $is_editor ) {
-			echo __( 'Please enable course author from tutor settings', 'tutor-lms-elementor-addons' );
+			esc_html_e( 'Please enable course author from tutor settings', 'tutor-lms-elementor-addons' );
 			return;
 		}
 

@@ -12,7 +12,7 @@ if ( $download->ID ) {
 } else {
 	?>
 	<p class="tutor-alert-warning">
-		<?php _e( 'Please make sure that your EDD product exists and valid for this course', 'tutor-lms-elementor-addons' ); ?>
+		<?php esc_html_e( 'Please make sure that your EDD product exists and valid for this course', 'tutor-lms-elementor-addons' ); ?>
 	</p>
 	<?php
 }

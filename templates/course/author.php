@@ -22,7 +22,7 @@ $target_blank = ( $settings['course_author_link'] == 'new_window' ) ? 'target="_
 
 	<?php if ( $settings['course_author_name'] ) : ?>
 		<div class="tutor-single-course-author-name">
-			<span><?php _e( 'by', 'tutor-lms-elementor-addons' ); ?></span>
+			<span><?php esc_html_e( 'by', 'tutor-lms-elementor-addons' ); ?></span>
 			<?php if ( $settings['course_author_link'] == 'none' ) : ?>
 				<span class='tutor-meta-value'><?php echo $author_name; ?></span>
 			<?php else: ?>

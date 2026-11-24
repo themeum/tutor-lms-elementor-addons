@@ -31,17 +31,17 @@ class ManageDependency {
 					<div>
 						<div style="column-gap: 10px; display: flex; align-items:center;">
 							<div class="etlms-install-notice-icon">
-								<img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
+								<img src="<?php echo esc_url( ETLMS_ASSETS . 'images/plugin-logo.jpg' ); ?>" alt="<?php esc_attr_e( 'Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?>">
 							</div>
 							<div class="etlms-install-notice-content">
 								<h2 style="margin-bottom: 5px;">
 									<i class="tutor-icon-warning-f" style="color:#ffb200;"></i> <?php esc_html_e( 'WARNING: YOU NEED TO INSTALL THE REQUIRED TUTOR LMS VERSION', 'tutor-lms-elementor-addons' ); ?></h2>
 								<p style="margin-bottom: 5px;">
 								<?php
-									esc_html_e(
-										'It seems you have installed the wrong version Of Tutor LMS. For a smoother Tutor LMS experience, you need to install at least ' . ETLMS_TUTOR_CORE_REQ_VERSION . ' version.
-                                    ',
-										'tutor-lms-elementor-addons'
+									printf(
+										/* translators: %s: required Tutor LMS version. */
+										esc_html__( 'It seems you have installed the wrong version of Tutor LMS. For a smoother Tutor LMS experience, you need to install at least version %s.', 'tutor-lms-elementor-addons' ),
+										esc_html( ETLMS_TUTOR_CORE_REQ_VERSION )
 									);
 								?>
 								</p>

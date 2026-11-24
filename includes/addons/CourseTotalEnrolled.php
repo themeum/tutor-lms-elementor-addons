@@ -202,7 +202,7 @@ class CourseTotalEnrolled extends BaseAddon {
 		$disable_option = (bool) get_tutor_option( 'disable_course_total_enrolled' );
 		if ( $disable_option ) {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course total enrolled from tutor settings', 'tutor-lms-elementor-addons' );
+				esc_html_e( 'Please enable course total enrolled from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}
