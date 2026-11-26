@@ -4,7 +4,7 @@
  * Plugin URI: https://www.themeum.com/product/tutor-lms/
  * Description: Elementor Addons Integration - Tutor LMS plugin lets you design course pages with Elementor.
  * Author: Themeum
- * Version: 4.0.2
+ * Version: 4.0.3
  * Author URI: http://themeum.com
  * Requires at least: 5.3
  * Tested up to: 7.1
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'ETLMS_VERSION', '4.0.2' );
+define( 'ETLMS_VERSION', '4.0.3' );
 
 /**
  * Tutor LMS Elementor addons dependency on Tutor core

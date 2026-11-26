@@ -124,8 +124,8 @@ class CourseInstructors extends BaseAddon {
 				'type'        => Controls_Manager::SELECT,
 				'description' => __( 'Link for the Author Name and Image', 'tutor-lms-elementor-addons' ),
 				'options'     => array(
-					'_blank' => 'New Window',
-					''       => 'Same Window',
+					'_blank' => __( 'New Window', 'tutor-lms-elementor-addons' ),
+					''       => __( 'Same Window', 'tutor-lms-elementor-addons' ),
 				),
 
 				'default'     => '_blank',

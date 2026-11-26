@@ -29,7 +29,7 @@ $requirements = tutor_course_requirements();
 			</li>
 		<?php endforeach; ?>
 		<?php elseif ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) : ?>
-			<?php echo __( 'Please add data from the course editor', 'tutor-lms-elementor-addons' ); ?>
+			<?php esc_html_e( 'Please add data from the course editor', 'tutor-lms-elementor-addons' ); ?>
 		<?php endif; ?>
 	</ul>
 </div>

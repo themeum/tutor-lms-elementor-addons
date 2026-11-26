@@ -40,7 +40,7 @@ class CourseStatus extends BaseAddon {
 		$this->start_controls_section(
 			'course_status_content_section',
 			array(
-				'label' => 'Course Progress',
+				'label' => __( 'Course Progress', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -251,7 +251,7 @@ class CourseStatus extends BaseAddon {
 		$disable_option = ! (bool) get_tutor_option( 'enable_course_progress_bar' );
 		if ( $disable_option ) {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course status from tutor settings', 'tutor-lms-elementor-addons' );
+				esc_html_e( 'Please enable course status from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}

@@ -202,7 +202,7 @@ class CourseLevel extends BaseAddon {
         $disable_option = (bool) get_tutor_option('disable_course_level');
 		if ($disable_option) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course level from tutor settings', 'tutor-lms-elementor-addons');
+                esc_html_e( 'Please enable course level from tutor settings', 'tutor-lms-elementor-addons' );
             }
 			return;
         }

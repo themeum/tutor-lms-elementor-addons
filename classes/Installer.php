@@ -131,7 +131,7 @@ class Installer {
 			<div class="notice notice-error etlms-install-notice">
 				<div class="etlms-install-notice-inner">
 					<div class="etlms-install-notice-icon">
-						<img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
+						<img src="<?php echo esc_url( ETLMS_ASSETS . 'images/plugin-logo.jpg' ); ?>" alt="<?php esc_attr_e( 'Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?>">
 					</div>
 					<div class="etlms-install-notice-content">
 						<h2><?php _e( 'Thanks for using Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?></h2>
@@ -171,7 +171,7 @@ class Installer {
 			<div class="notice notice-error etlms-install-notice">
 				<div class="etlms-install-notice-inner">
 					<div class="etlms-install-notice-icon">
-						<img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
+						<img src="<?php echo esc_url( ETLMS_ASSETS . 'images/plugin-logo.jpg' ); ?>" alt="<?php esc_attr_e( 'Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?>">
 					</div>
 					<div class="etlms-install-notice-content">
 						<h2><?php _e( 'Thanks for using Tutor LMS Elementor Addons', 'tutor-lms-elementor-addons' ); ?></h2>
@@ -239,7 +239,11 @@ class Installer {
 				wp_die( $api );
 			}
 
-			$title = sprintf( __( 'Installing Plugin: %s' ), $api->name . ' ' . $api->version );
+			$title = sprintf(
+				/* translators: %s: plugin name and version. */
+				__( 'Installing Plugin: %s', 'tutor-lms-elementor-addons' ),
+				$api->name . ' ' . $api->version
+			);
 			$nonce = 'install-plugin_' . $plugin;
 			$url   = 'update.php?action=install-plugin&plugin=' . urlencode( $plugin );
 

@@ -119,7 +119,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 			</a>
 			<?php echo ( 'auto' === $settings['course_enroll_buttons_width'] ? html_entity_decode( '<br>' ) : '' ); ?>
 			<a href="#" class="tutor-btn tutor-btn-primary tutor-btn-block tutor-mt-20 tutor-btn-view-certificate">
-				<?php _e('View Certificate', 'tutor-lms-elementor-addons'); ?>
+				<?php esc_html_e( 'View Certificate', 'tutor-lms-elementor-addons' ); ?>
 			</a>
 			<?php
 			echo apply_filters( 'tutor_course/single/start/button', $start_content, get_the_ID() );
