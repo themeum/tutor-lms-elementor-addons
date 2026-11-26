@@ -127,7 +127,7 @@ class CourseCarousel extends BaseAddon {
 				'label' => __('Meta Data', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __('Show', 'tutor-lms-elementor-addons'),
-				'label_off' => __('Hide', 'your-plugin'),
+				'label_off' => __('Hide', 'tutor-lms-elementor-addons'),
 				'return_value' => 'yes',
 				'default' => '',
 			]
@@ -136,7 +136,7 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_meta_space',
 			[
-				'label' => __('Space Between'),
+				'label' => __('Space Between', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -377,7 +377,7 @@ class CourseCarousel extends BaseAddon {
 		$this->start_controls_section(
 			'course_carousel_settings_section',
 			[
-				'label' => __('Carousel Settings'),
+				'label' => __('Carousel Settings', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::TAB_CONTENT
 			]
 		);
@@ -409,7 +409,7 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_settings_transition',
 			[
-				'label' => __('Transition Duration'),
+				'label' => __('Transition Duration', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::TEXT,
 				'default' => '600'
 			]
@@ -454,7 +454,7 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_settings_autoplay_speed',
 			[
-				'label' => __('Auto Play Speed'),
+				'label' => __('Auto Play Speed', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::TEXT,
 				'default' => '5000'
 			]
@@ -1081,7 +1081,7 @@ class CourseCarousel extends BaseAddon {
 		$this->add_control(
 			'course_carousel_border_radius',
 			[
-				'label' => __('Border Radius', 'elementor'),
+				'label' => __('Border Radius', 'tutor-lms-elementor-addons'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [

@@ -41,8 +41,8 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 <div class="etlms-course-widget etlms-tutor-review-summary-reviews tutor-pagination-wrapper-replaceable">
 	<h3 class="etlms-course-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-24">
 		<?php
-			$review_title = apply_filters( 'tutor_course_reviews_section_title', 'Student Ratings & Reviews' );
-			echo esc_html( $review_title, 'tutor-lms-elementor-addons' );
+			$review_title = apply_filters( 'tutor_course_reviews_section_title', __( 'Student Ratings & Reviews', 'tutor-lms-elementor-addons' ) );
+			echo esc_html( $review_title );
 		?>
 	</h3>
 
@@ -66,7 +66,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 						<div class="tutor-fs-6 tutor-color-secondary tutor-mt-12 tutor-total-rating-count">
 							<?php
 							printf(
-								// translators: %d: complete percent value.
+								// translators: %d: total number of ratings.
 								esc_html( _n( 'Total %d Rating', 'Total %d Ratings', (int) $reviews_total, 'tutor-lms-elementor-addons' ) ),
 								(int) $reviews_total,
 							);

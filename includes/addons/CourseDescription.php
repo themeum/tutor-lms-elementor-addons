@@ -22,7 +22,7 @@ class CourseDescription extends BaseAddon {
         $this->start_controls_section(
             'course_description_content_section',
             [
-                'label' => 'General Settings',
+                'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
                 'tab' => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -126,7 +126,7 @@ class CourseDescription extends BaseAddon {
         $disable_option = (bool) get_tutor_option('disable_course_description');
 		if ($disable_option) {
             if (\Elementor\Plugin::instance()->editor->is_edit_mode()) {
-                echo __('Please enable course description from tutor settings', 'tutor-lms-elementor-addons');
+                esc_html_e( 'Please enable course description from tutor settings', 'tutor-lms-elementor-addons' );
             }
 			return;
 		}

@@ -141,7 +141,7 @@ class CourseList extends BaseAddon {
 				'label'        => __( 'Meta Data', 'tutor-lms-elementor-addons' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'tutor-lms-elementor-addons' ),
-				'label_off'    => __( 'Hide', 'your-plugin' ),
+				'label_off'    => __( 'Hide', 'tutor-lms-elementor-addons' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 			)
@@ -150,7 +150,7 @@ class CourseList extends BaseAddon {
 		$this->add_control(
 			'course_list_meta_space',
 			array(
-				'label'      => __( 'Space Between' ),
+				'label'      => __( 'Space Between', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -502,7 +502,7 @@ class CourseList extends BaseAddon {
 		$this->start_controls_section(
 			'course_list_layout_style',
 			array(
-				'label' => __( 'Layout' ),
+				'label' => __( 'Layout', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -1251,7 +1251,7 @@ class CourseList extends BaseAddon {
 		$this->add_control(
 			'course_list_border_radius',
 			array(
-				'label'      => __( 'Border Radius', 'elementor' ),
+				'label'      => __( 'Border Radius', 'tutor-lms-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(

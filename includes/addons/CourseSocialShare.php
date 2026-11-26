@@ -40,7 +40,7 @@ class CourseSocialShare extends BaseAddon {
 		$this->add_control(
 			'course_share_icon',
 			array(
-				'label'   => esc_html__( 'Icon', 'plugin-name' ),
+				'label'   => esc_html__( 'Icon', 'tutor-lms-elementor-addons' ),
 				'type'    => \Elementor\Controls_Manager::ICONS,
 				'default' => array(
 					'library' => 'solid',
@@ -100,20 +100,20 @@ class CourseSocialShare extends BaseAddon {
 		$this->add_control(
 			'course_share_section_title',
 			array(
-				'label'       => esc_html__( 'Section Title', 'plugin-name' ),
+				'label'       => esc_html__( 'Section Title', 'tutor-lms-elementor-addons' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Share Course', 'plugin-name' ),
-				'placeholder' => esc_html__( 'Type your title here', 'plugin-name' ),
+				'default'     => esc_html__( 'Share Course', 'tutor-lms-elementor-addons' ),
+				'placeholder' => esc_html__( 'Type your title here', 'tutor-lms-elementor-addons' ),
 			)
 		);
 
 		$this->add_control(
 			'course_share_title',
 			array(
-				'label'       => esc_html__( 'Share Title', 'plugin-name' ),
+				'label'       => esc_html__( 'Share Title', 'tutor-lms-elementor-addons' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Share on social media', 'plugin-name' ),
-				'placeholder' => esc_html__( 'Type your title here', 'plugin-name' ),
+				'default'     => esc_html__( 'Share on social media', 'tutor-lms-elementor-addons' ),
+				'placeholder' => esc_html__( 'Type your title here', 'tutor-lms-elementor-addons' ),
 			)
 		);
 
@@ -125,7 +125,7 @@ class CourseSocialShare extends BaseAddon {
 				'options'      => array(
 					'rounded' => __( 'Rounded', 'tutor-lms-elementor-addons' ),
 					'square'  => __( 'Square', 'tutor-lms-elementor-addons' ),
-					'circle'  => __( 'circle', 'tutor-lms-elementor-addons' ),
+					'circle'  => __( 'Circle', 'tutor-lms-elementor-addons' ),
 
 				),
 				'default'      => 'rounded',
@@ -616,7 +616,7 @@ class CourseSocialShare extends BaseAddon {
 		$disable_course_share = ! tutor_utils()->get_option( 'enable_course_share' );
 		if ( $disable_course_share ) {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course share from tutor settings', 'tutor-lms-elementor-addons' );
+				esc_html_e( 'Please enable course share from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}

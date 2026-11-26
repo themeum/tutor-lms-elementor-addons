@@ -217,7 +217,11 @@ $login_url    = tutor_utils()->get_option( 'enable_tutor_native_login', null, tr
 				} elseif ( file_exists( ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
 					include ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php';
 				} else {
-					esc_html_e( $tutor_course_sell_by . ' template not found' );
+					printf(
+						/* translators: %s: monetization option slug. */
+						esc_html__( '%s template not found', 'tutor-lms-elementor-addons' ),
+						esc_html( $tutor_course_sell_by )
+					);
 				}
 				echo apply_filters( 'tutor/course/single/entry-box/purchasable', ob_get_clean(), get_the_ID() );
 			} else {

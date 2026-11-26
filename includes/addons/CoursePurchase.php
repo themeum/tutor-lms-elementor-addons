@@ -64,8 +64,8 @@ class CoursePurchase extends BaseAddon {
 				'label'   => __( 'Select Mode', 'tutor-lms-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'enrolment-box' => 'Enrolment Box',
-					'enrolled-box'  => 'Enrolled Box',
+					'enrolment-box' => __( 'Enrolment Box', 'tutor-lms-elementor-addons' ),
+					'enrolled-box'  => __( 'Enrolled Box', 'tutor-lms-elementor-addons' ),
 				),
 				'default' => 'enrolment-box',
 			)
@@ -106,7 +106,7 @@ class CoursePurchase extends BaseAddon {
 		$this->start_controls_section(
 			'course_status_content_section',
 			array(
-				'label' => 'Course Progress',
+				'label' => __( 'Course Progress', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);

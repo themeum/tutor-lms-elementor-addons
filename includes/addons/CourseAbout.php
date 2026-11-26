@@ -30,7 +30,7 @@ class CourseAbout extends BaseAddon {
 		$this->start_controls_section(
 			'course_about_content_section',
 			array(
-				'label' => 'General Settings',
+				'label' => __( 'General Settings', 'tutor-lms-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -141,7 +141,7 @@ class CourseAbout extends BaseAddon {
 
 		if ( $disable_about ) {
 			if ( \Elementor\Plugin::instance()->editor->is_edit_mode() ) {
-				echo __( 'Please enable course about from tutor settings', 'tutor-lms-elementor-addons' );
+				esc_html_e( 'Please enable course about from tutor settings', 'tutor-lms-elementor-addons' );
 			}
 			return;
 		}

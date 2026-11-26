@@ -10,7 +10,7 @@
 
         <?php if ($course_rating->rating_avg > 0) : ?>
             <div class="tutor-ratings-average"><?php echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg); ?></div>
-            <div class="tutor-ratings-count">(<?php echo $course_rating->rating_count > 0 ? $course_rating->rating_count : 0; ?>)</div>
+            <div class="tutor-ratings-count">(<?php echo esc_html( number_format_i18n( $course_rating->rating_count > 0 ? $course_rating->rating_count : 0 ) ); ?>)</div>
         <?php endif; ?>
     </div>
 </div>

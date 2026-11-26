@@ -185,7 +185,7 @@ class BundleThumbnail extends BaseAddon {
 						<!-- Show bundle discount badge -->
 						<?php if ( BundleModel::RIBBON_NONE !== $ribbon_type && $bundle_sale_price > 0 ) : ?>
 						<div class="tutor-bundle-discount-info">
-							<div class="tutor-bundle-save-text"><?php esc_html_e( 'SAVE', 'tutor-pro' ); ?></div>
+							<div class="tutor-bundle-save-text"><?php esc_html_e( 'SAVE', 'tutor-lms-elementor-addons' ); ?></div>
 							<div class="tutor-bundle-save-amount"><?php echo esc_html( BundleModel::get_bundle_discount_by_ribbon( $course_id, $ribbon_type ) ); ?></div>
 						</div>
 						<?php endif; ?>

@@ -20,7 +20,7 @@ $show_categories   = $settings['course_list_category_settings'];
 	<div>
 		<?php if ( $show_author ) : ?>
 		<span class="etlms-course-author-meta tutor-meta-key"><?php esc_html_e( 'By', 'tutor-lms-elementor-addons' ); ?></span>
-		<a class="etlms-course-author-meta tutor-meta-value" href="<?php echo $profile_url; ?>"><?php esc_html_e( get_the_author() ); ?></a>
+		<a class="etlms-course-author-meta tutor-meta-value" href="<?php echo esc_url( $profile_url ); ?>"><?php echo esc_html( get_the_author() ); ?></a>
 		<?php endif; ?>
 
 		<?php if ( $show_categories && ( ! empty( $course_categories ) && is_array( $course_categories ) && count( $course_categories ) ) ) : ?>

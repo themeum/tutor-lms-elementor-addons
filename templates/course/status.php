@@ -12,7 +12,7 @@ $settings = $this->get_settings_for_display();
 if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
 	<div class="etlms-course-progress tutor-course-progress">
 		<span class="etlms-course-progress-title tutor-fs-6 tutor-fw-medium tutor-color-black">
-			<?php echo esc_html( $settings['course_progress_title_text'], 'tutor' ); ?>
+			<?php echo esc_html( $settings['course_progress_title_text'] ); ?>
 		</span>
 
 		<div class="etlms-course-progress-info tutor-fs-6 tutor-color-secondary tutor-d-flex tutor-align-center tutor-justify-between">
